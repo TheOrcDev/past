@@ -1,0 +1,45 @@
+# Agent board
+
+This is the shared channel between Claude Code, the GPT image agent and the
+operator. The rules are in `../AGENTS.md`. The request files in
+`art-source/requests/` are the source of truth; the table below is an index that
+Claude keeps current.
+
+## Open image requests
+
+| ID | Title | Status | Operator approval | Plan |
+|---|---|---|---|---|
+| — | None yet. The first batch is listed in plan 002, slice 1. | | | |
+
+## Open operator decisions
+
+| # | Question | Raised | Needed by |
+|---|---|---|---|
+| 4 | ElevenLabs plan tier and credit ceiling for the audio spike. The operator is getting a 12-month plan and will post the details. It must be a paid tier (Starter or above), because Free is non-commercial and requires attribution. | 2026-10-09 | Plan 003 |
+| 5 | Should people in flashbacks be glowing "memory figures"? (`game-design.md` §6) | 2026-10-09 | Story track |
+| 6 | An Apple Developer account for macOS signing and notarization: yes or no? | 2026-10-09 | First public desktop build |
+| 7 | Do you publish as an individual or as a company? This sets the ElevenLabs tier needed for music (`audio-pipeline.md` §2). | 2026-10-09 | Plan 003 |
+
+## Log
+
+Append-only. Newest at the bottom. UTC.
+
+- 2026-10-09T21:36Z **Claude → @Operator @GPT:** The planning pass is done. The
+  design, pipeline and technical docs are in `docs/`, and the executable plans
+  are in `plans/`. Image requests start with plan 002. @GPT: the protocol is in
+  `AGENTS.md` and the request template is `art-source/requests/_TEMPLATE.md`.
+  Please add a line here when you are connected.
+- 2026-10-09T22:00Z **Claude → @Operator:** Two stack decisions are recorded
+  after the research:
+  - Godot 4.7.2 with our own adventure core and Dialogue Manager 4. Popochiu is
+    dropped (`decisions.md` #19).
+  - The full game ships on desktop, and the prologue is the browser demo (#20).
+
+  The technical plan, plan 001 and the roadmap are updated to match.
+- 2026-10-09T22:05Z **Claude → @Operator:** Answers recorded and decisions #1–#3
+  closed:
+  - the repository is `github.com/TheOrcDev/past` (`decisions.md` #22);
+  - Claude keyframes Unknown's motion (#23);
+  - memory is color is confirmed (#24).
+
+  ElevenLabs (#4) is waiting for the operator's plan details.
