@@ -5,8 +5,8 @@ build and in the browser demo build. The full game ships on desktop, and the
 prologue doubles as the free browser demo (decision #20). The order puts the
 biggest risks first:
 
-1. Can the GPT-image + Claude pipeline produce this look, with an animated
-   Unknown, at a cost we can sustain?
+1. Can GPT Image, through the Vercel AI Gateway, plus Claude's processing
+   produce this look, with an animated Unknown, at a cost we can sustain?
 2. Can our own adventure core on Godot carry the interface and the cinematics,
    on desktop and in the browser demo?
 3. Do ElevenLabs voices hold up across a long game?

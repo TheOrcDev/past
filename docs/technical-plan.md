@@ -14,7 +14,8 @@ browser as a demo (#20).
 | GUT | **9.7.1** (2026-07-10), tag commit `aeb5d4f` | Unit tests. Targets Godot 4.7.x. Vendored from the tag tarball (SHA-256 `6da99c4e…85613385`). |
 | Blender | 4.5 LTS (4.5.13 installed) | Character renders (`art-pipeline.md` §5C) |
 | Python (tools) | 3.12 via `uv` | The system Python 3.14 is too new for parts of the ML stack |
-| Bun | installed | `tools/audio` |
+| Bun | installed | `tools/audio`, `tools/images`, `tools/build/serve.ts` |
+| AI SDK (`ai`) + Vercel AI Gateway | `ai` 7.0.x, pinned in `tools/images/package.json` | Image generation with GPT Image 2.5 (decision #25). The key is `AI_GATEWAY_API_KEY` in `.env`. |
 | ffmpeg, ImageMagick, git-lfs | installed (Homebrew) | Media processing, repository |
 
 - Install the exact Godot build from the official 4.7.2 release and check it
@@ -80,7 +81,7 @@ past/
     audio/voice/en/  audio/music/  audio/ambience/  audio/sfx/  audio/ui/  fonts/  textures/
   test/                      # GUT tests
   tools/                     # .gdignore — art (Python/uv), audio (Bun/TS), blender, build scripts
-  art-source/  audio-source/ # .gdignore — image requests, raw GPT output, masters, manifests
+  art-source/  audio-source/ # .gdignore — image requests, raw generated images, masters, manifests
   docs/  plans/              # .gdignore
   build/                     # gitignored export output
 ```

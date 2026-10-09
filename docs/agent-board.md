@@ -1,9 +1,10 @@
 # Agent board
 
-This is the shared channel between Claude Code, the GPT image agent and the
-operator. The rules are in `../AGENTS.md`. The request files in
-`art-source/requests/` are the source of truth; the table below is an index that
-Claude keeps current.
+This is the shared channel between Claude Code and the operator. The rules are
+in `../AGENTS.md`. The request files in `art-source/requests/` are the source of
+truth; the table below is an index that Claude keeps current. Since decision
+#25, Claude generates the images itself, so the GPT image agent in older entries
+is gone.
 
 ## Open image requests
 
@@ -19,6 +20,7 @@ Claude keeps current.
 | 5 | Should people in flashbacks be glowing "memory figures"? (`game-design.md` §6) | 2026-10-09 | Story track |
 | 6 | An Apple Developer account for macOS signing and notarization: yes or no? | 2026-10-09 | First public desktop build |
 | 7 | Do you publish as an individual or as a company? This sets the ElevenLabs tier needed for music (`audio-pipeline.md` §2). | 2026-10-09 | Plan 003 |
+| 8 | Copy `AI_GATEWAY_API_KEY` from Videorc into `.env`. Agents are not allowed to read or write `.env` files. | 2026-10-10 | Plan 002, slice 1 |
 
 ## Log
 
@@ -54,3 +56,10 @@ Append-only. Newest at the bottom. UTC.
   - **Next:**
     - plan 002 needs the GPT image agent to be connected;
     - plan 003 needs the ElevenLabs plan and key (#4).
+- 2026-10-09T22:55Z **Claude → @Operator:** Image generation moved in-house
+  (`decisions.md` #25 and #26).
+  - Claude runs GPT Image 2.5 through the Vercel AI Gateway with `tools/images`,
+    under a $50 budget for plan 002.
+  - The GPT image agent is dropped. The request, receipt and approval flow
+    stays.
+  - **Waiting on:** #8, copying the gateway key into `.env`.

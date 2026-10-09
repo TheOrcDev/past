@@ -1,13 +1,14 @@
 # 002 — First light: prove the look of *Past*
 
-Status: planned 2026-10-09. Owner: Claude. The GPT image agent generates the
-images. The operator approves the style keys, Unknown's model sheet and the
-final look gate.
+Status: planned 2026-10-09, updated 2026-10-10. Owner: Claude, who also
+generates the images with `tools/images` through the Vercel AI Gateway (decision
+#25). The image budget is $50 (#26). The operator approves the style keys,
+Unknown's model sheet and the final look gate.
 
 ## Goal
 
-Show in the **browser build** that GPT images processed by Claude can produce
-the look of *Past* at a cost we can sustain. One room, the cathedral nave, is
+Show in the **browser build** that GPT Image output, processed by Claude, can
+produce the look of *Past* at a cost we can sustain. One room, the cathedral nave, is
 built as a living painting with now and then layers. Unknown is animated. A
 memory anchor plays the flashback, and a pull-back reveal opens the area. This
 is the riskiest part of the project, so it comes first.
@@ -16,9 +17,11 @@ is the riskiest part of the project, so it comes first.
 
 - Plan 001 is done: project, adventure-core skeleton, desktop and browser
   builds, test runner.
-- The GPT image agent has posted on the board that it is connected.
-- Already settled: "memory is color" is confirmed (decision #24), and Claude
-  keyframes Unknown's motion (#23).
+- `AI_GATEWAY_API_KEY` is in `.env`. The operator copies it from Videorc.
+- Already settled:
+  - "memory is color" is confirmed (decision #24);
+  - Claude keyframes Unknown's motion (#23);
+  - the image budget is $50 (#26).
 
 ## Not in this plan
 
@@ -29,10 +32,25 @@ generalises).
 
 ## Slices
 
-### Slice 1 — First image batch
+### Slice 1 — Image tool and first batch
 
-Write the requests from `art-source/requests/_TEMPLATE.md`, using the
-composition rules in `docs/art-pipeline.md` §3.
+1. Build `tools/images` (Bun + TypeScript, AI SDK 7, Vercel AI Gateway):
+   - **`run.ts <ID>`:**
+     - parses a request's Generation and Prompt blocks;
+     - calls `generateImage`, as text-to-image or as an edit with references and
+       a mask;
+     - writes the variants and `receipt.json` to `art-source/raw/<ID>/`;
+     - appends the ledger, fills the Delivery row and sets the status;
+     - refuses to run once the plan's spend reaches 80% of its budget.
+   - **`check.ts`:** confirms the key works without spending.
+   - **`budget.ts`:** reports spend per plan.
+   - **Tests:** `bun test` covers parsing, the ledger and the budget guard with
+     a mock model, with no network.
+2. **A/B:** run the cathedral nave (now) request on `gpt-image-2.5-flare` and on
+   `gpt-image-2.5-sunburst` at medium quality. Choose the default model for new
+   images by look, and record the cost per image.
+3. Write the remaining requests from `art-source/requests/_TEMPLATE.md`, using
+   the composition rules in `docs/art-pipeline.md` §3.
 
 | Request | What | Approval |
 |---|---|---|
@@ -124,9 +142,10 @@ The Reduce flashing parameter is wired up. In this plan the vision holds about
 - **Banding:** judge the fog gradients in the Compatibility renderer with grain
   on and off. Record whether Forward+ for desktop is worth testing
   (`technical-plan.md` §2).
-- **Cost:** hours per asset type (room now/then, ring, each Unknown animation)
-  and GPT rounds per accepted image. These numbers go to the operator and later
-  into the M5 estimate.
+- **Cost:** for each asset type (room now/then, ring, each Unknown animation),
+  the hours spent and the generation rounds and dollars per accepted image. The
+  ledger has the dollars. These numbers go to the operator and later into the
+  M5 estimate.
 - **Record:** a screen recording of the full slice, in `docs/qa/002/`.
 - **Gate:**
   - The operator approves the look and Unknown's animation route.
@@ -136,15 +155,17 @@ The Reduce flashing parameter is wired up. In this plan the vision holds about
 
 ## STOP conditions
 
-- Unknown's design drifts between views after three GPT rounds. Stop and give
-  the operator options: a rough sketch from them, a different image tool, or
-  modeling straight from concept 04.
+- Unknown's design drifts between views after three generation rounds. Stop and
+  give the operator options: a rough sketch from them, another gateway image
+  model, or modeling straight from concept 04.
+- Image spend reaches 80% of the $50 budget. The tool refuses to go on; stop and
+  report.
 - Then/now alignment stays above a 3 px p90 after two revise rounds. Stop and
   test whether a manual mesh-warp correction is acceptable.
 - The browser build drops below 45 fps with the full effect stack. Stop and
   profile before adding more effects.
-- Anything costs money, such as a paid upscaler or model. Get the operator's
-  approval first.
+- Anything outside the image budget costs money, such as a paid upscaler. Get
+  the operator's approval first.
 
 ## Definition of done
 
@@ -156,8 +177,9 @@ The Reduce flashing parameter is wired up. In this plan the vision holds about
 
 ## Effort
 
-About 4–6 working sessions plus the GPT agent's turnaround. Slices 2 and 4 can
-start while slice 1's images are in progress, using the concepts as stand-ins.
+About 4–6 working sessions, plus the operator's approval rounds for the style
+keys. Slices 2 and 4 can start before slice 1's images exist, using the concepts
+as stand-ins.
 
 ## Execution record
 

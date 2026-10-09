@@ -7,8 +7,8 @@ volume production starts. Numbers marked *calibrate* are set by that plan.
 
 | Role | Does |
 |---|---|
-| **GPT image agent** | Generates every image from a request file: backgrounds, then/now edits, outpaint zoom-outs, clean plates, character model sheets, UI art, journal illustrations and title cards. It never edits game files. |
-| **Claude** | Writes the requests and reviews what comes back. Does all processing (upscale, alignment, depth, layer splitting), the 3D rigging, animation and sprite rendering, effects, Godot integration and QA. |
+| **Image tool** (`tools/images`, run by Claude) | Generates every image from a request file with OpenAI's GPT Image models through the Vercel AI Gateway (decision #25). That covers backgrounds, then/now edits, outpaint zoom-outs, clean plates, character model sheets, UI art, journal illustrations and title cards. It writes receipts and enforces the plan's image budget. |
+| **Claude** | Writes the requests, runs the tool and reviews what comes back. Does all processing (alignment, depth, layer splitting, upscaling for push-ins), the 3D rigging, animation and sprite rendering, effects, Godot integration and QA. |
 | **Operator** | Approves style keys, Unknown's model sheet, each area's look and anything marked `operator-approval: required`. |
 
 The request, delivery and review protocol is in `../AGENTS.md`. The template is
@@ -86,8 +86,10 @@ These rules go into every room request:
 | Viewport | 1920×1080, letterboxed to 16:9 |
 | Room background | 1920×1080 per screen. A scrolling room is up to 3 screens wide. |
 | Cinematic push-ins | 2× source (3840×2160) only where the camera zooms past 1.25× |
-| GPT output | Largest size the tool offers. The concepts came out at 1672×941 (16:9) and 2117×743 (wide). |
-| Upscaling | Local 2× AI upscale, then downsample to target. This gives a cleaner result than using the raw output. |
+| Models | `openai/gpt-image-2.5-flare` and `openai/gpt-image-2.5-sunburst`, which focuses on precise editing. Plan 002 runs an A/B to set the default for new images and confirms Sunburst for edits. `gpt-image-2` is the fallback. |
+| Generation size | Rooms: 2560×1440, then downsampled to 1920×1080. Sizes must be multiples of 16 with an aspect between 1:3 and 3:1, and anything above 2560×1440 is experimental. Vistas: up to 3:1, for example 3840×1280. The concepts came out of ChatGPT at 1672×941 and 2117×743. |
+| Quality | `medium` while exploring compositions, `high` for finals, `max` only for hero images. Plan 002 records the real cost per image. |
+| Upscaling | Only where the camera pushes in beyond the generated size: zoom rings and cinematic close-ups. Done with a local AI upscaler, or a gateway upscaling model if plan 002 shows it is better. |
 | Unknown's height | About 480 px at the nearest walk line, roughly 44% of the screen. *Calibrate:* he is about 32% of the frame in the nave concept. |
 | Animation | 12 fps baseline ("on twos"). Plan 002 also tests 15 fps for the walk. |
 | Directions | Right, up and down; left mirrors right. Diagonals only if plan 002 shows they are worth their memory. The core supports them (`technical-plan.md` §5.3). |
@@ -105,20 +107,21 @@ Draw everything at its largest on-screen size and only scale down.
    exits, hotspots, occluders), style refs and landmark crops. The first room
    of every area is `operator-approval: required` and becomes that area's style
    key.
-2. **Generate (GPT):** 3–4 variants go to `art-source/raw/IMG-xxxx/` with a
-   receipt.
+2. **Generate** (`bun tools/images/run.ts IMG-xxxx`): 3–4 variants go to
+   `art-source/raw/IMG-xxxx/` with a receipt.
 3. **Pick:** Claude shortlists and the operator approves style keys.
 4. **Past version:** Claude requests the then image as an edit of the accepted
    now image ("same composition, camera and perspective; restore …").
 5. **Process (Claude)**, writing to `art-source/work/rooms/<room>/`:
-   - `upscale` to 2×, then downsample to the target size;
+   - downsample from 2560×1440 to the target size, and `upscale` only for
+     push-ins;
    - `align` the then image to the now image. A p90 residual above 3 px after
      auto-alignment means a revision request. The concept pair measured a median
      of 0.7 px and a p90 of 2.1 px before any correction.
    - `depth`: a depth map for parallax and fog density;
    - `layers`: background plate, walk-behind occluders and foreground framing.
      Holes behind removed occluders are filled with **clean plates**, which are
-     GPT edits with the occluder removed;
+     image edits with the occluder removed;
    - `grade`: enforce monochrome on the now image and check the walkable band's
      luminance.
 6. **Assemble (Claude, Godot):** layers, walkable area, scaling regions,
@@ -128,8 +131,9 @@ Draw everything at its largest on-screen size and only scale down.
 
 ### B. Vistas and discovery reveals
 
-- **Nested zoom stack:** from a framing image, the GPT agent outpaints zoom-outs
-  at ×2 and ×4 with the centre kept. `align` registers each ring at scale ≈0.5.
+- **Nested zoom stack:** from a framing image, the image tool outpaints zoom-outs
+  at ×2 and ×4 with the centre kept. Each outpaint is an edit that uses the
+  framing image as its reference. `align` registers each ring at scale ≈0.5.
   Claude composites the inner image into the outer one with a feathered mask;
   the fog hides the seams. In the engine, the camera zooms exponentially through
   the stack and crossfades at each ring boundary.
@@ -144,7 +148,7 @@ no face hides that it was rendered from 3D. The renders give consistent turns,
 any number of animations and exact per-frame anchor data. Blender 4.5 LTS is
 installed.
 
-1. **Model sheet (GPT):** front, side, back, three-quarter front and
+1. **Model sheet** (image tool): front, side, back, three-quarter front and
    three-quarter back, A-pose, plain light background. One version with
    tendrils for reference and one without, used for modeling. Requires operator
    approval.
@@ -183,8 +187,8 @@ installed.
 
 Every animation's production time is logged, as the handoff asked.
 
-**Fallback:** a 2D cut-out rig in Godot (`Skeleton2D`) built from GPT part
-sheets with one view per direction.
+**Fallback:** a 2D cut-out rig in Godot (`Skeleton2D`) built from generated
+part sheets with one view per direction.
 
 ### D. Other characters and memory figures
 
@@ -208,7 +212,7 @@ sheets with one view per direction.
 
 ### F. UI art and fonts
 
-- **GPT:**
+- **Image tool**, using transparent backgrounds where a piece needs them:
   - verb coin glyphs (eye, hand, speech wisp) on a smoke ring;
   - a cursor set (default, hotspot, exits, held item);
   - inventory and journal art;
@@ -228,8 +232,9 @@ use, and who runs it, is decided when the need appears.
 
 ```
 art-source/            # never imported by Godot (.gdignore)
-  requests/            # one file per image request; Claude writes, GPT fills delivery
-  raw/IMG-0001/        # GPT output — immutable — IMG-0001-v1.png …, receipt.md
+  requests/            # one file per image request; Claude writes, the tool fills delivery
+  raw/IMG-0001/        # tool output — immutable — IMG-0001-v1.png …, receipt.json
+  raw/ledger.json      # every generation call with its cost, per plan (the budget check)
   work/                # Claude: upscales, masks, depth, layers, .blend files, renders
   style/               # operator-approved style keys and landmark crops
 docs/reference/        # the operator's original concepts
@@ -246,13 +251,15 @@ docs/reference/        # the operator's original concepts
 
 ## 7. Art tools Claude builds
 
-Python tools are managed with `uv` on a pinned Python 3.12, because the system
-Python is 3.14 and too new for parts of the ML stack. They live in
-`tools/art/`.
+`tools/images` is Bun + TypeScript using AI SDK 7 and the Vercel AI Gateway,
+with the key `AI_GATEWAY_API_KEY` in `.env`. The Python tools are managed with
+`uv` on a pinned Python 3.12, because the system Python is 3.14 and too new for
+parts of the ML stack. They live in `tools/art/`.
 
 | Tool | Job |
 |---|---|
-| `upscale` | 2× AI upscale. Real-ESRGAN-class model on Apple MPS, tiled. The model is chosen in plan 002. |
+| `tools/images` | Runs a request file: text-to-image or an edit with references and a mask. Writes the raw variants, `receipt.json` and the ledger. Enforces the plan's image budget. |
+| `upscale` | AI upscale, only for push-ins and zoom rings. Real-ESRGAN-class model on Apple MPS, tiled, or a gateway upscaler. Chosen in plan 002. |
 | `align` | SIFT + RANSAC registration with a residual report. Proven on the concept pair. |
 | `depth` | Depth map from a Depth-Anything-class model on MPS |
 | `layers` | Depth bands and masks to layered PNGs with alpha |

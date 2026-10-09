@@ -2,34 +2,49 @@
 
 status: open
 operator-approval: not-required
+plan: 002
 requested: <YYYY-MM-DD> by Claude for plan <NNN>, slice <N>
 
 `status` is one of open, delivered, revise, accepted, rejected or cancelled.
-`operator-approval` is required or not-required.
+`operator-approval` is required or not-required. `plan` names the plan whose
+image budget pays for this request.
 
 ## Purpose
 
 Where this image is used in the game and what it has to do there.
 
-## Output
+## Generation
 
-- Variants: 3
-- Aspect and size: 16:9, the largest size the tool offers
-- Background: an opaque scene, or flat light grey (#d0d0d0) for cut-outs and
-  character sheets
-- Format: PNG. No text, no watermark, no frame.
-- Characters: none, unless this is a character request
+`tools/images/run.ts` reads this block.
 
-## References
+```json
+{
+  "model": "openai/gpt-image-2.5-flare",
+  "size": "2560x1440",
+  "quality": "medium",
+  "n": 3,
+  "background": "opaque",
+  "references": [],
+  "mask": null
+}
+```
 
-- `docs/reference/…`: what to take from it
-- `art-source/style/…`: style key or landmark crop to match
+- **`references`:** repository paths of input images. With references, the call
+  is an edit. Use `openai/gpt-image-2.5-sunburst` for edits.
+- **`mask`:** optional. A PNG with alpha, the same size as the first reference,
+  transparent where the image may change.
+- **`size`:** both sides must be multiples of 16, with an aspect between 1:3 and
+  3:1. Rooms use 2560×1440.
+- **`background`:** `opaque`, or `transparent` for cut-outs, character sheets
+  and UI art.
 
-## Prompt draft
+## Prompt
 
-Written by Claude. Adapt it freely, but record the final prompt in `receipt.md`.
+The tool sends this text block verbatim.
 
-> …
+```text
+…
+```
 
 ## Must have
 
@@ -47,12 +62,11 @@ Claude checks these.
 
 ## Delivery
 
-Filled in by the GPT image agent. Files go to `art-source/raw/<ID>/`, unmodified,
-with `receipt.md` next to them. The receipt records the final prompt, the tool
-and model, the output size, the date (UTC) and the references used.
+Written by `tools/images`. Files go to `art-source/raw/<ID>/`, unmodified, with
+`receipt.json` next to them.
 
-| Round | Date (UTC) | Files | Notes |
-|---|---|---|---|
+| Round | Date (UTC) | Files | Model | Size / quality | Cost (USD) |
+|---|---|---|---|---|---|
 
 ## Review
 
