@@ -10,7 +10,10 @@ is gone.
 
 | ID | Title | Status | Operator approval | Plan |
 |---|---|---|---|---|
-| — | None yet. The first batch is listed in plan 002, slice 1. | | | |
+| IMG-0001 | Cathedral nave, now (A/B: Flare) | open | required (area style key) | 002 |
+| IMG-0002 | Cathedral nave, now (A/B: Sunburst) | open | required (area style key) | 002 |
+| IMG-0003 | Unknown turnaround, with tendrils | open | required (model sheet) | 002 |
+| IMG-0004 | Unknown turnaround, without tendrils | open | required (model sheet) | 002 |
 
 ## Open operator decisions
 
