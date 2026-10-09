@@ -9,9 +9,9 @@ browser as a demo (#20).
 
 | Component | Version | Notes |
 |---|---|---|
-| Godot | **4.7.2-stable** (2026-08-18) | Latest stable. 4.8 is in dev (feature freeze); revisit when it is stable. |
-| Dialogue Manager | **4.x**, pinned in plan 001 | Nathan Hoad's dialogue add-on, MIT. v4 targets Godot 4.6+. Plan 001 confirms that the chosen release runs on 4.7.2 and records it here. |
-| GUT | **9.7.1** | Unit tests. Targets Godot 4.7.x. |
+| Godot | **4.7.2-stable** (2026-08-18), `4.7.2.stable.official.ed1daf0bf` | Latest stable. 4.8 is in dev (feature freeze); revisit when it is stable. The macOS zip and the export templates were checked against the release's `SHA512-SUMS.txt`. |
+| Dialogue Manager | **4.1.0** (2026-09-04), tag commit `a719088` | Nathan Hoad's dialogue add-on, MIT. v4 targets Godot 4.6+. Vendored from the tag tarball (SHA-256 `703b181a…13158`). It imports cleanly on 4.7.2. |
+| GUT | **9.7.1** (2026-07-10), tag commit `aeb5d4f` | Unit tests. Targets Godot 4.7.x. Vendored from the tag tarball (SHA-256 `6da99c4e…85613385`). |
 | Blender | 4.5 LTS (4.5.13 installed) | Character renders (`art-pipeline.md` §5C) |
 | Python (tools) | 3.12 via `uv` | The system Python 3.14 is too new for parts of the ML stack |
 | Bun | installed | `tools/audio` |
