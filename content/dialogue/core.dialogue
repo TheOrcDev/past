@@ -1,0 +1,20 @@
+~ fallback_look
+
+% Unknown: Nothing remarkable. Like me, apparently. [ID:CORE_FALLBACK_LOOK_1]
+% Unknown: It keeps its secrets. Everyone does, around here. [ID:CORE_FALLBACK_LOOK_2]
+% Unknown: I stare at it. It doesn't stare back. That's something. [ID:CORE_FALLBACK_LOOK_3]
+
+=> END
+
+~ fallback_use
+
+% Unknown: My hands have no opinion on that. [ID:CORE_FALLBACK_USE_1]
+% Unknown: Better not. I don't know what I'm capable of yet. [ID:CORE_FALLBACK_USE_2]
+
+=> END
+
+~ fallback_talk
+
+% Unknown: It has nothing to say. Neither do I, really. [ID:CORE_FALLBACK_TALK_1]
+
+=> END

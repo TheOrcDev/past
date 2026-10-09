@@ -1,0 +1,75 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/rooms/sandbox/sandbox.gd" id="1_mkxaf"]
+[ext_resource type="Texture2D" path="res://content/rooms/sandbox/art/bg_now.png" id="2_q2k7r"]
+[ext_resource type="Script" path="res://src/core/scale_zones.gd" id="3_tna8x"]
+[ext_resource type="Script" path="res://src/core/hotspot.gd" id="4_ac5u1"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_r7if6"]
+vertices = PackedVector2Array(1920, 975, 1920, 1075, 0, 1075, 1760, 960, 1290, 930, 1450, 932, 1600, 945, 1050, 940, 700, 935, 400, 925, 250, 935, 0, 950)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 3, 2, 7), PackedInt32Array(8, 7, 2), PackedInt32Array(9, 8, 2, 10), PackedInt32Array(10, 2, 11)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, 1075, 1920, 1075, 1920, 975, 1760, 960, 1600, 945, 1450, 932, 1290, 930, 1050, 940, 700, 935, 400, 925, 250, 935, 0, 950)])
+agent_radius = 0.0
+
+[node name="Sandbox" type="Node2D" unique_id=46986215]
+script = ExtResource("1_mkxaf")
+room_id = &"sandbox"
+display_name = "Sandbox (placeholder cathedral)"
+
+[node name="Layers" type="Node2D" parent="." unique_id=1493348630]
+
+[node name="Now" type="Node2D" parent="Layers" unique_id=1565401162]
+
+[node name="Background" type="Sprite2D" parent="Layers/Now" unique_id=1032390682]
+texture = ExtResource("2_q2k7r")
+centered = false
+
+[node name="Then" type="Node2D" parent="Layers" unique_id=139025724]
+
+[node name="WalkAreas" type="Node2D" parent="." unique_id=735255272]
+
+[node name="Now" type="NavigationRegion2D" parent="WalkAreas" unique_id=1457181247]
+navigation_polygon = SubResource("NavigationPolygon_r7if6")
+
+[node name="Then" type="NavigationRegion2D" parent="WalkAreas" unique_id=1992335282]
+enabled = false
+
+[node name="ScaleZones" type="Node2D" parent="." unique_id=1768574641]
+script = ExtResource("3_tna8x")
+far_y = 930.0
+far_scale = 0.55
+near_y = 1075.0
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=1944905201]
+
+[node name="Statue" type="Area2D" parent="Hotspots" unique_id=1704606067]
+script = ExtResource("4_ac5u1")
+id = &"statue"
+display_name = "Statue of a saint"
+walk_offset = Vector2(330, 965)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Statue" unique_id=1272760755]
+polygon = PackedVector2Array(70, 700, 300, 700, 300, 525, 322, 330, 270, 238, 190, 232, 115, 320, 95, 525)
+
+[node name="Altar" type="Area2D" parent="Hotspots" unique_id=1315249248]
+script = ExtResource("4_ac5u1")
+id = &"altar"
+display_name = "Altar"
+walk_offset = Vector2(1440, 955)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Altar" unique_id=566397010]
+polygon = PackedVector2Array(1330, 800, 1600, 800, 1600, 520, 1520, 480, 1465, 480, 1420, 520, 1330, 560)
+
+[node name="Exits" type="Node2D" parent="." unique_id=478260231]
+
+[node name="Markers" type="Node2D" parent="." unique_id=1353515429]
+
+[node name="default" type="Marker2D" parent="Markers" unique_id=1713924489]
+position = Vector2(760, 1010)
+
+[node name="Actors" type="Node2D" parent="." unique_id=599286998]
+y_sort_enabled = true
+
+[node name="Foreground" type="Node2D" parent="." unique_id=2076457000]
+
+[node name="Cinematics" type="Node2D" parent="." unique_id=1763215027]

@@ -1,0 +1,24 @@
+{
+  "display_name": "Sandbox (placeholder cathedral)",
+  "background": "res://content/rooms/sandbox/art/bg_now.png",
+  "walk_now": [
+    [0, 1075], [1920, 1075], [1920, 975], [1760, 960], [1600, 945], [1450, 932],
+    [1290, 930], [1050, 940], [700, 935], [400, 925], [250, 935], [0, 950]
+  ],
+  "scale_zones": { "far_y": 930, "far_scale": 0.55, "near_y": 1075, "near_scale": 1.0 },
+  "markers": { "default": [760, 1010] },
+  "hotspots": [
+    {
+      "id": "statue",
+      "name": "Statue of a saint",
+      "polygon": [[70, 700], [300, 700], [300, 525], [322, 330], [270, 238], [190, 232], [115, 320], [95, 525]],
+      "walk_to": [330, 965]
+    },
+    {
+      "id": "altar",
+      "name": "Altar",
+      "polygon": [[1330, 800], [1600, 800], [1600, 520], [1520, 480], [1465, 480], [1420, 520], [1330, 560]],
+      "walk_to": [1440, 955]
+    }
+  ]
+}

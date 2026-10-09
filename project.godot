@@ -12,11 +12,17 @@ config_version=5
 
 config/name="Past"
 config/description="A point-and-click adventure about a shadow who has lost his past."
+run/main_scene="res://src/core/main.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 
 [autoload]
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+GameState="*res://src/core/game_state.gd"
+Rooms="*res://src/core/rooms.gd"
+Interaction="*res://src/core/interaction.gd"
+Say="*res://src/core/say.gd"
+Qa="*res://src/core/qa.gd"
 
 [display]
 
@@ -25,11 +31,19 @@ window/size/viewport_height=1080
 window/size/window_width_override=1600
 window/size/window_height_override=900
 window/stretch/mode="canvas_items"
-window/stretch/aspect="keep"
 
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/gut/plugin.cfg")
+
+[internationalization]
+
+locale/translations_pot_files=PackedStringArray("res://content/dialogue/sandbox.dialogue", "res://content/dialogue/core.dialogue")
+
+[navigation]
+
+world/map_use_async_iterations=false
+world/region_use_async_iterations=false
 
 [rendering]
 

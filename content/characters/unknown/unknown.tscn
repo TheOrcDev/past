@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://src/core/actor.gd" id="1_w5cqc"]
+[ext_resource type="Script" path="res://src/core/placeholder_body.gd" id="2_woteh"]
+
+[node name="Unknown" type="Node2D" unique_id=1246069119]
+script = ExtResource("1_w5cqc")
+speaker_name = "Unknown"
+subtitle_color = Color(0.86, 0.89, 0.96, 1)
+speech_offset = Vector2(0, -450)
+
+[node name="Body" type="Node2D" parent="." unique_id=482523435]
+script = ExtResource("2_woteh")
