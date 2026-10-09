@@ -86,7 +86,11 @@ past/
 ```
 
 - Scripts that Godot itself runs live in `addons/past_tools/`, not in `tools/`.
-  Godot does not see `tools/`, because it is ignored.
+  Godot does not see `tools/`, because it is ignored. There are three so far:
+  - `new_room.gd` scaffolds a room from an optional JSON spec, which lives in
+    `art-source/work/rooms/<room>/room_spec.json`;
+  - `scaffold_core.gd` creates `main.tscn` and the placeholder Unknown;
+  - `lint.gd` checks content.
 - Scenes are created by scaffolding scripts that save through Godot, for example
   `addons/past_tools/new_room.gd`, so resource IDs stay valid. They are then
   edited in the editor or by script, and `.tscn` files are never hand-assembled.
@@ -103,8 +107,11 @@ past/
 | 2D texture filter | Linear. Mipmaps only where a layer is drawn well below its size (§8). |
 | Window | Desktop starts in borderless fullscreen, with a windowed option in Settings |
 | Input | Mouse buttons only. A `skip` action is bound to Esc as an optional extra; the mouse does everything. |
-| Audio buses | Master → Voice, Music, Ambience, SFX, UI. No bus effects in the design (§7). |
+| Audio buses | Master → Voice, Music, Ambience, SFX, UI. No bus effects in the design (§7). The bus layout is created in plan 003. |
 | Localization | English source. Dialogue Manager exports POT templates when translation starts. |
+| Navigation | `navigation/world/map_use_async_iterations` and `region_use_async_iterations` are off. With the 4.7 defaults (on), a fresh room's walk area only becomes usable about 10 physics frames after it loads, and era switches would lag. Our walk areas are tiny, so synchronous updates are cheap. |
+| VRAM compression | `import_etc2_astc` is on, because the universal macOS export refuses to build without it. 2D art still uses lossy or lossless compression (§8). |
+| Dev window | 1600×900 window override for development runs. Release builds start fullscreen once Settings exists (plan 004). |
 
 ## 5. Adventure core (`src/core`)
 
@@ -458,12 +465,24 @@ Not needed. The browser gets only the prologue demo, so it fits in one `.pck`
 - **Import pass:** `$GODOT_BIN --headless --import` after asset changes, which
   surfaces broken resources.
 - **Tool tests:** `bun test` for `tools/audio` and `pytest` for `tools/art`.
+- **One command:** `tools/test.sh` runs the import pass, GUT and content lint,
+  and writes its logs to `build/test-logs/`.
 - **Build checks:**
-  - the desktop build launches;
-  - the browser demo is served locally and opened in a visible Chrome tab, with
-    the console checked for errors.
+  - **Desktop:** `tools/build/export.sh macos`, then run
+    `build/macos/Past.app/Contents/MacOS/Past -- --qa=sandbox_smoke --qa-out=<dir>`.
+    The `Qa` autoload plays a scripted sequence, saves screenshots, prints PASS
+    or FAIL lines and sets the exit code. Without `--qa` it does nothing.
+  - **Browser:**
+    1. Run `tools/build/export.sh web`, then `bun tools/build/serve.ts`.
+    2. Open the page in Chrome and check the console for errors.
+    3. The automation tab reports `document.hidden`, so Godot only advances
+       when a screenshot forces a frame. Take a burst of small screenshots to
+       let a walk or a line play out.
 
   Evidence goes in `docs/qa/<plan>/`.
+- **Known noise:** headless test runs and the desktop app print "resources still
+  in use at exit" or "ObjectDB instances leaked" when they quit. This doesn't
+  affect behaviour; plan 004 investigates it with `--verbose`.
 - **Profiling:** Godot's monitors (FPS, draw calls, video memory) in debug builds,
   and Chrome's performance panel for the demo.
 
@@ -476,6 +495,7 @@ Not needed. The browser gets only the prologue demo, so it fits in one `.pck`
 | Room load | 1 s or less | 2 s or less (no threads) |
 | Download | No hard cap; aim for 4 GB or less | `.pck` of 150 MB or less, plus about 10 MB of engine (gzip) |
 | Peak memory | — | 1 GiB or less of the 2 GiB cap |
+| Render resolution | Window resolution | The browser canvas follows the device pixel ratio. On the operator's Retina screen it rendered at 3024×1586. Plan 002 measures the cost and decides whether to cap it. |
 | Voice | Ogg mono, about 48–64 kbps | Same |
 
 ## 11. Risks

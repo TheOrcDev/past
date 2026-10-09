@@ -9,7 +9,7 @@ REJECTED (one-line rationale).
 
 | Plan | Title | Milestone | Effort | Depends on | Status |
 |---|---|---|---|---|---|
-| [001](001-foundations.md) | Foundations: repo, pinned engine, adventure-core skeleton, desktop and browser builds, tests | M0 | M–L | — | TODO |
+| [001](001-foundations.md) | Foundations: repo, pinned engine, adventure-core skeleton, desktop and browser builds, tests | M0 | M–L | — | DONE: 19 GUT tests pass, lint passes, macOS QA passes, browser check passes |
 | [002](002-first-light-look-spike.md) | First light: prove the look of *Past* | M1 | L | 001; GPT agent connected | TODO |
 | [003](003-voice-of-the-world-audio-spike.md) | Voice of the world: ElevenLabs pipeline spike | M2 | M | 001; ElevenLabs key and credit ceiling (board #4) | TODO |
 | 004 | Point-and-click core: verb coin, inventory, dialogue UI, saves, settings | M3 | L | 002 look gate | Not written. Written when 002 closes. |

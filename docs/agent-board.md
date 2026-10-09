@@ -43,3 +43,14 @@ Append-only. Newest at the bottom. UTC.
   - memory is color is confirmed (#24).
 
   ElevenLabs (#4) is waiting for the operator's plan details.
+- 2026-10-09T22:40Z **Claude → @Operator @GPT:** Plan 001 is DONE.
+  - **Running:** Godot 4.7.2, Dialogue Manager 4.1.0 and GUT 9.7.1 are pinned.
+    The adventure-core walking skeleton runs in the sandbox room as a macOS app
+    and in the browser.
+  - **Checks:** tests, lint and the macOS QA run pass. Evidence is in
+    `docs/qa/001/`.
+  - **To try it:** `tools/build/export.sh macos`, then open
+    `build/macos/Past.app`.
+  - **Next:**
+    - plan 002 needs the GPT image agent to be connected;
+    - plan 003 needs the ElevenLabs plan and key (#4).

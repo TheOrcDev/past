@@ -1,6 +1,6 @@
 # 001 — Foundations: repo, pinned engine, adventure-core skeleton, desktop and browser builds, tests
 
-Status: planned 2026-10-09. Owner: Claude. The operator authorizes commits and
+Status: **DONE** 2026-10-10. Owner: Claude. The operator authorized commits and
 pushes for this plan.
 
 ## Goal
@@ -151,4 +151,59 @@ M–L: about 1–2 working sessions.
 
 ## Execution record
 
-(empty)
+2026-10-10, Claude. All slices are done and pushed to
+`github.com/TheOrcDev/past` `main`:
+
+- `05b64ed`: plan docs;
+- `e6361b5`: engine, project and add-ons;
+- `cf7e97c`: core skeleton and sandbox;
+- the close-out commit: builds and QA.
+
+**Verified:**
+
+- **Godot:** 4.7.2 `4.7.2.stable.official.ed1daf0bf`. The macOS zip and export
+  templates match the release's SHA-512 sums.
+- **Add-ons:**
+  - Dialogue Manager 4.1.0 (tag `a719088`) and GUT 9.7.1 (`aeb5d4f`) are
+    vendored, with tarball SHA-256s recorded in `technical-plan.md` §1.
+  - Dialogue Manager 4.1.0 runs on 4.7.2. Its syntax is `~ cue`, `[ID:…]` and
+    `[#tag]`, and `DialogueLine.static_id` carries the ID.
+- **`tools/test.sh`:** the headless import is clean. GUT: 3 scripts, 19 tests
+  and 48 asserts pass. Content lint: PASS.
+- **macOS app:** universal, ad-hoc signed, 163 MB.
+  `Past -- --qa=sandbox_smoke` gives `RESULT PASS`: the walk, the statue line ID
+  `SANDBOX_STATUE_LOOK` and three screenshots in `docs/qa/001/01–03`.
+- **Browser build:** single-threaded. The `.wasm` is 39.5 MB and the `.pck`
+  1.5 MB. Served by `serve.ts` and opened in Chrome:
+  - it loads with WebGL 2 and the Compatibility renderer;
+  - the hover label shows;
+  - a click on the statue walks Unknown over and shows the line
+    (`docs/qa/001/04_browser_statue_line.jpg`);
+  - there are no console errors.
+
+**Deviations, recorded in the technical plan:**
+
+1. **No `.env.example`:** permission settings block agents from writing `.env*`
+   files. `tools/README.md` documents the variables, and `GODOT_BIN` defaults to
+   the pinned app path.
+2. **GitHub LFS quota not checked:** the `gh` token lacks the `user` scope
+   (`gh auth refresh -s user` would allow it). The current LFS payload is about
+   16 MB.
+3. **Navigation async iterations turned off:** with them on, a new room's walk
+   area was unusable for about 10 physics frames, which broke the first walk.
+4. **`import_etc2_astc` enabled:** the universal macOS export requires it.
+5. **Exports exclude Dialogue Manager's C# variants** (`*.cs`, the example
+   balloons, `DialogueLabel.tscn`). They cannot load in a GDScript-only build.
+6. **Sandbox background:** concept 05 in greyscale, because it has no painted
+   figure, instead of concept 02.
+7. **Hotspot priority renamed:** the field is `pick_priority`, because `Area2D`
+   already has a native `priority`.
+8. **Extra scaffolding script:** `scaffold_core.gd` was added next to
+   `new_room.gd`, for `main.tscn` and the placeholder Unknown.
+9. **Audio bus layout** moves to plan 003, and the fullscreen default to plan
+   004 (Settings).
+10. **Open noise:**
+    - "resources still in use / ObjectDB leaked" messages print at exit and are
+      harmless; plan 004 investigates them;
+    - the browser canvas renders at the device pixel ratio (3024×1586 on
+      Retina); plan 002 budgets it.
