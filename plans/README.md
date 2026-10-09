@@ -10,7 +10,7 @@ REJECTED (one-line rationale).
 | Plan | Title | Milestone | Effort | Depends on | Status |
 |---|---|---|---|---|---|
 | [001](001-foundations.md) | Foundations: repo, pinned engine, adventure-core skeleton, desktop and browser builds, tests | M0 | M–L | — | DONE: 19 GUT tests pass, lint passes, macOS QA passes, browser check passes |
-| [002](002-first-light-look-spike.md) | First light: prove the look of *Past* | M1 | L | 001; `AI_GATEWAY_API_KEY` in `.env`; $50 image budget (#26) | TODO |
+| [002](002-first-light-look-spike.md) | First light: prove the look of *Past* | M1 | L | 001; `AI_GATEWAY_API_KEY` in `.env`; $50 image budget (#26) | IN PROGRESS: `tools/images` is built (17 tests); the first generations wait for the gateway key (board #8) |
 | [003](003-voice-of-the-world-audio-spike.md) | Voice of the world: ElevenLabs pipeline spike | M2 | M | 001; ElevenLabs key and credit ceiling (board #4) | TODO |
 | 004 | Point-and-click core: verb coin, inventory, dialogue UI, saves, settings | M3 | L | 002 look gate | Not written. Written when 002 closes. |
 | 005 | Cinematic toolkit: flashbacks, reveals, cutscene runner, journal | M4 | L | 002, 004 | Not written |

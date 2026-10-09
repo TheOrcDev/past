@@ -183,4 +183,11 @@ as stand-ins.
 
 ## Execution record
 
-(empty)
+- **2026-10-10, slice 1, step 1:** `tools/images` is built: `run.ts`,
+  `check.ts`, `budget.ts`, `src/` with the request parser, the ledger and
+  budget guard, run-request and gateway pricing.
+  - Pinned to `ai@7.0.137`.
+  - `bun test`: 17 pass. `tsc --noEmit` is clean.
+  - `check.ts` sees `openai/gpt-image-2.5-flare`, `-sunburst` and `gpt-image-2`
+    listed at $30/M output tokens.
+  - The first generation waits for `AI_GATEWAY_API_KEY` in `.env` (board #8).
