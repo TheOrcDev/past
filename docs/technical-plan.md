@@ -351,6 +351,9 @@ Built in plan 002:
   - A per-frame anchor table, exported with the renders, places his eyes,
     tendrils and held items.
   - Anchors are mirrored when he faces left.
+  - **Held items:** `SpriteBody.hold(texture, hand)` keeps an item at a hand
+    anchor frame by frame. The item draws in front of him, or behind him when
+    he faces away, until `release()`.
 - **Eyes:** two additive sprites at the eye anchors, with idle, blink, narrow,
   wide and flare states. Their intensity follows the voice envelope while he
   speaks (§6.5).

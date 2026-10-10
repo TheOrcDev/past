@@ -170,3 +170,22 @@ func test_walking_fires_a_step_on_each_heel_strike() -> void:
 	_body.animation_event.disconnect(listen)
 	var steps_heard := heard.filter(func(e: Array) -> bool: return e[1] == &"step").size()
 	assert_between(steps_heard, 2, 3, "about two steps a second")
+
+
+func test_a_held_item_follows_the_hand() -> void:
+	_unknown.face(AnimNames.Dir.R)
+	await wait_process_frames(2)
+	var item := _body.hold(Effects.soft_dot())
+	assert_eq(item.position, _body.anchor(&"hand_r"), "in the right hand")
+	assert_gt(item.get_index(), _body.sprite.get_index(), "in front of him")
+	_unknown.walk_to(_unknown.global_position + Vector2(400, 0))
+	await wait_seconds(0.4)
+	assert_eq(item.position, _body.anchor(&"hand_r"), "still in hand as the walk frames change")
+	_unknown.stop()
+	_unknown.face(AnimNames.Dir.U)
+	await wait_process_frames(2)
+	assert_lt(item.get_index(), _body.sprite.get_index(), "behind him when he faces away")
+	_body.release()
+	await wait_process_frames(1)
+	assert_false(is_instance_valid(item), "released")
+	assert_null(_body.held)

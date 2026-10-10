@@ -13,6 +13,8 @@ signal animation_event(anim: StringName, event: StringName)
 
 var sprite: AnimatedSprite2D
 var flipped := false
+## The item in hand, or null (see hold()).
+var held: Sprite2D
 
 var _stepped_frame := -1
 var _last_event_frame := Vector2i(-1, -1)  # (animation's hash, frame), so a frame fires once
@@ -27,6 +29,7 @@ func _ready() -> void:
 	sprite.frame_changed.connect(frame_shown.emit)
 	sprite.frame_changed.connect(_fire_events)
 	add_child(sprite)
+	frame_shown.connect(_place_held)
 
 
 func has_animation(anim: StringName) -> bool:
@@ -69,6 +72,28 @@ func consume_step() -> bool:
 	return true
 
 
+## Shows `texture` in `hand` (an anchor such as "hand_r"), following it frame
+## by frame and mirroring with the body, until release(). `size` scales the
+## texture; `offset` shifts it from the anchor, in this node's space.
+func hold(texture: Texture2D, hand: StringName = &"hand_r", size := 1.0, offset := Vector2.ZERO) -> Sprite2D:
+	release()
+	held = Sprite2D.new()
+	held.name = "Held"
+	held.texture = texture
+	held.scale = Vector2.ONE * size
+	held.set_meta(&"hand", hand)
+	held.set_meta(&"offset", offset)
+	add_child(held)
+	_place_held()
+	return held
+
+
+func release() -> void:
+	if held:
+		held.queue_free()
+		held = null
+
+
 ## Where `anchor_name` is in the current frame, in this node's space.
 func anchor(anchor_name: StringName) -> Vector2:
 	return sprites.anchor(sprite.animation, anchor_name, sprite.frame) + sprite.offset
@@ -81,6 +106,15 @@ func eye_visible(eye: int) -> bool:
 ## The facing suffix of the current animation: "r", "u", "d" and so on.
 func view() -> String:
 	return String(sprite.animation).get_slice("_", String(sprite.animation).get_slice_count("_") - 1)
+
+
+func _place_held() -> void:
+	if held == null:
+		return
+	held.position = anchor(held.get_meta(&"hand")) + held.get_meta(&"offset")
+	# A hand is in front of the body except from behind, where the body hides it.
+	var in_front := view() != "u"
+	move_child(held, sprite.get_index() + (1 if in_front else 0))
 
 
 func _fire_events() -> void:
