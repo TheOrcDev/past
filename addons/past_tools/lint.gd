@@ -56,6 +56,12 @@ func _lint_dialogue(dir: String) -> void:
 		var lines := FileAccess.get_file_as_string(path).split("\n")
 		for i in lines.size():
 			var text := _without_random_prefix(lines[i].strip_edges())
+			# A response ("- …") is spoken by Unknown once picked, so it needs an ID
+			# too, unless it only jumps ("- => label").
+			if text.begins_with("- ") and not text.substr(2).strip_edges().begins_with("=>"):
+				if not "[ID:" in text:
+					_problems.append("%s:%d: response has no [ID:…]" % [path, i + 1])
+				continue
 			if text.is_empty() or _is_structure(text):
 				continue
 			if not "[ID:" in text:

@@ -194,3 +194,14 @@ About 4–6 working sessions.
   - **Tests:** four.
   - **QA:** a `flashback_clip` scenario records the cathedral memory, and
     `--force-draw` keeps the movie writer fed when the window is covered.
+- **2026-10-10, slice 5:** dialogue choices.
+  - **API check:** against Dialogue Manager 4.1.0's source. `DialogueLine`
+    carries `responses`; each response has `text`, `next_id`, `is_allowed` and
+    `static_id`. Response conditions are written `[if expression /]`.
+  - **Flow:** `Say` speaks the prompt, then `ChoiceList` (`src/ui`) shows the
+    allowed responses as pale lines on a band of smoke. Unknown speaks the one
+    picked, and the conversation follows its `next_id`.
+  - **Exhausted options:** an option guarded by a `GameState` flag disappears
+    once used.
+  - **Lint:** responses need an `[ID:]`, because Unknown speaks them.
+  - **Tests:** an integration test plays a branching fixture conversation.

@@ -1,8 +1,9 @@
 extends Node
 ## Speaks Dialogue Manager lines over the speaking actor (docs/technical-plan.md
-## §5.6). This is the placeholder balloon: text above the speaker, held for a
-## time based on its length, skipped with a left click. Voice joins in plan 003
-## and choices in plan 004.
+## §5.6): text above the speaker, held for a time based on its length, skipped
+## with a left click. When a line offers responses, the allowed ones are shown
+## as choices; the player's pick is spoken by the player and the conversation
+## follows it. Voice joins in plan 003.
 
 signal line_started(static_id: String, speaker: String, text: String)
 signal line_finished(static_id: String)
@@ -10,6 +11,7 @@ signal line_finished(static_id: String)
 const DIALOGUE_PATH := "res://content/dialogue/%s.dialogue"
 
 var speaking := false
+var choices: ChoiceList
 
 var _label: Label
 var _skip := false
@@ -29,6 +31,9 @@ func _ready() -> void:
 	_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_label.visible = false
 	layer.add_child(_label)
+	choices = ChoiceList.new()
+	choices.name = "Choices"
+	add_child(choices)
 
 
 ## Runs a cue from content/dialogue/<file>.dialogue.
@@ -50,11 +55,20 @@ func run(resource: DialogueResource, cue: String) -> void:
 	Interaction.locked += 1
 	var current: DialogueLine = await DialogueManager.get_next_dialogue_line(resource, cue)
 	while current != null:
-		if not current.responses.is_empty():
-			push_warning("Dialogue choices arrive in plan 004; stopping at %s" % current.static_id)
+		if not current.text.is_empty():
+			await _speak(current.static_id, current.character, current.text)
+		if current.responses.is_empty():
+			current = await DialogueManager.get_next_dialogue_line(resource, current.next_id)
+			continue
+		var allowed: Array = current.responses.filter(func(r: DialogueResponse) -> bool: return r.is_allowed)
+		if allowed.is_empty():
 			break
-		await _speak(current)
-		current = await DialogueManager.get_next_dialogue_line(resource, current.next_id)
+		var texts := PackedStringArray()
+		for response: DialogueResponse in allowed:
+			texts.append(response.text)
+		var response: DialogueResponse = allowed[await choices.choose(texts)]
+		await _speak(response.static_id, response.character if not response.character.is_empty() else _player_name(), response.text)
+		current = await DialogueManager.get_next_dialogue_line(resource, response.next_id)
 	_label.visible = false
 	Interaction.locked -= 1
 	speaking = false
@@ -71,20 +85,25 @@ func _unhandled_input(event: InputEvent) -> void:
 		skip()
 
 
-func _speak(dialogue_line: DialogueLine) -> void:
-	var actor := _actor_named(dialogue_line.character)
-	_label.text = dialogue_line.text
+func _speak(static_id: String, speaker: String, text: String) -> void:
+	var actor := _actor_named(speaker)
+	_label.text = text
 	_label.add_theme_color_override(&"font_color", actor.subtitle_color if actor else Color.WHITE)
 	_label.reset_size()
 	_place_over(actor)
 	_label.visible = true
 	if actor:
 		actor.set_speaking(true)
-	line_started.emit(dialogue_line.static_id, dialogue_line.character, dialogue_line.text)
-	await _hold(clampf(1.2 + dialogue_line.text.length() * 0.055, 2.0, 9.0))
+	line_started.emit(static_id, speaker, text)
+	await _hold(clampf(1.2 + text.length() * 0.055, 2.0, 9.0))
 	if is_instance_valid(actor):
 		actor.set_speaking(false)
-	line_finished.emit(dialogue_line.static_id)
+	line_finished.emit(static_id)
+
+
+## Who speaks the player's choices: the player actor, or Unknown.
+func _player_name() -> String:
+	return Rooms.player.speaker_name if Rooms.player else "Unknown"
 
 
 ## Waits `seconds` of game time (so Engine.time_scale applies) or until skipped.

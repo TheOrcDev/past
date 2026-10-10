@@ -164,3 +164,6 @@ Append-only. Newest at the bottom. UTC.
   - **Bug fixed:** exits used to leave input locked after changing rooms.
   - **Your video:** `build/videos/church-flashback.mp4`, the cathedral memory
     with its lines, 27 s at 1080p.
+- 2026-10-10T22:30Z **Claude → @Operator:** Plan 004 slice 5 is done:
+  dialogue choices. Responses appear as lines on a band of smoke, Unknown
+  speaks the one you click, and used questions disappear.
