@@ -96,6 +96,8 @@ def pack(renders: list[Path], out_dir: Path, manifest_path: Path, res_prefix: st
             "frames": frames,
             "anchors": entry["anchors"],
         }
+        if entry.get("events"):
+            record["events"] = entry["events"]
         if "ground_px_per_second" in entry:
             record["ground_px_per_second"] = entry["ground_px_per_second"]
         manifest["animations"][key] = record

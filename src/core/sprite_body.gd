@@ -6,6 +6,8 @@ extends ActorBody
 
 ## Emitted when the sprite shows a new frame, after the frame has changed.
 signal frame_shown
+## Emitted when a frame with an event shows, for example "step" on a heel strike.
+signal animation_event(anim: StringName, event: StringName)
 
 @export var sprites: CharacterSprites
 
@@ -13,6 +15,7 @@ var sprite: AnimatedSprite2D
 var flipped := false
 
 var _stepped_frame := -1
+var _last_event_frame := Vector2i(-1, -1)  # (animation's hash, frame), so a frame fires once
 
 
 func _ready() -> void:
@@ -22,6 +25,7 @@ func _ready() -> void:
 	sprite.sprite_frames = sprites.frames
 	sprite.animation_finished.connect(func() -> void: animation_finished.emit(sprite.animation))
 	sprite.frame_changed.connect(frame_shown.emit)
+	sprite.frame_changed.connect(_fire_events)
 	add_child(sprite)
 
 
@@ -43,8 +47,10 @@ func play_animation(anim: StringName, flip: bool) -> void:
 		var position_in := phase * sprite.sprite_frames.get_frame_count(anim)
 		sprite.set_frame_and_progress(int(position_in), fmod(position_in, 1.0))
 		_stepped_frame = sprite.frame
+		_last_event_frame = Vector2i(hash(anim), sprite.frame)
 	else:
 		_stepped_frame = -1
+		_fire_events()
 	frame_shown.emit()
 
 
@@ -75,6 +81,15 @@ func eye_visible(eye: int) -> bool:
 ## The facing suffix of the current animation: "r", "u", "d" and so on.
 func view() -> String:
 	return String(sprite.animation).get_slice("_", String(sprite.animation).get_slice_count("_") - 1)
+
+
+func _fire_events() -> void:
+	var key := Vector2i(hash(sprite.animation), sprite.frame)
+	if key == _last_event_frame:
+		return
+	_last_event_frame = key
+	for event: StringName in sprites.events_at(sprite.animation, sprite.frame):
+		animation_event.emit(sprite.animation, event)
 
 
 func _base(anim: StringName) -> String:

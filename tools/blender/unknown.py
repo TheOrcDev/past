@@ -299,6 +299,11 @@ ANIMATIONS = {
     "idle": (idle, 48, True),
     "look_around": (look_around, 72, False),
 }
+# Moments the game reacts to, in 24 fps frames: footsteps on each heel strike,
+# the instant a hand closes on something.
+EVENTS = {
+    "walk": {0: "step", 12: "step"},
+}
 DIRECTIONS = {"d": 0.0, "r": 90.0, "u": 180.0}
 
 
@@ -386,6 +391,17 @@ def sample_times(length: int, loop: bool, fps: float) -> list[float]:
     return [index * step for index in range(count)]
 
 
+def event_frames(anim: str, times: list[float], length: int, loop: bool) -> list[dict]:
+    """EVENTS for `anim` moved onto the output frame sampled nearest to each one."""
+    events = []
+    for time, name in sorted(EVENTS.get(anim, {}).items()):
+        index = min(range(len(times)), key=lambda i: abs(times[i] - time))
+        if loop and abs(length - time) < abs(times[index] - time):
+            index = 0  # nearer to the loop's restart than to any sampled frame
+        events.append({"frame": index, "name": name})
+    return events
+
+
 def render(rig, head, camera, out: Path, anims: list[str], dirs: list[str], fps: float) -> dict:
     scene = bpy.context.scene
     poser = Poser(rig)
@@ -398,14 +414,15 @@ def render(rig, head, camera, out: Path, anims: list[str], dirs: list[str], fps:
             rig.rotation_euler = (0.0, 0.0, math.radians(DIRECTIONS[direction]))
             key = f"{anim}_{direction}"
             frames, anchor_list = [], []
-            for index, time in enumerate(sample_times(length, loop, fps)):
+            times = sample_times(length, loop, fps)
+            for index, time in enumerate(times):
                 scene.frame_set(int(time), subframe=time - int(time))
                 path = out / key / f"{key}_{index:03d}.png"
                 scene.render.filepath = str(path)
                 bpy.ops.render.render(write_still=True)
                 frames.append(path.name)
                 anchor_list.append(anchors(scene, camera, rig, head))
-            entry = {"fps": fps, "frames": frames, "loop": loop, "anchors": anchor_list}
+            entry = {"fps": fps, "frames": frames, "loop": loop, "anchors": anchor_list, "events": event_frames(anim, times, length, loop)}
             if anim == "walk":
                 rig.rotation_euler = (0.0, 0.0, 0.0)
                 entry["ground_px_per_second"] = round(foot_speed_px(scene, camera, rig, length), 1)

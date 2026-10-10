@@ -18,6 +18,8 @@ extends Resource
 @export var eyes := {}
 ## animation -> pixels per second the feet cover at scale 1 (walks only).
 @export var ground_speed := {}
+## animation -> {frame -> Array of event names}: footsteps, the moment of a grab.
+@export var events := {}
 
 
 func anchor(anim: StringName, anchor_name: StringName, frame: int) -> Vector2:
@@ -28,3 +30,8 @@ func anchor(anim: StringName, anchor_name: StringName, frame: int) -> Vector2:
 func eye_visible(anim: StringName, frame: int, eye: int) -> bool:
 	var flags: PackedByteArray = eyes[anim]
 	return (flags[clampi(frame, 0, flags.size() - 1)] >> eye) & 1 == 1
+
+
+## The events on `frame` of `anim`, if any.
+func events_at(anim: StringName, frame: int) -> Array:
+	return events.get(anim, {}).get(frame, [])

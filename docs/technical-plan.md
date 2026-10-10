@@ -345,6 +345,9 @@ Built in plan 002:
     `AnimatedSprite2D` `SpriteFrames` resource from the render metadata, with
     one animation per name and direction. The same metadata carries per-frame
     events, such as footsteps and the moment of a grab.
+  - Events are keyed in `EVENTS` in `tools/blender/unknown.py` and land on the
+    nearest rendered frame. `SpriteBody.animation_event` fires once each time
+    such a frame shows. The walk has a `step` on each heel strike.
   - A per-frame anchor table, exported with the renders, places his eyes,
     tendrils and held items.
   - Anchors are mirrored when he faces left.

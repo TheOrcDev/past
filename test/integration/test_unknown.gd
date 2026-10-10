@@ -149,3 +149,24 @@ func _mean_tip_offset(tendrils: Tendrils) -> float:
 		var points := tendrils.chain_points(c)
 		total += points[points.size() - 1].x - points[0].x
 	return total / tendrils.chain_count()
+
+
+func test_walking_fires_a_step_on_each_heel_strike() -> void:
+	var sprites := load(SPRITES) as CharacterSprites
+	for dir in ["r", "u", "d"]:
+		var anim := StringName("walk_%s" % dir)
+		var steps := 0
+		for frame in sprites.frames.get_frame_count(anim):
+			steps += sprites.events_at(anim, frame).count(&"step")
+		assert_eq(steps, 2, "%s has a step for each foot" % anim)
+	var heard := []
+	var listen := func(anim: StringName, event: StringName) -> void: heard.append([anim, event])
+	_body.animation_event.connect(listen)
+	_unknown.global_position = Vector2(700, 1000)
+	await wait_physics_frames(2)
+	_unknown.walk_to(Vector2(1500, 1000))
+	await wait_seconds(1.0)
+	_unknown.stop()
+	_body.animation_event.disconnect(listen)
+	var steps_heard := heard.filter(func(e: Array) -> bool: return e[1] == &"step").size()
+	assert_between(steps_heard, 2, 3, "about two steps a second")

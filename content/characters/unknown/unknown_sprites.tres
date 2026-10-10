@@ -2003,3 +2003,17 @@ ground_speed = {
 &"walk_r": 344.8,
 &"walk_u": 344.8
 }
+events = {
+&"walk_d": {
+0: [&"step"],
+7: [&"step"]
+},
+&"walk_r": {
+0: [&"step"],
+7: [&"step"]
+},
+&"walk_u": {
+0: [&"step"],
+7: [&"step"]
+}
+}

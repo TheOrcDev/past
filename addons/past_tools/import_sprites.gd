@@ -79,6 +79,14 @@ func _build(manifest: Dictionary) -> CharacterSprites:
 			eyes.append(int(anchors[EYE_KEY][0]) | int(anchors[EYE_KEY][1]) << 1)
 		sprites.anchors[anim] = points
 		sprites.eyes[anim] = eyes
+		var frame_events := {}
+		for event: Dictionary in entry.get("events", []):
+			var index := int(event["frame"])
+			if not frame_events.has(index):
+				frame_events[index] = []
+			frame_events[index].append(StringName(event["name"]))
+		if not frame_events.is_empty():
+			sprites.events[anim] = frame_events
 		if entry.has("ground_px_per_second"):
 			sprites.ground_speed[anim] = float(entry["ground_px_per_second"])
 	sprites.frames = frames

@@ -4738,6 +4738,16 @@
      ]
     }
    ],
+   "events": [
+    {
+     "frame": 0,
+     "name": "step"
+    },
+    {
+     "frame": 7,
+     "name": "step"
+    }
+   ],
    "ground_px_per_second": 344.8
   },
   "walk_u": {
@@ -5558,6 +5568,16 @@
      ]
     }
    ],
+   "events": [
+    {
+     "frame": 0,
+     "name": "step"
+    },
+    {
+     "frame": 7,
+     "name": "step"
+    }
+   ],
    "ground_px_per_second": 344.8
   },
   "walk_d": {
@@ -6376,6 +6396,16 @@
       200.0,
       524.35
      ]
+    }
+   ],
+   "events": [
+    {
+     "frame": 0,
+     "name": "step"
+    },
+    {
+     "frame": 7,
+     "name": "step"
     }
    ],
    "ground_px_per_second": 344.8

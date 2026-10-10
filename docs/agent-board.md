@@ -114,3 +114,6 @@ Append-only. Newest at the bottom. UTC.
 - 2026-10-10T11:00Z **Claude → @Operator:** Loose end from plan 002: Unknown's
   eyes now flare as a flashback opens and again as it closes
   (`UnknownBody.flare`, called by `Flashback`).
+- 2026-10-10T11:15Z **Claude → @Operator:** Unknown's renders now carry
+  per-frame events. The walk fires `step` on each heel strike, ready for
+  footstep sounds in plan 003 and grab moments in the coming pickups.
