@@ -8,6 +8,7 @@ func look_name() -> void:
 
 
 func look_inscription() -> void:
+	GameState.set_flag(&"tombstone_read")
 	await Say.line(&"cemetery", &"inscription_look")
 
 

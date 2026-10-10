@@ -221,4 +221,8 @@ Append-only. Newest at the bottom. UTC.
     settings page has every option from slice 7. Reveal hotspots marks
     everything you can use for a moment.
   - **Next:** slice 9, the hint on Unknown.
+- 2026-10-10T22:16Z **Claude → @Operator:** Plan 004 slice 9 is done: click Unknown and he
+  thinks aloud about what to do next, more directly each time you ask. The
+  hint lines are placeholders for the grave → cathedral → statue chain, until
+  the prologue script exists.
 

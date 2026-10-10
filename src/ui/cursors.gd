@@ -17,8 +17,12 @@ static func show_for(hotspot: Hotspot) -> void:
 		kind = StringName("exit_%s" % (hotspot as Exit).direction)
 	elif hotspot:
 		kind = &"hotspot"
-	var texture := texture_for(kind)
-	Input.set_custom_mouse_cursor(texture, Input.CURSOR_ARROW, Vector2(SIZE, SIZE) / 2.0)
+	show(kind)
+
+
+## Shows the cursor `kind`: "walk", "hotspot" or "exit_<direction>".
+static func show(kind: StringName) -> void:
+	Input.set_custom_mouse_cursor(texture_for(kind), Input.CURSOR_ARROW, Vector2(SIZE, SIZE) / 2.0)
 
 
 static func texture_for(kind: StringName) -> Texture2D:

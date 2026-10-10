@@ -10,6 +10,11 @@ func has_animation(_anim: StringName) -> bool:
 	return false
 
 
+## Whether `world` falls on the body as drawn now.
+func contains_point(_world: Vector2) -> bool:
+	return false
+
+
 func play_animation(_anim: StringName, _flip: bool) -> void:
 	pass
 

@@ -429,6 +429,16 @@ operator.
     and each shows its name.
   - **QA runs** switch the bar off, so a stray cursor can't bring it into a
     recording.
+- **Hint on Unknown** (plan 004 slice 9): the `Hints` autoload
+  (`src/systems`).
+  - **Clicking Unknown** asks him; it hits the trimmed box of his current
+    frame. Hovering him shows his name and the ring cursor.
+  - **The goal** is the first one in `content/hints/goals.gd` whose flag isn't
+    set or whose memory isn't seen yet.
+  - **The lines** are the cues `<goal>_1`, `<goal>_2` … in
+    `content/dialogue/hints.dialogue`. Each ask about the same goal moves one
+    step more direct, counted in `GameState.hints`, and the last line repeats.
+  - **`none`** plays once every goal is done.
 
 ### 6.7 Journal (plan 005)
 

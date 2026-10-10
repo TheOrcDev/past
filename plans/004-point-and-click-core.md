@@ -267,4 +267,19 @@ About 4–6 working sessions.
     renderer used to report a leaked texture when the game quit.
   - **Checks:** six integration tests; 88 GUT tests pass. A `menus` QA scenario
     passes on desktop and in the browser.
+- **2026-10-11, slice 9:** the hint on Unknown.
+  - **Asking:** clicking Unknown runs `Hints.ask()`. Actors now hit-test the
+    trimmed box of their current frame (`Actor.contains_point`), and hovering
+    Unknown shows his name with the ring cursor.
+  - **Goals:** `content/hints/goals.gd` lists them in order: read the stone
+    (`tombstone_read`, set by the inscription), find the cathedral
+    (`cathedral_visited`, set on entering), touch the statue (the
+    `cathedral_statue` memory). This is a placeholder chain until the
+    prologue's script.
+  - **Lines:** `content/dialogue/hints.dialogue` holds three per goal, each more
+    direct, plus `none`. The count of asks lives in `GameState.hints`, so it
+    saves.
+  - **Checks:** four integration tests; 92 GUT tests pass. The `grave` QA
+    scenario now asks for a hint after the stone and gets the cathedral one,
+    on desktop and in the browser.
 

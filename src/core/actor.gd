@@ -50,6 +50,11 @@ func _ready() -> void:
 	_apply_animation()
 
 
+## Whether `world` is on the actor as drawn now.
+func contains_point(world: Vector2) -> bool:
+	return _body != null and _body.contains_point(world)
+
+
 ## Walks to the reachable point nearest `target`. Returns true on arrival and
 ## false if another walk or stop() interrupted it.
 func walk_to(target: Vector2) -> bool:

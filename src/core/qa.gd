@@ -264,6 +264,12 @@ func _grave() -> void:
 	_check(Interaction.locked == 0, "input is free after the close-up closes")
 	await get_tree().create_timer(0.3).timeout
 	await _shot("07_back_at_the_grave")
+	# The stone is read, so a click on Unknown hints at the way on.
+	var hint: String = await _click_for_line(Rooms.player.global_position + Vector2(0, -180) * Rooms.player.scale.y)
+	_check(hint == "HINT_CATHEDRAL_1", "clicking Unknown gives the next hint (%s)" % hint)
+	await get_tree().create_timer(0.8).timeout
+	await _shot("07b_hint")
+	await _settle()
 	Interaction.double_click_at((Rooms.current.hotspots.get_node("ExitEast") as Hotspot).focus_point())
 	await Rooms.room_changed
 	_check(Rooms.current.room_id == &"cathedral_nave", "the east exit leads to the cathedral")

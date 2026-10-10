@@ -1,0 +1,59 @@
+~ stone_1
+
+Unknown: Somebody went to the trouble of a headstone. The least I can do is read it. [ID:HINT_STONE_1]
+
+=> END
+
+~ stone_2
+
+Unknown: That gravestone. There's lettering on it, what's left of it. [ID:HINT_STONE_2]
+
+=> END
+
+~ stone_3
+
+Unknown: The gravestone, up close. The name, and the words under it. [ID:HINT_STONE_3]
+
+=> END
+
+~ cathedral_1
+
+Unknown: The dead here won't tell me any more. Maybe the city will. [ID:HINT_CATHEDRAL_1]
+
+=> END
+
+~ cathedral_2
+
+Unknown: The path runs east, toward that cathedral. [ID:HINT_CATHEDRAL_2]
+
+=> END
+
+~ cathedral_3
+
+Unknown: East. Follow the path to the cathedral. [ID:HINT_CATHEDRAL_3]
+
+=> END
+
+~ statue_1
+
+Unknown: Something in this place remembers more than I do. [ID:HINT_STATUE_1]
+
+=> END
+
+~ statue_2
+
+Unknown: That saint by the wall. I keep wanting to reach for it. [ID:HINT_STATUE_2]
+
+=> END
+
+~ statue_3
+
+Unknown: The statue. Put a hand on it. [ID:HINT_STATUE_3]
+
+=> END
+
+~ none
+
+Unknown: Nothing pulls at me right now. The rest of me is still out there, somewhere. [ID:HINT_NONE_1]
+
+=> END

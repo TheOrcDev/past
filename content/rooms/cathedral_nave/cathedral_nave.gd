@@ -3,6 +3,10 @@ extends Room
 ## the flashback. Hotspot verbs are methods named <verb>_<hotspot_id>.
 
 
+func _on_enter(_from: StringName) -> void:
+	GameState.set_flag(&"cathedral_visited")
+
+
 func use_statue() -> void:
 	await Say.line(&"cathedral", &"statue_use")
 	var statue := hotspots.get_node("Statue") as Hotspot

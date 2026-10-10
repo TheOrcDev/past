@@ -32,6 +32,19 @@ func _ready() -> void:
 	frame_shown.connect(_place_held)
 
 
+## Whether `world` falls on the frame showing now: its trimmed box, not the
+## whole render frame around it.
+func contains_point(world: Vector2) -> bool:
+	var texture := sprite.sprite_frames.get_frame_texture(sprite.animation, sprite.frame)
+	if texture == null:
+		return false
+	var rect := Rect2(sprite.offset, texture.get_size())
+	var atlas := texture as AtlasTexture
+	if atlas:
+		rect = Rect2(sprite.offset + atlas.margin.position, atlas.region.size)
+	return rect.has_point(sprite.to_local(world))
+
+
 func has_animation(anim: StringName) -> bool:
 	return sprites != null and sprites.frames.has_animation(anim)
 

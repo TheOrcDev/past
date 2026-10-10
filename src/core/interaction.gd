@@ -5,12 +5,15 @@ extends Node
 ## - Holding the left button on a hotspot opens the verb coin; releasing over a
 ##   glyph runs that verb.
 ## - A right click opens the inventory, or drops the held item.
+## - A click on Unknown himself asks him for a hint.
 
 signal interacted(hotspot: Hotspot, verb: StringName)
 
 ## Above zero, play input is ignored (transitions, dialogue, cutscenes).
 var locked := 0
 var hovered: Hotspot
+## The cursor is on Unknown himself, who gives a hint when clicked.
+var over_player := false
 var inventory: InventoryPanel
 var coin: VerbCoin
 
@@ -60,6 +63,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		if coin.is_open:
 			coin.point_at(mouse.position)
+		elif _on_player(world):
+			_hover_player(mouse.position)
 		else:
 			_set_hovered(hotspot_at(world), mouse.position)
 	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -93,7 +98,7 @@ func press_at(world: Vector2, screen: Vector2) -> void:
 	if locked > 0:
 		return
 	var hotspot := hotspot_at(world)
-	if hotspot == null or Inventory.held:
+	if hotspot == null or Inventory.held or _on_player(world):
 		click_at(world)
 		return
 	_press_hotspot = hotspot
@@ -140,6 +145,9 @@ func right_click() -> void:
 ## A left click at a world position: use the hotspot there, or walk.
 func click_at(world: Vector2) -> void:
 	if locked > 0 or Rooms.current == null or Rooms.player == null:
+		return
+	if _on_player(world):
+		await Hints.ask()
 		return
 	var hotspot := hotspot_at(world)
 	if hotspot and Inventory.held:
@@ -204,16 +212,39 @@ func hotspot_at(world: Vector2) -> Hotspot:
 	return best
 
 
+## Whether `world` is on Unknown in the room (not in a close-up, and not with an
+## item on the cursor, which is meant for something else).
+func _on_player(world: Vector2) -> bool:
+	return Closeups.current == null and not Inventory.held and Rooms.player != null and Rooms.player.contains_point(world)
+
+
+func _hover_player(screen: Vector2) -> void:
+	if not over_player:
+		over_player = true
+		hovered = null
+		Cursors.show(&"hotspot")
+	_show_label(Rooms.player.speaker_name, screen)
+
+
 func _set_hovered(hotspot: Hotspot, screen: Vector2) -> void:
-	if hotspot != hovered and not Inventory.held:
+	if (hotspot != hovered or over_player) and not Inventory.held:
 		Cursors.show_for(hotspot)
+	over_player = false
 	hovered = hotspot
-	_label.visible = hotspot != null and locked == 0
+	if hotspot == null:
+		_label.visible = false
+		return
+	var text := hotspot.display_name
+	if Inventory.held:
+		text = "Use %s on %s" % [Inventory.held.display_name, hotspot.display_name]
+	_show_label(text, screen)
+
+
+func _show_label(text: String, screen: Vector2) -> void:
+	_label.visible = locked == 0
 	if not _label.visible:
 		return
-	_label.text = hotspot.display_name
-	if Inventory.held:
-		_label.text = "Use %s on %s" % [Inventory.held.display_name, hotspot.display_name]
+	_label.text = text
 	_label.reset_size()
 	var view := get_viewport().get_visible_rect().size
 	_label.position = Vector2(

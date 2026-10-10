@@ -28,6 +28,7 @@ Closeups="*res://src/systems/closeups.gd"
 Saves="*res://src/core/saves.gd"
 Settings="*res://src/core/settings.gd"
 Menus="*res://src/ui/menus.gd"
+Hints="*res://src/systems/hints.gd"
 Qa="*res://src/core/qa.gd"
 
 [display]
@@ -48,7 +49,7 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://add
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://content/dialogue/sandbox.dialogue", "res://content/dialogue/core.dialogue", "res://content/dialogue/cathedral.dialogue", "res://content/dialogue/cemetery.dialogue")
+locale/translations_pot_files=PackedStringArray("res://content/dialogue/sandbox.dialogue", "res://content/dialogue/core.dialogue", "res://content/dialogue/cathedral.dialogue", "res://content/dialogue/cemetery.dialogue", "res://content/dialogue/hints.dialogue")
 
 [navigation]
 
