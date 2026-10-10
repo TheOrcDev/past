@@ -74,3 +74,13 @@ Screenshots and a short video of the start: the reveal, the grave, the close-up.
   close-up) are generated and accepted, for $0.11. The close-up spells the
   inscription exactly, "I KNOW YOU ARE HAPPY NOW." and "YOUR DOVE". Only the
   capital U of the name survives; the rest is unreadable splinters.
+- **2026-10-10, slice 2:** the close-up system.
+  - **Pieces:** `Closeup` (a scene with a Background and Hotspots; its script
+    answers `<verb>_<id>`) and the `Closeups` autoload.
+  - **Opening:** the close-up starts as a screen-shaped frame over the clicked
+    hotspot and grows to fill the screen in 0.9 s, while the room's camera
+    pushes in 1.7×. Closing reverses it.
+  - **Inside:** `Interaction` sends clicks and hover to its screen-space
+    hotspots, with no walking. A right-click, Esc or the ‹ glyph backs out.
+    `Say` speaks from below the image.
+  - **Tests:** three integration tests.

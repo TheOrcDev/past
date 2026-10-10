@@ -127,7 +127,10 @@ func _actor_named(speaker: String) -> Actor:
 func _place_over(actor: Actor) -> void:
 	var view := get_viewport().get_visible_rect().size
 	var anchor := Vector2(view.x / 2.0, 160.0)
-	if actor:
+	if Closeups.current:
+		# The room and its speakers are hidden behind a close-up: speak from below.
+		anchor = Vector2(view.x / 2.0, view.y - 110.0)
+	elif actor:
 		anchor = actor.get_global_transform_with_canvas() * actor.speech_offset
 	_label.position = Vector2(
 		clampf(anchor.x - _label.size.x / 2.0, 20.0, view.x - _label.size.x - 20.0),

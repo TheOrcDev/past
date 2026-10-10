@@ -50,7 +50,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	var mouse := event as InputEventMouse
 	if mouse == null or Rooms.current == null:
 		return
-	var world := get_viewport().get_canvas_transform().affine_inverse() * mouse.position
+	# In a close-up, hotspots live in screen space; in a room, in world space.
+	var world := mouse.position if Closeups.current else get_viewport().get_canvas_transform().affine_inverse() * mouse.position
 	if event is InputEventMouseMotion:
 		if coin.is_open:
 			coin.point_at(mouse.position)
@@ -120,10 +121,13 @@ func _process(delta: float) -> void:
 			coin.open(_press_screen)
 
 
-## A right click: drops the held item, or opens and closes the inventory.
+## A right click: drops the held item, backs out of a close-up, or opens and
+## closes the inventory.
 func right_click() -> void:
 	if Inventory.held:
 		Inventory.drop()
+	elif Closeups.current:
+		Closeups.close()
 	else:
 		inventory.toggle()
 
@@ -137,17 +141,14 @@ func click_at(world: Vector2) -> void:
 		await use_item(hotspot, Inventory.held)
 	elif hotspot:
 		await use(hotspot, hotspot.default_verb)
-	else:
+	elif Closeups.current == null:
 		Rooms.player.walk_to(world)
 
 
 ## Walks the player to the hotspot, faces it and runs the verb, or a fallback line.
 func use(hotspot: Hotspot, verb: StringName) -> void:
-	var player := Rooms.player
-	var arrived: bool = await player.walk_to(hotspot.walk_point())
-	if not arrived:
+	if not await _approach(hotspot):
 		return
-	player.face_point(hotspot.focus_point())
 	locked += 1
 	_label.visible = false
 	var handled: bool = await hotspot.handle(verb)
@@ -160,11 +161,8 @@ func use(hotspot: Hotspot, verb: StringName) -> void:
 ## Walks the player to the hotspot and uses `item` on it: the hotspot's
 ## `on_item(item)` or the room's `item_<id>(item)`, or a fallback line.
 func use_item(hotspot: Hotspot, item: ItemDef) -> void:
-	var player := Rooms.player
-	var arrived: bool = await player.walk_to(hotspot.walk_point())
-	if not arrived:
+	if not await _approach(hotspot):
 		return
-	player.face_point(hotspot.focus_point())
 	Inventory.drop()
 	locked += 1
 	_label.visible = false
@@ -175,7 +173,21 @@ func use_item(hotspot: Hotspot, item: ItemDef) -> void:
 	interacted.emit(hotspot, &"item")
 
 
+## Walks the player to a room hotspot and faces it; close-up hotspots are at
+## hand. Returns false if the walk was interrupted.
+func _approach(hotspot: Hotspot) -> bool:
+	if Closeup.of(hotspot):
+		return true
+	var player := Rooms.player
+	var arrived: bool = await player.walk_to(hotspot.walk_point())
+	if arrived:
+		player.face_point(hotspot.focus_point())
+	return arrived
+
+
 func hotspot_at(world: Vector2) -> Hotspot:
+	if Closeups.current:
+		return Closeups.current.hotspot_at(world)
 	if Rooms.current == null:
 		return null
 	var best: Hotspot = null

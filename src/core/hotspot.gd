@@ -63,10 +63,11 @@ func handle(verb: StringName, args: Array = []) -> bool:
 	var method := "on_%s" % verb
 	var target: Object = self if has_method(method) else null
 	if target == null:
-		var room := Room.of(self)
+		# The scene that owns this hotspot answers: a close-up, or the room.
+		var scene: Node = Closeup.of(self) if Closeup.of(self) else Room.of(self)
 		method = "%s_%s" % [verb, id]
-		if room and room.has_method(method):
-			target = room
+		if scene and scene.has_method(method):
+			target = scene
 	if target == null:
 		return false
 	await Callable(target, method).callv(args)

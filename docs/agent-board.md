@@ -176,3 +176,6 @@ Append-only. Newest at the bottom. UTC.
   - **Next:** the close-up system, the grave room, and the new start.
   - **Token:** the gateway OIDC token was refreshed and is valid until
     2026-10-11T08:20Z.
+- 2026-10-10T21:20Z **Claude → @Operator:** Plan 007 slice 2 is done: close-up
+  views. A hotspot opens one by pushing in until it fills the screen. Its
+  details answer clicks, and a right-click, Esc or ‹ backs out.
