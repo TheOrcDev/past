@@ -1,6 +1,8 @@
-"""Packs rendered character frames (tools/blender/unknown.py) into single-channel
-alpha-mask sprite sheets plus a JSON manifest (docs/technical-plan.md §8:
-one byte per pixel; the game draws the silhouette black and adds the rim).
+"""Packs rendered character frames (tools/blender/unknown.py) into sprite
+sheets plus a JSON manifest (docs/technical-plan.md §8). Flat silhouettes pack
+as one-byte alpha masks; shaded renders (--shaded) pack as grey + alpha, two
+bytes per pixel, because the character is monochrome and colour comes from the
+game's shader.
 
 Each frame is trimmed to its silhouette plus a transparent border, so shaders
 can sample a few texels past the edge, and the frames are shelf-packed into one
@@ -14,10 +16,10 @@ from pathlib import Path
 
 import numpy as np
 
-from .imageio import load, save
+from .imageio import load, luminance, save, save_grey_alpha
 
 MAX_SHEET = 4096
-BORDER = 6  # transparent texels kept around each trimmed silhouette
+BORDER = 28  # transparent texels around each trimmed silhouette, room for the shadow haze
 SPACING = 2  # texels between packed regions
 
 
@@ -65,7 +67,7 @@ def best_layout(sizes: list[tuple[int, int]]) -> tuple[list[tuple[int, int]], in
     return best
 
 
-def pack(renders: list[Path], out_dir: Path, manifest_path: Path, res_prefix: str, name: str) -> dict:
+def pack(renders: list[Path], out_dir: Path, manifest_path: Path, res_prefix: str, name: str, shaded: bool = False) -> dict:
     """Packs every animation in RENDERS; a later folder replaces an earlier
     folder's animation of the same name (for example a walk at another rate)."""
     sources: dict[str, tuple[Path, dict]] = {}
@@ -77,18 +79,26 @@ def pack(renders: list[Path], out_dir: Path, manifest_path: Path, res_prefix: st
         frame_size, character_px = meta["frame_size"], meta["character_px"]
         for key, entry in meta["animations"].items():
             sources[key] = (folder, {"fps": meta["fps"], **entry})
-    manifest: dict = {"frame_size": frame_size, "character_px": character_px, "animations": {}}
+    manifest: dict = {"frame_size": frame_size, "character_px": character_px, "channels": "grey_alpha" if shaded else "alpha", "animations": {}}
     for key, (folder, entry) in sources.items():
-        alphas = [alpha_of(load(folder / key / frame)) for frame in entry["frames"]]
+        images = [load(folder / key / frame) for frame in entry["frames"]]
+        alphas = [alpha_of(image) for image in images]
+        greys = [np.clip(np.rint(luminance(image)), 0, 255).astype(np.uint8) for image in images] if shaded else []
         boxes = [trim_box(alpha) for alpha in alphas]
         positions, sheet_w, sheet_h = best_layout([(w, h) for _, _, w, h in boxes])
         sheet = np.zeros((sheet_h, sheet_w), dtype=np.uint8)
+        shading = np.zeros((sheet_h, sheet_w), dtype=np.uint8)
         frames = []
-        for alpha, (x, y, w, h), (px, py) in zip(alphas, boxes, positions):
+        for index, (alpha, (x, y, w, h), (px, py)) in enumerate(zip(alphas, boxes, positions)):
             sheet[py : py + h, px : px + w] = alpha[y : y + h, x : x + w]
+            if shaded:
+                shading[py : py + h, px : px + w] = greys[index][y : y + h, x : x + w] * (alpha[y : y + h, x : x + w] > 0)
             frames.append({"region": [px, py, w, h], "offset": [x, y]})
         file = f"{name}_{key}.png"
-        save(out_dir / file, sheet)
+        if shaded:
+            save_grey_alpha(out_dir / file, shading, sheet)
+        else:
+            save(out_dir / file, sheet)
         record = {
             "sheet": f"{res_prefix}/{file}",
             "fps": entry["fps"],

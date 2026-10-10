@@ -19,6 +19,11 @@ const EYE_SIZE := Vector2(0.34, 0.2)
 ## A side view shows each eye this much narrower.
 const SIDE_WIDTH := 0.6
 const BLINK_SECONDS := 0.16
+## The light-absorbing aura behind him: its size in his own pixels, where it
+## centres, and how dark it is at the middle.
+const AURA_SIZE := Vector2(560.0, 720.0)
+const AURA_CENTER := Vector2(0.0, -250.0)
+const AURA_DARKNESS := 0.32
 
 @export var eye_state := EyeState.IDLE
 ## 0 calm, 1 agitated: wilder smoke.
@@ -28,6 +33,7 @@ const BLINK_SECONDS := 0.16
 var voice_level := 0.0
 
 var tendrils: Tendrils
+var aura: Sprite2D
 
 var _eyes: Array[Sprite2D] = []
 var _glow := 1.0
@@ -45,12 +51,20 @@ func _ready() -> void:
 	super()
 	var material := ShaderMaterial.new()
 	material.shader = SILHOUETTE
+	material.set_shader_parameter(&"noise_tex", Effects.noise_texture(31, 0.02))
+	material.set_shader_parameter(&"shaded", sprites.shaded)
 	sprite.material = material
+	aura = Sprite2D.new()
+	aura.name = "Aura"
+	aura.texture = Effects.soft_dot()
+	aura.scale = AURA_SIZE / aura.texture.get_size()
+	aura.position = AURA_CENTER
+	aura.modulate = Color(0.0, 0.0, 0.0, AURA_DARKNESS)
+	add_child(aura)
 	tendrils = Tendrils.new()
 	tendrils.name = "Tendrils"
 	tendrils.body = self
 	add_child(tendrils)
-	move_child(tendrils, 0)
 	for side in ["L", "R"]:
 		var eye := Sprite2D.new()
 		eye.name = "Eye" + side
@@ -62,13 +76,13 @@ func _ready() -> void:
 		_eyes.append(eye)
 	frame_shown.connect(_place_eyes)
 	_place_eyes()
+	_order_layers()
 
 
 func play_animation(anim: StringName, flip: bool) -> void:
 	super(anim, flip)
 	(sprite.material as ShaderMaterial).set_shader_parameter(&"mirrored", flip)
-	# Facing away, his back and its smoke are toward the camera.
-	move_child(tendrils, 1 if view() == "u" else 0)
+	_order_layers()
 
 
 func set_speaking(on: bool) -> void:
@@ -112,6 +126,20 @@ func _process(delta: float) -> void:
 		eye.modulate = Color(_glow, _glow, _glow)
 	tendrils.agitation = agitation
 	tendrils.pulse = voice_level
+	aura.modulate.a = AURA_DARKNESS * (1.0 + 0.25 * voice_level + 0.35 * agitation)
+
+
+## Back to front: the aura, then the smoke behind the body, or the body first
+## when he faces away and his back and its smoke face the camera.
+func _order_layers() -> void:
+	if aura == null or tendrils == null:
+		return
+	var order: Array[Node] = [aura, tendrils, sprite]
+	if view() == "u":
+		order = [aura, sprite, tendrils]
+	for i in order.size():
+		move_child(order[i], i)
+	_place_held()
 
 
 func _place_eyes() -> void:

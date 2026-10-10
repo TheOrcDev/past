@@ -42,6 +42,8 @@ func _build(manifest: Dictionary) -> CharacterSprites:
 	var sprites := CharacterSprites.new()
 	sprites.frame_size = Vector2i(manifest["frame_size"][0], manifest["frame_size"][1])
 	sprites.character_px = manifest["character_px"]
+	sprites.shaded = manifest.get("channels", "alpha") == "grey_alpha"
+	var expected := Image.FORMAT_LA8 if sprites.shaded else Image.FORMAT_L8
 	var frames := SpriteFrames.new()
 	frames.remove_animation(&"default")
 	for key: String in manifest["animations"]:
@@ -51,9 +53,9 @@ func _build(manifest: Dictionary) -> CharacterSprites:
 		if sheet == null:
 			printerr("import_sprites: %s: sheet %s is not imported" % [key, entry["sheet"]])
 			return null
-		var format := sheet.get_image().get_format()
-		if format != Image.FORMAT_L8:
-			printerr("import_sprites: %s: sheet is %s, expected a one-byte mask (L8)" % [key, format])
+		var image := sheet.get_image()
+		if image.get_format() != expected and not image.is_compressed():
+			printerr("import_sprites: %s: sheet is format %s, expected %s or GPU-compressed" % [key, image.get_format(), expected])
 			return null
 		frames.add_animation(anim)
 		frames.set_animation_speed(anim, entry["fps"])

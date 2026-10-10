@@ -8,12 +8,14 @@
 Motion is keyed at 24 fps; any output rate samples it (between keys too), so
 the walk can be compared at 12 and 15 fps from the same keys.
 
-Proportions come from the accepted body sheet (IMG-0004 v4): 1.85 m tall,
-0.45 m across the shoulders, narrow waist, long thin limbs. The body is a
-skin-modifier skeleton plus a head, rigged with named bones and automatic
-weights; motion is keyframed here (decision #23). Renders are pure-black
-silhouettes on transparency (Workbench), plus anchors.json with per-frame
-pixel positions of the head, eyes, shoulders, upper back, hands and feet.
+The body is Blender Studio's CC0 realistic male base mesh (art-source/vendor/
+human-base-meshes), shaped towards the IMG-0003 concept: broader shoulders, a
+little more muscle, a smooth skull with no face, 1.85 m tall. It is rigged with
+named bones and automatic weights; motion is keyframed here (decision #23) over
+a hunched, powerful stance. Frames are lit EEVEE renders on transparency (a
+near-black fibrous skin, cold rim lights from behind), plus anchors.json with
+per-frame pixel positions of the head, eyes, shoulders, upper back, hands and
+feet. Run Blender with --disable-autoexec, as the base mesh is a downloaded file.
 """
 
 import argparse
@@ -23,64 +25,66 @@ import sys
 from pathlib import Path
 
 import bpy
+import numpy as np
 from bpy_extras.object_utils import world_to_camera_view
 from mathutils import Euler, Vector
 
 HEIGHT = 1.85
-FRAME = (400, 576)  # sprite frame in pixels
+FRAME = (448, 672)  # sprite frame in pixels, with headroom for a raised arm
 CHARACTER_PX = 480  # how tall Unknown is in the frame at scale 1
 ORTHO_SCALE = HEIGHT * FRAME[1] / CHARACTER_PX
+CAMERA_CENTER_Z = 1.1  # metres; the frame reaches about 0.2 m below his feet
 TILT_DEG = 10.0
 CYCLE = 24  # walk cycle length in 24 fps frames (one second)
 
-# Skin skeleton: name -> (position, (radius across, radius depth)).
-JOINTS = {
-    "pelvis": ((0.0, 0.035, 0.98), (0.13, 0.125)),
-    "waist": ((0.0, 0.005, 1.17), (0.1, 0.1)),
-    "chest": ((0.0, -0.035, 1.33), (0.13, 0.125)),
-    "upper_chest": ((0.0, -0.02, 1.45), (0.12, 0.1)),
-    "clavicle.L": ((0.12, -0.005, 1.49), (0.055, 0.055)),
-    "neck_base": ((0.0, 0.0, 1.54), (0.05, 0.05)),
-    "neck_top": ((0.0, -0.015, 1.665), (0.045, 0.048)),
-    "shoulder.L": ((0.18, 0.0, 1.465), (0.05, 0.05)),
-    "elbow.L": ((0.25, 0.01, 1.15), (0.034, 0.034)),
-    "wrist.L": ((0.295, 0.0, 0.9), (0.026, 0.024)),
-    "hand.L": ((0.31, -0.005, 0.765), (0.036, 0.015)),
-    "hip.L": ((0.09, 0.02, 0.94), (0.075, 0.075)),
-    "knee.L": ((0.1, 0.0, 0.53), (0.048, 0.048)),
-    "ankle.L": ((0.1, 0.015, 0.09), (0.03, 0.03)),
-    "toe.L": ((0.1, -0.145, 0.025), (0.034, 0.018)),
-    "heel.L": ((0.1, 0.05, 0.025), (0.026, 0.02)),
-}
-for name in list(JOINTS):
-    if name.endswith(".L"):
-        (x, y, z), radius = JOINTS[name]
-        JOINTS[name[:-2] + ".R"] = ((-x, y, z), radius)
+# The body is Blender Studio's CC0 realistic male base mesh (art-source/vendor/
+# human-base-meshes), with its sculpted muscle kept as a multires modifier. Its
+# shoulders and arms move out and it swells a little for a more powerful build
+# after the IMG-0003 concept, then it is scaled from its 1.687 m to HEIGHT.
+VENDOR_BODY = Path(__file__).resolve().parents[2] / "art-source/vendor/human-base-meshes/body_male_realistic.blend"
+BASE_HEIGHT = 1.687
+SCALE = HEIGHT / BASE_HEIGHT
+POWER = 0.03  # metres each side the shoulders, upper torso and arms move out
+INFLATE = 0.004  # metres the body swells along its normals
+MULTIRES_LEVEL = 2
 
-EDGES = [
-    ("pelvis", "waist"), ("waist", "chest"), ("chest", "upper_chest"), ("upper_chest", "neck_base"), ("neck_base", "neck_top"),
-    *[(a + s, b + s) for s in (".L", ".R") for a, b in (("shoulder", "elbow"), ("elbow", "wrist"), ("wrist", "hand"), ("hip", "knee"), ("knee", "ankle"), ("ankle", "toe"), ("ankle", "heel"))],
-    ("upper_chest", "clavicle.L"), ("clavicle.L", "shoulder.L"), ("upper_chest", "clavicle.R"), ("clavicle.R", "shoulder.R"), ("pelvis", "hip.L"), ("pelvis", "hip.R"),
-]
-
-# Bones: name -> (head, tail, parent).
-BONES = {
-    "hips": ((0, 0.02, 0.98), (0, 0.005, 1.15), None),
-    "spine": ((0, 0.005, 1.15), (0, -0.02, 1.33), "hips"),
-    "chest": ((0, -0.02, 1.33), (0, -0.01, 1.52), "spine"),
-    "neck": ((0, -0.005, 1.53), (0, -0.015, 1.64), "chest"),
-    "head": ((0, -0.015, 1.64), (0, -0.02, 1.85), "neck"),
+# Bones on the base mesh in its A-pose: name -> (head, tail, parent), metres in
+# its own space before POWER and SCALE. Measured on gridded front and side views.
+BASE_BONES = {
+    "hips": ((0, 0.03, 0.92), (0, 0.035, 1.05), None),
+    "spine": ((0, 0.035, 1.05), (0, 0.04, 1.22), "hips"),
+    "chest": ((0, 0.04, 1.22), (0, 0.03, 1.42), "spine"),
+    "neck": ((0, 0.025, 1.43), (0, 0.0, 1.53), "chest"),
+    "head": ((0, 0.0, 1.53), (0, -0.005, 1.69), "neck"),
 }
-for s, sign in ((".L", 1), (".R", -1)):
-    BONES.update({
-        "shoulder" + s: ((0.03 * sign, -0.01, 1.48), (0.175 * sign, 0, 1.465), "chest"),
-        "upper_arm" + s: ((0.18 * sign, 0, 1.465), (0.25 * sign, 0.01, 1.15), "shoulder" + s),
-        "forearm" + s: ((0.25 * sign, 0.01, 1.15), (0.295 * sign, 0, 0.9), "upper_arm" + s),
-        "hand" + s: ((0.295 * sign, 0, 0.9), (0.31 * sign, -0.005, 0.77), "forearm" + s),
-        "thigh" + s: ((0.09 * sign, 0.02, 0.94), (0.1 * sign, 0, 0.53), "hips"),
-        "shin" + s: ((0.1 * sign, 0, 0.53), (0.1 * sign, 0.015, 0.09), "thigh" + s),
-        "foot" + s: ((0.1 * sign, 0.015, 0.09), (0.1 * sign, -0.145, 0.025), "shin" + s),
+for s_, sign in ((".L", 1), (".R", -1)):
+    BASE_BONES.update({
+        "shoulder" + s_: ((0.03 * sign, -0.02, 1.4), (0.17 * sign, 0.0, 1.38), "chest"),
+        "upper_arm" + s_: ((0.18 * sign, 0.0, 1.37), (0.3 * sign, 0.035, 1.07), "shoulder" + s_),
+        "forearm" + s_: ((0.3 * sign, 0.035, 1.07), (0.375 * sign, -0.06, 0.86), "upper_arm" + s_),
+        "hand" + s_: ((0.375 * sign, -0.06, 0.86), (0.43 * sign, -0.08, 0.72), "forearm" + s_),
+        "thigh" + s_: ((0.09 * sign, 0.02, 0.88), (0.11 * sign, 0.0, 0.44), "hips"),
+        "shin" + s_: ((0.11 * sign, 0.0, 0.44), (0.175 * sign, 0.045, 0.075), "thigh" + s_),
+        "foot" + s_: ((0.175 * sign, 0.045, 0.075), (0.19 * sign, -0.12, 0.02), "shin" + s_),
     })
+
+
+def _smoothstep(a: float, b: float, x: float) -> float:
+    t = min(1.0, max(0.0, (x - a) / (b - a)))
+    return t * t * (3.0 - 2.0 * t)
+
+
+def shape(co: Vector) -> Vector:
+    """A base-mesh point moved to Unknown's build: shoulders, upper torso and
+    the arms hanging from them shift outwards, then everything scales."""
+    ax = abs(co.x)
+    torso = _smoothstep(0.05, 0.17, ax) * _smoothstep(1.02, 1.2, co.z) * (1.0 - _smoothstep(1.42, 1.52, co.z))
+    arm = _smoothstep(0.2, 0.25, ax) * _smoothstep(0.55, 0.65, co.z) * (1.0 - _smoothstep(1.25, 1.35, co.z))
+    shift = math.copysign(POWER * max(torso, arm), co.x)
+    return Vector((co.x + shift, co.y, co.z)) * SCALE
+
+
+BONES = {name: (tuple(shape(Vector(head))), tuple(shape(Vector(tail))), parent) for name, (head, tail, parent) in BASE_BONES.items()}
 
 
 def clear_scene() -> None:
@@ -94,37 +98,113 @@ def activate(obj) -> None:
     bpy.context.view_layer.objects.active = obj
 
 
-def build_body():
-    names = list(JOINTS)
-    mesh = bpy.data.meshes.new("UnknownBody")
-    mesh.from_pydata([JOINTS[n][0] for n in names], [(names.index(a), names.index(b)) for a, b in EDGES], [])
-    body = bpy.data.objects.new("UnknownBody", mesh)
-    bpy.context.collection.objects.link(body)
-    activate(body)
-    skin = body.modifiers.new("Skin", "SKIN")
-    skin.use_smooth_shade = True
-    for index, name in enumerate(names):
-        data = mesh.skin_vertices[0].data[index]
-        data.radius = JOINTS[name][1]
-        data.use_root = name == "pelvis"
-    body.modifiers.new("Subdivision", "SUBSURF").levels = 2
-    with bpy.context.temp_override(object=body, active_object=body, selected_objects=[body]):
-        bpy.ops.object.modifier_apply(modifier="Skin")
-        bpy.ops.object.modifier_apply(modifier="Subdivision")
+def skin_material():
+    """Near-black skin with a fibrous, smoky bump that catches the rim lights."""
+    material = bpy.data.materials.new("UnknownSkin")
+    material.use_nodes = True
+    nodes, links = material.node_tree.nodes, material.node_tree.links
+    shader = nodes["Principled BSDF"]
+    shader.inputs["Base Color"].default_value = (0.012, 0.012, 0.014, 1.0)
+    shader.inputs["Roughness"].default_value = 0.5
+    shader.inputs["Specular IOR Level"].default_value = 0.4
+    noise = nodes.new("ShaderNodeTexNoise")
+    noise.inputs["Scale"].default_value = 45.0
+    noise.inputs["Detail"].default_value = 10.0
+    noise.inputs["Roughness"].default_value = 0.65
+    noise.inputs["Distortion"].default_value = 2.0
+    bump = nodes.new("ShaderNodeBump")
+    bump.inputs["Distance"].default_value = 0.002
+    links.new(noise.outputs["Fac"], bump.inputs["Height"])
+    # The fibrous bump fades out on the smooth skull.
+    head = nodes.new("ShaderNodeAttribute")
+    head.attribute_name = "head_mask"
+    strength = nodes.new("ShaderNodeMath")
+    strength.operation = "MULTIPLY_ADD"
+    strength.inputs[1].default_value = -0.25
+    strength.inputs[2].default_value = 0.25
+    links.new(head.outputs["Fac"], strength.inputs[0])
+    links.new(strength.outputs["Value"], bump.inputs["Strength"])
+    links.new(bump.outputs["Normal"], shader.inputs["Normal"])
+    return material
 
-    bpy.ops.mesh.primitive_uv_sphere_add(segments=32, ring_count=16, radius=1.0, location=(0, -0.02, 1.725))
-    head = bpy.context.active_object
-    head.name = "UnknownHead"
-    head.scale = (0.082, 0.096, 0.115)
-    # A jaw gives the profile a chin and the front view a narrower, longer lower face.
-    bpy.ops.mesh.primitive_uv_sphere_add(segments=24, ring_count=12, radius=1.0, location=(0, -0.06, 1.655))
-    jaw = bpy.context.active_object
-    jaw.scale = (0.05, 0.05, 0.048)
-    activate(head)
-    jaw.select_set(True)
-    with bpy.context.temp_override(active_object=head, selected_editable_objects=[head, jaw]):
-        bpy.ops.object.join()
-    return body, head
+
+def _smooth_head(mesh, weights, iterations: int = 60, factor: float = 0.6) -> None:
+    """Laplacian smoothing of the vertices, each pulled towards its neighbours'
+    mean by `factor` × its weight, `iterations` times (numpy, once at build)."""
+    count = len(mesh.vertices)
+    co = np.empty(count * 3, dtype=np.float64)
+    mesh.vertices.foreach_get("co", co)
+    co = co.reshape(-1, 3)
+    edges = np.empty(len(mesh.edges) * 2, dtype=np.int64)
+    mesh.edges.foreach_get("vertices", edges)
+    a, b = edges[0::2], edges[1::2]
+    degree = np.bincount(np.concatenate([a, b]), minlength=count).astype(np.float64)[:, None]
+    pull = (weights * factor)[:, None]
+    active = weights > 0.0
+    for _ in range(iterations):
+        total = np.zeros_like(co)
+        np.add.at(total, a, co[b])
+        np.add.at(total, b, co[a])
+        mean = total / np.maximum(degree, 1.0)
+        co[active] += (mean[active] - co[active]) * pull[active]
+    mesh.vertices.foreach_set("co", co.ravel())
+    mesh.update()
+
+
+def build_body():
+    """Loads the base mesh and its eyes and shapes them to Unknown's build at
+    the base level (the sculpted muscle stays a multires modifier until
+    finish_body). Returns (body, [eye_l, eye_r]); the eyes only mark where the
+    glows go."""
+    with bpy.data.libraries.load(str(VENDOR_BODY), link=False) as (source, target):
+        target.objects = [name for name in source.objects if name.startswith("GEO-body_male_realistic")]
+    for obj in target.objects:
+        bpy.context.scene.collection.objects.link(obj)
+    # World matrices of freshly loaded children are stale until the scene updates.
+    bpy.context.view_layer.update()
+    body = bpy.data.objects["GEO-body_male_realistic"]
+    eyes = [bpy.data.objects["GEO-body_male_realistic.eye.L"], bpy.data.objects["GEO-body_male_realistic.eye.R"]]
+    for eye in eyes:
+        world = eye.matrix_world.translation.copy()
+        eye.parent = None
+        eye.location = shape(world)
+        eye.scale = (SCALE, SCALE, SCALE)
+        eye.hide_render = True
+    mesh = body.data
+    count = len(mesh.vertices)
+    co = np.empty(count * 3, dtype=np.float64)
+    normals = np.empty(count * 3, dtype=np.float64)
+    mesh.vertices.foreach_get("co", co)
+    mesh.vertices.foreach_get("normal", normals)
+    co = (co + normals * INFLATE).reshape(-1, 3)
+    mesh.vertices.foreach_set("co", np.array([shape(Vector(v)) for v in co], dtype=np.float64).ravel())
+    mesh.update()
+    return body, eyes
+
+
+def finish_body(body) -> None:
+    """After binding (weights come from the light base mesh): bakes the sculpted
+    muscle in, melts the face and ears into the concept's smooth skull, and
+    gives it the skin."""
+    activate(body)
+    for modifier in list(body.modifiers):
+        if modifier.type == "MULTIRES":
+            modifier.levels = MULTIRES_LEVEL
+            bpy.ops.object.modifier_apply(modifier=modifier.name)
+    mesh = body.data
+    count = len(mesh.vertices)
+    co = np.empty(count * 3, dtype=np.float64)
+    mesh.vertices.foreach_get("co", co)
+    z = co.reshape(-1, 3)[:, 2]
+    neck_z, crown_z = 1.47 * SCALE, 1.55 * SCALE
+    head = np.clip((z - neck_z) / (crown_z - neck_z), 0.0, 1.0)
+    head = head * head * (3.0 - 2.0 * head)
+    _smooth_head(mesh, head, iterations=140, factor=0.8)
+    mask = mesh.attributes.new("head_mask", "FLOAT", "POINT")
+    mask.data.foreach_set("value", head.astype(np.float32))
+    body.data.materials.clear()
+    body.data.materials.append(skin_material())
+    mesh.polygons.foreach_set("use_smooth", [True] * len(mesh.polygons))
 
 
 def build_rig():
@@ -146,18 +226,19 @@ def build_rig():
     return rig
 
 
-def bind(body, head, rig) -> None:
+def bind(body, eyes, rig) -> None:
     for obj in bpy.context.view_layer.objects:
         obj.select_set(False)
     body.select_set(True)
     rig.select_set(True)
     bpy.context.view_layer.objects.active = rig
     bpy.ops.object.parent_set(type="ARMATURE_AUTO")
-    world = head.matrix_world.copy()
-    head.parent = rig
-    head.parent_type = "BONE"
-    head.parent_bone = "head"
-    head.matrix_world = world
+    for eye in eyes:
+        world = eye.matrix_world.copy()
+        eye.parent = rig
+        eye.parent_type = "BONE"
+        eye.parent_bone = "head"
+        eye.matrix_world = world
 
 
 class Poser:
@@ -190,16 +271,18 @@ class Poser:
         return 1.0 if primary >= 0 else -1.0
 
     def pose(self, name: str, swing: float = 0.0, tilt: float = 0.0, twist: float = 0.0) -> None:
+        """Sets a bone's rotation on top of the stance (STANCE)."""
+        base_swing, base_tilt, base_twist = STANCE.get(name, (0.0, 0.0, 0.0))
         bone = self.rig.pose.bones[name]
         bone.rotation_euler = Euler((
-            math.radians(swing) * self.signs[(name, 0)],
-            math.radians(twist),
-            math.radians(tilt) * self.signs[(name, 2)],
+            math.radians(swing + base_swing) * self.signs[(name, 0)],
+            math.radians(twist + base_twist),
+            math.radians(tilt + base_tilt) * self.signs[(name, 2)],
         ))
 
     def lift(self, name: str, up: float) -> None:
         """Moves a bone along world Z (used for the hips' bob); bones here point up, so local Y is world Z."""
-        self.rig.pose.bones[name].location = (0.0, up, 0.0)
+        self.rig.pose.bones[name].location = (0.0, up + (STANCE_LIFT if name == "hips" else 0.0), 0.0)
 
     def key(self, frame: int) -> None:
         for bone in self.rig.pose.bones:
@@ -207,18 +290,32 @@ class Poser:
             bone.keyframe_insert("location", frame=frame)
 
     def reset(self) -> None:
+        """Back to the stance."""
         for bone in self.rig.pose.bones:
-            bone.rotation_euler = (0, 0, 0)
+            self.pose(bone.name)
             bone.location = (0, 0, 0)
+        self.lift("hips", 0.0)
 
 
 ARMS_IN_WALK = 4.0  # the rest pose holds the arms slightly out; walking tucks them in a little
 
 
+# The stance under every motion, added to whatever each pose sets: head pushed
+# forward, a slight hunch, elbows bent and held off the broad back, hands
+# curled, knees soft. bone: (swing, tilt, twist) in degrees.
+STANCE = {
+    "chest": (6, 0, 0), "neck": (12, 0, 0), "head": (-9, 0, 0),
+    # The base mesh's A-pose holds the arms about 20° out and the feet apart.
+    "upper_arm.L": (0, -11, 0), "upper_arm.R": (0, 11, 0),
+    "thigh.L": (3, -5, 0), "thigh.R": (3, 5, 0),
+    **{bone + side: values for side in (".L", ".R") for bone, values in (
+        ("forearm", (12, 0, 0)), ("hand", (10, 0, 0)), ("shin", (-6, 0, 0)), ("foot", (3, 0, 0)))},
+}
+STANCE_LIFT = -0.004
+
+
 def base_pose(p: Poser) -> None:
     p.reset()
-    for s in (".L", ".R"):
-        p.pose("forearm" + s, swing=6)
 
 
 def make_action(rig, name: str):
@@ -487,6 +584,48 @@ def pickup_high(p: Poser) -> None:
         p.key(frame)
 
 
+def use(p: Poser) -> None:
+    """A second and a half: reaches forward at chest height and works something
+    with his right hand, a push and a turn (contact at frame 16)."""
+    keys = {
+        # frame: (upper arm, forearm, hand swing, hand twist, spine, head)
+        0: (0, 6, 0, 0, 1, -1),
+        10: (58, 30, -10, 0, 6, 4),
+        16: (64, 20, 10, 0, 8, 5),
+        24: (62, 26, -4, 35, 7, 4),
+        36: (0, 6, 0, 0, 1, -1),
+    }
+    for frame, (arm, forearm, hand, twist, spine, head) in keys.items():
+        base_pose(p)
+        p.pose("spine", swing=spine)
+        p.pose("head", swing=head)
+        p.pose("upper_arm.R", swing=arm)
+        p.pose("forearm.R", swing=forearm)
+        p.pose("hand.R", swing=hand, twist=twist)
+        p.key(frame)
+
+
+def give(p: Poser) -> None:
+    """A second and a half: holds his right hand out, palm up, offering
+    something (the hand-over is at frame 18), then draws it back."""
+    keys = {
+        # frame: (upper arm, forearm, hand twist, spine, head)
+        0: (0, 6, 0, 1, -1),
+        12: (46, 40, 40, 4, 2),
+        18: (50, 36, 45, 5, 3),
+        26: (46, 40, 40, 4, 2),
+        36: (0, 6, 0, 1, -1),
+    }
+    for frame, (arm, forearm, twist, spine, head) in keys.items():
+        base_pose(p)
+        p.pose("spine", swing=spine)
+        p.pose("head", swing=head)
+        p.pose("upper_arm.R", swing=arm, tilt=2)
+        p.pose("forearm.R", swing=forearm)
+        p.pose("hand.R", swing=-6, twist=twist)
+        p.key(frame)
+
+
 ANIMATIONS = {
     "walk": (walk, CYCLE, True),
     "idle": (idle, 48, True),
@@ -497,6 +636,8 @@ ANIMATIONS = {
     "fidget_b": (fidget_b, 72, False),
     "pickup_low": (pickup_low, 48, False),
     "pickup_high": (pickup_high, 48, False),
+    "use": (use, 36, False),
+    "give": (give, 36, False),
 }
 # Moments the game reacts to, in 24 fps frames: footsteps on each heel strike,
 # the instant a hand closes on something.
@@ -504,6 +645,8 @@ EVENTS = {
     "walk": {0: "step", 12: "step"},
     "pickup_low": {22: "grab"},
     "pickup_high": {18: "grab"},
+    "use": {16: "use"},
+    "give": {18: "give"},
 }
 DIRECTIONS = {"d": 0.0, "r": 90.0, "u": 180.0}
 
@@ -514,7 +657,7 @@ def setup_camera():
     camera_data.ortho_scale = ORTHO_SCALE
     camera = bpy.data.objects.new("SpriteCamera", camera_data)
     bpy.context.collection.objects.link(camera)
-    center = HEIGHT / 2
+    center = CAMERA_CENTER_Z
     distance = 10.0
     tilt = math.radians(TILT_DEG)
     camera.location = (0.0, -distance * math.cos(tilt), center + distance * math.sin(tilt))
@@ -523,13 +666,36 @@ def setup_camera():
     return camera
 
 
+def look_at(obj, target: Vector) -> None:
+    direction = target - obj.location
+    obj.rotation_euler = direction.to_track_quat("-Z", "Y").to_euler()
+
+
 def setup_render() -> None:
+    """EEVEE with a black world: two cold rim lights from behind and a faint one
+    from above the camera, so the dark body shows its form only at the edges and
+    where muscle turns to the light, as in the concept."""
     scene = bpy.context.scene
-    scene.render.engine = "BLENDER_WORKBENCH"
-    scene.display.shading.light = "FLAT"
-    scene.display.shading.color_type = "SINGLE"
-    scene.display.shading.single_color = (0.0, 0.0, 0.0)
-    scene.display.render_aa = "16"
+    scene.render.engine = "BLENDER_EEVEE_NEXT" if "BLENDER_EEVEE_NEXT" in {e.identifier for e in bpy.types.RenderSettings.bl_rna.properties["engine"].enum_items} else "BLENDER_EEVEE"
+    scene.eevee.taa_render_samples = 32
+    world = bpy.data.worlds.new("Black")
+    world.use_nodes = True
+    world.node_tree.nodes["Background"].inputs["Strength"].default_value = 0.0
+    scene.world = world
+    target = Vector((0.0, 0.0, 1.1))
+    for name, location, power, size in (
+        ("RimLeft", (-1.7, 1.6, 2.3), 750.0, 1.2),
+        ("RimRight", (1.7, 1.6, 2.3), 750.0, 1.2),
+        ("Top", (0.0, -1.2, 3.4), 25.0, 2.0),
+    ):
+        light_data = bpy.data.lights.new(name, "AREA")
+        light_data.energy = power
+        light_data.size = size
+        light_data.color = (0.82, 0.88, 1.0)
+        light = bpy.data.objects.new(name, light_data)
+        light.location = location
+        bpy.context.scene.collection.objects.link(light)
+        look_at(light, target)
     scene.render.film_transparent = True
     scene.render.resolution_x, scene.render.resolution_y = FRAME
     scene.render.resolution_percentage = 100
@@ -537,6 +703,7 @@ def setup_render() -> None:
     scene.render.image_settings.color_mode = "RGBA"
     scene.render.fps = 24
     scene.view_settings.view_transform = "Standard"
+    scene.view_settings.look = "None"
 
 
 def pixel(scene, camera, world: Vector) -> list[float]:
@@ -544,29 +711,23 @@ def pixel(scene, camera, world: Vector) -> list[float]:
     return [round(ndc.x * FRAME[0], 2), round((1.0 - ndc.y) * FRAME[1], 2)]
 
 
-def anchors(scene, camera, rig, head) -> dict:
+def anchors(scene, camera, rig, eyes) -> dict:
     bones = rig.pose.bones
     world = rig.matrix_world
-    head_center = head.matrix_world.translation.copy()
-    basis = head.matrix_world.to_3x3()
-    forward = (basis @ Vector((0.0, -1.0, 0.0))).normalized()
-    left = (basis @ Vector((1.0, 0.0, 0.0))).normalized()
-    up = (basis @ Vector((0.0, 0.0, 1.0))).normalized()
+    head_center = world @ ((bones["head"].head + bones["head"].tail) / 2)
     to_camera = (camera.matrix_world.translation - head_center).normalized()
-    eyes = {}
-    for name, side in (("eye_l", 1.0), ("eye_r", -1.0)):
-        offset = forward * 0.088 + left * (0.032 * side) + up * 0.006
-        eyes[name] = (head_center + offset, offset.normalized().dot(to_camera) > 0.1)
+    eye_points = [eye.matrix_world.translation.copy() for eye in eyes]
+    visible = [(point - head_center).normalized().dot(to_camera) > 0.1 for point in eye_points]
     body_back = -(world.to_3x3() @ Vector((0.0, -1.0, 0.0))).normalized()
     chest_mid = world @ ((bones["chest"].head + bones["chest"].tail) / 2)
     return {
         "head": pixel(scene, camera, head_center),
-        "eye_l": pixel(scene, camera, eyes["eye_l"][0]),
-        "eye_r": pixel(scene, camera, eyes["eye_r"][0]),
-        "eyes_visible": [eyes["eye_l"][1], eyes["eye_r"][1]],
+        "eye_l": pixel(scene, camera, eye_points[0]),
+        "eye_r": pixel(scene, camera, eye_points[1]),
+        "eyes_visible": visible,
         "shoulder_l": pixel(scene, camera, world @ bones["upper_arm.L"].head),
         "shoulder_r": pixel(scene, camera, world @ bones["upper_arm.R"].head),
-        "back": pixel(scene, camera, chest_mid + body_back * 0.1 + Vector((0.0, 0.0, 0.08))),
+        "back": pixel(scene, camera, chest_mid + body_back * 0.12 + Vector((0.0, 0.0, 0.08))),
         "hand_l": pixel(scene, camera, world @ bones["hand.L"].tail),
         "hand_r": pixel(scene, camera, world @ bones["hand.R"].tail),
         "feet": pixel(scene, camera, world @ Vector((0.0, 0.0, 0.0))),
@@ -603,7 +764,7 @@ def event_frames(anim: str, times: list[float], length: int, loop: bool) -> list
     return events
 
 
-def render(rig, head, camera, out: Path, anims: list[str], dirs: list[str], fps: float) -> dict:
+def render(rig, eyes, camera, out: Path, anims: list[str], dirs: list[str], fps: float, preview: bool = False) -> dict:
     scene = bpy.context.scene
     poser = Poser(rig)
     meta = {"frame_size": list(FRAME), "character_px": CHARACTER_PX, "fps": fps, "animations": {}}
@@ -615,14 +776,14 @@ def render(rig, head, camera, out: Path, anims: list[str], dirs: list[str], fps:
             rig.rotation_euler = (0.0, 0.0, math.radians(DIRECTIONS[direction]))
             key = f"{anim}_{direction}"
             frames, anchor_list = [], []
-            times = sample_times(length, loop, fps)
+            times = sample_times(length, loop, fps)[:1] if preview else sample_times(length, loop, fps)
             for index, time in enumerate(times):
                 scene.frame_set(int(time), subframe=time - int(time))
                 path = out / key / f"{key}_{index:03d}.png"
                 scene.render.filepath = str(path)
                 bpy.ops.render.render(write_still=True)
                 frames.append(path.name)
-                anchor_list.append(anchors(scene, camera, rig, head))
+                anchor_list.append(anchors(scene, camera, rig, eyes))
             entry = {"fps": fps, "frames": frames, "loop": loop, "anchors": anchor_list, "events": event_frames(anim, times, length, loop)}
             if anim == "walk":
                 rig.rotation_euler = (0.0, 0.0, 0.0)
@@ -642,16 +803,18 @@ def main() -> None:
     parser.add_argument("--dirs", default="r,u,d")
     parser.add_argument("--fps", type=float, default=12.0)
     parser.add_argument("--blend")
+    parser.add_argument("--preview", action="store_true", help="render only each animation's first frame")
     args = parser.parse_args(argv)
     clear_scene()
-    body, head = build_body()
+    body, eyes = build_body()
     rig = build_rig()
-    bind(body, head, rig)
+    bind(body, eyes, rig)
+    finish_body(body)
     camera = setup_camera()
     setup_render()
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
-    meta = render(rig, head, camera, out, args.anims.split(","), args.dirs.split(","), args.fps)
+    meta = render(rig, eyes, camera, out, args.anims.split(","), args.dirs.split(","), args.fps, args.preview)
     if args.blend:
         Path(args.blend).parent.mkdir(parents=True, exist_ok=True)
         bpy.ops.wm.save_as_mainfile(filepath=args.blend)

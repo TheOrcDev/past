@@ -113,7 +113,7 @@ def cmd_sheet(args: argparse.Namespace) -> int:
 
 def cmd_pack(args: argparse.Namespace) -> int:
     renders = [Path(folder) for folder in args.renders]
-    manifest = pack.pack(renders, Path(args.out_dir), Path(args.manifest), args.res_prefix, args.name)
+    manifest = pack.pack(renders, Path(args.out_dir), Path(args.manifest), args.res_prefix, args.name, args.shaded)
     _print({key: {"fps": value["fps"], "frames": len(value["frames"])} for key, value in manifest["animations"].items()})
     return 0
 
@@ -180,6 +180,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--manifest", required=True, help="where the JSON manifest goes")
     p.add_argument("--res-prefix", required=True, help="res:// folder the sheets are loaded from")
     p.add_argument("--name", required=True)
+    p.add_argument("--shaded", action="store_true", help="keep the renders' shading: grey + alpha sheets")
     p.set_defaults(func=cmd_pack)
 
     args = parser.parse_args(argv)

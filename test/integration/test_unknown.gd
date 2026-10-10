@@ -34,9 +34,11 @@ func test_every_animation_has_mask_frames_and_anchors() -> void:
 			assert_eq((sprites.eyes[anim] as PackedByteArray).size(), count, "%s: eye flags per frame" % anim)
 			var frame := sprites.frames.get_frame_texture(anim, 0) as AtlasTexture
 			assert_eq(Vector2i(frame.get_size()), sprites.frame_size, "%s: trimmed frames keep the full frame size" % anim)
-			assert_eq(frame.atlas.get_image().get_format(), Image.FORMAT_L8, "%s: one byte per pixel" % anim)
+			var expected := Image.FORMAT_LA8 if sprites.shaded else Image.FORMAT_L8
+			var image := frame.atlas.get_image()
+			assert_true(image.get_format() == expected or image.is_compressed(), "%s: monochrome or GPU-compressed, never raw RGBA" % anim)
 	assert_false(sprites.frames.get_animation_loop(&"look_around_r"), "the look-around is a one-shot")
-	assert_almost_eq(float(sprites.ground_speed[&"walk_r"]), 344.8, 1.0)
+	assert_between(float(sprites.ground_speed[&"walk_r"]), 250.0, 450.0, "a plausible rendered ground speed")
 
 
 func test_walking_moves_one_frame_of_ground_per_new_frame() -> void:
@@ -48,7 +50,7 @@ func test_walking_moves_one_frame_of_ground_per_new_frame() -> void:
 	get_tree().physics_frame.connect(sample)
 	await wait_seconds(1.0)
 	get_tree().physics_frame.disconnect(sample)
-	var expected := 344.8 * _unknown.scale.y / _body.frame_rate()
+	var expected := _body.ground_speed() * _unknown.scale.y / _body.frame_rate()
 	var moves := 0
 	for i in range(1, xs.size()):
 		var dx := xs[i] - xs[i - 1]
@@ -108,7 +110,7 @@ func test_eyes_show_only_when_they_face_the_camera() -> void:
 
 func test_tendrils_stream_behind_him() -> void:
 	var tendrils := _body.tendrils
-	assert_between(tendrils.chain_count(), 5, 8)
+	assert_between(tendrils.chain_count(), 10, 16, "a dense cloak of smoke")
 	_unknown.global_position = Vector2(600, 1000)
 	_unknown.face(AnimNames.Dir.R)
 	await wait_seconds(1.0)

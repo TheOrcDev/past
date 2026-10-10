@@ -1,12 +1,13 @@
 class_name Tendrils
 extends Node2D
-## Unknown's smoke tendrils (docs/technical-plan.md §6.4): verlet chains rooted
-## down his shoulders and upper back. They are simulated in world space, so they
-## stream behind his motion like a torn cloak; a slow wave runs down each one
-## and noise sways them, both wilder with `agitation` and `pulse`. Each chain is
-## drawn as a tapering Line2D plus thinner strands that fray away from it toward
-## the tip, all through a shader that breaks them into smoke, and a few loose
-## wisps drift off. The SpriteBody decides whether they draw behind or in front.
+## Unknown's smoke (docs/technical-plan.md §6.4), after the IMG-0003 concept:
+## a dozen wisps streaming back and out from behind his shoulders and spine.
+## They are verlet chains simulated in world space, so they trail his motion; a
+## slow wave runs down each one and noise sways them, both wilder with
+## `agitation` and `pulse`. Each is drawn as a thin tapering Line2D plus strands
+## that fray away toward the tip, through a shader that breaks them into
+## translucent smoke with lit fibrous edges, and smoke rises off his shoulders.
+## The SpriteBody decides whether they draw behind or in front.
 
 const SMOKE := preload("res://src/shaders/smoke_tendril.gdshader")
 const STEP := 1.0 / 60.0
@@ -14,21 +15,24 @@ const ITERATIONS := 3
 ## Velocity kept per step; the rest is lost to the air, which makes them trail.
 const DAMPING := 0.965
 ## Pull toward the rest shape, per second squared.
-const STIFFNESS := 10.0
+const STIFFNESS := 6.0
 ## Noise push at the tip, in pixels per second squared at scale 1.
 const WIND := 700.0
 ## The wave running down each chain: sideways reach at the tip (pixels at
 ## scale 1), phase step per point and speed in radians per second.
-const WAVE := 24.0
-const WAVE_STEP := 0.55
-const WAVE_SPEED := 2.2
+const WAVE := 42.0
+const WAVE_STEP := 0.7
+const WAVE_SPEED := 1.8
 ## Frayed strands per chain, how far their tips spread from it (pixels at
 ## scale 1) and their width relative to the chain.
 const STRANDS := 2
-const STRAND_SPREAD := 26.0
-const STRAND_WIDTH := 0.45
+const STRAND_SPREAD := 30.0
+const STRAND_WIDTH := 0.5
 ## A root farther than this (at scale 1) from where it was means a teleport.
 const TELEPORT := 150.0
+## The wisps stream backwards, so facing the camera (d) or away (u) shows them
+## foreshortened: their rest length per view.
+const VIEW_LENGTH := {"r": 1.0, "d": 0.55, "u": 0.7}
 
 ## Per chain: the anchor it grows from and how far down the body its root sits
 ## (pixels at scale 1), its points, segment length and widest width at scale 1,
@@ -37,20 +41,30 @@ const TELEPORT := 150.0
 ## back views a shoulder chain's x points away from the head, whichever side
 ## that shoulder is on.
 const CHAINS: Array[Dictionary] = [
-	{"anchor": &"shoulder_l", "drop": 0.0, "points": 12, "segment": 19.0, "width": 18.0,
-		"side": Vector2(-0.35, 0.94), "front": Vector2(0.3, 0.95), "back": Vector2(0.35, 0.94)},
-	{"anchor": &"shoulder_r", "drop": 10.0, "points": 12, "segment": 19.0, "width": 18.0,
-		"side": Vector2(-0.55, 0.83), "front": Vector2(0.3, 0.95), "back": Vector2(0.35, 0.94)},
-	{"anchor": &"shoulder_l", "drop": 25.0, "points": 10, "segment": 17.0, "width": 12.0,
-		"side": Vector2(-0.75, 0.66), "front": Vector2(0.6, 0.8), "back": Vector2(0.6, 0.8)},
-	{"anchor": &"shoulder_r", "drop": 35.0, "points": 10, "segment": 17.0, "width": 12.0,
-		"side": Vector2(-0.2, 0.98), "front": Vector2(0.6, 0.8), "back": Vector2(0.6, 0.8)},
-	{"anchor": &"back", "drop": 0.0, "points": 14, "segment": 21.0, "width": 24.0,
-		"side": Vector2(-0.7, 0.71), "front": Vector2(-0.45, 0.89), "back": Vector2(-0.15, 0.99)},
-	{"anchor": &"back", "drop": 30.0, "points": 13, "segment": 20.0, "width": 18.0,
-		"side": Vector2(-0.88, 0.47), "front": Vector2(0.45, 0.89), "back": Vector2(0.2, 0.98)},
-	{"anchor": &"back", "drop": 60.0, "points": 11, "segment": 18.0, "width": 14.0,
-		"side": Vector2(-0.97, 0.24), "front": Vector2(0.1, 0.99), "back": Vector2(0.6, 0.8)},
+	{"anchor": &"shoulder_l", "drop": 0.0, "points": 15, "segment": 21.0, "width": 18.0,
+		"side": Vector2(-0.9, 0.15), "front": Vector2(0.55, 0.83), "back": Vector2(0.55, 0.83)},
+	{"anchor": &"shoulder_r", "drop": 6.0, "points": 15, "segment": 21.0, "width": 18.0,
+		"side": Vector2(-0.95, -0.05), "front": Vector2(0.55, 0.83), "back": Vector2(0.55, 0.83)},
+	{"anchor": &"shoulder_l", "drop": 20.0, "points": 13, "segment": 20.0, "width": 14.0,
+		"side": Vector2(-0.8, 0.45), "front": Vector2(0.35, 0.94), "back": Vector2(0.35, 0.94)},
+	{"anchor": &"shoulder_r", "drop": 30.0, "points": 13, "segment": 20.0, "width": 14.0,
+		"side": Vector2(-0.85, 0.3), "front": Vector2(0.35, 0.94), "back": Vector2(0.35, 0.94)},
+	{"anchor": &"back", "drop": 0.0, "points": 16, "segment": 22.0, "width": 20.0,
+		"side": Vector2(-0.9, 0.1), "front": Vector2(-0.65, 0.76), "back": Vector2(-0.25, 0.97)},
+	{"anchor": &"back", "drop": 10.0, "points": 15, "segment": 21.0, "width": 17.0,
+		"side": Vector2(-0.75, 0.55), "front": Vector2(0.65, 0.76), "back": Vector2(0.25, 0.97)},
+	{"anchor": &"back", "drop": 30.0, "points": 14, "segment": 21.0, "width": 15.0,
+		"side": Vector2(-0.95, -0.15), "front": Vector2(-0.45, 0.89), "back": Vector2(-0.55, 0.83)},
+	{"anchor": &"back", "drop": 45.0, "points": 14, "segment": 20.0, "width": 14.0,
+		"side": Vector2(-0.6, 0.75), "front": Vector2(0.45, 0.89), "back": Vector2(0.55, 0.83)},
+	{"anchor": &"back", "drop": 65.0, "points": 13, "segment": 20.0, "width": 12.0,
+		"side": Vector2(-0.85, 0.4), "front": Vector2(-0.75, 0.66), "back": Vector2(-0.7, 0.71)},
+	{"anchor": &"back", "drop": 85.0, "points": 12, "segment": 19.0, "width": 11.0,
+		"side": Vector2(-0.5, 0.85), "front": Vector2(0.75, 0.66), "back": Vector2(0.7, 0.71)},
+	{"anchor": &"shoulder_l", "drop": 45.0, "points": 12, "segment": 19.0, "width": 11.0,
+		"side": Vector2(-0.98, -0.2), "front": Vector2(0.7, 0.71), "back": Vector2(0.75, 0.66)},
+	{"anchor": &"shoulder_r", "drop": 55.0, "points": 12, "segment": 19.0, "width": 11.0,
+		"side": Vector2(-0.7, 0.65), "front": Vector2(0.25, 0.97), "back": Vector2(0.3, 0.95)},
 ]
 
 var body: SpriteBody
@@ -144,7 +158,7 @@ func _reset() -> void:
 	for chain in _chains:
 		var spec: Dictionary = chain["spec"]
 		var root := _root_target(spec)
-		var rest: Vector2 = _rest_direction(spec) * spec["segment"] * scale_y
+		var rest: Vector2 = _rest_direction(spec) * spec["segment"] * scale_y * VIEW_LENGTH.get(body.view(), 1.0)
 		var points: PackedVector2Array = chain["points"]
 		for i in points.size():
 			points[i] = root + rest * i
@@ -161,7 +175,7 @@ func _simulate() -> void:
 		var spec: Dictionary = chain["spec"]
 		# The root eases after the anchor, so stepped walking does not jerk the smoke.
 		var root := (chain["root"] as Vector2).lerp(_root_target(spec), 1.0 - exp(-STEP * 30.0))
-		var segment: float = spec["segment"] * scale_y
+		var segment: float = spec["segment"] * scale_y * VIEW_LENGTH.get(body.view(), 1.0)
 		var rest := _rest_direction(spec)
 		var across := Vector2(-rest.y, rest.x)
 		var points: PackedVector2Array = chain["points"]
@@ -226,6 +240,9 @@ func _make_line(seed: float) -> Line2D:
 	material.shader = SMOKE
 	material.set_shader_parameter(&"noise_tex", Effects.noise_texture(11, 0.012))
 	material.set_shader_parameter(&"seed", seed)
+	material.set_shader_parameter(&"edge_light", 0.45)
+	material.set_shader_parameter(&"softness", 0.85)
+	material.set_shader_parameter(&"fray", 0.8)
 	var line := Line2D.new()
 	line.width_curve = _taper()
 	line.gradient = _fade()
@@ -238,39 +255,39 @@ func _make_line(seed: float) -> Line2D:
 func _setup_wisps() -> void:
 	_wisps = CPUParticles2D.new()
 	_wisps.name = "Wisps"
-	_wisps.amount = 12
-	_wisps.lifetime = 2.4
+	_wisps.amount = 28
+	_wisps.lifetime = 2.8
 	_wisps.local_coords = false
 	_wisps.texture = Effects.soft_dot()
-	_wisps.emission_shape = CPUParticles2D.EMISSION_SHAPE_SPHERE
-	_wisps.emission_sphere_radius = 30.0
-	_wisps.direction = Vector2(-1.0, 0.4)
-	_wisps.spread = 35.0
-	_wisps.gravity = Vector2(0.0, 6.0)
-	_wisps.initial_velocity_min = 10.0
-	_wisps.initial_velocity_max = 35.0
-	_wisps.damping_min = 4.0
-	_wisps.damping_max = 8.0
-	_wisps.scale_amount_min = 1.0
-	_wisps.scale_amount_max = 2.6
+	_wisps.emission_shape = CPUParticles2D.EMISSION_SHAPE_RECTANGLE
+	_wisps.emission_rect_extents = Vector2(45.0, 70.0)
+	_wisps.direction = Vector2(-0.4, -1.0)
+	_wisps.spread = 40.0
+	_wisps.gravity = Vector2(0.0, -10.0)
+	_wisps.initial_velocity_min = 15.0
+	_wisps.initial_velocity_max = 45.0
+	_wisps.damping_min = 3.0
+	_wisps.damping_max = 6.0
+	_wisps.scale_amount_min = 2.0
+	_wisps.scale_amount_max = 5.5
 	var ramp := Gradient.new()
-	ramp.set_color(0, Color(0.03, 0.03, 0.04, 0.0))
-	ramp.set_color(1, Color(0.03, 0.03, 0.04, 0.0))
-	ramp.add_point(0.2, Color(0.03, 0.03, 0.04, 0.45))
+	ramp.set_color(0, Color(0.02, 0.02, 0.03, 0.0))
+	ramp.set_color(1, Color(0.02, 0.02, 0.03, 0.0))
+	ramp.add_point(0.25, Color(0.03, 0.03, 0.04, 0.3))
 	_wisps.color_ramp = ramp
 	add_child(_wisps)
 
 
 static func _taper() -> Curve:
 	var curve := Curve.new()
-	curve.add_point(Vector2(0.0, 0.35))
-	curve.add_point(Vector2(0.35, 1.0))
+	curve.add_point(Vector2(0.0, 0.3))
+	curve.add_point(Vector2(0.25, 1.0))
 	curve.add_point(Vector2(1.0, 0.0))
 	return curve
 
 
 static func _fade() -> Gradient:
 	var gradient := Gradient.new()
-	gradient.set_color(0, Color(0.02, 0.02, 0.03, 0.9))
-	gradient.set_color(1, Color(0.04, 0.04, 0.05, 0.25))
+	gradient.set_color(0, Color(0.03, 0.03, 0.04, 0.6))
+	gradient.set_color(1, Color(0.1, 0.1, 0.11, 0.04))
 	return gradient

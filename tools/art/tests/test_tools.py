@@ -88,12 +88,12 @@ def test_pack_trims_frames_and_records_regions(tmp_path):
     renders = tmp_path / "renders"
     frames = []
     for index in range(3):
-        image = np.zeros((60, 40, 4), np.uint8)
-        image[20:50, 10 + index : 20 + index, 3] = 255
+        image = np.zeros((200, 160, 4), np.uint8)
+        image[80:110, 60 + index : 70 + index, 3] = 255
         save(renders / "walk_r" / f"walk_r_{index:03d}.png", image)
         frames.append(f"walk_r_{index:03d}.png")
     anchors = [{"feet": [20.0, 50.0]}] * 3
-    meta = {"frame_size": [40, 60], "character_px": 30, "fps": 12.0,
+    meta = {"frame_size": [160, 200], "character_px": 30, "fps": 12.0,
             "animations": {"walk_r": {"frames": frames, "loop": True, "anchors": anchors, "ground_px_per_second": 10.0}}}
     (renders / "anchors.json").write_text(json.dumps(meta))
     manifest = pack.pack([renders], tmp_path / "out", tmp_path / "m.json", "res://x", "unknown")
@@ -104,7 +104,18 @@ def test_pack_trims_frames_and_records_regions(tmp_path):
     for index, frame in enumerate(walk["frames"]):
         x, y, w, h = frame["region"]
         ox, oy = frame["offset"]
-        assert (ox, oy, w, h) == (10 + index - pack.BORDER, 20 - pack.BORDER, 10 + 2 * pack.BORDER, 30 + 2 * pack.BORDER)
+        assert (ox, oy, w, h) == (60 + index - pack.BORDER, 80 - pack.BORDER, 10 + 2 * pack.BORDER, 30 + 2 * pack.BORDER)
         region = sheet[y : y + h, x : x + w]
         assert region[pack.BORDER : -pack.BORDER, pack.BORDER : -pack.BORDER].min() == 255
         assert region[: pack.BORDER].max() == 0
+
+
+def test_grey_alpha_png_round_trips(tmp_path):
+    grey = np.arange(48, dtype=np.uint8).reshape(6, 8) * 5
+    alpha = (255 - grey).astype(np.uint8)
+    from past_art.imageio import save_grey_alpha
+    save_grey_alpha(tmp_path / "la.png", grey, alpha)
+    back = cv2.imread(str(tmp_path / "la.png"), cv2.IMREAD_UNCHANGED)
+    assert back.shape == (6, 8, 4)  # OpenCV reads grey + alpha as BGRA
+    assert np.array_equal(back[:, :, 0], grey) and np.array_equal(back[:, :, 3], alpha)
+

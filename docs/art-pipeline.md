@@ -152,16 +152,20 @@ installed.
    three-quarter back, A-pose, plain light background. One version with
    tendrils for reference and one without, used for modeling. Requires operator
    approval.
-2. **Body (Claude, Blender):** a lean humanoid built from a CC0 base mesh,
-   reshaped to match the sheet, with a Rigify or equivalent rig.
+2. **Body (Claude, Blender):** Blender Studio's CC0 realistic male base mesh
+   (`art-source/vendor/human-base-meshes`), with its sculpted muscle. It is
+   reshaped towards the IMG-0003 concept (broader shoulders, a little more
+   muscle, a smooth skull with no face) and rigged with named bones and
+   automatic weights.
 3. **Motion:** keyframed by Claude in Blender with bpy scripts (decision #23).
    The walk starts from the classic contact, down, passing and up poses. There
    are also idle breathing and a look-around. Claude checks each loop on
    rendered contact sheets, and the operator reviews it as a short looping
    clip.
-4. **Render:** orthographic camera tilted about 10° down. Black body with a
-   backlit rim light, alpha PNG at the target height and frame rate, for every
-   animation and direction.
+4. **Render:** orthographic camera tilted about 10° down. EEVEE: a near-black
+   skin with a fibrous bump, two cold rim lights from behind and a faint top
+   light, on transparency, at the target height and frame rate, for every
+   animation and direction. The frames keep their shading as grey + alpha.
 5. **Anchors:** a per-frame JSON with head, both eyes, both shoulders, upper
    back, both hands and the foot baseline.
 6. **Godot:** sprite sheets of at most 4096², with SpriteFrames per animation

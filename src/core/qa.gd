@@ -8,7 +8,7 @@ extends Node
 const TIMEOUT_SECONDS := 60.0
 const LONG_TIMEOUT_SECONDS := 150.0
 ## Scenarios that start from the opening instead of straight in the first room.
-const WITH_OPENING: Array[String] = ["cemetery_reveal", "perf", "tour"]
+const WITH_OPENING: Array[String] = ["cemetery_reveal", "perf", "tour", "screenshots"]
 
 var _out_dir := ""
 var _scenario := ""
@@ -42,6 +42,13 @@ func _ready() -> void:
 	_run.call_deferred(_scenario)
 
 
+## Scripted runs ignore the real mouse, so a stray click on the window cannot
+## send Unknown off script (scenarios drive input through Interaction directly).
+func _input(event: InputEvent) -> void:
+	if not _scenario.is_empty() and event is InputEventMouse:
+		get_viewport().set_input_as_handled()
+
+
 func _process(delta: float) -> void:
 	if _sampling:
 		_samples.append(delta)
@@ -73,6 +80,8 @@ func _run(scenario: String) -> void:
 			await _tour()
 		"banding":
 			await _banding()
+		"screenshots":
+			await _screenshots()
 		_:
 			_failures.append("unknown scenario %s" % scenario)
 	_finish("done")
@@ -259,6 +268,50 @@ func _banding() -> void:
 	Flashback.set_grain(0.04)
 
 
+## A gallery of the game as it stands: the opening, the nave, Unknown's
+## animations and a flashback, for showing progress.
+func _screenshots() -> void:
+	while get_tree().current_scene.get_node_or_null("CemeteryReveal") == null:
+		await get_tree().process_frame
+	for moment: Array in [[2.2, "01_opening_close"], [5.0, "02_opening_pull_back"], [4.6, "03_opening_title"]]:
+		await get_tree().create_timer(moment[0]).timeout
+		await _shot(moment[1])
+	await Rooms.room_changed
+	while Interaction.locked > 0:
+		await get_tree().process_frame
+	var unknown := Rooms.player
+	unknown.get_node("IdleFidgets").set_process(false)
+	await get_tree().create_timer(1.0).timeout
+	await _shot("04_nave")
+	unknown.walk_to(Vector2(1500, 1030))
+	await get_tree().create_timer(1.3).timeout
+	await _shot("05_walking")
+	await unknown.walk_to(Vector2(1300, 1040))
+	unknown.face(AnimNames.Dir.D)
+	unknown.play(&"fidget_b")
+	await get_tree().create_timer(1.4).timeout
+	await _shot("06_studying_his_hand")
+	await get_tree().create_timer(2.0).timeout
+	unknown.face(AnimNames.Dir.R)
+	unknown.play(&"pickup_low")
+	await get_tree().create_timer(0.95).timeout
+	await _shot("07_picking_up")
+	await get_tree().create_timer(1.5).timeout
+	var statue := Rooms.current.hotspots.get_node("Statue") as Hotspot
+	Interaction.click_at(statue.focus_point())
+	await Say.line_started
+	await get_tree().create_timer(0.8).timeout
+	await _shot("08_talking")
+	await Flashback.vision_started
+	await get_tree().create_timer(1.7).timeout
+	await _shot("09_memory_blooming")
+	await get_tree().create_timer(2.6).timeout
+	await _shot("10_the_past")
+	await Flashback.vision_finished
+	await get_tree().create_timer(0.5).timeout
+	await _shot("11_back_in_the_present")
+
+
 func _start_sampling() -> void:
 	_samples.clear()
 	_cpu_samples.clear()
@@ -313,7 +366,9 @@ func _check(ok: bool, what: String) -> void:
 
 
 func _shot(shot_name: String) -> void:
-	await RenderingServer.frame_post_draw
+	# Draw now rather than await the next frame: macOS stops drawing a window that
+	# other windows cover, and the post-draw signal would never come.
+	RenderingServer.force_draw(false)
 	var path := _out_dir.path_join("%s.png" % shot_name)
 	var err := get_viewport().get_texture().get_image().save_png(path)
 	_check(err == OK, "screenshot %s" % path)
@@ -324,6 +379,6 @@ func _finish(reason: String) -> void:
 		return
 	_finished = true
 	if reason == "timeout":
-		_failures.append("timed out after %d s" % TIMEOUT_SECONDS)
+		_failures.append("timed out")
 	print("[qa] RESULT %s %s" % ["PASS" if _failures.is_empty() else "FAIL", ", ".join(_failures)])
 	get_tree().quit(0 if _failures.is_empty() else 1)

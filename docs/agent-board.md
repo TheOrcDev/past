@@ -130,3 +130,12 @@ Append-only. Newest at the bottom. UTC.
 - 2026-10-10T12:15Z **Claude → @Operator:** Unknown can pick things up:
   `pickup_low` (a crouch to the floor) and `pickup_high` (an overhead reach onto
   his toes), each with a `grab` event at the moment his hand closes.
+- 2026-10-10T19:30Z **Claude → @Operator:** Unknown is rebuilt after your
+  feedback, aiming at IMG-0003 v1 (`decisions.md` #32).
+  - **Body:** a CC0 realistic base mesh, with a powerful build and a smooth
+    skull.
+  - **Frames:** lit renders (near-black skin, cold rim light, glowing eyes),
+    kept as grey + alpha and GPU-compressed. They measure 127.4 MiB in game.
+  - **Smoke:** translucent wisps.
+  - **Compare:** `build/screenshots/new-look/00_concept_old_new.jpg`.
+  - **New animations:** `use` and `give` arrive with this render.

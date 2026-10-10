@@ -3,19 +3,21 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d3lyty8hg47qi"
-path="res://.godot/imported/unknown_pickup_high_u.png-0d0dfcab326d7b5b61a5b078a11dbf6f.ctex"
+path.s3tc="res://.godot/imported/unknown_pickup_high_u.png-0d0dfcab326d7b5b61a5b078a11dbf6f.s3tc.ctex"
+path.etc2="res://.godot/imported/unknown_pickup_high_u.png-0d0dfcab326d7b5b61a5b078a11dbf6f.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://content/characters/unknown/sprites/unknown_pickup_high_u.png"
-dest_files=["res://.godot/imported/unknown_pickup_high_u.png-0d0dfcab326d7b5b61a5b078a11dbf6f.ctex"]
+dest_files=["res://.godot/imported/unknown_pickup_high_u.png-0d0dfcab326d7b5b61a5b078a11dbf6f.s3tc.ctex", "res://.godot/imported/unknown_pickup_high_u.png-0d0dfcab326d7b5b61a5b078a11dbf6f.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

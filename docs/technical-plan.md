@@ -364,8 +364,8 @@ Built in plan 002:
 - **Eyes:** two additive sprites at the eye anchors, with idle, blink, narrow,
   wide and flare states. Their intensity follows the voice envelope while he
   speaks (§6.5).
-- **Tendrils:** 5–8 `Line2D` verlet chains rooted at the shoulder and back
-  anchors.
+- **Tendrils:** a dozen `Line2D` verlet chains rooted down the shoulder and
+  back anchors, drawn as thin translucent wisps after the IMG-0003 concept.
   - Forces: trailing from velocity, idle drift from noise, an `agitation`
     parameter for emotion, and a pulse from the voice envelope.
   - A shader thins the edges into smoke, and `CPUParticles2D` adds fine wisps.
@@ -474,11 +474,12 @@ Not needed. The browser gets only the prologue demo, so it fits in one `.pck`
   tiles.
 - **Memory reference:** a full-screen 1920×1080 RGBA8 layer uses 7.9 MiB of
   video memory, and a 4096² texture uses 64 MiB (85 MiB with mipmaps).
-- **Unknown's frames:** single-channel alpha masks at one byte per pixel, with
-  color and rim light coming from a shader. They are trimmed to the silhouette
-  and packed one sheet per animation. His loaded frames are budgeted at
-  128 MiB or less. Plan 002 measured 21.4 MiB for 9 animations, and the same
-  frames as RGBA would be about 4× that (decision #30).
+- **Unknown's frames:** grey + alpha (LA8, two bytes per pixel). The grey is
+  the render's lit skin, which a shader pushes darker and gives its smoke
+  edges; there is no colour to store, because he is monochrome. Frames are
+  trimmed to the silhouette with a border for the haze, and packed one sheet
+  per animation. His loaded frames are budgeted at 128 MiB or less. The flat
+  one-byte masks of decision #30 are replaced by decision #32.
 - **Audio:**
   - Ogg Vorbis everywhere; Godot decodes it itself in every build.
   - Voice is mono at 22.05–24 kHz. Music is stereo.

@@ -11,6 +11,9 @@ extends Resource
 @export var frame_size := Vector2i(400, 576)
 ## How tall the character stands in the frame at scale 1.
 @export var character_px := 480
+## True when frames keep the render's shading (grey + alpha, LA8); false for
+## flat silhouettes (an alpha mask, L8).
+@export var shaded := false
 ## animation -> {anchor -> PackedVector2Array with one point per frame}.
 @export var anchors := {}
 ## animation -> PackedByteArray with one entry per frame: bit 0 is set when the
