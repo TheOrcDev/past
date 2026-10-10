@@ -19,6 +19,7 @@ config/features=PackedStringArray("4.7", "GL Compatibility")
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 GameState="*res://src/core/game_state.gd"
+Inventory="*res://src/core/inventory.gd"
 Rooms="*res://src/core/rooms.gd"
 Interaction="*res://src/core/interaction.gd"
 Say="*res://src/core/say.gd"

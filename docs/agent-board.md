@@ -139,3 +139,7 @@ Append-only. Newest at the bottom. UTC.
   - **Smoke:** translucent wisps.
   - **Compare:** `build/screenshots/new-look/00_concept_old_new.jpg`.
   - **New animations:** `use` and `give` arrive with this render.
+- 2026-10-10T20:00Z **Claude → @Operator:** Plan 004 (the point-and-click core) is
+  written and started under your "continue all slices" instruction. Slice 1,
+  the inventory core, is done: `ItemDef`, an `Inventory` autoload (add,
+  remove, hold, drop, combine), with the carried items kept in `GameState`.
