@@ -15,7 +15,7 @@ export interface LedgerEntry {
   inputTokens: number | null;
   outputTokens: number | null;
   costUsd: number;
-  costSource: "tokens" | "estimate";
+  costSource: "gateway" | "tokens" | "estimate";
 }
 
 /** Generation stops once a plan has spent this share of its budget. */

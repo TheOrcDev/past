@@ -1,0 +1,103 @@
+{
+  "id": "IMG-0004",
+  "title": "Unknown turnaround, without tendrils",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-10T08:12:10.901Z",
+      "model": "openai/gpt-image-2.5-flare",
+      "size": "3072x1024",
+      "quality": "medium",
+      "n": 2,
+      "background": "transparent",
+      "references": [
+        {
+          "path": "docs/reference/concept-04-city-triptych.png",
+          "sha256": "b51413dd0140255ba68eee0f42e10000c0a0ce301df2ad442ceeb781c5f22f96"
+        }
+      ],
+      "mask": null,
+      "prompt": "A character turnaround sheet for a 2D game, based on the shadow figure in the reference image. The character, Unknown, is a lean humanoid shadow: a pure black silhouette with a subtle grey rim light along its edges, small glowing white eyes, a smooth bald head. Draw him without any smoke or tendrils: only the clean body silhouette, so the proportions are easy to read.\n\nShow five full-body views in one row, left to right, evenly spaced, all at the same height and scale: front, three-quarter front, side view facing right, three-quarter back, back.\n\nNeutral A-pose: standing straight, arms held slightly away from the body, legs slightly apart.\n\nOrthographic view with no perspective distortion, no ground shadow and no scenery. Transparent background.\n\nThe same style as the reference: crisp silhouette edges and an ink-wash texture. No text, labels, watermark or border.",
+      "files": [
+        {
+          "file": "IMG-0004-v1.png",
+          "sha256": "063530e62a44b0773c557a3951e266cfd3dd088bd87945a7864e9034e26483d4",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0004-v2.png",
+          "sha256": "b0ae5cb31bac98e1c291e0a7d70553cd738f10aa8120ac579b606c4f7820d5b6",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 3420,
+        "outputTokens": 494
+      },
+      "costUsd": 0.040968,
+      "costSource": "gateway",
+      "warnings": [],
+      "providerMetadata": {
+        "openai": {
+          "images": [
+            {
+              "created": 1791619943,
+              "size": "3072x1024",
+              "quality": "medium",
+              "background": "transparent",
+              "outputFormat": "png",
+              "imageTokens": 1508,
+              "textTokens": 202
+            },
+            {
+              "created": 1791619943,
+              "size": "3072x1024",
+              "quality": "medium",
+              "background": "transparent",
+              "outputFormat": "png",
+              "imageTokens": 1508,
+              "textTokens": 202
+            }
+          ]
+        },
+        "gateway": {
+          "routing": {
+            "originalModelId": "openai/gpt-image-2.5-flare",
+            "resolvedProvider": "openai",
+            "fallbacksAvailable": [],
+            "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+            "canonicalSlug": "openai/gpt-image-2.5-flare",
+            "finalProvider": "openai",
+            "modelAttemptCount": 1,
+            "modelAttempts": [
+              {
+                "canonicalSlug": "openai/gpt-image-2.5-flare",
+                "success": true,
+                "providerAttemptCount": 1,
+                "providerAttempts": [
+                  {
+                    "provider": "openai",
+                    "credentialType": "system",
+                    "success": true,
+                    "startTime": 1791619931315,
+                    "endTime": 1791619944443,
+                    "statusCode": 200
+                  }
+                ]
+              }
+            ],
+            "totalProviderAttemptCount": 1
+          },
+          "cost": "0.040968",
+          "marketCost": "0.040968",
+          "surchargeCost": "0",
+          "gatewayCost": "0.040968",
+          "inferenceCost": "0.040968",
+          "inputInferenceCost": "0",
+          "outputInferenceCost": "0.040968",
+          "generationId": "gen_01M4JDX73BS038H1MSMT6DQH0N"
+        }
+      }
+    }
+  ]
+}

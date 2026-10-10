@@ -1,0 +1,103 @@
+{
+  "id": "IMG-0002",
+  "title": "Cathedral nave, now (A/B: Sunburst)",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-10T08:11:26.474Z",
+      "model": "openai/gpt-image-2.5-sunburst",
+      "size": "2560x1440",
+      "quality": "medium",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "docs/reference/concept-02-cathedral-now.png",
+          "sha256": "e533e3cfa4f1c2344e7fe5f86d49c06075f95e2e6095d42e9b726b15840db808"
+        }
+      ],
+      "mask": null,
+      "prompt": "Repaint this scene as an empty, playable background for a point-and-click adventure game, keeping its exact art style: a monochrome greyscale gothic dark-fantasy matte painting with an ink-wash texture, heavy volumetric fog between the depth planes, strong black silhouettes in the foreground and soft light shafts falling through the rose window.\n\nKeep the same ruined cathedral nave, the same camera and broadly the same composition: an eye-level camera with the horizon about halfway up the frame, the rose window and the altar at the back as landmarks, and the saint statue on its pedestal at the left.\n\nChange these things:\n- Remove the walking figure completely. There are no people, creatures or characters anywhere in the image.\n- Make the lower third of the frame a clear, walkable stone floor of cracked flagstones with shallow puddles, running from the left edge to the right edge, with rubble only at its edges.\n- Set that floor against pale fog, so a black silhouette standing on it reads clearly. The darkest blacks belong in the foreground framing at the sides and in the top corners, never behind the floor.\n- Give the saint statue a faint rim light so it reads as an object someone can look at.\n\nPure greyscale, no color at all. No text, no watermark, no border.",
+      "files": [
+        {
+          "file": "IMG-0002-v1.png",
+          "sha256": "1a705ecaa203eae52581e6af4b4814dd3928ed7aacc437bca47de964d4804774",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0002-v2.png",
+          "sha256": "8633daa132d0360dcc86bba6be573e75cb369d11d6f9efbe4cf8a47bf0555fd3",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 3578,
+        "outputTokens": 956
+      },
+      "costUsd": 0.055618,
+      "costSource": "gateway",
+      "warnings": [],
+      "providerMetadata": {
+        "openai": {
+          "images": [
+            {
+              "created": 1791619911,
+              "size": "2560x1440",
+              "quality": "medium",
+              "background": "opaque",
+              "outputFormat": "png",
+              "imageTokens": 1508,
+              "textTokens": 281
+            },
+            {
+              "created": 1791619911,
+              "size": "2560x1440",
+              "quality": "medium",
+              "background": "opaque",
+              "outputFormat": "png",
+              "imageTokens": 1508,
+              "textTokens": 281
+            }
+          ]
+        },
+        "gateway": {
+          "routing": {
+            "originalModelId": "openai/gpt-image-2.5-sunburst",
+            "resolvedProvider": "openai",
+            "fallbacksAvailable": [],
+            "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+            "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+            "finalProvider": "openai",
+            "modelAttemptCount": 1,
+            "modelAttempts": [
+              {
+                "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+                "success": true,
+                "providerAttemptCount": 1,
+                "providerAttempts": [
+                  {
+                    "provider": "openai",
+                    "credentialType": "system",
+                    "success": true,
+                    "startTime": 1791619886917,
+                    "endTime": 1791619913419,
+                    "statusCode": 200
+                  }
+                ]
+              }
+            ],
+            "totalProviderAttemptCount": 1
+          },
+          "cost": "0.055618",
+          "marketCost": "0.055618",
+          "surchargeCost": "0",
+          "gatewayCost": "0.055618",
+          "inferenceCost": "0.055618",
+          "inputInferenceCost": "0",
+          "outputInferenceCost": "0.055618",
+          "generationId": "gen_01M4JDVVR72HPEJA7RGRZQTZ94"
+        }
+      }
+    }
+  ]
+}

@@ -65,6 +65,22 @@ function nextVariant(dir: string, id: string): number {
   return numbers.length ? Math.max(...numbers) + 1 : 1;
 }
 
+/** The billed cost: the gateway's own figure when it reports one, else tokens × price, else an estimate. */
+export function callCost(
+  providerMetadata: unknown,
+  inputTokens: number | null,
+  outputTokens: number | null,
+  estimate: () => number,
+  pricing: Pricing,
+): { costUsd: number; costSource: LedgerEntry["costSource"] } {
+  const gatewayCost = Number((providerMetadata as { gateway?: { cost?: string } } | undefined)?.gateway?.cost);
+  if (Number.isFinite(gatewayCost) && gatewayCost > 0) return { costUsd: gatewayCost, costSource: "gateway" };
+  if (inputTokens !== null && outputTokens !== null) {
+    return { costUsd: inputTokens * pricing.inputUsdPerToken + outputTokens * pricing.outputUsdPerToken, costSource: "tokens" };
+  }
+  return { costUsd: estimate(), costSource: "estimate" };
+}
+
 export async function runRequest(request: ImageRequest, options: RunOptions): Promise<RunResult> {
   const { generation } = request;
   const now = (options.now ?? (() => new Date()))();
@@ -102,11 +118,9 @@ export async function runRequest(request: ImageRequest, options: RunOptions): Pr
 
   const inputTokens = result.usage?.inputTokens ?? null;
   const outputTokens = result.usage?.outputTokens ?? null;
-  const fromTokens = inputTokens !== null && outputTokens !== null;
-  const costUsd = fromTokens
-    ? inputTokens * options.pricing.inputUsdPerToken + outputTokens * options.pricing.outputUsdPerToken
-    : estimateCost(generation, options.pricing.outputUsdPerToken, options.pricing.inputUsdPerToken);
-  const costSource: LedgerEntry["costSource"] = fromTokens ? "tokens" : "estimate";
+  const { costUsd, costSource } = callCost(result.providerMetadata, inputTokens, outputTokens, () =>
+    estimateCost(generation, options.pricing.outputUsdPerToken, options.pricing.inputUsdPerToken),
+  options.pricing);
 
   receipt.rounds.push({
     round,

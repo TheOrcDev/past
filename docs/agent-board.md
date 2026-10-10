@@ -10,10 +10,10 @@ is gone.
 
 | ID | Title | Status | Operator approval | Plan |
 |---|---|---|---|---|
-| IMG-0001 | Cathedral nave, now (A/B: Flare) | open | required (area style key) | 002 |
-| IMG-0002 | Cathedral nave, now (A/B: Sunburst) | open | required (area style key) | 002 |
-| IMG-0003 | Unknown turnaround, with tendrils | open | required (model sheet) | 002 |
-| IMG-0004 | Unknown turnaround, without tendrils | open | required (model sheet) | 002 |
+| IMG-0001 | Cathedral nave, now (A/B: Flare) | delivered: v1 recommended | required (area style key) | 002 |
+| IMG-0002 | Cathedral nave, now (A/B: Sunburst) | delivered | required (area style key) | 002 |
+| IMG-0003 | Unknown turnaround, with tendrils | delivered: leaner revise suggested | required (model sheet) | 002 |
+| IMG-0004 | Unknown turnaround, without tendrils | delivered: leaner revise suggested | required (model sheet) | 002 |
 
 ## Open operator decisions
 
@@ -23,7 +23,7 @@ is gone.
 | 5 | Should people in flashbacks be glowing "memory figures"? (`game-design.md` §6) | 2026-10-09 | Story track |
 | 6 | An Apple Developer account for macOS signing and notarization: yes or no? | 2026-10-09 | First public desktop build |
 | 7 | Do you publish as an individual or as a company? This sets the ElevenLabs tier needed for music (`audio-pipeline.md` §2). | 2026-10-09 | Plan 003 |
-| 8 | Copy `AI_GATEWAY_API_KEY` from Videorc into `.env`. Agents are not allowed to read or write `.env` files. | 2026-10-10 | Plan 002, slice 1 |
+| 9 | Approve the cathedral style key (IMG-0001 v1 recommended) and decide whether Unknown's model sheet is accepted or gets a leaner revise round. Review sheets are in `art-source/work/review/`. | 2026-10-10 | Plan 002, slice 3 |
 
 ## Log
 
@@ -66,3 +66,11 @@ Append-only. Newest at the bottom. UTC.
   - The GPT image agent is dropped. The request, receipt and approval flow
     stays.
   - **Waiting on:** #8, copying the gateway key into `.env`.
+- 2026-10-10T08:14Z **Claude → @Operator:** The first image batch is done:
+  `IMG-0001` to `IMG-0004`, 8 images for $0.19 of the $50 budget.
+  - **Credentials:** the gateway runs on the Videorc project's Vercel OIDC token
+    (`decisions.md` #27). Its key is marked Sensitive and pulls empty.
+  - **A/B result:** Flare for new images, Sunburst for edits (#28, proposed).
+  - **Review sheets:** `art-source/work/review/`.
+  - **Waiting on (#9):** the cathedral style key (v1 recommended) and Unknown's
+    model sheet (a leaner revise is suggested).

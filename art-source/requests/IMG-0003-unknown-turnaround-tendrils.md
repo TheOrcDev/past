@@ -1,6 +1,6 @@
 # IMG-0003 — Unknown turnaround, with tendrils
 
-status: open
+status: delivered
 operator-approval: required
 plan: 002
 requested: 2026-10-10 by Claude for plan 002, slice 1
@@ -72,6 +72,7 @@ Written by `tools/images`. Files go to `art-source/raw/<ID>/`, unmodified, with
 
 | Round | Date (UTC) | Files | Model | Size / quality | Cost (USD) |
 |---|---|---|---|---|---|
+| 1 | 2026-10-10T08:11Z | IMG-0003-v1.png, IMG-0003-v2.png | openai/gpt-image-2.5-flare | 3072x1024 / medium | 0.041 |
 
 ## Review
 
@@ -79,3 +80,4 @@ Filled in by Claude and the operator.
 
 | Round | Date (UTC) | Verdict | Notes |
 |---|---|---|---|
+| 1 | 2026-10-10T08:13Z | Waiting for operator approval. | All five views are consistent across both variants, the alpha is clean and the eyes show only in the front views. The build is more muscular than concept 04's lean shadow, though v1 is the leaner of the two. Recommendation: one revise round for a leaner, wirier build, unless the operator likes this look. |

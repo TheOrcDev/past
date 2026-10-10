@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { readLedger } from "../src/ledger";
 import { parseRequest } from "../src/request";
-import { runRequest, type GenerateFn } from "../src/run-request";
+import { callCost, runRequest, type GenerateFn } from "../src/run-request";
 import { requestText } from "./fixtures";
 
 const PNG = new Uint8Array([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a, 1, 2, 3]);
@@ -39,6 +39,19 @@ beforeEach(() => {
 });
 
 afterEach(() => rmSync(root, { recursive: true, force: true }));
+
+describe("callCost", () => {
+  const pricing = { inputUsdPerToken: 5e-6, outputUsdPerToken: 30e-6 };
+
+  test("prefers the gateway's billed cost", () => {
+    expect(callCost({ gateway: { cost: "0.055618" } }, 3578, 956, () => 9, pricing)).toEqual({ costUsd: 0.055618, costSource: "gateway" });
+  });
+
+  test("falls back to tokens, then to the estimate", () => {
+    expect(callCost({}, 100, 4000, () => 9, pricing).costSource).toBe("tokens");
+    expect(callCost(undefined, null, null, () => 9, pricing)).toEqual({ costUsd: 9, costSource: "estimate" });
+  });
+});
 
 describe("runRequest", () => {
   test("text-to-image writes variants, receipt, ledger and the Delivery row", async () => {

@@ -1,6 +1,6 @@
 # IMG-0004 — Unknown turnaround, without tendrils
 
-status: open
+status: delivered
 operator-approval: required
 plan: 002
 requested: 2026-10-10 by Claude for plan 002, slice 1
@@ -73,6 +73,7 @@ Written by `tools/images`. Files go to `art-source/raw/<ID>/`, unmodified, with
 
 | Round | Date (UTC) | Files | Model | Size / quality | Cost (USD) |
 |---|---|---|---|---|---|
+| 1 | 2026-10-10T08:12Z | IMG-0004-v1.png, IMG-0004-v2.png | openai/gpt-image-2.5-flare | 3072x1024 / medium | 0.041 |
 
 ## Review
 
@@ -80,3 +81,4 @@ Filled in by Claude and the operator.
 
 | Round | Date (UTC) | Verdict | Notes |
 |---|---|---|---|
+| 1 | 2026-10-10T08:13Z | Waiting for operator approval. | Clean body silhouettes, usable for modeling. Same build note as IMG-0003: more muscular than the concept. Revise together with IMG-0003 if the operator wants him leaner. |

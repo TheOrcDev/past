@@ -3,6 +3,7 @@
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { generateImage } from "ai";
+import { credentialUsable, currentCredential, describeCredential } from "./src/credentials";
 import { checkBudget, estimateCost, readBudgets, readLedger } from "./src/ledger";
 import { budgetsPath, ledgerPath, rawDir, repoRoot, requestsDir } from "./src/paths";
 import { fetchPricing } from "./src/pricing";
@@ -35,8 +36,9 @@ try {
   console.log(budget.message);
   if (!budget.ok) process.exit(3);
   if (flag === "--dry-run") process.exit(0);
-  if (!process.env.AI_GATEWAY_API_KEY) {
-    console.error("AI_GATEWAY_API_KEY is not set. Run from the repository root with the key in .env (the operator adds it).");
+  const credential = currentCredential();
+  if (!credentialUsable(credential)) {
+    console.error(describeCredential(credential));
     process.exit(4);
   }
 
