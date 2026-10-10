@@ -15,6 +15,7 @@ REJECTED (one-line rationale).
 | [004](004-point-and-click-core.md) | Point-and-click core: verb coin, inventory, dialogue UI, saves, settings | M3 | L | 002 | IN PROGRESS: written 2026-10-10 on the operator's instruction to continue all slices |
 | 005 | Cinematic toolkit: flashbacks, reveals, cutscene runner, journal | M4 | L | 002, 004 | Not written |
 | 006 | Prologue vertical slice | M5 | XL | 003, 005, story track | Not written |
+| [007](007-the-grave.md) | The grave: start at Unknown's grave, close-up views | M5 (early) | M | 002, 004 | IN PROGRESS: operator request, 2026-10-10 |
 
 ## Dependency notes
 

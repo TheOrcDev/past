@@ -167,3 +167,12 @@ Append-only. Newest at the bottom. UTC.
 - 2026-10-10T22:30Z **Claude → @Operator:** Plan 004 slice 5 is done:
   dialogue choices. Responses appear as lines on a band of smoke, Unknown
   speaks the one you click, and used questions disappear.
+- 2026-10-10T21:00Z **Claude → @Operator:** Your grave opening has started as
+  plan 007.
+  - **Images:** IMG-0009 v1 (the grave room) and IMG-0010 v1 (the tombstone
+    close-up). The close-up keeps only the "U" of the name, with "I KNOW YOU
+    ARE HAPPY NOW." and "YOUR DOVE" below it. $0.11 from plan 002's image
+    budget.
+  - **Next:** the close-up system, the grave room, and the new start.
+  - **Token:** the gateway OIDC token was refreshed and is valid until
+    2026-10-11T08:20Z.

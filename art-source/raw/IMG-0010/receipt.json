@@ -1,0 +1,103 @@
+{
+  "id": "IMG-0010",
+  "title": "Close-up: Unknown's gravestone",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-10T20:22:54.962Z",
+      "model": "openai/gpt-image-2.5-flare",
+      "size": "2560x1440",
+      "quality": "medium",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0009/IMG-0009-v1.png",
+          "sha256": "be0e6249443af830ba43d309003853e8571c8f80fce259d77009fd052e5bc97c"
+        }
+      ],
+      "mask": null,
+      "prompt": "A close-up of the arched gravestone from the reference image, in exactly the same monochrome greyscale ink-wash gothic style: the stone's weathered face fills most of the frame, seen straight on, lit by cold moonlight from the upper left, with fog and dark twisted branches behind it and moss and dead grass at its foot. Keep its shape: the broken upper corner, the crack across the face, and the small worn dove carved at the top of the arch.\n\nCarved into the stone, in deep classic Roman capitals:\n- the name line is shattered: only its first letter, a capital U, survives clearly; everything after the U is chipped and broken away, with only splinters of letter strokes left, impossible to read;\n- below it, smaller and intact but worn, two lines:\nI KNOW YOU ARE HAPPY NOW.\nYOUR DOVE\n\nNo other text, dates or numbers. No people or figures. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0010-v1.png",
+          "sha256": "02d9ea52bb1555bc3ca89cf6db20bbb625ccfaf713a76f0182513b0dad39ec0a",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0010-v2.png",
+          "sha256": "a2425273641cdad08be57f808417d970fa0b3e3f5a912fefc61014a53de2c181",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 3446,
+        "outputTokens": 956
+      },
+      "costUsd": 0.054958,
+      "costSource": "gateway",
+      "warnings": [],
+      "providerMetadata": {
+        "openai": {
+          "images": [
+            {
+              "created": 1791663797,
+              "size": "2560x1440",
+              "quality": "medium",
+              "background": "opaque",
+              "outputFormat": "png",
+              "imageTokens": 1508,
+              "textTokens": 215
+            },
+            {
+              "created": 1791663797,
+              "size": "2560x1440",
+              "quality": "medium",
+              "background": "opaque",
+              "outputFormat": "png",
+              "imageTokens": 1508,
+              "textTokens": 215
+            }
+          ]
+        },
+        "gateway": {
+          "routing": {
+            "originalModelId": "openai/gpt-image-2.5-flare",
+            "resolvedProvider": "openai",
+            "fallbacksAvailable": [],
+            "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+            "canonicalSlug": "openai/gpt-image-2.5-flare",
+            "finalProvider": "openai",
+            "modelAttemptCount": 1,
+            "modelAttempts": [
+              {
+                "canonicalSlug": "openai/gpt-image-2.5-flare",
+                "success": true,
+                "providerAttemptCount": 1,
+                "providerAttempts": [
+                  {
+                    "provider": "openai",
+                    "credentialType": "system",
+                    "success": true,
+                    "startTime": 1791663775609,
+                    "endTime": 1791663799519,
+                    "statusCode": 200
+                  }
+                ]
+              }
+            ],
+            "totalProviderAttemptCount": 1
+          },
+          "cost": "0.054958",
+          "marketCost": "0.054958",
+          "surchargeCost": "0",
+          "gatewayCost": "0.054958",
+          "inferenceCost": "0.054958",
+          "inputInferenceCost": "0",
+          "outputInferenceCost": "0.054958",
+          "generationId": "gen_01M4KQQ7PYMCGV37J2Q76HJ4ZE"
+        }
+      }
+    }
+  ]
+}

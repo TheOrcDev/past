@@ -1,0 +1,103 @@
+{
+  "id": "IMG-0009",
+  "title": "Cemetery: Unknown's grave, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-10T20:21:48.771Z",
+      "model": "openai/gpt-image-2.5-flare",
+      "size": "2560x1440",
+      "quality": "medium",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0006/IMG-0006-v1.png",
+          "sha256": "3503a9275ce3a14b27c173c2320bf3c8fe5660c9c91917fe7ca42dca9fbf8b45"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a new scene in exactly the same monochrome greyscale ink-wash gothic style as the reference image: a quiet corner of the same old cemetery at night under a pale moon, seen from eye level, slightly above, for a point-and-click adventure game.\n\nComposition: in the middle ground, a little left of centre, a single weathered upright gravestone stands at the head of a sunken, overgrown grave. The stone is tall and arched, broken off at one upper corner, cracked across its face and half covered in moss; nothing on it can be read from this distance. A small worn dove is carved at the top of the arch. Around and behind it: leaning tombstones, a rusted iron fence, a stone angel with lowered head, a mausoleum, bare twisted trees, and far away the cathedral city's spires dissolving into fog.\n\nThe lower third of the image is open, walkable ground: a cracked flagstone path enters from the left edge, passes in front of the grave and leaves at the right edge towards the distant city, with damp earth and low dead grass on either side. That ground is lit by pale moonlight with drifting fog behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0009-v1.png",
+          "sha256": "be0e6249443af830ba43d309003853e8571c8f80fce259d77009fd052e5bc97c",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0009-v2.png",
+          "sha256": "3ce635affaa4a6bd8660b4142f596b5b549a5a0cd19e1dcebc8e36cf806c6c28",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 3658,
+        "outputTokens": 956
+      },
+      "costUsd": 0.056078,
+      "costSource": "gateway",
+      "warnings": [],
+      "providerMetadata": {
+        "openai": {
+          "images": [
+            {
+              "created": 1791663732,
+              "size": "2560x1440",
+              "quality": "medium",
+              "background": "opaque",
+              "outputFormat": "png",
+              "imageTokens": 1518,
+              "textTokens": 311
+            },
+            {
+              "created": 1791663732,
+              "size": "2560x1440",
+              "quality": "medium",
+              "background": "opaque",
+              "outputFormat": "png",
+              "imageTokens": 1518,
+              "textTokens": 311
+            }
+          ]
+        },
+        "gateway": {
+          "routing": {
+            "originalModelId": "openai/gpt-image-2.5-flare",
+            "resolvedProvider": "openai",
+            "fallbacksAvailable": [],
+            "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+            "canonicalSlug": "openai/gpt-image-2.5-flare",
+            "finalProvider": "openai",
+            "modelAttemptCount": 1,
+            "modelAttempts": [
+              {
+                "canonicalSlug": "openai/gpt-image-2.5-flare",
+                "success": true,
+                "providerAttemptCount": 1,
+                "providerAttempts": [
+                  {
+                    "provider": "openai",
+                    "credentialType": "system",
+                    "success": true,
+                    "startTime": 1791663709624,
+                    "endTime": 1791663734924,
+                    "statusCode": 200
+                  }
+                ]
+              }
+            ],
+            "totalProviderAttemptCount": 1
+          },
+          "cost": "0.056078",
+          "marketCost": "0.056078",
+          "surchargeCost": "0",
+          "gatewayCost": "0.056078",
+          "inferenceCost": "0.056078",
+          "inputInferenceCost": "0",
+          "outputInferenceCost": "0.056078",
+          "generationId": "gen_01M4KQN70ZGE1AH08ZC26KWJA4"
+        }
+      }
+    }
+  ]
+}
