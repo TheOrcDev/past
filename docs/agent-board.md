@@ -230,4 +230,12 @@ Append-only. Newest at the bottom. UTC.
     Esc also works. A stray click no longer skips it.
   - **Fullscreen:** the desktop game now starts fullscreen by default.
   - **Next:** slice 11, the greybox puzzle chain.
+- 2026-10-10T22:41Z **Claude → @Operator:** Plan 004 slice 11 is done: a greybox puzzle
+  chain in three plain grey rooms, played start to finish by a test and in the
+  browser.
+  - **What it covers:** every verb, combining the rag and the oil, a dialogue
+    choice, and a flashback that shows the word the gate needs.
+  - **Inventory fix:** building it exposed that two items could never be
+    combined, and that is fixed.
+  - **Next:** slice 12, measuring and recording.
 

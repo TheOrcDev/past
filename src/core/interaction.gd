@@ -58,8 +58,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	var mouse := event as InputEventMouse
 	if mouse == null or Rooms.current == null:
 		return
-	# In a close-up, hotspots live in screen space; in a room, in world space.
-	var world := mouse.position if Closeups.current else get_viewport().get_canvas_transform().affine_inverse() * mouse.position
+	var world := world_at(mouse.position)
 	if event is InputEventMouseMotion:
 		if coin.is_open:
 			coin.point_at(mouse.position)
@@ -131,15 +130,24 @@ func _process(delta: float) -> void:
 			coin.open(_press_screen)
 
 
-## A right click: drops the held item, backs out of a close-up, or opens and
-## closes the inventory.
+## A right click: closes the inventory (dropping a held item), drops the held
+## item, backs out of a close-up, or opens the inventory.
 func right_click() -> void:
-	if Inventory.held:
+	if inventory.is_open:
+		inventory.close()
+		Inventory.drop()
+	elif Inventory.held:
 		Inventory.drop()
 	elif Closeups.current:
 		Closeups.close()
 	else:
-		inventory.toggle()
+		inventory.open()
+
+
+## The world point under the screen point `screen`: room pixels, or in a
+## close-up its own screen pixels.
+func world_at(screen: Vector2) -> Vector2:
+	return screen if Closeups.current else get_viewport().get_canvas_transform().affine_inverse() * screen
 
 
 ## A left click at a world position: use the hotspot there, or walk.

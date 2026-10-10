@@ -57,6 +57,15 @@ func choose(texts: PackedStringArray) -> int:
 	return index
 
 
+## The index of the choice reading `text`, or -1 (tests and scripted runs).
+func index_of(text: String) -> int:
+	var lines := _list.get_children().filter(func(line: Node) -> bool: return not line.is_queued_for_deletion())
+	for i in lines.size():
+		if (lines[i] as Label).text == text:
+			return i
+	return -1
+
+
 ## Picks choice `index` as a click would (tests, accessibility hooks).
 func pick(index: int) -> void:
 	if is_open:

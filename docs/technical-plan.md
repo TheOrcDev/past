@@ -87,11 +87,12 @@ past/
 ```
 
 - Scripts that Godot itself runs live in `addons/past_tools/`, not in `tools/`.
-  Godot does not see `tools/`, because it is ignored. There are six so far:
+  Godot does not see `tools/`, because it is ignored. There are seven so far:
   - `new_room.gd` scaffolds a room from an optional JSON spec, which lives in
     `art-source/work/rooms/<room>/room_spec.json`;
   - `new_closeup.gd` builds a close-up view (§6.12) from
     `art-source/work/closeups/<id>/closeup_spec.json`;
+  - `new_item.gd` makes inventory items (§5.5) from a JSON list;
   - `scaffold_core.gd` creates `main.tscn` and Unknown's scene
     (`--replace=unknown` rebuilds it);
   - `import_sprites.gd` builds a `CharacterSprites` resource from a sprite
@@ -221,9 +222,15 @@ The `Interaction` autoload handles all input. These are the controls in
 ### 5.5 Inventory
 
 - **Items:** an `ItemDef` resource holds an id, a name key, an icon, a look-line
-  id and its combinations.
+  id and its combinations. `addons/past_tools/new_item.gd` makes them from a
+  JSON list, at `content/items/<id>/<id>.tres`.
 - **The `Inventory` autoload:** `add`, `remove`, `has`, the `held` item, and
   signals for the UI.
+- **The band** (`InventoryPanel`): a left-click picks an item onto the cursor
+  and the band stays open. A left-click on another item then combines the two,
+  and on the held item puts it back. A left click outside the band closes it
+  and uses the held item on whatever is under the cursor. A right-click closes
+  it and drops the item.
 
 ### 5.6 Dialogue: Dialogue Manager 4
 
@@ -621,6 +628,8 @@ Not needed. The browser gets only the prologue demo, so it fits in one `.pck`
     - `menus` shoots the top bar, Reveal hotspots and each page;
     - `skip` holds the Skip button during the opening and checks that it
       fast-forwards to the grave;
+    - `greybox` plays the greybox puzzle chain to the end
+      (`content/greybox/playthrough.gd`, which the GUT test also runs);
     - `perf` prints frame times and memory;
     - `banding` captures the fog with grain on and off;
     - `tour` plays the slice for `--write-movie`. Godot's movie writer takes

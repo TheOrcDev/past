@@ -7,6 +7,8 @@ extends Node
 
 const TIMEOUT_SECONDS := 60.0
 const LONG_TIMEOUT_SECONDS := 150.0
+## Scenarios that need the long timeout without the opening.
+const LONG_RUNS: Array[String] = ["greybox"]
 ## Scenarios that start from the opening instead of straight in the first room.
 const WITH_OPENING: Array[String] = ["cemetery_reveal", "grave", "grave_clip", "perf", "tour", "screenshots", "reduced_motion", "skip"]
 
@@ -46,7 +48,7 @@ func _ready() -> void:
 	Menus.enabled = false
 	_out_dir = _args.get("qa-out", OS.get_user_data_dir().path_join("qa"))
 	DirAccess.make_dir_recursive_absolute(_out_dir)
-	var timeout := LONG_TIMEOUT_SECONDS if _scenario in WITH_OPENING else TIMEOUT_SECONDS
+	var timeout := LONG_TIMEOUT_SECONDS if _scenario in WITH_OPENING or _scenario in LONG_RUNS else TIMEOUT_SECONDS
 	get_tree().create_timer(timeout, true, false, true).timeout.connect(_finish.bind("timeout"))
 	_run.call_deferred(_scenario)
 
@@ -109,6 +111,8 @@ func _run(scenario: String) -> void:
 			await _menus()
 		"skip":
 			await _skip()
+		"greybox":
+			await _greybox()
 		_:
 			_failures.append("unknown scenario %s" % scenario)
 	_finish("done")
@@ -511,6 +515,13 @@ func _skip() -> void:
 	_check(Time.get_ticks_msec() - started < 4000, "the opening fast-forwards to the grave")
 	await _settle()
 	await _shot("02_at_the_grave")
+
+
+## The greybox puzzle chain (plan 004 slice 11), played to the end.
+func _greybox() -> void:
+	await _enter(&"cemetery_grave")
+	GameState.reset()
+	await GreyboxPlaythrough.new(get_tree(), _check, _shot).run()
 
 
 ## The fog gradients with grain on and off, in both eras, for judging banding.

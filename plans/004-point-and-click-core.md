@@ -294,4 +294,32 @@ About 4–6 working sessions.
   - **Checks:** the opening's tests cover a full hold, a short press and Esc;
     93 GUT tests pass. A `skip` QA scenario passes on desktop and in the
     browser.
+- **2026-10-11, slice 11:** the greybox puzzle chain.
+  - **Rooms:** three, drawn in code as flat value studies by
+    `art-source/work/greybox/build.py`, so nothing was generated or paid for.
+    They are the gatehouse, the chapel (with its past) and the courtyard
+    beyond the gate, with real walk areas, hotspots and exits. They aren't
+    linked from the prologue.
+  - **The chain:**
+    1. Look at the rusted gate, take the rag (Use, through the verb coin) and
+       ask the gatekeeper (Talk) about the word.
+    2. In the chapel, take the oil and combine it with the rag.
+    3. Touch the altar. The flashback shows its burned carving whole:
+       "MERCY".
+    4. Back at the gate, oil the hinges and say the word, a choice that only
+       appears once the past has shown it.
+    5. Open the gate and walk through.
+  - **Items:** rag, oil and oiled rag, made by the new `new_item.gd` scaffold
+    with drawn icons.
+  - **Inventory fix found by the chain:** picking an item used to close the
+    band, and the right-click that reopened it dropped the item, so two items
+    could never be combined. Now:
+    - picking keeps the band open, and a click on a second item combines;
+    - a left click outside uses the held item on whatever is under it;
+    - a right-click closes the band and drops the item.
+  - **Playthrough:** `content/greybox/playthrough.gd` drives the chain along
+    the player's mouse paths: clicks, the verb coin, inventory slots, choices
+    and exits. The GUT test and the `greybox` QA scenario both run it. It
+    passes in the editor and in the browser build.
+  - **Checks:** 94 GUT tests pass.
 

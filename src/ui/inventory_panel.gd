@@ -2,10 +2,13 @@ class_name InventoryPanel
 extends CanvasLayer
 ## The inventory overlay (game-design.md §8–9): a band of Unknown's smoke along
 ## the bottom of the screen with the carried items suspended in it.
-## - Left-click an item to pick it up on the cursor; with one already held,
-##   left-click another to combine them.
+## - Left-click an item to pick it up on the cursor; the band stays open, so a
+##   left-click on another item combines the two, and on the held one puts it
+##   back.
 ## - Right-click an item to examine it: a close-up and its look line.
-## - Right-click empty space or click outside the band to close.
+## - A left click outside the band closes it, and a held item goes on to
+##   whatever is under the cursor. A right click there closes it and drops the
+##   item.
 
 signal examined(item: ItemDef)
 
@@ -142,9 +145,10 @@ func _on_slot_input(event: InputEvent, item: ItemDef) -> void:
 			if Inventory.combine(first, item.id) == &"":
 				close()
 				await Say.fallback(&"combine")
+		elif Inventory.held:
+			Inventory.drop()
 		else:
 			Inventory.hold(item.id)
-			close()
 	elif click.button_index == MOUSE_BUTTON_RIGHT:
 		_examine(item)
 
@@ -163,9 +167,14 @@ func _examine(item: ItemDef) -> void:
 
 func _on_backdrop_input(event: InputEvent) -> void:
 	var click := event as InputEventMouseButton
-	if click and click.pressed:
-		get_viewport().set_input_as_handled()
-		close()
+	if click == null or not click.pressed:
+		return
+	get_viewport().set_input_as_handled()
+	close()
+	if click.button_index == MOUSE_BUTTON_RIGHT:
+		Inventory.drop()
+	elif click.button_index == MOUSE_BUTTON_LEFT and Inventory.held:
+		Interaction.click_at(Interaction.world_at(click.position))
 
 
 static func _smoke_gradient() -> Texture2D:
