@@ -8,7 +8,7 @@ extends Node
 const TIMEOUT_SECONDS := 60.0
 const LONG_TIMEOUT_SECONDS := 150.0
 ## Scenarios that start from the opening instead of straight in the first room.
-const WITH_OPENING: Array[String] = ["cemetery_reveal", "grave", "grave_clip", "perf", "tour", "screenshots", "reduced_motion"]
+const WITH_OPENING: Array[String] = ["cemetery_reveal", "grave", "grave_clip", "perf", "tour", "screenshots", "reduced_motion", "skip"]
 
 var _out_dir := ""
 var _scenario := ""
@@ -42,6 +42,7 @@ func _ready() -> void:
 	Saves.directory = "user://qa-saves"
 	Settings.path = "user://qa-settings.cfg"
 	Settings.reset()
+	Settings.fullscreen = false
 	Menus.enabled = false
 	_out_dir = _args.get("qa-out", OS.get_user_data_dir().path_join("qa"))
 	DirAccess.make_dir_recursive_absolute(_out_dir)
@@ -106,6 +107,8 @@ func _run(scenario: String) -> void:
 			await _reduced_motion()
 		"menus":
 			await _menus()
+		"skip":
+			await _skip()
 		_:
 			_failures.append("unknown scenario %s" % scenario)
 	_finish("done")
@@ -489,6 +492,25 @@ func _menus() -> void:
 		await get_tree().create_timer(0.3).timeout
 		await _shot(page[1])
 		Menus.screen.close()
+
+
+## Skipping the opening (plan 004 slice 10): the Skip button shows, fills as it
+## is held, and the opening fast-forwards to the grave.
+func _skip() -> void:
+	var cutscene: Node = null
+	while cutscene == null:
+		await get_tree().process_frame
+		cutscene = get_tree().current_scene.get_node_or_null("CemeteryReveal")
+	await get_tree().create_timer(2.0).timeout
+	var button := cutscene.get("skip_button") as SkipButton
+	button.press()
+	await get_tree().create_timer(SkipButton.HOLD_SECONDS * 0.6).timeout
+	await _shot("01_skip_held")
+	var started := Time.get_ticks_msec()
+	await Rooms.room_changed
+	_check(Time.get_ticks_msec() - started < 4000, "the opening fast-forwards to the grave")
+	await _settle()
+	await _shot("02_at_the_grave")
 
 
 ## The fog gradients with grain on and off, in both eras, for judging banding.

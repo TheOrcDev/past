@@ -112,8 +112,8 @@ past/
 | Viewport | 1920×1080, stretch mode `canvas_items`, aspect `keep` (letterbox) |
 | Renderer | `gl_compatibility` for every rendering method, including mobile and web |
 | 2D texture filter | Linear. Mipmaps only where a layer is drawn well below its size (§8). |
-| Window | Desktop starts in borderless fullscreen, with a windowed option in Settings |
-| Input | Mouse buttons only. A `skip` action is bound to Esc as an optional extra; the mouse does everything. |
+| Window | An exported desktop game starts in borderless fullscreen, with a windowed option in Settings. The editor, tests, QA runs and the browser start in a window. |
+| Input | Mouse buttons only. Esc (the built-in `ui_cancel`) is an optional extra: it skips the opening and closes pages and close-ups. The mouse does everything. |
 | Audio buses | Master → Voice, Music, Ambience, SFX, UI. No bus effects in the design (§7). The bus layout is created in plan 003. |
 | Localization | English source. Dialogue Manager exports POT templates when translation starts. |
 | Navigation | `navigation/world/map_use_async_iterations` and `region_use_async_iterations` are off. With the 4.7 defaults (on), a fresh room's walk area only becomes usable about 10 physics frames after it loads, and era switches would lag. Our walk areas are tiny, so synchronous updates are cheap. |
@@ -619,6 +619,8 @@ Not needed. The browser gets only the prologue demo, so it fits in one `.pck`
     - `reduced_motion` plays the opening and the gravestone's close-up with
       Reduce camera motion on;
     - `menus` shoots the top bar, Reveal hotspots and each page;
+    - `skip` holds the Skip button during the opening and checks that it
+      fast-forwards to the grave;
     - `perf` prints frame times and memory;
     - `banding` captures the fog with grain on and off;
     - `tour` plays the slice for `--write-movie`. Godot's movie writer takes

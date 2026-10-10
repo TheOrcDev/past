@@ -103,14 +103,23 @@ func load_settings() -> void:
 	var found := file.load(path) == OK
 	_loading = true
 	for key: StringName in DEFAULTS:
-		set(key, file.get_value(SECTION, key, DEFAULTS[key]) if found else DEFAULTS[key])
+		set(key, file.get_value(SECTION, key, default_of(key)) if found else default_of(key))
 	_loading = false
 
 
 ## Every setting back to its default, applied and saved.
 func reset() -> void:
 	for key: StringName in DEFAULTS:
-		set(key, DEFAULTS[key])
+		set(key, default_of(key))
+
+
+## A setting's value before the player changes it. An exported desktop game
+## starts fullscreen (technical-plan.md §4); the editor, tests and the browser
+## start in a window.
+static func default_of(key: StringName) -> Variant:
+	if key == &"fullscreen":
+		return OS.has_feature("template") and not OS.has_feature("web")
+	return DEFAULTS[key]
 
 
 func save() -> void:

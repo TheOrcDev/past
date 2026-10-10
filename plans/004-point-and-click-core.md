@@ -282,4 +282,16 @@ About 4–6 working sessions.
   - **Checks:** four integration tests; 92 GUT tests pass. The `grave` QA
     scenario now asks for a hint after the stone and gets the cathedral one,
     on desktop and in the browser.
+- **2026-10-11, slice 10:** skipping.
+  - **`SkipButton`** (`src/ui`): moving the mouse shows "Skip" in the opening's
+    lower letterbox bar for 2.5 s. Holding it fills a ring and fast-forwards
+    after 0.6 s, using the opening's existing fast-forward. Esc skips at once.
+  - **No accidental skips:** a plain click no longer skips. The button reads
+    unhandled input, so QA runs, which swallow the real mouse, never show it.
+  - **Fullscreen default:** an exported desktop game now starts fullscreen, as
+    `technical-plan.md` §4 says. The editor, tests, QA runs and the browser
+    start in a window.
+  - **Checks:** the opening's tests cover a full hold, a short press and Esc;
+    93 GUT tests pass. A `skip` QA scenario passes on desktop and in the
+    browser.
 

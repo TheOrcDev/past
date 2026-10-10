@@ -78,13 +78,32 @@ func test_the_opening_plays_to_black_and_finishes() -> void:
 	assert_almost_eq(title.modulate.a, 0.0, 0.01, "title gone at the end")
 
 
-func test_a_click_fast_forwards_the_opening() -> void:
+func test_holding_skip_fast_forwards_the_opening() -> void:
 	watch_signals(_cutscene)
 	var started := Time.get_ticks_msec()
 	_cutscene.play()
 	await wait_process_frames(2)
-	_cutscene.skip()
+	_cutscene.skip_button.press()
 	await wait_for_signal(_cutscene.finished, 5.0)
 	assert_signal_emitted(_cutscene, "finished")
 	assert_lt(Time.get_ticks_msec() - started, 4000, "skipped well under its 14 s")
 	assert_eq(_reveal.progress, 1.0, "a skipped opening ends where a watched one does")
+
+
+func test_a_short_press_does_not_skip_but_esc_does() -> void:
+	_cutscene.play()
+	await wait_process_frames(2)
+	var skip := _cutscene.skip_button as SkipButton
+	skip.press()
+	await wait_seconds(SkipButton.HOLD_SECONDS * 0.5)
+	skip.release()
+	await wait_seconds(SkipButton.HOLD_SECONDS)
+	assert_false(_cutscene.get("_skipping"), "let go too soon")
+	var esc := InputEventAction.new()
+	esc.action = &"ui_cancel"
+	esc.pressed = true
+	Input.parse_input_event(esc)
+	await wait_process_frames(2)
+	assert_true(_cutscene.get("_skipping"), "Esc skips")
+	await wait_for_signal(_cutscene.finished, 5.0)
+

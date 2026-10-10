@@ -225,4 +225,9 @@ Append-only. Newest at the bottom. UTC.
   thinks aloud about what to do next, more directly each time you ask. The
   hint lines are placeholders for the grave → cathedral → statue chain, until
   the prologue script exists.
+- 2026-10-10T22:23Z **Claude → @Operator:** Plan 004 slice 10 is done: skipping.
+  - **The opening:** move the mouse to show Skip, then hold it for a moment.
+    Esc also works. A stray click no longer skips it.
+  - **Fullscreen:** the desktop game now starts fullscreen by default.
+  - **Next:** slice 11, the greybox puzzle chain.
 

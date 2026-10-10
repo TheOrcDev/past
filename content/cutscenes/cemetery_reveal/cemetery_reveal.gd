@@ -2,8 +2,9 @@ extends Node2D
 ## The prologue's opening (plan 002, slice 6). The shot opens close on Unknown on
 ## the cemetery path, then the camera pulls back across the zoom stack to the
 ## whole vista and the title card shows. It ends on black, ready for the first
-## room. A click fast-forwards it, so a skipped opening ends the same way. With
-## Reduce camera motion the pull-back becomes one crossfade to the vista.
+## room. Holding the Skip button (or Esc) fast-forwards it, so a skipped opening
+## ends the same way. With Reduce camera motion the pull-back becomes one
+## crossfade to the vista.
 
 signal finished
 
@@ -21,6 +22,7 @@ const CROSSFADE := 1.6
 @onready var title: Control = $Title/Card
 
 var letterbox: Letterbox
+var skip_button: SkipButton
 var playing := false
 
 var _fade: ColorRect
@@ -41,6 +43,10 @@ func _ready() -> void:
 	fade_layer.add_child(_fade)
 	title.modulate.a = 0.0
 	unknown.play_animation(&"idle_r", false)
+	skip_button = SkipButton.new()
+	skip_button.name = "SkipButton"
+	skip_button.skipped.connect(skip)
+	add_child(skip_button)
 
 
 ## Plays the whole opening and returns on black.
@@ -112,12 +118,6 @@ func _snapshot() -> TextureRect:
 	still.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	layer.add_child(still)
 	return still
-
-
-func _unhandled_input(event: InputEvent) -> void:
-	if playing and event is InputEventMouseButton and event.pressed:
-		get_viewport().set_input_as_handled()
-		skip()
 
 
 func _fade_to(alpha: float, seconds: float) -> void:
