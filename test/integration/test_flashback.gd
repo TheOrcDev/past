@@ -74,3 +74,15 @@ func test_a_fade_waits_for_the_warm_up_while_black() -> void:
 	Rooms.while_black.erase(step)
 	assert_eq(seen, [&"cathedral_nave"], "steps run once with the new room")
 	assert_true(Flashback.warm_up in Rooms.while_black, "the flashback warms up on every faded room change")
+
+
+func test_unknown_eyes_flare_as_the_vision_opens_and_settle_after() -> void:
+	var body := Rooms.player.get_node("Body") as UnknownBody
+	var flared := [false]
+	var watch := func(_origin: Vector2) -> void: flared[0] = body.eye_state == UnknownBody.EyeState.FLARE
+	Flashback.vision_started.connect(watch)
+	await Flashback.vision(Rooms.current, Vector2(200, 500), func() -> void: await get_tree().create_timer(0.3).timeout)
+	Flashback.vision_started.disconnect(watch)
+	assert_true(flared[0], "his eyes flare as the past opens")
+	await wait_seconds(1.5)
+	assert_eq(body.eye_state, UnknownBody.EyeState.IDLE, "and settle once it has closed")

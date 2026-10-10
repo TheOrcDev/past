@@ -37,6 +37,8 @@ var _blink_in := 3.0
 var _blink_time := -1.0
 var _speaking := false
 var _time := 0.0
+var _flare_id := 0
+var _before_flare := EyeState.IDLE
 
 
 func _ready() -> void:
@@ -75,6 +77,20 @@ func set_speaking(on: bool) -> void:
 
 func blink() -> void:
 	_blink_time = 0.0
+
+
+## Flares the eyes for `seconds`, then returns them to the state they had.
+func flare(seconds := 1.2) -> void:
+	_flare_id += 1
+	if eye_state != EyeState.FLARE:
+		_before_flare = eye_state
+	eye_state = EyeState.FLARE
+	get_tree().create_timer(seconds).timeout.connect(_end_flare.bind(_flare_id))
+
+
+func _end_flare(id: int) -> void:
+	if id == _flare_id:
+		eye_state = _before_flare
 
 
 func _process(delta: float) -> void:

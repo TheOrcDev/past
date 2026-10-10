@@ -111,3 +111,6 @@ Append-only. Newest at the bottom. UTC.
     cut-out fallback is not needed.
   - **After sign-off:** plan 004 (verb coin, inventory, dialogue UI, saves,
     settings) and the story interviews.
+- 2026-10-10T11:00Z **Claude → @Operator:** Loose end from plan 002: Unknown's
+  eyes now flare as a flashback opens and again as it closes
+  (`UnknownBody.flare`, called by `Flashback`).

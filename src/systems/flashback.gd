@@ -101,6 +101,7 @@ func warm_up(room: Room) -> void:
 func vision(room: Room, origin: Vector2, during := Callable(), hold_seconds := 6.0) -> void:
 	playing = true
 	Interaction.locked += 1
+	_flare_eyes(1.6)
 	vision_started.emit(origin)
 	await _transition(room, origin, true)
 	room.set_era(&"then")
@@ -110,11 +111,19 @@ func vision(room: Room, origin: Vector2, during := Callable(), hold_seconds := 6
 	else:
 		await get_tree().create_timer(hold_seconds).timeout
 	await _end_drift(camera)
+	_flare_eyes(1.0)
 	await _transition(room, origin, false)
 	room.set_era(&"now")
 	Interaction.locked -= 1
 	playing = false
 	vision_finished.emit(origin)
+
+
+## Unknown's eyes flare as a vision opens and as it closes.
+func _flare_eyes(seconds: float) -> void:
+	var body := Rooms.player.get_node_or_null("Body") if Rooms.player else null
+	if body and body.has_method(&"flare"):
+		body.flare(seconds)
 
 
 func _transition(room: Room, origin: Vector2, into_past: bool) -> void:
