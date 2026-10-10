@@ -127,3 +127,6 @@ Append-only. Newest at the bottom. UTC.
 - 2026-10-10T12:00Z **Claude → @Operator:** Unknown fidgets when left alone. He
   shifts his weight and looks down, studies his own hand, or looks around, every
   9–18 s of idling, but never during a cutscene or a line (`IdleFidgets`).
+- 2026-10-10T12:15Z **Claude → @Operator:** Unknown can pick things up:
+  `pickup_low` (a crouch to the floor) and `pickup_high` (an overhead reach onto
+  his toes), each with a `grab` event at the moment his hand closes.

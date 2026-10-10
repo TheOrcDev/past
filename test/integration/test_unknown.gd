@@ -23,7 +23,7 @@ func after_each() -> void:
 
 func test_every_animation_has_mask_frames_and_anchors() -> void:
 	var sprites := load(SPRITES) as CharacterSprites
-	for base in ["idle", "walk", "look_around", "talk_a", "talk_b", "fidget_a", "fidget_b"]:
+	for base in ["idle", "walk", "look_around", "talk_a", "talk_b", "fidget_a", "fidget_b", "pickup_low", "pickup_high"]:
 		for dir in ["r", "u", "d"]:
 			var anim := StringName("%s_%s" % [base, dir])
 			assert_true(sprites.frames.has_animation(anim), "%s exists" % anim)
@@ -244,4 +244,19 @@ func test_idle_fidgets_play_now_and_then_but_not_while_busy() -> void:
 	await wait_seconds(0.6)
 	Interaction.locked -= 1
 	assert_true(String(_body.sprite.animation).begins_with("idle_"), "no fidgets while a cutscene or line holds the input")
+
+
+func test_pickups_grab_once_then_return_to_idle() -> void:
+	Engine.time_scale = 8.0
+	for base in [&"pickup_low", &"pickup_high"]:
+		var grabs := []
+		var listen := func(_anim: StringName, event: StringName) -> void:
+			if event == &"grab":
+				grabs.append(base)
+		_body.animation_event.connect(listen)
+		_unknown.face(AnimNames.Dir.R)
+		await _unknown.play(base)
+		_body.animation_event.disconnect(listen)
+		assert_eq(grabs.size(), 1, "%s grabs exactly once" % base)
+		assert_eq(_body.sprite.animation, &"idle_r", "back to idle after %s" % base)
 

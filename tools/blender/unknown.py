@@ -419,6 +419,74 @@ def fidget_b(p: Poser) -> None:
         p.key(frame)
 
 
+LEG_LENGTH = 0.85  # hip to ankle, metres
+
+
+def _squat(p: Poser, degrees: float, knee: str = "") -> None:
+    """Bends both legs so the feet stay planted: thighs forward, shins back twice
+    as far, feet level, and the hips drop by how much the legs fold."""
+    for side in (".L", ".R"):
+        p.pose("thigh" + side, swing=degrees)
+        p.pose("shin" + side, swing=-2 * degrees)
+        p.pose("foot" + side, swing=degrees)
+    p.lift("hips", -LEG_LENGTH * (1 - math.cos(math.radians(degrees))))
+
+
+def pickup_low(p: Poser) -> None:
+    """Two seconds: squats and leans to take something off the floor with his
+    right hand (the grab is at frame 22), then rises with it to his waist."""
+    keys = {
+        # frame: (squat, spine, chest, head, right upper arm, right forearm, right hand, left upper arm)
+        0: (0, 1, 0, -1, 0, 6, 0, 0),
+        10: (40, 28, 14, 8, 38, 14, 0, 14),
+        20: (58, 38, 20, 14, 52, 8, -8, 20),
+        26: (58, 38, 20, 14, 52, 12, 18, 20),
+        36: (24, 14, 6, 4, 22, 62, 10, 8),
+        48: (0, 1, 0, -1, 0, 6, 0, 0),
+    }
+    for frame, (squat, spine, chest, head, arm, forearm, hand, left) in keys.items():
+        base_pose(p)
+        _squat(p, squat)
+        p.pose("spine", swing=spine)
+        p.pose("chest", swing=chest)
+        p.pose("neck", swing=head * 0.5)
+        p.pose("head", swing=head)
+        p.pose("upper_arm.R", swing=arm)
+        p.pose("forearm.R", swing=forearm)
+        p.pose("hand.R", swing=hand)
+        p.pose("upper_arm.L", swing=left, tilt=4)
+        p.pose("forearm.L", swing=10 + left * 0.5)
+        p.key(frame)
+
+
+def pickup_high(p: Poser) -> None:
+    """Two seconds: reaches up above his head with his right hand, rising onto
+    his toes (the grab is at frame 18), and brings it down to his chest."""
+    keys = {
+        # frame: (right upper arm, right forearm, right hand, head, spine, toes)
+        0: (0, 6, 0, -1, 1, 0),
+        10: (110, 20, -10, -10, -2, 0.5),
+        18: (148, 10, 15, -16, -5, 1),
+        24: (146, 14, 25, -14, -4, 1),
+        34: (40, 80, 10, -2, 0, 0.2),
+        48: (0, 6, 0, -1, 1, 0),
+    }
+    for frame, (arm, forearm, hand, head, spine, toes) in keys.items():
+        base_pose(p)
+        p.pose("spine", swing=spine)
+        p.pose("chest", swing=spine * 0.5)
+        p.pose("head", swing=head)
+        p.pose("neck", swing=head * 0.4)
+        p.pose("upper_arm.R", swing=arm, tilt=-4)
+        p.pose("forearm.R", swing=forearm)
+        p.pose("hand.R", swing=hand)
+        p.pose("upper_arm.L", swing=4 * toes, tilt=-3 * toes)
+        for side in (".L", ".R"):
+            p.pose("foot" + side, swing=-14 * toes)
+        p.lift("hips", 0.03 * toes)
+        p.key(frame)
+
+
 ANIMATIONS = {
     "walk": (walk, CYCLE, True),
     "idle": (idle, 48, True),
@@ -427,11 +495,15 @@ ANIMATIONS = {
     "talk_b": (talk_b, 48, True),
     "fidget_a": (fidget_a, 48, False),
     "fidget_b": (fidget_b, 72, False),
+    "pickup_low": (pickup_low, 48, False),
+    "pickup_high": (pickup_high, 48, False),
 }
 # Moments the game reacts to, in 24 fps frames: footsteps on each heel strike,
 # the instant a hand closes on something.
 EVENTS = {
     "walk": {0: "step", 12: "step"},
+    "pickup_low": {22: "grab"},
+    "pickup_high": {18: "grab"},
 }
 DIRECTIONS = {"d": 0.0, "r": 90.0, "u": 180.0}
 
