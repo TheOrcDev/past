@@ -1,6 +1,6 @@
 # IMG-0002 — Cathedral nave, now (A/B: Sunburst)
 
-status: delivered
+status: rejected
 operator-approval: required
 plan: 002
 requested: 2026-10-10 by Claude for plan 002, slice 1
@@ -86,3 +86,4 @@ Filled in by Claude and the operator.
 | Round | Date (UTC) | Verdict | Notes |
 |---|---|---|---|
 | 1 | 2026-10-10T08:13Z | Waiting for operator approval. Not recommended as the style key. | It stays closer to concept 02's composition, keeping the pews and mid-ground rubble, which gives a busier, less playable floor (v1's floor band averages 64/255). That supports using Sunburst for precise edits (then-versions, clean plates) and Flare for new images. |
+| 1 | 2026-10-10T08:44Z | not selected | This was the A/B reference. The operator picked IMG-0001 v1. |

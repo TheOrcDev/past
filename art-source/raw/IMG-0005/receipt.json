@@ -1,0 +1,107 @@
+{
+  "id": "IMG-0005",
+  "title": "Cathedral nave, then",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-10T08:45:14.279Z",
+      "model": "openai/gpt-image-2.5-sunburst",
+      "size": "2560x1440",
+      "quality": "medium",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0001/IMG-0001-v1.png",
+          "sha256": "1ea2d102a8e59a2eead4d5e9457dc883a20072c8cffefccf5eecc3dd10ee6634"
+        },
+        {
+          "path": "docs/reference/concept-05-cathedral-then.png",
+          "sha256": "87b6cb98487885b551c2172cb7c1423e29fdbe379e35519fd703a8066e2a66b6"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit the first image: show this exact cathedral nave as it looked in its golden age, before it fell into ruin. Keep the composition, camera, perspective and every architectural element exactly where it is. The pillars, arches, rose window, altar, the statue on its pedestal at the left, the chandeliers, the banners and the line of the floor must all line up with the first image, so the two pictures can be crossfaded.\n\nRestore it to full color:\n- the stone is clean white and cream marble with gold ornament;\n- the stained-glass windows glow in rich, saturated colors, and the rose window blazes with color;\n- deep blue banners embroidered with gold hang whole;\n- the chandeliers hold lit candles, and white lilies stand in tall golden vases;\n- the floor is polished marble that reflects the warm light;\n- warm golden sunlight streams through the windows in visible rays, and the air is clear and bright, with no fog.\n\nUse the second image only as a guide for the colors, materials and mood, not for the composition.\n\nNo people, figures or creatures. No text, watermark or border.",
+      "files": [
+        {
+          "file": "IMG-0005-v1.png",
+          "sha256": "b295e3f673be5761b43d9212dbed15be85cc28e969aa8444e2b93fc89e847d80",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0005-v2.png",
+          "sha256": "93dc63420125e94f75426e813116be1e4f68f3dd4e320e9bb3e301ad58e237b8",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 6544,
+        "outputTokens": 956
+      },
+      "costUsd": 0.079496,
+      "costSource": "gateway",
+      "warnings": [],
+      "providerMetadata": {
+        "openai": {
+          "images": [
+            {
+              "created": 1791621943,
+              "size": "2560x1440",
+              "quality": "medium",
+              "background": "opaque",
+              "outputFormat": "png",
+              "imageTokens": 3016,
+              "textTokens": 256
+            },
+            {
+              "created": 1791621943,
+              "size": "2560x1440",
+              "quality": "medium",
+              "background": "opaque",
+              "outputFormat": "png",
+              "imageTokens": 3016,
+              "textTokens": 256
+            }
+          ]
+        },
+        "gateway": {
+          "routing": {
+            "originalModelId": "openai/gpt-image-2.5-sunburst",
+            "resolvedProvider": "openai",
+            "fallbacksAvailable": [],
+            "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+            "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+            "finalProvider": "openai",
+            "modelAttemptCount": 1,
+            "modelAttempts": [
+              {
+                "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+                "success": true,
+                "providerAttemptCount": 1,
+                "providerAttempts": [
+                  {
+                    "provider": "openai",
+                    "credentialType": "system",
+                    "success": true,
+                    "startTime": 1791621915362,
+                    "endTime": 1791621946515,
+                    "statusCode": 200
+                  }
+                ]
+              }
+            ],
+            "totalProviderAttemptCount": 1
+          },
+          "cost": "0.079496",
+          "marketCost": "0.079496",
+          "surchargeCost": "0",
+          "gatewayCost": "0.079496",
+          "inferenceCost": "0.079496",
+          "inputInferenceCost": "0",
+          "outputInferenceCost": "0.079496",
+          "generationId": "gen_01M4JFSR8RTA64K6042SDMK8WH"
+        }
+      }
+    }
+  ]
+}

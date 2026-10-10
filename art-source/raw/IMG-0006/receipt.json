@@ -1,0 +1,103 @@
+{
+  "id": "IMG-0006",
+  "title": "Cemetery vista, ring 0 (outer)",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-10T08:47:09.248Z",
+      "model": "openai/gpt-image-2.5-sunburst",
+      "size": "3072x1072",
+      "quality": "medium",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "docs/reference/concept-01-cemetery-vista.png",
+          "sha256": "0e7de18a6fbf8c8bb85c78139398d6432a5d0c6f62ba6b4520f83d815dd483f0"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit this image: remove the walking shadow figure on the path at the left completely, and paint in the path, fog and graves where it stood, so that nothing of the figure remains.\n\nKeep everything else exactly as it is: the composition, the cemetery, the angel statues, the mausoleums, the fences, the cathedral city with its spires, the bridges, the moon and the fog. Keep the same monochrome greyscale ink-wash style. Do not crop or widen anything.\n\nNo people, figures or creatures anywhere. No text, watermark or border.",
+      "files": [
+        {
+          "file": "IMG-0006-v1.png",
+          "sha256": "3503a9275ce3a14b27c173c2320bf3c8fe5660c9c91917fe7ca42dca9fbf8b45",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0006-v2.png",
+          "sha256": "2e5206a1e465f560415ee48611af91f0abbf0ef3998b1079e45f78e72cf4acce",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 3300,
+        "outputTokens": 509
+      },
+      "costUsd": 0.040878,
+      "costSource": "gateway",
+      "warnings": [],
+      "providerMetadata": {
+        "openai": {
+          "images": [
+            {
+              "created": 1791622049,
+              "size": "3072x1072",
+              "quality": "medium",
+              "background": "opaque",
+              "outputFormat": "png",
+              "imageTokens": 1518,
+              "textTokens": 132
+            },
+            {
+              "created": 1791622049,
+              "size": "3072x1072",
+              "quality": "medium",
+              "background": "opaque",
+              "outputFormat": "png",
+              "imageTokens": 1518,
+              "textTokens": 132
+            }
+          ]
+        },
+        "gateway": {
+          "routing": {
+            "originalModelId": "openai/gpt-image-2.5-sunburst",
+            "resolvedProvider": "openai",
+            "fallbacksAvailable": [],
+            "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+            "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+            "finalProvider": "openai",
+            "modelAttemptCount": 1,
+            "modelAttempts": [
+              {
+                "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+                "success": true,
+                "providerAttemptCount": 1,
+                "providerAttempts": [
+                  {
+                    "provider": "openai",
+                    "credentialType": "system",
+                    "success": true,
+                    "startTime": 1791622029762,
+                    "endTime": 1791622051160,
+                    "statusCode": 200
+                  }
+                ]
+              }
+            ],
+            "totalProviderAttemptCount": 1
+          },
+          "cost": "0.040878",
+          "marketCost": "0.040878",
+          "surchargeCost": "0",
+          "gatewayCost": "0.040878",
+          "inferenceCost": "0.040878",
+          "inputInferenceCost": "0",
+          "outputInferenceCost": "0.040878",
+          "generationId": "gen_01M4JFX8CG1BXN6TMKCQS95WQ2"
+        }
+      }
+    }
+  ]
+}

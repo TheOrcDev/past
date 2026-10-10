@@ -10,10 +10,12 @@ is gone.
 
 | ID | Title | Status | Operator approval | Plan |
 |---|---|---|---|---|
-| IMG-0001 | Cathedral nave, now (A/B: Flare) | delivered: v1 recommended | required (area style key) | 002 |
-| IMG-0002 | Cathedral nave, now (A/B: Sunburst) | delivered | required (area style key) | 002 |
-| IMG-0003 | Unknown turnaround, with tendrils | delivered: leaner revise suggested | required (model sheet) | 002 |
-| IMG-0004 | Unknown turnaround, without tendrils | delivered: leaner revise suggested | required (model sheet) | 002 |
+| IMG-0001 | Cathedral nave, now (A/B: Flare) | **accepted: v1** (style key) | approved | 002 |
+| IMG-0002 | Cathedral nave, now (A/B: Sunburst) | rejected (A/B reference) | — | 002 |
+| IMG-0003 | Unknown turnaround, with tendrils | delivered round 2: v3 recommended | required (model sheet) | 002 |
+| IMG-0004 | Unknown turnaround, without tendrils | delivered round 2: v4 recommended | required (model sheet) | 002 |
+| IMG-0005 | Cathedral nave, then | delivered: v1 recommended (p90 1.75 px) | required | 002 |
+| IMG-0006 | Cemetery vista, ring 0 (outer) | delivered: v1 recommended | required (vista look) | 002 |
 
 ## Open operator decisions
 
@@ -23,7 +25,7 @@ is gone.
 | 5 | Should people in flashbacks be glowing "memory figures"? (`game-design.md` §6) | 2026-10-09 | Story track |
 | 6 | An Apple Developer account for macOS signing and notarization: yes or no? | 2026-10-09 | First public desktop build |
 | 7 | Do you publish as an individual or as a company? This sets the ElevenLabs tier needed for music (`audio-pipeline.md` §2). | 2026-10-09 | Plan 003 |
-| 9 | Approve the cathedral style key (IMG-0001 v1 recommended) and decide whether Unknown's model sheet is accepted or gets a leaner revise round. Review sheets are in `art-source/work/review/`. | 2026-10-10 | Plan 002, slice 3 |
+| 9 | Approve the cathedral then image (IMG-0005), Unknown's model sheet (IMG-0003 round 2 and IMG-0004 round 2) and the cemetery ring 0 (IMG-0006). The style key IMG-0001 v1 is already approved. Review sheets are in `art-source/work/review/`. | 2026-10-10 | Plan 002, slices 3–6 |
 
 ## Log
 

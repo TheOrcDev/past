@@ -70,5 +70,77 @@
     "outputTokens": 494,
     "costUsd": 0.040968,
     "costSource": "gateway"
+  },
+  {
+    "id": "IMG-0003",
+    "round": 2,
+    "plan": "002",
+    "model": "openai/gpt-image-2.5-flare",
+    "size": "3072x1024",
+    "quality": "medium",
+    "n": 2,
+    "date": "2026-10-10T08:44:20.544Z",
+    "files": [
+      "IMG-0003-v3.png",
+      "IMG-0003-v4.png"
+    ],
+    "inputTokens": 3496,
+    "outputTokens": 494,
+    "costUsd": 0.041348,
+    "costSource": "gateway"
+  },
+  {
+    "id": "IMG-0004",
+    "round": 2,
+    "plan": "002",
+    "model": "openai/gpt-image-2.5-flare",
+    "size": "3072x1024",
+    "quality": "medium",
+    "n": 2,
+    "date": "2026-10-10T08:44:36.103Z",
+    "files": [
+      "IMG-0004-v3.png",
+      "IMG-0004-v4.png"
+    ],
+    "inputTokens": 3494,
+    "outputTokens": 494,
+    "costUsd": 0.041338,
+    "costSource": "gateway"
+  },
+  {
+    "id": "IMG-0005",
+    "round": 1,
+    "plan": "002",
+    "model": "openai/gpt-image-2.5-sunburst",
+    "size": "2560x1440",
+    "quality": "medium",
+    "n": 2,
+    "date": "2026-10-10T08:45:14.279Z",
+    "files": [
+      "IMG-0005-v1.png",
+      "IMG-0005-v2.png"
+    ],
+    "inputTokens": 6544,
+    "outputTokens": 956,
+    "costUsd": 0.079496,
+    "costSource": "gateway"
+  },
+  {
+    "id": "IMG-0006",
+    "round": 1,
+    "plan": "002",
+    "model": "openai/gpt-image-2.5-sunburst",
+    "size": "3072x1072",
+    "quality": "medium",
+    "n": 2,
+    "date": "2026-10-10T08:47:09.248Z",
+    "files": [
+      "IMG-0006-v1.png",
+      "IMG-0006-v2.png"
+    ],
+    "inputTokens": 3300,
+    "outputTokens": 509,
+    "costUsd": 0.040878,
+    "costSource": "gateway"
   }
 ]

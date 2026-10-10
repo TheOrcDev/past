@@ -36,7 +36,7 @@ without tendrils, for modeling the body's proportions.
 The tool sends this text block verbatim.
 
 ```text
-A character turnaround sheet for a 2D game, based on the shadow figure in the reference image. The character, Unknown, is a lean humanoid shadow: a pure black silhouette with a subtle grey rim light along its edges, small glowing white eyes, a smooth bald head, and long smoke-like tendrils streaming from the shoulders and upper back like a torn cloak.
+A character turnaround sheet for a 2D game, based on the shadow figure in the reference image. The character, Unknown, is a thin, wiry humanoid shadow, almost gaunt: long limbs, narrow shoulders, a slim waist and almost no visible muscle definition, so he reads as a thin shadow rather than an athlete. He is a pure black silhouette with a subtle grey rim light along his edges, small glowing white eyes, a smooth bald head, and long smoke-like tendrils streaming from the shoulders and upper back like a torn cloak.
 
 Show five full-body views in one row, left to right, evenly spaced, all at the same height and scale: front, three-quarter front, side view facing right, three-quarter back, back.
 
@@ -73,6 +73,7 @@ Written by `tools/images`. Files go to `art-source/raw/<ID>/`, unmodified, with
 | Round | Date (UTC) | Files | Model | Size / quality | Cost (USD) |
 |---|---|---|---|---|---|
 | 1 | 2026-10-10T08:11Z | IMG-0003-v1.png, IMG-0003-v2.png | openai/gpt-image-2.5-flare | 3072x1024 / medium | 0.041 |
+| 2 | 2026-10-10T08:44Z | IMG-0003-v3.png, IMG-0003-v4.png | openai/gpt-image-2.5-flare | 3072x1024 / medium | 0.041 |
 
 ## Review
 
@@ -81,3 +82,5 @@ Filled in by Claude and the operator.
 | Round | Date (UTC) | Verdict | Notes |
 |---|---|---|---|
 | 1 | 2026-10-10T08:13Z | Waiting for operator approval. | All five views are consistent across both variants, the alpha is clean and the eyes show only in the front views. The build is more muscular than concept 04's lean shadow, though v1 is the leaner of the two. Recommendation: one revise round for a leaner, wirier build, unless the operator likes this look. |
+| 1 | 2026-10-10T08:44Z | **revise** | Operator: make him leaner. Round 2 asks for a wiry, gaunt build with long limbs, narrow shoulders and almost no muscle definition. |
+| 2 | 2026-10-10T08:48Z | Waiting for operator approval. Claude recommends **v3**. | Both are wiry and long-limbed, with consistent views and clean alpha. v3 has thinner, wispier tendrils, so the body stays readable; v4's smoke is denser and more cloak-like. |

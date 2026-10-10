@@ -1,6 +1,6 @@
 # IMG-0001 — Cathedral nave, now (A/B: Flare)
 
-status: delivered
+status: accepted
 operator-approval: required
 plan: 002
 requested: 2026-10-10 by Claude for plan 002, slice 1
@@ -86,3 +86,4 @@ Filled in by Claude and the operator.
 | Round | Date (UTC) | Verdict | Notes |
 |---|---|---|---|
 | 1 | 2026-10-10T08:13Z | Waiting for operator approval. Claude recommends **v1** as the cathedral style key. | Both variants pass the checks. Zoomed in: no figures. Clear walkable floor across the bottom; the band behind the head averages 93/255 luminance and the floor 82/255. The statue is rim-lit at the left, and the altar and rose window are intact. v1 has the most open floor and the palest fog band. Saturation is 4%; `grade` will make it pure grey. |
+| 1 | 2026-10-10T08:44Z | **accepted: v1** | The operator approved v1 as the cathedral area's style key, copied to `art-source/style/cathedral-nave-now-style-key.png`. |

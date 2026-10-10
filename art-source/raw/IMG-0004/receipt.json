@@ -98,6 +98,103 @@
           "generationId": "gen_01M4JDX73BS038H1MSMT6DQH0N"
         }
       }
+    },
+    {
+      "round": 2,
+      "date": "2026-10-10T08:44:36.103Z",
+      "model": "openai/gpt-image-2.5-flare",
+      "size": "3072x1024",
+      "quality": "medium",
+      "n": 2,
+      "background": "transparent",
+      "references": [
+        {
+          "path": "docs/reference/concept-04-city-triptych.png",
+          "sha256": "b51413dd0140255ba68eee0f42e10000c0a0ce301df2ad442ceeb781c5f22f96"
+        }
+      ],
+      "mask": null,
+      "prompt": "A character turnaround sheet for a 2D game, based on the shadow figure in the reference image. The character, Unknown, is a thin, wiry humanoid shadow, almost gaunt: long limbs, narrow shoulders, a slim waist and almost no visible muscle definition, so he reads as a thin shadow rather than an athlete. He is a pure black silhouette with a subtle grey rim light along his edges, small glowing white eyes, a smooth bald head. Draw him without any smoke or tendrils: only the clean body silhouette, so the proportions are easy to read.\n\nShow five full-body views in one row, left to right, evenly spaced, all at the same height and scale: front, three-quarter front, side view facing right, three-quarter back, back.\n\nNeutral A-pose: standing straight, arms held slightly away from the body, legs slightly apart.\n\nOrthographic view with no perspective distortion, no ground shadow and no scenery. Transparent background.\n\nThe same style as the reference: crisp silhouette edges and an ink-wash texture. No text, labels, watermark or border.",
+      "files": [
+        {
+          "file": "IMG-0004-v3.png",
+          "sha256": "37edc824eb7a001c54417a182649e0a03a821ae09f0f02b17693c78116d47294",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0004-v4.png",
+          "sha256": "9bafd2aefd0764f4f779a21f972906be04b5b9128ada170b20708c085f1e6e8c",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 3494,
+        "outputTokens": 494
+      },
+      "costUsd": 0.041338,
+      "costSource": "gateway",
+      "warnings": [],
+      "providerMetadata": {
+        "openai": {
+          "images": [
+            {
+              "created": 1791621888,
+              "size": "3072x1024",
+              "quality": "medium",
+              "background": "transparent",
+              "outputFormat": "png",
+              "imageTokens": 1508,
+              "textTokens": 239
+            },
+            {
+              "created": 1791621888,
+              "size": "3072x1024",
+              "quality": "medium",
+              "background": "transparent",
+              "outputFormat": "png",
+              "imageTokens": 1508,
+              "textTokens": 239
+            }
+          ]
+        },
+        "gateway": {
+          "routing": {
+            "originalModelId": "openai/gpt-image-2.5-flare",
+            "resolvedProvider": "openai",
+            "fallbacksAvailable": [],
+            "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+            "canonicalSlug": "openai/gpt-image-2.5-flare",
+            "finalProvider": "openai",
+            "modelAttemptCount": 1,
+            "modelAttempts": [
+              {
+                "canonicalSlug": "openai/gpt-image-2.5-flare",
+                "success": true,
+                "providerAttemptCount": 1,
+                "providerAttempts": [
+                  {
+                    "provider": "openai",
+                    "credentialType": "system",
+                    "success": true,
+                    "startTime": 1791621876615,
+                    "endTime": 1791621890069,
+                    "statusCode": 200
+                  }
+                ]
+              }
+            ],
+            "totalProviderAttemptCount": 1
+          },
+          "cost": "0.041338",
+          "marketCost": "0.041338",
+          "surchargeCost": "0",
+          "gatewayCost": "0.041338",
+          "inferenceCost": "0.041338",
+          "inputInferenceCost": "0",
+          "outputInferenceCost": "0.041338",
+          "generationId": "gen_01M4JFRJT8ER09GXWE1EGE560W"
+        }
+      }
     }
   ]
 }

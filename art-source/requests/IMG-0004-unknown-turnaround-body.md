@@ -36,7 +36,7 @@ IMG-0003 is the same sheet with tendrils.
 The tool sends this text block verbatim.
 
 ```text
-A character turnaround sheet for a 2D game, based on the shadow figure in the reference image. The character, Unknown, is a lean humanoid shadow: a pure black silhouette with a subtle grey rim light along its edges, small glowing white eyes, a smooth bald head. Draw him without any smoke or tendrils: only the clean body silhouette, so the proportions are easy to read.
+A character turnaround sheet for a 2D game, based on the shadow figure in the reference image. The character, Unknown, is a thin, wiry humanoid shadow, almost gaunt: long limbs, narrow shoulders, a slim waist and almost no visible muscle definition, so he reads as a thin shadow rather than an athlete. He is a pure black silhouette with a subtle grey rim light along his edges, small glowing white eyes, a smooth bald head. Draw him without any smoke or tendrils: only the clean body silhouette, so the proportions are easy to read.
 
 Show five full-body views in one row, left to right, evenly spaced, all at the same height and scale: front, three-quarter front, side view facing right, three-quarter back, back.
 
@@ -74,6 +74,7 @@ Written by `tools/images`. Files go to `art-source/raw/<ID>/`, unmodified, with
 | Round | Date (UTC) | Files | Model | Size / quality | Cost (USD) |
 |---|---|---|---|---|---|
 | 1 | 2026-10-10T08:12Z | IMG-0004-v1.png, IMG-0004-v2.png | openai/gpt-image-2.5-flare | 3072x1024 / medium | 0.041 |
+| 2 | 2026-10-10T08:44Z | IMG-0004-v3.png, IMG-0004-v4.png | openai/gpt-image-2.5-flare | 3072x1024 / medium | 0.041 |
 
 ## Review
 
@@ -82,3 +83,5 @@ Filled in by Claude and the operator.
 | Round | Date (UTC) | Verdict | Notes |
 |---|---|---|---|
 | 1 | 2026-10-10T08:13Z | Waiting for operator approval. | Clean body silhouettes, usable for modeling. Same build note as IMG-0003: more muscular than the concept. Revise together with IMG-0003 if the operator wants him leaner. |
+| 1 | 2026-10-10T08:44Z | **revise** | Operator: make him leaner. Round 2 asks for a wiry, gaunt build with long limbs, narrow shoulders and almost no muscle definition. |
+| 2 | 2026-10-10T08:48Z | Waiting for operator approval. Claude recommends **v4**; v3 is rejected. | v4 is a clean, lean body with consistent views, good for modeling. v3 added a tattered loincloth that wasn't asked for. |
