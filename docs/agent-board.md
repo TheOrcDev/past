@@ -238,4 +238,12 @@ Append-only. Newest at the bottom. UTC.
   - **Inventory fix:** building it exposed that two items could never be
     combined, and that is fixed.
   - **Next:** slice 12, measuring and recording.
+- 2026-10-10T22:56Z **Claude → @Operator:** Plan 004 slice 12 is half done.
+  - **macOS app:** every scripted scenario passes in a fresh export, and it
+    holds 120 fps at 1080p with 222 MiB of video memory
+    (`docs/qa/004/README.md`).
+  - **Fixed:** the fullscreen default no longer overrides a window given on
+    the command line.
+  - **Paused:** the browser frame times and the chain recording wait until
+    you're off the Mac.
 

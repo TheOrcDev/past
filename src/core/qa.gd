@@ -43,8 +43,7 @@ func _ready() -> void:
 	# default settings whatever the player chose.
 	Saves.directory = "user://qa-saves"
 	Settings.path = "user://qa-settings.cfg"
-	Settings.reset()
-	Settings.fullscreen = false
+	Settings.reset({&"fullscreen": false})
 	Menus.enabled = false
 	_out_dir = _args.get("qa-out", OS.get_user_data_dir().path_join("qa"))
 	DirAccess.make_dir_recursive_absolute(_out_dir)

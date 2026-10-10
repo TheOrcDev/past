@@ -107,10 +107,11 @@ func load_settings() -> void:
 	_loading = false
 
 
-## Every setting back to its default, applied and saved.
-func reset() -> void:
+## Every setting back to its default, applied and saved. `overrides` replaces
+## some defaults, so a scripted run can keep its window.
+func reset(overrides := {}) -> void:
 	for key: StringName in DEFAULTS:
-		set(key, default_of(key))
+		set(key, overrides.get(key, default_of(key)))
 
 
 ## A setting's value before the player changes it. An exported desktop game
@@ -128,6 +129,18 @@ func save() -> void:
 	for key: StringName in DEFAULTS:
 		file.set_value(SECTION, key, get(key))
 	file.save(path)
+
+
+## Whether the command line asked for a window of its own (a size or a mode),
+## or runs a QA scenario.
+static func _window_given() -> bool:
+	for arg in OS.get_cmdline_args():
+		if arg in ["--resolution", "--windowed", "-w", "--fullscreen", "-f", "--maximized", "-m", "--position"]:
+			return true
+	for arg in OS.get_cmdline_user_args():
+		if arg.begins_with("--qa"):
+			return true
+	return false
 
 
 func _apply_volumes() -> void:
@@ -148,8 +161,10 @@ func _apply(key: StringName) -> void:
 		&"reduce_flashing":
 			Flashback.reduce_flashing = reduce_flashing
 		&"fullscreen":
-			# A browser only goes fullscreen from a click, never at start-up.
-			if DisplayServer.get_name() != "headless" and not (_loading and OS.has_feature("web")):
+			# A browser only goes fullscreen from a click. At start-up, a window
+			# asked for on the command line, or a scripted run's, is kept.
+			var keep := _loading and (OS.has_feature("web") or _window_given())
+			if DisplayServer.get_name() != "headless" and not keep:
 				DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN if fullscreen else DisplayServer.WINDOW_MODE_WINDOWED)
 		&"render_1080p":
 			get_tree().root.content_scale_mode = Window.CONTENT_SCALE_MODE_VIEWPORT if render_1080p else Window.CONTENT_SCALE_MODE_CANVAS_ITEMS

@@ -113,7 +113,7 @@ past/
 | Viewport | 1920×1080, stretch mode `canvas_items`, aspect `keep` (letterbox) |
 | Renderer | `gl_compatibility` for every rendering method, including mobile and web |
 | 2D texture filter | Linear. Mipmaps only where a layer is drawn well below its size (§8). |
-| Window | An exported desktop game starts in borderless fullscreen, with a windowed option in Settings. The editor, tests, QA runs and the browser start in a window. |
+| Window | An exported desktop game starts in borderless fullscreen, with a windowed option in Settings. The editor, tests, QA runs and the browser start in a window, and so does any run given a window size or mode on the command line (`--resolution`, `--windowed`). |
 | Input | Mouse buttons only. Esc (the built-in `ui_cancel`) is an optional extra: it skips the opening and closes pages and close-ups. The mouse does everything. |
 | Audio buses | Master → Voice, Music, Ambience, SFX, UI. No bus effects in the design (§7). The bus layout is created in plan 003. |
 | Localization | English source. Dialogue Manager exports POT templates when translation starts. |
