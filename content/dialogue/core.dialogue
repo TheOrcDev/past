@@ -18,3 +18,18 @@
 % Unknown: It has nothing to say. Neither do I, really. [ID:CORE_FALLBACK_TALK_1]
 
 => END
+
+~ fallback_item
+
+% Unknown: They don't belong together. Not yet, anyway. [ID:CORE_FALLBACK_ITEM_1]
+% Unknown: I could try. It would be embarrassing for both of us. [ID:CORE_FALLBACK_ITEM_2]
+
+=> END
+
+~ fallback_combine
+
+% Unknown: These two have nothing to say to each other. [ID:CORE_FALLBACK_COMBINE_1]
+% Unknown: No. Some things are better left apart. [ID:CORE_FALLBACK_COMBINE_2]
+
+=> END
+

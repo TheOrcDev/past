@@ -151,3 +151,6 @@ Append-only. Newest at the bottom. UTC.
     plays as a flashback opens, with the eye flare.
   - **Memory:** 36 animation sets hold 99.2 MiB of texture data (Godot's
     monitor reads 132.4 MiB for the same load).
+- 2026-10-10T20:45Z **Claude → @Operator:** Plan 004 slice 2 is done: the
+  inventory overlay. A right-click opens a band of smoke holding his items; pick
+  one onto the cursor, combine two, examine one, or use it on a hotspot.

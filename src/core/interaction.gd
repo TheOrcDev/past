@@ -1,13 +1,15 @@
 extends Node
-## Mouse input for play: hover labels, walking and running hotspot verbs
-## (docs/game-design.md §8). The verb coin and inventory arrive in plan 004;
-## for now a click on a hotspot runs its default verb.
+## Mouse input for play: hover labels, walking, running hotspot verbs and the
+## inventory (docs/game-design.md §8).
+## - A left click on a hotspot runs its default verb, or uses the held item on it.
+## - A right click opens the inventory, or drops the held item.
 
 signal interacted(hotspot: Hotspot, verb: StringName)
 
 ## Above zero, play input is ignored (transitions, dialogue, cutscenes).
 var locked := 0
 var hovered: Hotspot
+var inventory: InventoryPanel
 
 var _label: Label
 
@@ -24,6 +26,10 @@ func _ready() -> void:
 	_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_label.visible = false
 	layer.add_child(_label)
+	inventory = InventoryPanel.new()
+	inventory.name = "InventoryPanel"
+	add_child(inventory)
+	Inventory.held_changed.connect(_on_held_changed)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -37,6 +43,18 @@ func _unhandled_input(event: InputEvent) -> void:
 		if locked == 0:
 			get_viewport().set_input_as_handled()
 			click_at(world)
+	elif event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
+		if locked == 0:
+			get_viewport().set_input_as_handled()
+			right_click()
+
+
+## A right click: drops the held item, or opens and closes the inventory.
+func right_click() -> void:
+	if Inventory.held:
+		Inventory.drop()
+	else:
+		inventory.toggle()
 
 
 ## A left click at a world position: use the hotspot there, or walk.
@@ -44,7 +62,9 @@ func click_at(world: Vector2) -> void:
 	if locked > 0 or Rooms.current == null or Rooms.player == null:
 		return
 	var hotspot := hotspot_at(world)
-	if hotspot:
+	if hotspot and Inventory.held:
+		await use_item(hotspot, Inventory.held)
+	elif hotspot:
 		await use(hotspot, hotspot.default_verb)
 	else:
 		Rooms.player.walk_to(world)
@@ -66,6 +86,24 @@ func use(hotspot: Hotspot, verb: StringName) -> void:
 	interacted.emit(hotspot, verb)
 
 
+## Walks the player to the hotspot and uses `item` on it: the hotspot's
+## `on_item(item)` or the room's `item_<id>(item)`, or a fallback line.
+func use_item(hotspot: Hotspot, item: ItemDef) -> void:
+	var player := Rooms.player
+	var arrived: bool = await player.walk_to(hotspot.walk_point())
+	if not arrived:
+		return
+	player.face_point(hotspot.focus_point())
+	Inventory.drop()
+	locked += 1
+	_label.visible = false
+	var handled: bool = await hotspot.handle(&"item", [item])
+	if not handled:
+		await Say.fallback(&"item")
+	locked -= 1
+	interacted.emit(hotspot, &"item")
+
+
 func hotspot_at(world: Vector2) -> Hotspot:
 	if Rooms.current == null:
 		return null
@@ -84,8 +122,22 @@ func _set_hovered(hotspot: Hotspot, screen: Vector2) -> void:
 	if not _label.visible:
 		return
 	_label.text = hotspot.display_name
+	if Inventory.held:
+		_label.text = "Use %s on %s" % [Inventory.held.display_name, hotspot.display_name]
 	_label.reset_size()
 	var view := get_viewport().get_visible_rect().size
 	_label.position = Vector2(
 		clampf(screen.x - _label.size.x / 2.0, 10.0, view.x - _label.size.x - 10.0),
 		clampf(screen.y - _label.size.y - 40.0, 10.0, view.y - _label.size.y - 10.0))
+
+
+## The held item rides on the cursor.
+func _on_held_changed(item: ItemDef) -> void:
+	if item and item.icon:
+		var image := item.icon.get_image()
+		if image:
+			image.resize(64, 64)
+			Input.set_custom_mouse_cursor(ImageTexture.create_from_image(image), Input.CURSOR_ARROW, Vector2(8, 8))
+			return
+	Input.set_custom_mouse_cursor(null)
+

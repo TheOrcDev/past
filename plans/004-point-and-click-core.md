@@ -159,3 +159,16 @@ About 4–6 working sessions.
   and the `Inventory` autoload: `add`, `remove`, `has`, `items`, `hold`,
   `drop`, and `combine`, which works either way round. Carried ids live in
   `GameState.inventory`. Three unit tests.
+- **2026-10-10, slice 2:** the inventory overlay (`src/ui/inventory_panel.gd`).
+  - **Opening:** a right-click opens a band of smoke along the bottom with the
+    carried items. Another right-click, or a click outside, closes it.
+  - **Holding:** left-clicking an item puts it on the cursor (custom cursor), and
+    a right-click drops it.
+  - **Combining:** left-clicking a second item combines the two, or plays a dry
+    fallback line.
+  - **Examining:** right-clicking an item shows a close-up and plays its look
+    line.
+  - **Using:** a held item on a hotspot runs `on_item(item)` or the room's
+    `item_<id>(item)`, or falls back.
+  - **Tests:** four integration tests. They click item slots directly, because
+    GUT's runner panel covers the bottom of the headless screen.
