@@ -142,5 +142,41 @@
     "outputTokens": 509,
     "costUsd": 0.040878,
     "costSource": "gateway"
+  },
+  {
+    "id": "IMG-0007",
+    "round": 1,
+    "plan": "002",
+    "model": "openai/gpt-image-2.5-sunburst",
+    "size": "3072x1072",
+    "quality": "medium",
+    "n": 2,
+    "date": "2026-10-10T09:05:45.292Z",
+    "files": [
+      "IMG-0007-v1.png",
+      "IMG-0007-v2.png"
+    ],
+    "inputTokens": 1932,
+    "outputTokens": 509,
+    "costUsd": 0.029826,
+    "costSource": "gateway"
+  },
+  {
+    "id": "IMG-0008",
+    "round": 1,
+    "plan": "002",
+    "model": "openai/gpt-image-2.5-sunburst",
+    "size": "3072x1072",
+    "quality": "medium",
+    "n": 2,
+    "date": "2026-10-10T09:06:47.206Z",
+    "files": [
+      "IMG-0008-v1.png",
+      "IMG-0008-v2.png"
+    ],
+    "inputTokens": 1932,
+    "outputTokens": 509,
+    "costUsd": 0.029826,
+    "costSource": "gateway"
   }
 ]

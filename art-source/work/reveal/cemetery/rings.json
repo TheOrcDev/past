@@ -1,0 +1,7 @@
+{
+  "note": "Nested zoom stack for the cemetery reveal (art-pipeline §5B). Each ring is a 2x detail repaint of the centre of the ring outside it. Coordinates are pixels in the outer ring's own image.",
+  "zoom_point_ring0": [906, 718],
+  "ring0": { "image": "art-source/raw/IMG-0006/IMG-0006-v1.png", "size": [3072, 1072] },
+  "ring1": { "source_crop_in_ring0": [138, 450, 1536, 536], "size": [3072, 1072] },
+  "ring2": { "source_crop_in_ring1": [768, 268, 1536, 536], "size": [3072, 1072] }
+}

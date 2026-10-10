@@ -16,6 +16,8 @@ is gone.
 | IMG-0004 | Unknown turnaround, without tendrils | **accepted: v4** | approved | 002 |
 | IMG-0005 | Cathedral nave, then | **accepted: v1** | approved | 002 |
 | IMG-0006 | Cemetery vista, ring 0 (outer) | **accepted: v1** | approved | 002 |
+| IMG-0007 | Cemetery vista, ring 1 (2× detail) | **accepted: v1** | — | 002 |
+| IMG-0008 | Cemetery vista, ring 2 (4× detail) | **accepted: v2** | — | 002 |
 
 ## Open operator decisions
 

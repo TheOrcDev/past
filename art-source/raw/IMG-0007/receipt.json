@@ -1,0 +1,103 @@
+{
+  "id": "IMG-0007",
+  "title": "Cemetery vista, ring 1 (2× detail)",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-10T09:05:45.292Z",
+      "model": "openai/gpt-image-2.5-sunburst",
+      "size": "3072x1072",
+      "quality": "medium",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/work/reveal/cemetery/ring1_source.png",
+          "sha256": "817ab066a3cc4c6c3df81ab67113718e66fc2225dc4f4cecfb64512514164ca5"
+        }
+      ],
+      "mask": null,
+      "prompt": "This image is a crop from a wide painting of a misty gothic cemetery at night. Repaint it as a full-resolution painting of the same view. Keep the composition, the horizon, the shapes, the values and every object exactly where they are, so it lines up with the crop when scaled up.\n\nAdd the fine detail a closer view would show: weathered stone and moss on the graves, cracks, wrought-iron fence detail, grass and dead weeds, wet cobblestones on the path, drifting fog. The same monochrome greyscale ink-wash style as the source.\n\nNo people, figures or creatures. No text, watermark or border.",
+      "files": [
+        {
+          "file": "IMG-0007-v1.png",
+          "sha256": "0cc7f5f6f0c92f0403316dc1b72db8a44de5b20bd1d03ebb21dd342346cc43ee",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0007-v2.png",
+          "sha256": "1eecf5df010dfc72442f12cb19d14c1873b5d59b74c0084bee7f8d54d1653367",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 1932,
+        "outputTokens": 509
+      },
+      "costUsd": 0.029826,
+      "costSource": "gateway",
+      "warnings": [],
+      "providerMetadata": {
+        "openai": {
+          "images": [
+            {
+              "created": 1791623163,
+              "size": "3072x1072",
+              "quality": "medium",
+              "background": "opaque",
+              "outputFormat": "png",
+              "imageTokens": 816,
+              "textTokens": 150
+            },
+            {
+              "created": 1791623163,
+              "size": "3072x1072",
+              "quality": "medium",
+              "background": "opaque",
+              "outputFormat": "png",
+              "imageTokens": 816,
+              "textTokens": 150
+            }
+          ]
+        },
+        "gateway": {
+          "routing": {
+            "originalModelId": "openai/gpt-image-2.5-sunburst",
+            "resolvedProvider": "openai",
+            "fallbacksAvailable": [],
+            "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+            "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+            "finalProvider": "openai",
+            "modelAttemptCount": 1,
+            "modelAttempts": [
+              {
+                "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+                "success": true,
+                "providerAttemptCount": 1,
+                "providerAttempts": [
+                  {
+                    "provider": "openai",
+                    "credentialType": "system",
+                    "success": true,
+                    "startTime": 1791623146032,
+                    "endTime": 1791623166879,
+                    "statusCode": 200
+                  }
+                ]
+              }
+            ],
+            "totalProviderAttemptCount": 1
+          },
+          "cost": "0.029826",
+          "marketCost": "0.029826",
+          "surchargeCost": "0",
+          "gatewayCost": "0.029826",
+          "inferenceCost": "0.029826",
+          "inputInferenceCost": "0",
+          "outputInferenceCost": "0.029826",
+          "generationId": "gen_01M4JGZA66TKDJ1M1FFVQBEEDA"
+        }
+      }
+    }
+  ]
+}
