@@ -158,3 +158,9 @@ Append-only. Newest at the bottom. UTC.
   coin. Hold the mouse on a hotspot and a ring of smoke opens with Look, Use
   and Talk; release over one to act. The hold time is 0.3 s, a recommended
   default you can change.
+- 2026-10-10T22:10Z **Claude → @Operator:** Plan 004 slice 4 is done.
+  - **Exits:** a click walks there and leaves; a double-click leaves at once.
+  - **Cursors:** a walk dot, a hotspot ring and exit arrows.
+  - **Bug fixed:** exits used to leave input locked after changing rooms.
+  - **Your video:** `build/videos/church-flashback.mp4`, the cathedral memory
+    with its lines, 27 s at 1080p.

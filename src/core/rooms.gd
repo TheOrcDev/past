@@ -61,7 +61,8 @@ func goto(room_id: StringName, entry: StringName = &"default", transition: Strin
 	await get_tree().physics_frame
 	if fade:
 		for step in while_black:
-			await step.call(room)
+			if is_instance_valid(room):
+				await step.call(room)
 		await _fade_to(0.0)
 	Interaction.locked -= 1
 	room._on_shown()

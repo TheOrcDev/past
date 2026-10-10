@@ -50,6 +50,10 @@ func _input(event: InputEvent) -> void:
 
 
 func _process(delta: float) -> void:
+	# --force-draw: draw every frame even when other windows cover this one
+	# (macOS stops drawing it), so the movie writer never records stale frames.
+	if _args.has("force-draw"):
+		RenderingServer.force_draw(false)
 	if _sampling:
 		_samples.append(delta)
 		var viewport := get_viewport().get_viewport_rid()
@@ -82,6 +86,8 @@ func _run(scenario: String) -> void:
 			await _banding()
 		"screenshots":
 			await _screenshots()
+		"flashback_clip":
+			await _flashback_clip()
 		_:
 			_failures.append("unknown scenario %s" % scenario)
 	_finish("done")
@@ -331,6 +337,24 @@ func _screenshots() -> void:
 	await Flashback.vision_finished
 	await get_tree().create_timer(0.5).timeout
 	await _shot("11_back_in_the_present")
+
+
+## The cathedral memory as a short clip: Unknown touches the statue and speaks,
+## the past blooms with his lines, and drains back. Record with
+##   --write-movie <file.avi> --fixed-fps 30 -- --qa=flashback_clip --force-draw
+func _flashback_clip() -> void:
+	await _enter(&"cathedral_nave")
+	var unknown := Rooms.player
+	unknown.get_node("IdleFidgets").set_process(false)
+	unknown.global_position = Vector2(560, 1030)
+	unknown.face(AnimNames.Dir.L)
+	await get_tree().create_timer(1.2).timeout
+	var statue := Rooms.current.hotspots.get_node("Statue") as Hotspot
+	Interaction.click_at(statue.focus_point())
+	await Flashback.vision_finished
+	while Interaction.locked > 0:
+		await get_tree().process_frame
+	await get_tree().create_timer(1.5).timeout
 
 
 func _start_sampling() -> void:

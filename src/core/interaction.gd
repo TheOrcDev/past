@@ -59,7 +59,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if locked == 0 or coin.is_open:
 			get_viewport().set_input_as_handled()
-			if event.pressed:
+			if event.pressed and event.double_click:
+				double_click_at(world)
+			elif event.pressed:
 				press_at(world, mouse.position)
 			else:
 				release_at(world, mouse.position)
@@ -67,6 +69,16 @@ func _unhandled_input(event: InputEvent) -> void:
 		if locked == 0:
 			get_viewport().set_input_as_handled()
 			right_click()
+
+
+## A double-click on an exit leaves at once, without the walk.
+func double_click_at(world: Vector2) -> void:
+	var exit := hotspot_at(world) as Exit
+	if exit == null or locked > 0:
+		return
+	_press_hotspot = null
+	Rooms.player.stop()
+	await Rooms.goto(exit.target_room, exit.target_entry, &"fade")
 
 
 ## The left button goes down. On a hotspot (with no item held) the action waits
@@ -176,6 +188,8 @@ func hotspot_at(world: Vector2) -> Hotspot:
 
 
 func _set_hovered(hotspot: Hotspot, screen: Vector2) -> void:
+	if hotspot != hovered and not Inventory.held:
+		Cursors.show_for(hotspot)
 	hovered = hotspot
 	_label.visible = hotspot != null and locked == 0
 	if not _label.visible:
@@ -198,5 +212,5 @@ func _on_held_changed(item: ItemDef) -> void:
 			image.resize(64, 64)
 			Input.set_custom_mouse_cursor(ImageTexture.create_from_image(image), Input.CURSOR_ARROW, Vector2(8, 8))
 			return
-	Input.set_custom_mouse_cursor(null)
+	Cursors.show_for(hovered)
 

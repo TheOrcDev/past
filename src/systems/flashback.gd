@@ -66,12 +66,12 @@ func set_grain(amount: float) -> void:
 
 ## Draws the room's past once, unseen, so its shaders are compiled before the
 ## first vision. Browsers compile on first draw, which stalled a vision 141 ms.
-func warm_up(room: Room) -> void:
-	var then_layer := room.layers.get_node_or_null("Then") as CanvasItem
+func warm_up(room: Node) -> void:
+	var then_layer := (room as Room).layers.get_node_or_null("Then") as CanvasItem
 	if then_layer == null:
 		return
 	var shown: Array[CanvasItem] = [then_layer]
-	for node in room.era_nodes():
+	for node in (room as Room).era_nodes():
 		if node.is_in_group(&"era_then"):
 			shown.append(node)
 	var was_visible: Array[bool] = []
@@ -89,6 +89,8 @@ func warm_up(room: Room) -> void:
 	# and never post a draw, so this waits on process frames instead).
 	await get_tree().process_frame
 	await get_tree().process_frame
+	if not is_instance_valid(room):
+		return  # cleared while warming up
 	if background:
 		background.material = null
 	for i in shown.size():

@@ -181,3 +181,16 @@ About 4–6 working sessions.
   - Three integration tests, and the coin is in the screenshots scenario.
   - **Also:** the silhouette shader samples its rings inline, because the
     Compatibility renderer objected to passing `TEXTURE` into a function.
+- **2026-10-10, slice 4:** exits and cursors.
+  - **`Exit`:** a hotspot whose default verb walks there and leaves for
+    `target_room` and its entry marker. A double-click leaves at once.
+    `new_room.gd` builds one from an `exit` block in a room spec.
+  - **Cursors** (drawn in code): a pale dot for walking, a ring over hotspots,
+    and an arrow over exits pointing the way out.
+  - **Bug fixed:** using an exit left input locked forever. Changing rooms
+    freed the exit while `Interaction.use` waited on its verb. Verbs that change
+    rooms now defer the change (documented on `Hotspot.handle`), and
+    transitions survive `Rooms.clear()`.
+  - **Tests:** four.
+  - **QA:** a `flashback_clip` scenario records the cathedral memory, and
+    `--force-draw` keeps the movie writer fed when the window is covered.

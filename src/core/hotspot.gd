@@ -56,7 +56,9 @@ func focus_point() -> Vector2:
 	return total / count if count > 0 else global_position
 
 
-## Runs `verb` on this hotspot. Returns false when nothing handles it.
+## Runs `verb` on this hotspot. Returns false when nothing handles it. A verb
+## that changes rooms must return before the room goes (call Rooms.goto
+## deferred, as Exit does), because leaving frees this hotspot and its room.
 func handle(verb: StringName, args: Array = []) -> bool:
 	var method := "on_%s" % verb
 	var target: Object = self if has_method(method) else null

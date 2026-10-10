@@ -101,10 +101,16 @@ func create_room(room_id: String, spec: Dictionary, replace := false) -> Error:
 		marker.position = _point(marker_spec[marker_name])
 
 	for hotspot_spec: Dictionary in spec.get("hotspots", []):
-		var hotspot := _add(hotspots, Hotspot.new(), String(hotspot_spec["id"]).to_pascal_case()) as Hotspot
+		var node: Hotspot = Exit.new() if hotspot_spec.has("exit") else Hotspot.new()
+		var hotspot := _add(hotspots, node, String(hotspot_spec["id"]).to_pascal_case()) as Hotspot
+		if hotspot is Exit:
+			var exit_spec: Dictionary = hotspot_spec["exit"]
+			hotspot.target_room = StringName(exit_spec["room"])
+			hotspot.target_entry = StringName(exit_spec.get("entry", "default"))
+			hotspot.direction = StringName(exit_spec.get("direction", "right"))
 		hotspot.id = StringName(hotspot_spec["id"])
 		hotspot.display_name = hotspot_spec.get("name", hotspot_spec["id"])
-		hotspot.default_verb = StringName(hotspot_spec.get("default_verb", "look"))
+		hotspot.default_verb = StringName(hotspot_spec.get("default_verb", "walk" if hotspot is Exit else "look"))
 		hotspot.era = StringName(hotspot_spec.get("era", ""))
 		hotspot.walk_offset = _point(hotspot_spec["walk_to"])
 		var shape := _add(hotspot, CollisionPolygon2D.new(), "Shape") as CollisionPolygon2D
