@@ -29,14 +29,23 @@ func _run(scenario: String) -> void:
 	match scenario:
 		"sandbox_smoke":
 			await _sandbox_smoke()
+		"cathedral_eras":
+			await _cathedral_eras()
 		_:
 			_failures.append("unknown scenario %s" % scenario)
 	_finish("done")
 
 
-func _sandbox_smoke() -> void:
-	while Rooms.current == null or Rooms.current.room_id != &"sandbox" or Interaction.locked > 0:
+## Waits for the start room to finish loading, then switches to `room_id`.
+func _enter(room_id: StringName) -> void:
+	while Rooms.current == null or Interaction.locked > 0:
 		await get_tree().process_frame
+	if Rooms.current.room_id != room_id:
+		await Rooms.goto(room_id, &"default", &"none")
+
+
+func _sandbox_smoke() -> void:
+	await _enter(&"sandbox")
 	await get_tree().create_timer(0.5).timeout
 	await _shot("01_start")
 	var target := Vector2(1400, 1010)
@@ -52,6 +61,21 @@ func _sandbox_smoke() -> void:
 	while Say.speaking:
 		Say.skip()
 		await get_tree().process_frame
+
+
+## Both eras of the cathedral with their effects running, and Unknown behind an occluder.
+func _cathedral_eras() -> void:
+	await _enter(&"cathedral_nave")
+	await get_tree().create_timer(2.0).timeout
+	await _shot("01_now")
+	Rooms.current.set_era(&"then")
+	_check(Rooms.current.era == &"then", "era switched to then")
+	await get_tree().create_timer(2.0).timeout
+	await _shot("02_then")
+	Rooms.current.set_era(&"now")
+	Rooms.player.global_position = Vector2(1765, 1060)
+	await get_tree().create_timer(0.5).timeout
+	await _shot("03_behind_occluder")
 
 
 func _check(ok: bool, what: String) -> void:

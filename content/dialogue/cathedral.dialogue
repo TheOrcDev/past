@@ -1,0 +1,26 @@
+~ statue_use
+
+Unknown: Her hand is cold. Colder than stone has any right to be. [ID:CATH_STATUE_USE_1]
+Unknown: Wait. I know this place. [ID:CATH_STATUE_USE_2]
+
+=> END
+
+~ statue_return
+
+Unknown: Gold. Candles. Somebody loved this place. [ID:CATH_STATUE_RETURN_1]
+Unknown: And somehow, I was there to see it. [ID:CATH_STATUE_RETURN_2]
+
+=> END
+
+~ altar_look
+
+Unknown: An altar. Whatever was worshipped here has stopped answering. [ID:CATH_ALTAR_LOOK_1]
+
+=> END
+
+~ rose_window_look
+
+Unknown: Most of the glass is gone, but the light still finds its way in. [ID:CATH_ROSE_WINDOW_LOOK_1]
+Unknown: Stubborn. I like that in a window. [ID:CATH_ROSE_WINDOW_LOOK_2]
+
+=> END

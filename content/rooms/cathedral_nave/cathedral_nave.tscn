@@ -1,0 +1,219 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/rooms/cathedral_nave/cathedral_nave.gd" id="1_pahf5"]
+[ext_resource type="Texture2D" path="res://content/rooms/cathedral_nave/art/bg_now.png" id="2_0rx0b"]
+[ext_resource type="Script" path="res://src/systems/effects/fog_layer.gd" id="3_57t4u"]
+[ext_resource type="Texture2D" path="res://content/rooms/cathedral_nave/art/depth_now.png" id="4_b464u"]
+[ext_resource type="Script" path="res://src/systems/effects/light_shafts.gd" id="5_g3nnl"]
+[ext_resource type="Script" path="res://src/systems/effects/dust_motes.gd" id="6_405pj"]
+[ext_resource type="Texture2D" path="res://content/rooms/cathedral_nave/art/bg_then.png" id="7_orwmm"]
+[ext_resource type="Script" path="res://src/core/scale_zones.gd" id="8_ir4yk"]
+[ext_resource type="Script" path="res://src/core/hotspot.gd" id="9_1k11o"]
+[ext_resource type="Texture2D" path="res://content/rooms/cathedral_nave/art/occ_rubble_left_now.png" id="10_ci4kj"]
+[ext_resource type="Texture2D" path="res://content/rooms/cathedral_nave/art/occ_rubble_left_then.png" id="11_b0pc4"]
+[ext_resource type="Texture2D" path="res://content/rooms/cathedral_nave/art/occ_rubble_right_now.png" id="12_umfs5"]
+[ext_resource type="Texture2D" path="res://content/rooms/cathedral_nave/art/occ_rubble_right_then.png" id="13_7b65s"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_16vff"]
+vertices = PackedVector2Array(1700, 945, 1770, 1000, 1760, 1075, 330, 1075, 300, 1015, 420, 950, 560, 908, 1590, 908)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(560, 908, 1590, 908, 1700, 945, 1770, 1000, 1760, 1075, 330, 1075, 300, 1015, 420, 950)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_bmk4k"]
+vertices = PackedVector2Array(1700, 945, 1770, 1000, 1760, 1075, 330, 1075, 300, 1015, 420, 950, 560, 908, 1590, 908)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(560, 908, 1590, 908, 1700, 945, 1770, 1000, 1760, 1075, 330, 1075, 300, 1015, 420, 950)])
+agent_radius = 0.0
+
+[node name="CathedralNave" type="Node2D" unique_id=724307304]
+script = ExtResource("1_pahf5")
+room_id = &"cathedral_nave"
+display_name = "Cathedral nave"
+
+[node name="Layers" type="Node2D" parent="." unique_id=923215452]
+
+[node name="Now" type="Node2D" parent="Layers" unique_id=1421482052]
+
+[node name="Background" type="Sprite2D" parent="Layers/Now" unique_id=1722889290]
+texture = ExtResource("2_0rx0b")
+centered = false
+
+[node name="FogFar" type="ColorRect" parent="Layers/Now" unique_id=1863031702]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_57t4u")
+fog_color = Color(0.85, 0.86, 0.88, 1)
+density = 0.32
+velocity = Vector2(0.006, 0)
+noise_scale = Vector2(1.4, 0.8)
+band_top = 0.42
+band_bottom = 0.9
+depth_texture = ExtResource("4_b464u")
+noise_seed = 3
+
+[node name="FogMid" type="ColorRect" parent="Layers/Now" unique_id=486561719]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_57t4u")
+fog_color = Color(0.8, 0.81, 0.84, 1)
+density = 0.22
+velocity = Vector2(-0.01, 0)
+noise_scale = Vector2(2.2, 1.1)
+band_top = 0.62
+band_bottom = 0.92
+depth_texture = ExtResource("4_b464u")
+near_cutoff = 0.55
+noise_seed = 5
+
+[node name="Shafts" type="ColorRect" parent="Layers/Now" unique_id=1676091164]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("5_g3nnl")
+aim = 210.0
+spread = 38.0
+intensity = 0.1
+reach = 0.95
+shaft_color = Color(0.95, 0.96, 1, 1)
+flicker = 0.4
+
+[node name="Ash" type="CPUParticles2D" parent="Layers/Now" unique_id=1216760294]
+script = ExtResource("6_405pj")
+area = Rect2(300, 200, 1400, 700)
+mote_color = Color(0.85, 0.85, 0.88, 0.35)
+mote_count = 50
+drift = Vector2(4, 6)
+mote_size = 2.5
+
+[node name="Then" type="Node2D" parent="Layers" unique_id=864067021]
+
+[node name="Background" type="Sprite2D" parent="Layers/Then" unique_id=793724955]
+texture = ExtResource("7_orwmm")
+centered = false
+
+[node name="GoldenShafts" type="ColorRect" parent="Layers/Then" unique_id=1534542160]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("5_g3nnl")
+aim = 210.0
+spread = 44.0
+beams = 7.0
+reach = 1.0
+shaft_color = Color(1, 0.85, 0.55, 1)
+flicker = 0.25
+
+[node name="WarmHaze" type="ColorRect" parent="Layers/Then" unique_id=701651375]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_57t4u")
+fog_color = Color(1, 0.9, 0.75, 1)
+density = 0.1
+velocity = Vector2(0.004, 0)
+noise_scale = Vector2(1.2, 0.7)
+band_top = 0.3
+band_bottom = 0.9
+noise_seed = 13
+
+[node name="GoldenDust" type="CPUParticles2D" parent="Layers/Then" unique_id=272020395]
+script = ExtResource("6_405pj")
+area = Rect2(300, 150, 1500, 750)
+mote_color = Color(1, 0.86, 0.55, 0.55)
+mote_count = 70
+drift = Vector2(3, -4)
+mote_size = 2.5
+
+[node name="WalkAreas" type="Node2D" parent="." unique_id=1499097614]
+
+[node name="Now" type="NavigationRegion2D" parent="WalkAreas" unique_id=858252501]
+navigation_polygon = SubResource("NavigationPolygon_16vff")
+
+[node name="Then" type="NavigationRegion2D" parent="WalkAreas" unique_id=217386241]
+navigation_polygon = SubResource("NavigationPolygon_bmk4k")
+enabled = false
+
+[node name="ScaleZones" type="Node2D" parent="." unique_id=46744087]
+script = ExtResource("8_ir4yk")
+far_y = 908.0
+far_scale = 0.62
+near_y = 1075.0
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=770938870]
+
+[node name="Statue" type="Area2D" parent="Hotspots" unique_id=2000268443]
+script = ExtResource("9_1k11o")
+id = &"statue"
+display_name = "Statue of a saint"
+default_verb = &"use"
+walk_offset = Vector2(480, 960)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Statue" unique_id=903519373]
+polygon = PackedVector2Array(100, 690, 290, 690, 290, 540, 325, 345, 290, 250, 240, 225, 200, 250, 165, 300, 150, 520, 110, 540)
+
+[node name="Altar" type="Area2D" parent="Hotspots" unique_id=107293877]
+script = ExtResource("9_1k11o")
+id = &"altar"
+display_name = "Altar"
+walk_offset = Vector2(1460, 930)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Altar" unique_id=1235316994]
+polygon = PackedVector2Array(1320, 800, 1610, 800, 1610, 640, 1540, 500, 1470, 480, 1400, 500, 1330, 640)
+
+[node name="RoseWindow" type="Area2D" parent="Hotspots" unique_id=1771716300]
+script = ExtResource("9_1k11o")
+id = &"rose_window"
+display_name = "Rose window"
+walk_offset = Vector2(1320, 935)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/RoseWindow" unique_id=2120711928]
+polygon = PackedVector2Array(1590, 255, 1553, 343, 1465, 380, 1377, 343, 1340, 255, 1377, 167, 1465, 130, 1553, 167)
+
+[node name="Exits" type="Node2D" parent="." unique_id=1068866281]
+
+[node name="Markers" type="Node2D" parent="." unique_id=831042074]
+
+[node name="default" type="Marker2D" parent="Markers" unique_id=742972965]
+position = Vector2(900, 1010)
+
+[node name="Actors" type="Node2D" parent="." unique_id=2101264384]
+y_sort_enabled = true
+
+[node name="RubbleLeftNow" type="Sprite2D" parent="Actors" unique_id=131477546 groups=["era_now"]]
+position = Vector2(0, 1080)
+texture = ExtResource("10_ci4kj")
+centered = false
+offset = Vector2(0, -139)
+
+[node name="RubbleLeftThen" type="Sprite2D" parent="Actors" unique_id=1940947661 groups=["era_then"]]
+position = Vector2(0, 1080)
+texture = ExtResource("11_b0pc4")
+centered = false
+offset = Vector2(0, -139)
+
+[node name="RubbleRightNow" type="Sprite2D" parent="Actors" unique_id=572136745 groups=["era_now"]]
+position = Vector2(1726, 1080)
+texture = ExtResource("12_umfs5")
+centered = false
+offset = Vector2(0, -124)
+
+[node name="RubbleRightThen" type="Sprite2D" parent="Actors" unique_id=1579302732 groups=["era_then"]]
+position = Vector2(1726, 1080)
+texture = ExtResource("13_7b65s")
+centered = false
+offset = Vector2(0, -124)
+
+[node name="Foreground" type="Node2D" parent="." unique_id=13785738]
+
+[node name="GroundMist" type="ColorRect" parent="Foreground" unique_id=1351504430 groups=["era_now"]]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_57t4u")
+fog_color = Color(0.86, 0.87, 0.9, 1)
+density = 0.18
+velocity = Vector2(0.012, 0)
+noise_scale = Vector2(2.6, 1.6)
+band_top = 0.86
+band_bottom = 1.02
+band_softness = 0.08
+noise_seed = 9
+
+[node name="Cinematics" type="Node2D" parent="." unique_id=1547507038]

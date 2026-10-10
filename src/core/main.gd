@@ -1,8 +1,8 @@
 extends Node
-## Entry point: starts the game in `start_room` (the sandbox until the
+## Entry point: starts the game in `start_room` (the cathedral nave until the
 ## prologue exists).
 
-@export var start_room: StringName = &"sandbox"
+@export var start_room: StringName = &"cathedral_nave"
 @export var start_entry: StringName = &"default"
 
 

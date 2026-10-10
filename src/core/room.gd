@@ -43,8 +43,9 @@ func marker_position(marker_name: StringName) -> Vector2:
 	return marker.global_position if marker else global_position
 
 
-## Shows one era's layers and activates its walk area. Hotspots tagged with an
-## era check it themselves (Hotspot.is_active).
+## Shows one era's layers and activates its walk area. Other era-specific
+## nodes (occluders, foreground effects) are in the groups `era_now` and
+## `era_then`. Hotspots tagged with an era check it themselves (Hotspot.is_active).
 func set_era(new_era: StringName) -> void:
 	era = new_era
 	var era_node := String(new_era).capitalize()
@@ -57,6 +58,17 @@ func set_era(new_era: StringName) -> void:
 				child.enabled = on
 			elif child is CanvasItem:
 				child.visible = on
+	for node in era_nodes():
+		node.visible = node.is_in_group(StringName("era_%s" % new_era))
+
+
+## Era-tagged nodes outside Layers and WalkAreas.
+func era_nodes() -> Array[CanvasItem]:
+	var result: Array[CanvasItem] = []
+	for node in find_children("*", "CanvasItem", true, false):
+		if node.is_in_group(&"era_now") or node.is_in_group(&"era_then"):
+			result.append(node)
+	return result
 
 
 ## Called after the room is loaded and the player placed, before it is shown.
