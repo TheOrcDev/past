@@ -7,6 +7,7 @@ extends Node
 const TIMEOUT_SECONDS := 60.0
 
 var _out_dir := ""
+var _scenario := ""
 var _failures: PackedStringArray = []
 var _finished := false
 
@@ -19,10 +20,16 @@ func _ready() -> void:
 	if not args.has("qa"):
 		set_process(false)
 		return
+	_scenario = args["qa"]
 	_out_dir = args.get("qa-out", OS.get_user_data_dir().path_join("qa"))
 	DirAccess.make_dir_recursive_absolute(_out_dir)
 	get_tree().create_timer(TIMEOUT_SECONDS, true, false, true).timeout.connect(_finish.bind("timeout"))
 	_run.call_deferred(args["qa"])
+
+
+## Scenarios about rooms start straight in the first room, without the opening.
+func skips_opening() -> bool:
+	return not _scenario.is_empty() and _scenario != "cemetery_reveal"
 
 
 func _run(scenario: String) -> void:
@@ -35,6 +42,8 @@ func _run(scenario: String) -> void:
 			await _cathedral_flashback()
 		"unknown_look":
 			await _unknown_look()
+		"cemetery_reveal":
+			await _cemetery_reveal()
 		_:
 			_failures.append("unknown scenario %s" % scenario)
 	_finish("done")
@@ -127,6 +136,24 @@ func _unknown_look() -> void:
 	var used := Performance.get_monitor(Performance.RENDER_TEXTURE_MEM_USED) - before
 	print("[qa] Unknown's sheets: %.1f MiB of video memory, %d animations" % [used / 1048576.0, fresh.frames.get_animation_names().size()])
 	_check(used > 0.0 and used < 128.0 * 1048576.0, "Unknown's frames fit 128 MiB")
+
+
+## The opening reveal at key moments, then the handoff into the first room.
+func _cemetery_reveal() -> void:
+	var cutscene: Node = null
+	while cutscene == null:
+		await get_tree().process_frame
+		cutscene = get_tree().current_scene.get_node_or_null("CemeteryReveal")
+	await get_tree().create_timer(1.8).timeout
+	await _shot("01_close")
+	await get_tree().create_timer(4.5).timeout
+	await _shot("02_pulling_back")
+	await get_tree().create_timer(5.0).timeout
+	await _shot("03_title")
+	await Rooms.room_changed
+	_check(Rooms.current.room_id == &"cathedral_nave", "the opening hands off into the cathedral")
+	await get_tree().create_timer(1.0).timeout
+	await _shot("04_cathedral")
 
 
 func _check(ok: bool, what: String) -> void:

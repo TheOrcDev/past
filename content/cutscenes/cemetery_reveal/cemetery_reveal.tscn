@@ -1,0 +1,120 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/cutscenes/cemetery_reveal/cemetery_reveal.gd" id="1_3v113"]
+[ext_resource type="Script" path="res://src/systems/cinematics/reveal.gd" id="2_dix6a"]
+[ext_resource type="Texture2D" path="res://content/cutscenes/cemetery_reveal/art/ring0.png" id="3_mxae5"]
+[ext_resource type="Texture2D" path="res://content/cutscenes/cemetery_reveal/art/ring1.png" id="4_t2ixi"]
+[ext_resource type="Texture2D" path="res://content/cutscenes/cemetery_reveal/art/ring2.png" id="5_pw6yq"]
+[ext_resource type="Script" path="res://src/systems/unknown/unknown_body.gd" id="6_titdx"]
+[ext_resource type="Resource" path="res://content/characters/unknown/unknown_sprites.tres" id="7_axifm"]
+
+[sub_resource type="FontVariation" id="FontVariation_cydhs"]
+spacing_glyph = 34
+
+[sub_resource type="FontVariation" id="FontVariation_8fkp0"]
+spacing_glyph = 10
+
+[sub_resource type="Animation" id="Animation_s3wxw"]
+length = 13.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Reveal:progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 11),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(9.5, 12.6),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"show_title"
+}, {
+"args": [],
+"method": &"hide_title"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_22ggo"]
+_data = {
+&"reveal": SubResource("Animation_s3wxw")
+}
+
+[node name="CemeteryReveal" type="Node2D" unique_id=1715484373]
+script = ExtResource("1_3v113")
+
+[node name="Reveal" type="Node2D" parent="." unique_id=1396317356]
+script = ExtResource("2_dix6a")
+end_zoom = 0.7491
+
+[node name="Ring0" type="Sprite2D" parent="Reveal" unique_id=475227468]
+texture = ExtResource("3_mxae5")
+centered = false
+
+[node name="Ring1" type="Sprite2D" parent="Reveal" unique_id=1542259145]
+texture_filter = 4
+position = Vector2(138, 450)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_t2ixi")
+centered = false
+
+[node name="Ring2" type="Sprite2D" parent="Reveal" unique_id=1494263849]
+texture_filter = 4
+position = Vector2(522, 584)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_pw6yq")
+centered = false
+
+[node name="Unknown" type="Node2D" parent="Reveal" unique_id=443860495]
+position = Vector2(906, 800)
+scale = Vector2(0.5416667, 0.5416667)
+script = ExtResource("6_titdx")
+sprites = ExtResource("7_axifm")
+
+[node name="Title" type="CanvasLayer" parent="." unique_id=923440717]
+layer = 55
+
+[node name="Card" type="VBoxContainer" parent="Title" unique_id=438528555]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Name" type="Label" parent="Title/Card" unique_id=1879857314]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_cydhs")
+theme_override_font_sizes/font_size = 132
+theme_override_colors/font_color = Color(0.9, 0.91, 0.94, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7)
+theme_override_constants/shadow_offset_y = 4
+text = "PAST"
+horizontal_alignment = 1
+
+[node name="Place" type="Label" parent="Title/Card" unique_id=1515796916]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_8fkp0")
+theme_override_font_sizes/font_size = 40
+theme_override_colors/font_color = Color(0.9, 0.91, 0.94, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7)
+theme_override_constants/shadow_offset_y = 4
+text = "The cemetery"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1867521038]
+libraries/ = SubResource("AnimationLibrary_22ggo")

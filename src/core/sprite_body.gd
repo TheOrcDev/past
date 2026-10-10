@@ -31,7 +31,7 @@ func has_animation(anim: StringName) -> bool:
 
 func play_animation(anim: StringName, flip: bool) -> void:
 	flipped = flip
-	scale.x = -1.0 if flip else 1.0
+	scale.x = absf(scale.x) * (-1.0 if flip else 1.0)
 	if anim == sprite.animation and sprite.is_playing():
 		return
 	# Turning mid-walk keeps the stride where it was instead of restarting it.

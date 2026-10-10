@@ -229,3 +229,19 @@ as stand-ins.
       about 1.5 h;
     - rendering the full set: 4 s;
     - packing, Godot integration and tests: about 0.7 h.
+- **2026-10-10, slice 6:** the cemetery opening.
+  - `art-source/work/reveal/cemetery/build.py` registers and level-matches
+    rings 1 and 2 (p90 2.18 and 2.37 px). It writes the rings as one-byte grey
+    plus `reveal_spec.json`.
+  - `new_reveal.gd` builds the scene: a `Reveal` zoom stack, Unknown on the
+    path, a placeholder title card, and an `AnimationPlayer`. The animation
+    holds 1.5 s, eases the pull-back from 2.4× to 0.75× by 11 s, and shows the
+    title from 9.5 to 12.6 s.
+  - `main.gd` plays it before the cathedral, with letterbox bars, and a click
+    fast-forwards it.
+  - **Fixed:** mirroring a `SpriteBody` reset its scale, which only showed when
+    the body itself is scaled, as in the vista.
+  - **Look:** the tendril shader gained a faint backlit edge, because black
+    smoke vanished over dark stone.
+  - **Checks:** 39 GUT tests pass, and the `cemetery_reveal` QA run passes.
+    Frames are in `docs/qa/002/cemetery-reveal.jpg`.

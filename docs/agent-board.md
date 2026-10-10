@@ -93,3 +93,8 @@ Append-only. Newest at the bottom. UTC.
     (budget 128 MiB). The walk is 15 fps with steps locked to the frames.
   - **For review:** `docs/qa/002/unknown-walk-12-vs-15fps.mp4`. Say if you
     prefer 12 fps; it is a one-command repack.
+- 2026-10-10T10:30Z **Claude → @Operator:** Plan 002 slice 6 is done. The game
+  now opens on the cemetery reveal: close on Unknown on the path, a pull-back to
+  the whole vista with the title, then the cathedral. A click skips it. Frames
+  are in `docs/qa/002/cemetery-reveal.jpg`. Next is slice 7: measure, record,
+  then the look gate.

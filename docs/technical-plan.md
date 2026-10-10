@@ -87,13 +87,14 @@ past/
 ```
 
 - Scripts that Godot itself runs live in `addons/past_tools/`, not in `tools/`.
-  Godot does not see `tools/`, because it is ignored. There are four so far:
+  Godot does not see `tools/`, because it is ignored. There are five so far:
   - `new_room.gd` scaffolds a room from an optional JSON spec, which lives in
     `art-source/work/rooms/<room>/room_spec.json`;
   - `scaffold_core.gd` creates `main.tscn` and Unknown's scene
     (`--replace=unknown` rebuilds it);
   - `import_sprites.gd` builds a `CharacterSprites` resource from a sprite
     manifest made by `tools/past-art pack`;
+  - `new_reveal.gd` builds a pull-back reveal cutscene from a reveal spec;
   - `lint.gd` checks content.
 - Scenes are created by scaffolding scripts that save through Godot, for example
   `addons/past_tools/new_room.gd`, so resource IDs stay valid. They are then
@@ -302,6 +303,15 @@ and particles inside a `CanvasGroup` vanish in WebKit.
   - nested ring textures at scales 1, 2, 4 …;
   - zoom is interpolated in log space, so the perceived speed stays constant;
   - the rings crossfade at their boundaries.
+- **Built in plan 002:**
+  - `Reveal` (`src/systems/cinematics/reveal.gd`) zooms about one fixed
+    point, so the pull-back never seems to pan. It keeps the view inside ring 0
+    and fades each inner ring out once the ring outside it shows enough detail.
+  - The inner rings ship as one-byte grey, and `ring_feather.gdshader` fades
+    their edges.
+  - `Letterbox` draws the bars.
+  - The cemetery opening (`content/cutscenes/cemetery_reveal`) plays from
+    `main.gd` before the first room, and a click fast-forwards it.
 - **Panorama pan:** `Parallax2D` layers move at different rates.
 - **Letterbox:** 2.39:1 bars slide in for every non-interactive sequence.
 - **`CutsceneRunner`** (plan 005):

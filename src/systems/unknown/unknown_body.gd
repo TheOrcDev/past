@@ -15,7 +15,7 @@ const EYE_STATES := {
 	EyeState.FLARE: [2.6, Vector2(1.35, 1.35)],
 }
 ## Eye sprite scale in the IDLE state, before the actor's depth scale.
-const EYE_SIZE := Vector2(0.26, 0.16)
+const EYE_SIZE := Vector2(0.34, 0.2)
 ## A side view shows each eye this much narrower.
 const SIDE_WIDTH := 0.6
 const BLINK_SECONDS := 0.16
