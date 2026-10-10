@@ -1,7 +1,8 @@
 extends Node
 ## Speaks Dialogue Manager lines over the speaking actor (docs/technical-plan.md
-## §5.6): text above the speaker, held for a time based on its length, skipped
-## with a left click. When a line offers responses, the allowed ones are shown
+## §5.6): text above the speaker, held for a time based on its length and the
+## player's text speed, skipped with a left click. Settings can hide the text or
+## change its size. When a line offers responses, the allowed ones are shown
 ## as choices; the player's pick is spoken by the player and the conversation
 ## follows it. Voice joins in plan 003.
 
@@ -9,11 +10,12 @@ signal line_started(static_id: String, speaker: String, text: String)
 signal line_finished(static_id: String)
 
 const DIALOGUE_PATH := "res://content/dialogue/%s.dialogue"
+const FONT_SIZE := 36
 
 var speaking := false
 var choices: ChoiceList
-
-var _label: Label
+## The line on screen.
+var subtitle: Label
 var _skip := false
 
 
@@ -21,16 +23,16 @@ func _ready() -> void:
 	var layer := CanvasLayer.new()
 	layer.layer = 60
 	add_child(layer)
-	_label = Label.new()
-	_label.add_theme_font_size_override(&"font_size", 36)
-	_label.add_theme_color_override(&"font_outline_color", Color.BLACK)
-	_label.add_theme_constant_override(&"outline_size", 12)
-	_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	_label.custom_minimum_size.x = 900.0
-	_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_label.visible = false
-	layer.add_child(_label)
+	subtitle = Label.new()
+	subtitle.add_theme_font_size_override(&"font_size", FONT_SIZE)
+	subtitle.add_theme_color_override(&"font_outline_color", Color.BLACK)
+	subtitle.add_theme_constant_override(&"outline_size", 12)
+	subtitle.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	subtitle.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	subtitle.custom_minimum_size.x = 900.0
+	subtitle.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	subtitle.visible = false
+	layer.add_child(subtitle)
 	choices = ChoiceList.new()
 	choices.name = "Choices"
 	add_child(choices)
@@ -69,7 +71,7 @@ func run(resource: DialogueResource, cue: String) -> void:
 		var response: DialogueResponse = allowed[await choices.choose(texts)]
 		await _speak(response.static_id, response.character if not response.character.is_empty() else _player_name(), response.text)
 		current = await DialogueManager.get_next_dialogue_line(resource, response.next_id)
-	_label.visible = false
+	subtitle.visible = false
 	Interaction.locked -= 1
 	speaking = false
 
@@ -87,18 +89,24 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _speak(static_id: String, speaker: String, text: String) -> void:
 	var actor := _actor_named(speaker)
-	_label.text = text
-	_label.add_theme_color_override(&"font_color", actor.subtitle_color if actor else Color.WHITE)
-	_label.reset_size()
+	subtitle.text = text
+	subtitle.add_theme_font_size_override(&"font_size", roundi(FONT_SIZE * Settings.subtitle_size))
+	subtitle.add_theme_color_override(&"font_color", actor.subtitle_color if actor else Color.WHITE)
+	subtitle.reset_size()
 	_place_over(actor)
-	_label.visible = true
+	subtitle.visible = Settings.subtitles
 	if actor:
 		actor.set_speaking(true)
 	line_started.emit(static_id, speaker, text)
-	await _hold(clampf(1.2 + text.length() * 0.055, 2.0, 9.0))
+	await _hold(line_seconds(text))
 	if is_instance_valid(actor):
 		actor.set_speaking(false)
 	line_finished.emit(static_id)
+
+
+## How long a line without voice stays up, at the player's text speed.
+func line_seconds(text: String) -> float:
+	return clampf(1.2 + text.length() * 0.055, 2.0, 9.0) / Settings.text_speed
 
 
 ## Who speaks the player's choices: the player actor, or Unknown.
@@ -132,6 +140,6 @@ func _place_over(actor: Actor) -> void:
 		anchor = Vector2(view.x / 2.0, view.y - 110.0)
 	elif actor:
 		anchor = actor.get_global_transform_with_canvas() * actor.speech_offset
-	_label.position = Vector2(
-		clampf(anchor.x - _label.size.x / 2.0, 20.0, view.x - _label.size.x - 20.0),
-		clampf(anchor.y - _label.size.y, 20.0, view.y - _label.size.y - 20.0))
+	subtitle.position = Vector2(
+		clampf(anchor.x - subtitle.size.x / 2.0, 20.0, view.x - subtitle.size.x - 20.0),
+		clampf(anchor.y - subtitle.size.y, 20.0, view.y - subtitle.size.y - 20.0))

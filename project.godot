@@ -26,6 +26,7 @@ Say="*res://src/core/say.gd"
 Flashback="*res://src/systems/flashback.gd"
 Closeups="*res://src/systems/closeups.gd"
 Saves="*res://src/core/saves.gd"
+Settings="*res://src/core/settings.gd"
 Qa="*res://src/core/qa.gd"
 
 [display]

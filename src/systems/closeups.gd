@@ -3,7 +3,8 @@ extends Node
 ## camera glides towards the hotspot and zooms until a screen-shaped frame round
 ## it fills the screen, while the close-up, pinned over that frame with soft
 ## edges, fades in, so the detail grows out of the thing clicked. Closing is the
-## same move reversed. While a close-up is open, Interaction sends clicks to its
+## same move reversed. With Reduce camera motion the close-up simply crossfades
+## in, full screen. While a close-up is open, Interaction sends clicks to its
 ## hotspots; a right-click, Esc or the back glyph closes it.
 
 signal opened(closeup: Closeup)
@@ -25,6 +26,8 @@ var _back: Label
 var _frame := Rect2()
 var _camera: Camera2D
 var _feather: ShaderMaterial
+## No camera move for this close-up: it crossfades in place.
+var _still := false
 
 
 func _ready() -> void:
@@ -68,8 +71,9 @@ func open_node(closeup: Closeup, from: Hotspot = null) -> void:
 	_frame = _frame_round(from) if from else Rect2(view * 0.375, view * 0.25)
 	_layer.add_child(closeup)
 	current = closeup
-	_camera = _make_camera()
-	_soften(closeup, true)
+	_still = Settings.reduce_camera_motion
+	_camera = null if _still else _make_camera()
+	_soften(closeup, not _still)
 	_step(0.0)
 	await _push(0.0, 1.0)
 	_soften(closeup, false)
@@ -88,7 +92,7 @@ func close() -> void:
 	Interaction.locked += 1
 	_back.visible = false
 	var closeup := current
-	_soften(closeup, true)
+	_soften(closeup, not _still)
 	await _push(1.0, 0.0)
 	if is_instance_valid(_camera):
 		_camera.queue_free()
@@ -120,6 +124,11 @@ func _push(from_t: float, to_t: float) -> void:
 ## the close-up covers it). The zoom grows evenly to the eye, the frame's centre
 ## glides straight to the screen's centre, and the close-up stays on the frame.
 func _step(t: float) -> void:
+	if _still:
+		current.position = Vector2.ZERO
+		current.scale = Vector2.ONE
+		current.modulate.a = t
+		return
 	var view := get_viewport().get_visible_rect().size
 	var zoom := pow(view.x / _frame.size.x, t)
 	var offset := _frame.get_center() - view / 2.0

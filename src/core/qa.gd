@@ -8,7 +8,7 @@ extends Node
 const TIMEOUT_SECONDS := 60.0
 const LONG_TIMEOUT_SECONDS := 150.0
 ## Scenarios that start from the opening instead of straight in the first room.
-const WITH_OPENING: Array[String] = ["cemetery_reveal", "grave", "grave_clip", "perf", "tour", "screenshots"]
+const WITH_OPENING: Array[String] = ["cemetery_reveal", "grave", "grave_clip", "perf", "tour", "screenshots", "reduced_motion"]
 
 var _out_dir := ""
 var _scenario := ""
@@ -37,8 +37,11 @@ func _ready() -> void:
 		set_process(false)
 		return
 	_scenario = _args["qa"]
-	# Scripted runs keep their saves apart from a player's.
+	# Scripted runs keep their saves apart from a player's, and run on the
+	# default settings whatever the player chose.
 	Saves.directory = "user://qa-saves"
+	Settings.path = "user://qa-settings.cfg"
+	Settings.reset()
 	_out_dir = _args.get("qa-out", OS.get_user_data_dir().path_join("qa"))
 	DirAccess.make_dir_recursive_absolute(_out_dir)
 	var timeout := LONG_TIMEOUT_SECONDS if _scenario in WITH_OPENING else TIMEOUT_SECONDS
@@ -98,6 +101,8 @@ func _run(scenario: String) -> void:
 			await _flashback_clip()
 		"saves":
 			await _saves()
+		"reduced_motion":
+			await _reduced_motion()
 		_:
 			_failures.append("unknown scenario %s" % scenario)
 	_finish("done")
@@ -418,6 +423,34 @@ func _saves() -> void:
 	_check(GameState.get_flag(&"qa_marker") == "kept", "the flags are as saved")
 	await get_tree().create_timer(0.5).timeout
 	await _shot("01_loaded")
+
+
+## Reduce camera motion (plan 004 slice 7): the opening crossfades from the
+## close shot to the vista instead of pulling back, and the gravestone's
+## close-up crossfades in without a camera move.
+func _reduced_motion() -> void:
+	Settings.reduce_camera_motion = true
+	while get_tree().current_scene.get_node_or_null("CemeteryReveal") == null:
+		await get_tree().process_frame
+	var cutscene := get_tree().current_scene.get_node("CemeteryReveal")
+	var animation := cutscene.get_node("AnimationPlayer") as AnimationPlayer
+	for moment: Array in [[3.0, "01_close_held"], [6.6, "02_crossfading"], [8.5, "03_vista"]]:
+		while animation.current_animation_position < moment[0]:
+			await get_tree().process_frame
+		await _shot(moment[1])
+	var camera := cutscene.get_node("Reveal").camera as Camera2D
+	_check(is_equal_approx(camera.zoom.x, (cutscene.get_node("Reveal") as Reveal).zoom_at(1.0)), "the view cut to the vista without travelling")
+	await Rooms.room_shown
+	await _settle()
+	Interaction.click_at((Rooms.current.hotspots.get_node("Gravestone") as Hotspot).focus_point())
+	while not Closeups.busy:
+		await get_tree().process_frame
+	await get_tree().create_timer(Closeups.SECONDS * 0.5).timeout
+	_check(get_viewport().get_camera_2d() == null, "no camera push into the close-up")
+	await _shot("04_closeup_crossfading")
+	while Closeups.busy:
+		await get_tree().process_frame
+	await _shot("05_closeup_open")
 
 
 ## The fog gradients with grain on and off, in both eras, for judging banding.

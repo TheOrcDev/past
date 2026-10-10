@@ -16,7 +16,7 @@ if grep -E "SCRIPT ERROR|^ERROR" "$LOGS/import.log"; then
 fi
 
 echo "== tests"
-"$GODOT" --headless --script res://addons/gut/gut_cmdln.gd -gdir=res://test -ginclude_subdirs -gexit 2>&1 | tee "$LOGS/gut.log"
+"$GODOT" --headless --script res://addons/gut/gut_cmdln.gd -gdir=res://test -ginclude_subdirs -gpre_run_script=res://test/hooks/pre_run.gd -gexit 2>&1 | tee "$LOGS/gut.log"
 [[ ${PIPESTATUS[0]} -eq 0 ]] || status=1
 
 echo "== lint"

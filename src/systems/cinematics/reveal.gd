@@ -29,10 +29,13 @@ const FEATHER := preload("res://src/shaders/ring_feather.gdshader")
 @export_range(0.0, 1.0) var progress := 0.0:
 	set(value):
 		progress = value
-		if camera:
-			_apply()
+		if camera and not hold:
+			_apply(progress)
 
 var camera: Camera2D
+## While set, `progress` no longer moves the view: a cutscene cuts between views
+## with show_at() instead (Reduce camera motion).
+var hold := false
 
 var _rings: Array[Sprite2D] = []
 
@@ -50,7 +53,7 @@ func _ready() -> void:
 	camera = Camera2D.new()
 	camera.name = "Camera"
 	add_child(camera)
-	_apply()
+	_apply(progress)
 
 
 func zoom_at(p: float) -> float:
@@ -79,10 +82,15 @@ func ring(index: int) -> Sprite2D:
 	return _rings[index]
 
 
-func _apply() -> void:
-	var zoom := zoom_at(progress)
+## Shows the view at `p`, whatever `progress` says.
+func show_at(p: float) -> void:
+	_apply(p)
+
+
+func _apply(p: float) -> void:
+	var zoom := zoom_at(p)
 	camera.zoom = Vector2(zoom, zoom)
-	camera.position = center_at(progress)
+	camera.position = center_at(p)
 	for i in range(1, _rings.size()):
 		var on_screen := zoom * _rings[i].scale.x
 		_rings[i].modulate.a = clampf(inverse_lerp(fade_to, fade_from, on_screen), 0.0, 1.0)

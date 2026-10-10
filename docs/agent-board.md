@@ -204,4 +204,14 @@ Append-only. Newest at the bottom. UTC.
   manual slots and an autosave on every room change. Each save has a thumbnail
   and puts Unknown back exactly where he stood. Saves survive a reload in the
   browser too. The save and load menus come with slice 8.
+- 2026-10-10T21:57Z **Claude → @Operator:** Plan 004 slice 7 is done: settings.
+  - **What's in:** volumes, subtitles and their size, text speed, Reduce
+    flashing, Reduce camera motion, fullscreen and Render at 1080p. Each applies
+    the moment it changes and is remembered.
+  - **Reduce camera motion:** the opening crossfades to the vista instead of
+    pulling back, and close-ups fade in without the zoom.
+  - **Render scale:** recorded as a technical pick under #29. "Render scale"
+    became a Render at 1080p switch, because Godot can't scale 2D rendering
+    below that without a bigger rework.
+  - **Next:** the settings screen comes with the top bar in slice 8.
 

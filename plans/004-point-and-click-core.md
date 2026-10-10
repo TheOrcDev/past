@@ -224,4 +224,26 @@ About 4–6 working sessions.
     `browser-qa.ts` now marks each pass with `qa-pass=<n>` in the URL.
   - **Tests:** five integration tests cover the round trip, the cursor
     emptying on load, the autosave, migration and refusal. 77 GUT tests pass.
+- **2026-10-10, slice 7:** settings.
+  - **`Settings`** keeps them in `user://settings.cfg` and applies each as soon
+    as it is set:
+    - volumes on the Voice, Music, Ambience and SFX buses, re-applied when the
+      bus layout changes (plan 003 makes the buses);
+    - subtitles on or off, their size, and text speed, read by `Say`;
+    - Reduce flashing and Reduce camera motion;
+    - fullscreen;
+    - Render at 1080p.
+  - **Reduce camera motion:** the opening holds the close shot and crossfades
+    to the vista at the middle of the move. A vision doesn't drift, and a
+    close-up crossfades in full screen without the push.
+  - **Render scale became "Render at 1080p".** Godot 4.7 has no 2D render scale
+    for the root viewport. The supported lever is the `viewport` stretch mode,
+    which draws at 1920×1080 and scales to the window: on a high-DPI screen,
+    up to 4× fewer pixels. Going lower would need a SubViewport pipeline, which
+    isn't worth it at today's frame rates (`technical-plan.md` §6.9).
+  - **Isolation:** a GUT pre-run hook (`test/hooks/pre_run.gd`) and QA runs give
+    settings their own file at the defaults, so a player's choices never change
+    a test.
+  - **Checks:** five integration tests; 82 GUT tests pass. A `reduced_motion`
+    QA scenario passes on desktop and in the browser.
 

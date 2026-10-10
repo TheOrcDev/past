@@ -197,7 +197,11 @@ func _flash(room: Room, origin: Vector2) -> void:
 	tween.chain().tween_property(_flare, "modulate:a", 0.0, 0.85)
 
 
+## A slow push towards the anchor while the past shows; none with Reduce camera
+## motion.
 func _start_drift(room: Room, origin: Vector2) -> Camera2D:
+	if Settings.reduce_camera_motion:
+		return null
 	var camera := Camera2D.new()
 	camera.position = Vector2(960, 540)
 	room.add_child(camera)
@@ -211,6 +215,8 @@ func _start_drift(room: Room, origin: Vector2) -> Camera2D:
 
 
 func _end_drift(camera: Camera2D) -> void:
+	if camera == null:
+		return
 	(camera.get_meta(&"drift") as Tween).kill()
 	var tween := camera.create_tween().set_parallel(true).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(camera, "zoom", Vector2.ONE, 1.0)

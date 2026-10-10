@@ -423,13 +423,26 @@ See §5.7.
 
 ### 6.9 Settings
 
-- One `Settings` autoload covers:
-  - volumes for voice, music, ambience and effects;
-  - subtitles and their size;
-  - text speed;
-  - Reduce flashing and Reduce camera motion;
-  - fullscreen.
-- It stores them in `user://settings.cfg`.
+- One `Settings` autoload (plan 004 slice 7) keeps them in
+  `user://settings.cfg`, apart from saves. Each applies as soon as it is set:
+  - **Volumes** for voice, music, ambience and effects drive the Voice, Music,
+    Ambience and SFX buses. They are applied again whenever the bus layout
+    changes, so plan 003's buses pick them up.
+  - **Subtitles and text:** subtitles on or off, their size, and text speed
+    (how long a line without voice stays up). `Say` reads them per line.
+  - **Reduce flashing** sets `Flashback.reduce_flashing`.
+  - **Reduce camera motion:** the opening's pull-back becomes one crossfade to
+    the vista, a vision no longer drifts, and close-ups crossfade in without
+    the push.
+  - **Fullscreen.** A browser only goes fullscreen from a click, so it isn't
+    applied at start-up there.
+  - **Render at 1080p:** the game draws at 1920×1080 and scales to the window
+    (the `viewport` stretch mode), instead of drawing at the window's
+    resolution. Godot has no 2D render scale for the root viewport. Going
+    below 1080p would mean drawing the game into a SubViewport, which isn't
+    worth it while the browser holds 60 fps at 4K.
+- Tests (a GUT pre-run hook) and QA runs use their own settings file, at the
+  defaults.
 
 ### 6.10 Pre-rendered video (later, optional)
 
@@ -574,6 +587,8 @@ Not needed. The browser gets only the prologue demo, so it fits in one `.pck`
     - `saves` saves, changes room and loads back; with `qa-pass=2` (the
       second `browser-qa.ts` pass) it checks that the save outlived the
       reload;
+    - `reduced_motion` plays the opening and the gravestone's close-up with
+      Reduce camera motion on;
     - `perf` prints frame times and memory;
     - `banding` captures the fog with grain on and off;
     - `tour` plays the slice for `--write-movie`. Godot's movie writer takes
@@ -600,7 +615,7 @@ Not needed. The browser gets only the prologue demo, so it fits in one `.pck`
 | Room load | 1 s or less | 2 s or less (no threads) |
 | Download | No hard cap; aim for 4 GB or less | `.pck` of 150 MB or less, plus about 10 MB of engine (gzip) |
 | Peak memory | — | 1 GiB or less of the 2 GiB cap |
-| Render resolution | Window resolution | The browser canvas follows the device pixel ratio. Plan 002 measured 60 fps even at 4276×2407 on the operator's M4, so it is not capped. A render-scale setting comes with plan 004's settings, for weaker GPUs. |
+| Render resolution | Window resolution | The browser canvas follows the device pixel ratio. Plan 002 measured 60 fps even at 4276×2407 on the operator's M4, so it is not capped. For weaker GPUs, the Render at 1080p setting (§6.9) caps it. |
 | Voice | Ogg mono, about 48–64 kbps | Same |
 
 ## 11. Risks
