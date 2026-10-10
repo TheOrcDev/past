@@ -45,6 +45,7 @@ func _ready() -> void:
 	flare_layer.add_child(_flare)
 
 	Rooms.room_changed.connect(func(room: Room) -> void: set_grade(1.0 if room.era == &"then" else 0.0))
+	Rooms.while_black.append(warm_up)
 	# Noise textures generate on first use; start the dissolve's now so the first vision has it.
 	Effects.noise_texture(23, 0.02)
 
@@ -56,6 +57,42 @@ func _process(_delta: float) -> void:
 ## 0 is the present's grade, 1 the past's.
 func set_grade(value: float) -> void:
 	_grade_material.set_shader_parameter(&"mix_then", value)
+
+
+## Film grain strength; 0 turns it off. The default is 0.04.
+func set_grain(amount: float) -> void:
+	_grade_material.set_shader_parameter(&"grain", amount)
+
+
+## Draws the room's past once, unseen, so its shaders are compiled before the
+## first vision. Browsers compile on first draw, which stalled a vision 141 ms.
+func warm_up(room: Room) -> void:
+	var then_layer := room.layers.get_node_or_null("Then") as CanvasItem
+	if then_layer == null:
+		return
+	var shown: Array[CanvasItem] = [then_layer]
+	for node in room.era_nodes():
+		if node.is_in_group(&"era_then"):
+			shown.append(node)
+	var was_visible: Array[bool] = []
+	for node in shown:
+		was_visible.append(node.visible)
+		node.visible = true
+	var background := then_layer.get_node_or_null("Background") as Sprite2D
+	if background:
+		var dissolve := ShaderMaterial.new()
+		dissolve.shader = DISSOLVE
+		dissolve.set_shader_parameter(&"noise_tex", Effects.noise_texture(23, 0.02))
+		dissolve.set_shader_parameter(&"progress", 0.5)
+		background.material = dissolve
+	# Visible through two whole frames, so both get drawn (headless runs draw nothing
+	# and never post a draw, so this waits on process frames instead).
+	await get_tree().process_frame
+	await get_tree().process_frame
+	if background:
+		background.material = null
+	for i in shown.size():
+		shown[i].visible = was_visible[i]
 
 
 ## Plays a cinematic flashback in `room`, blooming from `origin` (room pixels).

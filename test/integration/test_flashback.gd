@@ -53,3 +53,24 @@ func test_using_the_statue_plays_the_vision() -> void:
 	assert_eq(Rooms.current.era, &"now")
 	await wait_until(func() -> bool: return Interaction.locked == 0, 5.0)
 	assert_eq(Interaction.locked, 0)
+
+
+func test_warm_up_draws_the_past_and_puts_everything_back() -> void:
+	var room := Rooms.current
+	await Flashback.warm_up(room)
+	assert_false(room.get_node("Layers/Then").visible, "the past is hidden again")
+	assert_null((room.get_node("Layers/Then/Background") as Sprite2D).material, "no dissolve left behind")
+	for node in room.era_nodes():
+		assert_eq(node.visible, node.is_in_group(&"era_now"), "%s back to its era's visibility" % node.name)
+
+
+func test_a_fade_waits_for_the_warm_up_while_black() -> void:
+	var seen := []
+	var step := func(room: Room) -> void:
+		seen.append(room.room_id)
+		await get_tree().process_frame
+	Rooms.while_black.append(step)
+	await Rooms.goto(&"cathedral_nave", &"default", &"fade")
+	Rooms.while_black.erase(step)
+	assert_eq(seen, [&"cathedral_nave"], "steps run once with the new room")
+	assert_true(Flashback.warm_up in Rooms.while_black, "the flashback warms up on every faded room change")

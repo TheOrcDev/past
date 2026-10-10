@@ -508,6 +508,16 @@ Not needed. The browser gets only the prologue demo, so it fits in one `.pck`
     3. The automation tab reports `document.hidden`, so Godot only advances
        when a screenshot forces a frame. Take a burst of small screenshots to
        let a walk or a line play out.
+    4. For timings, `bun tools/build/browser-qa.ts <scenario>` runs a scenario
+       in a visible Chrome window with a throwaway profile. It passes
+       `?qa=<scenario>` in the URL and prints the `[qa]` lines.
+  - **Scenarios for measuring and recording:**
+    - `perf` prints frame times and memory;
+    - `banding` captures the fog with grain on and off;
+    - `tour` plays the slice for `--write-movie`. Godot's movie writer takes
+      the window size from the project override, so put a temporary
+      `override.cfg` with `window/size/window_*_override` set to 1920×1080 in
+      the project root while recording, and delete it afterwards.
 
   Evidence goes in `docs/qa/<plan>/`.
 - **Known noise:** headless test runs and the desktop app print "resources still
@@ -525,7 +535,7 @@ Not needed. The browser gets only the prologue demo, so it fits in one `.pck`
 | Room load | 1 s or less | 2 s or less (no threads) |
 | Download | No hard cap; aim for 4 GB or less | `.pck` of 150 MB or less, plus about 10 MB of engine (gzip) |
 | Peak memory | — | 1 GiB or less of the 2 GiB cap |
-| Render resolution | Window resolution | The browser canvas follows the device pixel ratio. On the operator's Retina screen it rendered at 3024×1586. Plan 002 measures the cost and decides whether to cap it. |
+| Render resolution | Window resolution | The browser canvas follows the device pixel ratio. Plan 002 measured 60 fps even at 4276×2407 on the operator's M4, so it is not capped. A render-scale setting comes with plan 004's settings, for weaker GPUs. |
 | Voice | Ogg mono, about 48–64 kbps | Same |
 
 ## 11. Risks

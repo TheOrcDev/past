@@ -98,3 +98,16 @@ Append-only. Newest at the bottom. UTC.
   the whole vista with the title, then the cathedral. A click skips it. Frames
   are in `docs/qa/002/cemetery-reveal.jpg`. Next is slice 7: measure, record,
   then the look gate.
+- 2026-10-10T10:45Z **Claude → @Operator:** Plan 002 slice 7 is done, and the
+  look gate is yours to sign (`decisions.md` #31).
+  - **Watch:** `docs/qa/002/first-light-tour.mp4`, 50 s of the whole slice.
+  - **Numbers:** `docs/qa/002/README.md`.
+    - Chrome holds 60 fps at 1080p, and still does at a 4K-size canvas.
+    - macOS holds 120 fps.
+    - Video memory is 87.6–101.7 MiB.
+    - The browser download is 22.6 MB gzipped.
+    - Image spend is $0.456 of $50.
+  - **Recommendation:** pass. Unknown's Blender-silhouette route works, and the
+    cut-out fallback is not needed.
+  - **After sign-off:** plan 004 (verb coin, inventory, dialogue UI, saves,
+    settings) and the story interviews.

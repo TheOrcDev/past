@@ -245,3 +245,17 @@ as stand-ins.
     smoke vanished over dark stone.
   - **Checks:** 39 GUT tests pass, and the `cemetery_reveal` QA run passes.
     Frames are in `docs/qa/002/cemetery-reveal.jpg`.
+- **2026-10-10, slice 7:** measured, recorded and costed. The details are in
+  `docs/qa/002/README.md`.
+  - **Frame rate:** at 1080p the macOS build holds 120 fps, the display limit,
+    and Chrome holds 60 fps, also the display limit. Chrome holds 60 fps even at
+    a 4276×2407 canvas.
+  - **Hitch fixed:** the flashback's first frames stalled while shaders
+    compiled. `Flashback.warm_up` now draws the past while the room fades in.
+  - **Video memory:** 87.6 MiB on macOS and 101.7 MiB in the browser.
+  - **Download:** the browser build is 52.5 MB, or 22.6 MB gzipped.
+  - **Banding:** grain covers it, so Forward+ is not needed for it.
+  - **Spend:** $0.456 of $50.
+  - **Recording:** `docs/qa/002/first-light-tour.mp4`.
+  - **Gate:** the look and Unknown's route are presented to the operator for
+    sign-off.
