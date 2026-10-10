@@ -51,17 +51,38 @@ func snapshot() -> Dictionary:
 	return data
 
 
-## Writes `slot`, with a thumbnail of the screen as it is now.
-func save(slot: int) -> Error:
+## Writes `slot`, with `picture` as its thumbnail, or the screen as it is now.
+func save(slot: int, picture: Image = null) -> Error:
 	DirAccess.make_dir_recursive_absolute(directory)
 	var file := FileAccess.open(path(slot), FileAccess.WRITE)
 	if file == null:
 		return FileAccess.get_open_error()
 	file.store_string(JSON.stringify(snapshot(), "\t"))
 	file.close()
-	_save_thumbnail(slot)
+	var image := picture if picture else screen_image()
+	if image:
+		image = image.duplicate() as Image
+		image.resize(THUMBNAIL.x, THUMBNAIL.y, Image.INTERPOLATE_BILINEAR)
+		image.save_png(thumbnail_path(slot))
 	saved.emit(slot)
 	return OK
+
+
+## The picture saved with `slot`, or null.
+func thumbnail(slot: int) -> Texture2D:
+	if not FileAccess.file_exists(thumbnail_path(slot)):
+		return null
+	var image := Image.load_from_file(thumbnail_path(slot))
+	return ImageTexture.create_from_image(image) if image and not image.is_empty() else null
+
+
+## The screen as last drawn, or null where there is none (headless runs).
+func screen_image() -> Image:
+	if DisplayServer.get_name() == "headless":
+		return null
+	var texture := get_viewport().get_texture()
+	var image := texture.get_image() if texture else null
+	return image if image and not image.is_empty() else null
 
 
 ## The save in `slot`, migrated to this build's version; empty if there is
@@ -129,13 +150,3 @@ func _on_room_shown(_room: Room) -> void:
 	await get_tree().process_frame
 	save(AUTOSAVE)
 
-
-func _save_thumbnail(slot: int) -> void:
-	if DisplayServer.get_name() == "headless":
-		return  # Headless runs (the tests) have no screen to capture.
-	var texture := get_viewport().get_texture()
-	var image := texture.get_image() if texture else null
-	if image == null or image.is_empty():
-		return
-	image.resize(THUMBNAIL.x, THUMBNAIL.y, Image.INTERPOLATE_BILINEAR)
-	image.save_png(thumbnail_path(slot))

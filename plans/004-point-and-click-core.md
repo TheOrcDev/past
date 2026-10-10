@@ -246,4 +246,25 @@ About 4–6 working sessions.
     a test.
   - **Checks:** five integration tests; 82 GUT tests pass. A `reduced_motion`
     QA scenario passes on desktop and in the browser.
+- **2026-10-11, slice 8:** the top bar and menus.
+  - **`Menus` autoload:** `TopBar` slides down when the cursor pushes against
+    the top edge while the player is free to act. It offers Journal, Save,
+    Load, Settings, Reveal hotspots and Quit; the browser build has no Quit.
+  - **Pages:** each is a `MenuScreen` over the paused game, closed by Esc, a
+    right-click or ‹.
+    - The save and load pages (`SlotsScreen`) show each slot's thumbnail,
+      room, date and play time. Saving over a used slot takes a second click.
+      The load page starts with the autosave, and empty slots can't be picked.
+    - The settings page (`SettingsScreen`) has sliders and click-to-cycle
+      choices.
+    - The journal is a placeholder, and Quit asks first.
+  - **Thumbnails:** the save page captures the game a frame after the bar
+    hides, so the menu never appears in the picture. `Saves.save()` takes that
+    picture.
+  - **Reveal hotspots:** marks every usable hotspot for 2.6 s, with the cursor's
+    ring or exit arrow and the name, kept on screen.
+  - **Fix:** `Interaction` lets go of the custom cursor at shutdown. The
+    renderer used to report a leaked texture when the game quit.
+  - **Checks:** six integration tests; 88 GUT tests pass. A `menus` QA scenario
+    passes on desktop and in the browser.
 

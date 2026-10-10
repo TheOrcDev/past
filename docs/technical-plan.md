@@ -411,6 +411,25 @@ hotspots, Quit), hotspot reveal markers and the hint on Unknown all sit on
 no workaround. Plan 004 tunes the hold threshold and the coin's feel with the
 operator.
 
+- **Top bar and pages** (plan 004 slice 8): the `Menus` autoload (`src/ui`).
+  - **The bar:** `TopBar` slides down when the cursor pushes against the top
+    edge, but only while the player is free to act: a room showing, input
+    unlocked, no coin or inventory open. It slides away once the cursor
+    leaves. The browser build has no Quit.
+  - **Pages:** each is a `MenuScreen` over the paused game. Esc, a right-click
+    or ‹ closes it.
+    - `SlotsScreen` saves and loads, with each slot's thumbnail. Saving over a
+      used slot takes a second click. The thumbnail is the game as it was
+      before the bar opened.
+    - `SettingsScreen` covers §6.9: sliders for the volumes, and a click to
+      cycle each choice.
+    - The journal is a placeholder until plan 005.
+  - **Reveal hotspots:** `HotspotReveal` marks everything usable in the room
+    or the open close-up for 2.6 s. Hotspots get a ring, exits their arrow,
+    and each shows its name.
+  - **QA runs** switch the bar off, so a stray cursor can't bring it into a
+    recording.
+
 ### 6.7 Journal (plan 005)
 
 - One page per memory, with a still from its flashback and one voiced line.
@@ -589,6 +608,7 @@ Not needed. The browser gets only the prologue demo, so it fits in one `.pck`
       reload;
     - `reduced_motion` plays the opening and the gravestone's close-up with
       Reduce camera motion on;
+    - `menus` shoots the top bar, Reveal hotspots and each page;
     - `perf` prints frame times and memory;
     - `banding` captures the fog with grain on and off;
     - `tour` plays the slice for `--write-movie`. Godot's movie writer takes

@@ -214,4 +214,11 @@ Append-only. Newest at the bottom. UTC.
     became a Render at 1080p switch, because Godot can't scale 2D rendering
     below that without a bigger rework.
   - **Next:** the settings screen comes with the top bar in slice 8.
+- 2026-10-10T22:08Z **Claude → @Operator:** Plan 004 slice 8 is done.
+  - **The bar:** move the cursor to the top of the screen and it slides down:
+    Journal, Save, Load, Settings, Reveal hotspots and Quit.
+  - **Pages:** saving and loading show each slot's picture, room and date. The
+    settings page has every option from slice 7. Reveal hotspots marks
+    everything you can use for a moment.
+  - **Next:** slice 9, the hint on Unknown.
 

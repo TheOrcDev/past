@@ -42,6 +42,7 @@ func _ready() -> void:
 	Saves.directory = "user://qa-saves"
 	Settings.path = "user://qa-settings.cfg"
 	Settings.reset()
+	Menus.enabled = false
 	_out_dir = _args.get("qa-out", OS.get_user_data_dir().path_join("qa"))
 	DirAccess.make_dir_recursive_absolute(_out_dir)
 	var timeout := LONG_TIMEOUT_SECONDS if _scenario in WITH_OPENING else TIMEOUT_SECONDS
@@ -103,6 +104,8 @@ func _run(scenario: String) -> void:
 			await _saves()
 		"reduced_motion":
 			await _reduced_motion()
+		"menus":
+			await _menus()
 		_:
 			_failures.append("unknown scenario %s" % scenario)
 	_finish("done")
@@ -451,6 +454,35 @@ func _reduced_motion() -> void:
 	while Closeups.busy:
 		await get_tree().process_frame
 	await _shot("05_closeup_open")
+
+
+## The top bar and its pages (plan 004 slice 8), shot one by one at the grave.
+func _menus() -> void:
+	await _enter(&"cemetery_grave")
+	await get_tree().create_timer(0.5).timeout
+	Menus.bar.open()
+	await get_tree().create_timer(0.4).timeout
+	await _shot("01_top_bar")
+	Menus.bar.hide_now()
+	_check(Menus.hotspots.reveal() == 6, "the grave's five things and its exit are marked")
+	await get_tree().create_timer(0.6).timeout
+	await _shot("02_reveal_hotspots")
+	Menus.hotspots.clear()
+	for file in [Saves.path(1), Saves.thumbnail_path(1)]:
+		DirAccess.remove_absolute(file)
+	await Menus.choose(&"save")
+	await get_tree().create_timer(0.3).timeout
+	await _shot("03_save_page")
+	(Menus.screen as SlotsScreen).pick(1)
+	await Menus.choose(&"load")
+	await get_tree().create_timer(0.3).timeout
+	await _shot("04_load_page")
+	Menus.screen.close()
+	for page: Array in [[&"settings", "05_settings_page"], [&"journal", "06_journal_page"], [&"quit", "07_quit_page"]]:
+		await Menus.choose(page[0])
+		await get_tree().create_timer(0.3).timeout
+		await _shot(page[1])
+		Menus.screen.close()
 
 
 ## The fog gradients with grain on and off, in both eras, for judging banding.

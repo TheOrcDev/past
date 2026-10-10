@@ -46,6 +46,11 @@ func _ready() -> void:
 	Inventory.held_changed.connect(_on_held_changed)
 
 
+func _exit_tree() -> void:
+	# Let go of the drawn cursor while the renderer can still free it.
+	Input.set_custom_mouse_cursor(null)
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	var mouse := event as InputEventMouse
 	if mouse == null or Rooms.current == null:
