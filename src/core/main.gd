@@ -1,10 +1,10 @@
 extends Node
 ## Entry point: plays the opening cutscene, then starts the game in
-## `start_room` (the cathedral nave until the prologue exists).
+## `start_room`: Unknown's grave (plan 007).
 
 ## A cutscene scene with play() that returns on black; empty for none.
 @export_file("*.tscn") var opening := "res://content/cutscenes/cemetery_reveal/cemetery_reveal.tscn"
-@export var start_room: StringName = &"cathedral_nave"
+@export var start_room: StringName = &"cemetery_grave"
 @export var start_entry: StringName = &"default"
 
 

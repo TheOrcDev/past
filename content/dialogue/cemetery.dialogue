@@ -1,0 +1,50 @@
+~ arrival
+
+Unknown: Cold. Quiet. And for some reason, this spot feels like mine. [ID:CEM_ARRIVAL_1]
+
+=> END
+
+~ grave_look
+
+Unknown: The earth is loose. Disturbed. From below, if I'm honest. [ID:CEM_GRAVE_LOOK_1]
+Unknown: I'd rather not think about why I know that. [ID:CEM_GRAVE_LOOK_2]
+
+=> END
+
+~ angel_look
+
+Unknown: She's been weeping for a long time. Stone is patient like that. [ID:CEM_ANGEL_LOOK_1]
+
+=> END
+
+~ mausoleum_look
+
+Unknown: Somebody important. Important enough to get a roof. [ID:CEM_MAUSOLEUM_LOOK_1]
+
+=> END
+
+~ city_look
+
+Unknown: The city. Even from here it looks like it's holding its breath. [ID:CEM_CITY_LOOK_1]
+
+=> END
+
+~ name_look
+
+Unknown: U. The rest has been smashed away. Whoever did it was thorough. [ID:CEM_NAME_LOOK_1]
+Unknown: U... Is that me? It's a start. [ID:CEM_NAME_LOOK_2]
+
+=> END
+
+~ inscription_look
+
+Unknown: "I know you are happy now. Your dove." [ID:CEM_INSCRIPTION_LOOK_1]
+Unknown: Happy. Here. Somebody had a very generous idea of me. [ID:CEM_INSCRIPTION_LOOK_2]
+
+=> END
+
+~ dove_look
+
+Unknown: A dove. Whoever my dove was, they paid a stonecutter to say goodbye. [ID:CEM_DOVE_LOOK_1]
+
+=> END

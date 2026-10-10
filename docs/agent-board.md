@@ -179,3 +179,18 @@ Append-only. Newest at the bottom. UTC.
 - 2026-10-10T21:20Z **Claude → @Operator:** Plan 007 slice 2 is done: close-up
   views. A hotspot opens one by pushing in until it fills the screen. Its
   details answer clicks, and a right-click, Esc or ‹ backs out.
+- 2026-10-10T21:35Z **Claude → @Operator:** Plan 007 slice 3 is done: the game
+  now starts at Unknown's grave.
+  - **The start:** the opening hands off to the grave. Unknown says "Cold.
+    Quiet. And for some reason, this spot feels like mine."
+  - **The stone:** clicking it pushes in until the close-up fills the screen.
+    Only the U survives; below it reads "I KNOW YOU ARE HAPPY NOW." and "YOUR
+    DOVE". The U, the inscription and the dove each get a line from Unknown.
+  - **The push-in:** reworked so the close-up stays on the stone as the camera
+    closes in, with soft edges. It no longer looks like a picture laid over
+    the room.
+  - **The way on:** an exit east leads to the cathedral, and a breach on the
+    cathedral's left leads back.
+  - **Checks:** desktop, the macOS app and the browser all pass. Chrome holds
+    60 fps through the close-up.
+

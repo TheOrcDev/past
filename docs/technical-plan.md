@@ -87,9 +87,11 @@ past/
 ```
 
 - Scripts that Godot itself runs live in `addons/past_tools/`, not in `tools/`.
-  Godot does not see `tools/`, because it is ignored. There are five so far:
+  Godot does not see `tools/`, because it is ignored. There are six so far:
   - `new_room.gd` scaffolds a room from an optional JSON spec, which lives in
     `art-source/work/rooms/<room>/room_spec.json`;
+  - `new_closeup.gd` builds a close-up view (§6.12) from
+    `art-source/work/closeups/<id>/closeup_spec.json`;
   - `scaffold_core.gd` creates `main.tscn` and Unknown's scene
     (`--replace=unknown` rebuilds it);
   - `import_sprites.gd` builds a `CharacterSprites` resource from a sprite
@@ -432,6 +434,28 @@ Only built if a video cutscene is approved.
 Not needed. The browser gets only the prologue demo, so it fits in one `.pck`
 (decision #20).
 
+### 6.12 Close-ups — `Closeup`, `Closeups` (plan 007)
+
+- **What:** a full-screen picture of something seen closer, such as Unknown's
+  gravestone, with hotspots of its own. A close-up lives in
+  `content/closeups/<id>/`: a `Closeup` root, a 1920×1080 `Background` and
+  `Hotspots`. Its script answers verbs as `<verb>_<id>()`, as a room's does.
+- **Opening:** a room's verb calls `Closeups.open(id, hotspot)`, or
+  `open_node()` with a scene it preloaded so the image loads under the room's
+  fade, not on the click. The push takes 0.9 s, eased:
+  - a frame with the screen's shape is fitted round the hotspot and kept inside
+    the room;
+  - a camera added to the room zooms until that frame fills the screen. The zoom
+    grows evenly to the eye while the frame's centre glides to the screen's
+    centre;
+  - the close-up stays pinned over the frame and fades in, with soft edges from
+    `ring_feather.gdshader` that sharpen as it lands.
+- **Closing:** the same move reversed, from a right-click, Esc or the ‹ glyph.
+  The camera is removed and the room is as it was.
+- **While open:** `Interaction` sends clicks and hover to the close-up's
+  hotspots in screen pixels. Nothing walks, and verbs run at once. `Say` speaks
+  from below the picture. The room keeps running behind it.
+
 ## 7. Browser demo specifics
 
 - **Audio:** the browser's default "Sample" playback has three problems:
@@ -524,8 +548,13 @@ Not needed. The browser gets only the prologue demo, so it fits in one `.pck`
        let a walk or a line play out.
     4. For timings, `bun tools/build/browser-qa.ts <scenario>` runs a scenario
        in a visible Chrome window with a throwaway profile. It passes
-       `?qa=<scenario>` in the URL and prints the `[qa]` lines.
+       `?qa=<scenario>` in the URL and prints the `[qa]` lines, console errors,
+       uncaught exceptions and page crashes. macOS counts a covered window as
+       hidden, and Chrome would then stop the game's frames, so the tool starts
+       Chrome with its backgrounding switched off.
   - **Scenarios for measuring and recording:**
+    - `grave` checks the start (plan 007): the arrival line, the gravestone's
+      close-up and its lines, and the exits both ways, with screenshots;
     - `perf` prints frame times and memory;
     - `banding` captures the fog with grain on and off;
     - `tour` plays the slice for `--write-movie`. Godot's movie writer takes
@@ -534,9 +563,12 @@ Not needed. The browser gets only the prologue demo, so it fits in one `.pck`
       the project root while recording, and delete it afterwards.
 
   Evidence goes in `docs/qa/<plan>/`.
+  - A scenario that times out names the step it was on (`_mark` in
+    `src/core/qa.gd`).
 - **Known noise:** headless test runs and the desktop app print "resources still
   in use at exit" or "ObjectDB instances leaked" when they quit. This doesn't
-  affect behaviour; plan 004 investigates it with `--verbose`.
+  affect behaviour; plan 004 investigates it with `--verbose`. With `--verbose`,
+  the leftovers are Dialogue Manager's script and the last dialogue file it ran.
 - **Profiling:** Godot's monitors (FPS, draw calls, video memory) in debug builds,
   and Chrome's performance panel for the demo.
 

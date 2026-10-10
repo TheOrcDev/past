@@ -22,8 +22,9 @@ The operator's brief (2026-10-10):
 ## The close-up concept
 
 - **Opening:** a hotspot opens a close-up by id. The camera pushes in on the
-  hotspot while the close-up, first framed exactly over the hotspot, grows to
-  fill the screen. It takes about 0.9 s and eases in and out.
+  hotspot until a screen-shaped frame round it fills the screen. The close-up
+  stays pinned over that frame with soft edges and fades in, so the detail grows
+  out of the thing clicked. It takes about 0.9 s and eases in and out.
 - **While open:** the close-up is its own small scene: a full-screen image with
   its own hotspots. There is no walking; verbs run at once, and Unknown
   comments.
@@ -84,3 +85,24 @@ Screenshots and a short video of the start: the reveal, the grave, the close-up.
     hotspots, with no walking. A right-click, Esc or the ‹ glyph backs out.
     `Say` speaks from below the image.
   - **Tests:** three integration tests.
+- **2026-10-10, slice 3:** the grave room and the new start.
+  - **Room:** `cemetery_grave`, built from IMG-0009 v1 by
+    `art-source/work/rooms/cemetery_grave/build.py`. It has a walk area, scale
+    zones, fog and moonlight, five hotspots, and an exit east to the cathedral.
+    The cathedral gets a way back, over the rubble on the left.
+  - **Close-up:** `tombstone`, built from IMG-0010 v1 through the new
+    `new_closeup.gd` scaffold. Its hotspots are the U, the inscription and the
+    dove, each with Unknown's lines in `content/dialogue/cemetery.dialogue`.
+  - **New start:** the opening hands off to the grave. Unknown says one line on
+    arrival, the first time only.
+  - **Push-in reworked:** in slice 2 the close-up grew from the hotspot on its
+    own, so mid-move it was a hard-edged picture that didn't sit on the stone.
+    Now the camera zooms until the hotspot's frame fills the screen, and the
+    close-up stays pinned over that frame with soft edges. The room preloads the
+    close-up, which removed a 41 ms frame in Chrome.
+  - **Fixes:** `Exit` finds `Rooms` by path, so the room scaffold (which runs
+    without autoloads) can compile it. `browser-qa.ts` keeps covered Chrome
+    windows running, and a QA timeout names its step.
+  - **Checks:** 72 GUT tests pass, 5 new in `test_grave.gd`. The `grave` QA
+    scenario passes in the editor, the macOS app and the browser. Chrome holds
+    60 fps through the close-up. Evidence is in `docs/qa/007/`.

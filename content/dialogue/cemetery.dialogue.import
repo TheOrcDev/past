@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://d072dna2yqvwf"
+path="res://.godot/imported/cemetery.dialogue-0e0670671b32a92045c9d8781d8e5fcb.tres"
+
+[deps]
+
+source_file="res://content/dialogue/cemetery.dialogue"
+dest_files=["res://.godot/imported/cemetery.dialogue-0e0670671b32a92045c9d8781d8e5fcb.tres"]
+
+[params]
+
+defaults=true

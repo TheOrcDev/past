@@ -1,25 +1,30 @@
 extends Node
 ## Opens and closes close-up views (plan 007). Opening pushes in: the room's
-## camera moves towards the hotspot while the close-up, first framed over the
-## hotspot, grows to fill the screen. Closing is the same move reversed. While a
-## close-up is open, Interaction sends clicks to its hotspots; a right-click,
-## Esc or the back glyph closes it.
+## camera glides towards the hotspot and zooms until a screen-shaped frame round
+## it fills the screen, while the close-up, pinned over that frame with soft
+## edges, fades in, so the detail grows out of the thing clicked. Closing is the
+## same move reversed. While a close-up is open, Interaction sends clicks to its
+## hotspots; a right-click, Esc or the back glyph closes it.
 
 signal opened(closeup: Closeup)
 signal closed(closeup_id: StringName)
 
 const PATH := "res://content/closeups/%s/%s.tscn"
 const SECONDS := 0.9
-## How far the room's camera pushes in as the close-up takes over.
-const PUSH := 1.7
+## The close-up's soft edge while it moves, as a share of its shorter side.
+const FEATHER := 0.22
+const FEATHER_SHADER := preload("res://src/shaders/ring_feather.gdshader")
 
 var current: Closeup
 var busy := false
 
 var _layer: CanvasLayer
 var _back: Label
-var _from_rect := Rect2()
+## The frame round the hotspot, in room pixels: the screen's shape, inside the
+## room. Rooms are one screen, so these are screen pixels before the push.
+var _frame := Rect2()
 var _camera: Camera2D
+var _feather: ShaderMaterial
 
 
 func _ready() -> void:
@@ -60,14 +65,16 @@ func open_node(closeup: Closeup, from: Hotspot = null) -> void:
 	busy = true
 	Interaction.locked += 1
 	var view := get_viewport().get_visible_rect().size
-	_from_rect = _screen_rect(from) if from else Rect2(view / 2.0 - view / 8.0, view / 4.0)
+	_frame = _frame_round(from) if from else Rect2(view * 0.375, view * 0.25)
 	_layer.add_child(closeup)
 	current = closeup
-	_place(closeup, _from_rect, view, 0.0)
-	_camera = _push_camera(from)
-	var tween := create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_method(func(t: float) -> void: _place(closeup, _from_rect, view, t), 0.0, 1.0, SECONDS)
-	await tween.finished
+	_camera = _make_camera()
+	_soften(closeup, true)
+	_step(0.0)
+	await _push(0.0, 1.0)
+	_soften(closeup, false)
+	closeup.position = Vector2.ZERO
+	closeup.scale = Vector2.ONE
 	_back.visible = true
 	Interaction.locked -= 1
 	busy = false
@@ -81,13 +88,8 @@ func close() -> void:
 	Interaction.locked += 1
 	_back.visible = false
 	var closeup := current
-	var view := get_viewport().get_visible_rect().size
-	var tween := create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_method(func(t: float) -> void: _place(closeup, _from_rect, view, t), 1.0, 0.0, SECONDS)
-	if _camera:
-		tween.parallel().tween_property(_camera, ^"zoom", Vector2.ONE, SECONDS)
-		tween.parallel().tween_property(_camera, ^"position", view / 2.0, SECONDS)
-	await tween.finished
+	_soften(closeup, true)
+	await _push(1.0, 0.0)
 	if is_instance_valid(_camera):
 		_camera.queue_free()
 	_camera = null
@@ -107,44 +109,70 @@ func _unhandled_input(event: InputEvent) -> void:
 		close()
 
 
-## Frames the close-up between the hotspot's rect (t = 0, transparent) and the
-## whole screen (t = 1, opaque).
-func _place(closeup: Closeup, from: Rect2, view: Vector2, t: float) -> void:
-	var size := from.size.lerp(view, t)
-	closeup.scale = Vector2(size.x / view.x, size.y / view.y)
-	closeup.position = from.position.lerp(Vector2.ZERO, t)
-	closeup.modulate.a = clampf(t * 1.6, 0.0, 1.0)
+func _push(from_t: float, to_t: float) -> void:
+	var tween := create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_method(_step, from_t, to_t, SECONDS)
+	await tween.finished
 
 
-## The room's camera eases towards the hotspot while the close-up opens.
-func _push_camera(from: Hotspot) -> Camera2D:
+## One moment of the push, from t = 0 (the room as it was, the close-up an
+## invisible frame over the hotspot) to t = 1 (the frame fills the screen and
+## the close-up covers it). The zoom grows evenly to the eye, the frame's centre
+## glides straight to the screen's centre, and the close-up stays on the frame.
+func _step(t: float) -> void:
+	var view := get_viewport().get_visible_rect().size
+	var zoom := pow(view.x / _frame.size.x, t)
+	var offset := _frame.get_center() - view / 2.0
+	if is_instance_valid(_camera):
+		_camera.zoom = Vector2.ONE * zoom
+		# Puts the frame's centre at view / 2 + offset * (1 - t) on screen.
+		_camera.position = view / 2.0 + offset * (1.0 - (1.0 - t) / zoom)
+		_camera.force_update_scroll()
+	var size := _frame.size * zoom
+	current.position = view / 2.0 + offset * (1.0 - t) - size / 2.0
+	current.scale = size / view
+	current.modulate.a = smoothstep(0.1, 0.7, t)
+	if _feather:
+		_feather.set_shader_parameter(&"feather", maxf(FEATHER * (1.0 - smoothstep(0.55, 1.0, t)), 0.001))
+
+
+## A camera for the push, at rest where it sees the room as it is without one.
+func _make_camera() -> Camera2D:
 	var room := Rooms.current
 	if room == null:
 		return null
-	var view := get_viewport().get_visible_rect().size
 	var camera := Camera2D.new()
-	camera.position = view / 2.0
+	camera.position = get_viewport().get_visible_rect().size / 2.0
 	room.add_child(camera)
 	camera.make_current()
-	var target := from.focus_point() if from else view / 2.0
-	var tween := camera.create_tween().set_parallel(true).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(camera, ^"zoom", Vector2.ONE * PUSH, SECONDS)
-	tween.tween_property(camera, ^"position", target, SECONDS)
 	return camera
 
 
-## Where the close-up starts: a screen rectangle with the screen's shape that
-## covers the hotspot's outline, so the image grows out of the thing clicked.
-func _screen_rect(hotspot: Hotspot) -> Rect2:
-	var canvas := hotspot.get_viewport().get_canvas_transform()
-	var rect := Rect2(canvas * hotspot.focus_point(), Vector2.ZERO)
+## Soft edges on the close-up's background while it moves; none once it is open.
+func _soften(closeup: Closeup, on: bool) -> void:
+	var background := closeup.get_node_or_null(^"Background") as CanvasItem
+	if background == null:
+		return
+	if on and background.material == null:
+		_feather = ShaderMaterial.new()
+		_feather.shader = FEATHER_SHADER
+		background.material = _feather
+	elif not on and _feather and background.material == _feather:
+		background.material = null
+		_feather = null
+
+
+## The frame the push starts on: a rectangle with the screen's shape round the
+## hotspot's outline, kept inside the room so the camera never shows past it.
+func _frame_round(hotspot: Hotspot) -> Rect2:
+	var rect := Rect2(hotspot.focus_point(), Vector2.ZERO)
 	for child in hotspot.get_children():
 		var shape := child as CollisionPolygon2D
 		if shape:
 			for point in shape.polygon:
-				rect = rect.expand(canvas * shape.to_global(point))
+				rect = rect.expand(shape.to_global(point))
 	var view := get_viewport().get_visible_rect().size
 	var aspect := view.x / view.y
-	var width := maxf(maxf(rect.size.x, rect.size.y * aspect), 160.0)
+	var width := clampf(maxf(rect.size.x, rect.size.y * aspect), 160.0, view.x)
 	var size := Vector2(width, width / aspect)
-	return Rect2(rect.get_center() - size / 2.0, size)
+	return Rect2((rect.get_center() - size / 2.0).clamp(Vector2.ZERO, view - size), size)

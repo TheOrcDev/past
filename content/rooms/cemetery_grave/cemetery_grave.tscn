@@ -1,0 +1,176 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/rooms/cemetery_grave/cemetery_grave.gd" id="1_t15s2"]
+[ext_resource type="Texture2D" path="res://content/rooms/cemetery_grave/art/bg_now.png" id="2_busjn"]
+[ext_resource type="Script" path="res://src/systems/effects/fog_layer.gd" id="3_ubsci"]
+[ext_resource type="Texture2D" path="res://content/rooms/cemetery_grave/art/depth_now.png" id="4_0p6gd"]
+[ext_resource type="Script" path="res://src/systems/effects/light_shafts.gd" id="5_8eo58"]
+[ext_resource type="Script" path="res://src/core/scale_zones.gd" id="6_r4moi"]
+[ext_resource type="Script" path="res://src/core/hotspot.gd" id="7_vcmep"]
+[ext_resource type="Script" path="res://src/core/exit.gd" id="8_71gup"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_7ftfq"]
+vertices = PackedVector2Array(1920, 845, 1920, 1062, 0, 1062, 1500, 840, 400, 815, 650, 800, 1150, 810, 0, 840)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 3, 2, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, 840, 400, 815, 650, 800, 1150, 810, 1500, 840, 1920, 845, 1920, 1062, 0, 1062)])
+agent_radius = 0.0
+
+[node name="CemeteryGrave" type="Node2D" unique_id=2053969105]
+script = ExtResource("1_t15s2")
+room_id = &"cemetery_grave"
+display_name = "Cemetery"
+
+[node name="Layers" type="Node2D" parent="." unique_id=755556488]
+
+[node name="Now" type="Node2D" parent="Layers" unique_id=209421806]
+
+[node name="Background" type="Sprite2D" parent="Layers/Now" unique_id=1555894807]
+texture = ExtResource("2_busjn")
+centered = false
+
+[node name="FogFar" type="ColorRect" parent="Layers/Now" unique_id=1933642632]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_ubsci")
+fog_color = Color(0.85, 0.86, 0.89, 1)
+density = 0.3
+velocity = Vector2(0.005, 0)
+noise_scale = Vector2(1.4, 0.8)
+band_top = 0.3
+band_bottom = 0.75
+depth_texture = ExtResource("4_0p6gd")
+near_cutoff = 0.4
+noise_seed = 21
+
+[node name="FogLow" type="ColorRect" parent="Layers/Now" unique_id=1105178138]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_ubsci")
+fog_color = Color(0.8, 0.82, 0.86, 1)
+density = 0.24
+velocity = Vector2(-0.008, 0)
+noise_scale = Vector2(2.2, 1.1)
+band_top = 0.5
+band_bottom = 0.82
+depth_texture = ExtResource("4_0p6gd")
+near_cutoff = 0.55
+noise_seed = 23
+
+[node name="Moonlight" type="ColorRect" parent="Layers/Now" unique_id=116770559]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("5_8eo58")
+origin = Vector2(1480, 120)
+aim = 225.0
+spread = 30.0
+beams = 5.0
+intensity = 0.07
+shaft_color = Color(0.9, 0.93, 1, 1)
+flicker = 0.3
+
+[node name="Then" type="Node2D" parent="Layers" unique_id=648918774]
+
+[node name="WalkAreas" type="Node2D" parent="." unique_id=1596314872]
+
+[node name="Now" type="NavigationRegion2D" parent="WalkAreas" unique_id=11911493]
+navigation_polygon = SubResource("NavigationPolygon_7ftfq")
+
+[node name="Then" type="NavigationRegion2D" parent="WalkAreas" unique_id=1096732072]
+enabled = false
+
+[node name="ScaleZones" type="Node2D" parent="." unique_id=603321998]
+script = ExtResource("6_r4moi")
+far_y = 800.0
+far_scale = 0.82
+near_y = 1060.0
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=131883262]
+
+[node name="Gravestone" type="Area2D" parent="Hotspots" unique_id=1623703570]
+script = ExtResource("7_vcmep")
+id = &"gravestone"
+display_name = "Gravestone"
+walk_offset = Vector2(730, 870)
+pick_priority = 1
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Gravestone" unique_id=1444947346]
+polygon = PackedVector2Array(605, 650, 605, 330, 640, 292, 700, 272, 760, 280, 800, 302, 835, 360, 840, 650)
+
+[node name="Grave" type="Area2D" parent="Hotspots" unique_id=349359620]
+script = ExtResource("7_vcmep")
+id = &"grave"
+display_name = "Grave"
+walk_offset = Vector2(880, 880)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Grave" unique_id=2055622844]
+polygon = PackedVector2Array(600, 652, 1150, 662, 1180, 780, 980, 806, 620, 798)
+
+[node name="Angel" type="Area2D" parent="Hotspots" unique_id=159246179]
+script = ExtResource("7_vcmep")
+id = &"angel"
+display_name = "Weeping angel"
+walk_offset = Vector2(430, 875)
+pick_priority = 1
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Angel" unique_id=1244294580]
+polygon = PackedVector2Array(350, 500, 350, 262, 392, 206, 440, 216, 462, 300, 462, 500)
+
+[node name="Mausoleum" type="Area2D" parent="Hotspots" unique_id=920698335]
+script = ExtResource("7_vcmep")
+id = &"mausoleum"
+display_name = "Mausoleum"
+walk_offset = Vector2(260, 880)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Mausoleum" unique_id=2030259571]
+polygon = PackedVector2Array(110, 580, 110, 262, 200, 172, 300, 200, 395, 300, 395, 580)
+
+[node name="City" type="Area2D" parent="Hotspots" unique_id=2093251963]
+script = ExtResource("7_vcmep")
+id = &"city"
+display_name = "The city"
+walk_offset = Vector2(1400, 880)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/City" unique_id=1223028404]
+polygon = PackedVector2Array(1030, 380, 1030, 200, 1150, 60, 1300, 40, 1500, 90, 1700, 160, 1800, 380)
+
+[node name="ExitEast" type="Area2D" parent="Hotspots" unique_id=1987938780]
+script = ExtResource("8_71gup")
+target_room = &"cathedral_nave"
+target_entry = &"from_cemetery"
+id = &"exit_east"
+display_name = "To the cathedral"
+default_verb = &"walk"
+walk_offset = Vector2(1880, 930)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/ExitEast" unique_id=224137837]
+polygon = PackedVector2Array(1820, 815, 1920, 815, 1920, 1062, 1820, 1062)
+
+[node name="Exits" type="Node2D" parent="." unique_id=453558778]
+
+[node name="Markers" type="Node2D" parent="." unique_id=626674634]
+
+[node name="default" type="Marker2D" parent="Markers" unique_id=640796303]
+position = Vector2(900, 905)
+
+[node name="from_cathedral" type="Marker2D" parent="Markers" unique_id=1416491922]
+position = Vector2(1760, 920)
+
+[node name="Actors" type="Node2D" parent="." unique_id=519674071]
+y_sort_enabled = true
+
+[node name="Foreground" type="Node2D" parent="." unique_id=1548940440]
+
+[node name="GroundMist" type="ColorRect" parent="Foreground" unique_id=1427518971 groups=["era_now"]]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_ubsci")
+fog_color = Color(0.86, 0.87, 0.9, 1)
+density = 0.16
+velocity = Vector2(0.01, 0)
+noise_scale = Vector2(2.6, 1.6)
+band_top = 0.84
+band_bottom = 1.02
+band_softness = 0.08
+noise_seed = 27
+
+[node name="Cinematics" type="Node2D" parent="." unique_id=695389675]

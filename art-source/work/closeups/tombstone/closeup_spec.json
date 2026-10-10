@@ -1,0 +1,71 @@
+{
+  "background": "res://content/closeups/tombstone/art/bg.png",
+  "hotspots": [
+    {
+      "id": "name",
+      "name": "The name",
+      "polygon": [
+        [
+          630,
+          488
+        ],
+        [
+          1350,
+          488
+        ],
+        [
+          1350,
+          604
+        ],
+        [
+          630,
+          604
+        ]
+      ]
+    },
+    {
+      "id": "inscription",
+      "name": "The inscription",
+      "polygon": [
+        [
+          620,
+          628
+        ],
+        [
+          1350,
+          628
+        ],
+        [
+          1350,
+          752
+        ],
+        [
+          620,
+          752
+        ]
+      ]
+    },
+    {
+      "id": "dove",
+      "name": "A carved dove",
+      "polygon": [
+        [
+          820,
+          160
+        ],
+        [
+          1130,
+          160
+        ],
+        [
+          1130,
+          400
+        ],
+        [
+          820,
+          400
+        ]
+      ]
+    }
+  ]
+}

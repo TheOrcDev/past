@@ -1,5 +1,6 @@
 // Runs a QA scenario of the browser build in a visible Chrome window and
-// prints the game's [qa] lines. Automation tabs are often hidden, and hidden
+// prints the game's [qa] lines, plus console errors, uncaught exceptions and
+// page crashes. Automation tabs are often hidden, and hidden
 // tabs throttle requestAnimationFrame, so frame times only mean something in a
 // window like this one. It uses a throwaway profile and closes when done.
 //
@@ -37,6 +38,11 @@ const chrome = Bun.spawn(
     "--disable-extensions",
     "--disable-sync",
     "--disable-features=Translate,OptimizationHints,MediaRouter",
+    // macOS counts a window that others cover as hidden, and Chrome then stops
+    // requestAnimationFrame: the game freezes until the window shows again.
+    "--disable-backgrounding-occluded-windows",
+    "--disable-renderer-backgrounding",
+    "--disable-background-timer-throttling",
     `--window-size=${canvasW / scale},${canvasH / scale + 28}`,
     "--window-position=40,40",
     `--app=http://localhost:8060/?qa=${scenario}`,
@@ -94,13 +100,21 @@ try {
               send("Page.reload", { ignoreCache: false });
             }
           }
+        } else if (message.params.type === "error") {
+          console.log(`[pass ${pass}] [console error] ${text.slice(0, 400)}`);
         }
+      } else if (message.method === "Runtime.exceptionThrown") {
+        const details = message.params.exceptionDetails;
+        console.log(`[pass ${pass}] [exception] ${String(details.exception?.description ?? details.text).slice(0, 400)}`);
+      } else if (message.method === "Inspector.targetCrashed") {
+        console.log(`[pass ${pass}] [crashed] the page crashed`);
       }
     };
   });
   await new Promise((resolve) => (socket.onopen = resolve));
   await send("Runtime.enable");
   await send("Page.enable");
+  await send("Inspector.enable");
   const page = await send("Runtime.evaluate", {
     expression: "JSON.stringify({hidden: document.hidden, dpr: devicePixelRatio})",
     returnByValue: true,

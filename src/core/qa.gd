@@ -8,7 +8,7 @@ extends Node
 const TIMEOUT_SECONDS := 60.0
 const LONG_TIMEOUT_SECONDS := 150.0
 ## Scenarios that start from the opening instead of straight in the first room.
-const WITH_OPENING: Array[String] = ["cemetery_reveal", "perf", "tour", "screenshots"]
+const WITH_OPENING: Array[String] = ["cemetery_reveal", "grave", "perf", "tour", "screenshots"]
 
 var _out_dir := ""
 var _scenario := ""
@@ -19,6 +19,8 @@ var _samples := PackedFloat32Array()
 var _gpu_samples := PackedFloat32Array()
 var _cpu_samples := PackedFloat32Array()
 var _sampling := false
+## The step a scenario is on, named in the result if it times out.
+var _at := ""
 
 
 func _ready() -> void:
@@ -78,6 +80,8 @@ func _run(scenario: String) -> void:
 			await _unknown_look()
 		"cemetery_reveal":
 			await _cemetery_reveal()
+		"grave":
+			await _grave()
 		"perf":
 			await _perf()
 		"tour":
@@ -93,10 +97,12 @@ func _run(scenario: String) -> void:
 	_finish("done")
 
 
-## Waits for the start room to finish loading, then switches to `room_id`.
+## Waits for the start room to finish loading, skipping its arrival line, then
+## switches to `room_id`.
 func _enter(room_id: StringName) -> void:
-	while Rooms.current == null or Interaction.locked > 0:
+	while Rooms.current == null:
 		await get_tree().process_frame
+	await _settle()
 	if Rooms.current.room_id != room_id:
 		await Rooms.goto(room_id, &"default", &"none")
 
@@ -204,15 +210,65 @@ func _cemetery_reveal() -> void:
 	await get_tree().create_timer(5.0).timeout
 	await _shot("03_title")
 	await Rooms.room_changed
-	_check(Rooms.current.room_id == &"cathedral_nave", "the opening hands off into the cathedral")
+	_check(Rooms.current.room_id == &"cemetery_grave", "the opening hands off into the grave")
 	await get_tree().create_timer(1.0).timeout
-	await _shot("04_cathedral")
+	await _shot("04_grave")
 
 
-## Frame times through the whole slice (plan 002 slice 7): the opening, Unknown
-## walking the nave, and the flashback, plus memory. With --uncapped, vsync is
-## off so frame times show the real cost; otherwise they show what the display
-## allows. Prints one "[qa] PERF {json}" line.
+## The grave (plan 007): the arrival line, the push-in on the gravestone, the U
+## and the inscription up close, the pull back out, and the exits to the
+## cathedral and back.
+func _grave() -> void:
+	while Rooms.current == null:
+		await get_tree().process_frame
+	_check(Rooms.current.room_id == &"cemetery_grave", "the game starts at the grave")
+	while not Say.speaking:
+		await get_tree().process_frame
+	await get_tree().create_timer(0.8).timeout
+	await _shot("01_arrival")
+	await _settle()
+	var gravestone := Rooms.current.hotspots.get_node("Gravestone") as Hotspot
+	Interaction.click_at(gravestone.focus_point())
+	while not Closeups.busy:
+		await get_tree().process_frame
+	await get_tree().create_timer(Closeups.SECONDS * 0.45).timeout
+	await _shot("02_pushing_in")
+	while Closeups.current == null or Closeups.busy:
+		await get_tree().process_frame
+	_check(Closeups.current.closeup_id == &"tombstone", "the gravestone opens its close-up")
+	await _shot("03_the_stone")
+	for spot: Array in [["Name", "CEM_NAME_LOOK_1", "04_only_a_u"], ["Inscription", "CEM_INSCRIPTION_LOOK_1", "05_your_dove"], ["Dove", "CEM_DOVE_LOOK_1", "06_the_dove"]]:
+		var hotspot := Closeups.current.hotspots.get_node(String(spot[0])) as Hotspot
+		var id: String = await _click_for_line(hotspot.focus_point())
+		_check(id == spot[1], "%s line id is %s" % [spot[0], id])
+		await get_tree().create_timer(0.8).timeout
+		await _shot(spot[2])
+		await _settle()
+	Interaction.right_click()
+	while Closeups.current:
+		await get_tree().process_frame
+	_check(Interaction.locked == 0, "input is free after the close-up closes")
+	await get_tree().create_timer(0.3).timeout
+	await _shot("07_back_at_the_grave")
+	Interaction.double_click_at((Rooms.current.hotspots.get_node("ExitEast") as Hotspot).focus_point())
+	await Rooms.room_changed
+	_check(Rooms.current.room_id == &"cathedral_nave", "the east exit leads to the cathedral")
+	await _settle()
+	Interaction.double_click_at((Rooms.current.hotspots.get_node("ExitWest") as Hotspot).focus_point())
+	await Rooms.room_changed
+	var arrival := Rooms.current.marker_position(&"from_cathedral")
+	_check(Rooms.current.room_id == &"cemetery_grave" and Rooms.player.global_position.distance_to(arrival) < 1.0, "the cathedral leads back to the grave")
+	await _settle()
+	_check(not Say.speaking, "the arrival line plays only once")
+	await get_tree().create_timer(0.5).timeout
+	await _shot("08_back_from_the_cathedral")
+
+
+## Frame times through the whole slice (plan 002 slice 7): the opening, the
+## gravestone close-up, Unknown walking the nave, and the flashback, plus
+## memory. With --uncapped, vsync is off so frame times show the real cost;
+## otherwise they show what the display allows. Prints one "[qa] PERF {json}"
+## line.
 func _perf() -> void:
 	if _args.has("uncapped"):
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
@@ -223,18 +279,40 @@ func _perf() -> void:
 		"framebuffer": get_viewport().get_texture().get_size(),
 		"vsync": DisplayServer.window_get_vsync_mode() != DisplayServer.VSYNC_DISABLED,
 	}
+	_mark("opening")
 	_start_sampling()
 	while Rooms.current == null:
 		await get_tree().process_frame
 	report["opening"] = _stop_sampling()
+	var skip_lines := func(_id: String, _speaker: String, _text: String) -> void:
+		get_tree().create_timer(1.2).timeout.connect(Say.skip)
+	Say.line_started.connect(skip_lines)
+	_mark("arrival")
+	while Interaction.locked > 0:
+		await get_tree().process_frame
+	_mark("gravestone close-up")
+	_start_sampling()
+	Interaction.click_at((Rooms.current.hotspots.get_node("Gravestone") as Hotspot).focus_point())
+	while Closeups.current == null or Closeups.busy:
+		await get_tree().process_frame
 	await get_tree().create_timer(1.0).timeout
+	Closeups.close()
+	while Closeups.current:
+		await get_tree().process_frame
+	report["gravestone_closeup"] = _stop_sampling()
+	_mark("into the nave")
+	# Through the exit, as a player goes: its fade warms up the past's shaders.
+	Interaction.double_click_at((Rooms.current.hotspots.get_node("ExitEast") as Hotspot).focus_point())
+	await Rooms.room_changed
+	while Interaction.locked > 0:
+		await get_tree().process_frame
+	await get_tree().create_timer(1.0).timeout
+	_mark("nave walking")
 	_start_sampling()
 	for target in [Vector2(1500, 1000), Vector2(600, 1050), Vector2(1100, 930), Vector2(900, 1040)]:
 		await Rooms.player.walk_to(target)
 	report["nave_walking"] = _stop_sampling()
-	var skip_lines := func(_id: String, _speaker: String, _text: String) -> void:
-		get_tree().create_timer(1.2).timeout.connect(Say.skip)
-	Say.line_started.connect(skip_lines)
+	_mark("flashback")
 	var statue := Rooms.current.hotspots.get_node("Statue") as Hotspot
 	Interaction.click_at(statue.focus_point())
 	await Flashback.vision_started
@@ -251,11 +329,30 @@ func _perf() -> void:
 
 
 ## The whole slice as a player sees it, for the screen recording: the opening,
-## a walk round the nave, the flashback, and a last walk. Record with
+## the grave and its stone up close, the way to the cathedral, a walk round the
+## nave, the flashback, and a last walk. Record with
 ##   --write-movie <file.avi> --fixed-fps 30 -- --qa=tour
 func _tour() -> void:
-	while Rooms.current == null or Interaction.locked > 0:
+	while Rooms.current == null:
 		await get_tree().process_frame
+	await _settle(false)
+	await get_tree().create_timer(0.8).timeout
+	Interaction.click_at((Rooms.current.hotspots.get_node("Gravestone") as Hotspot).focus_point())
+	while Closeups.current == null or Closeups.busy:
+		await get_tree().process_frame
+	await get_tree().create_timer(1.2).timeout
+	for spot in ["Name", "Inscription"]:
+		Interaction.click_at((Closeups.current.hotspots.get_node(spot) as Hotspot).focus_point())
+		await get_tree().process_frame
+		await _settle(false)
+		await get_tree().create_timer(0.6).timeout
+	Closeups.close()
+	while Closeups.current:
+		await get_tree().process_frame
+	await get_tree().create_timer(0.6).timeout
+	Interaction.click_at((Rooms.current.hotspots.get_node("ExitEast") as Hotspot).focus_point())
+	await Rooms.room_changed
+	await _settle(false)
 	await get_tree().create_timer(0.8).timeout
 	for target in [Vector2(1450, 1010), Vector2(700, 1050), Vector2(420, 1000)]:
 		await Rooms.player.walk_to(target)
@@ -283,8 +380,8 @@ func _banding() -> void:
 	Flashback.set_grain(0.04)
 
 
-## A gallery of the game as it stands: the opening, the nave, Unknown's
-## animations and a flashback, for showing progress.
+## A gallery of the game as it stands: the opening, the grave and its stone up
+## close, the nave, Unknown's animations and a flashback, for showing progress.
 func _screenshots() -> void:
 	while get_tree().current_scene.get_node_or_null("CemeteryReveal") == null:
 		await get_tree().process_frame
@@ -292,25 +389,46 @@ func _screenshots() -> void:
 		await get_tree().create_timer(moment[0]).timeout
 		await _shot(moment[1])
 	await Rooms.room_changed
-	while Interaction.locked > 0:
-		await get_tree().process_frame
 	var unknown := Rooms.player
 	unknown.get_node("IdleFidgets").set_process(false)
+	while not Say.speaking:
+		await get_tree().process_frame
 	await get_tree().create_timer(1.0).timeout
-	await _shot("04_nave")
+	await _shot("04_the_grave")
+	await _settle()
+	Interaction.click_at((Rooms.current.hotspots.get_node("Gravestone") as Hotspot).focus_point())
+	while not Closeups.busy:
+		await get_tree().process_frame
+	await get_tree().create_timer(Closeups.SECONDS * 0.45).timeout
+	await _shot("05_pushing_in")
+	while Closeups.current == null or Closeups.busy:
+		await get_tree().process_frame
+	await get_tree().create_timer(0.5).timeout
+	await _shot("06_the_stone")
+	for spot: Array in [["Name", "07_only_a_u"], ["Inscription", "08_your_dove"]]:
+		Interaction.click_at((Closeups.current.hotspots.get_node(String(spot[0])) as Hotspot).focus_point())
+		await get_tree().create_timer(0.8).timeout
+		await _shot(spot[1])
+		await _settle()
+	Closeups.close()
+	while Closeups.current:
+		await get_tree().process_frame
+	await _enter(&"cathedral_nave")
+	await get_tree().create_timer(1.0).timeout
+	await _shot("09_nave")
 	unknown.walk_to(Vector2(1500, 1030))
 	await get_tree().create_timer(1.3).timeout
-	await _shot("05_walking")
+	await _shot("10_walking")
 	await unknown.walk_to(Vector2(1300, 1040))
 	unknown.face(AnimNames.Dir.D)
 	unknown.play(&"fidget_b")
 	await get_tree().create_timer(1.4).timeout
-	await _shot("06_studying_his_hand")
+	await _shot("11_studying_his_hand")
 	await get_tree().create_timer(2.0).timeout
 	unknown.face(AnimNames.Dir.R)
 	unknown.play(&"pickup_low")
 	await get_tree().create_timer(0.95).timeout
-	await _shot("07_picking_up")
+	await _shot("12_picking_up")
 	await get_tree().create_timer(1.5).timeout
 	var altar := Rooms.current.hotspots.get_node("Altar") as Hotspot
 	var altar_screen := get_viewport().get_canvas_transform() * altar.focus_point()
@@ -318,7 +436,7 @@ func _screenshots() -> void:
 	await get_tree().create_timer(Interaction.COIN_HOLD_SECONDS + 0.3).timeout
 	Interaction.coin.point_at(Interaction.coin.glyph_position(&"look"))
 	await get_tree().create_timer(0.1).timeout
-	await _shot("07b_verb_coin")
+	await _shot("13_verb_coin")
 	Interaction.release_at(altar.focus_point(), Vector2.ZERO)
 	while Interaction.locked > 0 or Say.speaking or unknown.is_walking:
 		if Say.speaking:
@@ -328,15 +446,15 @@ func _screenshots() -> void:
 	Interaction.click_at(statue.focus_point())
 	await Say.line_started
 	await get_tree().create_timer(0.8).timeout
-	await _shot("08_talking")
+	await _shot("14_talking")
 	await Flashback.vision_started
 	await get_tree().create_timer(1.7).timeout
-	await _shot("09_memory_blooming")
+	await _shot("15_memory_blooming")
 	await get_tree().create_timer(2.6).timeout
-	await _shot("10_the_past")
+	await _shot("16_the_past")
 	await Flashback.vision_finished
 	await get_tree().create_timer(0.5).timeout
-	await _shot("11_back_in_the_present")
+	await _shot("17_back_in_the_present")
 
 
 ## The cathedral memory as a short clip: Unknown touches the statue and speaks,
@@ -355,6 +473,28 @@ func _flashback_clip() -> void:
 	while Interaction.locked > 0:
 		await get_tree().process_frame
 	await get_tree().create_timer(1.5).timeout
+
+
+## Waits until the player can act again: no transition, line or close-up move
+## running. With `skip`, lines being spoken are cut short.
+func _settle(skip := true) -> void:
+	while Interaction.locked > 0 or Say.speaking or Closeups.busy:
+		if skip and Say.speaking:
+			Say.skip()
+		await get_tree().process_frame
+
+
+## Clicks `world` and returns the id of the first line that starts (a close-up's
+## hotspots answer at once, before an await on the signal could catch it).
+func _click_for_line(world: Vector2) -> String:
+	var ids: Array[String] = []
+	var collect := func(id: String, _speaker: String, _text: String) -> void: ids.append(id)
+	Say.line_started.connect(collect)
+	Interaction.click_at(world)
+	while ids.is_empty():
+		await get_tree().process_frame
+	Say.line_started.disconnect(collect)
+	return ids[0]
 
 
 func _start_sampling() -> void:
@@ -404,6 +544,12 @@ func _percentile(values: PackedFloat32Array, fraction: float) -> float:
 	return sorted[mini(int(sorted.size() * fraction), sorted.size() - 1)]
 
 
+## Notes the step a scenario starts, with the time since launch.
+func _mark(step: String) -> void:
+	_at = step
+	print("[qa] at %s (%.1f s)" % [step, Time.get_ticks_msec() / 1000.0])
+
+
 func _check(ok: bool, what: String) -> void:
 	print("[qa] %s %s" % ["PASS" if ok else "FAIL", what])
 	if not ok:
@@ -424,6 +570,6 @@ func _finish(reason: String) -> void:
 		return
 	_finished = true
 	if reason == "timeout":
-		_failures.append("timed out")
+		_failures.append("timed out" + (" at %s" % _at if not _at.is_empty() else ""))
 	print("[qa] RESULT %s %s" % ["PASS" if _failures.is_empty() else "FAIL", ", ".join(_failures)])
 	get_tree().quit(0 if _failures.is_empty() else 1)

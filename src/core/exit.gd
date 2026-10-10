@@ -17,7 +17,9 @@ func _init() -> void:
 
 ## Leaves after this verb has returned: changing rooms frees this exit, and a
 ## coroutine still running on it would never finish (Interaction would stay
-## locked).
+## locked). Rooms is looked up by path so the room scaffold, which runs without
+## autoloads, can still compile this class.
 func on_walk() -> void:
-	if target_room != &"":
-		Rooms.goto.call_deferred(target_room, target_entry, &"fade")
+	var rooms := get_node_or_null(^"/root/Rooms")
+	if target_room != &"" and rooms:
+		rooms.goto.call_deferred(target_room, target_entry, &"fade")

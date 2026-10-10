@@ -1,0 +1,39 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/closeups/tombstone/tombstone.gd" id="1_oqql3"]
+[ext_resource type="Texture2D" path="res://content/closeups/tombstone/art/bg.png" id="2_twcca"]
+[ext_resource type="Script" path="res://src/core/hotspot.gd" id="3_n11ku"]
+
+[node name="Tombstone" type="Node2D" unique_id=678623587]
+script = ExtResource("1_oqql3")
+closeup_id = &"tombstone"
+
+[node name="Background" type="Sprite2D" parent="." unique_id=203465654]
+texture = ExtResource("2_twcca")
+centered = false
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=1259870293]
+
+[node name="Name" type="Area2D" parent="Hotspots" unique_id=427155010]
+script = ExtResource("3_n11ku")
+id = &"name"
+display_name = "The name"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Name" unique_id=33355162]
+polygon = PackedVector2Array(630, 488, 1350, 488, 1350, 604, 630, 604)
+
+[node name="Inscription" type="Area2D" parent="Hotspots" unique_id=376914355]
+script = ExtResource("3_n11ku")
+id = &"inscription"
+display_name = "The inscription"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Inscription" unique_id=12872637]
+polygon = PackedVector2Array(620, 628, 1350, 628, 1350, 752, 620, 752)
+
+[node name="Dove" type="Area2D" parent="Hotspots" unique_id=2116791162]
+script = ExtResource("3_n11ku")
+id = &"dove"
+display_name = "A carved dove"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Dove" unique_id=373768802]
+polygon = PackedVector2Array(820, 160, 1130, 160, 1130, 400, 820, 400)

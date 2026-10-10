@@ -1,6 +1,7 @@
 shader_type canvas_item;
-// An inner ring of a pull-back reveal (docs/technical-plan.md §6.3): its edges
-// fade out so it melts into the ring outside it. Matches the feather of
+// Soft edges for an image laid over another: an inner ring of a pull-back
+// reveal (docs/technical-plan.md §6.3) melting into the ring outside it, and a
+// close-up pushing in over its room (plan 007). Matches the feather of
 // tools/art past_art.rings: a smoothstep over `feather` of the shorter side.
 
 uniform float feather = 0.08;

@@ -94,6 +94,10 @@
     "default": [
       900,
       1010
+    ],
+    "from_cemetery": [
+      430,
+      1010
     ]
   },
   "hotspots": [
@@ -227,6 +231,41 @@
         1320,
         935
       ]
+    },
+    {
+      "id": "exit_west",
+      "name": "To the cemetery",
+      "polygon": [
+        [
+          0,
+          700
+        ],
+        [
+          240,
+          700
+        ],
+        [
+          330,
+          900
+        ],
+        [
+          345,
+          1080
+        ],
+        [
+          0,
+          1080
+        ]
+      ],
+      "walk_to": [
+        350,
+        1030
+      ],
+      "exit": {
+        "room": "cemetery_grave",
+        "entry": "from_cathedral",
+        "direction": "left"
+      }
     }
   ],
   "occluders": [

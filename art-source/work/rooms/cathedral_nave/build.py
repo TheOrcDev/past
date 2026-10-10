@@ -30,6 +30,8 @@ OCCLUDERS = {
 STATUE = [[100, 690], [290, 690], [290, 540], [325, 345], [290, 250], [240, 225], [200, 250], [165, 300], [150, 520], [110, 540]]
 ALTAR = [[1320, 800], [1610, 800], [1610, 640], [1540, 500], [1470, 480], [1400, 500], [1330, 640]]
 ROSE_WINDOW = [[round(1465 + 125 * math.cos(a * math.pi / 4)), round(255 + 125 * math.sin(a * math.pi / 4))] for a in range(8)]
+# The breach over the rubble on the left, back to the cemetery (plan 007).
+EXIT_WEST = [[0, 700], [240, 700], [330, 900], [345, 1080], [0, 1080]]
 
 
 def build_backgrounds() -> dict:
@@ -106,11 +108,13 @@ def main() -> None:
         },
         "walk": {"now": WALK, "then": WALK},
         "scale_zones": {"far_y": 908, "far_scale": 0.62, "near_y": 1075, "near_scale": 1.0},
-        "markers": {"default": [900, 1010]},
+        "markers": {"default": [900, 1010], "from_cemetery": [430, 1010]},
         "hotspots": [
             {"id": "statue", "name": "Statue of a saint", "polygon": STATUE, "walk_to": [480, 960], "default_verb": "use"},
             {"id": "altar", "name": "Altar", "polygon": ALTAR, "walk_to": [1460, 930]},
             {"id": "rose_window", "name": "Rose window", "polygon": ROSE_WINDOW, "walk_to": [1320, 935]},
+            {"id": "exit_west", "name": "To the cemetery", "polygon": EXIT_WEST, "walk_to": [350, 1030],
+             "exit": {"room": "cemetery_grave", "entry": "from_cathedral", "direction": "left"}},
         ],
         "occluders": occluders,
         "effects": effects(),

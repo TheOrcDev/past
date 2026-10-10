@@ -113,6 +113,7 @@ func create_room(room_id: String, spec: Dictionary, replace := false) -> Error:
 		hotspot.default_verb = StringName(hotspot_spec.get("default_verb", "walk" if hotspot is Exit else "look"))
 		hotspot.era = StringName(hotspot_spec.get("era", ""))
 		hotspot.walk_offset = _point(hotspot_spec["walk_to"])
+		hotspot.pick_priority = int(hotspot_spec.get("pick_priority", 0))
 		var shape := _add(hotspot, CollisionPolygon2D.new(), "Shape") as CollisionPolygon2D
 		shape.polygon = _points(hotspot_spec["polygon"])
 
