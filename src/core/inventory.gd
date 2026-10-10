@@ -14,6 +14,13 @@ var held: ItemDef
 var _defs := {}
 
 
+func _ready() -> void:
+	# A load or a new game replaces the list: nothing stays on the cursor.
+	GameState.replaced.connect(func() -> void:
+		drop()
+		changed.emit())
+
+
 func add(id: StringName) -> void:
 	if not has(id):
 		GameState.inventory.append(id)

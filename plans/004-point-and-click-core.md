@@ -205,3 +205,23 @@ About 4–6 working sessions.
     once used.
   - **Lint:** responses need an `[ID:]`, because Unknown speaks them.
   - **Tests:** an integration test plays a branching fixture conversation.
+- **2026-10-10, slice 6:** saves.
+  - **State:** `GameState` holds the full dictionary at `save_version` 2:
+    flags (dialogue variables included), the inventory, room states, memories
+    seen, hint progress and play time. `to_dict()` and `from_dict()` convert
+    it to and from plain JSON values. The cathedral's vision records
+    `cathedral_statue` as seen.
+  - **Slots:** the `Saves` autoload writes `user://saves/slot_<n>.json` with a
+    320×180 thumbnail. A save adds the room, the entry, Unknown's position and
+    the era. Loading places him while the screen is still black. Slot 0 is the
+    autosave, written when each room is shown, once `main.gd` has started a
+    game.
+  - **Migrations:** `_migrate_from_<n>` steps up to the current version. Version
+    1 (flags and inventory) gains the new fields, and a save naming no room
+    resumes in the first room. Newer or broken saves are refused.
+  - **Browser:** saves survive a page reload. The `saves` QA scenario saves and
+    loads in pass 1, and in pass 2 finds the save and its thumbnail.
+    `browser-qa.ts` now marks each pass with `qa-pass=<n>` in the URL.
+  - **Tests:** five integration tests cover the round trip, the cursor
+    emptying on load, the autosave, migration and refusal. 77 GUT tests pass.
+

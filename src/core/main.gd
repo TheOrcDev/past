@@ -18,4 +18,5 @@ func _start() -> void:
 		add_child(cutscene)
 		await cutscene.play()
 		cutscene.queue_free()
+	Saves.autosave = true
 	Rooms.goto(start_room, start_entry, &"fade")

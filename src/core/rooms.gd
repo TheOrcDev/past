@@ -2,7 +2,10 @@ extends Node
 ## Loads rooms, carries the player between them and plays the transition
 ## (docs/technical-plan.md §5.1). Rooms live as children of this node.
 
+## The new room is in place, while the screen is still black.
 signal room_changed(room: Room)
+## The new room has faded in and input is free.
+signal room_shown(room: Room)
 
 const ROOM_PATH := "res://content/rooms/%s/%s.tscn"
 const PLAYER_SCENE := "res://content/characters/unknown/unknown.tscn"
@@ -10,6 +13,8 @@ const FADE_SECONDS := 0.35
 
 var current: Room
 var player: Actor
+## The marker the player entered the current room by.
+var current_entry: StringName = &"default"
 ## Awaited with the new room while a fade keeps the screen black, for work
 ## that would otherwise stall the room's first moments (shader warm-up).
 var while_black: Array[Callable] = []
@@ -54,6 +59,7 @@ func goto(room_id: StringName, entry: StringName = &"default", transition: Strin
 	room.actors.add_child(player)
 	player.global_position = room.marker_position(entry)
 	current = room
+	current_entry = entry
 	room._on_enter(from)
 	room_changed.emit(room)
 	# Let the navigation map take in the new walk area before anyone walks.
@@ -66,6 +72,7 @@ func goto(room_id: StringName, entry: StringName = &"default", transition: Strin
 		await _fade_to(0.0)
 	Interaction.locked -= 1
 	room._on_shown()
+	room_shown.emit(room)
 
 
 ## Frees the current room and the player. Used by tests and by returning to the menu.

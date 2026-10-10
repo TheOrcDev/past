@@ -7,8 +7,8 @@
 // Usage (with `bun tools/build/serve.ts` running):
 //   bun tools/build/browser-qa.ts [scenario=perf] [canvas=1920x1080] [passes=2]
 // The window is sized so the canvas has that many device pixels. Each pass
-// reloads the page; later passes run with warm caches, so they are the ones
-// to quote.
+// loads the page again, with qa-pass=<n> in the URL; later passes run with warm
+// caches, so they are the ones to quote.
 import { mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -20,6 +20,7 @@ const TIMEOUT_MS = 180_000;
 const scenario = process.argv[2] ?? "perf";
 const [canvasW, canvasH] = (process.argv[3] ?? "1920x1080").split("x").map(Number);
 const passes = Number(process.argv[4] ?? 2);
+const pageUrl = `http://localhost:8060/?qa=${scenario}`;
 
 const profile = mkdtempSync(join(tmpdir(), "past-chrome-"));
 // Retina Macs draw two device pixels per CSS pixel; --app windows add a ~28 px title bar.
@@ -45,7 +46,7 @@ const chrome = Bun.spawn(
     "--disable-background-timer-throttling",
     `--window-size=${canvasW / scale},${canvasH / scale + 28}`,
     "--window-position=40,40",
-    `--app=http://localhost:8060/?qa=${scenario}`,
+    `--app=${pageUrl}`,
   ],
   { stdout: "ignore", stderr: "ignore" },
 );
@@ -97,7 +98,7 @@ try {
               resolve();
             } else {
               pass += 1;
-              send("Page.reload", { ignoreCache: false });
+              send("Page.navigate", { url: `${pageUrl}&qa-pass=${pass}` });
             }
           }
         } else if (message.params.type === "error") {

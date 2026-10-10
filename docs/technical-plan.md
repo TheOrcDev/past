@@ -249,8 +249,22 @@ The `Interaction` autoload handles all input. These are the controls in
   - journal facts and revealed areas;
   - hint progress;
   - dialogue variables.
-- **Saves:** JSON at `user://saves/slot_<n>.json`, each with a thumbnail. There is
-  an autosave on every room change, and migrations run by `save_version`.
+- **Saves** (the `Saves` autoload, plan 004 slice 6):
+  - JSON at `user://saves/slot_<n>.json`, with a 320×180 thumbnail beside it as
+    `slot_<n>.png`. Slots 1–6 are manual, and slot 0 is the autosave.
+  - A save is `GameState.to_dict()` plus where Unknown is: the room, the entry
+    he came in by, his position and the room's era. Loading applies the state,
+    then goes to the room and places him while the screen is still black.
+  - The autosave is written each time a room is shown. It only runs once
+    `main.gd` has started a game, so tests and tools never write one. QA runs
+    keep their saves in `user://qa-saves`.
+  - Migrations run one step at a time, as `_migrate_from_<n>`, up to
+    `GameState.SAVE_VERSION` (now 2). A save from a newer build, or one that
+    isn't a save, is refused and the game is left alone.
+  - In the browser, `user://` is IndexedDB, and saves survive a page reload.
+    The `saves` QA scenario checks this over two `browser-qa.ts` passes.
+- **Dialogue variables** are flags. A flag holds a bool, a number or text, which
+  is what JSON keeps.
 - **Settings** are stored separately (§6.9).
 
 ## 6. Custom systems
@@ -557,6 +571,9 @@ Not needed. The browser gets only the prologue demo, so it fits in one `.pck`
       close-up and its lines, and the exits both ways, with screenshots;
     - `grave_clip` plays the start for `--write-movie`: the opening, the
       arrival, the stone up close, and back out;
+    - `saves` saves, changes room and loads back; with `qa-pass=2` (the
+      second `browser-qa.ts` pass) it checks that the save outlived the
+      reload;
     - `perf` prints frame times and memory;
     - `banding` captures the fog with grain on and off;
     - `tour` plays the slice for `--write-movie`. Godot's movie writer takes

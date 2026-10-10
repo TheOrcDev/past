@@ -37,6 +37,8 @@ func _ready() -> void:
 		set_process(false)
 		return
 	_scenario = _args["qa"]
+	# Scripted runs keep their saves apart from a player's.
+	Saves.directory = "user://qa-saves"
 	_out_dir = _args.get("qa-out", OS.get_user_data_dir().path_join("qa"))
 	DirAccess.make_dir_recursive_absolute(_out_dir)
 	var timeout := LONG_TIMEOUT_SECONDS if _scenario in WITH_OPENING else TIMEOUT_SECONDS
@@ -94,6 +96,8 @@ func _run(scenario: String) -> void:
 			await _screenshots()
 		"flashback_clip":
 			await _flashback_clip()
+		"saves":
+			await _saves()
 		_:
 			_failures.append("unknown scenario %s" % scenario)
 	_finish("done")
@@ -386,6 +390,34 @@ func _read_the_stone(pause: float) -> void:
 	Closeups.close()
 	while Closeups.current:
 		await get_tree().process_frame
+
+
+## Saving and loading in a running game (plan 004 slice 6). The first pass saves
+## at the grave, goes to the cathedral and loads the save back. A later pass
+## (browser-qa.ts adds qa-pass=<n> when it loads the page again) checks that the
+## save outlived the reload, as browser storage must.
+func _saves() -> void:
+	await _enter(&"cemetery_grave")
+	if _args.get("qa-pass", "1") != "1":
+		var kept := Saves.read(1)
+		_check(not kept.is_empty() and kept.get("flags", {}).get("qa_marker") == "kept", "the save outlived the reload")
+		_check(FileAccess.file_exists(Saves.thumbnail_path(1)), "and so did its thumbnail")
+		return
+	for file in [Saves.path(1), Saves.thumbnail_path(1)]:
+		DirAccess.remove_absolute(file)
+	GameState.set_flag(&"qa_marker", "kept")
+	Rooms.player.global_position = Vector2(1200, 905)
+	await get_tree().create_timer(0.3).timeout
+	_check(Saves.save(1) == OK, "slot 1 saved")
+	_check(FileAccess.file_exists(Saves.thumbnail_path(1)), "with a thumbnail")
+	GameState.set_flag(&"qa_marker", "changed")
+	await Rooms.goto(&"cathedral_nave", &"default", &"none")
+	var err: Error = await Saves.load_slot(1)
+	_check(err == OK and Rooms.current.room_id == &"cemetery_grave", "loading goes back to the grave")
+	_check(Rooms.player.global_position.distance_to(Vector2(1200, 905)) < 1.0, "Unknown stands where he was saved")
+	_check(GameState.get_flag(&"qa_marker") == "kept", "the flags are as saved")
+	await get_tree().create_timer(0.5).timeout
+	await _shot("01_loaded")
 
 
 ## The fog gradients with grain on and off, in both eras, for judging banding.

@@ -200,4 +200,8 @@ Append-only. Newest at the bottom. UTC.
   - **Screenshots:** `build/screenshots/grave-start/`, 17 shots from the
     opening through the grave and the stone to the nave and the flashback.
   - **Next:** plan 004's remaining slices, starting with saves.
+- 2026-10-10T21:47Z **Claude → @Operator:** Plan 004 slice 6 is done: saves. There are six
+  manual slots and an autosave on every room change. Each save has a thumbnail
+  and puts Unknown back exactly where he stood. Saves survive a reload in the
+  browser too. The save and load menus come with slice 8.
 

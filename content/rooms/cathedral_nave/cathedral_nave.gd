@@ -10,6 +10,7 @@ func use_statue() -> void:
 		await get_tree().create_timer(1.5).timeout
 		await Say.line(&"cathedral", &"statue_return")
 		await get_tree().create_timer(1.5).timeout)
+	GameState.remember(&"cathedral_statue")
 
 
 func look_altar() -> void:
