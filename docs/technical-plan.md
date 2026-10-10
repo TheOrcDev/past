@@ -555,6 +555,8 @@ Not needed. The browser gets only the prologue demo, so it fits in one `.pck`
   - **Scenarios for measuring and recording:**
     - `grave` checks the start (plan 007): the arrival line, the gravestone's
       close-up and its lines, and the exits both ways, with screenshots;
+    - `grave_clip` plays the start for `--write-movie`: the opening, the
+      arrival, the stone up close, and back out;
     - `perf` prints frame times and memory;
     - `banding` captures the fog with grain on and off;
     - `tour` plays the slice for `--write-movie`. Godot's movie writer takes

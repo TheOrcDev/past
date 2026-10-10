@@ -8,7 +8,7 @@ extends Node
 const TIMEOUT_SECONDS := 60.0
 const LONG_TIMEOUT_SECONDS := 150.0
 ## Scenarios that start from the opening instead of straight in the first room.
-const WITH_OPENING: Array[String] = ["cemetery_reveal", "grave", "perf", "tour", "screenshots"]
+const WITH_OPENING: Array[String] = ["cemetery_reveal", "grave", "grave_clip", "perf", "tour", "screenshots"]
 
 var _out_dir := ""
 var _scenario := ""
@@ -82,6 +82,8 @@ func _run(scenario: String) -> void:
 			await _cemetery_reveal()
 		"grave":
 			await _grave()
+		"grave_clip":
+			await _grave_clip()
 		"perf":
 			await _perf()
 		"tour":
@@ -337,18 +339,7 @@ func _tour() -> void:
 		await get_tree().process_frame
 	await _settle(false)
 	await get_tree().create_timer(0.8).timeout
-	Interaction.click_at((Rooms.current.hotspots.get_node("Gravestone") as Hotspot).focus_point())
-	while Closeups.current == null or Closeups.busy:
-		await get_tree().process_frame
-	await get_tree().create_timer(1.2).timeout
-	for spot in ["Name", "Inscription"]:
-		Interaction.click_at((Closeups.current.hotspots.get_node(spot) as Hotspot).focus_point())
-		await get_tree().process_frame
-		await _settle(false)
-		await get_tree().create_timer(0.6).timeout
-	Closeups.close()
-	while Closeups.current:
-		await get_tree().process_frame
+	await _read_the_stone(0.6)
 	await get_tree().create_timer(0.6).timeout
 	Interaction.click_at((Rooms.current.hotspots.get_node("ExitEast") as Hotspot).focus_point())
 	await Rooms.room_changed
@@ -364,6 +355,37 @@ func _tour() -> void:
 		await get_tree().process_frame
 	await Rooms.player.walk_to(Vector2(1000, 1030))
 	await get_tree().create_timer(1.5).timeout
+
+
+## The start as a short clip (plan 007): the opening, Unknown's arrival at his
+## grave, the push-in on the stone, his lines on the U and the inscription, and
+## the pull back out. Record with
+##   --write-movie <file.avi> --fixed-fps 30 -- --qa=grave_clip --force-draw
+func _grave_clip() -> void:
+	while Rooms.current == null:
+		await get_tree().process_frame
+	Rooms.player.get_node("IdleFidgets").set_process(false)
+	await _settle(false)
+	await get_tree().create_timer(0.8).timeout
+	await _read_the_stone(0.8)
+	await get_tree().create_timer(1.5).timeout
+
+
+## At the grave: Unknown walks to the stone and its close-up opens, he reads the
+## U and the inscription at speaking pace, and the view pulls back out.
+func _read_the_stone(pause: float) -> void:
+	Interaction.click_at((Rooms.current.hotspots.get_node("Gravestone") as Hotspot).focus_point())
+	while Closeups.current == null or Closeups.busy:
+		await get_tree().process_frame
+	await get_tree().create_timer(1.2).timeout
+	for spot in ["Name", "Inscription"]:
+		Interaction.click_at((Closeups.current.hotspots.get_node(spot) as Hotspot).focus_point())
+		await get_tree().process_frame
+		await _settle(false)
+		await get_tree().create_timer(pause).timeout
+	Closeups.close()
+	while Closeups.current:
+		await get_tree().process_frame
 
 
 ## The fog gradients with grain on and off, in both eras, for judging banding.

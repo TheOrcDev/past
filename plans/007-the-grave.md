@@ -106,3 +106,10 @@ Screenshots and a short video of the start: the reveal, the grave, the close-up.
   - **Checks:** 72 GUT tests pass, 5 new in `test_grave.gd`. The `grave` QA
     scenario passes in the editor, the macOS app and the browser. Chrome holds
     60 fps through the close-up. Evidence is in `docs/qa/007/`.
+- **2026-10-10, slice 4:** shown. `build/videos/grave-start.mp4` is the start
+  as a 42 s 1080p clip, from the new `grave_clip` QA scenario: the opening,
+  the arrival, the push-in, the U and the inscription, and back out. A lighter
+  copy is in `docs/qa/007/`. `build/screenshots/grave-start/` holds the
+  updated gallery: the opening, the grave, the stone, then the nave and the
+  flashback. Plan 007 is done.
+

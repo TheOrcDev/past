@@ -193,4 +193,11 @@ Append-only. Newest at the bottom. UTC.
     cathedral's left leads back.
   - **Checks:** desktop, the macOS app and the browser all pass. Chrome holds
     60 fps through the close-up.
+- 2026-10-10T21:36Z **Claude → @Operator:** Plan 007 is done. To watch and look:
+  - **Video:** `build/videos/grave-start.mp4`, 42 s at 1080p. The opening,
+    Unknown's arrival at his grave, the push-in on the stone, his lines on the
+    U and the inscription, and back out. There is no voice yet (plan 003).
+  - **Screenshots:** `build/screenshots/grave-start/`, 17 shots from the
+    opening through the grave and the stone to the nave and the flashback.
+  - **Next:** plan 004's remaining slices, starting with saves.
 

@@ -9,6 +9,7 @@ Evidence for the new start at Unknown's grave and the close-up views,
 |---|---|
 | `grave-start.jpg` | The `grave` QA scenario: the arrival line, the push-in, the stone with its U and its inscription, Unknown's lines over it, the pull back out, and the return from the cathedral. |
 | `push-in.jpg` | The push-in, one frame every 1/6 s, from the movie writer: the camera closes on the stone, the close-up fades in over it with soft edges, then fills the screen. |
+| `grave-start.mp4` | The start, 42 s at 1080p from the `grave_clip` scenario: the opening reveal, Unknown's arrival at the grave, the push-in on the stone, his lines on the U and the inscription, and the pull back out. Text timing only; voice comes with plan 003. |
 
 ## Checks
 
