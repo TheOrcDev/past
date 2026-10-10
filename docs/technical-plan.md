@@ -191,6 +191,9 @@ A room's state is a dictionary kept in `GameState`.
   and `await actor.play(...)` returns either way.
 - While an actor speaks standing still, it plays its `talk_animations` in turn,
   one per line. Unknown has `talk_a` (right hand) and `talk_b` (both hands).
+- An `IdleFidgets` child plays a random fidget after 9–18 s of uninterrupted
+  idling, unless input is locked. Unknown's fidgets are `fidget_a` (shifts his
+  weight and looks down), `fidget_b` (studies his hand) and `look_around`.
 
 ### 5.4 Interaction
 

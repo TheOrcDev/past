@@ -369,12 +369,64 @@ def talk_b(p: Poser) -> None:
         p.key(frame)
 
 
+def fidget_a(p: Poser) -> None:
+    """Two seconds: shifts his weight onto one leg, the other knee easing, and
+    looks down at the floor, then back."""
+    keys = {
+        # frame: (spine tilt, hips down, relaxed knee, head swing, head tilt, breath)
+        0: (0, 0, 0, -1, 0, 0),
+        12: (5, -0.008, 1, 16, -4, 0.6),
+        26: (5.5, -0.009, 1, 22, -2, 1),
+        38: (-1, -0.003, 0.3, 5, 1, 0.4),
+        48: (0, 0, 0, -1, 0, 0),
+    }
+    for frame, (lean, down, knee, head, tilt, breath) in keys.items():
+        base_pose(p)
+        _breathe(p, breath)
+        p.pose("spine", swing=1.0 + 0.5 * breath, tilt=lean)
+        p.pose("thigh.L", tilt=-lean * 0.6)
+        p.pose("thigh.R", swing=7 * knee, tilt=-lean * 0.6)
+        p.pose("shin.R", swing=-14 * knee)
+        p.pose("foot.R", swing=7 * knee)
+        p.lift("hips", down)
+        p.pose("neck", swing=head * 0.3)
+        p.pose("head", swing=head, tilt=tilt)
+        p.key(frame)
+
+
+def fidget_b(p: Poser) -> None:
+    """Three seconds: raises his right hand towards his face and studies it,
+    turning it as if it might tell him who he is; the forearm falls first, then
+    the arm."""
+    keys = {
+        # frame: (upper arm swing, upper arm in, forearm swing, hand twist, hand swing, head swing, head turn, head tilt)
+        0: (0, 0, 6, 0, 0, -1, 0, 0),
+        14: (42, 8, 112, 60, -10, 20, -8, 0),
+        30: (45, 8, 118, -20, -22, 24, -10, 6),
+        46: (44, 8, 115, 40, -12, 22, -8, 3),
+        53: (40, 6, 60, 20, -4, 12, -4, 1),
+        62: (10, 2, 22, 5, 0, 3, -1, 0),
+        72: (0, 0, 6, 0, 0, -1, 0, 0),
+    }
+    for frame, (arm, inward, forearm, twist, wrist, head, turn, tilt) in keys.items():
+        base_pose(p)
+        _breathe(p, 0.5)
+        p.pose("upper_arm.R", swing=arm, tilt=inward)
+        p.pose("forearm.R", swing=forearm)
+        p.pose("hand.R", swing=wrist, twist=twist)
+        p.pose("neck", swing=head * 0.3)
+        p.pose("head", swing=head, twist=turn, tilt=tilt)
+        p.key(frame)
+
+
 ANIMATIONS = {
     "walk": (walk, CYCLE, True),
     "idle": (idle, 48, True),
     "look_around": (look_around, 72, False),
     "talk_a": (talk_a, 48, True),
     "talk_b": (talk_b, 48, True),
+    "fidget_a": (fidget_a, 48, False),
+    "fidget_b": (fidget_b, 72, False),
 }
 # Moments the game reacts to, in 24 fps frames: footsteps on each heel strike,
 # the instant a hand closes on something.

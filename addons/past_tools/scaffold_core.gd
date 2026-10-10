@@ -58,4 +58,8 @@ func _make_unknown() -> Node:
 	body.sprites = load(UNKNOWN_SPRITES)
 	unknown.add_child(body)
 	body.owner = unknown
+	var fidgets := IdleFidgets.new()
+	fidgets.name = "IdleFidgets"
+	unknown.add_child(fidgets)
+	fidgets.owner = unknown
 	return unknown

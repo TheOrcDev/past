@@ -124,3 +124,6 @@ Append-only. Newest at the bottom. UTC.
   gesture loops, `talk_a` (right hand) and `talk_b` (both hands), alternate line
   by line while he speaks standing still. One-shot animations can now be
   interrupted by a walk.
+- 2026-10-10T12:00Z **Claude → @Operator:** Unknown fidgets when left alone. He
+  shifts his weight and looks down, studies his own hand, or looks around, every
+  9–18 s of idling, but never during a cutscene or a line (`IdleFidgets`).

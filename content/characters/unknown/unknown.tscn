@@ -1,11 +1,12 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://src/core/actor.gd" id="1_woteh"]
-[ext_resource type="Script" path="res://src/systems/unknown/unknown_body.gd" id="2_36r08"]
-[ext_resource type="Resource" path="res://content/characters/unknown/unknown_sprites.tres" id="3_g45of"]
+[ext_resource type="Script" path="res://src/core/actor.gd" id="1_36r08"]
+[ext_resource type="Script" path="res://src/systems/unknown/unknown_body.gd" id="2_g45of"]
+[ext_resource type="Resource" path="res://content/characters/unknown/unknown_sprites.tres" id="3_r3p2f"]
+[ext_resource type="Script" path="res://src/core/idle_fidgets.gd" id="4_mn5xy"]
 
-[node name="Unknown" type="Node2D" unique_id=207669120]
-script = ExtResource("1_woteh")
+[node name="Unknown" type="Node2D" unique_id=45381968]
+script = ExtResource("1_36r08")
 speaker_name = "Unknown"
 depth_speed = 0.6
 step_with_frames = true
@@ -13,6 +14,9 @@ talk_animations = Array[StringName]([&"talk_a", &"talk_b"])
 subtitle_color = Color(0.86, 0.89, 0.96, 1)
 speech_offset = Vector2(0, -520)
 
-[node name="Body" type="Node2D" parent="." unique_id=461898126]
-script = ExtResource("2_36r08")
-sprites = ExtResource("3_g45of")
+[node name="Body" type="Node2D" parent="." unique_id=2043431111]
+script = ExtResource("2_g45of")
+sprites = ExtResource("3_r3p2f")
+
+[node name="IdleFidgets" type="Node" parent="." unique_id=919511092]
+script = ExtResource("4_mn5xy")

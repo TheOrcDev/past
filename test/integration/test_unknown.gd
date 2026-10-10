@@ -23,7 +23,7 @@ func after_each() -> void:
 
 func test_every_animation_has_mask_frames_and_anchors() -> void:
 	var sprites := load(SPRITES) as CharacterSprites
-	for base in ["idle", "walk", "look_around", "talk_a", "talk_b"]:
+	for base in ["idle", "walk", "look_around", "talk_a", "talk_b", "fidget_a", "fidget_b"]:
 		for dir in ["r", "u", "d"]:
 			var anim := StringName("%s_%s" % [base, dir])
 			assert_true(sprites.frames.has_animation(anim), "%s exists" % anim)
@@ -226,4 +226,22 @@ func test_a_walk_interrupts_a_one_shot_and_releases_its_caller() -> void:
 	_unknown.stop()
 	await wait_process_frames(1)
 	assert_true(_unknown.is_idle())
+
+
+func test_idle_fidgets_play_now_and_then_but_not_while_busy() -> void:
+	var fidgets := _unknown.get_node("IdleFidgets") as IdleFidgets
+	_unknown.face(AnimNames.Dir.D)
+	fidgets.interval = Vector2(0.2, 0.3)
+	await wait_seconds(0.6)
+	var playing := String(_body.sprite.animation)
+	assert_true(playing.begins_with("fidget_") or playing.begins_with("look_around"), "a fidget after a while idle, got %s" % playing)
+	_unknown.walk_to(_unknown.global_position + Vector2(200, 0))
+	await wait_physics_frames(3)
+	assert_eq(_body.sprite.animation, &"walk_r", "a walk cuts the fidget short")
+	_unknown.stop()
+	Interaction.locked += 1
+	fidgets.interval = Vector2(0.2, 0.3)
+	await wait_seconds(0.6)
+	Interaction.locked -= 1
+	assert_true(String(_body.sprite.animation).begins_with("idle_"), "no fidgets while a cutscene or line holds the input")
 
