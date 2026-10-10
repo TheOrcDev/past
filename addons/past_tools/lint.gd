@@ -15,6 +15,7 @@ var _problems: PackedStringArray = []
 func _initialize() -> void:
 	_lint_rooms()
 	_lint_dialogue(DIALOGUE_DIR)
+	_lint_translation_templates()
 	for problem in _problems:
 		printerr("[lint] %s" % problem)
 	print("[lint] %s: %d problem(s)" % ["FAIL" if _problems.size() > 0 else "PASS", _problems.size()])
@@ -82,3 +83,26 @@ func _without_random_prefix(text: String) -> String:
 	var regex := RegEx.create_from_string("^%[\\d.]*( \\[if .+? /\\])? ")
 	var found := regex.search(text)
 	return text.substr(found.get_end()) if found else text
+
+
+## Every game dialogue file feeds the translation templates, and nothing else
+## does (test fixtures stay out). Dialogue Manager's automatic update is off.
+func _lint_translation_templates() -> void:
+	var listed: PackedStringArray = ProjectSettings.get_setting("internationalization/locale/translations_pot_files", PackedStringArray())
+	var found := PackedStringArray()
+	_dialogue_files(DIALOGUE_DIR, found)
+	for path in found:
+		if not path in listed:
+			_problems.append("%s: missing from internationalization/locale/translations_pot_files" % path)
+	for path in listed:
+		if path.get_extension() == "dialogue" and not path in found:
+			_problems.append("%s: listed for translation but not a game dialogue file" % path)
+
+
+func _dialogue_files(dir: String, into: PackedStringArray) -> void:
+	for sub in DirAccess.get_directories_at(dir):
+		_dialogue_files(dir.path_join(sub), into)
+	for file in DirAccess.get_files_at(dir):
+		if file.ends_with(".dialogue"):
+			into.append(dir.path_join(file))
+
