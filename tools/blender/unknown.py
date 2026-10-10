@@ -2,7 +2,7 @@
 (docs/art-pipeline.md §5C). Run headless:
 
   /Applications/Blender.app/Contents/MacOS/Blender -b -P tools/blender/unknown.py -- \
-      --out art-source/work/characters/unknown/renders [--anims walk,idle,look_around] \
+      --out art-source/work/characters/unknown/renders [--anims walk,idle,…  (default: all)] \
       [--dirs r,u,d] [--fps 12] [--blend art-source/work/characters/unknown/unknown.blend]
 
 Motion is keyed at 24 fps; any output rate samples it (between keys too), so
@@ -294,10 +294,87 @@ def look_around(p: Poser) -> None:
         p.key(frame)
 
 
+def _breathe(p: Poser, breath: float) -> None:
+    """The idle's breathing, layered under other standing motions."""
+    p.pose("chest", swing=-1.5 * breath)
+    p.pose("spine", swing=1.0 + 0.5 * breath)
+    p.lift("hips", 0.004 * breath)
+
+
+def _at(keys: dict, frame: float) -> tuple:
+    """Linear interpolation of a {frame: (values…)} table at `frame`."""
+    frames = sorted(keys)
+    for a, b in zip(frames, frames[1:]):
+        if a <= frame <= b:
+            t = (frame - a) / (b - a)
+            return tuple(x + (y - x) * t for x, y in zip(keys[a], keys[b]))
+    return keys[frames[-1]]
+
+
+def talk_a(p: Poser) -> None:
+    """Two seconds of talking with the right hand: it rises to the chest, beats
+    twice on the words with the palm turning open, then settles; the head nods
+    into it and the left arm answers a little."""
+    keys = {
+        # frame: (upper arm swing, forearm swing, hand twist, hand swing, head swing, head tilt, chest twist, breath)
+        0: (0, 6, 0, 0, -1, 0, 0, 0),
+        7: (24, 70, 30, -15, -3, 0, 5, 0.6),
+        14: (20, 60, 45, -25, 2, -2, 4, 1),
+        21: (24, 72, 35, -12, -2, 2, 5, 0.8),
+        30: (18, 58, 40, -20, 1, 0, 3, 0.5),
+        40: (6, 24, 10, 0, 0, 0, 1, 0.2),
+        48: (0, 6, 0, 0, -1, 0, 0, 0),
+    }
+    for frame, (arm, forearm, twist, wrist, head, tilt, chest, breath) in keys.items():
+        base_pose(p)
+        _breathe(p, breath)
+        p.pose("upper_arm.R", swing=arm, tilt=-4 * breath)
+        p.pose("forearm.R", swing=forearm)
+        p.pose("hand.R", swing=wrist, twist=twist)
+        p.pose("upper_arm.L", swing=-3 * breath)
+        p.pose("forearm.L", swing=6 + 6 * breath)
+        p.pose("chest", swing=-1.5 * breath, twist=chest)
+        p.pose("head", swing=head, tilt=tilt)
+        p.key(frame)
+
+
+def talk_b(p: Poser) -> None:
+    """Two seconds of talking with both hands: they open outwards, palms up, as
+    if weighing the question, and sink back. The left hand moves less and a beat
+    later than the right, and the head tilts."""
+    right = {
+        # frame: (upper arm swing, upper arm out, forearm swing, hand twist)
+        0: (0, 0, 6, 0), 10: (14, 10, 55, 35), 22: (16, 12, 60, 40), 34: (6, 4, 26, 12), 48: (0, 0, 6, 0),
+    }
+    left = {
+        0: (0, 0, 6, 0), 13: (10, 8, 45, 28), 25: (12, 9, 50, 34), 37: (4, 3, 20, 8), 48: (0, 0, 6, 0),
+    }
+    rest = {
+        # frame: (head swing, head tilt, breath)
+        0: (-1, 0, 0), 12: (-2, 4, 0.7), 24: (2, 3, 1), 36: (0, -1, 0.3), 48: (-1, 0, 0),
+    }
+    for frame in sorted(set(right) | set(left) | set(rest)):
+        r_arm, r_out, r_fore, r_twist = _at(right, frame)
+        l_arm, l_out, l_fore, l_twist = _at(left, frame)
+        head, tilt, breath = _at(rest, frame)
+        base_pose(p)
+        _breathe(p, breath)
+        p.pose("upper_arm.R", swing=r_arm, tilt=-r_out)
+        p.pose("forearm.R", swing=r_fore)
+        p.pose("hand.R", twist=r_twist)
+        p.pose("upper_arm.L", swing=l_arm, tilt=l_out)
+        p.pose("forearm.L", swing=l_fore)
+        p.pose("hand.L", twist=-l_twist)
+        p.pose("head", swing=head, tilt=tilt)
+        p.key(frame)
+
+
 ANIMATIONS = {
     "walk": (walk, CYCLE, True),
     "idle": (idle, 48, True),
     "look_around": (look_around, 72, False),
+    "talk_a": (talk_a, 48, True),
+    "talk_b": (talk_b, 48, True),
 }
 # Moments the game reacts to, in 24 fps frames: footsteps on each heel strike,
 # the instant a hand closes on something.
@@ -437,7 +514,7 @@ def main() -> None:
     argv = sys.argv[sys.argv.index("--") + 1 :] if "--" in sys.argv else []
     parser = argparse.ArgumentParser()
     parser.add_argument("--out", required=True)
-    parser.add_argument("--anims", default="walk,idle,look_around")
+    parser.add_argument("--anims", default=",".join(ANIMATIONS), help="comma-separated; default all")
     parser.add_argument("--dirs", default="r,u,d")
     parser.add_argument("--fps", type=float, default=12.0)
     parser.add_argument("--blend")

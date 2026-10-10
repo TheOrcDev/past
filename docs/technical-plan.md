@@ -187,7 +187,10 @@ A room's state is a dictionary kept in `GameState`.
   nearest one rendered.
 - Loops (`idle`, `walk`, `talk`) are never awaited.
 - One-shots (`pickup_low_r` and so on) end in `animation_finished`, and the
-  `Actor` returns to idle.
+  `Actor` returns to idle. A walk or another one-shot interrupts a one-shot,
+  and `await actor.play(...)` returns either way.
+- While an actor speaks standing still, it plays its `talk_animations` in turn,
+  one per line. Unknown has `talk_a` (right hand) and `talk_b` (both hands).
 
 ### 5.4 Interaction
 

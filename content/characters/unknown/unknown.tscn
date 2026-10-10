@@ -4,14 +4,15 @@
 [ext_resource type="Script" path="res://src/systems/unknown/unknown_body.gd" id="2_36r08"]
 [ext_resource type="Resource" path="res://content/characters/unknown/unknown_sprites.tres" id="3_g45of"]
 
-[node name="Unknown" type="Node2D" unique_id=998989169]
+[node name="Unknown" type="Node2D" unique_id=207669120]
 script = ExtResource("1_woteh")
 speaker_name = "Unknown"
 depth_speed = 0.6
 step_with_frames = true
+talk_animations = Array[StringName]([&"talk_a", &"talk_b"])
 subtitle_color = Color(0.86, 0.89, 0.96, 1)
 speech_offset = Vector2(0, -520)
 
-[node name="Body" type="Node2D" parent="." unique_id=996057829]
+[node name="Body" type="Node2D" parent="." unique_id=461898126]
 script = ExtResource("2_36r08")
 sprites = ExtResource("3_g45of")

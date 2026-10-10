@@ -117,7 +117,10 @@ Append-only. Newest at the bottom. UTC.
 - 2026-10-10T11:15Z **Claude → @Operator:** Unknown's renders now carry
   per-frame events. The walk fires `step` on each heel strike, ready for
   footstep sounds in plan 003 and grab moments in the coming pickups.
-
 - 2026-10-10T11:25Z **Claude → @Operator:** Unknown can hold an item at a hand
   anchor (`SpriteBody.hold` / `release`), ready for pickups and plan 004's
   inventory.
+- 2026-10-10T11:45Z **Claude → @Operator:** Unknown talks with his hands: two
+  gesture loops, `talk_a` (right hand) and `talk_b` (both hands), alternate line
+  by line while he speaks standing still. One-shot animations can now be
+  interrupted by a walk.

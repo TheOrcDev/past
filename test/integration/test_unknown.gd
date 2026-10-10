@@ -23,7 +23,7 @@ func after_each() -> void:
 
 func test_every_animation_has_mask_frames_and_anchors() -> void:
 	var sprites := load(SPRITES) as CharacterSprites
-	for base in ["idle", "walk", "look_around"]:
+	for base in ["idle", "walk", "look_around", "talk_a", "talk_b"]:
 		for dir in ["r", "u", "d"]:
 			var anim := StringName("%s_%s" % [base, dir])
 			assert_true(sprites.frames.has_animation(anim), "%s exists" % anim)
@@ -189,3 +189,41 @@ func test_a_held_item_follows_the_hand() -> void:
 	await wait_process_frames(1)
 	assert_false(is_instance_valid(item), "released")
 	assert_null(_body.held)
+
+
+func test_speaking_while_standing_plays_the_talk_loops_in_turn() -> void:
+	_unknown.face(AnimNames.Dir.D)
+	_unknown.set_speaking(true)
+	await wait_process_frames(2)
+	assert_eq(_body.sprite.animation, &"talk_a_d", "first line: right-hand talk")
+	_unknown.set_speaking(false)
+	await wait_process_frames(2)
+	assert_eq(_body.sprite.animation, &"idle_d", "idle between lines")
+	_unknown.set_speaking(true)
+	await wait_process_frames(2)
+	assert_eq(_body.sprite.animation, &"talk_b_d", "second line: both hands")
+	_unknown.walk_to(_unknown.global_position + Vector2(300, 0))
+	await wait_physics_frames(3)
+	assert_eq(_body.sprite.animation, &"walk_r", "walking wins over talking")
+	_unknown.stop()
+	await wait_process_frames(2)
+	assert_eq(_body.sprite.animation, &"talk_b_r", "still talking once he stops")
+	_unknown.set_speaking(false)
+
+
+func test_a_walk_interrupts_a_one_shot_and_releases_its_caller() -> void:
+	var finished := [false]
+	var run := func() -> void:
+		await _unknown.play(&"look_around")
+		finished[0] = true
+	run.call()
+	await wait_process_frames(2)
+	assert_false(_unknown.is_idle(), "busy during the one-shot")
+	_unknown.walk_to(_unknown.global_position + Vector2(300, 0))
+	await wait_process_frames(2)
+	assert_true(finished[0], "the caller of play() is released")
+	assert_eq(_body.sprite.animation, &"walk_r")
+	_unknown.stop()
+	await wait_process_frames(1)
+	assert_true(_unknown.is_idle())
+

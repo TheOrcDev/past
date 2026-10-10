@@ -52,6 +52,7 @@ func _make_unknown() -> Node:
 	unknown.speech_offset = Vector2(0, -520)
 	unknown.depth_speed = 0.6
 	unknown.step_with_frames = true
+	unknown.talk_animations = [&"talk_a", &"talk_b"]
 	var body := UnknownBody.new()
 	body.name = "Body"
 	body.sprites = load(UNKNOWN_SPRITES)

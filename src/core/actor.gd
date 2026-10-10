@@ -5,6 +5,7 @@ extends Node2D
 ## child. The origin is at the feet.
 
 signal _walk_done(walk_id: int, completed: bool)
+signal _one_shot_ended
 
 ## The name this actor speaks under in .dialogue files, for example "Unknown".
 @export var speaker_name := ""
@@ -18,6 +19,9 @@ signal _walk_done(walk_id: int, completed: bool)
 ## time, so the planted foot never slides (classic adventure-game stepping).
 @export var step_with_frames := false
 @export var diagonals := false
+## Base animations to cycle through, one per line, while the actor speaks
+## standing still, for example [&"talk_a", &"talk_b"]. Empty keeps idle.
+@export var talk_animations: Array[StringName] = []
 @export var subtitle_color := Color(0.92, 0.92, 0.92)
 ## Where subtitles sit, relative to the feet, at scale 1.
 @export var speech_offset := Vector2(0, -440)
@@ -31,12 +35,17 @@ var _body: ActorBody
 var _base_anim: StringName = &"idle"
 var _path := PackedVector2Array()
 var _walk_id := 0
+var _speaking := false
+var _talk_base: StringName = &""
+var _talk_count := 0
+var _one_shot: StringName = &""
 
 
 func _ready() -> void:
 	for child in get_children():
 		if child is ActorBody:
 			_body = child
+			_body.animation_finished.connect(_on_body_finished)
 			break
 	_apply_animation()
 
@@ -45,6 +54,7 @@ func _ready() -> void:
 ## false if another walk or stop() interrupted it.
 func walk_to(target: Vector2) -> bool:
 	_interrupt()
+	_end_one_shot()
 	_walk_id += 1
 	var my_id := _walk_id
 	await _navigation_ready()
@@ -80,8 +90,9 @@ func face_point(point: Vector2) -> void:
 	face(AnimNames.dir_from_vector(point - global_position, diagonals))
 
 
-## Plays a one-shot animation such as `pickup_low` and waits for it. Never use
-## it for looping animations; they do not finish.
+## Plays a one-shot animation such as `pickup_low` and waits for it to end or
+## be interrupted (by a walk or another one-shot). Never use it for looping
+## animations; they do not finish.
 func play(base: StringName) -> void:
 	if _body == null:
 		return
@@ -89,15 +100,33 @@ func play(base: StringName) -> void:
 	if choice.is_empty():
 		push_warning("%s has no animation %s" % [name, base])
 		return
+	_end_one_shot()
+	_one_shot = choice.name
 	_body.play_animation(choice.name, choice.flip)
-	await _body.animation_finished
-	_apply_animation()
+	await _one_shot_ended
+	# Resume from the tree, not from this actor's own signal, so the caller may
+	# free the actor straight away.
+	if is_inside_tree():
+		await get_tree().process_frame
+
+
+## True while standing still with nothing to do: not walking, speaking or
+## playing a one-shot.
+func is_idle() -> bool:
+	return _path.is_empty() and not _speaking and _one_shot == &""
 
 
 ## Say calls this around each line the actor speaks, so the body can act it.
 func set_speaking(on: bool) -> void:
 	if _body:
 		_body.set_speaking(on)
+	if on == _speaking:
+		return
+	_speaking = on
+	if on and not talk_animations.is_empty():
+		_talk_base = talk_animations[_talk_count % talk_animations.size()]
+		_talk_count += 1
+	_apply_animation()
 
 
 ## Where this actor's subtitles sit, in world coordinates.
@@ -165,10 +194,26 @@ func _set_base_animation(base: StringName) -> void:
 		_apply_animation()
 
 
-func _apply_animation() -> void:
-	if _body == null:
+func _on_body_finished(anim: StringName) -> void:
+	if anim == _one_shot:
+		_end_one_shot()
+
+
+func _end_one_shot() -> void:
+	if _one_shot == &"":
 		return
-	var choice := AnimNames.resolve(_base_anim, facing, _body.has_animation)
+	_one_shot = &""
+	_apply_animation()
+	_one_shot_ended.emit()
+
+
+func _apply_animation() -> void:
+	if _body == null or _one_shot != &"":
+		return
+	var base := _base_anim
+	if base == &"idle" and _speaking and _talk_base != &"":
+		base = _talk_base
+	var choice := AnimNames.resolve(base, facing, _body.has_animation)
 	if choice.is_empty():
 		choice = AnimNames.resolve(&"idle", facing, _body.has_animation)
 	if not choice.is_empty():
