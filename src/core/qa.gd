@@ -31,6 +31,8 @@ func _run(scenario: String) -> void:
 			await _sandbox_smoke()
 		"cathedral_eras":
 			await _cathedral_eras()
+		"cathedral_flashback":
+			await _cathedral_flashback()
 		_:
 			_failures.append("unknown scenario %s" % scenario)
 	_finish("done")
@@ -76,6 +78,23 @@ func _cathedral_eras() -> void:
 	Rooms.player.global_position = Vector2(1765, 1060)
 	await get_tree().create_timer(0.5).timeout
 	await _shot("03_behind_occluder")
+
+
+## The statue's flashback, captured at its key moments, in real time.
+func _cathedral_flashback() -> void:
+	await _enter(&"cathedral_nave")
+	var statue := Rooms.current.hotspots.get_node("Statue") as Hotspot
+	Interaction.click_at(statue.focus_point())
+	await Flashback.vision_started
+	await get_tree().create_timer(1.0).timeout
+	await _shot("01_bloom_early")
+	await get_tree().create_timer(1.0).timeout
+	await _shot("02_bloom_mid")
+	await get_tree().create_timer(3.0).timeout
+	await _shot("03_past_hold")
+	await Flashback.vision_finished
+	_check(Rooms.current.era == &"now", "back in the present after the vision")
+	await _shot("04_after")
 
 
 func _check(ok: bool, what: String) -> void:

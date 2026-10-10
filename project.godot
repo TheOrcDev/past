@@ -22,6 +22,7 @@ GameState="*res://src/core/game_state.gd"
 Rooms="*res://src/core/rooms.gd"
 Interaction="*res://src/core/interaction.gd"
 Say="*res://src/core/say.gd"
+Flashback="*res://src/systems/flashback.gd"
 Qa="*res://src/core/qa.gd"
 
 [display]
