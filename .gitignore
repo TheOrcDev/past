@@ -17,3 +17,5 @@ __pycache__/
 # Bulky, reproducible art intermediates (rebuilt by each room's build.py)
 art-source/work/rooms/*/then_aligned_2560.png
 art-source/work/rooms/*/depth_*_16.png
+art-source/work/characters/*/renders*/
+*.blend1

@@ -8,8 +8,15 @@ signal _walk_done(walk_id: int, completed: bool)
 
 ## The name this actor speaks under in .dialogue files, for example "Unknown".
 @export var speaker_name := ""
-## Pixels per second at scale 1. Farther away (smaller) is slower on screen.
+## Pixels per second at scale 1, unless the body's walk was rendered with its
+## own ground speed. Farther away (smaller) is slower on screen.
 @export var walk_speed := 320.0
+## Moving up or down the screen is moving in depth, which crosses less of the
+## screen: vertical speed is this fraction of horizontal speed.
+@export_range(0.1, 1.0) var depth_speed := 1.0
+## Move only when the body shows a new frame, a frame's worth of ground at a
+## time, so the planted foot never slides (classic adventure-game stepping).
+@export var step_with_frames := false
 @export var diagonals := false
 @export var subtitle_color := Color(0.92, 0.92, 0.92)
 ## Where subtitles sit, relative to the feet, at scale 1.
@@ -87,6 +94,12 @@ func play(base: StringName) -> void:
 	_apply_animation()
 
 
+## Say calls this around each line the actor speaks, so the body can act it.
+func set_speaking(on: bool) -> void:
+	if _body:
+		_body.set_speaking(on)
+
+
 ## Where this actor's subtitles sit, in world coordinates.
 func speech_position() -> Vector2:
 	return to_global(speech_offset)
@@ -101,19 +114,31 @@ func _process(_delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if _path.is_empty():
 		return
-	var step := walk_speed * scale.y * delta
-	while step > 0.0 and not _path.is_empty():
+	var speed := walk_speed
+	if _body and _body.ground_speed() > 0.0:
+		speed = _body.ground_speed()
+	# Ground to cover this tick, in pixels at the current scale.
+	var ground := speed * scale.y * delta
+	if step_with_frames and _body and _body.frame_rate() > 0.0:
+		if not _body.consume_step():
+			return
+		ground = speed * scale.y / _body.frame_rate()
+	while ground > 0.0 and not _path.is_empty():
 		var to_next := _path[0] - global_position
 		var distance := to_next.length()
 		if distance > 0.5:
 			face(AnimNames.dir_from_vector(to_next, diagonals))
-		if distance <= step:
+		var factor := 1.0
+		if distance > 0.001:
+			factor = maxf(Vector2(to_next.x, to_next.y * depth_speed).length() / distance, 0.05)
+		var reach := ground * factor
+		if distance <= reach:
 			global_position = _path[0]
 			_path.remove_at(0)
-			step -= distance
+			ground -= distance / factor
 		else:
-			global_position += to_next / distance * step
-			step = 0.0
+			global_position += to_next / distance * reach
+			ground = 0.0
 	if _path.is_empty():
 		_set_base_animation(&"idle")
 		_walk_done.emit(_walk_id, true)

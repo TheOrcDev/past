@@ -41,3 +41,23 @@ key is ambiguous. The empty `AI_GATEWAY_API_KEY=""` line that is already there
 is harmless: an empty key falls through to the OIDC token. A dedicated
 `AI_GATEWAY_API_KEY` for Past would remove the expiry.
 
+## Unknown's sprites
+
+From the repository root, after changing `blender/unknown.py`:
+
+```
+B=/Applications/Blender.app/Contents/MacOS/Blender; W=art-source/work/characters/unknown
+$B -b -P tools/blender/unknown.py -- --out $W/renders --anims idle,walk,look_around --dirs r,u,d --fps 12 --blend $W/unknown.blend
+$B -b -P tools/blender/unknown.py -- --out $W/renders-walk15 --anims walk --dirs r,u,d --fps 15
+tools/past-art pack --renders $W/renders --renders $W/renders-walk15 --out-dir content/characters/unknown/sprites \
+    --manifest $W/unknown_sprites.json --res-prefix res://content/characters/unknown/sprites --name unknown
+tools/godot.sh --headless --import
+tools/godot.sh --headless --script res://addons/past_tools/import_sprites.gd -- \
+    --manifest=$W/unknown_sprites.json --out=res://content/characters/unknown/unknown_sprites.tres
+```
+
+A later `--renders` folder replaces an earlier one's animations, which is how
+the walk comes from the 15 fps render. The renders themselves are gitignored
+because they rebuild in seconds. Only the sheets, the manifest and the `.blend`
+are committed. `art-source/work/characters/unknown/compare_walk.py` makes the
+12 vs 15 fps clip.

@@ -1,9 +1,12 @@
+import json
+
 import cv2
 import numpy as np
 import pytest
 
-from past_art import align, grade, masks, rings
+from past_art import align, grade, masks, pack, rings
 from past_art.cli import main
+from past_art.imageio import load, save
 
 
 def texture(w: int = 640, h: int = 400, seed: int = 7) -> np.ndarray:
@@ -79,3 +82,29 @@ def test_cli_align_fails_above_the_threshold(tmp_path):
     cv2.imwrite(str(b), shifted(fixed, 3, 2))
     assert main(["align", "--fixed", str(a), "--moving", str(b), "--max-p90", "3"]) == 0
     assert main(["align", "--fixed", str(a), "--moving", str(b), "--max-p90", "0.0001"]) == 1
+
+
+def test_pack_trims_frames_and_records_regions(tmp_path):
+    renders = tmp_path / "renders"
+    frames = []
+    for index in range(3):
+        image = np.zeros((60, 40, 4), np.uint8)
+        image[20:50, 10 + index : 20 + index, 3] = 255
+        save(renders / "walk_r" / f"walk_r_{index:03d}.png", image)
+        frames.append(f"walk_r_{index:03d}.png")
+    anchors = [{"feet": [20.0, 50.0]}] * 3
+    meta = {"frame_size": [40, 60], "character_px": 30, "fps": 12.0,
+            "animations": {"walk_r": {"frames": frames, "loop": True, "anchors": anchors, "ground_px_per_second": 10.0}}}
+    (renders / "anchors.json").write_text(json.dumps(meta))
+    manifest = pack.pack([renders], tmp_path / "out", tmp_path / "m.json", "res://x", "unknown")
+    walk = manifest["animations"]["walk_r"]
+    assert walk["fps"] == 12.0 and walk["ground_px_per_second"] == 10.0
+    sheet = load(tmp_path / "out" / "unknown_walk_r.png")
+    assert sheet.ndim == 2  # one byte per pixel
+    for index, frame in enumerate(walk["frames"]):
+        x, y, w, h = frame["region"]
+        ox, oy = frame["offset"]
+        assert (ox, oy, w, h) == (10 + index - pack.BORDER, 20 - pack.BORDER, 10 + 2 * pack.BORDER, 30 + 2 * pack.BORDER)
+        region = sheet[y : y + h, x : x + w]
+        assert region[pack.BORDER : -pack.BORDER, pack.BORDER : -pack.BORDER].min() == 255
+        assert region[: pack.BORDER].max() == 0

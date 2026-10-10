@@ -93,7 +93,7 @@ These rules go into every room request:
 | Unknown's height | About 480 px at the nearest walk line, roughly 44% of the screen. *Calibrate:* he is about 32% of the frame in the nave concept. |
 | Animation | 12 fps baseline ("on twos"). Plan 002 also tests 15 fps for the walk. |
 | Directions | Right, up and down; left mirrors right. Diagonals only if plan 002 shows they are worth their memory. The core supports them (`technical-plan.md` §5.3). |
-| Unknown's frames | Plan 002 tests single-channel alpha masks, where a shader adds color and the rim, against RGBA. Budget: 128 MiB of video memory for his loaded frames. |
+| Unknown's frames | Single-channel alpha masks, trimmed and packed, with a shader adding color and the rim (decision #30). Budget: 128 MiB of video memory for his loaded frames; 9 animations measure 21.4 MiB. |
 | Atlases | At most 4096×4096, loaded per room and per character |
 | Source format | Lossless PNG in `art-source/`. Godot import settings are in `technical-plan.md`. |
 

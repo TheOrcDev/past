@@ -78,8 +78,12 @@ func _speak(dialogue_line: DialogueLine) -> void:
 	_label.reset_size()
 	_place_over(actor)
 	_label.visible = true
+	if actor:
+		actor.set_speaking(true)
 	line_started.emit(dialogue_line.static_id, dialogue_line.character, dialogue_line.text)
 	await _hold(clampf(1.2 + dialogue_line.text.length() * 0.055, 2.0, 9.0))
+	if is_instance_valid(actor):
+		actor.set_speaking(false)
 	line_finished.emit(dialogue_line.static_id)
 
 

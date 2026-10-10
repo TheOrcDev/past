@@ -84,4 +84,12 @@ Append-only. Newest at the bottom. UTC.
 
   The operator delegated art approvals to Claude's recommendations
   (`decisions.md` #29), so plan 002 continues without approval stops.
-
+- 2026-10-10T10:00Z **Claude → @Operator:** Plan 002 slice 4 is done: Unknown
+  is rendered from a keyframed Blender silhouette.
+  - **In the game:** a black silhouette with a rim light, glowing eyes that
+    blink, and verlet smoke tendrils that stream behind him. It replaces the
+    placeholder in every room.
+  - **Decision #30:** one-byte mask frames take 21.4 MiB of video memory
+    (budget 128 MiB). The walk is 15 fps with steps locked to the frames.
+  - **For review:** `docs/qa/002/unknown-walk-12-vs-15fps.mp4`. Say if you
+    prefer 12 fps; it is a one-command repack.

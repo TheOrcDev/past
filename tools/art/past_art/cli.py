@@ -8,7 +8,7 @@ import json
 import sys
 from pathlib import Path
 
-from . import align, grade, masks, rings, sheet
+from . import align, grade, masks, pack, rings, sheet
 from .imageio import load, save
 
 
@@ -111,6 +111,13 @@ def cmd_sheet(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_pack(args: argparse.Namespace) -> int:
+    renders = [Path(folder) for folder in args.renders]
+    manifest = pack.pack(renders, Path(args.out_dir), Path(args.manifest), args.res_prefix, args.name)
+    _print({key: {"fps": value["fps"], "frames": len(value["frames"])} for key, value in manifest["animations"].items()})
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="past-art", description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
@@ -165,6 +172,15 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--tile", default="960x540")
     p.add_argument("images", nargs="+")
     p.set_defaults(func=cmd_sheet)
+
+    p = sub.add_parser("pack", help="pack rendered character frames into alpha-mask sprite sheets")
+    p.add_argument("--renders", required=True, action="append",
+                   help="folder with anchors.json and one subfolder per animation; repeat to replace animations")
+    p.add_argument("--out-dir", required=True, help="where the sheets go")
+    p.add_argument("--manifest", required=True, help="where the JSON manifest goes")
+    p.add_argument("--res-prefix", required=True, help="res:// folder the sheets are loaded from")
+    p.add_argument("--name", required=True)
+    p.set_defaults(func=cmd_pack)
 
     args = parser.parse_args(argv)
     return args.func(args)

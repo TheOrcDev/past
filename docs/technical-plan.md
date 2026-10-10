@@ -87,10 +87,13 @@ past/
 ```
 
 - Scripts that Godot itself runs live in `addons/past_tools/`, not in `tools/`.
-  Godot does not see `tools/`, because it is ignored. There are three so far:
+  Godot does not see `tools/`, because it is ignored. There are four so far:
   - `new_room.gd` scaffolds a room from an optional JSON spec, which lives in
     `art-source/work/rooms/<room>/room_spec.json`;
-  - `scaffold_core.gd` creates `main.tscn` and the placeholder Unknown;
+  - `scaffold_core.gd` creates `main.tscn` and Unknown's scene
+    (`--replace=unknown` rebuilds it);
+  - `import_sprites.gd` builds a `CharacterSprites` resource from a sprite
+    manifest made by `tools/past-art pack`;
   - `lint.gd` checks content.
 - Scenes are created by scaffolding scripts that save through Godot, for example
   `addons/past_tools/new_room.gd`, so resource IDs stay valid. They are then
@@ -168,6 +171,11 @@ A room's state is a dictionary kept in `GameState`.
 - **Depth scale** comes from the room's ScaleZones.
 - **Speech:** `await say(&"LINE_ID")` hands the line to Dialogue Manager (§5.6).
 - **Movement can be cancelled** by a new click.
+- **Speed:**
+  - A body rendered with a ground speed sets the walk speed.
+  - `depth_speed` slows vertical motion, which is movement in depth.
+  - With `step_with_frames`, the actor moves one frame's worth of ground each
+    time a new frame shows, so the planted foot never slides (decision #30).
 - **Unknown** is an `Actor` whose presentation is `UnknownBody` (§6.4).
 
 ### 5.3 Animation naming
@@ -313,6 +321,15 @@ and particles inside a `CanvasGroup` vanish in WebKit.
 
 ### 6.4 Unknown's presentation — `UnknownBody`
 
+Built in plan 002:
+- `CharacterSprites` holds the frames and per-frame anchors.
+- `SpriteBody` plays them; it lives in `src/core` and serves any rendered
+  character.
+- `UnknownBody` and `Tendrils` live in `src/systems/unknown`.
+- The shaders are `silhouette.gdshader` and `smoke_tendril.gdshader`.
+- Until plan 003's `Voice` exists, a stand-in flicker drives the voice level
+  while he speaks.
+
 - **Sprites:**
   - Sheets are rendered from Blender. A tool script builds an
     `AnimatedSprite2D` `SpriteFrames` resource from the render metadata, with
@@ -434,9 +451,11 @@ Not needed. The browser gets only the prologue demo, so it fits in one `.pck`
   tiles.
 - **Memory reference:** a full-screen 1920×1080 RGBA8 layer uses 7.9 MiB of
   video memory, and a 4096² texture uses 64 MiB (85 MiB with mipmaps).
-- **Unknown's frames:** plan 002 tests single-channel alpha masks, at one byte
-  per pixel, with color and rim light coming from a shader, against RGBA. His
-  loaded frames are budgeted at 128 MiB or less.
+- **Unknown's frames:** single-channel alpha masks at one byte per pixel, with
+  color and rim light coming from a shader. They are trimmed to the silhouette
+  and packed one sheet per animation. His loaded frames are budgeted at
+  128 MiB or less. Plan 002 measured 21.4 MiB for 9 animations, and the same
+  frames as RGBA would be about 4× that (decision #30).
 - **Audio:**
   - Ogg Vorbis everywhere; Godot decodes it itself in every build.
   - Voice is mono at 22.05–24 kHz. Music is stereo.

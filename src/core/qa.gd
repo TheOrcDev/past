@@ -33,6 +33,8 @@ func _run(scenario: String) -> void:
 			await _cathedral_eras()
 		"cathedral_flashback":
 			await _cathedral_flashback()
+		"unknown_look":
+			await _unknown_look()
 		_:
 			_failures.append("unknown scenario %s" % scenario)
 	_finish("done")
@@ -95,6 +97,36 @@ func _cathedral_flashback() -> void:
 	await Flashback.vision_finished
 	_check(Rooms.current.era == &"now", "back in the present after the vision")
 	await _shot("04_after")
+
+
+## Unknown from his rendered sprites: each facing, walking both ways, near and
+## far, and how much video memory his sheets take.
+func _unknown_look() -> void:
+	await _enter(&"cathedral_nave")
+	var unknown := Rooms.player
+	unknown.global_position = Vector2(900, 1060)
+	for facing: Array in [[AnimNames.Dir.D, "01_front"], [AnimNames.Dir.R, "02_side"], [AnimNames.Dir.U, "03_back"]]:
+		unknown.face(facing[0])
+		await get_tree().create_timer(1.5).timeout
+		await _shot(facing[1])
+	unknown.walk_to(Vector2(1500, 1040))
+	await get_tree().create_timer(1.2).timeout
+	await _shot("04_walk_right")
+	unknown.walk_to(Vector2(600, 1040))
+	await get_tree().create_timer(1.6).timeout
+	await _shot("05_walk_left")
+	unknown.stop()
+	unknown.global_position = Vector2(1100, 915)
+	unknown.face(AnimNames.Dir.D)
+	await get_tree().create_timer(1.5).timeout
+	await _shot("06_far")
+	var path := (unknown.get_node("Body") as SpriteBody).sprites.resource_path
+	var before := Performance.get_monitor(Performance.RENDER_TEXTURE_MEM_USED)
+	var fresh := ResourceLoader.load(path, "", ResourceLoader.CACHE_MODE_IGNORE_DEEP) as CharacterSprites
+	await RenderingServer.frame_post_draw
+	var used := Performance.get_monitor(Performance.RENDER_TEXTURE_MEM_USED) - before
+	print("[qa] Unknown's sheets: %.1f MiB of video memory, %d animations" % [used / 1048576.0, fresh.frames.get_animation_names().size()])
+	_check(used > 0.0 and used < 128.0 * 1048576.0, "Unknown's frames fit 128 MiB")
 
 
 func _check(ok: bool, what: String) -> void:

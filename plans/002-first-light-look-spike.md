@@ -191,3 +191,41 @@ as stand-ins.
   - `check.ts` sees `openai/gpt-image-2.5-flare`, `-sunburst` and `gpt-image-2`
     listed at $30/M output tokens.
   - The first generation waits for `AI_GATEWAY_API_KEY` in `.env` (board #8).
+- **2026-10-10, slice 1, steps 2–3:** `IMG-0001` to `IMG-0008` are generated and
+  accepted, costing $0.46 of $50.
+  - **A/B:** Flare is the default for new images and Sunburst for edits
+    (decision #28).
+  - **Accepted:** the cathedral style key, the then image (p90 1.75 px against
+    now before correction), Unknown's model sheet, and cemetery rings 0–2
+    (p90 2.3–2.4 px).
+  - Decision #29 delegates routine picks to Claude.
+- **2026-10-10, slices 2–3:** `tools/art` has `align`, `grade`, `mask`/`cut`,
+  `ring`, `depth` and `sheet`, with pytest. `upscale` is not built: rooms are
+  generated at 2560×1440 and downsampled, so nothing has needed it yet.
+  - The cathedral nave is built from `build.py` and its room spec, in both eras.
+    The then background is warped onto now with an offset under 0.25 px.
+  - It has a depth map, occluders, and fog, light-shaft and dust effects.
+- **2026-10-10, slice 5:** `Flashback.vision` plays the memory dissolve, the era
+  grade, the flare and the camera drift. The cathedral statue triggers it.
+  - QA captures are in `docs/qa/002/`.
+- **2026-10-10, slice 4:** Unknown is built in Blender by
+  `tools/blender/unknown.py`: a skin-modifier body with an auto-weighted rig,
+  and keyframed walk, idle and look-around.
+  - **Pipeline:** the script renders right, up and down at any frame rate, with
+    per-frame anchors. `past-art pack` trims the frames and packs one-byte mask
+    sheets. `import_sprites.gd` builds `unknown_sprites.tres`, and
+    `scaffold_core.gd --replace=unknown` builds the scene.
+  - **In Godot:**
+    - `SpriteBody` plays the frames;
+    - `UnknownBody` adds the rim shader, eyes and `Tendrils`;
+    - `Actor` gains frame-locked stepping and a depth speed.
+  - **Measured:**
+    - 21.4 MiB of video memory for 9 animations;
+    - walk at 344.8 px/s at scale 1;
+    - the walk is 15 fps and the rest 12 (decision #30).
+  - **Checks:** 33 GUT tests pass, and the `unknown_look` QA run passes.
+  - **Hours** (estimates; the session log does not time them separately):
+    - Blender body, rig and keyframes, over several contact-sheet rounds:
+      about 1.5 h;
+    - rendering the full set: 4 s;
+    - packing, Godot integration and tests: about 0.7 h.

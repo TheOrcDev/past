@@ -1,0 +1,82 @@
+class_name SpriteBody
+extends ActorBody
+## An ActorBody drawn from a rendered CharacterSprites set. The origin is at
+## the feet. Facing left mirrors the whole node, so children placed at anchors
+## (eyes, held items) mirror with it.
+
+## Emitted when the sprite shows a new frame, after the frame has changed.
+signal frame_shown
+
+@export var sprites: CharacterSprites
+
+var sprite: AnimatedSprite2D
+var flipped := false
+
+var _stepped_frame := -1
+
+
+func _ready() -> void:
+	sprite = AnimatedSprite2D.new()
+	sprite.name = "Sprite"
+	sprite.centered = false
+	sprite.sprite_frames = sprites.frames
+	sprite.animation_finished.connect(func() -> void: animation_finished.emit(sprite.animation))
+	sprite.frame_changed.connect(frame_shown.emit)
+	add_child(sprite)
+
+
+func has_animation(anim: StringName) -> bool:
+	return sprites != null and sprites.frames.has_animation(anim)
+
+
+func play_animation(anim: StringName, flip: bool) -> void:
+	flipped = flip
+	scale.x = -1.0 if flip else 1.0
+	if anim == sprite.animation and sprite.is_playing():
+		return
+	# Turning mid-walk keeps the stride where it was instead of restarting it.
+	var keep_phase := sprite.is_playing() and _base(anim) == _base(sprite.animation)
+	var phase := (sprite.frame + sprite.frame_progress) / maxf(1.0, sprite.sprite_frames.get_frame_count(sprite.animation))
+	sprite.play(anim)
+	sprite.offset = -sprites.anchor(anim, &"feet", 0)
+	if keep_phase:
+		var position_in := phase * sprite.sprite_frames.get_frame_count(anim)
+		sprite.set_frame_and_progress(int(position_in), fmod(position_in, 1.0))
+		_stepped_frame = sprite.frame
+	else:
+		_stepped_frame = -1
+	frame_shown.emit()
+
+
+func ground_speed() -> float:
+	return sprites.ground_speed.get(sprite.animation, 0.0)
+
+
+func frame_rate() -> float:
+	return sprite.sprite_frames.get_animation_speed(sprite.animation) * absf(sprite.speed_scale)
+
+
+func consume_step() -> bool:
+	if sprite.frame == _stepped_frame:
+		return false
+	_stepped_frame = sprite.frame
+	return true
+
+
+## Where `anchor_name` is in the current frame, in this node's space.
+func anchor(anchor_name: StringName) -> Vector2:
+	return sprites.anchor(sprite.animation, anchor_name, sprite.frame) + sprite.offset
+
+
+func eye_visible(eye: int) -> bool:
+	return sprites.eye_visible(sprite.animation, sprite.frame, eye)
+
+
+## The facing suffix of the current animation: "r", "u", "d" and so on.
+func view() -> String:
+	return String(sprite.animation).get_slice("_", String(sprite.animation).get_slice_count("_") - 1)
+
+
+func _base(anim: StringName) -> String:
+	var text := String(anim)
+	return text.substr(0, text.rfind("_"))

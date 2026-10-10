@@ -1,13 +1,17 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://src/core/actor.gd" id="1_w5cqc"]
-[ext_resource type="Script" path="res://src/core/placeholder_body.gd" id="2_woteh"]
+[ext_resource type="Script" path="res://src/core/actor.gd" id="1_woteh"]
+[ext_resource type="Script" path="res://src/systems/unknown/unknown_body.gd" id="2_36r08"]
+[ext_resource type="Resource" path="res://content/characters/unknown/unknown_sprites.tres" id="3_g45of"]
 
-[node name="Unknown" type="Node2D" unique_id=1246069119]
-script = ExtResource("1_w5cqc")
+[node name="Unknown" type="Node2D" unique_id=998989169]
+script = ExtResource("1_woteh")
 speaker_name = "Unknown"
+depth_speed = 0.6
+step_with_frames = true
 subtitle_color = Color(0.86, 0.89, 0.96, 1)
-speech_offset = Vector2(0, -450)
+speech_offset = Vector2(0, -520)
 
-[node name="Body" type="Node2D" parent="." unique_id=482523435]
-script = ExtResource("2_woteh")
+[node name="Body" type="Node2D" parent="." unique_id=996057829]
+script = ExtResource("2_36r08")
+sprites = ExtResource("3_g45of")
