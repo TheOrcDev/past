@@ -43,30 +43,29 @@ void vertex() {
 	local_pos = VERTEX;
 }
 
-// Coverage at `uv`: alpha for shaded frames, red for alpha masks.
-float cover(sampler2D tex, vec2 uv, bool is_shaded) {
-	vec4 t = texture(tex, uv);
-	return is_shaded ? t.a : t.r;
-}
-
-// Mean coverage on a ring of 8 taps `radius` texels around `uv`.
-float ring(sampler2D tex, vec2 uv, vec2 texel, float radius, bool is_shaded) {
-	float sum = 0.0;
-	for (int i = 0; i < 8; i++) {
-		float a = float(i) * 0.785398;
-		sum += cover(tex, uv + vec2(cos(a), sin(a)) * texel * radius, is_shaded);
-	}
-	return sum / 8.0;
-}
-
 void fragment() {
 	vec2 texel = TEXTURE_PIXEL_SIZE;
 	vec4 tex = texture(TEXTURE, UV);
 	float m = shaded ? tex.a : tex.r;
 	vec3 skin = shaded ? vec3(pow(clamp(tex.r, 0.0, 1.0), contrast) * brightness) : body_color.rgb;
+	// Coverage on rings of 8 taps around this point (alpha for shaded frames, red
+	// for masks), sampled inline: the Compatibility renderer objects to passing
+	// TEXTURE into a function.
+	float near_sum = 0.0;
+	float far_sum = 0.0;
+	for (int i = 0; i < 8; i++) {
+		float a = float(i) * 0.785398;
+		vec2 dir = vec2(cos(a), sin(a)) * texel;
+		vec4 t2 = texture(TEXTURE, UV + dir * 2.0);
+		vec4 t4 = texture(TEXTURE, UV + dir * 4.0);
+		vec4 th = texture(TEXTURE, UV + dir * haze_reach * 0.5);
+		vec4 tf = texture(TEXTURE, UV + dir * haze_reach);
+		near_sum += shaded ? t2.a + t4.a : t2.r + t4.r;
+		far_sum += shaded ? th.a + tf.a : th.r + tf.r;
+	}
 	// How deep inside the silhouette this point is: about 1 deep inside, 0.5 at the edge.
-	float near = (m + ring(TEXTURE, UV, texel, 2.0, shaded) + ring(TEXTURE, UV, texel, 4.0, shaded)) / 3.0;
-	float far = (ring(TEXTURE, UV, texel, haze_reach * 0.5, shaded) + ring(TEXTURE, UV, texel, haze_reach, shaded)) * 0.5;
+	float near = (m + near_sum / 8.0) / 3.0;
+	float far = far_sum / 16.0;
 
 	vec2 smoke_uv = local_pos / 260.0 + vec2(0.0, TIME * rise);
 	float n1 = texture(noise_tex, smoke_uv).r;
@@ -82,7 +81,8 @@ void fragment() {
 	if (mirrored) {
 		light.x = -light.x;
 	}
-	float lit = clamp(m - cover(TEXTURE, UV + light * texel * rim_width, shaded), 0.0, 1.0);
+	vec4 toward = texture(TEXTURE, UV + light * texel * rim_width);
+	float lit = clamp(m - (shaded ? toward.a : toward.r), 0.0, 1.0);
 	float rim = lit * smoothstep(0.45, 0.75, near + (n - 0.5) * 0.3);
 	float strength = mix(rim_over_dark, rim_over_light, 0.5);
 	if (adaptive) {

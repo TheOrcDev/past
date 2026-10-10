@@ -2,6 +2,8 @@ extends Node
 ## Mouse input for play: hover labels, walking, running hotspot verbs and the
 ## inventory (docs/game-design.md §8).
 ## - A left click on a hotspot runs its default verb, or uses the held item on it.
+## - Holding the left button on a hotspot opens the verb coin; releasing over a
+##   glyph runs that verb.
 ## - A right click opens the inventory, or drops the held item.
 
 signal interacted(hotspot: Hotspot, verb: StringName)
@@ -10,6 +12,15 @@ signal interacted(hotspot: Hotspot, verb: StringName)
 var locked := 0
 var hovered: Hotspot
 var inventory: InventoryPanel
+var coin: VerbCoin
+
+## How long the left button must be held on a hotspot to open the verb coin.
+const COIN_HOLD_SECONDS := 0.3
+
+var _press_hotspot: Hotspot
+var _press_world := Vector2.ZERO
+var _press_screen := Vector2.ZERO
+var _press_held := 0.0
 
 var _label: Label
 
@@ -29,6 +40,9 @@ func _ready() -> void:
 	inventory = InventoryPanel.new()
 	inventory.name = "InventoryPanel"
 	add_child(inventory)
+	coin = VerbCoin.new()
+	coin.name = "VerbCoin"
+	add_child(coin)
 	Inventory.held_changed.connect(_on_held_changed)
 
 
@@ -38,15 +52,60 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	var world := get_viewport().get_canvas_transform().affine_inverse() * mouse.position
 	if event is InputEventMouseMotion:
-		_set_hovered(hotspot_at(world), mouse.position)
-	elif event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		if locked == 0:
+		if coin.is_open:
+			coin.point_at(mouse.position)
+		else:
+			_set_hovered(hotspot_at(world), mouse.position)
+	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if locked == 0 or coin.is_open:
 			get_viewport().set_input_as_handled()
-			click_at(world)
+			if event.pressed:
+				press_at(world, mouse.position)
+			else:
+				release_at(world, mouse.position)
 	elif event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
 		if locked == 0:
 			get_viewport().set_input_as_handled()
 			right_click()
+
+
+## The left button goes down. On a hotspot (with no item held) the action waits
+## for the release, to tell a click from a hold; anywhere else it acts at once.
+func press_at(world: Vector2, screen: Vector2) -> void:
+	if locked > 0:
+		return
+	var hotspot := hotspot_at(world)
+	if hotspot == null or Inventory.held:
+		click_at(world)
+		return
+	_press_hotspot = hotspot
+	_press_world = world
+	_press_screen = screen
+	_press_held = 0.0
+
+
+## The left button comes up: picks the coin's verb, or runs the default verb
+## after a short click.
+func release_at(world: Vector2, screen: Vector2) -> void:
+	if coin.is_open:
+		coin.point_at(screen)
+		var verb := coin.close()
+		var hotspot := _press_hotspot
+		_press_hotspot = null
+		if verb != &"" and hotspot:
+			await use(hotspot, verb)
+		return
+	if _press_hotspot:
+		_press_hotspot = null
+		click_at(_press_world)
+
+
+func _process(delta: float) -> void:
+	if _press_hotspot and not coin.is_open:
+		_press_held += delta
+		if _press_held >= COIN_HOLD_SECONDS:
+			_label.visible = false
+			coin.open(_press_screen)
 
 
 ## A right click: drops the held item, or opens and closes the inventory.

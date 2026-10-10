@@ -306,6 +306,18 @@ func _screenshots() -> void:
 	await get_tree().create_timer(0.95).timeout
 	await _shot("07_picking_up")
 	await get_tree().create_timer(1.5).timeout
+	var altar := Rooms.current.hotspots.get_node("Altar") as Hotspot
+	var altar_screen := get_viewport().get_canvas_transform() * altar.focus_point()
+	Interaction.press_at(altar.focus_point(), altar_screen)
+	await get_tree().create_timer(Interaction.COIN_HOLD_SECONDS + 0.3).timeout
+	Interaction.coin.point_at(Interaction.coin.glyph_position(&"look"))
+	await get_tree().create_timer(0.1).timeout
+	await _shot("07b_verb_coin")
+	Interaction.release_at(altar.focus_point(), Vector2.ZERO)
+	while Interaction.locked > 0 or Say.speaking or unknown.is_walking:
+		if Say.speaking:
+			Say.skip()
+		await get_tree().process_frame
 	var statue := Rooms.current.hotspots.get_node("Statue") as Hotspot
 	Interaction.click_at(statue.focus_point())
 	await Say.line_started

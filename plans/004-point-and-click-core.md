@@ -172,3 +172,12 @@ About 4–6 working sessions.
     `item_<id>(item)`, or falls back.
   - **Tests:** four integration tests. They click item slots directly, because
     GUT's runner panel covers the bottom of the headless screen.
+- **2026-10-10, slice 3:** the verb coin (`src/ui/verb_coin.gd`).
+  - Holding the left button on a hotspot for 0.3 s opens a drifting ring of
+    smoke with three drawn glyphs: an eye, a hand and a speech wisp.
+  - Releasing over a glyph runs that verb; releasing elsewhere cancels. A short
+    click still runs the default verb, now on release.
+  - The hold counts game time, so it agrees with time-scaled tests.
+  - Three integration tests, and the coin is in the screenshots scenario.
+  - **Also:** the silhouette shader samples its rings inline, because the
+    Compatibility renderer objected to passing `TEXTURE` into a function.

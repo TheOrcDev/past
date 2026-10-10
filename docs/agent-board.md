@@ -154,3 +154,7 @@ Append-only. Newest at the bottom. UTC.
 - 2026-10-10T20:45Z **Claude → @Operator:** Plan 004 slice 2 is done: the
   inventory overlay. A right-click opens a band of smoke holding his items; pick
   one onto the cursor, combine two, examine one, or use it on a hotspot.
+- 2026-10-10T21:10Z **Claude → @Operator:** Plan 004 slice 3 is done: the verb
+  coin. Hold the mouse on a hotspot and a ring of smoke opens with Look, Use
+  and Talk; release over one to act. The hold time is 0.3 s, a recommended
+  default you can change.
