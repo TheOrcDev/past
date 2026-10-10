@@ -1,6 +1,6 @@
 # IMG-0005 — Cathedral nave, then
 
-status: delivered
+status: accepted
 operator-approval: required
 plan: 002
 requested: 2026-10-10 by Claude for plan 002, slice 1
@@ -85,3 +85,4 @@ Filled in by Claude and the operator.
 | Round | Date (UTC) | Verdict | Notes |
 |---|---|---|---|
 | 1 | 2026-10-10T08:48Z | Waiting for operator approval. Claude recommends **v1**. | Both pass `align` against IMG-0001 v1 before any correction: v1 has a p90 residual of 1.75 px (median 0.75), v2 1.71 px. Scale is 1.0013, rotation about 0° and the offset ≤1 px; the largest corner shift is 6.4 px (v1) and 5.4 px (v2). The look matches concept 05, and the 50% blend reads like a memory frame. v1 has the richer stained glass. No figures. |
+| 1 | 2026-10-10T09:03Z | **accepted: v1** | Operator: go with the recommendation. Copied to `art-source/style/cathedral-nave-then.png`. |

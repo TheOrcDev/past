@@ -12,10 +12,10 @@ is gone.
 |---|---|---|---|---|
 | IMG-0001 | Cathedral nave, now (A/B: Flare) | **accepted: v1** (style key) | approved | 002 |
 | IMG-0002 | Cathedral nave, now (A/B: Sunburst) | rejected (A/B reference) | — | 002 |
-| IMG-0003 | Unknown turnaround, with tendrils | delivered round 2: v3 recommended | required (model sheet) | 002 |
-| IMG-0004 | Unknown turnaround, without tendrils | delivered round 2: v4 recommended | required (model sheet) | 002 |
-| IMG-0005 | Cathedral nave, then | delivered: v1 recommended (p90 1.75 px) | required | 002 |
-| IMG-0006 | Cemetery vista, ring 0 (outer) | delivered: v1 recommended | required (vista look) | 002 |
+| IMG-0003 | Unknown turnaround, with tendrils | **accepted: v3** | approved | 002 |
+| IMG-0004 | Unknown turnaround, without tendrils | **accepted: v4** | approved | 002 |
+| IMG-0005 | Cathedral nave, then | **accepted: v1** | approved | 002 |
+| IMG-0006 | Cemetery vista, ring 0 (outer) | **accepted: v1** | approved | 002 |
 
 ## Open operator decisions
 
@@ -25,7 +25,6 @@ is gone.
 | 5 | Should people in flashbacks be glowing "memory figures"? (`game-design.md` §6) | 2026-10-09 | Story track |
 | 6 | An Apple Developer account for macOS signing and notarization: yes or no? | 2026-10-09 | First public desktop build |
 | 7 | Do you publish as an individual or as a company? This sets the ElevenLabs tier needed for music (`audio-pipeline.md` §2). | 2026-10-09 | Plan 003 |
-| 9 | Approve the cathedral then image (IMG-0005), Unknown's model sheet (IMG-0003 round 2 and IMG-0004 round 2) and the cemetery ring 0 (IMG-0006). The style key IMG-0001 v1 is already approved. Review sheets are in `art-source/work/review/`. | 2026-10-10 | Plan 002, slices 3–6 |
 
 ## Log
 
@@ -76,3 +75,11 @@ Append-only. Newest at the bottom. UTC.
   - **Review sheets:** `art-source/work/review/`.
   - **Waiting on (#9):** the cathedral style key (v1 recommended) and Unknown's
     model sheet (a leaner revise is suggested).
+- 2026-10-10T09:03Z **Claude → @Operator:** Approvals recorded:
+  - IMG-0005 v1 (then);
+  - Unknown model sheet: IMG-0003 v3 and IMG-0004 v4;
+  - IMG-0006 v1 (ring 0).
+
+  The operator delegated art approvals to Claude's recommendations
+  (`decisions.md` #29), so plan 002 continues without approval stops.
+

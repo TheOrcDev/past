@@ -1,6 +1,6 @@
 # IMG-0004 — Unknown turnaround, without tendrils
 
-status: delivered
+status: accepted
 operator-approval: required
 plan: 002
 requested: 2026-10-10 by Claude for plan 002, slice 1
@@ -85,3 +85,4 @@ Filled in by Claude and the operator.
 | 1 | 2026-10-10T08:13Z | Waiting for operator approval. | Clean body silhouettes, usable for modeling. Same build note as IMG-0003: more muscular than the concept. Revise together with IMG-0003 if the operator wants him leaner. |
 | 1 | 2026-10-10T08:44Z | **revise** | Operator: make him leaner. Round 2 asks for a wiry, gaunt build with long limbs, narrow shoulders and almost no muscle definition. |
 | 2 | 2026-10-10T08:48Z | Waiting for operator approval. Claude recommends **v4**; v3 is rejected. | v4 is a clean, lean body with consistent views, good for modeling. v3 added a tattered loincloth that wasn't asked for. |
+| 2 | 2026-10-10T09:03Z | **accepted: v4** | Operator picked row 4 (v4). Copied to `art-source/style/unknown-turnaround-body.png`. |

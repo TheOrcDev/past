@@ -1,6 +1,6 @@
 # IMG-0006 — Cemetery vista, ring 0 (outer)
 
-status: delivered
+status: accepted
 operator-approval: required
 plan: 002
 requested: 2026-10-10 by Claude for plan 002, slice 1
@@ -76,3 +76,4 @@ Filled in by Claude and the operator.
 | Round | Date (UTC) | Verdict | Notes |
 |---|---|---|---|
 | 1 | 2026-10-10T08:48Z | Waiting for operator approval. Claude recommends **v1**. | In both, the figure is removed cleanly; zoomed in, there is no ghosting and the path is continuous. Concept 01's composition and style are kept. v1's fog over the path is slightly closer to the concept. |
+| 1 | 2026-10-10T09:03Z | **accepted: v1** | Operator picked v1. It is the outer ring of the cemetery reveal; rings 1 and 2 are repaints of its centre. |

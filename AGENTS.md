@@ -15,7 +15,7 @@ The repository is `github.com/TheOrcDev/past` (private).
 | Who | Role |
 |---|---|
 | **Claude Code** | Everything: code, scenes, tools, image generation (GPT Image through the Vercel AI Gateway) and processing, rigging and animation, audio generation, docs and plans |
-| **Operator** (OrcDev) | Decides story, art direction, spend and gates. Approves style keys. |
+| **Operator** (OrcDev) | Decides story, budgets and spend, and anything outside the repository. Delegates routine art and technical picks to Claude's recommendations (decision #29) and reviews the results. |
 
 ## Image requests
 
@@ -38,8 +38,9 @@ file, so every picture in the game can be traced to its prompt.
    - `status: revise` with numbered notes if none do. The next round continues
      the numbering (v4, v5 …).
 
-   A request marked `operator-approval: required` stays `delivered` until the
-   operator approves it.
+   Claude accepts its own recommended variant and records why (decision #29).
+   `operator-approval: required` now means "show the operator the result",
+   not "wait". The operator can overrule any pick.
 4. Files in `art-source/raw/` are never edited, renamed or deleted. Processing
    writes to `art-source/work/`, and shipping assets go into the Godot project.
 

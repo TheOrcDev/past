@@ -1,6 +1,6 @@
 # IMG-0003 — Unknown turnaround, with tendrils
 
-status: delivered
+status: accepted
 operator-approval: required
 plan: 002
 requested: 2026-10-10 by Claude for plan 002, slice 1
@@ -84,3 +84,4 @@ Filled in by Claude and the operator.
 | 1 | 2026-10-10T08:13Z | Waiting for operator approval. | All five views are consistent across both variants, the alpha is clean and the eyes show only in the front views. The build is more muscular than concept 04's lean shadow, though v1 is the leaner of the two. Recommendation: one revise round for a leaner, wirier build, unless the operator likes this look. |
 | 1 | 2026-10-10T08:44Z | **revise** | Operator: make him leaner. Round 2 asks for a wiry, gaunt build with long limbs, narrow shoulders and almost no muscle definition. |
 | 2 | 2026-10-10T08:48Z | Waiting for operator approval. Claude recommends **v3**. | Both are wiry and long-limbed, with consistent views and clean alpha. v3 has thinner, wispier tendrils, so the body stays readable; v4's smoke is denser and more cloak-like. |
+| 2 | 2026-10-10T09:03Z | **accepted: v3** | Operator picked row 1 (v3). Copied to `art-source/style/unknown-turnaround-tendrils.png`. |
