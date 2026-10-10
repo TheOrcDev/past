@@ -13,7 +13,7 @@ REJECTED (one-line rationale).
 | [002](002-first-light-look-spike.md) | First light: prove the look of *Past* | M1 | L | 001; `AI_GATEWAY_API_KEY` in `.env`; $50 image budget (#26) | GATE: slices 1–7 done, 41 GUT tests pass, measurements in `docs/qa/002/`; waiting for the operator's look-gate sign-off |
 | [003](003-voice-of-the-world-audio-spike.md) | Voice of the world: ElevenLabs pipeline spike | M2 | M | 001; ElevenLabs key and credit ceiling (board #4) | TODO |
 | [004](004-point-and-click-core.md) | Point-and-click core: verb coin, inventory, dialogue UI, saves, settings | M3 | L | 002 | IN PROGRESS: written 2026-10-10 on the operator's instruction to continue all slices |
-| 005 | Cinematic toolkit: flashbacks, reveals, cutscene runner, journal | M4 | L | 002, 004 | Not written |
+| [005](005-cinematic-toolkit.md) | Cinematic toolkit: flashbacks, reveals, cutscene runner, journal | M4 | L | 002, 004 | TODO: written 2026-10-11; starts once 004 is done |
 | 006 | Prologue vertical slice | M5 | XL | 003, 005, story track | Not written |
 | [007](007-the-grave.md) | The grave: start at Unknown's grave, close-up views | M5 (early) | M | 002, 004 | DONE 2026-10-10 (operator request) |
 

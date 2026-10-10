@@ -340,7 +340,8 @@ and particles inside a `CanvasGroup` vanish in WebKit.
     their edges.
   - `Letterbox` draws the bars.
   - The cemetery opening (`content/cutscenes/cemetery_reveal`) plays from
-    `main.gd` before the first room, and a click fast-forwards it.
+    `main.gd` before the first room. Holding the Skip button, or Esc,
+    fast-forwards it (plan 004 slice 10).
 - **Panorama pan:** `Parallax2D` layers move at different rates.
 - **Letterbox:** 2.39:1 bars slide in for every non-interactive sequence.
 - **`CutsceneRunner`** (plan 005):

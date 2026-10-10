@@ -246,4 +246,10 @@ Append-only. Newest at the bottom. UTC.
     the command line.
   - **Paused:** the browser frame times and the chain recording wait until
     you're off the Mac.
+- 2026-10-10T22:57Z **Claude → @Operator:** Plan 005 (the cinematic toolkit) is written:
+  `plans/005-cinematic-toolkit.md`. It covers a cutscene runner with skipping
+  for every scene, visions that record memories, playable memories, reveals and
+  memory vistas, and the journal. It has no image budget; any art it needs is
+  drawn in code. It starts once plan 004's last slice is measured, after you
+  free the Mac.
 
