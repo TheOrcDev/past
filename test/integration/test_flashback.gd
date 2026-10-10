@@ -86,3 +86,14 @@ func test_unknown_eyes_flare_as_the_vision_opens_and_settle_after() -> void:
 	assert_true(flared[0], "his eyes flare as the past opens")
 	await wait_seconds(1.5)
 	assert_eq(body.eye_state, UnknownBody.EyeState.IDLE, "and settle once it has closed")
+
+
+func test_the_memory_takes_his_body_as_the_vision_opens() -> void:
+	var body := Rooms.player.get_node("Body") as SpriteBody
+	var playing := [&""]
+	var watch := func(_origin: Vector2) -> void: playing[0] = body.sprite.animation
+	Flashback.vision_started.connect(watch)
+	await Flashback.vision(Rooms.current, Vector2(200, 500), func() -> void: await get_tree().create_timer(0.3).timeout)
+	Flashback.vision_started.disconnect(watch)
+	assert_true(String(playing[0]).begins_with("flare_"), "the flare reaction plays, got %s" % playing[0])
+

@@ -125,6 +125,15 @@ def skin_material():
     links.new(head.outputs["Fac"], strength.inputs[0])
     links.new(strength.outputs["Value"], bump.inputs["Strength"])
     links.new(bump.outputs["Normal"], shader.inputs["Normal"])
+    # Hands and feet lose their sheen, so toes and fingers do not glint.
+    ends = nodes.new("ShaderNodeAttribute")
+    ends.attribute_name = "extremity_mask"
+    sheen = nodes.new("ShaderNodeMath")
+    sheen.operation = "MULTIPLY_ADD"
+    sheen.inputs[1].default_value = -0.34
+    sheen.inputs[2].default_value = 0.4
+    links.new(ends.outputs["Fac"], sheen.inputs[0])
+    links.new(sheen.outputs["Value"], shader.inputs["Specular IOR Level"])
     return material
 
 
@@ -202,6 +211,13 @@ def finish_body(body) -> None:
     _smooth_head(mesh, head, iterations=140, factor=0.8)
     mask = mesh.attributes.new("head_mask", "FLOAT", "POINT")
     mask.data.foreach_set("value", head.astype(np.float32))
+    # Hands (beyond the wrists in the A-pose rest) and feet (below the ankles).
+    xyz = co.reshape(-1, 3)
+    ax = np.abs(xyz[:, 0])
+    feet = np.clip((0.16 - xyz[:, 2]) / 0.1, 0.0, 1.0)
+    hands = np.clip((ax - 0.39 * SCALE) / (0.04 * SCALE), 0.0, 1.0) * (xyz[:, 2] < 1.05 * SCALE)
+    ends = mesh.attributes.new("extremity_mask", "FLOAT", "POINT")
+    ends.data.foreach_set("value", np.maximum(feet, hands).astype(np.float32))
     body.data.materials.clear()
     body.data.materials.append(skin_material())
     mesh.polygons.foreach_set("use_smooth", [True] * len(mesh.polygons))
@@ -626,6 +642,33 @@ def give(p: Poser) -> None:
         p.key(frame)
 
 
+def flare(p: Poser) -> None:
+    """A second and a half as a memory takes him (played as a flashback opens):
+    a sharp breath in, the head lifting, arms tensing out with the fingers
+    spread, a held moment, then release."""
+    keys = {
+        # frame: (chest, spine, head, neck, arms out, forearm, fingers, hips up)
+        0: (0, 0, 0, 0, 0, 0, 0, 0.0),
+        6: (-8, -5, -14, -6, 12, 25, -20, 0.01),
+        14: (-9, -6, -16, -7, 14, 22, -24, 0.012),
+        26: (-3, -2, -5, -2, 5, 8, -6, 0.004),
+        38: (0, 0, 0, 0, 0, 0, 0, 0.0),
+    }
+    for frame, (chest, spine, head, neck, out, forearm, fingers, up) in keys.items():
+        base_pose(p)
+        p.pose("chest", swing=chest)
+        p.pose("spine", swing=spine)
+        p.pose("head", swing=head)
+        p.pose("neck", swing=neck)
+        p.pose("upper_arm.L", tilt=out)
+        p.pose("upper_arm.R", tilt=-out)
+        for side in (".L", ".R"):
+            p.pose("forearm" + side, swing=forearm)
+            p.pose("hand" + side, swing=fingers)
+        p.lift("hips", up)
+        p.key(frame)
+
+
 ANIMATIONS = {
     "walk": (walk, CYCLE, True),
     "idle": (idle, 48, True),
@@ -638,6 +681,7 @@ ANIMATIONS = {
     "pickup_high": (pickup_high, 48, False),
     "use": (use, 36, False),
     "give": (give, 36, False),
+    "flare": (flare, 38, False),
 }
 # Moments the game reacts to, in 24 fps frames: footsteps on each heel strike,
 # the instant a hand closes on something.
@@ -647,6 +691,7 @@ EVENTS = {
     "pickup_high": {18: "grab"},
     "use": {16: "use"},
     "give": {18: "give"},
+    "flare": {4: "flare"},
 }
 DIRECTIONS = {"d": 0.0, "r": 90.0, "u": 180.0}
 

@@ -29,7 +29,7 @@ uniform float rim_over_light = 0.06;
 uniform bool adaptive = true;
 // How deep the smoke eats into his edges, and how far the haze reaches (texels).
 uniform float dissolve = 0.55;
-uniform float haze_reach = 22.0;
+uniform float haze_reach = 16.0;
 uniform float haze_strength = 0.55;
 // How fast the smoke rises, in noise tiles per second.
 uniform float rise = 0.12;

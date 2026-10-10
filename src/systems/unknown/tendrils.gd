@@ -32,7 +32,7 @@ const STRAND_WIDTH := 0.5
 const TELEPORT := 150.0
 ## The wisps stream backwards, so facing the camera (d) or away (u) shows them
 ## foreshortened: their rest length per view.
-const VIEW_LENGTH := {"r": 1.0, "d": 0.55, "u": 0.7}
+const VIEW_LENGTH := {"r": 1.0, "d": 0.8, "u": 0.75}
 
 ## Per chain: the anchor it grows from and how far down the body its root sits
 ## (pixels at scale 1), its points, segment length and widest width at scale 1,
@@ -42,13 +42,13 @@ const VIEW_LENGTH := {"r": 1.0, "d": 0.55, "u": 0.7}
 ## that shoulder is on.
 const CHAINS: Array[Dictionary] = [
 	{"anchor": &"shoulder_l", "drop": 0.0, "points": 15, "segment": 21.0, "width": 18.0,
-		"side": Vector2(-0.9, 0.15), "front": Vector2(0.55, 0.83), "back": Vector2(0.55, 0.83)},
+		"side": Vector2(-0.9, 0.15), "front": Vector2(0.8, 0.6), "back": Vector2(0.55, 0.83)},
 	{"anchor": &"shoulder_r", "drop": 6.0, "points": 15, "segment": 21.0, "width": 18.0,
-		"side": Vector2(-0.95, -0.05), "front": Vector2(0.55, 0.83), "back": Vector2(0.55, 0.83)},
+		"side": Vector2(-0.95, -0.05), "front": Vector2(0.8, 0.6), "back": Vector2(0.55, 0.83)},
 	{"anchor": &"shoulder_l", "drop": 20.0, "points": 13, "segment": 20.0, "width": 14.0,
-		"side": Vector2(-0.8, 0.45), "front": Vector2(0.35, 0.94), "back": Vector2(0.35, 0.94)},
+		"side": Vector2(-0.8, 0.45), "front": Vector2(0.65, 0.76), "back": Vector2(0.35, 0.94)},
 	{"anchor": &"shoulder_r", "drop": 30.0, "points": 13, "segment": 20.0, "width": 14.0,
-		"side": Vector2(-0.85, 0.3), "front": Vector2(0.35, 0.94), "back": Vector2(0.35, 0.94)},
+		"side": Vector2(-0.85, 0.3), "front": Vector2(0.65, 0.76), "back": Vector2(0.35, 0.94)},
 	{"anchor": &"back", "drop": 0.0, "points": 16, "segment": 22.0, "width": 20.0,
 		"side": Vector2(-0.9, 0.1), "front": Vector2(-0.65, 0.76), "back": Vector2(-0.25, 0.97)},
 	{"anchor": &"back", "drop": 10.0, "points": 15, "segment": 21.0, "width": 17.0,

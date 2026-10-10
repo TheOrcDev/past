@@ -170,10 +170,19 @@ func _unknown_look() -> void:
 	var path := (unknown.get_node("Body") as SpriteBody).sprites.resource_path
 	var before := Performance.get_monitor(Performance.RENDER_TEXTURE_MEM_USED)
 	var fresh := ResourceLoader.load(path, "", ResourceLoader.CACHE_MODE_IGNORE_DEEP) as CharacterSprites
-	await RenderingServer.frame_post_draw
-	var used := Performance.get_monitor(Performance.RENDER_TEXTURE_MEM_USED) - before
-	print("[qa] Unknown's sheets: %.1f MiB of video memory, %d animations" % [used / 1048576.0, fresh.frames.get_animation_names().size()])
-	_check(used > 0.0 and used < 128.0 * 1048576.0, "Unknown's frames fit 128 MiB")
+	RenderingServer.force_draw(false)
+	var monitor := Performance.get_monitor(Performance.RENDER_TEXTURE_MEM_USED) - before
+	# The sheets' own data (GPU-compressed or not); Godot's monitor reads about
+	# 1.4 times this for the same textures, so both are printed.
+	var bytes := 0
+	var seen := {}
+	for anim in fresh.frames.get_animation_names():
+		var atlas := (fresh.frames.get_frame_texture(anim, 0) as AtlasTexture).atlas
+		if not seen.has(atlas):
+			seen[atlas] = true
+			bytes += atlas.get_image().get_data().size()
+	print("[qa] Unknown's sheets: %.1f MiB of texture data (Godot's monitor: %.1f MiB), %d animations" % [bytes / 1048576.0, monitor / 1048576.0, fresh.frames.get_animation_names().size()])
+	_check(bytes > 0 and bytes < 128 * 1048576, "Unknown's frames fit 128 MiB")
 
 
 ## The opening reveal at key moments, then the handoff into the first room.

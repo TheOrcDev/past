@@ -143,3 +143,11 @@ Append-only. Newest at the bottom. UTC.
   written and started under your "continue all slices" instruction. Slice 1,
   the inventory core, is done: `ItemDef`, an `Inventory` autoload (add,
   remove, hold, drop, combine), with the carried items kept in `GameState`.
+- 2026-10-10T20:40Z **Claude → @Operator:** Unknown look polish.
+  - **Skin:** hands and feet lose their sheen, so toes no longer glint.
+  - **Wisps:** from the front they now spread out behind both shoulders, as in
+    the concept.
+  - **Flare:** a new one-shot (a sharp breath, the head lifting, arms tensing)
+    plays as a flashback opens, with the eye flare.
+  - **Memory:** 36 animation sets hold 99.2 MiB of texture data (Godot's
+    monitor reads 132.4 MiB for the same load).

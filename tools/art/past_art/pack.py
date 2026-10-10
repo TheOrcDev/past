@@ -19,7 +19,7 @@ import numpy as np
 from .imageio import load, luminance, save, save_grey_alpha
 
 MAX_SHEET = 4096
-BORDER = 28  # transparent texels around each trimmed silhouette, room for the shadow haze
+BORDER = 20  # transparent texels around each trimmed silhouette, room for the shadow haze
 SPACING = 2  # texels between packed regions
 
 

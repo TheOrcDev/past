@@ -101,7 +101,7 @@ func warm_up(room: Room) -> void:
 func vision(room: Room, origin: Vector2, during := Callable(), hold_seconds := 6.0) -> void:
 	playing = true
 	Interaction.locked += 1
-	_flare_eyes(1.6)
+	_unknown_reacts(true)
 	vision_started.emit(origin)
 	await _transition(room, origin, true)
 	room.set_era(&"then")
@@ -111,7 +111,7 @@ func vision(room: Room, origin: Vector2, during := Callable(), hold_seconds := 6
 	else:
 		await get_tree().create_timer(hold_seconds).timeout
 	await _end_drift(camera)
-	_flare_eyes(1.0)
+	_unknown_reacts(false)
 	await _transition(room, origin, false)
 	room.set_era(&"now")
 	Interaction.locked -= 1
@@ -119,11 +119,17 @@ func vision(room: Room, origin: Vector2, during := Callable(), hold_seconds := 6
 	vision_finished.emit(origin)
 
 
-## Unknown's eyes flare as a vision opens and as it closes.
-func _flare_eyes(seconds: float) -> void:
-	var body := Rooms.player.get_node_or_null("Body") if Rooms.player else null
+## Unknown's eyes flare as a vision opens and as it closes; as it opens, the
+## memory also takes his body (the flare one-shot, if he has it).
+func _unknown_reacts(into_past: bool) -> void:
+	var player := Rooms.player
+	if player == null:
+		return
+	var body := player.get_node_or_null("Body")
 	if body and body.has_method(&"flare"):
-		body.flare(seconds)
+		body.flare(1.6 if into_past else 1.0)
+	if into_past:
+		player.play(&"flare")
 
 
 func _transition(room: Room, origin: Vector2, into_past: bool) -> void:
