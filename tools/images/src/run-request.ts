@@ -73,6 +73,7 @@ export function callCost(
   estimate: () => number,
   pricing: Pricing,
 ): { costUsd: number; costSource: LedgerEntry["costSource"] } {
+  if ((providerMetadata as { codex?: unknown } | undefined)?.codex) return { costUsd: 0, costSource: "plan" };
   const gatewayCost = Number((providerMetadata as { gateway?: { cost?: string } } | undefined)?.gateway?.cost);
   if (Number.isFinite(gatewayCost) && gatewayCost > 0) return { costUsd: gatewayCost, costSource: "gateway" };
   if (inputTokens !== null && outputTokens !== null) {
@@ -165,7 +166,7 @@ export async function runRequest(request: ImageRequest, options: RunOptions): Pr
     files.map((entry) => entry.file).join(", "),
     generation.model,
     `${generation.size} / ${generation.quality}`,
-    `${costUsd.toFixed(3)}${costSource === "estimate" ? " (est.)" : ""}`,
+    costSource === "plan" ? "0 (ChatGPT plan)" : `${costUsd.toFixed(3)}${costSource === "estimate" ? " (est.)" : ""}`,
   ]);
   writeFileSync(options.requestPath, withStatus(text, "delivered"));
 

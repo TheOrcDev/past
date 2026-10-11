@@ -323,3 +323,21 @@ docs move from draft to signed, and `game-design.md` §13 points to them.
 XXL: five parts. It is re-estimated after slices 3 and 4.
 
 ## Execution record
+
+- **2026-10-11, slice 0:** Sol works, and the design changed for the better.
+  - **Engine:** Sol is a second engine inside `tools/images`, not a separate
+    `tools/sol`. A request with `"model": "codex/gpt-6.1-sol"` runs
+    `codex exec -s read-only`. Sol writes nothing at all, and `run.ts` copies
+    the images Codex keeps under `~/.codex/generated_images/<thread>/` into
+    `art-source/raw/` untouched, with the same receipt, ledger entry
+    (`costSource: plan`) and Delivery row as the gateway's. The guard of the
+    original design isn't needed, because the sandbox is read-only. Five new
+    tests run against a fake `codex`.
+  - **Spike:** IMG-0011 (`cemetery_gate`, 3 variants, about 40 s each)
+    matches IMG-0009's style. Its then-edit, IMG-0012, aligns with p90
+    1.56 px (gate 3 px). Both v1s are accepted.
+  - **Size:** Sol returns 1672×941 and can't be asked for more. Rooms
+    upscale 1.15× to 1920×1080. The gateway keeps the 3:1 vista rings and
+    masks. This is decision #47.
+  - **LFS (board #13):** a Sol raw is about 3.5 MB. Plan 008's raws come to
+    about 1.7 GB.

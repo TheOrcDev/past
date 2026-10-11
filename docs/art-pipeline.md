@@ -7,7 +7,7 @@ volume production starts. Numbers marked *calibrate* are set by that plan.
 
 | Role | Does |
 |---|---|
-| **Image tool** (`tools/images`, run by Claude) | Generates every image from a request file with OpenAI's GPT Image models through the Vercel AI Gateway (decision #25). That covers backgrounds, then/now edits, outpaint zoom-outs, clean plates, character model sheets, UI art, journal illustrations and title cards. It writes receipts and enforces the plan's image budget. |
+| **Image tool** (`tools/images`, run by Claude) | Generates every image from a request file, through **GPT-6.1 Sol** in Codex (`codex/gpt-6.1-sol`, decisions #44 and #47: 1672×941, no masks) or OpenAI's GPT Image models through the Vercel AI Gateway (decision #25). That covers backgrounds, then/now edits, outpaint zoom-outs, clean plates, character model sheets, UI art, journal illustrations and title cards. It writes receipts and enforces the plan's image budget. |
 | **Claude** | Writes the requests, runs the tool and reviews what comes back. Does all processing (alignment, depth, layer splitting, upscaling for push-ins), the 3D rigging, animation and sprite rendering, effects, Godot integration and QA. |
 | **Operator** | Approves style keys, Unknown's model sheet, each area's look and anything marked `operator-approval: required`. |
 

@@ -15,7 +15,8 @@ export interface LedgerEntry {
   inputTokens: number | null;
   outputTokens: number | null;
   costUsd: number;
-  costSource: "gateway" | "tokens" | "estimate";
+  /** "plan": made by Sol on the operator's ChatGPT plan (decision #44), so no dollars. */
+  costSource: "gateway" | "tokens" | "estimate" | "plan";
 }
 
 /** Generation stops once a plan has spent this share of its budget. */

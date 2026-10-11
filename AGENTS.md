@@ -14,13 +14,17 @@ The repository is `github.com/TheOrcDev/past` (private).
 
 | Who | Role |
 |---|---|
-| **Claude Code** | Everything: code, scenes, tools, image generation (GPT Image through the Vercel AI Gateway) and processing, rigging and animation, audio generation, docs and plans |
+| **Claude Code** | Everything: code, scenes, tools, image requests (made by GPT-6.1 Sol through Codex, or GPT Image through the Vercel AI Gateway) and processing, rigging and animation, audio generation, docs and plans |
 | **Operator** (OrcDev) | Decides story, budgets and spend, and anything outside the repository. Delegates routine art and technical picks to Claude's recommendations (decision #29) and reviews the results. |
 
 ## Image requests
 
 Images are made with `tools/images` (decision #25). Each image has a request
-file, so every picture in the game can be traced to its prompt.
+file, so every picture in the game can be traced to its prompt. GPT-6.1 Sol
+makes most of them through Codex: a request whose model is
+`codex/gpt-6.1-sol` runs through Sol, billed to the operator's ChatGPT plan,
+and the gateway models stay for masks, exact sizes and fallbacks (decisions
+#44 and #47).
 
 1. Copy `art-source/requests/_TEMPLATE.md` to
    `art-source/requests/IMG-####-<slug>.md`. Fill in its purpose, its

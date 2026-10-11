@@ -402,3 +402,12 @@ Append-only. Newest at the bottom. UTC.
   - **Can start now:** slice 0 (the Sol handshake and spike), slice 2 (the
     production frame) and slice 3 (the Gravedigger as the NPC proof).
   - **Cost so far:** nothing.
+- 2026-10-11T21:55Z **Claude → @Operator:** Plan 008 slice 0 is done: Sol makes our art.
+  - **How:** a request with `"model": "codex/gpt-6.1-sol"` runs through Codex
+    in a read-only sandbox. The images are copied untouched into
+    `art-source/raw/`, with a receipt like the gateway's (decision #47).
+  - **First images:** IMG-0011, the cemetery gate, matches the grave's
+    style. Its colour past, IMG-0012, lines up within 1.6 px.
+  - **Limit:** Sol's images are 1672×941, so rooms are upscaled 1.15×. The
+    gateway keeps the wide vista rings.
+  - **Cost:** $0. Sol is on your ChatGPT plan.

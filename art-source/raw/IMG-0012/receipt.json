@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0012",
+  "title": "Cemetery gate, then",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T21:41:41.690Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0011/IMG-0011-v1.png",
+          "sha256": "80415ee360bb08b7ba72c0b22490f4e30c8d056b827961d01a0574bcb364d65f"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit this image in place. Keep exactly the same composition, camera, perspective, horizon and every shape where it stands: the lodge on the left, the gate and its two stone posts with urns in the centre, the row of graves and the lantern pole on the right, the chapel and its steps, the trees, the distant city and the path. Only change the time and the condition.\n\nRestore the same cemetery gate to how it looked decades earlier, on a warm golden autumn evening, in full rich color, as a painterly gothic matte painting: the gate whole, black-lacquered and standing upright on both hinges, the lodge's window glowing warm with lamplight and a wreath on its door, the graves neatly tended with fresh flowers, flower sellers' baskets of lilies and roses beside the gate posts, mourners' lanterns glowing along the path, gold and red leaves on the trees and the ground, a warm sunset sky in place of the moon, the city's spires gleaming gold in the distance. The key light comes from the same direction as in the original.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0012-v1.png",
+          "sha256": "7d2c2e3b4874ca84f362f3a7e35b7ce1a3b0904d31e178d846354c4cdb6eed20",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0012-v2.png",
+          "sha256": "e0b68ef4b26bac2e4ffde8a602a17118c5893dae3ad89abfb33c84e7bd129d69",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 148332,
+        "outputTokens": 678
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12cea-1a09-77b0-8165-a31d5f12d5d9",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12cea-1a09-77b0-8165-a31d5f12d5d9/exec-7329bb81-9605-4e7b-98b5-e11eba1d711c.png",
+            "/Users/orcdev/.codex/generated_images/01a12cea-1a09-77b0-8165-a31d5f12d5d9/exec-360033c1-ab0e-4693-8e87-33187f03c3e0.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate two edits using the reference image and your exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

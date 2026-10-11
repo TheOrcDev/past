@@ -1,0 +1,76 @@
+{
+  "id": "IMG-0011",
+  "title": "Cemetery gate and the Gravedigger's lodge, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T21:39:08.626Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0009/IMG-0009-v1.png",
+          "sha256": "be0e6249443af830ba43d309003853e8571c8f80fce259d77009fd052e5bc97c"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: the main gate of the same old hilltop cemetery at night under a pale moon, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: on the left third, a small stone gatekeeper's lodge with a steep slate roof, a crooked chimney, a dark arched door facing us and one small dark window. In the centre background, a tall wrought-iron cemetery gate between two stone posts topped with stone urns; one leaf of the gate hangs off its hinge, and beyond the gate the road dissolves into thick fog. On the right, in the middle ground, a neat row of four freshly dug, empty rectangular graves with mounds of dark earth beside them, and a tall wooden pole planted in one mound with an empty iron lantern frame hanging from it. Behind them, leaning tombstones, bare twisted trees, a small chapel with stone steps leading down into a crypt door, and far away the cathedral city's spires in the fog.\n\nThe lower third of the image is open, walkable ground: a wide gravel path runs from the lodge door across the whole width of the image to the right edge, passing in front of the gate and the graves, lit by pale moonlight with drifting fog behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0011-v1.png",
+          "sha256": "80415ee360bb08b7ba72c0b22490f4e30c8d056b827961d01a0574bcb364d65f",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0011-v2.png",
+          "sha256": "b8a23f8ae143d0a7cd40ff656f2ef50246d61d356108a7e703d78f87c12cedb8",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0011-v3.png",
+          "sha256": "0a60377ac2390561dd735c99562075c23c045373e3ba04b8ba9fcdd3b79a1b25",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 106357,
+        "outputTokens": 697
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12ce7-c4f0-7f40-a2d9-8d1cf858bb4f",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12ce7-c4f0-7f40-a2d9-8d1cf858bb4f/exec-5774c734-36d1-4954-a41f-839031cbbd99.png",
+            "/Users/orcdev/.codex/generated_images/01a12ce7-c4f0-7f40-a2d9-8d1cf858bb4f/exec-fd406f98-1241-4bc7-a809-b963da3864f1.png",
+            "/Users/orcdev/.codex/generated_images/01a12ce7-c4f0-7f40-a2d9-8d1cf858bb4f/exec-42f31e38-7723-4c34-8b3b-0d6faeb32852.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque images using the reference and your exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

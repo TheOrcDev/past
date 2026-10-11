@@ -29,6 +29,9 @@ Where this image is used in the game and what it has to do there.
 }
 ```
 
+- **`model`:** `codex/gpt-6.1-sol` sends the request to Sol (decision #47).
+  It returns 1672×941 images whatever `size` says (`size` then only sets
+  the shape), and it can't take a mask.
 - **`references`:** repository paths of input images. With references, the call
   is an edit. Use `openai/gpt-image-2.5-sunburst` for edits.
 - **`mask`:** optional. A PNG with alpha, the same size as the first reference,

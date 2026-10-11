@@ -214,5 +214,42 @@
     "outputTokens": 956,
     "costUsd": 0.054958,
     "costSource": "gateway"
+  },
+  {
+    "id": "IMG-0011",
+    "round": 1,
+    "plan": "008",
+    "model": "codex/gpt-6.1-sol",
+    "size": "2560x1440",
+    "quality": "high",
+    "n": 3,
+    "date": "2026-10-11T21:39:08.626Z",
+    "files": [
+      "IMG-0011-v1.png",
+      "IMG-0011-v2.png",
+      "IMG-0011-v3.png"
+    ],
+    "inputTokens": 106357,
+    "outputTokens": 697,
+    "costUsd": 0,
+    "costSource": "plan"
+  },
+  {
+    "id": "IMG-0012",
+    "round": 1,
+    "plan": "008",
+    "model": "codex/gpt-6.1-sol",
+    "size": "2560x1440",
+    "quality": "high",
+    "n": 2,
+    "date": "2026-10-11T21:41:41.690Z",
+    "files": [
+      "IMG-0012-v1.png",
+      "IMG-0012-v2.png"
+    ],
+    "inputTokens": 148332,
+    "outputTokens": 678,
+    "costUsd": 0,
+    "costSource": "plan"
   }
 ]

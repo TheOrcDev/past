@@ -1,4 +1,5 @@
 // Runs an image request through the Vercel AI Gateway (docs/decisions.md #25).
+// A request whose model is codex/gpt-6.1-sol runs through Sol instead (#44).
 // Usage, from the repository root: bun tools/images/run.ts IMG-0001 [--dry-run]
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
@@ -6,6 +7,7 @@ import { generateImage } from "ai";
 import { credentialUsable, currentCredential, describeCredential } from "./src/credentials";
 import { checkBudget, estimateCost, readBudgets, readLedger } from "./src/ledger";
 import { budgetsPath, ledgerPath, rawDir, repoRoot, requestsDir } from "./src/paths";
+import { isSolModel, makeSolGenerate } from "./src/sol";
 import { fetchPricing } from "./src/pricing";
 import { parseRequest, RequestError } from "./src/request";
 import { runRequest } from "./src/run-request";
@@ -28,7 +30,8 @@ try {
   if (request.status !== "open" && request.status !== "revise") {
     throw new RequestError(`${id} is "${request.status}"; set "status: revise" to run another round`);
   }
-  const pricing = await fetchPricing(request.generation.model);
+  const sol = isSolModel(request.generation.model);
+  const pricing = sol ? { source: "plan", inputUsdPerToken: 0, outputUsdPerToken: 0 } : await fetchPricing(request.generation.model);
   const estimate = estimateCost(request.generation, pricing.outputUsdPerToken, pricing.inputUsdPerToken);
   const budget = checkBudget(request.plan, readBudgets(budgetsPath), readLedger(ledgerPath), estimate);
   console.log(`${id} "${request.title}": ${request.generation.n}× ${request.generation.model} ${request.generation.size} ${request.generation.quality}${request.generation.references.length ? `, edit of ${request.generation.references.join(", ")}` : ""}`);
@@ -36,13 +39,17 @@ try {
   console.log(budget.message);
   if (!budget.ok) process.exit(3);
   if (flag === "--dry-run") process.exit(0);
-  const credential = currentCredential();
-  if (!credentialUsable(credential)) {
-    console.error(describeCredential(credential));
-    process.exit(4);
+  if (!sol) {
+    const credential = currentCredential();
+    if (!credentialUsable(credential)) {
+      console.error(describeCredential(credential));
+      process.exit(4);
+    }
   }
 
-  const result = await runRequest(request, { root: repoRoot, rawDir, ledgerPath, requestPath, generate: generateImage, pricing });
+  const workDir = join(repoRoot, "build", "sol", `${id}-${Date.now()}`);
+  const generate = sol ? makeSolGenerate({ workDir }) : generateImage;
+  const result = await runRequest(request, { root: repoRoot, rawDir, ledgerPath, requestPath, generate, pricing });
   console.log(`round ${result.round}: ${result.files.join(", ")} — $${result.costUsd.toFixed(3)} (${result.costSource})`);
   for (const warning of result.warnings) console.warn("warning:", JSON.stringify(warning));
 } catch (error) {
