@@ -60,6 +60,11 @@ func play(cutscene: Cutscene) -> void:
 	finished.emit(cutscene.id)
 
 
+## How far the runner's fade is down: 0 clear, 1 black.
+func fade_amount() -> float:
+	return _fade.modulate.a
+
+
 ## Drops the runner's fade at once. Call it under another cover, such as a
 ## room change that starts on black, after a scene that ended on black.
 func clear_fade() -> void:

@@ -63,6 +63,10 @@ func set_grade(value: float) -> void:
 	_grade_material.set_shader_parameter(&"mix_then", value)
 
 
+func get_grade() -> float:
+	return float(_grade_material.get_shader_parameter(&"mix_then"))
+
+
 ## Film grain strength; 0 turns it off. The default is 0.04.
 func set_grain(amount: float) -> void:
 	_grade_material.set_shader_parameter(&"grain", amount)

@@ -5,7 +5,8 @@ extends SceneTree
 ## in a Reveal, Unknown standing in the vista, a title card, and an
 ## AnimationPlayer whose "reveal" animation holds, pulls back with ease in and
 ## out, then shows and hides the title. The scene's script is <name>.gd beside
-## the output. An existing scene is kept unless --replace is given.
+## the output if there is one, or RevealStage. An existing scene is kept unless
+## --replace is given.
 ##
 ##   tools/godot.sh --headless --script res://addons/past_tools/new_reveal.gd -- \
 ##       --spec=art-source/work/reveal/cemetery/reveal_spec.json \
@@ -58,8 +59,8 @@ func _build(spec: Dictionary, out: String, title_text: String, place_text: Strin
 	var root := Node2D.new()
 	root.name = out.get_file().get_basename().to_pascal_case()
 	var script_path := out.get_basename() + ".gd"
-	if ResourceLoader.exists(script_path):
-		root.set_script(load(script_path))
+	# Loaded by path when the scaffold runs: autoload names resolve only then.
+	root.set_script(load(script_path if ResourceLoader.exists(script_path) else "res://src/systems/cinematics/reveal_stage.gd"))
 
 	var reveal := Reveal.new()
 	reveal.name = "Reveal"

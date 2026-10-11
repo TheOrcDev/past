@@ -12,47 +12,57 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(0, 790, 1920, 790, 1920, 1062, 0, 1062)])
 agent_radius = 0.0
 
-[node name="GreyboxCourtyard" type="Node2D" unique_id=1005682677]
+[node name="GreyboxCourtyard" type="Node2D" unique_id=2129901448]
 script = ExtResource("1_4kh5i")
 room_id = &"greybox_courtyard"
 display_name = "Courtyard"
 
-[node name="Layers" type="Node2D" parent="." unique_id=35124878]
+[node name="Layers" type="Node2D" parent="." unique_id=404538660]
 
-[node name="Now" type="Node2D" parent="Layers" unique_id=1990595767]
+[node name="Now" type="Node2D" parent="Layers" unique_id=1344788583]
 
-[node name="Background" type="Sprite2D" parent="Layers/Now" unique_id=291328578]
+[node name="Background" type="Sprite2D" parent="Layers/Now" unique_id=1033921488]
 texture = ExtResource("2_0f46f")
 centered = false
 
-[node name="Then" type="Node2D" parent="Layers" unique_id=1063236030]
+[node name="Then" type="Node2D" parent="Layers" unique_id=2142443605]
 
-[node name="WalkAreas" type="Node2D" parent="." unique_id=471047869]
+[node name="WalkAreas" type="Node2D" parent="." unique_id=1872823432]
 
-[node name="Now" type="NavigationRegion2D" parent="WalkAreas" unique_id=1694884357]
+[node name="Now" type="NavigationRegion2D" parent="WalkAreas" unique_id=1059524952]
 navigation_polygon = SubResource("NavigationPolygon_6oiri")
 
-[node name="Then" type="NavigationRegion2D" parent="WalkAreas" unique_id=2097422261]
+[node name="Then" type="NavigationRegion2D" parent="WalkAreas" unique_id=812035701]
 enabled = false
 
-[node name="ScaleZones" type="Node2D" parent="." unique_id=675296650]
+[node name="ScaleZones" type="Node2D" parent="." unique_id=1338672131]
 script = ExtResource("3_sgw35")
 far_y = 790.0
 far_scale = 0.72
 near_y = 1062.0
 
-[node name="Hotspots" type="Node2D" parent="." unique_id=311566534]
+[node name="Hotspots" type="Node2D" parent="." unique_id=1377346045]
 
-[node name="Path" type="Area2D" parent="Hotspots" unique_id=934504361]
+[node name="Path" type="Area2D" parent="Hotspots" unique_id=684168801]
 script = ExtResource("4_x5usk")
 id = &"path"
 display_name = "The way on"
 walk_offset = Vector2(940, 900)
 
-[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Path" unique_id=576959372]
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Path" unique_id=169363311]
 polygon = PackedVector2Array(700, 790, 1180, 790, 1500, 1062, 420, 1062)
 
-[node name="ExitGate" type="Area2D" parent="Hotspots" unique_id=389998278]
+[node name="Milestone" type="Area2D" parent="Hotspots" unique_id=584445871]
+script = ExtResource("4_x5usk")
+id = &"milestone"
+display_name = "Milestone"
+walk_offset = Vector2(1200, 905)
+pick_priority = 1
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Milestone" unique_id=62161600]
+polygon = PackedVector2Array(1240, 880, 1240, 790, 1290, 790, 1290, 880)
+
+[node name="ExitGate" type="Area2D" parent="Hotspots" unique_id=1139175938]
 script = ExtResource("5_fjghn")
 target_room = &"greybox_gate"
 target_entry = &"from_courtyard"
@@ -62,22 +72,22 @@ display_name = "Back through the gate"
 default_verb = &"walk"
 walk_offset = Vector2(80, 980)
 
-[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/ExitGate" unique_id=632128401]
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/ExitGate" unique_id=173380307]
 polygon = PackedVector2Array(0, 420, 150, 420, 150, 1062, 0, 1062)
 
-[node name="Exits" type="Node2D" parent="." unique_id=222390462]
+[node name="Exits" type="Node2D" parent="." unique_id=26610917]
 
-[node name="Markers" type="Node2D" parent="." unique_id=1326349764]
+[node name="Markers" type="Node2D" parent="." unique_id=908151668]
 
-[node name="default" type="Marker2D" parent="Markers" unique_id=582479813]
+[node name="default" type="Marker2D" parent="Markers" unique_id=910008867]
 position = Vector2(500, 960)
 
-[node name="from_gate" type="Marker2D" parent="Markers" unique_id=1675506839]
+[node name="from_gate" type="Marker2D" parent="Markers" unique_id=189384347]
 position = Vector2(260, 980)
 
-[node name="Actors" type="Node2D" parent="." unique_id=2078103544]
+[node name="Actors" type="Node2D" parent="." unique_id=1420458678]
 y_sort_enabled = true
 
-[node name="Foreground" type="Node2D" parent="." unique_id=2029547569]
+[node name="Foreground" type="Node2D" parent="." unique_id=278589880]
 
-[node name="Cinematics" type="Node2D" parent="." unique_id=687118954]
+[node name="Cinematics" type="Node2D" parent="." unique_id=1767101330]

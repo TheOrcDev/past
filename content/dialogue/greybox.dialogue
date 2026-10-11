@@ -128,3 +128,22 @@ Unknown: Grey light. It doesn't reach the floor. [ID:GB_WINDOW_LOOK_1]
 Unknown: The way on. Whatever is out there, I got this far on my own. [ID:GB_PATH_LOOK_1]
 
 => END
+
+~ path_use
+
+Unknown: Let's see where it goes. [ID:GB_PATH_USE_1]
+
+=> END
+
+~ milestone_look
+
+Unknown: A milestone. Whatever distance it promised has worn away. [ID:GB_MILESTONE_LOOK_1]
+
+=> END
+
+~ milestone_use
+
+Unknown: Warm. Somebody used to stop here, and look out at all of it. [ID:GB_MILESTONE_USE_1]
+
+=> END
+

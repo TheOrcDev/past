@@ -310,7 +310,9 @@ Each is a small autoload or scene with one job, on top of the core.
     resume inside a memory.
   - **Calling it:** a verb starts it without await. The verb has to return
     before the player can act.
-- **Memory vista:** a reveal (§6.3) played in the then era.
+- **Memory vista:** a reveal (§6.3) played in the then era:
+  `RevealCutscene.new(id, stage, &"then")`. It plays under the past's warm grade
+  and records the memory `id` when it ends.
 - **Separate rooms:** a memory whose geography is too different for an in-room
   switch uses a separate room and a screen-capture crossfade. That is the
   exception.
@@ -350,6 +352,14 @@ and particles inside a `CanvasGroup` vanish in WebKit.
   - nested ring textures at scales 1, 2, 4 …;
   - zoom is interpolated in log space, so the perceived speed stays constant;
   - the rings crossfade at their boundaries.
+- **Discovery reveal** (plan 005 slice 5):
+  - `new_reveal.gd` builds a `RevealStage` scene from a reveal spec. It holds
+    the zoom stack, Unknown, an optional title, and the "reveal" animation.
+  - A `RevealCutscene` plays the stage as a cutscene, so it gets letterbox,
+    skipping and the Reduce camera motion crossfade.
+  - In the middle of play it fades out of the room and back. It then hands
+    the view back to the room, because a freed camera leaves the view where
+    it was. The opening instead starts and ends on black.
 - **Built in plan 002:**
   - `Reveal` (`src/systems/cinematics/reveal.gd`) zooms about one fixed
     point, so the pull-back never seems to pan. It keeps the view inside ring 0

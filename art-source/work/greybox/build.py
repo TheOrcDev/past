@@ -37,6 +37,11 @@ FLASK = (1520, 420, 1590, 530)
 WINDOW = (380, 170, 540, 520)
 # The courtyard.
 PATH = [[700, 790], [1180, 790], [1500, 1062], [420, 1062]]
+MILESTONE = (1240, 790, 1290, 880)
+# The vista beyond the gate, in ring-0 pixels: ring 1 covers ring 0 from
+# RING1_AT at half scale, twice as detailed.
+VISTA = (3072, 1072)
+RING1_AT = (768, 450)
 
 
 def room(wall: tuple[float, float], floor: tuple[float, float]) -> np.ndarray:
@@ -226,6 +231,8 @@ def courtyard_room() -> dict:
         box(img, (x0, top, x0 + 260, HORIZON), 0.22)
     poly(img, PATH, 0.5)
     box(img, (0, 420, 150, 1062), 0.1)  # the open gate behind
+    cv2.ellipse(img, ((MILESTONE[0] + MILESTONE[2]) // 2, MILESTONE[1] + 18), (25, 22), 0, 180, 360, 0.48, -1, cv2.LINE_AA)
+    box(img, (MILESTONE[0], MILESTONE[1] + 18, MILESTONE[2], MILESTONE[3]), 0.48)
     art = "content/rooms/greybox_courtyard/art"
     save(ROOT / art / "bg_now.png", finish(img))
     return {
@@ -236,10 +243,59 @@ def courtyard_room() -> dict:
         "markers": {"default": [500, 960], "from_gate": [260, 980]},
         "hotspots": [
             {"id": "path", "name": "The way on", "polygon": PATH, "walk_to": [940, 900]},
+            {"id": "milestone", "name": "Milestone", "pick_priority": 1, "walk_to": [1200, 905],
+             "polygon": [[MILESTONE[0], MILESTONE[3]], [MILESTONE[0], MILESTONE[1]], [MILESTONE[2], MILESTONE[1]], [MILESTONE[2], MILESTONE[3]]]},
             {"id": "exit_gate", "name": "Back through the gate", "polygon": [[0, 420], [150, 420], [150, 1062], [0, 1062]],
              "walk_to": [80, 980], "exit": {"room": "greybox_gate", "entry": "from_courtyard", "direction": "left"}},
         ],
     }
+
+
+def land(scale: float, origin: tuple[int, int]) -> np.ndarray:
+    """The vista beyond the gate, drawn in ring-0 pixels mapped by
+    (x - origin) * scale onto a VISTA-sized canvas."""
+    img = np.zeros((VISTA[1], VISTA[0]), np.float32)
+
+    def to_px(points: list) -> list:
+        return [[round((x - origin[0]) * scale), round((y - origin[1]) * scale)] for x, y in points]
+
+    sky = np.linspace(0.62, 0.36, VISTA[1])[:, None]
+    img[:] = sky
+    poly(img, to_px([[0, 560], [300, 430], [640, 520], [980, 380], [1400, 500], [1800, 360], [2200, 480], [2600, 400],
+                     [3072, 520], [3072, 760], [0, 760]]), 0.34)
+    poly(img, to_px([[0, 720], [500, 640], [1100, 700], [1700, 620], [2400, 690], [3072, 640], [3072, 900], [0, 900]]), 0.27)
+    for x0, top in ((2040, 560), (2110, 540), (2180, 575), (2360, 550), (2430, 570)):
+        poly(img, to_px([[x0, top], [x0 + 60, top], [x0 + 60, 650], [x0, 650]]), 0.19)
+    poly(img, to_px([[2280, 440], [2320, 440], [2320, 650], [2280, 650]]), 0.17)
+    poly(img, to_px([[2276, 440], [2300, 380], [2324, 440]]), 0.17)
+    poly(img, to_px([[0, 880], [3072, 880], [3072, 1072], [0, 1072]]), 0.22)
+    poly(img, to_px([[1420, 1072], [1700, 1072], [1660, 900], [1800, 770], [2240, 655], [2262, 660], [1842, 780], [1724, 902], [1760, 1072]]), 0.44)
+    poly(img, to_px([[1180, 880], [1180, 700], [1440, 700], [1440, 880]]), 0.11)
+    poly(img, to_px([[1760, 880], [1760, 820], [1790, 820], [1790, 880]]), 0.5)
+    return img
+
+
+def vista() -> dict:
+    art = "content/cutscenes/greybox_vista/art"
+    save(ROOT / art / "ring0.png", finish_vista(land(1.0, (0, 0))))
+    save(ROOT / art / "ring1.png", finish_vista(land(2.0, RING1_AT)))
+    res = "res://" + art
+    return {
+        "rings": [
+            {"texture": f"{res}/ring0.png", "position": [0.0, 0.0], "scale": 1.0},
+            {"texture": f"{res}/ring1.png", "position": [float(RING1_AT[0]), float(RING1_AT[1])], "scale": 0.5},
+        ],
+        "world_size": list(VISTA),
+        "feather": 0.08,
+        "unknown": {"feet": [1536, 880], "height": 180},
+        "start": {"zoom": 2.4, "center": [1536, 790]},
+        "end": {"zoom": 0.7491, "center": [1536.0, 536.0]},
+    }
+
+
+def finish_vista(img: np.ndarray) -> np.ndarray:
+    img = cv2.GaussianBlur(img, (0, 0), 1.0) + RNG.normal(0.0, 0.01, img.shape).astype(np.float32)
+    return (np.dstack([np.clip(img, 0.0, 1.0)] * 3) * 255).astype(np.uint8)
 
 
 def items() -> list[dict]:
@@ -282,6 +338,10 @@ def main() -> None:
         print(out)
     out = WORK / "greybox" / "items.json"
     out.write_text(json.dumps(items(), indent=2) + "\n")
+    print(out)
+    out = WORK / "reveal" / "greybox_vista" / "reveal_spec.json"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps(vista(), indent=2) + "\n")
     print(out)
 
 

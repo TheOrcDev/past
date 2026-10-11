@@ -72,6 +72,33 @@
       ]
     },
     {
+      "id": "milestone",
+      "name": "Milestone",
+      "pick_priority": 1,
+      "walk_to": [
+        1200,
+        905
+      ],
+      "polygon": [
+        [
+          1240,
+          880
+        ],
+        [
+          1240,
+          790
+        ],
+        [
+          1290,
+          790
+        ],
+        [
+          1290,
+          880
+        ]
+      ]
+    },
+    {
       "id": "exit_gate",
       "name": "Back through the gate",
       "polygon": [

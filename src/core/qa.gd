@@ -8,7 +8,7 @@ extends Node
 const TIMEOUT_SECONDS := 60.0
 const LONG_TIMEOUT_SECONDS := 150.0
 ## Scenarios that need the long timeout without the opening.
-const LONG_RUNS: Array[String] = ["greybox"]
+const LONG_RUNS: Array[String] = ["greybox", "vista"]
 ## Scenarios that need longer still, in seconds.
 const TIMEOUTS := {"greybox_clip": 360.0}
 ## Scenarios that start from the opening instead of straight in the first room.
@@ -119,6 +119,8 @@ func _run(scenario: String) -> void:
 			await _greybox()
 		"greybox_clip":
 			await _greybox_clip()
+		"vista":
+			await _vista()
 		_:
 			_failures.append("unknown scenario %s" % scenario)
 	_finish("done")
@@ -545,6 +547,37 @@ func _greybox_clip() -> void:
 	run.skip_lines = false
 	await run.run()
 	await get_tree().create_timer(2.0).timeout
+
+
+## The discovery reveal and the memory vista (plan 005 slice 5), in the greybox
+## courtyard: using the way on pulls back over the land beyond, and using the
+## milestone shows the same land in the past.
+func _vista() -> void:
+	await _enter(&"greybox_courtyard")
+	var skip_lines := func(_id: String, _speaker: String, _text: String) -> void: Say.skip.call_deferred()
+	Say.line_started.connect(skip_lines)
+	for use: Array in [["Path", "01_reveal_close", "02_reveal_pulling_back", "03_reveal_vista"],
+			["Milestone", "04_vista_close", "05_vista_pulling_back", "06_vista_in_the_past"]]:
+		var spot := Rooms.current.hotspots.get_node(String(use[0])) as Hotspot
+		Interaction.press_at(spot.focus_point(), spot.focus_point())
+		await get_tree().create_timer(Interaction.COIN_HOLD_SECONDS + 0.1).timeout
+		Interaction.coin.point_at(Interaction.coin.glyph_position(&"use"))
+		Interaction.release_at(spot.focus_point(), Interaction.coin.glyph_position(&"use"))
+		while Cutscenes.current == null or not Cutscenes.current is CutsceneSteps:
+			await get_tree().process_frame
+		var stage: RevealStage = null
+		while stage == null:
+			await get_tree().process_frame
+			stage = get_tree().current_scene.get_node_or_null("GreyboxVista") as RevealStage
+		for moment: Array in [[2.0, use[1]], [7.0, use[2]], [12.0, use[3]]]:
+			while is_instance_valid(stage) and stage.animation.current_animation_position < moment[0]:
+				await get_tree().process_frame
+			await _shot(moment[1])
+		await _settle()
+	Say.line_started.disconnect(skip_lines)
+	_check(Cutscenes.fade_amount() == 0.0 and get_viewport().get_canvas_transform() == Transform2D.IDENTITY, "the courtyard shows as it was")
+	_check(&"greybox_milestone" in GameState.memories, "the memory vista is remembered")
+	await _shot("07_back_in_the_courtyard")
 
 
 ## The fog gradients with grain on and off, in both eras, for judging banding.

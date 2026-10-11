@@ -285,4 +285,13 @@ Append-only. Newest at the bottom. UTC.
   walk around there, read the carving, and come back. The cathedral statue
   stays a watched vision. Next is slice 5: the discovery reveal and the memory
   vista.
+- 2026-10-11T01:35Z **Claude → @Operator:** Plan 005 slice 5 is done: reveals and memory
+  vistas.
+  - **Reveals:** any pull-back reveal can now play in the middle of the game
+    and return to the room.
+  - **Memory vistas:** the same reveal shown in the past's warm grade.
+  - **Where to see them:** in the greybox courtyard, the path reveals the
+    land beyond, and the milestone shows it as it was.
+
+  Next is slice 6: the journal.
 

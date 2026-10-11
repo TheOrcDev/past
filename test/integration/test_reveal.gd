@@ -6,6 +6,7 @@ extends GutTest
 
 const SCENE := "res://content/cutscenes/cemetery_reveal/cemetery_reveal.tscn"
 const OPENING := preload("res://content/cutscenes/cemetery_reveal/opening.gd")
+const VISTA := preload("res://content/cutscenes/greybox_vista/greybox_vista.tscn")
 
 var _cutscene: Node2D
 var _reveal: Reveal
@@ -15,12 +16,18 @@ func before_each() -> void:
 	_cutscene = (load(SCENE) as PackedScene).instantiate()
 	add_child_autofree(_cutscene)
 	_reveal = _cutscene.get_node("Reveal") as Reveal
+	# Only for the zoom maths: its camera must never take the view.
+	_reveal.camera.enabled = false
 
 
 func after_each() -> void:
 	Engine.time_scale = 1.0
 	await wait_until(func() -> bool: return Cutscenes.current == null, 10.0)
 	Cutscenes.clear_fade()
+	Settings.reduce_camera_motion = false
+	if Rooms.current:
+		Rooms.clear()
+	GameState.reset()
 
 
 func test_zoom_moves_in_log_space() -> void:
@@ -115,3 +122,59 @@ func test_a_short_press_does_not_skip_but_esc_does() -> void:
 	await wait_process_frames(2)
 	assert_true(skipped[0], "Esc skips")
 	await wait_until(func() -> bool: return Cutscenes.current == null, 5.0)
+
+
+## The world a reveal in the middle of play leaves behind.
+func _after_reveal() -> Dictionary:
+	await wait_process_frames(2)
+	return {
+		"room": Rooms.current.room_id,
+		"fade": Cutscenes.fade_amount(),
+		"grade": Flashback.get_grade(),
+		"view": Rooms.current.get_viewport().get_canvas_transform(),
+		"memories": Array(GameState.memories),
+	}
+
+
+func test_a_reveal_in_play_returns_to_the_room_and_a_skip_ends_alike() -> void:
+	Engine.time_scale = 8.0
+	await Rooms.goto(&"greybox_courtyard", &"default", &"none")
+	await Cutscenes.play(RevealCutscene.new(&"test_vista", VISTA))
+	var watched: Dictionary = await _after_reveal()
+	assert_eq(watched["room"], &"greybox_courtyard")
+	assert_eq(watched["fade"], 0.0, "the room shows again")
+	assert_eq(watched["view"], Transform2D.IDENTITY, "the reveal's camera is gone")
+	Cutscenes.play(RevealCutscene.new(&"test_vista", VISTA))
+	await wait_process_frames(10)
+	Cutscenes.skip()
+	await wait_until(func() -> bool: return Cutscenes.current == null, 5.0)
+	assert_eq(await _after_reveal(), watched, "a skipped reveal ends as a watched one")
+
+
+func test_a_memory_vista_plays_under_the_past_grade() -> void:
+	Engine.time_scale = 8.0
+	await Rooms.goto(&"greybox_courtyard", &"default", &"none")
+	var peak := [0.0]
+	var track := func() -> void: peak[0] = maxf(peak[0], Flashback.get_grade())
+	get_tree().process_frame.connect(track)
+	await Cutscenes.play(RevealCutscene.new(&"test_vista", VISTA, &"then"))
+	get_tree().process_frame.disconnect(track)
+	assert_eq(peak[0], 1.0, "the past's grade while it plays")
+	assert_eq(Flashback.get_grade(), 0.0, "the present's again after")
+	assert_eq(Array(GameState.memories), [&"test_vista"], "and it is remembered")
+
+
+func test_reduce_camera_motion_cuts_instead_of_travelling() -> void:
+	Engine.time_scale = 8.0
+	Settings.reduce_camera_motion = true
+	await Rooms.goto(&"greybox_courtyard", &"default", &"none")
+	var scene := RevealCutscene.new(&"test_vista", VISTA)
+	var zooms := {}
+	var track := func() -> void:
+		if is_instance_valid(scene.stage):
+			zooms[snappedf(scene.stage.reveal.camera.zoom.x, 0.001)] = true
+	get_tree().process_frame.connect(track)
+	await Cutscenes.play(scene)
+	get_tree().process_frame.disconnect(track)
+	assert_eq(zooms.size(), 2, "only the close shot and the vista, got %s" % [zooms.keys()])
+

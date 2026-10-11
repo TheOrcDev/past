@@ -212,4 +212,29 @@ About 4–6 working sessions.
     shut, and the return once done. The greybox chain's playthrough plays the
     memory. 100 GUT tests pass, and `greybox` passes on desktop and in the
     browser.
+- **2026-10-11, slice 5:** discovery reveal and memory vista.
+  - **`RevealStage`:** a stage built by `new_reveal.gd`, now its default
+    script. It took over the cemetery stage's title and Reduce camera motion
+    crossfade.
+  - **`RevealCutscene`** plays any stage as a cutscene. In the middle of play
+    it fades out of the room and back. The opening is a `RevealCutscene` that
+    starts and ends on black.
+  - **Memory vista:** a `RevealCutscene` with era "then" plays under the
+    past's grade and records its memory.
+  - **The greybox vista:** two rings drawn in code by
+    `art-source/work/greybox/build.py`: mountains, a town with a tower, and a
+    road from the courtyard. Using the courtyard's way on plays it as a
+    discovery reveal. Using the new milestone plays it as a memory vista.
+  - **Bug found:** a reveal in the middle of play left the view where its
+    freed camera had been. The reveal now switches its camera off and hands
+    the view back to the room.
+  - **Tests:** four new ones:
+    - a reveal in play returns to the room;
+    - a skip ends as a watch does;
+    - the memory vista uses the past's grade and is remembered;
+    - Reduce camera motion cuts between the close shot and the vista with no
+      travel.
+
+    103 GUT tests pass. A `vista` QA scenario passes on desktop and in the
+    browser.
 
