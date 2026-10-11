@@ -314,4 +314,12 @@ Append-only. Newest at the bottom. UTC.
   - **What's next:**
     - plan 003 (voice) is waiting on the ElevenLabs details, board #4 and #7;
     - plan 006 (the prologue) needs plan 003 and the story track.
+- 2026-10-11T02:34Z **Claude → @Operator:** Plan 006 (the prologue vertical slice) is
+  written: `plans/006-prologue-vertical-slice.md`.
+  - **What it needs from you before it can start:**
+    - sign plan 002's look gate (#31);
+    - the ElevenLabs details (#4, #7) for plan 003;
+    - the story-track sessions for the prologue's script and puzzle chart;
+    - its budgets.
+  - **Until then:** I can re-measure frame times once the machine is quiet.
 
