@@ -157,4 +157,23 @@ About 4–6 working sessions.
     pass.
   - **Drafted early:** the code was written while the operator had the Mac,
     and tested once testing resumed.
+- **2026-10-11, slice 2:** skipping every cutscene.
+  - **One Skip:** the runner's Skip button (a 0.6 s hold) and Esc skip any
+    cutscene, through the fast-forward built in slice 1.
+  - **The opening on the runner:** `cemetery_reveal.tscn` is now a passive
+    stage: the zoom stack, Unknown, the pull-back animation and the title.
+    `opening.gd` plays it as a cutscene: it fades in, plays the pull-back as a
+    shot, then fades to black. The stage keeps the Reduce camera motion
+    crossfade. Its own fade, letterbox and Skip button are gone.
+  - **Hand-off:** `main.gd` plays the opening through `Cutscenes`. Once the
+    first room's own fade has taken over, `Cutscenes.clear_fade()` drops the
+    opening's black.
+  - **Tests:**
+    - the opening's tests now run it on the runner: watched to black with
+      the title shown, a full hold of Skip, and a short press against Esc;
+    - a new test finds a skipped scene and a watched one leave the same
+      `GameState` (all but play time) and the same position.
+
+    97 GUT tests pass. The `cemetery_reveal`, `skip` and `reduced_motion` QA
+    scenarios pass on desktop and in the browser.
 

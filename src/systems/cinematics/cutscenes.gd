@@ -11,8 +11,8 @@ const BARS_SECONDS := 0.5
 ## The steps of the scene playing, or null.
 var current: CutsceneSteps
 var letterbox: Letterbox
+var skip_button: SkipButton
 
-var _skip_button: SkipButton
 var _fade: ColorRect
 
 
@@ -30,11 +30,11 @@ func _ready() -> void:
 	_fade.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_fade.set_anchors_preset(Control.PRESET_FULL_RECT)
 	layer.add_child(_fade)
-	_skip_button = SkipButton.new()
-	_skip_button.name = "SkipButton"
-	_skip_button.skipped.connect(skip)
-	_skip_button.process_mode = Node.PROCESS_MODE_DISABLED
-	add_child(_skip_button)
+	skip_button = SkipButton.new()
+	skip_button.name = "SkipButton"
+	skip_button.skipped.connect(skip)
+	skip_button.process_mode = Node.PROCESS_MODE_DISABLED
+	add_child(skip_button)
 
 
 ## Plays `cutscene` and returns once it has ended, watched or skipped. The fade
@@ -48,16 +48,22 @@ func play(cutscene: Cutscene) -> void:
 	Interaction.locked += 1
 	started.emit(cutscene.id)
 	letterbox.show_bars(BARS_SECONDS)
-	_skip_button.reset()
-	_skip_button.process_mode = Node.PROCESS_MODE_INHERIT
+	skip_button.reset()
+	skip_button.process_mode = Node.PROCESS_MODE_INHERIT
 	await cutscene.run(current)
-	_skip_button.process_mode = Node.PROCESS_MODE_DISABLED
-	_skip_button.reset()
+	skip_button.process_mode = Node.PROCESS_MODE_DISABLED
+	skip_button.reset()
 	Say.fast_forward = false
 	letterbox.hide_bars(0.0 if current.skipping else BARS_SECONDS)
 	current = null
 	Interaction.locked -= 1
 	finished.emit(cutscene.id)
+
+
+## Drops the runner's fade at once. Call it under another cover, such as a
+## room change that starts on black, after a scene that ended on black.
+func clear_fade() -> void:
+	_fade.modulate.a = 0.0
 
 
 ## Skips the cutscene playing.

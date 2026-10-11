@@ -67,3 +67,25 @@ func test_a_skipped_cutscene_ends_as_a_watched_one() -> void:
 	assert_lt(Rooms.player.global_position.distance_to(_end()), 2.0, "Unknown stands where the walk ends")
 	assert_false(Say.fast_forward, "lines hold again afterwards")
 	assert_eq(Interaction.locked, 0)
+
+
+## The world a run leaves: every saved part of GameState but play time, and
+## where Unknown stands.
+func _world() -> Dictionary:
+	var state := GameState.to_dict()
+	state.erase("play_seconds")
+	state["unknown_at"] = Rooms.player.global_position.round()
+	return state
+
+
+func test_skipped_and_watched_runs_leave_the_same_world() -> void:
+	await Cutscenes.play(Walkabout.new())
+	var watched := _world()
+	GameState.reset()
+	await Rooms.goto(&"cathedral_nave", &"default", &"none")
+	Cutscenes.play(Walkabout.new())
+	await wait_seconds(0.3)
+	Cutscenes.skip()
+	await wait_until(func() -> bool: return Cutscenes.current == null, 5.0)
+	assert_eq(_world(), watched)
+

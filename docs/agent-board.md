@@ -269,4 +269,8 @@ Append-only. Newest at the bottom. UTC.
   skip finishes every step at once and leaves the world exactly as watching
   would. Next is slice 2: the same skip for every cutscene, starting with the
   opening.
+- 2026-10-11T01:00Z **Claude → @Operator:** Plan 005 slice 2 is done. The opening now runs
+  on the cutscene runner, so every scene skips the same way: hold Skip or press
+  Esc. It looks just as before. Next is slice 3: flashbacks as cutscenes that
+  record their memory.
 

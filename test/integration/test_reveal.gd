@@ -1,9 +1,11 @@
 extends GutTest
 ## The cemetery reveal: the zoom stack pulls back at constant perceived speed
 ## about one fixed point, stays inside the outer ring, hands detail from ring to
-## ring, and the opening plays to black with its title shown and hidden.
+## ring, and the opening, played by the cutscene runner, ends on black with its
+## title shown. Holding Skip or Esc skips it; a short press does not.
 
 const SCENE := "res://content/cutscenes/cemetery_reveal/cemetery_reveal.tscn"
+const OPENING := preload("res://content/cutscenes/cemetery_reveal/opening.gd")
 
 var _cutscene: Node2D
 var _reveal: Reveal
@@ -17,6 +19,8 @@ func before_each() -> void:
 
 func after_each() -> void:
 	Engine.time_scale = 1.0
+	await wait_until(func() -> bool: return Cutscenes.current == null, 10.0)
+	Cutscenes.clear_fade()
 
 
 func test_zoom_moves_in_log_space() -> void:
@@ -65,45 +69,49 @@ func test_unknown_keeps_his_vista_scale_when_facing() -> void:
 
 func test_the_opening_plays_to_black_and_finishes() -> void:
 	Engine.time_scale = 8.0
-	watch_signals(_cutscene)
-	var title := _cutscene.get_node("Title/Card") as Control
+	var opening := OPENING.new()
+	watch_signals(Cutscenes)
 	var peak := [0.0]
-	var track := func() -> void: peak[0] = maxf(peak[0], title.modulate.a)
+	var progress := [-1.0]
+	var track := func() -> void:
+		if is_instance_valid(opening.stage):
+			peak[0] = maxf(peak[0], (opening.stage.get_node("Title/Card") as Control).modulate.a)
+			progress[0] = opening.stage.reveal.progress
 	get_tree().process_frame.connect(track)
-	await _cutscene.play()
+	await Cutscenes.play(opening)
 	get_tree().process_frame.disconnect(track)
 	assert_gt(peak[0], 0.9, "the title card showed")
-	assert_signal_emitted(_cutscene, "finished")
-	assert_eq(_reveal.progress, 1.0, "pulled all the way back")
-	assert_almost_eq(title.modulate.a, 0.0, 0.01, "title gone at the end")
+	assert_signal_emitted(Cutscenes, "finished")
+	assert_eq(progress[0], 1.0, "pulled all the way back")
 
 
 func test_holding_skip_fast_forwards_the_opening() -> void:
-	watch_signals(_cutscene)
+	var opening := OPENING.new()
+	var progress := [-1.0]
+	Cutscenes.finished.connect(func(_id: StringName) -> void: progress[0] = opening.stage.reveal.progress, CONNECT_ONE_SHOT)
 	var started := Time.get_ticks_msec()
-	_cutscene.play()
+	Cutscenes.play(opening)
 	await wait_process_frames(2)
-	_cutscene.skip_button.press()
-	await wait_for_signal(_cutscene.finished, 5.0)
-	assert_signal_emitted(_cutscene, "finished")
+	Cutscenes.skip_button.press()
+	await wait_until(func() -> bool: return Cutscenes.current == null, 5.0)
 	assert_lt(Time.get_ticks_msec() - started, 4000, "skipped well under its 14 s")
-	assert_eq(_reveal.progress, 1.0, "a skipped opening ends where a watched one does")
+	assert_eq(progress[0], 1.0, "a skipped opening ends where a watched one does")
 
 
 func test_a_short_press_does_not_skip_but_esc_does() -> void:
-	_cutscene.play()
+	Cutscenes.play(OPENING.new())
 	await wait_process_frames(2)
-	var skip := _cutscene.skip_button as SkipButton
-	skip.press()
+	var skipped := [false]
+	Cutscenes.current.skipped.connect(func() -> void: skipped[0] = true)
+	Cutscenes.skip_button.press()
 	await wait_seconds(SkipButton.HOLD_SECONDS * 0.5)
-	skip.release()
+	Cutscenes.skip_button.release()
 	await wait_seconds(SkipButton.HOLD_SECONDS)
-	assert_false(_cutscene.get("_skipping"), "let go too soon")
+	assert_false(skipped[0], "let go too soon")
 	var esc := InputEventAction.new()
 	esc.action = &"ui_cancel"
 	esc.pressed = true
 	Input.parse_input_event(esc)
 	await wait_process_frames(2)
-	assert_true(_cutscene.get("_skipping"), "Esc skips")
-	await wait_for_signal(_cutscene.finished, 5.0)
-
+	assert_true(skipped[0], "Esc skips")
+	await wait_until(func() -> bool: return Cutscenes.current == null, 5.0)

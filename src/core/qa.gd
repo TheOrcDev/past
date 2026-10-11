@@ -516,7 +516,7 @@ func _skip() -> void:
 		await get_tree().process_frame
 		cutscene = get_tree().current_scene.get_node_or_null("CemeteryReveal")
 	await get_tree().create_timer(2.0).timeout
-	var button := cutscene.get("skip_button") as SkipButton
+	var button := Cutscenes.skip_button
 	button.press()
 	await get_tree().create_timer(SkipButton.HOLD_SECONDS * 0.6).timeout
 	await _shot("01_skip_held")

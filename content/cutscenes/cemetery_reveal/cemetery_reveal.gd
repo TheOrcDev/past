@@ -1,16 +1,8 @@
 extends Node2D
-## The prologue's opening (plan 002, slice 6). The shot opens close on Unknown on
-## the cemetery path, then the camera pulls back across the zoom stack to the
-## whole vista and the title card shows. It ends on black, ready for the first
-## room. Holding the Skip button (or Esc) fast-forwards it, so a skipped opening
-## ends the same way. With Reduce camera motion the pull-back becomes one
-## crossfade to the vista.
+## The opening's stage (plan 002 slice 6): the zoom stack with Unknown on the
+## cemetery path, the AnimationPlayer that pulls back and shows the title, and
+## the title card. The opening cutscene (opening.gd) plays it on the runner.
 
-signal finished
-
-const FADE_IN := 1.5
-const FADE_OUT := 1.0
-const SKIP_SPEED := 12.0
 ## Reduce camera motion: when, on the animation's clock, the close shot
 ## crossfades to the vista (the middle of the pull-back), and for how long.
 const CUT_AT := 6.0
@@ -21,80 +13,36 @@ const CROSSFADE := 1.6
 @onready var animation: AnimationPlayer = $AnimationPlayer
 @onready var title: Control = $Title/Card
 
-var letterbox: Letterbox
-var skip_button: SkipButton
-var playing := false
-
-var _fade: ColorRect
-var _skipping := false
-
 
 func _ready() -> void:
-	letterbox = Letterbox.new()
-	letterbox.name = "Letterbox"
-	add_child(letterbox)
-	var fade_layer := CanvasLayer.new()
-	fade_layer.layer = 99
-	add_child(fade_layer)
-	_fade = ColorRect.new()
-	_fade.color = Color.BLACK
-	_fade.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_fade.set_anchors_preset(Control.PRESET_FULL_RECT)
-	fade_layer.add_child(_fade)
 	title.modulate.a = 0.0
 	unknown.play_animation(&"idle_r", false)
-	skip_button = SkipButton.new()
-	skip_button.name = "SkipButton"
-	skip_button.skipped.connect(skip)
-	add_child(skip_button)
-
-
-## Plays the whole opening and returns on black.
-func play() -> void:
-	playing = true
-	reveal.camera.make_current()
-	letterbox.show_bars(0.0)
-	_fade_to(0.0, FADE_IN)
-	reveal.hold = Settings.reduce_camera_motion
-	animation.play(&"reveal")
-	if reveal.hold:
-		_crossfade_to_vista()
-	await animation.animation_finished
-	await _fade_to(1.0, FADE_OUT / animation.speed_scale)
-	playing = false
-	finished.emit()
-
-
-func skip() -> void:
-	if playing and not _skipping:
-		_skipping = true
-		animation.speed_scale = SKIP_SPEED
 
 
 ## Called from the animation.
 func show_title() -> void:
-	var tween := create_tween()
-	tween.set_speed_scale(animation.speed_scale)
-	tween.tween_property(title, ^"modulate:a", 1.0, 1.4)
+	create_tween().tween_property(title, ^"modulate:a", 1.0, 1.4)
 
 
 ## Called from the animation.
 func hide_title() -> void:
-	var tween := create_tween()
-	tween.set_speed_scale(animation.speed_scale)
-	tween.tween_property(title, ^"modulate:a", 0.0, 1.0)
+	create_tween().tween_property(title, ^"modulate:a", 0.0, 1.0)
 
 
-func _crossfade_to_vista() -> void:
-	while playing and animation.current_animation_position < CUT_AT:
+## Reduce camera motion: the view holds the close shot, then at the middle of
+## the move crossfades once to the vista instead of travelling. Call it before
+## the animation starts.
+func crossfade_to_vista(c: CutsceneSteps) -> void:
+	reveal.hold = true
+	await get_tree().process_frame
+	while animation.current_animation_position < CUT_AT and not c.skipping:
 		await get_tree().process_frame
-	if not playing:
+	if c.skipping:
 		return
 	var still := _snapshot()
 	reveal.show_at(1.0)
 	if still:
 		var tween := create_tween()
-		tween.set_speed_scale(animation.speed_scale)
 		tween.tween_property(still, ^"modulate:a", 0.0, CROSSFADE)
 		await tween.finished
 		still.get_parent().queue_free()
@@ -108,7 +56,7 @@ func _snapshot() -> TextureRect:
 	if image == null or image.is_empty():
 		return null
 	var layer := CanvasLayer.new()
-	layer.layer = 98
+	layer.layer = 94
 	add_child(layer)
 	var still := TextureRect.new()
 	still.texture = ImageTexture.create_from_image(image)
@@ -118,9 +66,3 @@ func _snapshot() -> TextureRect:
 	still.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	layer.add_child(still)
 	return still
-
-
-func _fade_to(alpha: float, seconds: float) -> void:
-	var tween := create_tween()
-	tween.tween_property(_fade, ^"modulate:a", alpha, seconds)
-	await tween.finished
