@@ -9,6 +9,8 @@ const TIMEOUT_SECONDS := 60.0
 const LONG_TIMEOUT_SECONDS := 150.0
 ## Scenarios that need the long timeout without the opening.
 const LONG_RUNS: Array[String] = ["greybox"]
+## Scenarios that need longer still, in seconds.
+const TIMEOUTS := {"greybox_clip": 360.0}
 ## Scenarios that start from the opening instead of straight in the first room.
 const WITH_OPENING: Array[String] = ["cemetery_reveal", "grave", "grave_clip", "perf", "tour", "screenshots", "reduced_motion", "skip"]
 
@@ -20,6 +22,8 @@ var _finished := false
 var _samples := PackedFloat32Array()
 var _gpu_samples := PackedFloat32Array()
 var _cpu_samples := PackedFloat32Array()
+## Each frame's script time (process and physics), to tell slow scripts from slow drawing.
+var _script_samples := PackedFloat32Array()
 var _sampling := false
 ## The step a scenario is on, named in the result if it times out.
 var _at := ""
@@ -47,7 +51,7 @@ func _ready() -> void:
 	Menus.enabled = false
 	_out_dir = _args.get("qa-out", OS.get_user_data_dir().path_join("qa"))
 	DirAccess.make_dir_recursive_absolute(_out_dir)
-	var timeout := LONG_TIMEOUT_SECONDS if _scenario in WITH_OPENING or _scenario in LONG_RUNS else TIMEOUT_SECONDS
+	var timeout: float = TIMEOUTS.get(_scenario, LONG_TIMEOUT_SECONDS if _scenario in WITH_OPENING or _scenario in LONG_RUNS else TIMEOUT_SECONDS)
 	get_tree().create_timer(timeout, true, false, true).timeout.connect(_finish.bind("timeout"))
 	_run.call_deferred(_scenario)
 
@@ -69,6 +73,7 @@ func _process(delta: float) -> void:
 		var viewport := get_viewport().get_viewport_rid()
 		_cpu_samples.append(RenderingServer.viewport_get_measured_render_time_cpu(viewport) + RenderingServer.get_frame_setup_time_cpu())
 		_gpu_samples.append(RenderingServer.viewport_get_measured_render_time_gpu(viewport))
+		_script_samples.append((Performance.get_monitor(Performance.TIME_PROCESS) + Performance.get_monitor(Performance.TIME_PHYSICS_PROCESS)) * 1000.0)
 
 
 ## Room scenarios start straight in the first room, without the opening.
@@ -112,6 +117,8 @@ func _run(scenario: String) -> void:
 			await _skip()
 		"greybox":
 			await _greybox()
+		"greybox_clip":
+			await _greybox_clip()
 		_:
 			_failures.append("unknown scenario %s" % scenario)
 	_finish("done")
@@ -413,11 +420,14 @@ func _read_the_stone(pause: float) -> void:
 
 
 ## Saving and loading in a running game (plan 004 slice 6). The first pass saves
-## at the grave, goes to the cathedral and loads the save back. A later pass
-## (browser-qa.ts adds qa-pass=<n> when it loads the page again) checks that the
-## save outlived the reload, as browser storage must.
+## at the grave, goes to the cathedral, loads the save back and plays on a few
+## seconds, as a player would. A later pass (browser-qa.ts adds qa-pass=<n> when
+## it loads the page again) checks that the save outlived the reload: in the
+## browser, user:// reaches IndexedDB a second or two after a write.
 func _saves() -> void:
 	await _enter(&"cemetery_grave")
+	print("[qa] user:// persists: %s; %s holds %s" % [OS.is_userfs_persistent(), Saves.directory,
+		DirAccess.get_files_at(Saves.directory) if DirAccess.dir_exists_absolute(Saves.directory) else []])
 	if _args.get("qa-pass", "1") != "1":
 		var kept := Saves.read(1)
 		_check(not kept.is_empty() and kept.get("flags", {}).get("qa_marker") == "kept", "the save outlived the reload")
@@ -438,6 +448,7 @@ func _saves() -> void:
 	_check(GameState.get_flag(&"qa_marker") == "kept", "the flags are as saved")
 	await get_tree().create_timer(0.5).timeout
 	await _shot("01_loaded")
+	await get_tree().create_timer(4.0).timeout
 
 
 ## Reduce camera motion (plan 004 slice 7): the opening crossfades from the
@@ -521,6 +532,19 @@ func _greybox() -> void:
 	await _enter(&"cemetery_grave")
 	GameState.reset()
 	await GreyboxPlaythrough.new(get_tree(), _check, _shot).run()
+
+
+## The greybox chain at a viewer's pace, for the movie writer: lines play out.
+## Record with
+##   --write-movie <file.avi> --fixed-fps 30 -- --qa=greybox_clip --force-draw
+func _greybox_clip() -> void:
+	await _enter(&"cemetery_grave")
+	GameState.reset()
+	Rooms.player.get_node("IdleFidgets").set_process(false)
+	var run := GreyboxPlaythrough.new(get_tree(), _check)
+	run.skip_lines = false
+	await run.run()
+	await get_tree().create_timer(2.0).timeout
 
 
 ## The fog gradients with grain on and off, in both eras, for judging banding.
@@ -658,6 +682,7 @@ func _start_sampling() -> void:
 	_samples.clear()
 	_cpu_samples.clear()
 	_gpu_samples.clear()
+	_script_samples.clear()
 	_sampling = true
 
 
@@ -689,6 +714,10 @@ func _stop_sampling() -> Dictionary:
 		"max_at_s": snappedf(worst_at, 0.01),
 		"over_60fps_budget": slow,
 		"render_cpu_p95_ms": snappedf(_percentile(_cpu_samples, 0.95), 0.01),
+		# The worst frame's own script and render times; what's left of it is
+		# waiting (GPU, the browser, loading).
+		"worst_script_ms": snappedf(_script_samples[worst], 0.01) if worst < _script_samples.size() else 0.0,
+		"worst_render_cpu_ms": snappedf(_cpu_samples[worst], 0.01) if worst < _cpu_samples.size() else 0.0,
 		"render_gpu_p95_ms": snappedf(_percentile(_gpu_samples, 0.95), 0.01),
 	}
 

@@ -252,4 +252,16 @@ Append-only. Newest at the bottom. UTC.
   memory vistas, and the journal. It has no image budget; any art it needs is
   drawn in code. It starts once plan 004's last slice is measured, after you
   free the Mac.
+- 2026-10-11T00:44Z **Claude → @Operator:** Plan 004 is done.
+  - **Both builds:** the macOS app and the browser build finish the greybox
+    chain and pass every scripted check.
+  - **Video:** `build/videos/greybox-chain.mp4`, 97 s, the chain at reading
+    pace.
+  - **Browser saves fix:** saves were being lost on reload. Godot's shader
+    cache kept writing into the browser's storage and held saves back until
+    the game quit, which a browser never does. It's now off in the web build
+    (#38).
+  - **Re-measure later:** the browser frame times were taken while your Mac
+    was very busy. I'll measure them again when it's quiet.
+  - **Next:** plan 005, starting with the cutscene runner.
 

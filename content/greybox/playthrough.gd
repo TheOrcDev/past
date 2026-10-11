@@ -14,6 +14,9 @@ extends RefCounted
 var check: Callable
 ## Called as await shot.call(name) at the chain's main moments, or not at all.
 var shot: Callable
+## Lines are cut short as they start; off, they play at reading pace (for a
+## recording).
+var skip_lines := true
 ## The ids of the lines spoken so far.
 var lines: Array[String] = []
 
@@ -29,7 +32,8 @@ func _init(tree: SceneTree, on_check: Callable, on_shot := Callable()) -> void:
 func run() -> void:
 	var listen := func(id: String, _speaker: String, _text: String) -> void:
 		lines.append(id)
-		Say.skip.call_deferred()
+		if skip_lines:
+			Say.skip.call_deferred()
 	Say.line_started.connect(listen)
 	await Rooms.goto(&"greybox_gate", &"default", &"none")
 	await _settle()

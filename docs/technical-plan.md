@@ -269,7 +269,11 @@ The `Interaction` autoload handles all input. These are the controls in
     `GameState.SAVE_VERSION` (now 2). A save from a newer build, or one that
     isn't a save, is refused and the game is left alone.
   - In the browser, `user://` is IndexedDB, and saves survive a page reload.
-    The `saves` QA scenario checks this over two `browser-qa.ts` passes.
+    The engine copies a write into IndexedDB a second or two later, while the
+    game keeps running, and again when the game quits. A browser has no quit,
+    so closing the tab within a second or two of a save can lose that save.
+    The `saves` QA scenario checks this over two `browser-qa.ts` passes; pass
+    1 plays on for 4 s after saving, as a player would.
 - **Dialogue variables** are flags. A flag holds a bool, a number or text, which
   is what JSON keeps.
 - **Settings** are stored separately (§6.9).
@@ -548,7 +552,11 @@ Not needed. The browser gets only the prologue demo, so it fits in one `.pck`
   - One full-screen pass handles grade, vignette and grain.
 - **Avoid in WebKit:** `clip_children` and particles inside a `CanvasGroup`.
 - **Saves:** `user://` lives in the browser's IndexedDB, so clearing site data
-  deletes them. The demo's menu says so.
+  deletes them. The demo's menu says so. See §5.7 for how soon a save is kept.
+- **No shader cache:** `rendering/shader_compiler/shader_cache/enabled.web` is
+  off. Godot otherwise writes compiled shaders into `user://` as they compile.
+  WebGL can't reuse them, they bloat IndexedDB, and their writes kept saves
+  from reaching IndexedDB until the game quit (decision #38).
 
 ## 8. Import settings
 

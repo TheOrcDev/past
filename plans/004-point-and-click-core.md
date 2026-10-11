@@ -322,4 +322,23 @@ About 4–6 working sessions.
     and exits. The GUT test and the `greybox` QA scenario both run it. It
     passes in the editor and in the browser build.
   - **Checks:** 94 GUT tests pass.
+- **2026-10-11, slice 12:** measured and recorded. Plan 004 is done.
+  - **Both builds finish the chain:** the exported macOS app and the browser
+    build pass every scripted scenario: the greybox chain, saves across two
+    launches, reduced motion, skip, the grave with its hint, and the menus.
+  - **Budgets:**
+    - macOS app at 1080p: 120 fps (95th percentile 9–10 ms) with 222 MiB of
+      video memory;
+    - browser: 60 fps at the 95th percentile with 300 MiB.
+
+    The browser's worst frames were measured under heavy machine load and get
+    measured again on a quiet machine (`docs/qa/004/README.md`).
+  - **Fixes found here:**
+    - the fullscreen default overrode a window given on the command line
+      (decision #35);
+    - browser saves were lost on reload while Godot's shader cache wrote into
+      `user://`, so the web build turns it off (decision #38).
+  - **Recording:** `docs/qa/004/greybox-chain.mp4`, the chain at reading pace
+    from the new `greybox_clip` scenario. Decisions #33–38 log the plan's
+    technical picks.
 

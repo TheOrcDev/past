@@ -1,8 +1,12 @@
 # QA — plan 004, the point-and-click core
 
-Slice 12's measurements, 2026-10-11. The browser frame times and the
-recording of the greybox chain are still to come: the operator needed the Mac,
-and both runs open windows.
+Slice 12's measurements, 2026-10-11.
+
+## Files
+
+| File | What it shows |
+|---|---|
+| `greybox-chain.mp4` | The greybox puzzle chain played to the end at reading pace, 97 s at 1080p from the `greybox_clip` QA scenario: every verb, the rag and oil combined, the gatekeeper's choice, the flashback that shows "MERCY", the gate opening and the courtyard. |
 
 ## The exported macOS app
 
@@ -39,3 +43,45 @@ second of two runs, on the Apple M4. The display runs at 120 Hz, so a frame of
   window, because the exported game's fullscreen default overrode
   `--resolution`. A window given on the command line, or a QA run's, is now
   kept at start-up (decision #35).
+
+## The browser build
+
+Chrome, a visible window with a 1891×1065 canvas, served locally.
+
+- **Scenarios:** every one passes: `greybox`, `saves` over two passes,
+  `reduced_motion`, `skip`, `grave` and `menus`.
+- **Saves were being lost.** At first the `saves` check failed in 4 of 5 runs,
+  though it passed in slice 6. Probing IndexedDB during the run showed why:
+  - Godot's shader cache kept writing compiled shaders into `user://` as
+    shaders compiled;
+  - while it did, a save made during play didn't reach IndexedDB until the game
+    quit, and a browser player never quits.
+
+  The web build now turns the shader cache off (decision #38). A save then
+  reaches IndexedDB within about 1–2.5 s of further play, and the check passes
+  3 of 3. Pass 1 now plays on for 4 s after saving, so the check tests what a
+  player does, not a race with the reload. Closing the tab within a second or
+  two of a save can still lose it, because the engine has no hook for a page
+  that is closing.
+- **Frame time, warm pass:**
+
+  | Part | 95th percentile | Worst | Frames over 17.2 ms |
+  |---|---|---|---|
+  | Opening | 18.1 ms | 150 ms on the first frame, under black | 49 |
+  | Gravestone close-up | 16.7 ms | 119 ms | 6 |
+  | Nave, walking | 16.7 ms | 142 ms | 8 |
+  | Flashback | 16.7 ms | 50 ms | 29 |
+
+  - **The 95th percentile holds 60 fps** everywhere but the opening's
+    shader-compiling first second.
+  - **The worst frames move between runs.** They were measured under heavy
+    load: load averages of 44, 35 and 38 on 10 cores, from Rust builds, other
+    Claude sessions and another project's Electron QA run. For example, the
+    nave walk's worst frame spent 31 ms in scripts that take under 2 ms
+    otherwise. Slice 3's run on a quiet machine had no slow frames in these
+    parts, so they get measured again once the machine is quiet.
+- **Video memory:** 300 MiB, within the 400 MiB budget per room.
+- **Perf report:** it now gives each part's worst frame with its script time
+  and render CPU time (`worst_script_ms`, `worst_render_cpu_ms`), so a slow
+  frame shows whether the scripts, the drawing or the waiting took the time.
+
