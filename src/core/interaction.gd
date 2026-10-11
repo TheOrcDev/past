@@ -5,7 +5,8 @@ extends Node
 ## - Holding the left button on a hotspot opens the verb coin; releasing over a
 ##   glyph runs that verb.
 ## - A right click opens the inventory, or drops the held item.
-## - A click on Unknown himself asks him for a hint.
+## - A click on Unknown himself asks him for a hint, where nothing usable is
+##   behind him: a hotspot he stands in front of still takes its clicks.
 
 signal interacted(hotspot: Hotspot, verb: StringName)
 
@@ -62,10 +63,12 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		if coin.is_open:
 			coin.point_at(mouse.position)
-		elif _on_player(world):
-			_hover_player(mouse.position)
 		else:
-			_set_hovered(hotspot_at(world), mouse.position)
+			var hotspot := hotspot_at(world)
+			if hotspot == null and _on_player(world):
+				_hover_player(mouse.position)
+			else:
+				_set_hovered(hotspot, mouse.position)
 	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if locked == 0 or coin.is_open:
 			get_viewport().set_input_as_handled()
@@ -97,7 +100,7 @@ func press_at(world: Vector2, screen: Vector2) -> void:
 	if locked > 0:
 		return
 	var hotspot := hotspot_at(world)
-	if hotspot == null or Inventory.held or _on_player(world):
+	if hotspot == null or Inventory.held:
 		click_at(world)
 		return
 	_press_hotspot = hotspot
@@ -154,10 +157,10 @@ func world_at(screen: Vector2) -> Vector2:
 func click_at(world: Vector2) -> void:
 	if locked > 0 or Rooms.current == null or Rooms.player == null:
 		return
-	if _on_player(world):
+	var hotspot := hotspot_at(world)
+	if hotspot == null and _on_player(world):
 		await Hints.ask()
 		return
-	var hotspot := hotspot_at(world)
 	if hotspot and Inventory.held:
 		await use_item(hotspot, Inventory.held)
 	elif hotspot:
@@ -221,7 +224,8 @@ func hotspot_at(world: Vector2) -> Hotspot:
 
 
 ## Whether `world` is on Unknown in the room (not in a close-up, and not with an
-## item on the cursor, which is meant for something else).
+## item on the cursor, which is meant for something else). Callers check for a
+## hotspot first: one behind him wins.
 func _on_player(world: Vector2) -> bool:
 	return Closeups.current == null and not Inventory.held and Rooms.player != null and Rooms.player.contains_point(world)
 

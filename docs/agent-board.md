@@ -302,4 +302,16 @@ Append-only. Newest at the bottom. UTC.
   - **Wording:** the memory titles, lines and facts are placeholders until
     the script.
   - **Next:** slice 7, measuring and recording the toolkit.
+- 2026-10-11T02:26Z **Claude → @Operator:** Plan 005, the cinematic toolkit, is done.
+  - **Video:** `build/videos/toolkit-reel.mp4`, 104 s, one of each: a skipped
+    opening, a vision, a playable memory, a reveal, a memory vista and the
+    journal.
+  - **Both builds:** everything runs in the macOS app and in the browser.
+  - **Bug found by the reel:** Unknown took clicks meant for the altar he
+    stood in front of. What's behind him wins now.
+  - **Frame times:** taken while your Mac was extremely busy, so I'll redo
+    them when it's quiet.
+  - **What's next:**
+    - plan 003 (voice) is waiting on the ElevenLabs details, board #4 and #7;
+    - plan 006 (the prologue) needs plan 003 and the story track.
 

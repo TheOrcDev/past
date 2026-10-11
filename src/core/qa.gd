@@ -10,9 +10,9 @@ const LONG_TIMEOUT_SECONDS := 150.0
 ## Scenarios that need the long timeout without the opening.
 const LONG_RUNS: Array[String] = ["greybox", "vista", "journal"]
 ## Scenarios that need longer still, in seconds.
-const TIMEOUTS := {"greybox_clip": 360.0}
+const TIMEOUTS := {"greybox_clip": 360.0, "toolkit_reel": 360.0}
 ## Scenarios that start from the opening instead of straight in the first room.
-const WITH_OPENING: Array[String] = ["cemetery_reveal", "grave", "grave_clip", "perf", "tour", "screenshots", "reduced_motion", "skip"]
+const WITH_OPENING: Array[String] = ["cemetery_reveal", "grave", "grave_clip", "perf", "tour", "screenshots", "reduced_motion", "skip", "toolkit_reel"]
 
 var _out_dir := ""
 var _scenario := ""
@@ -124,6 +124,8 @@ func _run(scenario: String) -> void:
 			await _vista()
 		"journal":
 			await _journal()
+		"toolkit_reel":
+			await _toolkit_reel()
 		_:
 			_failures.append("unknown scenario %s" % scenario)
 	_finish("done")
@@ -283,7 +285,7 @@ func _grave() -> void:
 	await get_tree().create_timer(0.3).timeout
 	await _shot("07_back_at_the_grave")
 	# The stone is read, so a click on Unknown hints at the way on.
-	var hint: String = await _click_for_line(Rooms.player.global_position + Vector2(0, -180) * Rooms.player.scale.y)
+	var hint: String = await _click_for_line(Rooms.player.global_position + Vector2(0, -40) * Rooms.player.scale.y)
 	_check(hint == "HINT_CATHEDRAL_1", "clicking Unknown gives the next hint (%s)" % hint)
 	await get_tree().create_timer(0.8).timeout
 	await _shot("07b_hint")
@@ -581,6 +583,7 @@ func _vista() -> void:
 	_check(Cutscenes.fade_amount() == 0.0 and get_viewport().get_canvas_transform() == Transform2D.IDENTITY, "the courtyard shows as it was")
 	_check(&"greybox_milestone" in GameState.memories, "the memory vista is remembered")
 	await _shot("07_back_in_the_courtyard")
+	print("[qa] video memory in the courtyard, the vista loaded: %.1f MiB" % (Performance.get_monitor(Performance.RENDER_VIDEO_MEM_USED) / 1048576.0))
 
 
 ## The journal (plan 005 slice 6): after reading the gravestone and seeing the
@@ -609,6 +612,70 @@ func _journal() -> void:
 	await get_tree().create_timer(0.3).timeout
 	await _shot("02_the_saints_hand")
 	Menus.screen.close()
+
+
+## The cinematic toolkit as a reel for the movie writer (plan 005 slice 7): the
+## opening skipped partway, the statue's vision, the chapel's playable memory,
+## the courtyard's reveal (skipped halfway) and memory vista, and the journal.
+## Lines play at reading pace. Record with
+##   --write-movie <file.avi> --fixed-fps 30 -- --qa=toolkit_reel --force-draw
+func _toolkit_reel() -> void:
+	while get_tree().current_scene.get_node_or_null("CemeteryReveal") == null:
+		await get_tree().process_frame
+	Rooms.room_shown.connect(func(_room: Room) -> void: Rooms.player.get_node("IdleFidgets").set_process(false), CONNECT_ONE_SHOT)
+	await get_tree().create_timer(5.0).timeout
+	Cutscenes.skip_button.press()
+	await Rooms.room_shown
+	await _settle(false)
+	await get_tree().create_timer(0.8).timeout
+	await Rooms.goto(&"cathedral_nave", &"default", &"fade")
+	await _settle(false)
+	await get_tree().create_timer(0.6).timeout
+	Interaction.click_at((Rooms.current.hotspots.get_node("Statue") as Hotspot).focus_point())
+	await Flashback.vision_finished
+	await _settle(false)
+	await get_tree().create_timer(0.8).timeout
+	await Rooms.goto(&"greybox_chapel", &"default", &"fade")
+	await _settle(false)
+	await _use("Altar", &"use")
+	await _settle(false)
+	await Rooms.player.walk_to(Vector2(600, 960))
+	await get_tree().create_timer(0.6).timeout
+	await Interaction.click_at((Rooms.current.hotspots.get_node("Carving") as Hotspot).focus_point())
+	while Flashback.in_memory:
+		await get_tree().process_frame
+	await _settle(false)
+	await get_tree().create_timer(0.8).timeout
+	await Rooms.goto(&"greybox_courtyard", &"default", &"fade")
+	await _settle(false)
+	_use("Path", &"use")
+	while Cutscenes.current == null or get_tree().current_scene.get_node_or_null("GreyboxVista") == null:
+		await get_tree().process_frame
+	await get_tree().create_timer(6.0).timeout
+	Cutscenes.skip()
+	await _settle(false)
+	await get_tree().create_timer(0.6).timeout
+	await _use("Milestone", &"use")
+	await _settle(false)
+	await get_tree().create_timer(0.8).timeout
+	await Menus.choose(&"journal")
+	await get_tree().create_timer(2.5).timeout
+	for id in [&"cathedral_statue", &"greybox_milestone"]:
+		await (Menus.screen as JournalScreen).show_memory(id)
+		await get_tree().create_timer(3.0).timeout
+	Menus.screen.close()
+	await get_tree().create_timer(1.0).timeout
+
+
+## Holds the button on a hotspot until the verb coin opens, and lets go over
+## `verb`; returns once the verb has run.
+func _use(hotspot_name: String, verb: StringName) -> void:
+	var world := (Rooms.current.hotspots.get_node(hotspot_name) as Hotspot).focus_point()
+	Interaction.press_at(world, get_viewport().get_canvas_transform() * world)
+	await get_tree().create_timer(Interaction.COIN_HOLD_SECONDS + 0.1).timeout
+	var glyph := Interaction.coin.glyph_position(verb)
+	Interaction.coin.point_at(glyph)
+	await Interaction.release_at(world, glyph)
 
 
 ## The fog gradients with grain on and off, in both eras, for judging banding.

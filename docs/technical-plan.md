@@ -478,7 +478,8 @@ operator.
 - **Hint on Unknown** (plan 004 slice 9): the `Hints` autoload
   (`src/systems`).
   - **Clicking Unknown** asks him; it hits the trimmed box of his current
-    frame. Hovering him shows his name and the ring cursor.
+    frame. A hotspot behind him wins, so he answers only where nothing usable
+    is behind him. Hovering him there shows his name and the ring cursor.
   - **The goal** is the first one in `content/hints/goals.gd` whose flag isn't
     set or whose memory isn't seen yet.
   - **The lines** are the cues `<goal>_1`, `<goal>_2` … in
@@ -684,6 +685,10 @@ Not needed. The browser gets only the prologue demo, so it fits in one `.pck`
     - `reduced_motion` plays the opening and the gravestone's close-up with
       Reduce camera motion on;
     - `menus` shoots the top bar, Reveal hotspots and each page;
+    - `vista` uses the greybox courtyard's discovery reveal and memory vista;
+    - `journal` reads the gravestone, sees the statue's memory and opens the
+      journal;
+    - `toolkit_reel` plays one of each kind for `--write-movie`;
     - `skip` holds the Skip button during the opening and checks that it
       fast-forwards to the grave;
     - `greybox` plays the greybox puzzle chain to the end

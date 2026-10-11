@@ -263,4 +263,21 @@ About 4–6 working sessions.
 
     108 GUT tests pass. A `journal` QA scenario passes on desktop and in the
     browser.
+- **2026-10-11, slice 7:** measured and recorded. Plan 005 is done.
+  - **One of each, in both builds:** the exported macOS app and the browser
+    build pass `cemetery_reveal`, `skip`, `greybox` (the playable memory),
+    `vista` (reveal and memory vista), `journal` and `reduced_motion`. The
+    macOS app also passes `screenshots`, which includes the vision.
+  - **Budgets:** the courtyard with the vista loaded uses 222 MiB of video
+    memory on macOS and 318 MiB in Chrome, within the 400 MiB budget.
+    - Frame times were measured under extreme machine load (load average 69
+      on 10 cores): about 55 fps in the macOS app.
+    - The same paths held 120 fps earlier on a quieter machine.
+    - Both builds get measured again when the machine is quiet.
+  - **Reel:** `docs/qa/005/toolkit-reel.mp4`, every kind of scene in 104 s,
+    from the new `toolkit_reel` scenario.
+  - **Bug found by the reel:** Unknown took clicks meant for the altar he
+    stood in front of, so the memory never began. A hotspot behind him now
+    wins, and a new test covers it. 109 GUT tests pass. Decision #39 logs how
+    the toolkit behaves.
 

@@ -50,11 +50,20 @@ func test_asking_again_gets_more_direct() -> void:
 
 
 func test_clicking_unknown_asks_him() -> void:
-	var on_him := Rooms.player.global_position + Vector2(0, -180) * Rooms.player.scale.y
+	# His legs, below the grave mound he stands in front of.
+	var on_him := Rooms.player.global_position + Vector2(0, -40) * Rooms.player.scale.y
 	assert_true(Rooms.player.contains_point(on_him), "a point on his body")
 	assert_false(Rooms.player.contains_point(Rooms.player.global_position + Vector2(400, -180)), "and one beside him")
 	await Interaction.click_at(on_him)
 	assert_eq(_lines, ["HINT_STONE_1"])
+
+
+func test_a_hotspot_behind_him_still_takes_the_click() -> void:
+	# His chest, in front of the grave mound: the grave answers, not a hint.
+	var chest := Rooms.player.global_position + Vector2(0, -180) * Rooms.player.scale.y
+	assert_true(Rooms.player.contains_point(chest))
+	await Interaction.click_at(chest)
+	assert_eq(_lines, ["CEM_GRAVE_LOOK_1", "CEM_GRAVE_LOOK_2"])
 
 
 func test_progress_is_noted_where_it_happens() -> void:
