@@ -205,6 +205,9 @@ def chapel_room() -> dict:
             # Unknown stands beside the altar, so its carving stays in view.
             {"id": "altar", "name": "Altar", "polygon": [[x0 - 20, y1], [x0 - 20, y0 - 30], [x1 + 20, y0 - 30], [x1 + 20, y1]],
              "walk_to": [1210, 905]},
+            # Only in the past (a playable memory): the carving, still whole.
+            {"id": "carving", "name": "Carving", "era": "then", "pick_priority": 1,
+             "polygon": [[x0, y0 + 30], [x1, y0 + 30], [x1, y0 + 130], [x0, y0 + 130]], "walk_to": [1210, 905]},
             {"id": "flask", "name": "Oil flask", "polygon": [[FLASK[0], FLASK[1]], [FLASK[2], FLASK[1]], [FLASK[2], FLASK[3]], [FLASK[0], FLASK[3]]],
              "walk_to": [1560, 920], "pick_priority": 1},
             {"id": "window", "name": "Window", "polygon": [[WINDOW[0], WINDOW[1]], [WINDOW[2], WINDOW[1]], [WINDOW[2], WINDOW[3]], [WINDOW[0], WINDOW[3]]],

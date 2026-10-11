@@ -300,8 +300,16 @@ Each is a small autoload or scene with one job, on top of the core.
     (`Tween.custom_step`). The room is back in the present at once, with
     Unknown where he stood.
   - **Finishing**, watched or skipped, records the memory in `GameState`.
-- **Playable memory:** `Flashback.enter_memory(...)` switches the era and
-  returns when the memory's exit condition fires.
+- **Playable memory:** `Flashback.enter_memory(id, room, anchor, done)`.
+  - **Way in:** the past blooms in as a short cutscene. The room then stays in
+    the past era for play: the past's walk area, its era-tagged hotspots, and
+    the room's exits shut.
+  - **Way out:** once `done` holds (a flag name, or a callable returning
+    true), the past drains back and the memory is recorded.
+  - **No saving:** the top bar stays shut meanwhile, because a save could not
+    resume inside a memory.
+  - **Calling it:** a verb starts it without await. The verb has to return
+    before the player can act.
 - **Memory vista:** a reveal (§6.3) played in the then era.
 - **Separate rooms:** a memory whose geography is too different for an in-room
   switch uses a separate room and a screen-capture crossfade. That is the

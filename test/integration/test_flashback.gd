@@ -122,3 +122,20 @@ func test_a_skipped_vision_returns_to_the_present_at_once() -> void:
 	assert_eq(Array(GameState.memories), [&"test_memory"], "the memory is still recorded")
 	GameState.reset()
 
+
+func test_a_playable_memory_lets_the_player_act_in_the_past_until_done() -> void:
+	GameState.reset()
+	var room := Rooms.current
+	var exit := room.hotspots.get_node("ExitWest") as Hotspot
+	Flashback.enter_memory(&"test_memory", room, Vector2(200, 500), &"test_memory_done")
+	await wait_until(func() -> bool: return Flashback.in_memory and Interaction.locked == 0, 15.0)
+	assert_eq(room.era, &"then", "the past is up, and the player can act")
+	assert_false(exit.is_active(), "no way out of the room meanwhile")
+	assert_false(Menus.can_open(), "and no menu, so no save inside the memory")
+	GameState.set_flag(&"test_memory_done")
+	await wait_until(func() -> bool: return not Flashback.in_memory, 15.0)
+	assert_eq(room.era, &"now", "back in the present once done")
+	assert_true(exit.is_active(), "the ways out are back")
+	assert_eq(Array(GameState.memories), [&"test_memory"])
+	GameState.reset()
+

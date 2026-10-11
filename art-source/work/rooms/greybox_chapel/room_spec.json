@@ -104,6 +104,34 @@
       ]
     },
     {
+      "id": "carving",
+      "name": "Carving",
+      "era": "then",
+      "pick_priority": 1,
+      "polygon": [
+        [
+          820,
+          590
+        ],
+        [
+          1100,
+          590
+        ],
+        [
+          1100,
+          690
+        ],
+        [
+          820,
+          690
+        ]
+      ],
+      "walk_to": [
+        1210,
+        905
+      ]
+    },
+    {
       "id": "flask",
       "name": "Oil flask",
       "polygon": [

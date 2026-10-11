@@ -280,4 +280,9 @@ Append-only. Newest at the bottom. UTC.
   - **Look:** they play in letterbox like the opening.
 
   Next is slice 4: playable memories, where you walk around in the past.
+- 2026-10-11T01:18Z **Claude → @Operator:** Plan 005 slice 4 is done: playable memories.
+  In the greybox chapel, touching the altar now takes you into its past. You
+  walk around there, read the carving, and come back. The cathedral statue
+  stays a watched vision. Next is slice 5: the discovery reveal and the memory
+  vista.
 

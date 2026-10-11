@@ -7,8 +7,8 @@ extends RefCounted
 ##
 ## The chain: look at the rusted gate, take the rag, ask the gatekeeper about
 ## the word, take the oil in the chapel, combine it with the rag, touch the
-## altar to see the word in the past, oil the gate, say the word, open the gate
-## and walk through.
+## altar to step into its past and read the word there, oil the gate, say the
+## word, open the gate and walk through.
 
 ## Called as check.call(ok, what) after each step that must have worked.
 var check: Callable
@@ -60,14 +60,19 @@ func run() -> void:
 	check.call(Inventory.has(&"oiled_rag") and not Inventory.has(&"rag"), "the rag and the oil make an oiled rag")
 	await _shot("03_combined")
 	Interaction.right_click()
-	# The flashback clue: the altar's past shows the word.
-	_verb("Altar", &"use")
-	await Flashback.vision_started
-	await _tree.create_timer(2.6).timeout
-	await _shot("04_the_word_in_the_past")
-	await Flashback.vision_finished
+	# The flashback clue, a playable memory: in the chapel's past the carving is
+	# whole, and reading it ends the memory.
+	await _verb("Altar", &"use")
 	await _settle()
-	check.call(GameState.get_flag(&"greybox_knows_word"), "the past shows the word")
+	check.call(Flashback.in_memory and Rooms.current.era == &"then", "touching the altar steps into the past")
+	while Cutscenes.letterbox.amount > 0.01:
+		await _tree.process_frame
+	await _shot("04_in_the_past")
+	await _click("Carving")
+	while Flashback.in_memory:
+		await _tree.process_frame
+	await _settle()
+	check.call(GameState.get_flag(&"greybox_knows_word") and Rooms.current.era == &"now", "the past gives the word, and the present returns")
 	await _leave("ExitEast", &"greybox_gate")
 	# The oiled rag on the gate: picked in the inventory, then a click outside.
 	Interaction.right_click()

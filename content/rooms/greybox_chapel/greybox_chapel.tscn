@@ -20,76 +20,87 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(0, 790, 1920, 790, 1920, 1062, 0, 1062)])
 agent_radius = 0.0
 
-[node name="GreyboxChapel" type="Node2D" unique_id=53558337]
+[node name="GreyboxChapel" type="Node2D" unique_id=1993424227]
 script = ExtResource("1_ruksn")
 room_id = &"greybox_chapel"
 display_name = "Chapel"
 
-[node name="Layers" type="Node2D" parent="." unique_id=2094869175]
+[node name="Layers" type="Node2D" parent="." unique_id=86006670]
 
-[node name="Now" type="Node2D" parent="Layers" unique_id=1002299279]
+[node name="Now" type="Node2D" parent="Layers" unique_id=1931005041]
 
-[node name="Background" type="Sprite2D" parent="Layers/Now" unique_id=1599427589]
+[node name="Background" type="Sprite2D" parent="Layers/Now" unique_id=1109019574]
 texture = ExtResource("2_2emxs")
 centered = false
 
-[node name="Flask" type="Sprite2D" parent="Layers/Now" unique_id=296033222]
+[node name="Flask" type="Sprite2D" parent="Layers/Now" unique_id=822644846]
 position = Vector2(1520, 420)
 texture = ExtResource("3_3tcun")
 centered = false
 
-[node name="Then" type="Node2D" parent="Layers" unique_id=1787652740]
+[node name="Then" type="Node2D" parent="Layers" unique_id=1287032427]
 
-[node name="Background" type="Sprite2D" parent="Layers/Then" unique_id=1845386952]
+[node name="Background" type="Sprite2D" parent="Layers/Then" unique_id=429896156]
 texture = ExtResource("4_dsa2l")
 centered = false
 
-[node name="WalkAreas" type="Node2D" parent="." unique_id=617438668]
+[node name="WalkAreas" type="Node2D" parent="." unique_id=1674727540]
 
-[node name="Now" type="NavigationRegion2D" parent="WalkAreas" unique_id=1149549353]
+[node name="Now" type="NavigationRegion2D" parent="WalkAreas" unique_id=913233781]
 navigation_polygon = SubResource("NavigationPolygon_jvohn")
 
-[node name="Then" type="NavigationRegion2D" parent="WalkAreas" unique_id=662813245]
+[node name="Then" type="NavigationRegion2D" parent="WalkAreas" unique_id=1447345998]
 navigation_polygon = SubResource("NavigationPolygon_qxq30")
 enabled = false
 
-[node name="ScaleZones" type="Node2D" parent="." unique_id=1093935901]
+[node name="ScaleZones" type="Node2D" parent="." unique_id=1661468829]
 script = ExtResource("5_nvwgm")
 far_y = 790.0
 far_scale = 0.72
 near_y = 1062.0
 
-[node name="Hotspots" type="Node2D" parent="." unique_id=1122702936]
+[node name="Hotspots" type="Node2D" parent="." unique_id=294006178]
 
-[node name="Altar" type="Area2D" parent="Hotspots" unique_id=1799265766]
+[node name="Altar" type="Area2D" parent="Hotspots" unique_id=1311372060]
 script = ExtResource("6_bgus0")
 id = &"altar"
 display_name = "Altar"
 walk_offset = Vector2(1210, 905)
 
-[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Altar" unique_id=1913799535]
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Altar" unique_id=325265432]
 polygon = PackedVector2Array(800, 820, 800, 530, 1120, 530, 1120, 820)
 
-[node name="Flask" type="Area2D" parent="Hotspots" unique_id=1033671062]
+[node name="Carving" type="Area2D" parent="Hotspots" unique_id=1914529462]
+script = ExtResource("6_bgus0")
+id = &"carving"
+display_name = "Carving"
+era = &"then"
+walk_offset = Vector2(1210, 905)
+pick_priority = 1
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Carving" unique_id=1481118779]
+polygon = PackedVector2Array(820, 590, 1100, 590, 1100, 690, 820, 690)
+
+[node name="Flask" type="Area2D" parent="Hotspots" unique_id=2050848120]
 script = ExtResource("6_bgus0")
 id = &"flask"
 display_name = "Oil flask"
 walk_offset = Vector2(1560, 920)
 pick_priority = 1
 
-[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Flask" unique_id=655346656]
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Flask" unique_id=996975946]
 polygon = PackedVector2Array(1520, 420, 1590, 420, 1590, 530, 1520, 530)
 
-[node name="Window" type="Area2D" parent="Hotspots" unique_id=293839928]
+[node name="Window" type="Area2D" parent="Hotspots" unique_id=1678679758]
 script = ExtResource("6_bgus0")
 id = &"window"
 display_name = "Window"
 walk_offset = Vector2(460, 900)
 
-[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Window" unique_id=1929646986]
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Window" unique_id=411986321]
 polygon = PackedVector2Array(380, 170, 540, 170, 540, 520, 380, 520)
 
-[node name="ExitEast" type="Area2D" parent="Hotspots" unique_id=720201744]
+[node name="ExitEast" type="Area2D" parent="Hotspots" unique_id=647884765]
 script = ExtResource("7_07v0x")
 target_room = &"greybox_gate"
 target_entry = &"from_chapel"
@@ -98,22 +109,22 @@ display_name = "To the gatehouse"
 default_verb = &"walk"
 walk_offset = Vector2(1860, 980)
 
-[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/ExitEast" unique_id=1507853190]
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/ExitEast" unique_id=786793402]
 polygon = PackedVector2Array(1825, 560, 1920, 560, 1920, 1062, 1825, 1062)
 
-[node name="Exits" type="Node2D" parent="." unique_id=1357660266]
+[node name="Exits" type="Node2D" parent="." unique_id=1332012589]
 
-[node name="Markers" type="Node2D" parent="." unique_id=1120786602]
+[node name="Markers" type="Node2D" parent="." unique_id=334839597]
 
-[node name="default" type="Marker2D" parent="Markers" unique_id=880016578]
+[node name="default" type="Marker2D" parent="Markers" unique_id=1462457987]
 position = Vector2(960, 960)
 
-[node name="from_gate" type="Marker2D" parent="Markers" unique_id=276390603]
+[node name="from_gate" type="Marker2D" parent="Markers" unique_id=409255664]
 position = Vector2(1750, 980)
 
-[node name="Actors" type="Node2D" parent="." unique_id=1954707112]
+[node name="Actors" type="Node2D" parent="." unique_id=1006215252]
 y_sort_enabled = true
 
-[node name="Foreground" type="Node2D" parent="." unique_id=586012357]
+[node name="Foreground" type="Node2D" parent="." unique_id=1519080342]
 
-[node name="Cinematics" type="Node2D" parent="." unique_id=632257636]
+[node name="Cinematics" type="Node2D" parent="." unique_id=1814472463]

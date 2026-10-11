@@ -32,10 +32,11 @@ func _process(_delta: float) -> void:
 
 
 ## Whether the bar may come down: a room is showing and nothing else has the
-## player's attention.
+## player's attention. Not inside a playable memory, which a save could not
+## resume.
 func can_open() -> bool:
 	return enabled and screen == null and Rooms.current != null and Interaction.locked == 0 \
-		and not Interaction.coin.is_open and not Interaction.inventory.is_open
+		and not Interaction.coin.is_open and not Interaction.inventory.is_open and not Flashback.in_memory
 
 
 ## Runs the bar's entry `id`.

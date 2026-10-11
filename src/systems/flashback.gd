@@ -16,6 +16,8 @@ const GRADE := preload("res://src/shaders/era_grade.gdshader")
 var reduce_flashing := false
 var transition_seconds := 3.2
 var playing := false
+## True while Unknown plays inside a memory (enter_memory).
+var in_memory := false
 
 var _grade_material: ShaderMaterial
 var _flare: Sprite2D
@@ -107,14 +109,42 @@ func vision(id: StringName, room: Room, origin: Vector2, during := Callable()) -
 	await Cutscenes.play(Vision.new(id, room, origin, during))
 
 
-## A vision's way into the past, as cutscene steps.
-func open_past(c: CutsceneSteps, room: Room, origin: Vector2) -> void:
+## Steps into the past of `room` for play (a playable memory, §6.1). The past
+## blooms from `origin` as a short cutscene; then Unknown walks the past's walk
+## area and uses its hotspots until `done` holds (a flag name, or a callable
+## returning true), and the past drains back. The room's ways out are shut
+## meanwhile. Finishing records the memory `id`. Call it from a verb without
+## await: the verb has to return before the player can act in the past.
+func enter_memory(id: StringName, room: Room, origin: Vector2, done: Variant) -> void:
+	await Cutscenes.play(StepsCutscene.new(&"", func(c: CutsceneSteps) -> void: await open_past(c, room, origin, false)))
+	in_memory = true
+	var shut: Array[Hotspot] = []
+	for node in room.hotspots.get_children():
+		if node is Exit and node.visible:
+			node.visible = false
+			shut.append(node)
+	while is_instance_valid(room) and not _met(done):
+		await get_tree().process_frame
+	if not is_instance_valid(room):
+		in_memory = false
+		return
+	await Cutscenes.play(StepsCutscene.new(&"", func(c: CutsceneSteps) -> void: await close_past(c, room, origin)))
+	for exit in shut:
+		if is_instance_valid(exit):
+			exit.visible = true
+	in_memory = false
+	GameState.remember(id)
+
+
+## A vision's way into the past, as cutscene steps; a playable memory keeps the
+## camera still (no `drift`).
+func open_past(c: CutsceneSteps, room: Room, origin: Vector2, drift := true) -> void:
 	playing = true
 	_unknown_reacts(true)
 	vision_started.emit(origin)
 	await _transition(c, room, origin, true)
 	room.set_era(&"then")
-	_drift = _start_drift(room, origin)
+	_drift = _start_drift(room, origin) if drift else null
 
 
 ## A vision's way back to the present, as cutscene steps.
@@ -230,6 +260,12 @@ func _end_drift(c: CutsceneSteps, camera: Camera2D) -> void:
 	tween.tween_property(camera, "position", Vector2(960, 540), 1.0)
 	await _finish(c, tween)
 	camera.queue_free()
+
+
+static func _met(done: Variant) -> bool:
+	if done is Callable:
+		return bool((done as Callable).call())
+	return bool(GameState.get_flag(StringName(str(done))))
 
 
 ## Waits for `tween`; once the scene is skipped, steps it straight to its end,

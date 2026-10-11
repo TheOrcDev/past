@@ -194,4 +194,22 @@ About 4–6 working sessions.
     skipped vision returns to the present at once. 99 GUT tests pass. The
     `greybox` and `screenshots` QA scenarios pass on desktop, and `greybox`
     passes in the browser.
+- **2026-10-11, slice 4:** playable memory.
+  - **`Flashback.enter_memory(id, room, anchor, done)`:** the past blooms in
+    as a short cutscene, through `StepsCutscene`, which runs a callable as its
+    steps, and with no camera drift. Then the room stays in the past era for
+    play. Unknown walks the past's walk area and uses its era-tagged
+    hotspots, and the room's exits are shut. When `done` holds (a flag, or a
+    callable), the past drains back, the exits return and the memory is
+    recorded.
+  - **No saving inside a memory:** the top bar stays shut, because a save
+    there couldn't resume.
+  - **The greybox altar** now steps into the chapel's past instead of showing
+    a vision. There a then-only "Carving" hotspot gives the word. The room
+    spec needed nothing new: `era` on hotspots and `walk.then` were already
+    there. The cathedral statue stays a vision, so both kinds are in the game.
+  - **Tests:** a new test covers the past being playable, the exits and menu
+    shut, and the return once done. The greybox chain's playthrough plays the
+    memory. 100 GUT tests pass, and `greybox` passes on desktop and in the
+    browser.
 

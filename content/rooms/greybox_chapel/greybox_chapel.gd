@@ -1,7 +1,8 @@
 extends Room
 ## The greybox chapel (plan 004 slice 11). The oil flask sits on the shelf, and
-## the altar's carving has burned away. Touching the altar shows the past, where
-## the word of the house is still carved.
+## the altar's carving has burned away. Touching the altar steps into the
+## chapel's past (a playable memory, plan 005 slice 4), where the carving is
+## still whole and gives the word of the house.
 
 
 func _on_enter(_from: StringName) -> void:
@@ -15,10 +16,12 @@ func look_altar() -> void:
 func use_altar() -> void:
 	await Say.line(&"greybox", &"altar_touch")
 	var altar := hotspots.get_node(^"Altar") as Hotspot
-	await Flashback.vision(&"greybox_altar", self, altar.focus_point(), func(c: CutsceneSteps) -> void:
-		await c.wait(1.0)
-		await c.say(&"greybox", &"altar_past")
-		await c.wait(1.0))
+	Flashback.enter_memory(&"greybox_altar", self, altar.focus_point(), &"greybox_knows_word")
+
+
+## In the past only.
+func look_carving() -> void:
+	await Say.line(&"greybox", &"altar_past")
 	GameState.set_flag(&"greybox_knows_word")
 
 
