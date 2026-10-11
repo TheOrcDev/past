@@ -371,5 +371,18 @@ Append-only. Newest at the bottom. UTC.
     holding the two-byte grey + alpha frames as four bytes a pixel. It needs a
     fix before the browser demo (plan 006).
   - **Cost:** nothing.
+- 2026-10-11T21:00Z **Claude → @Operator:** Unknown is back to his body and
+  head from before 20:11Z, keeping only the ink threads on his back, as you
+  asked (decision #42, rewritten).
+  - **Reverted:** the leaner body, the upright stance and the reworked faceless
+    head. They looked worse than the original.
+  - **Kept:** the ink threads, now on the original body.
+  - **Checked:** 114 GUT tests pass (one run had a single failure while
+    Blender rendered alongside; the rerun passed), and the `unknown_look` run
+    passes on desktop.
+  - **Still open:** the head and the eyes' placement, which you flagged. Next
+    time I change one thing at a time and show you before committing.
+  - **Cost:** nothing.
+
 
 

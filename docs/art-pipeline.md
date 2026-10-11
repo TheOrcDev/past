@@ -154,8 +154,8 @@ installed.
    approval.
 2. **Body (Claude, Blender):** Blender Studio's CC0 realistic male base mesh
    (`art-source/vendor/human-base-meshes`), with its sculpted muscle. It is
-   reshaped towards IMG-0003 v1 (lean and wiry, with broad shoulders and a
-   smooth skull with no face, decision #42) and rigged with named bones and
+   reshaped towards the IMG-0003 concept (broader shoulders, a little more
+   muscle, a smooth skull with no face) and rigged with named bones and
    automatic weights.
 3. **Motion:** keyframed by Claude in Blender with bpy scripts (decision #23).
    The walk starts from the classic contact, down, passing and up poses. There
