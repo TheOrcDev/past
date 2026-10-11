@@ -27,6 +27,10 @@ is gone.
 | 5 | Should people in flashbacks be glowing "memory figures"? (`game-design.md` §6) | 2026-10-09 | Story track |
 | 6 | An Apple Developer account for macOS signing and notarization: yes or no? | 2026-10-09 | First public desktop build |
 | 7 | Do you publish as an individual or as a company? This sets the ElevenLabs tier needed for music (`audio-pipeline.md` §2). | 2026-10-09 | Plan 003 |
+| 10 | Sign off the story drafts: `docs/story/bible.md`, `cast.md` and `atlas.md`. The core is your "Thief of names" pick (#43); the rest is my proposal, including the names Ulric, Aurelle and Elise. | 2026-10-11 | Plan 008 slice 4 |
+| 11 | Sign plan 002's look gate (decision #31). Plan 008 commits 50 rooms to this look. | 2026-10-10 | Plan 008 slice 4 |
+| 12 | May I download Blender Studio's CC0 female base mesh, as #32 allowed the male one? Five NPCs are women. | 2026-10-11 | Plan 008 slice 4 (the Sister) |
+| 13 | Git LFS storage: plan 008 adds about 3 GB of raw images. Is the account's LFS quota enough, or should raws stay out of git? | 2026-10-11 | Plan 008 slice 0 |
 
 ## Log
 
@@ -383,6 +387,18 @@ Append-only. Newest at the bottom. UTC.
   - **Still open:** the head and the eyes' placement, which you flagged. Next
     time I change one thing at a time and show you before committing.
   - **Cost:** nothing.
-
-
-
+- 2026-10-11T21:22Z **Claude → @Operator:** Plan 008 is written:
+  `plans/008-fifty-rooms.md`, 50 new rooms after the grave, with 13 NPCs, and
+  art by GPT-6.1 Sol through Codex.
+  - **Recorded:** your answers are decisions #43–#46: the Thief of names core,
+    Sol via Codex, $50 of gateway budget, and 50 new playable rooms.
+  - **Story drafts:**
+    - `docs/story/bible.md`: the truth, the world's rules, the arc, and five
+      part outlines;
+    - `docs/story/cast.md`: 13 NPCs, each someone Ulric took something from;
+    - `docs/story/atlas.md`: all 50 rooms, now, then and play.
+  - **Yours to decide:** #10 (story sign-off), #11 (the look gate), #12 (the
+    female base mesh download) and #13 (LFS storage).
+  - **Can start now:** slice 0 (the Sol handshake and spike), slice 2 (the
+    production frame) and slice 3 (the Gravedigger as the NPC proof).
+  - **Cost so far:** nothing.

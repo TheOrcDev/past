@@ -16,6 +16,7 @@ REJECTED (one-line rationale).
 | [005](005-cinematic-toolkit.md) | Cinematic toolkit: flashbacks, reveals, cutscene runner, journal | M4 | L | 002, 004 | DONE 2026-10-11: 109 GUT tests pass; one of each kind runs in both builds; reel in `docs/qa/005/` |
 | [006](006-prologue-vertical-slice.md) | Prologue vertical slice | M5 | XL | 003, 005, story track | TODO: written 2026-10-11; waits on plan 003 (board #4, #7), the story track, the look gate (#31) and budgets |
 | [007](007-the-grave.md) | The grave: start at Unknown's grave, close-up views | M5 (early) | M | 002, 004 | DONE 2026-10-10 (operator request) |
+| [008](008-fifty-rooms.md) | Fifty rooms: the story after the grave, 13 NPCs, art by GPT-6.1 Sol | Story track + M7 (early) | XXL | 004, 005, 007; story sign-off (board #10) and look gate (#11) before volume art | TODO: written 2026-10-11 (operator request); slices 0, 2 and 3 can start |
 
 ## Dependency notes
 
@@ -29,3 +30,6 @@ REJECTED (one-line rationale).
   chapter outline, prologue script and puzzle chart) go in `docs/story/`.
 - Plans 004–006 are written one milestone ahead, because they depend on what 002
   and 003 measure.
+- Plan 008 (operator request, 2026-10-11) holds the story track's drafts in
+  `docs/story/` and builds the 50 rooms after the grave without voice. Plan 006
+  then voices, scores and releases the prologue that 008 builds.
