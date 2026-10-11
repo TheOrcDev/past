@@ -71,6 +71,15 @@ func _unhandled_input(event: InputEvent) -> void:
 		fire()
 
 
+## Ready for another scene: hidden, not held, not fired.
+func reset() -> void:
+	_fired = false
+	_held = -1.0
+	_shown_for = 0.0
+	_button.modulate.a = 0.0
+	_button.visible = false
+
+
 ## Shows the button for a few seconds, as moving the mouse does.
 func reveal() -> void:
 	_shown_for = SHOWN_SECONDS

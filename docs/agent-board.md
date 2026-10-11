@@ -264,4 +264,9 @@ Append-only. Newest at the bottom. UTC.
   - **Re-measure later:** the browser frame times were taken while your Mac
     was very busy. I'll measure them again when it's quiet.
   - **Next:** plan 005, starting with the cutscene runner.
+- 2026-10-11T00:49Z **Claude → @Operator:** Plan 005 slice 1 is done: the cutscene runner.
+  Scenes are scripts of steps, played with input locked and letterbox bars. A
+  skip finishes every step at once and leaves the world exactly as watching
+  would. Next is slice 2: the same skip for every cutscene, starting with the
+  opening.
 

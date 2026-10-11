@@ -1,7 +1,7 @@
 # 005 — Cinematic toolkit: cutscenes, flashbacks, reveals, journal
 
 Status: written 2026-10-11, one milestone ahead (plans/README.md). Owner:
-Claude. It starts once plan 004 is done.
+Claude. Started 2026-10-11, once plan 004 was done.
 
 ## Goal
 
@@ -139,3 +139,22 @@ Each slice ends with tests passing, a commit and a push.
 About 4–6 working sessions.
 
 ## Execution record
+- **2026-10-11, slice 1:** the cutscene runner.
+  - **Pieces:** `Cutscene` (a script whose `run(c)` awaits steps) and
+    `CutsceneSteps`, whose steps are walk, face, anim, say, wait, shot, fade
+    and era. The `Cutscenes` autoload plays a scene with input locked, the
+    letterbox bars in and its own Skip button armed.
+  - **A skip** makes the step under way and every later one finish at once:
+    - walks put the actor where the walk would have ended;
+    - lines run through without holding, through the new
+      `Say.fast_forward`, so their mutations still happen;
+    - waits end and fades snap;
+    - shots jump to their last frame.
+  - **Skip button:** it can now `reset()` between scenes.
+  - **Tests:** two integration tests. A watched scene runs its steps in order
+    with input locked and the bars in, and a skipped one ends in the same
+    state: the same flag set, and Unknown where the walk ends. 96 GUT tests
+    pass.
+  - **Drafted early:** the code was written while the operator had the Mac,
+    and tested once testing resumed.
+

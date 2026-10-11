@@ -348,9 +348,18 @@ and particles inside a `CanvasGroup` vanish in WebKit.
     fast-forwards it (plan 004 slice 10).
 - **Panorama pan:** `Parallax2D` layers move at different rates.
 - **Letterbox:** 2.39:1 bars slide in for every non-interactive sequence.
-- **`CutsceneRunner`** (plan 005):
-  - A cutscene is a script whose `run(c)` awaits steps: `c.walk`, `c.say`,
-    `c.wait`, `c.anim`, `c.shot` and `c.fade`.
+- **The cutscene runner** (plan 005; `src/systems/cinematics`):
+  - A cutscene is a `Cutscene` script whose `run(c)` awaits steps on a
+    `CutsceneSteps`: `c.walk`, `c.face`, `c.anim`, `c.say`, `c.wait`,
+    `c.shot`, `c.fade` and `c.era`.
+  - **The `Cutscenes` autoload** plays one. It locks input, brings the
+    letterbox bars in and arms its own Skip button, then returns when `run`
+    does.
+  - **The fade** stays where the script left it, so a scene can end on black
+    before a room change.
+  - **Animation keys:** a skip jumps a shot to its end, so its method keys are
+    passed over. Anything that changes the world belongs in the script, never
+    in animation keys.
   - **Skipping fast-forwards:**
     - every later step finishes instantly: walks teleport, lines stop,
       animations seek to their end, tweens complete;

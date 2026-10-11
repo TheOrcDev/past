@@ -13,6 +13,9 @@ const DIALOGUE_PATH := "res://content/dialogue/%s.dialogue"
 const FONT_SIZE := 36
 
 var speaking := false
+## Set while a skipped cutscene runs through: lines don't hold, so a dialogue
+## still runs its mutations but takes no time.
+var fast_forward := false
 var choices: ChoiceList
 ## The line on screen.
 var subtitle: Label
@@ -68,7 +71,12 @@ func run(resource: DialogueResource, cue: String) -> void:
 		var texts := PackedStringArray()
 		for response: DialogueResponse in allowed:
 			texts.append(response.text)
-		var response: DialogueResponse = allowed[await choices.choose(texts)]
+		var pick := 0
+		if fast_forward:
+			push_warning("A skipped cutscene's dialogue offered choices; the first was taken")
+		else:
+			pick = await choices.choose(texts)
+		var response: DialogueResponse = allowed[pick]
 		await _speak(response.static_id, response.character if not response.character.is_empty() else _player_name(), response.text)
 		current = await DialogueManager.get_next_dialogue_line(resource, response.next_id)
 	subtitle.visible = false
@@ -118,7 +126,7 @@ func _player_name() -> String:
 func _hold(seconds: float) -> void:
 	_skip = false
 	var elapsed := 0.0
-	while not _skip and elapsed < seconds:
+	while not _skip and not fast_forward and elapsed < seconds:
 		await get_tree().process_frame
 		elapsed += get_process_delta_time()
 
