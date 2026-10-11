@@ -51,6 +51,7 @@ from the repository root, so Bun loads `.env`:
 | `bun tools/audio/run.ts extract` | Reads every spoken line in `content/dialogue` (its `[ID:…]`, speaker, text and `[#vo=…]` direction) into `audio-source/voice/manifest.json` |
 | `bun tools/audio/run.ts diff` | Lists what `voice` would generate: lines new or changed against `audio-source/voice/lock.json` |
 | `bun tools/audio/run.ts report` | Credits used and the limit, from the subscription endpoint. Needs `ELEVENLABS_API_KEY`. |
+| `bun tools/audio/run.ts post [--force]` | Turns the masters in `audio-source/voice/masters/` into the game's lines: trimmed, set to −18 LUFS, 24 kHz mono WAV in `assets/audio/voice/en/` (Godot imports them as QOA), plus the envelope table `envelopes.gd`. Only changed masters are posted again. Needs `ffmpeg`. |
 
 - **Tests:** `cd tools/audio && bun test` (no test touches the network).
 - **Limits:** `config.json` holds the player's speaker name and the plan tier,

@@ -438,7 +438,8 @@ Built in plan 002:
 
 - **Playback:** when `Say` speaks a line, it calls `Voice.play(id)` with the
   line's static ID.
-  - `Voice` loads `assets/audio/voice/en/<ID>.ogg` when the line is said.
+  - `Voice` loads `assets/audio/voice/en/<ID>.wav`, imported as QOA
+    (decision #41), when the line is said.
     Cutscenes preload their next lines if plan 003 slice 9 finds the first
     line slow to start.
   - The line plays on the Voice bus, and the subtitle stays up until the audio
@@ -450,7 +451,7 @@ Built in plan 002:
 - **Browser demo:** voice players use `playback_type = Stream` (§7).
 - **Envelopes:** about 30 loudness values per second, computed offline. `post`
   writes them into one table, `assets/audio/voice/en/envelopes.gd`: `RATE`,
-  and `LINES` from ID to bytes 0–255. `Voice.level()` reads the value at the
+  and `LINES` from ID to bytes 0–255 in base64. `Voice.level()` reads the value at the
   audio's position. Unknown's body eases its `voice_level` toward it, which
   drives his eyes and smoke, and any NPC can do the same. Computing them
   offline gives the same result on every platform, with no runtime analysis.
@@ -650,9 +651,10 @@ Not needed. The browser gets only the prologue demo, so it fits in one `.pck`
   per animation. His loaded frames are budgeted at 128 MiB or less. The flat
   one-byte masks of decision #30 are replaced by decision #32.
 - **Audio:**
-  - Ogg Vorbis everywhere; Godot decodes it itself in every build.
-  - Voice is mono at 22.05–24 kHz. Music is stereo.
-  - No WAV in builds.
+  - Voice: 24 kHz mono WAV sources that Godot imports as QOA (decision #41).
+    Godot decodes QOA itself in every build.
+  - Music and ambience are stereo, in a format plan 003 slices 7–8 settle.
+  - No WAV in builds: an export carries the imported QOA.
 
 ## 9. Testing and QA
 
@@ -743,7 +745,7 @@ Not needed. The browser gets only the prologue demo, so it fits in one `.pck`
 | Download | No hard cap; aim for 4 GB or less | `.pck` of 150 MB or less, plus about 10 MB of engine (gzip) |
 | Peak memory | — | 1 GiB or less of the 2 GiB cap |
 | Render resolution | Window resolution | The browser canvas follows the device pixel ratio. Plan 002 measured 60 fps even at 4276×2407 on the operator's M4, so it is not capped. For weaker GPUs, the Render at 1080p setting (§6.9) caps it. |
-| Voice | Ogg mono, about 48–64 kbps | Same |
+| Voice | QOA mono at 24 kHz, about 77 kbps (decision #41) | Same |
 
 ## 11. Risks
 

@@ -4,3 +4,9 @@ Unknown: A voiced test line, long enough that as text alone it would stay up for
 Unknown: And a line with no audio at all, which falls back to text timing. [ID:TEST_VOICE_2]
 
 => END
+
+~ file
+
+Unknown: A line whose audio and envelope come from files, as post writes them. [ID:TEST_FILE_1]
+
+=> END

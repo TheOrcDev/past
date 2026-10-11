@@ -1,23 +1,27 @@
 extends Node
 ## Voiced lines (technical-plan.md §6.5, plan 003 slice 5). A line's audio is
-## res://assets/audio/voice/en/<ID>.ogg, loaded when it is said and played on
-## the Voice bus, streamed in every build (the browser's Sample playback freezes
-## on long clips, §7). Its loudness envelope, about 30 values a second computed
-## offline by tools/audio `post`, says how loud the line is at each moment; the
-## speaker's body follows it. A line without audio falls back to text timing in
-## Say. Nothing analyses audio at runtime.
+## res://assets/audio/voice/en/<ID>.wav, which Godot imports as QOA (decision
+## #41). It is loaded when it is said and played on the Voice bus, streamed in
+## every build (the browser's Sample playback freezes on long clips, §7). Its
+## loudness envelope, about 30 values a second computed offline by tools/audio
+## `post`, says how loud the line is at each moment; the speaker's body follows
+## it. A line without audio falls back to text timing in Say. Nothing analyses
+## audio at runtime.
 ##
 ## A browser plays no sound until the player's first click, and until then the
 ## line's audio never starts: its position stands still. Such a line has
 ## stalled (stalled()), and Say gives it the time it would have had as text.
 
-const LINE_PATH := "res://assets/audio/voice/en/%s.ogg"
-## Written by `post`: RATE (values a second) and LINES (id → envelope bytes, 0–255).
+## Written by `post`: RATE (values a second) and LINES (ID → envelope bytes,
+## 0–255, in base64).
 const ENVELOPES_PATH := "res://assets/audio/voice/en/envelopes.gd"
 ## A playing line whose position stands still this long, over at least
 ## STALL_FRAMES frames (so one long frame doesn't count), has stalled.
 const STALL_SECONDS := 0.5
 const STALL_FRAMES := 6
+
+## Where a line's audio is, by ID. Tests point it at fixtures.
+var line_path := "res://assets/audio/voice/en/%s.wav"
 
 var _player: AudioStreamPlayer
 var _registered := {}
@@ -36,15 +40,22 @@ func _ready() -> void:
 	_player.bus = &"Voice"
 	_player.playback_type = AudioServer.PLAYBACK_TYPE_STREAM
 	add_child(_player)
-	if ResourceLoader.exists(ENVELOPES_PATH):
-		var table: GDScript = load(ENVELOPES_PATH)
-		_table_rate = float(table.RATE)
-		_table = table.LINES
+	load_envelopes(ENVELOPES_PATH)
+
+
+## Reads the envelope table at `path`, if there is one.
+func load_envelopes(path: String) -> void:
+	_table = {}
+	if not ResourceLoader.exists(path):
+		return
+	var constants := (load(path) as Script).get_script_constant_map()
+	_table_rate = float(constants.get("RATE", 30))
+	_table = constants.get("LINES", {})
 
 
 ## Whether the line `id` has audio.
 func has_line(id: StringName) -> bool:
-	return _registered.has(id) or ResourceLoader.exists(LINE_PATH % id)
+	return _registered.has(id) or ResourceLoader.exists(line_path % id)
 
 
 ## Starts the line `id`; false when it has no audio.
@@ -54,10 +65,10 @@ func play(id: StringName) -> bool:
 		stream = _registered[id]["stream"]
 		_envelope = _registered[id]["envelope"]
 		_rate = _registered[id]["rate"]
-	elif ResourceLoader.exists(LINE_PATH % id):
-		stream = load(LINE_PATH % id)
+	elif ResourceLoader.exists(line_path % id):
+		stream = load(line_path % id)
 		_envelope = PackedFloat32Array()
-		for value in _table.get(id, PackedByteArray()):
+		for value in Marshalls.base64_to_raw(_table.get(id, "")):
 			_envelope.append(value / 255.0)
 		_rate = _table_rate
 	if stream == null:

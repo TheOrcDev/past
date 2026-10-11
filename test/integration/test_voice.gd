@@ -2,13 +2,15 @@ extends GutTest
 ## Voiced lines (plan 003 slice 5): a line with audio holds until its audio
 ## ends, not for its text's time; a click stops it; the speaker's level follows
 ## the line's envelope, and Unknown's body follows that; a line without audio,
-## or whose audio stalls, keeps text timing.
+## or whose audio stalls, keeps text timing; and a line's audio and envelope
+## come from the files `post` writes.
 
 const FIXTURE := preload("res://test/fixtures/voice.dialogue")
 const FIRST_LINE := "A voiced test line, long enough that as text alone it would stay up for a good few seconds."
 
 ## Whether this test holds the audio server's lock.
 var _locked := false
+var _line_path := ""
 
 
 ## One second of a quiet tone, made in memory.
@@ -31,6 +33,7 @@ func before_each() -> void:
 	for i in 30:
 		rising.append(i / 29.0)
 	Voice.register(&"TEST_VOICE_1", _tone(1.0), rising)
+	_line_path = Voice.line_path
 	await Rooms.goto(&"cathedral_nave", &"default", &"none")
 
 
@@ -42,6 +45,8 @@ func after_each() -> void:
 	Say.skip()
 	await wait_until(func() -> bool: return not Say.speaking, 15.0)
 	Voice.unregister(&"TEST_VOICE_1")
+	Voice.line_path = _line_path
+	Voice.load_envelopes(Voice.ENVELOPES_PATH)
 	Rooms.clear()
 
 
@@ -92,3 +97,22 @@ func test_a_line_whose_audio_stalls_keeps_text_timing() -> void:
 	var held: float = (times["TEST_VOICE_2"] - times["TEST_VOICE_1"]) / 1000.0
 	assert_almost_eq(held, Say.line_seconds(FIRST_LINE), 0.4, "held for the text's time, not stuck on the silent audio")
 	assert_false(Voice.is_playing(), "and the stalled audio was stopped, so it can't start late")
+
+
+func test_a_line_plays_from_the_files_post_writes() -> void:
+	# Made by post's own functions from a made-up master: a tone that swells for
+	# 1 s, with the 80 ms lead and 200 ms tail, so 1.28 s in all.
+	Voice.line_path = "res://test/fixtures/voice/%s.wav"
+	Voice.load_envelopes("res://test/fixtures/voice/envelopes.gd")
+	assert_eq((load(Voice.line_path % "TEST_FILE_1") as AudioStreamWAV).format, AudioStreamWAV.FORMAT_QOA, "Godot imports the WAV as QOA")
+	var started := Time.get_ticks_msec()
+	Say.run(FIXTURE, "file")
+	await wait_until(func() -> bool: return Voice.is_playing(), 3.0)
+	await wait_seconds(0.3)
+	var early := Voice.level()
+	await wait_seconds(0.6)
+	var later := Voice.level()
+	assert_gt(early, 0.0, "the table has the line's envelope")
+	assert_gt(later, early, "and it swells with the audio")
+	await wait_until(func() -> bool: return not Say.speaking, 5.0)
+	assert_almost_eq((Time.get_ticks_msec() - started) / 1000.0, 1.28, 0.4, "held for the file's 1.28 s")

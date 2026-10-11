@@ -160,18 +160,30 @@ Claude cannot hear, so review has two layers:
 
 ### 4.5 Post-processing (`post`)
 
-1. Trim silence, keeping about 80 ms before and 200 ms after the line.
-2. Normalise loudness. Starting targets: voice −18 LUFS, music −23 LUFS,
-   ambience −28 LUFS, peak −1 dBTP. These are tuned in plan 003's mix pass.
-3. Encode Ogg Vorbis everywhere. Godot decodes it itself in every build, so the
-   browser's own codec support doesn't matter.
-   - Voice is mono at 22.05–24 kHz, named `<ID>.ogg`.
-   - Music and ambience are stereo.
-   - No WAV ships.
-4. Compute the **envelope**: about 30 loudness values per second, normalised to
-   0–1. Envelopes are stored per chapter in one table (ID → values), not as
-   thousands of small files. They drive Unknown's eyes and smoke, and any NPC
-   (`technical-plan.md` §6.5).
+1. Trim silence. Keep 80 ms before the first speech and 200 ms after the last,
+   padded with silence where the master has less, and fade the cuts.
+2. Normalise loudness with one gain per line. Starting targets: voice −18
+   LUFS, music −23 LUFS, ambience −28 LUFS, and never past −1 dBTP. A line
+   whose peaks reach the ceiling first comes out a little quieter: a 4.6 s
+   test line with peaks at −1.9 dBTP came out at −19 LUFS. These are tuned in
+   plan 003's mix pass.
+3. Formats (decision #41):
+   - **Voice:** 24 kHz mono 16-bit WAV, `assets/audio/voice/en/<ID>.wav`.
+     Godot imports it as QOA, its default, at about 77 kbps. Godot decodes QOA
+     itself in every build, and cheaply, which matters in the browser, where
+     sound is mixed on the main thread. The WAV never ships; the export
+     carries the QOA.
+   - **Music and ambience** are stereo. Their format is settled in plan 003
+     slices 7 and 8: QOA the same way, or Ogg Vorbis once an encoder is
+     installed (this machine's ffmpeg has none).
+4. Compute the **envelope**: 30 loudness values per second, each window's RMS
+   from −45 dBFS (0) to −12 dBFS (1), kept as bytes. `post` writes them all into
+   one table, `assets/audio/voice/en/envelopes.gd` (ID → base64), not
+   thousands of small files, and splits it per chapter if it grows. They drive
+   Unknown's eyes and smoke, and any NPC (`technical-plan.md` §6.5).
+5. `post` keeps what it made in `audio-source/voice/post.json`: each master's
+   hash, the settings' hash, the loudness measured, the gain and the envelope.
+   A changed master or setting is posted again, and the rest are left alone.
 
 ## 5. Sound effects
 
@@ -198,7 +210,7 @@ Claude cannot hear, so review has two layers:
   (`conditioning_ref` with `condition_strength`) so the melody carries over.
   Plan 003 tests both.
 - **Loops:** use the inpainting loop technique, or let `post` crossfade the tail
-  into the head. Godot then loops the Ogg with a loop offset.
+  into the head. Godot then loops the file with a loop offset.
 - **Stem separation** is available for adaptive mixes later, for example
   bringing a choir in during flashbacks.
 - The licence tier is in §2.
@@ -230,6 +242,7 @@ audio-source/          # masters and data — LFS, never imported by Godot (.gdi
   voice/manifest.json  # from `extract` (keyed by Dialogue Manager ID)
   voice/lock.json      # ID → take, settings, request id, text hash
   voice/masters/<id>.wav (+ .json metadata)
+  voice/post.json      # from `post`: what each game line was made from
   casting/<speaker>/   # Voice Design previews and briefs
   sfx/*.yaml, sfx/masters/…
   music/*.yaml, music/masters/…

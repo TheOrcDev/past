@@ -65,7 +65,8 @@ whether v4 accepts request stitching.
    the pinned release.
 2. Run `ids` → `extract` → `voice` → `check` → `post` → import into Godot.
 3. Every line ends up as a master WAV with metadata, a lock entry, a word-match
-   result, a game Ogg and an envelope.
+   result, a game line (a WAV that Godot imports as QOA, decision #41) and an
+   envelope.
 
 ### Slice 5 — Runtime
 
@@ -168,7 +169,7 @@ About 2–3 working sessions, plus the operator's casting and listening sessions
 - **2026-10-11, slice 5:** the runtime, built and checked with a tone made in
   memory, since no line has audio before casting.
   - **Pieces:**
-    - the `Voice` autoload: loads a line's Ogg by its ID, plays it streamed on
+    - the `Voice` autoload: loads a line's audio by its ID, plays it streamed on
       the Voice bus, and reads its envelope from the table `post` will write;
     - `Say` holds a voiced line until its audio ends, and a click skips it and
       stops the audio. Subtitles already sit over their speaker, in the
@@ -187,3 +188,21 @@ About 2–3 working sessions, plus the operator's casting and listening sessions
       at a load average near 50. Long frames there hold back the build's
       main-thread mixing. Slice 9 measures it on a quiet machine.
   - **Left:** real lines go through it once slices 2–4 make them.
+- **2026-10-11, slice 4, `post` only:** built ahead, because it spends
+  nothing.
+  - **What it does:** each master in `audio-source/voice/masters/` is trimmed
+    (80 ms lead, 200 ms tail), brought to −18 LUFS with one gain capped at
+    −1 dBTP, and written as a 24 kHz mono WAV in `assets/audio/voice/en/`,
+    which Godot imports as QOA (decision #41). Its 30-a-second envelope goes
+    into `envelopes.gd`, which `Voice` reads. `audio-source/voice/post.json`
+    keeps hashes, so only changed masters are posted again.
+  - **Checks:**
+    - 8 new `bun test` cases (20 in all), one of which runs ffmpeg: a quiet
+      master comes out within 0.3 LU of −18 LUFS;
+    - a GUT test plays a line from files `post` made, imported as QOA, with
+      its envelope from the table;
+    - on a scratch line spoken by macOS `say` (not kept), peaks capped the
+      gain at −19 LUFS, and the envelope was silent in pauses, with a median
+      of 174 of 255 in speech.
+  - **Left in slice 4:** `ids`, `check` (word match), and running the whole
+    chain on real lines.

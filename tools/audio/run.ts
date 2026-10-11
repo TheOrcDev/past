@@ -3,13 +3,17 @@
 //   bun tools/audio/run.ts extract   writes audio-source/voice/manifest.json
 //   bun tools/audio/run.ts diff      lines `voice` would generate: new or changed
 //   bun tools/audio/run.ts report    credits used, from the subscription endpoint
-// Plan 003 adds ids, cast, voice, sfx, music, check, post and lint.
+//   bun tools/audio/run.ts post [--force]
+//                                    masters in audio-source/voice/masters -> the
+//                                    game's lines and envelope table (§4.5)
+// Plan 003 adds ids, cast, voice, sfx, music, check and lint.
 
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { dirname } from "node:path";
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { basename, dirname, join, relative } from "node:path";
 import { CONCURRENCY, ElevenLabs } from "./src/client";
 import { buildManifest, diff, type LockEntry, type ManifestEntry } from "./src/manifest";
-import { configPath, dialogueDir, lockPath, manifestPath, repoRoot } from "./src/paths";
+import { configPath, dialogueDir, envelopesPath, lockPath, manifestPath, mastersDir, postPath, repoRoot, voiceDir } from "./src/paths";
+import { envelopeTable, fileHash, postLine, settingsHash, type PostEntry } from "./src/post";
 
 const config = JSON.parse(readFileSync(configPath, "utf8")) as { player: string; tier: string };
 
@@ -41,8 +45,34 @@ async function main(command: string | undefined): Promise<number> {
       console.log(`report: ${sub.tier}, ${sub.character_count} of ${sub.character_limit} credits used, resets ${reset}`);
       return 0;
     }
+    case "post": {
+      const force = process.argv.includes("--force");
+      const record = readJson<Record<string, PostEntry>>(postPath, {});
+      const settings = settingsHash();
+      const masters = existsSync(mastersDir) ? readdirSync(mastersDir).filter((name) => name.endsWith(".wav")).sort() : [];
+      mkdirSync(voiceDir, { recursive: true });
+      let made = 0;
+      for (const name of masters) {
+        const id = basename(name, ".wav");
+        const master = join(mastersDir, name);
+        const out = join(voiceDir, `${id}.wav`);
+        const kept = record[id];
+        if (!force && kept && existsSync(out) && kept.settings === settings && kept.source === fileHash(master)) continue;
+        record[id] = postLine(master, out);
+        made++;
+        console.log(`  ${id}: ${record[id].seconds} s at ${record[id].gainDb >= 0 ? "+" : ""}${record[id].gainDb} dB`);
+      }
+      // A line whose master is gone leaves the table; `lint` reports its file.
+      for (const id of Object.keys(record)) if (!masters.includes(`${id}.wav`)) delete record[id];
+      const sorted = Object.fromEntries(Object.keys(record).sort().map((id) => [id, record[id]]));
+      mkdirSync(dirname(postPath), { recursive: true });
+      writeFileSync(postPath, JSON.stringify(sorted, null, 2) + "\n");
+      writeFileSync(envelopesPath, envelopeTable(sorted));
+      console.log(`post: ${made} made, ${masters.length - made} unchanged -> ${relative(repoRoot, voiceDir)}; Godot imports them as QOA on its next import (tools/test.sh or the editor)`);
+      return 0;
+    }
     default:
-      console.error("usage: bun tools/audio/run.ts <extract|diff|report>");
+      console.error("usage: bun tools/audio/run.ts <extract|diff|report|post>");
       return 2;
   }
 }

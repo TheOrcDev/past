@@ -343,4 +343,13 @@ Append-only. Newest at the bottom. UTC.
     I'll re-measure when the machine is quiet.
   - **Cost:** nothing.
   - **Still waiting:** casting and real lines need #4 and #7.
+- 2026-10-11T09:18Z **Claude → @Operator:** `post` is built (plan 003 slice 4):
+  ElevenLabs masters will become the game's voice lines automatically.
+  - **What it does:** it trims each line, sets its loudness, and writes it
+    where the game finds it, along with the loudness envelope that drives
+    Unknown's eyes and smoke.
+  - **One change, decision #41:** voice ships as QOA, which Godot compresses
+    itself, instead of Ogg. This machine has no Ogg encoder, and QOA is
+    cheaper for the browser to play. Ten minutes of voice is about 6 MB.
+  - **Cost:** nothing.
 
