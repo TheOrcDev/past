@@ -404,7 +404,8 @@ Built in plan 002:
 - `SpriteBody` plays them; it lives in `src/core` and serves any rendered
   character.
 - `UnknownBody` and `Tendrils` live in `src/systems/unknown`.
-- The shaders are `silhouette.gdshader` and `smoke_tendril.gdshader`.
+- The shaders are `silhouette.gdshader`, `liquid_stream.gdshader` and
+  `liquid.gdshader`.
 - Until plan 003's `Voice` exists, a stand-in flicker drives the voice level
   while he speaks.
 
@@ -427,10 +428,17 @@ Built in plan 002:
   wide and flare states. Their intensity follows the voice envelope while he
   speaks (§6.5).
 - **Tendrils:** a dozen `Line2D` verlet chains rooted down the shoulder and
-  back anchors, drawn as thin translucent wisps after the IMG-0003 concept.
+  back anchors, drawn as fine ink threads after IMG-0003 v1 (decision #42).
   - Forces: trailing from velocity, idle drift from noise, an `agitation`
-    parameter for emotion, and a pulse from the voice envelope.
-  - A shader thins the edges into smoke, and `CPUParticles2D` adds fine wisps.
+    parameter for emotion, and a pulse from the voice envelope. The rest shapes
+    hang down, as liquid would.
+  - Each chain is drawn as a smoothed main thread plus threads that part from
+    it toward the tip. A fine ripple flows along all of them, and
+    `liquid_stream.gdshader` swells them in pulses and frays their edges.
+  - `Tendrils` is a `CanvasGroup`, so the threads are drawn as amounts of ink
+    into one buffer. `liquid.gdshader` softens that buffer and maps it to a
+    dark film: thin threads stay translucent, crowded ones near his back thicken
+    into a sheet, and crossings never darken twice.
 - **Rim light:** a light edge around the silhouette. It brightens over dark
   backgrounds so he stays readable.
 

@@ -352,4 +352,24 @@ Append-only. Newest at the bottom. UTC.
     itself, instead of Ogg. This machine has no Ogg encoder, and QOA is
     cheaper for the browser to play. Ten minutes of voice is about 6 MB.
   - **Cost:** nothing.
+- 2026-10-11T20:11Z **Claude → @Operator:** Unknown is leaner and his smoke is
+  ink, after IMG-0003 v1, as you asked (decision #42).
+  - **Body:** narrower and thinner, with the shoulders kept broad, so he reads
+    lean and wiry instead of bulky. All 36 animations were re-rendered; the
+    walk and poses are unchanged.
+  - **Ink:** the strands are now fine, wavering ink threads that hang down,
+    fray, and dissolve at their ends. They merge into one translucent film
+    and thicken into a sheet near his back. No more tentacle tips.
+  - **Compare:** `art-source/work/review/unknown-lean-ink.jpg` shows v1, then
+    before and after from the front and side.
+  - **Checked:** 114 GUT tests pass, and the `unknown_look` run passes on
+    desktop. In the browser the ink draws correctly. `browser-qa.ts` can now
+    save page screenshots, given a folder as a fifth argument.
+  - **Found, not caused by this change:** in the browser build, Unknown's
+    sheets measure about 400 MiB against the 128 MiB budget (desktop 100 MiB),
+    so `unknown_look`'s budget check fails there. The likely cause is WebGL
+    holding the two-byte grey + alpha frames as four bytes a pixel. It needs a
+    fix before the browser demo (plan 006).
+  - **Cost:** nothing.
+
 

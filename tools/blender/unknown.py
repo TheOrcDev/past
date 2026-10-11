@@ -9,8 +9,9 @@ Motion is keyed at 24 fps; any output rate samples it (between keys too), so
 the walk can be compared at 12 and 15 fps from the same keys.
 
 The body is Blender Studio's CC0 realistic male base mesh (art-source/vendor/
-human-base-meshes), shaped towards the IMG-0003 concept: broader shoulders, a
-little more muscle, a smooth skull with no face, 1.85 m tall. It is rigged with
+human-base-meshes), shaped towards IMG-0003 v1: lean and wiry, narrower and
+thinner than the base with its shoulders kept broad, a smooth skull with no
+face, 1.85 m tall. It is rigged with
 named bones and automatic weights; motion is keyframed here (decision #23) over
 a hunched, powerful stance. Frames are lit EEVEE renders on transparency (a
 near-black fibrous skin, cold rim lights from behind), plus anchors.json with
@@ -38,14 +39,15 @@ TILT_DEG = 10.0
 CYCLE = 24  # walk cycle length in 24 fps frames (one second)
 
 # The body is Blender Studio's CC0 realistic male base mesh (art-source/vendor/
-# human-base-meshes), with its sculpted muscle kept as a multires modifier. Its
-# shoulders and arms move out and it swells a little for a more powerful build
-# after the IMG-0003 concept, then it is scaled from its 1.687 m to HEIGHT.
+# human-base-meshes), with its sculpted muscle kept as a multires modifier. It
+# is narrowed and thinned to the lean, wiry build of IMG-0003 v1 (the operator's
+# target), then scaled from its 1.687 m to HEIGHT.
 VENDOR_BODY = Path(__file__).resolve().parents[2] / "art-source/vendor/human-base-meshes/body_male_realistic.blend"
 BASE_HEIGHT = 1.687
 SCALE = HEIGHT / BASE_HEIGHT
-POWER = 0.03  # metres each side the shoulders, upper torso and arms move out
-INFLATE = 0.004  # metres the body swells along its normals
+POWER = 0.022  # metres each side the shoulders, upper torso and arms move out
+INFLATE = -0.006  # metres the body swells along its normals (negative thins every limb)
+NARROW = 0.9  # width and depth relative to the base mesh, height kept
 MULTIRES_LEVEL = 2
 
 # Bones on the base mesh in its A-pose: name -> (head, tail, parent), metres in
@@ -81,7 +83,7 @@ def shape(co: Vector) -> Vector:
     torso = _smoothstep(0.05, 0.17, ax) * _smoothstep(1.02, 1.2, co.z) * (1.0 - _smoothstep(1.42, 1.52, co.z))
     arm = _smoothstep(0.2, 0.25, ax) * _smoothstep(0.55, 0.65, co.z) * (1.0 - _smoothstep(1.25, 1.35, co.z))
     shift = math.copysign(POWER * max(torso, arm), co.x)
-    return Vector((co.x + shift, co.y, co.z)) * SCALE
+    return Vector(((co.x + shift) * NARROW, co.y * NARROW, co.z)) * SCALE
 
 
 BONES = {name: (tuple(shape(Vector(head))), tuple(shape(Vector(tail))), parent) for name, (head, tail, parent) in BASE_BONES.items()}

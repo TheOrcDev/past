@@ -5,11 +5,14 @@
 // window like this one. It uses a throwaway profile and closes when done.
 //
 // Usage (with `bun tools/build/serve.ts` running):
-//   bun tools/build/browser-qa.ts [scenario=perf] [canvas=1920x1080] [passes=2]
+//   bun tools/build/browser-qa.ts [scenario=perf] [canvas=1920x1080] [passes=2] [shots-dir]
+// With a shots-dir, each screenshot the scenario takes is also captured from
+// the page into that folder, since the game's own land in the browser's storage.
+// A capture lands a moment after the game's own shot, so motion may have moved on.
 // The window is sized so the canvas has that many device pixels. Each pass
 // loads the page again, with qa-pass=<n> in the URL; later passes run with warm
 // caches, so they are the ones to quote.
-import { mkdtempSync, rmSync } from "node:fs";
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
@@ -20,6 +23,9 @@ const TIMEOUT_MS = 180_000;
 const scenario = process.argv[2] ?? "perf";
 const [canvasW, canvasH] = (process.argv[3] ?? "1920x1080").split("x").map(Number);
 const passes = Number(process.argv[4] ?? 2);
+const shotsDir = process.argv[5];
+if (shotsDir) mkdirSync(shotsDir, { recursive: true });
+const captures: Promise<void>[] = [];
 const pageUrl = `http://localhost:8060/?qa=${scenario}`;
 
 const profile = mkdtempSync(join(tmpdir(), "past-chrome-"));
@@ -93,6 +99,11 @@ try {
         const text = message.params.args.map((a: { value?: unknown }) => String(a.value ?? "")).join(" ");
         if (text.includes("[qa]")) {
           console.log(`[pass ${pass}] ${text}`);
+          const shot = shotsDir && text.match(/PASS screenshot .*\/([^/]+)\.png/)?.[1];
+          if (shot) {
+            const name = `pass${pass}-${shot}.png`;
+            captures.push(send("Page.captureScreenshot", { format: "png" }).then((result) => writeFileSync(join(shotsDir, name), Buffer.from(result.data, "base64"))));
+          }
           if (text.includes("[qa] RESULT")) {
             passed &&= text.includes("RESULT PASS");
             if (pass >= passes) {
@@ -125,6 +136,7 @@ try {
   });
   console.log(`[browser] ${page.result.value}`);
   await done;
+  await Promise.all(captures);
   socket.close();
 } catch (error) {
   console.error(`[browser] ${error instanceof Error ? error.message : error}`);

@@ -154,8 +154,8 @@ installed.
    approval.
 2. **Body (Claude, Blender):** Blender Studio's CC0 realistic male base mesh
    (`art-source/vendor/human-base-meshes`), with its sculpted muscle. It is
-   reshaped towards the IMG-0003 concept (broader shoulders, a little more
-   muscle, a smooth skull with no face) and rigged with named bones and
+   reshaped towards IMG-0003 v1 (lean and wiry, with broad shoulders and a
+   smooth skull with no face, decision #42) and rigged with named bones and
    automatic weights.
 3. **Motion:** keyframed by Claude in Blender with bpy scripts (decision #23).
    The walk starts from the classic contact, down, passing and up poses. There
@@ -172,9 +172,10 @@ installed.
    and direction. Anchors drive three things:
    - **Eyes:** additive glow sprites with blink, flare and narrow states, and
      intensity driven by the voice envelope;
-   - **Tendrils:** procedural verlet chains (`Line2D`) with a noise shader and a
-     few smoke particles. They trail behind motion, drift when idle, become
-     agitated with emotion and pulse with speech;
+   - **Tendrils:** procedural verlet chains (`Line2D`) drawn as fine, wavering
+     ink threads into one `CanvasGroup` (decision #42). They trail behind
+     motion, drift when idle, become agitated with emotion and pulse with
+     speech;
    - **Held items:** attached at the hand anchors.
 
 **Minimum animation set:**
