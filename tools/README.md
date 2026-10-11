@@ -41,6 +41,22 @@ key is ambiguous. The empty `AI_GATEWAY_API_KEY=""` line that is already there
 is harmless: an empty key falls through to the OIDC token. A dedicated
 `AI_GATEWAY_API_KEY` for Past would remove the expiry.
 
+## Audio pipeline
+
+`audio/` is plan 003's ElevenLabs pipeline (`docs/audio-pipeline.md` §3). Run it
+from the repository root, so Bun loads `.env`:
+
+| Command | Does |
+|---|---|
+| `bun tools/audio/run.ts extract` | Reads every spoken line in `content/dialogue` (its `[ID:…]`, speaker, text and `[#vo=…]` direction) into `audio-source/voice/manifest.json` |
+| `bun tools/audio/run.ts diff` | Lists what `voice` would generate: lines new or changed against `audio-source/voice/lock.json` |
+| `bun tools/audio/run.ts report` | Credits used and the limit, from the subscription endpoint. Needs `ELEVENLABS_API_KEY`. |
+
+- **Tests:** `cd tools/audio && bun test` (no test touches the network).
+- **Limits:** `config.json` holds the player's speaker name and the plan tier,
+  which sets how many requests run at once. It stays `free` until the operator
+  picks a plan (board #4).
+
 ## Unknown's sprites
 
 From the repository root, after changing `blender/unknown.py`:

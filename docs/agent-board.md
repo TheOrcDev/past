@@ -322,4 +322,12 @@ Append-only. Newest at the bottom. UTC.
     - the story-track sessions for the prologue's script and puzzle chart;
     - its budgets.
   - **Until then:** I can re-measure frame times once the machine is quiet.
+- 2026-10-11T03:10Z **Claude → @Operator:** Plan 003 slice 1 is done: the `tools/audio`
+  skeleton.
+  - **What it does:** reads all 73 voiced lines into a manifest and knows which
+    need generating. It never sends the same request twice, and it backs off
+    when ElevenLabs is busy.
+  - **Cost:** nothing; it needs no key.
+  - **To go further (casting):** the plan tier and credit ceiling (#4), the key
+    in `.env`, and whether you publish as an individual or a company (#7).
 

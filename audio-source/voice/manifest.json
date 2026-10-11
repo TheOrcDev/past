@@ -1,0 +1,659 @@
+[
+  {
+    "id": "CATH_ALTAR_LOOK_1",
+    "speaker": "Unknown",
+    "text": "An altar. Whatever was worshipped here has stopped answering.",
+    "direction": "",
+    "line": 17,
+    "file": "content/dialogue/cathedral.dialogue",
+    "textHash": "5b27feb63281eb6d6a02058e4002d89dd1ca3c77e7ea0f17aa2c4563e0e0944e"
+  },
+  {
+    "id": "CATH_ROSE_WINDOW_LOOK_1",
+    "speaker": "Unknown",
+    "text": "Most of the glass is gone, but the light still finds its way in.",
+    "direction": "",
+    "line": 23,
+    "file": "content/dialogue/cathedral.dialogue",
+    "textHash": "433e1106262e843edad1b8ec7533718368be2b7cfe02a08b9823e939d79668f6"
+  },
+  {
+    "id": "CATH_ROSE_WINDOW_LOOK_2",
+    "speaker": "Unknown",
+    "text": "Stubborn. I like that in a window.",
+    "direction": "",
+    "line": 24,
+    "file": "content/dialogue/cathedral.dialogue",
+    "textHash": "e96c9f71c649c49b04d84931178c03a63443f302f553852d99908c8f4377b190"
+  },
+  {
+    "id": "CATH_STATUE_RETURN_1",
+    "speaker": "Unknown",
+    "text": "Gold. Candles. Somebody loved this place.",
+    "direction": "",
+    "line": 10,
+    "file": "content/dialogue/cathedral.dialogue",
+    "textHash": "eada4abe4105c24bd907ccd649498362b3b1476dd184ad273b1f56e7022486c3"
+  },
+  {
+    "id": "CATH_STATUE_RETURN_2",
+    "speaker": "Unknown",
+    "text": "And somehow, I was there to see it.",
+    "direction": "",
+    "line": 11,
+    "file": "content/dialogue/cathedral.dialogue",
+    "textHash": "98e02973cc91ded314d7bc7065f635d81dd54621bd7833e272eedd832aad274e"
+  },
+  {
+    "id": "CATH_STATUE_USE_1",
+    "speaker": "Unknown",
+    "text": "Her hand is cold. Colder than stone has any right to be.",
+    "direction": "",
+    "line": 3,
+    "file": "content/dialogue/cathedral.dialogue",
+    "textHash": "07e9474376aa33142747f7a521bfadd06c9322c5bd11bbc5760a8a4d41d901b9"
+  },
+  {
+    "id": "CATH_STATUE_USE_2",
+    "speaker": "Unknown",
+    "text": "Wait. I know this place.",
+    "direction": "",
+    "line": 4,
+    "file": "content/dialogue/cathedral.dialogue",
+    "textHash": "b2e7e55068ade01b603b76920b682beb0c93fff164cc0be57ae27c1a93c7c6e8"
+  },
+  {
+    "id": "CEM_ANGEL_LOOK_1",
+    "speaker": "Unknown",
+    "text": "She's been weeping for a long time. Stone is patient like that.",
+    "direction": "",
+    "line": 16,
+    "file": "content/dialogue/cemetery.dialogue",
+    "textHash": "3d255435139047340a79c08a98664e282cecfe4d47e7d10cd81ff1b193272cd4"
+  },
+  {
+    "id": "CEM_ARRIVAL_1",
+    "speaker": "Unknown",
+    "text": "Cold. Quiet. And for some reason, this spot feels like mine.",
+    "direction": "",
+    "line": 3,
+    "file": "content/dialogue/cemetery.dialogue",
+    "textHash": "83423fb9cb9179f65c1dde594ff9704696951e9e4b38b9740fe344da4af94baf"
+  },
+  {
+    "id": "CEM_CITY_LOOK_1",
+    "speaker": "Unknown",
+    "text": "The city. Even from here it looks like it's holding its breath.",
+    "direction": "",
+    "line": 28,
+    "file": "content/dialogue/cemetery.dialogue",
+    "textHash": "e0ecac4fa4f8306859bf30bbaf355917e4a5bff409bd1aac1f3c5fa4beb7fa63"
+  },
+  {
+    "id": "CEM_DOVE_LOOK_1",
+    "speaker": "Unknown",
+    "text": "A dove. Whoever my dove was, they paid a stonecutter to say goodbye.",
+    "direction": "",
+    "line": 48,
+    "file": "content/dialogue/cemetery.dialogue",
+    "textHash": "0ece637d8319dc5e681632cad1e288229a45608afbb9bf75b2efdb280aecb845"
+  },
+  {
+    "id": "CEM_GRAVE_LOOK_1",
+    "speaker": "Unknown",
+    "text": "The earth is loose. Disturbed. From below, if I'm honest.",
+    "direction": "",
+    "line": 9,
+    "file": "content/dialogue/cemetery.dialogue",
+    "textHash": "92b337a5a0009658dc46283040b0f4d96e7ae27a688f5517d0cf1abeb5f665a8"
+  },
+  {
+    "id": "CEM_GRAVE_LOOK_2",
+    "speaker": "Unknown",
+    "text": "I'd rather not think about why I know that.",
+    "direction": "",
+    "line": 10,
+    "file": "content/dialogue/cemetery.dialogue",
+    "textHash": "008e162f605da82b6de9370b430a4b4b5f1d288e73157c931410c6b85ee00710"
+  },
+  {
+    "id": "CEM_INSCRIPTION_LOOK_1",
+    "speaker": "Unknown",
+    "text": "\"I know you are happy now. Your dove.\"",
+    "direction": "",
+    "line": 41,
+    "file": "content/dialogue/cemetery.dialogue",
+    "textHash": "d6ca48ff3dfeb0d25ec5343d85ffe18d9015d3cd2f058f77a53bb4cc1c103577"
+  },
+  {
+    "id": "CEM_INSCRIPTION_LOOK_2",
+    "speaker": "Unknown",
+    "text": "Happy. Here. Somebody had a very generous idea of me.",
+    "direction": "",
+    "line": 42,
+    "file": "content/dialogue/cemetery.dialogue",
+    "textHash": "0da59ea3ebd657f41d8cf66950602781994a96f682c9aef60be01eeaaa2aeec3"
+  },
+  {
+    "id": "CEM_MAUSOLEUM_LOOK_1",
+    "speaker": "Unknown",
+    "text": "Somebody important. Important enough to get a roof.",
+    "direction": "",
+    "line": 22,
+    "file": "content/dialogue/cemetery.dialogue",
+    "textHash": "c004843d0d1fe53c244df589f8a3381d45ab40e4581175e7dbfc9c52a28486b9"
+  },
+  {
+    "id": "CEM_NAME_LOOK_1",
+    "speaker": "Unknown",
+    "text": "U. The rest has been smashed away. Whoever did it was thorough.",
+    "direction": "",
+    "line": 34,
+    "file": "content/dialogue/cemetery.dialogue",
+    "textHash": "dd8bc21729e6c506a6459ec79926f020d926e8dd64676557e3a56595a82cb5dd"
+  },
+  {
+    "id": "CEM_NAME_LOOK_2",
+    "speaker": "Unknown",
+    "text": "U... Is that me? It's a start.",
+    "direction": "",
+    "line": 35,
+    "file": "content/dialogue/cemetery.dialogue",
+    "textHash": "24022bf5094b3f1dbc2024118cfc703d800bd16be3a230a828f1bb2d2f748a12"
+  },
+  {
+    "id": "CORE_FALLBACK_COMBINE_1",
+    "speaker": "Unknown",
+    "text": "These two have nothing to say to each other.",
+    "direction": "",
+    "line": 31,
+    "file": "content/dialogue/core.dialogue",
+    "textHash": "3dddeec378f8de55b8a07a4d64001cbfd9c3dffc6c17412574296bd29c47ca92"
+  },
+  {
+    "id": "CORE_FALLBACK_COMBINE_2",
+    "speaker": "Unknown",
+    "text": "No. Some things are better left apart.",
+    "direction": "",
+    "line": 32,
+    "file": "content/dialogue/core.dialogue",
+    "textHash": "a895491a001d3e079e13a37b0296f46c4620cfba2c0b854a0e704796ac8b536e"
+  },
+  {
+    "id": "CORE_FALLBACK_ITEM_1",
+    "speaker": "Unknown",
+    "text": "They don't belong together. Not yet, anyway.",
+    "direction": "",
+    "line": 24,
+    "file": "content/dialogue/core.dialogue",
+    "textHash": "65bd133748c5d6c8282b5ce1546ddc0b4ed0b673ef0da55a0cef933bdbc59643"
+  },
+  {
+    "id": "CORE_FALLBACK_ITEM_2",
+    "speaker": "Unknown",
+    "text": "I could try. It would be embarrassing for both of us.",
+    "direction": "",
+    "line": 25,
+    "file": "content/dialogue/core.dialogue",
+    "textHash": "64c738e17e839b601c3ffafedf4b387bd0824e9f6769131af35f606a1280524c"
+  },
+  {
+    "id": "CORE_FALLBACK_LOOK_1",
+    "speaker": "Unknown",
+    "text": "Nothing remarkable. Like me, apparently.",
+    "direction": "",
+    "line": 3,
+    "file": "content/dialogue/core.dialogue",
+    "textHash": "ae30384043adca3415292ca6535a5dfffdc430c68d9811cbce937665ac96e33a"
+  },
+  {
+    "id": "CORE_FALLBACK_LOOK_2",
+    "speaker": "Unknown",
+    "text": "It keeps its secrets. Everyone does, around here.",
+    "direction": "",
+    "line": 4,
+    "file": "content/dialogue/core.dialogue",
+    "textHash": "022313a0168211b1af4709d86a93fe39f8dc084b76caeb73e21e9a7379fdde3b"
+  },
+  {
+    "id": "CORE_FALLBACK_LOOK_3",
+    "speaker": "Unknown",
+    "text": "I stare at it. It doesn't stare back. That's something.",
+    "direction": "",
+    "line": 5,
+    "file": "content/dialogue/core.dialogue",
+    "textHash": "6fc2dc89fc08405cd64d3b66e247ccb4babe00676e7679fb47b2d70cd0483567"
+  },
+  {
+    "id": "CORE_FALLBACK_TALK_1",
+    "speaker": "Unknown",
+    "text": "It has nothing to say. Neither do I, really.",
+    "direction": "",
+    "line": 18,
+    "file": "content/dialogue/core.dialogue",
+    "textHash": "f0d61d3704c4e0e387f79201769cf99c8db7100b765871338d217110b6c3bde1"
+  },
+  {
+    "id": "CORE_FALLBACK_USE_1",
+    "speaker": "Unknown",
+    "text": "My hands have no opinion on that.",
+    "direction": "",
+    "line": 11,
+    "file": "content/dialogue/core.dialogue",
+    "textHash": "70357224093612cd2affd08b85652b02cf522e08eb3b513088e738b66b32fc09"
+  },
+  {
+    "id": "CORE_FALLBACK_USE_2",
+    "speaker": "Unknown",
+    "text": "Better not. I don't know what I'm capable of yet.",
+    "direction": "",
+    "line": 12,
+    "file": "content/dialogue/core.dialogue",
+    "textHash": "c6c032ee4146a70a07553fab2aa2c1311a6eb1c2a3eff711efa96e3439311c4b"
+  },
+  {
+    "id": "GB_ALTAR_LOOK_1",
+    "speaker": "Unknown",
+    "text": "Something was carved here once. The fire took most of it.",
+    "direction": "",
+    "line": 92,
+    "file": "content/dialogue/greybox.dialogue",
+    "textHash": "f0a85afe0b6c2749a9e0297fc4012685e99ff017c562eccb4f3fd5a4420e9c9f"
+  },
+  {
+    "id": "GB_ALTAR_PAST_1",
+    "speaker": "Unknown",
+    "text": "MERCY. Carved deep, before the fire.",
+    "direction": "",
+    "line": 104,
+    "file": "content/dialogue/greybox.dialogue",
+    "textHash": "9a20588adae2ff608422eeaa4aa4ccc6b545234cb1d3d92a5bf3ba5e48e89614"
+  },
+  {
+    "id": "GB_ALTAR_TOUCH_1",
+    "speaker": "Unknown",
+    "text": "The stone is still warm. Or I am.",
+    "direction": "",
+    "line": 98,
+    "file": "content/dialogue/greybox.dialogue",
+    "textHash": "18d1d209e8029e9a40052086602e18d839fc175bb46c4fa60936107f4a638e4c"
+  },
+  {
+    "id": "GB_ASK_WHO",
+    "speaker": "Unknown",
+    "text": "Who are you?",
+    "direction": "",
+    "line": 19,
+    "file": "content/dialogue/greybox.dialogue",
+    "textHash": "53bee3014d587518f8160cf3d14d42121b999720bea27e3617fb7961e47ff779"
+  },
+  {
+    "id": "GB_ASK_WORD",
+    "speaker": "Unknown",
+    "text": "What word?",
+    "direction": "",
+    "line": 16,
+    "file": "content/dialogue/greybox.dialogue",
+    "textHash": "7557a191eaab28205ed51a7f4276d99a3bae85e541416fdf4dcad3ee2270d14c"
+  },
+  {
+    "id": "GB_FLASK_SHELF_1",
+    "speaker": "Unknown",
+    "text": "A flask on the shelf. Oil, by the smell.",
+    "direction": "",
+    "line": 110,
+    "file": "content/dialogue/greybox.dialogue",
+    "textHash": "87dd2ab32b96ca75be45df1a33f171eef700fe063973eea3b8ded304eaf93b2c"
+  },
+  {
+    "id": "GB_FLASK_TAKE_1",
+    "speaker": "Unknown",
+    "text": "Oil. That might help with something rusted.",
+    "direction": "",
+    "line": 116,
+    "file": "content/dialogue/greybox.dialogue",
+    "textHash": "88a434b72e6ada4efe1c989303bd0a31f6e9027f2891b419cf55f930229da300"
+  },
+  {
+    "id": "GB_GATE_LOOK_1",
+    "speaker": "Unknown",
+    "text": "Iron, gone orange with rust. Nobody has been through here in a while.",
+    "direction": "",
+    "line": 32,
+    "file": "content/dialogue/greybox.dialogue",
+    "textHash": "bbf8cbab78e78d069f2d5fdf3ee52e4c1d911c6ceac6af6ad9fa9c7e3578122c"
+  },
+  {
+    "id": "GB_GATE_OILED_1",
+    "speaker": "Unknown",
+    "text": "There. The hinges are drinking it up.",
+    "direction": "",
+    "line": 50,
+    "file": "content/dialogue/greybox.dialogue",
+    "textHash": "1f9715380936391d797bf299ae3432b726d03db0ecc38478d566302cdc4a3fb1"
+  },
+  {
+    "id": "GB_GATE_OPENS_1",
+    "speaker": "Unknown",
+    "text": "It gives. Slowly, like it's remembering how.",
+    "direction": "",
+    "line": 56,
+    "file": "content/dialogue/greybox.dialogue",
+    "textHash": "339b006cf46a585d6269bb8b7d2c23b42f1d60f6180f3b4206bda55dde4e32cf"
+  },
+  {
+    "id": "GB_GATE_RUSTED_1",
+    "speaker": "Unknown",
+    "text": "Rusted solid. The hinges haven't moved in years.",
+    "direction": "",
+    "line": 38,
+    "file": "content/dialogue/greybox.dialogue",
+    "textHash": "635c6de529cda960d43b1a20d21808dd43b465861f65da9ca9d3478c00297998"
+  },
+  {
+    "id": "GB_GATE_UNHEARD_1",
+    "speaker": "Unknown",
+    "text": "The hinges give a little now. The gate still won't open for me.",
+    "direction": "",
+    "line": 44,
+    "file": "content/dialogue/greybox.dialogue",
+    "textHash": "1f6ef15943d49cfc9db23f5a6f416cf4158850fd07cd8a2bf7cb4764fdc17b4d"
+  },
+  {
+    "id": "GB_KEEPER_HALT",
+    "speaker": "Gatekeeper",
+    "text": "Halt. This gate opens only for one who knows the word of the house.",
+    "direction": "",
+    "line": 9,
+    "file": "content/dialogue/greybox.dialogue",
+    "textHash": "6770dd1a04f655329940aebbee74f9f8f976e3a65195ba808eb240c591984929"
+  },
+  {
+    "id": "GB_KEEPER_HEARD",
+    "speaker": "Gatekeeper",
+    "text": "Mercy. Yes. The gate will hear you, if its hinges still can.",
+    "direction": "",
+    "line": 25,
+    "file": "content/dialogue/greybox.dialogue",
+    "textHash": "ca62c3bc7cf036843454a704d4b3bf9673faad4b97d8d7127ee8d0dfc1ef5a45"
+  },
+  {
+    "id": "GB_KEEPER_LOOK_1",
+    "speaker": "Unknown",
+    "text": "A statue with its hand out. Waiting for something, or someone.",
+    "direction": "",
+    "line": 3,
+    "file": "content/dialogue/greybox.dialogue",
+    "textHash": "bcaa7803ad4796d68bd25cbb253bf08516630a5c1a14b00cdc62c092c189a47c"
+  },
+  {
+    "id": "GB_KEEPER_SPEAK",
+    "speaker": "Gatekeeper",
+    "text": "Speak.",
+    "direction": "",
+    "line": 15,
+    "file": "content/dialogue/greybox.dialogue",
+    "textHash": "6bbdbea5f7046f91e4fa105c6acc9d359521452441e839f61e88626bc01a56d0"
+  },
+  {
+    "id": "GB_KEEPER_WHO",
+    "speaker": "Gatekeeper",
+    "text": "Stone. I keep the gate. That is all I remember being.",
+    "direction": "",
+    "line": 21,
+    "file": "content/dialogue/greybox.dialogue",
+    "textHash": "cc81874737eff19e45f9775f360315abf7fd96c41cfc181093180b28fe3d554e"
+  },
+  {
+    "id": "GB_KEEPER_WORD",
+    "speaker": "Gatekeeper",
+    "text": "It was carved on the chapel's altar, before the fire.",
+    "direction": "",
+    "line": 17,
+    "file": "content/dialogue/greybox.dialogue",
+    "textHash": "177ad5b2d2f6e434acddcf9f137e64161335685a1d24d0a65db5c1433a5545f1"
+  },
+  {
+    "id": "GB_LEAVE",
+    "speaker": "Unknown",
+    "text": "Nothing.",
+    "direction": "",
+    "line": 27,
+    "file": "content/dialogue/greybox.dialogue",
+    "textHash": "312a79fd1d76a916f27ff5da6957c036a32433a5e23e352b5852dabe3e44ae41"
+  },
+  {
+    "id": "GB_MILESTONE_LOOK_1",
+    "speaker": "Unknown",
+    "text": "A milestone. Whatever distance it promised has worn away.",
+    "direction": "",
+    "line": 140,
+    "file": "content/dialogue/greybox.dialogue",
+    "textHash": "9be26ccd359f98c48e8794839097f3110866cdf44f607d4e1c523fa705f4ce7e"
+  },
+  {
+    "id": "GB_MILESTONE_USE_1",
+    "speaker": "Unknown",
+    "text": "Warm. Somebody used to stop here, and look out at all of it.",
+    "direction": "",
+    "line": 146,
+    "file": "content/dialogue/greybox.dialogue",
+    "textHash": "93a47af547a4ff37f36a1be927cc004f9320c69d51f0c09cd035239ab79c31ac"
+  },
+  {
+    "id": "GB_OILED_RAG_LOOK_1",
+    "speaker": "Unknown",
+    "text": "A rag soaked in oil. Good for a hinge, or a fire.",
+    "direction": "",
+    "line": 86,
+    "file": "content/dialogue/greybox.dialogue",
+    "textHash": "8b7c2ad0c029d5e8698c570d7beac1ada0a005f3b690b072431c764314cf1b66"
+  },
+  {
+    "id": "GB_OIL_LOOK_1",
+    "speaker": "Unknown",
+    "text": "Lamp oil. Thick, and it still smells of smoke.",
+    "direction": "",
+    "line": 80,
+    "file": "content/dialogue/greybox.dialogue",
+    "textHash": "a0578da12a192a47372652c1205c67373f94c6b6fefaaa3f169d4c5f7c9fd28f"
+  },
+  {
+    "id": "GB_PATH_LOOK_1",
+    "speaker": "Unknown",
+    "text": "The way on. Whatever is out there, I got this far on my own.",
+    "direction": "",
+    "line": 128,
+    "file": "content/dialogue/greybox.dialogue",
+    "textHash": "9397e613ac11422351a01ac2e97c3db16276e3c675c18ba4b55b717f6156e4b4"
+  },
+  {
+    "id": "GB_PATH_USE_1",
+    "speaker": "Unknown",
+    "text": "Let's see where it goes.",
+    "direction": "",
+    "line": 134,
+    "file": "content/dialogue/greybox.dialogue",
+    "textHash": "76bf11640c87b686ba9bde6ec41296bf0a25723d3a2171bd00fb34573f639a8d"
+  },
+  {
+    "id": "GB_RAG_HOOK_1",
+    "speaker": "Unknown",
+    "text": "A rag on a hook. Somebody's idea of tidy.",
+    "direction": "",
+    "line": 62,
+    "file": "content/dialogue/greybox.dialogue",
+    "textHash": "3eae2b040fd73f7169b366fcb908e46a051b2dfd8dbe29ebb24ecb2ed5e609aa"
+  },
+  {
+    "id": "GB_RAG_LOOK_1",
+    "speaker": "Unknown",
+    "text": "A rag. Dry, stiff, and not much else.",
+    "direction": "",
+    "line": 74,
+    "file": "content/dialogue/greybox.dialogue",
+    "textHash": "532b6a1a3f461071367dfd8690cb01d45b42a1fdcaf21a2ac25fbc2d1b9dce7b"
+  },
+  {
+    "id": "GB_RAG_TAKE_1",
+    "speaker": "Unknown",
+    "text": "Mine now. Nobody's going to miss it.",
+    "direction": "",
+    "line": 68,
+    "file": "content/dialogue/greybox.dialogue",
+    "textHash": "5af2fd2fcc0e1161f5a3212d39cfe025098135c39d686a870e5199954433f949"
+  },
+  {
+    "id": "GB_SAY_WORD",
+    "speaker": "Unknown",
+    "text": "The word is Mercy.",
+    "direction": "",
+    "line": 23,
+    "file": "content/dialogue/greybox.dialogue",
+    "textHash": "9d11979bd24a6ae6364857afdd7845d2987d1351d72c2edfc206561cd5ec6dbf"
+  },
+  {
+    "id": "GB_WINDOW_LOOK_1",
+    "speaker": "Unknown",
+    "text": "Grey light. It doesn't reach the floor.",
+    "direction": "",
+    "line": 122,
+    "file": "content/dialogue/greybox.dialogue",
+    "textHash": "e5600d6f41a5238e7298874e20ae9c6b6fabced1a3d60a12c78fa741670edee1"
+  },
+  {
+    "id": "HINT_CATHEDRAL_1",
+    "speaker": "Unknown",
+    "text": "The dead here won't tell me any more. Maybe the city will.",
+    "direction": "",
+    "line": 21,
+    "file": "content/dialogue/hints.dialogue",
+    "textHash": "03db664b8ae9ba068dcc3707f816ba5cbbe18edb5fa3b86d15a00a7961124d9e"
+  },
+  {
+    "id": "HINT_CATHEDRAL_2",
+    "speaker": "Unknown",
+    "text": "The path runs east, toward that cathedral.",
+    "direction": "",
+    "line": 27,
+    "file": "content/dialogue/hints.dialogue",
+    "textHash": "b1a7a32b4ef4dded3f8248bf654f8f663efed103239f6e865bea9cf940d9943b"
+  },
+  {
+    "id": "HINT_CATHEDRAL_3",
+    "speaker": "Unknown",
+    "text": "East. Follow the path to the cathedral.",
+    "direction": "",
+    "line": 33,
+    "file": "content/dialogue/hints.dialogue",
+    "textHash": "eb5230384bc39f1c6731abbb41507a2be0c01ec477da17be85aabbfb86bafe54"
+  },
+  {
+    "id": "HINT_NONE_1",
+    "speaker": "Unknown",
+    "text": "Nothing pulls at me right now. The rest of me is still out there, somewhere.",
+    "direction": "",
+    "line": 57,
+    "file": "content/dialogue/hints.dialogue",
+    "textHash": "b73cba9c9f29c5d34653b27a489dbdad4e889596bcfa1746c767d45d7db96d0f"
+  },
+  {
+    "id": "HINT_STATUE_1",
+    "speaker": "Unknown",
+    "text": "Something in this place remembers more than I do.",
+    "direction": "",
+    "line": 39,
+    "file": "content/dialogue/hints.dialogue",
+    "textHash": "f0c1b94b466587abc7c7e018a30c2d30171f86c4bdb216e983eb85449ccc977d"
+  },
+  {
+    "id": "HINT_STATUE_2",
+    "speaker": "Unknown",
+    "text": "That saint by the wall. I keep wanting to reach for it.",
+    "direction": "",
+    "line": 45,
+    "file": "content/dialogue/hints.dialogue",
+    "textHash": "f69e9b23a0895ad1bf10868d2854f02560a96ab7863362c38e43598218a6dc8c"
+  },
+  {
+    "id": "HINT_STATUE_3",
+    "speaker": "Unknown",
+    "text": "The statue. Put a hand on it.",
+    "direction": "",
+    "line": 51,
+    "file": "content/dialogue/hints.dialogue",
+    "textHash": "04a2a620625c33c9db259256dbfe56247422f4ab5dfa82d73555057ef46d430d"
+  },
+  {
+    "id": "HINT_STONE_1",
+    "speaker": "Unknown",
+    "text": "Somebody went to the trouble of a headstone. The least I can do is read it.",
+    "direction": "",
+    "line": 3,
+    "file": "content/dialogue/hints.dialogue",
+    "textHash": "c61bc71377b5542a4749afac05686867edcbd60ac362401629d0baf24421d4c4"
+  },
+  {
+    "id": "HINT_STONE_2",
+    "speaker": "Unknown",
+    "text": "That gravestone. There's lettering on it, what's left of it.",
+    "direction": "",
+    "line": 9,
+    "file": "content/dialogue/hints.dialogue",
+    "textHash": "9881382253712cb81104e490e138d117ebd0c39d14f2d4ecfab339e3d1272c18"
+  },
+  {
+    "id": "HINT_STONE_3",
+    "speaker": "Unknown",
+    "text": "The gravestone, up close. The name, and the words under it.",
+    "direction": "",
+    "line": 15,
+    "file": "content/dialogue/hints.dialogue",
+    "textHash": "8e0776259bfdb742f9306a9834d2e61d86bd8ed81ef69d6c09121eefc0375f48"
+  },
+  {
+    "id": "JOURNAL_CATHEDRAL_STATUE",
+    "speaker": "Unknown",
+    "text": "A woman praying where the saint stands, and I knew her hands were cold before I touched them.",
+    "direction": "",
+    "line": 3,
+    "file": "content/dialogue/journal.dialogue",
+    "textHash": "041e698a291398b12756b2f33dc8d13e47615060a677a0d58dc9551166580654"
+  },
+  {
+    "id": "JOURNAL_GREYBOX_ALTAR",
+    "speaker": "Unknown",
+    "text": "The chapel before the fire, and one word carved into its altar: Mercy.",
+    "direction": "",
+    "line": 9,
+    "file": "content/dialogue/journal.dialogue",
+    "textHash": "3c70165b22b6524002235818f75e28b38b562fd6753b3c60851a216fad0d267d"
+  },
+  {
+    "id": "JOURNAL_GREYBOX_MILESTONE",
+    "speaker": "Unknown",
+    "text": "The road beyond the gate, warm and busy, as if it still went somewhere.",
+    "direction": "",
+    "line": 15,
+    "file": "content/dialogue/journal.dialogue",
+    "textHash": "9877997f6980fa4ef9a5cd682baf1a27f63d91702d7ad68bd95076960a0f7f71"
+  },
+  {
+    "id": "SANDBOX_STATUE_LOOK",
+    "speaker": "Unknown",
+    "text": "A saint, still waiting for someone to pray to her.",
+    "direction": "",
+    "line": 3,
+    "file": "content/dialogue/sandbox.dialogue",
+    "textHash": "5e8158b204262a5ae4a0e690b0b7269f0ea5e96367d669e6b19c6bf6a682a86e"
+  },
+  {
+    "id": "SANDBOX_STATUE_LOOK_2",
+    "speaker": "Unknown",
+    "text": "I don't think it's going to be me.",
+    "direction": "",
+    "line": 4,
+    "file": "content/dialogue/sandbox.dialogue",
+    "textHash": "368f678aa59adda725795e214b9d4404b4627f95df95d26f3e593f0aeb566f17"
+  }
+]

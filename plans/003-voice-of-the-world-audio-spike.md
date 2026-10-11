@@ -146,5 +146,22 @@ for fixed-order scenes.
 About 2–3 working sessions, plus the operator's casting and listening sessions.
 
 ## Execution record
-
-(empty)
+- **2026-10-11, slice 1:** the `tools/audio` skeleton, built ahead of board #4
+  and #7 because it needs no key and spends nothing.
+  - **Pieces:**
+    - the ElevenLabs client: concurrency per plan tier, and backoff on HTTP
+      429 that honours Retry-After;
+    - the request-hash cache: a request never calls the API twice unless
+      forced;
+    - the subscription report;
+    - `extract` and `diff`, which read the dialogue files into the manifest
+      and compare it with the lock.
+  - **Tag syntax:** checked against Dialogue Manager 4.1.0. Voice direction is
+    a line tag, `[#vo=whispers]`, read with `get_tag_value("vo")`. That
+    supersedes this plan's earlier "`# vo:` comment" wording.
+  - **The real dialogue:** `extract` finds 73 spoken lines, one for every
+    `[ID:` in the content (68 for Unknown, 5 for the Gatekeeper).
+  - **Tests:** 12 `bun test` cases, with no network. They caught a missing
+    Retry-After header being read as "retry at once".
+  - **Next:** slice 2 (casting) needs the plan tier and credit ceiling (board
+    #4), the key in `.env`, and the publishing entity (#7).
