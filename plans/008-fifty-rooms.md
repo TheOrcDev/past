@@ -341,3 +341,6 @@ XXL: five parts. It is re-estimated after slices 3 and 4.
     masks. This is decision #47.
   - **LFS (board #13):** a Sol raw is about 3.5 MB. Plan 008's raws come to
     about 1.7 GB.
+- **2026-10-11, slice 1:** the operator's "execute the entire plan" is taken
+  as the sign-off for the story drafts, the look gate and memory figures
+  (decision #48). The story docs are marked signed.

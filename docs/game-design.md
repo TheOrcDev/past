@@ -206,8 +206,8 @@ skippable.
 ## 13. Story track: open questions
 
 These are settled with the operator before the prologue's script is written.
-The draft answers are in `story/bible.md`, built on the operator's "Thief of
-names" core (decision #43), and they wait on board #10:
+The answers are in `story/bible.md`, built on the operator's "Thief of names"
+core (decision #43) and signed with plan 008 (decision #48):
 
 1. Who was Unknown? This is the answer the whole game builds toward.
 2. What happened to the city, and why is the present grey and ruined?

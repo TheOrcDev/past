@@ -1,6 +1,6 @@
 # Past — Cast
 
-Status: draft, 2026-10-11, for plan 008. It follows `bible.md` and needs the
+Status: signed 2026-10-11 (decision #48), for plan 008. It follows `bible.md` and needs the
 same sign-off (board #10). Every NPC is someone Ulric took something from
 (the operator's brief, `decisions.md` #43).
 

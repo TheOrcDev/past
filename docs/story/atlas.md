@@ -1,6 +1,6 @@
 # Past — Atlas: the 50 new rooms
 
-Status: draft, 2026-10-11, for plan 008. It follows `bible.md` and `cast.md`,
+Status: signed 2026-10-11 (decision #48), for plan 008. It follows `bible.md` and `cast.md`,
 and needs the same sign-off (board #10). Each entry is what an image request
 and a room build start from. A chapter's puzzle dependency chart is drawn
 before its art (`game-design.md` §10), and it may move hotspots and items

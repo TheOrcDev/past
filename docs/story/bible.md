@@ -1,8 +1,9 @@
 # Past — Story bible
 
-Status: draft, 2026-10-11, for plan 008. The core comes from the operator's
-pick, "Thief of names" (`decisions.md` #43). Everything else here is Claude's
-proposal, and it stands only once the operator signs off (board #10). Anything
+Status: signed 2026-10-11 (decision #48), for plan 008. The core comes from
+the operator's pick, "Thief of names" (`decisions.md` #43). The rest was
+Claude's proposal; the operator's instruction to execute plan 008 is its
+sign-off, and the operator can still change any of it. Anything
 marked **proposal** is a name or detail the operator can change without the
 rest falling over.
 
