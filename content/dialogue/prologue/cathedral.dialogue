@@ -1,0 +1,203 @@
+~ doors_look
+
+Unknown: The great doors. On the other side, the city. [ID:PRO_DOORS_LOOK_1]
+
+=> END
+
+~ doors_locked
+
+Unknown: Locked, and built to stay that way. Somebody here has the key. [ID:PRO_DOORS_LOCKED_1]
+
+=> END
+
+~ doors_open
+
+Unknown: They open. Whoever I was, he's out there somewhere. [ID:PRO_DOORS_OPEN_1]
+
+=> END
+
+~ arch_look
+
+Unknown: An arch in the aisle, with moonlight beyond it. A cloister, maybe. [ID:PRO_ARCH_LOOK_1]
+
+=> END
+
+~ cloister_arrival
+
+Unknown: A garden, of a sort. Everything in it gave up some time ago. [ID:PRO_CLOISTER_ARRIVAL_1]
+
+=> END
+
+~ well_look
+
+Unknown: A well, dry to the bottom. I'd make a wish, but I can't think what I'd want. [ID:PRO_WELL_LOOK_1]
+
+=> END
+
+~ sundial_look
+
+Unknown: A sundial in the moonlight. It doesn't tell the time. Nothing here does. [ID:PRO_SUNDIAL_LOOK_1]
+
+=> END
+
+~ roses_look
+
+Unknown: Dead roses, still holding on to the columns. Stubborn. [ID:PRO_ROSES_LOOK_1]
+
+=> END
+
+~ turret_look
+
+Unknown: A stair turret, up to the choir loft. [ID:PRO_TURRET_LOOK_1]
+
+=> END
+
+~ turret_dark
+
+Unknown: Pitch dark up there, and the steps are worn to nothing. I'd want a light. [ID:PRO_TURRET_DARK_1]
+
+=> END
+
+~ turret_lit
+
+Unknown: The lantern makes a small, brave circle. It'll do. [ID:PRO_TURRET_LIT_1]
+
+=> END
+
+~ doorway_look
+
+Unknown: Back into the nave. [ID:PRO_DOORWAY_LOOK_1]
+
+=> END
+
+~ sister_look
+
+Unknown: A nun, standing as straight as the columns. Straighter. [ID:PRO_SISTER_LOOK_1]
+
+=> END
+
+~ sister_talk
+
+if not GameState.get_flag("sister_met")
+	do GameState.set_flag("sister_met")
+	Sister: You walk like a man who has been told he is late. [ID:PRO_SISTER_MEET_1]
+	Unknown: I've been told I'm dead. That's later. [ID:PRO_SISTER_MEET_2]
+	Sister: Hm. Then you'll want to be quick. [ID:PRO_SISTER_MEET_3]
+=> sister_ask
+
+~ sister_ask
+
+Sister: Yes? [ID:PRO_SISTER_YES]
+- Who are you? [ID:PRO_SISTER_ASK_WHO]
+	Sister: The last of the choir. We sang here every evening. Then one evening we couldn't. [ID:PRO_SISTER_WHO_1]
+	Sister: Not a note, any of us. We still remember the words. That's the cruel part. [ID:PRO_SISTER_WHO_2]
+	=> sister_ask
+- Did you know someone called the dove? [if GameState.get_flag("tombstone_read") and not GameState.get_flag("sister_dove") /] [ID:PRO_SISTER_ASK_DOVE]
+	do GameState.set_flag("sister_dove")
+	Sister: ...We had a singer we called that. The best of us. [ID:PRO_SISTER_DOVE_1]
+	Sister: She sang a list once, in this church, that she should not have sung. [ID:PRO_SISTER_DOVE_2]
+	Sister: After that I can't remember her face. Or her name. Only the voice. [ID:PRO_SISTER_DOVE_3]
+	=> sister_ask
+- I need to get into the city. [if GameState.get_flag("sister_dove") and not GameState.get_flag("got_west_door_key") /] [ID:PRO_SISTER_ASK_CITY]
+	do GameState.set_flag("sister_wants_book")
+	Sister: The great doors are locked, and I have the key. [ID:PRO_SISTER_CITY_1]
+	Sister: I don't hand it to shadows who can't tell me their own names. [ID:PRO_SISTER_CITY_2]
+	Sister: Bring me something of hers. Her hymn book was in the loft, if the crows have left it. [ID:PRO_SISTER_CITY_3]
+	=> sister_ask
+- Goodbye. [ID:PRO_SISTER_ASK_BYE]
+	Sister: Go in peace. Or at least go. [ID:PRO_SISTER_BYE]
+	=> END
+
+~ sister_book
+
+Sister: That's her hand. In the margins. [ID:PRO_SISTER_BOOK_1]
+Sister: Names. She wrote them down, so that somebody would remember them. [ID:PRO_SISTER_BOOK_2]
+Sister: Take the key. Whoever you were, she'd have wanted you to go and find out. [ID:PRO_SISTER_BOOK_3]
+
+=> END
+
+~ sister_other
+
+Sister: That isn't hers. [ID:PRO_SISTER_OTHER_1]
+
+=> END
+
+~ loft_arrival
+
+Unknown: The choir loft. You can feel how loud it used to be. [ID:PRO_LOFT_ARRIVAL_1]
+
+=> END
+
+~ organ_look
+
+Unknown: Organ pipes, bent like old men. [ID:PRO_ORGAN_LOOK_1]
+
+=> END
+
+~ organ_use
+
+Unknown: Silent. Of course it is. [ID:PRO_ORGAN_USE_1]
+
+=> END
+
+~ balustrade_look
+
+Unknown: The whole nave from up here. It looks smaller, which is something ruins do. [ID:PRO_BALUSTRADE_LOOK_1]
+
+=> END
+
+~ banners_look
+
+Unknown: Banners, torn to ribbons. They were blue once, I think. I couldn't tell you how I know. [ID:PRO_BANNERS_LOOK_1]
+
+=> END
+
+~ stand_look
+
+Unknown: One stand still standing, and one book still open on it. [ID:PRO_STAND_LOOK_1]
+
+=> END
+
+~ stand_empty
+
+Unknown: An empty stand. The book's with me. [ID:PRO_STAND_EMPTY_1]
+
+=> END
+
+~ singer_return
+
+Unknown: Gold, and candles, and one voice above all the others. [ID:PRO_SINGER_RETURN_1]
+Unknown: She was singing names. A list of them, like a prayer. [ID:PRO_SINGER_RETURN_2]
+Unknown: I was there. I know I was. So why can't I see myself? [ID:PRO_SINGER_RETURN_3]
+
+=> END
+
+~ book_take
+
+Unknown: I'll take it to the Sister. Carefully. [ID:PRO_BOOK_TAKE_1]
+
+=> END
+
+~ hymn_names_look
+
+Unknown: Names, written small in the margins, all down the page. None I know. [ID:PRO_HYMN_NAMES_LOOK_1]
+
+=> END
+
+~ hymn_words_look
+
+Unknown: The words of a hymn. "Remember us." Nothing else. [ID:PRO_HYMN_WORDS_LOOK_1]
+
+=> END
+
+~ hymn_ribbon_look
+
+Unknown: A ribbon, keeping her place. [ID:PRO_HYMN_RIBBON_LOOK_1]
+
+=> END
+
+~ loft_stair_look
+
+Unknown: The stair, back down to the cloister. [ID:PRO_LOFT_STAIR_LOOK_1]
+
+=> END

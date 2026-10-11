@@ -1,0 +1,257 @@
+~ gate_arrival
+
+Unknown: More graves. Fresh ones. Somebody here is an optimist. [ID:PRO_GATE_ARRIVAL_1]
+
+=> END
+
+~ gate_look
+
+Unknown: The way out. The road beyond it is fog, all the way down. [ID:PRO_GATE_LOOK_1]
+
+=> END
+
+~ gate_use
+
+Unknown: Out there is nothing I remember. Not yet. Better to start with what's here. [ID:PRO_GATE_USE_1]
+
+=> END
+
+~ graves_look
+
+Unknown: Four new graves, neat as beds, and nobody in them. [ID:PRO_GRAVES_LOOK_1]
+Unknown: I've just climbed out of one. I'm not in a hurry to try another. [ID:PRO_GRAVES_LOOK_2]
+
+=> END
+
+~ pole_look
+
+Unknown: A lantern on a pole. Iron frame, no glass. A lantern in principle only. [ID:PRO_POLE_LOOK_1]
+
+=> END
+
+~ lodge_look
+
+Unknown: A gatekeeper's lodge. The door is open. Graveyards are trusting places. [ID:PRO_LODGE_LOOK_1]
+
+=> END
+
+~ crypt_look
+
+Unknown: Steps down to a crypt door under the chapel. [ID:PRO_CRYPT_LOOK_1]
+
+=> END
+
+~ crypt_locked
+
+Unknown: Locked. Whatever's down there, somebody wanted it to stay down there. [ID:PRO_CRYPT_LOCKED_1]
+
+=> END
+
+~ crypt_unlocked
+
+Unknown: The key fits. The lock remembers how to turn, which makes one of us. [ID:PRO_CRYPT_UNLOCKED_1]
+
+=> END
+
+~ gravedigger_look
+
+Unknown: A man with a spade, in a graveyard. At least one of us is where he belongs. [ID:PRO_GD_LOOK_1]
+
+=> END
+
+~ gravedigger_talk
+
+if not GameState.get_flag("gd_met")
+	do GameState.set_flag("gd_met")
+	Gravedigger: Well, now. A shadow, walking up out of my number forty-one. [ID:PRO_GD_MEET_1]
+	Gravedigger: I dug that one. Neat work. You've made a mess of it. [ID:PRO_GD_MEET_2]
+	Unknown: Sorry. I wasn't consulted. [ID:PRO_GD_MEET_3]
+	Gravedigger: Nobody ever is. That's graves for you. [ID:PRO_GD_MEET_4]
+=> gravedigger_ask
+
+~ gravedigger_ask
+
+Gravedigger: Well? [ID:PRO_GD_WELL]
+- Who was buried in that grave? [ID:PRO_GD_ASK_WHO]
+	Gravedigger: Can't say. The name's gone. Names go, round here. [ID:PRO_GD_WHO_1]
+	if not GameState.get_flag("gd_lantern_mended")
+		Gravedigger: And I can't see my own memories without a light. Lantern's no good without its glass. [ID:PRO_GD_WHO_2]
+	=> gravedigger_ask
+- What happened to your lantern? [if not GameState.get_flag("gd_lantern_mended") /] [ID:PRO_GD_ASK_LANTERN]
+	do GameState.set_flag("gd_lantern_asked")
+	Gravedigger: A crow. Came down bold as a bishop, took the glass, and flew off into the ossuary. [ID:PRO_GD_LANTERN_1]
+	Gravedigger: As if it had a key. It hasn't. I have. Somewhere on the wall in the lodge. [ID:PRO_GD_LANTERN_2]
+	Unknown: Somewhere? [ID:PRO_GD_LANTERN_3]
+	Gravedigger: Forty keys and not one label. I know which is which when I see the book. [ID:PRO_GD_LANTERN_4]
+	=> gravedigger_ask
+- Why dig graves for nobody? [ID:PRO_GD_ASK_GRAVES]
+	Gravedigger: Somebody will need them. Somebody always does. [ID:PRO_GD_GRAVES_1]
+	Gravedigger: I just can't remember who I'm keeping them for. [ID:PRO_GD_GRAVES_2]
+	=> gravedigger_ask
+- Tell me about that night. [if GameState.get_flag("gd_lantern_mended") /] [ID:PRO_GD_ASK_NIGHT]
+	do GameState.set_flag("gd_told_night")
+	Gravedigger: A woman came. Veiled. Paid for the stone with a ring off her own finger. [ID:PRO_GD_NIGHT_1]
+	Gravedigger: Told me what to carve, and to sign it from a dove. [ID:PRO_GD_NIGHT_2]
+	Gravedigger: Then the Registrar's men came back with hammers and took the name off it. Every letter. [ID:PRO_GD_NIGHT_3]
+	Unknown: Not every letter. [ID:PRO_GD_NIGHT_4]
+	Gravedigger: ...No. I put moss over the U before they got to it. She asked me to. [ID:PRO_GD_NIGHT_5]
+	Gravedigger: Don't ask me why I listened. I can't remember being the sort who listens. [ID:PRO_GD_NIGHT_6]
+	=> gravedigger_ask
+- Goodbye. [ID:PRO_GD_ASK_BYE]
+	Gravedigger: Mind the holes. [ID:PRO_GD_BYE]
+	=> END
+
+~ gravedigger_glass
+
+Gravedigger: My glass! You went in after a crow, for a stranger's lantern? [ID:PRO_GD_GLASS_1]
+Unknown: I'm a stranger to everyone. It evens out. [ID:PRO_GD_GLASS_2]
+Gravedigger: There. Light. Now ask me about that night, before I forget I was going to tell you. [ID:PRO_GD_GLASS_3]
+Gravedigger: And take the lantern with you. I know these graves blind. You don't know anything at all. [ID:PRO_GD_GLASS_4]
+
+=> END
+
+~ gravedigger_other
+
+Gravedigger: Very nice. Not mine, though. [ID:PRO_GD_OTHER_1]
+
+=> END
+
+~ lodge_stove_look
+
+Unknown: A stove, cold as everything else. [ID:PRO_STOVE_LOOK_1]
+
+=> END
+
+~ lodge_cot_look
+
+Unknown: A narrow bed for a man who sleeps next to his work. [ID:PRO_COT_LOOK_1]
+
+=> END
+
+~ lodge_lanterns_look
+
+Unknown: Dead lanterns. A whole shelf of light, all of it out. [ID:PRO_LANTERNS_LOOK_1]
+
+=> END
+
+~ keys_look
+
+Unknown: Forty iron keys and not a single label. [ID:PRO_KEYS_LOOK_1]
+
+=> END
+
+~ keys_unread
+
+Unknown: I could try them all. Or I could find out which one I want. [ID:PRO_KEYS_UNREAD_1]
+
+=> END
+
+~ keys_take
+
+Unknown: Number thirteen, the book said. Of course it did. [ID:PRO_KEYS_TAKE_1]
+
+=> END
+
+~ keys_done
+
+Unknown: I have the one I need. The rest can stay mysterious. [ID:PRO_KEYS_DONE_1]
+
+=> END
+
+~ register_entry
+
+Unknown: "U..." Then a smudge. "Paid by a dove." [ID:PRO_REGISTER_ENTRY_1]
+Unknown: "Stone defaced by order of the Registrar." A whole order, just for my stone. [ID:PRO_REGISTER_ENTRY_2]
+
+=> END
+
+~ register_keys
+
+Unknown: And in the margin: "Ossuary: key thirteen." [ID:PRO_REGISTER_KEYS_1]
+
+=> END
+
+~ register_page
+
+Unknown: Burials, one a line, for years. Hardly any names left in it. Just dates and plots. [ID:PRO_REGISTER_PAGE_1]
+
+=> END
+
+~ lodge_door_look
+
+Unknown: The way back out to the gate. [ID:PRO_LODGE_DOOR_LOOK_1]
+
+=> END
+
+~ ossuary_arrival
+
+Unknown: Bones, stacked like firewood. Somebody here had a very tidy mind. [ID:PRO_OSSUARY_ARRIVAL_1]
+
+=> END
+
+~ nest_look
+
+Unknown: A crow's nest. Twigs, wire, and everything that ever glittered in this cemetery. [ID:PRO_NEST_LOOK_1]
+
+=> END
+
+~ nest_take
+
+Unknown: A lantern glass, nested in pride of place. Sorry, crow. [ID:PRO_NEST_TAKE_1]
+
+=> END
+
+~ nest_empty
+
+Unknown: Nothing else in there I'd want to explain owning. [ID:PRO_NEST_EMPTY_1]
+
+=> END
+
+~ niches_look
+
+Unknown: Burial niches. Every plaque scraped smooth. Not weathered. Scraped. [ID:PRO_NICHES_LOOK_1]
+
+=> END
+
+~ niches_use
+
+Unknown: The stone's still rough where the chisel went. As if it happened yesterday. [ID:PRO_NICHES_USE_1]
+
+=> END
+
+~ edict_return
+
+Unknown: A clerk, a chisel, and a family watching their father's name come off the wall. [ID:PRO_EDICT_RETURN_1]
+Unknown: And someone on the stair the light wouldn't hold. Who stands in a memory and leaves a hole? [ID:PRO_EDICT_RETURN_2]
+
+=> END
+
+~ niche_plaque_look
+
+Unknown: Smooth stone, a few scratches deep. The name was here. [ID:PRO_NICHE_PLAQUE_LOOK_1]
+
+=> END
+
+~ niche_chisel_look
+
+Unknown: Chisel marks, careful ones. Whoever did this took pride in it. [ID:PRO_NICHE_CHISEL_LOOK_1]
+
+=> END
+
+~ skulls_look
+
+Unknown: They've all got the same expression. I'd find it comforting if I had one. [ID:PRO_SKULLS_LOOK_1]
+
+=> END
+
+~ candles_look
+
+Unknown: Candle stubs. Somebody still comes down here. Or used to, before time stopped bothering. [ID:PRO_CANDLES_LOOK_1]
+
+=> END
+
+~ ossuary_stair_look
+
+Unknown: Back up to the gate. [ID:PRO_OSSUARY_STAIR_LOOK_1]
+
+=> END

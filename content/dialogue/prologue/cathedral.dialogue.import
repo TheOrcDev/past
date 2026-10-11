@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://b4v74qg2sg3nl"
+path="res://.godot/imported/cathedral.dialogue-fe82f40d1e1a594c712421af2291ba19.tres"
+
+[deps]
+
+source_file="res://content/dialogue/prologue/cathedral.dialogue"
+dest_files=["res://.godot/imported/cathedral.dialogue-fe82f40d1e1a594c712421af2291ba19.tres"]
+
+[params]
+
+defaults=true

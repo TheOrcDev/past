@@ -34,6 +34,10 @@ Journal="*res://src/systems/journal.gd"
 Voice="*res://src/systems/voice.gd"
 Qa="*res://src/core/qa.gd"
 
+[dialogue_manager]
+
+editor/translations/UPDATE_TRANSLATION_TEMPLATES_AUTOMATICALLY=false
+
 [display]
 
 window/size/viewport_width=1920
@@ -42,17 +46,13 @@ window/size/window_width_override=1600
 window/size/window_height_override=900
 window/stretch/mode="canvas_items"
 
-[dialogue_manager]
-
-editor/translations/UPDATE_TRANSLATION_TEMPLATES_AUTOMATICALLY=false
-
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/gut/plugin.cfg")
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://content/dialogue/sandbox.dialogue", "res://content/dialogue/core.dialogue", "res://content/dialogue/cathedral.dialogue", "res://content/dialogue/cemetery.dialogue", "res://content/dialogue/hints.dialogue", "res://content/dialogue/greybox.dialogue", "res://content/dialogue/journal.dialogue")
+locale/translations_pot_files=PackedStringArray("res://content/dialogue/sandbox.dialogue", "res://content/dialogue/core.dialogue", "res://content/dialogue/cathedral.dialogue", "res://content/dialogue/cemetery.dialogue", "res://content/dialogue/hints.dialogue", "res://content/dialogue/greybox.dialogue", "res://content/dialogue/journal.dialogue", "res://content/dialogue/prologue/cemetery.dialogue", "res://content/dialogue/prologue/cathedral.dialogue")
 
 [navigation]
 
@@ -63,5 +63,5 @@ world/region_use_async_iterations=false
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-shader_compiler/shader_cache/enabled.web=false
 textures/vram_compression/import_etc2_astc=true
+shader_compiler/shader_cache/enabled.web=false

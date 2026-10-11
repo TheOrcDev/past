@@ -16,39 +16,237 @@ Unknown: The gravestone, up close. The name, and the words under it. [ID:HINT_ST
 
 => END
 
-~ cathedral_1
+~ gravedigger_1
 
-Unknown: The dead here won't tell me any more. Maybe the city will. [ID:HINT_CATHEDRAL_1]
-
-=> END
-
-~ cathedral_2
-
-Unknown: The path runs east, toward that cathedral. [ID:HINT_CATHEDRAL_2]
+Unknown: Somebody dug the grave I climbed out of. Graves don't dig themselves. [ID:HINT_GRAVEDIGGER_1]
 
 => END
 
-~ cathedral_3
+~ gravedigger_2
 
-Unknown: East. Follow the path to the cathedral. [ID:HINT_CATHEDRAL_3]
-
-=> END
-
-~ statue_1
-
-Unknown: Something in this place remembers more than I do. [ID:HINT_STATUE_1]
+Unknown: There was a gate west of my grave. Somebody's working there. [ID:HINT_GRAVEDIGGER_2]
 
 => END
 
-~ statue_2
+~ gravedigger_3
 
-Unknown: That saint by the wall. I keep wanting to reach for it. [ID:HINT_STATUE_2]
+Unknown: West of the grave, at the gate. Talk to the Gravedigger. [ID:HINT_GRAVEDIGGER_3]
 
 => END
 
-~ statue_3
+~ register_1
 
-Unknown: The statue. Put a hand on it. [ID:HINT_STATUE_3]
+Unknown: A gravedigger keeps records. Someone has to. [ID:HINT_REGISTER_1]
+
+=> END
+
+~ register_2
+
+Unknown: His lodge, by the gate. There was a book on a lectern. [ID:HINT_REGISTER_2]
+
+=> END
+
+~ register_3
+
+Unknown: In the Gravedigger's lodge, read the book on the lectern. [ID:HINT_REGISTER_3]
+
+=> END
+
+~ ossuary_key_1
+
+Unknown: The book said which key. I only have to believe it. [ID:HINT_OSSUARY_KEY_1]
+
+=> END
+
+~ ossuary_key_2
+
+Unknown: Key thirteen, on the wall in the lodge. [ID:HINT_OSSUARY_KEY_2]
+
+=> END
+
+~ ossuary_key_3
+
+Unknown: Take key thirteen from the key wall in the lodge. [ID:HINT_OSSUARY_KEY_3]
+
+=> END
+
+~ crypt_1
+
+Unknown: A key is only interesting next to a lock. [ID:HINT_CRYPT_1]
+
+=> END
+
+~ crypt_2
+
+Unknown: The crypt steps at the gate, under the chapel. [ID:HINT_CRYPT_2]
+
+=> END
+
+~ crypt_3
+
+Unknown: Use the ossuary key on the crypt steps by the gate. [ID:HINT_CRYPT_3]
+
+=> END
+
+~ glass_1
+
+Unknown: The crow brought its treasures somewhere down here. [ID:HINT_GLASS_1]
+
+=> END
+
+~ glass_2
+
+Unknown: High up in the ossuary, on the ledge. A nest. [ID:HINT_GLASS_2]
+
+=> END
+
+~ glass_3
+
+Unknown: Take the glass from the crow's nest in the ossuary. [ID:HINT_GLASS_3]
+
+=> END
+
+~ mend_1
+
+Unknown: A lantern glass is wasted in my hands. [ID:HINT_MEND_1]
+
+=> END
+
+~ mend_2
+
+Unknown: The Gravedigger lost exactly this. [ID:HINT_MEND_2]
+
+=> END
+
+~ mend_3
+
+Unknown: Give the lantern glass to the Gravedigger. [ID:HINT_MEND_3]
+
+=> END
+
+~ sister_1
+
+Unknown: The cathedral had more doors than the one I came in by. [ID:HINT_SISTER_1]
+
+=> END
+
+~ sister_2
+
+Unknown: An arch in the nave's aisle, with moonlight beyond. Someone's out there. [ID:HINT_SISTER_2]
+
+=> END
+
+~ sister_3
+
+Unknown: Through the arch in the nave, to the cloister. Talk to the Sister. [ID:HINT_SISTER_3]
+
+=> END
+
+~ dove_1
+
+Unknown: The stone was signed by a dove. The Sister has been here a long time. [ID:HINT_DOVE_1]
+
+=> END
+
+~ dove_2
+
+Unknown: Ask the Sister whether she knew anyone called the dove. [ID:HINT_DOVE_2]
+
+=> END
+
+~ dove_3
+
+Unknown: Ask the Sister about the dove. [ID:HINT_DOVE_3]
+
+=> END
+
+~ book_request_1
+
+Unknown: Those doors in the nave lead to the city. Somebody holds the key. [ID:HINT_BOOK_REQUEST_1]
+
+=> END
+
+~ book_request_2
+
+Unknown: The Sister has the key. Tell her I need to get into the city. [ID:HINT_BOOK_REQUEST_2]
+
+=> END
+
+~ book_request_3
+
+Unknown: Ask the Sister about getting into the city. [ID:HINT_BOOK_REQUEST_3]
+
+=> END
+
+~ singer_1
+
+Unknown: The dove's hymn book is up in the choir loft. In the dark. [ID:HINT_SINGER_1]
+
+=> END
+
+~ singer_2
+
+Unknown: The turret stair in the cloister. I'll need the Gravedigger's lantern to see. [ID:HINT_SINGER_2]
+
+=> END
+
+~ singer_3
+
+Unknown: With the lantern, climb the turret to the choir loft and touch the hymn book. [ID:HINT_SINGER_3]
+
+=> END
+
+~ book_1
+
+Unknown: That book has done remembering for me. Now it should go to someone who'll keep it. [ID:HINT_BOOK_1]
+
+=> END
+
+~ book_2
+
+Unknown: The hymn book, on its stand in the loft. [ID:HINT_BOOK_2]
+
+=> END
+
+~ book_3
+
+Unknown: Take the hymn book from its stand. [ID:HINT_BOOK_3]
+
+=> END
+
+~ west_key_1
+
+Unknown: The Sister wanted something of hers. I have it. [ID:HINT_WEST_KEY_1]
+
+=> END
+
+~ west_key_2
+
+Unknown: Give the Sister the hymn book. [ID:HINT_WEST_KEY_2]
+
+=> END
+
+~ west_key_3
+
+Unknown: Give the hymn book to the Sister in the cloister. [ID:HINT_WEST_KEY_3]
+
+=> END
+
+~ doors_1
+
+Unknown: A key, and a city on the other side of a door. [ID:HINT_DOORS_1]
+
+=> END
+
+~ doors_2
+
+Unknown: The great doors, on the right of the nave. [ID:HINT_DOORS_2]
+
+=> END
+
+~ doors_3
+
+Unknown: Use the west door key on the great doors in the nave. [ID:HINT_DOORS_3]
 
 => END
 

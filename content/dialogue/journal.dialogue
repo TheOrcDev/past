@@ -4,6 +4,18 @@ Unknown: A woman praying where the saint stands, and I knew her hands were cold 
 
 => END
 
+~ prologue_edict
+
+Unknown: A family in the ossuary, watching a clerk scrape their father's name off his niche. [ID:JOURNAL_PROLOGUE_EDICT]
+
+=> END
+
+~ prologue_singer
+
+Unknown: The choir in gold, and the dove singing a list of names, and a hole in the light by the door. [ID:JOURNAL_PROLOGUE_SINGER]
+
+=> END
+
 ~ greybox_altar
 
 Unknown: The chapel before the fire, and one word carved into its altar: Mercy. [ID:JOURNAL_GREYBOX_ALTAR]

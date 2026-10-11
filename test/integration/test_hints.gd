@@ -28,12 +28,11 @@ func after_each() -> void:
 
 
 func test_the_goal_follows_progress() -> void:
+	var goals: Array[Dictionary] = (load("res://content/hints/goals.gd") as GDScript).GOALS
 	assert_eq(Hints.current_goal(), &"stone")
-	GameState.set_flag(&"tombstone_read")
-	assert_eq(Hints.current_goal(), &"cathedral")
-	GameState.set_flag(&"cathedral_visited")
-	assert_eq(Hints.current_goal(), &"statue")
-	GameState.remember(&"cathedral_statue")
+	for goal in goals:
+		assert_eq(Hints.current_goal(), goal["goal"])
+		_complete(goal)
 	assert_eq(Hints.current_goal(), &"", "every goal done")
 
 
@@ -42,11 +41,27 @@ func test_asking_again_gets_more_direct() -> void:
 		await Hints.ask()
 	assert_eq(_lines, ["HINT_STONE_1", "HINT_STONE_2", "HINT_STONE_3", "HINT_STONE_3"], "the most direct line repeats")
 	GameState.set_flag(&"tombstone_read")
-	GameState.set_flag(&"cathedral_visited")
-	GameState.remember(&"cathedral_statue")
+	_lines.clear()
+	await Hints.ask()
+	assert_eq(_lines, ["HINT_GRAVEDIGGER_1"], "then the next goal's first line")
+	for goal: Dictionary in (load("res://content/hints/goals.gd") as GDScript).GOALS:
+		_complete(goal)
 	_lines.clear()
 	await Hints.ask()
 	assert_eq(_lines, ["HINT_NONE_1"])
+
+
+func test_every_goal_has_its_lines() -> void:
+	var cues := (load(Say.DIALOGUE_PATH % Hints.DIALOGUE) as DialogueResource).get_cues()
+	for goal: Dictionary in (load("res://content/hints/goals.gd") as GDScript).GOALS:
+		assert_true(cues.has("%s_1" % goal["goal"]), "%s has a first hint" % goal["goal"])
+
+
+func _complete(goal: Dictionary) -> void:
+	if goal.has("flag"):
+		GameState.set_flag(goal["flag"])
+	else:
+		GameState.remember(goal["memory"])
 
 
 func test_clicking_unknown_asks_him() -> void:

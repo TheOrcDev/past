@@ -292,7 +292,7 @@ func _grave() -> void:
 	await _shot("07_back_at_the_grave")
 	# The stone is read, so a click on Unknown hints at the way on.
 	var hint: String = await _click_for_line(Rooms.player.global_position + Vector2(0, -40) * Rooms.player.scale.y)
-	_check(hint == "HINT_CATHEDRAL_1", "clicking Unknown gives the next hint (%s)" % hint)
+	_check(hint == "HINT_GRAVEDIGGER_1", "clicking Unknown gives the next hint (%s)" % hint)
 	await get_tree().create_timer(0.8).timeout
 	await _shot("07b_hint")
 	await _settle()

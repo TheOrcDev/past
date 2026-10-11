@@ -9,7 +9,7 @@
       "flags": [],
       "rooms": ["cemetery_grave", "cathedral_nave"],
       "closeups": ["tombstone"],
-      "dialogue": ["cemetery", "cathedral"]
+      "dialogue": ["cemetery", "cathedral", "prologue"]
     },
     {
       "id": "ch1",
