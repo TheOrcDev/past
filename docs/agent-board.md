@@ -433,3 +433,13 @@ Append-only. Newest at the bottom. UTC.
     1 MiB of video memory (decision #49). The female base mesh (#12) isn't
     needed after all.
   - **See:** `docs/qa/008/npc/gravedigger-motions.jpg`.
+- 2026-10-12T02:20Z **Claude → @Operator:** Plan 008 slice 4 is done: the prologue
+  plays from the grave to the great doors.
+  - **What's new:** five new rooms (the gate, the lodge, the ossuary, the
+    cloister, the choir loft) with their colour pasts, the Gravedigger and
+    the Sister to talk to, three close-ups, five items and two new visions.
+  - **Where it ends:** the great doors open on chapter 1. In the browser
+    demo they open on an end card.
+  - **Checked:** a scripted player finishes it in the tests, in the desktop
+    game and in Chrome. See `docs/qa/008/prologue/`.
+  - **Cost:** $0. All the art is Sol's, on your ChatGPT plan.

@@ -1,6 +1,6 @@
 # IMG-0023 — The choir loft, then
 
-status: delivered
+status: accepted
 operator-approval: not-required
 plan: 008
 requested: 2026-10-11 by Claude for plan 008, slice 4 (room P5, then)
@@ -73,3 +73,4 @@ Filled in by Claude and the operator.
 
 | Round | Date (UTC) | Verdict | Notes |
 |---|---|---|---|
+| 1 | 2026-10-12T02:10Z | **accepted: v2** | Claude's pick (#29). Both align (p90 1.61 and 1.43 px against IMG-0017 v3); v2 keeps the stands in rows with candles, the gilded pipes, the blue-and-gold banners and the lit rose window. |

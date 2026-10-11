@@ -1,5 +1,5 @@
 class_name GreyboxPlaythrough
-extends RefCounted
+extends Playthrough
 ## Plays the greybox puzzle chain (plan 004 slice 11) from start to finish
 ## through the paths a player's mouse takes: clicks for default verbs, the verb
 ## coin for the others, inventory slots, dialogue choices and exits. The GUT
@@ -9,24 +9,6 @@ extends RefCounted
 ## the word, take the oil in the chapel, combine it with the rag, touch the
 ## altar to step into its past and read the word there, oil the gate, say the
 ## word, open the gate and walk through.
-
-## Called as check.call(ok, what) after each step that must have worked.
-var check: Callable
-## Called as await shot.call(name) at the chain's main moments, or not at all.
-var shot: Callable
-## Lines are cut short as they start; off, they play at reading pace (for a
-## recording).
-var skip_lines := true
-## The ids of the lines spoken so far.
-var lines: Array[String] = []
-
-var _tree: SceneTree
-
-
-func _init(tree: SceneTree, on_check: Callable, on_shot := Callable()) -> void:
-	_tree = tree
-	check = on_check
-	shot = on_shot
 
 
 func run() -> void:
@@ -94,75 +76,3 @@ func run() -> void:
 	check.call(Rooms.current.room_id == &"greybox_courtyard" and GameState.get_flag(&"greybox_done"), "through the gate to the end")
 	await _shot("06_through_the_gate")
 	Say.line_started.disconnect(listen)
-
-
-func _spot(hotspot_name: String) -> Hotspot:
-	return Rooms.current.hotspots.get_node(hotspot_name) as Hotspot
-
-
-## A left click on a hotspot: Unknown walks there and runs its default verb.
-func _click(hotspot_name: String) -> void:
-	await Interaction.click_at(_spot(hotspot_name).focus_point())
-	await _settle()
-
-
-## Holds the button on a hotspot until the verb coin opens, then lets go over
-## `verb`.
-func _verb(hotspot_name: String, verb: StringName) -> void:
-	var world := _spot(hotspot_name).focus_point()
-	Interaction.press_at(world, _tree.root.get_canvas_transform() * world)
-	await _tree.create_timer(Interaction.COIN_HOLD_SECONDS + 0.1).timeout
-	check.call(Interaction.coin.is_open, "the verb coin opens on %s" % hotspot_name)
-	var glyph := Interaction.coin.glyph_position(verb)
-	Interaction.coin.point_at(glyph)
-	await Interaction.release_at(world, glyph)
-	await _settle()
-
-
-## Picks the dialogue choice reading `text` once the choices show.
-func _choose(text: String, shot_name := "") -> void:
-	while not Say.choices.is_open:
-		await _tree.process_frame
-	var index := Say.choices.index_of(text)
-	check.call(index >= 0, "the choice \"%s\" is offered" % text)
-	if not shot_name.is_empty():
-		await _shot(shot_name)
-	Say.choices.pick(maxi(index, 0))
-
-
-func _leave(exit_name: String, room: StringName) -> void:
-	Interaction.double_click_at(_spot(exit_name).focus_point())
-	await Rooms.room_changed
-	await _settle()
-	check.call(Rooms.current.room_id == room, "into %s" % room)
-
-
-## A left click on an item in the open inventory.
-func _click_slot(id: StringName) -> void:
-	var event := InputEventMouseButton.new()
-	event.button_index = MOUSE_BUTTON_LEFT
-	event.pressed = true
-	Interaction.inventory.slot_for(id).gui_input.emit(event)
-	await _tree.process_frame
-
-
-## A left click outside the open inventory's band, at `screen`.
-func _click_outside(screen: Vector2) -> void:
-	var event := InputEventMouseButton.new()
-	event.button_index = MOUSE_BUTTON_LEFT
-	event.pressed = true
-	event.position = screen
-	Interaction.inventory.get_node(^"Band").gui_input.emit(event)
-	await _tree.process_frame
-
-
-func _shot(shot_name: String) -> void:
-	if shot.is_valid():
-		await shot.call(shot_name)
-
-
-## Waits until Unknown stands still and the player could act again.
-func _settle() -> void:
-	await _tree.process_frame
-	while Interaction.locked > 0 or Say.speaking or Rooms.player.is_walking or Closeups.busy:
-		await _tree.process_frame

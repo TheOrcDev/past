@@ -98,6 +98,10 @@
     "from_cemetery": [
       430,
       1010
+    ],
+    "from_cloister": [
+      1030,
+      935
     ]
   },
   "hotspots": [
@@ -266,6 +270,69 @@
         "entry": "from_cathedral",
         "direction": "left"
       }
+    },
+    {
+      "id": "arch",
+      "name": "Arch to the cloister",
+      "polygon": [
+        [
+          985,
+          765
+        ],
+        [
+          985,
+          420
+        ],
+        [
+          1030,
+          378
+        ],
+        [
+          1082,
+          420
+        ],
+        [
+          1082,
+          765
+        ]
+      ],
+      "walk_to": [
+        1030,
+        925
+      ],
+      "exit": {
+        "room": "cathedral_cloister",
+        "entry": "from_nave",
+        "direction": "up"
+      }
+    },
+    {
+      "id": "doors",
+      "name": "The great doors",
+      "polygon": [
+        [
+          1780,
+          1000
+        ],
+        [
+          1780,
+          780
+        ],
+        [
+          1920,
+          760
+        ],
+        [
+          1920,
+          1078
+        ]
+      ],
+      "walk_to": [
+        1720,
+        1015
+      ],
+      "default_verb": "use",
+      "pick_priority": 1
     }
   ],
   "occluders": [

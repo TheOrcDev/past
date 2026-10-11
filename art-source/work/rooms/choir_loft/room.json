@@ -1,0 +1,18 @@
+{
+  "id": "choir_loft",
+  "display_name": "Choir loft",
+  "now": "art-source/raw/IMG-0017/IMG-0017-v3.png",
+  "then": "art-source/raw/IMG-0023/IMG-0023-v2.png",
+  "walk": [[80, 805], [650, 800], [1100, 795], [1500, 835], [1700, 885], [1750, 1040], [150, 1040], [70, 905]],
+  "scale_zones": {"far_y": 798, "far_scale": 0.82, "near_y": 1040, "near_scale": 1.05},
+  "markers": {"default": [800, 910], "from_cloister": [190, 850]},
+  "hotspots": [
+    {"id": "stair", "name": "Stair down", "polygon": [[30, 762], [30, 400], [80, 340], [160, 360], [185, 420], [185, 762]], "walk_to": [140, 830],
+     "exit": {"room": "cathedral_cloister", "entry": "from_loft", "direction": "left"}},
+    {"id": "stand", "name": "Hymn book", "polygon": [[940, 782], [940, 540], [1072, 535], [1072, 782]], "walk_to": [1000, 840], "pick_priority": 2},
+    {"id": "organ", "name": "Organ", "polygon": [[230, 762], [230, 60], [720, 60], [720, 762]], "walk_to": [450, 840]},
+    {"id": "balustrade", "name": "Balustrade", "polygon": [[1100, 800], [1100, 640], [1750, 630], [1760, 830]], "walk_to": [1300, 860]},
+    {"id": "banners", "name": "Banners", "polygon": [[1730, 510], [1730, 140], [1860, 110], [1860, 510]], "walk_to": [1650, 890], "pick_priority": 1}
+  ],
+  "effects": {"preset": "interior", "light": [1550, 290], "aim": 220}
+}

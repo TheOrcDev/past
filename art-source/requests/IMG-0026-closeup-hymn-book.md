@@ -1,6 +1,6 @@
 # IMG-0026 — Close-up: the dove's hymn book
 
-status: delivered
+status: accepted
 operator-approval: not-required
 plan: 008
 requested: 2026-10-11 by Claude for plan 008, slice 4 (close-up)
@@ -74,3 +74,4 @@ Filled in by Claude and the operator.
 
 | Round | Date (UTC) | Verdict | Notes |
 |---|---|---|---|
+| 1 | 2026-10-12T02:10Z | **accepted: v2** | Claude's pick (#29). All three print REMEMBER US exactly with tiny handwritten names in both margins; v2 is sharpest and best lit. |

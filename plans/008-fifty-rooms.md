@@ -386,3 +386,26 @@ XXL: five parts. It is re-estimated after slices 3 and 4.
   - **Cost:** about 15 min an NPC after the tooling, and under 1 MiB of
     video memory. A room with Unknown and two NPCs stays far below the
     400 MiB stop.
+- **2026-10-12, slice 4:** the prologue is playable from the grave to the
+  great doors, in the desktop build and in the browser demo.
+  - **4a:** the puzzle chart (`docs/story/prologue-puzzles.md`), the script
+    in `content/dialogue/prologue/`, the hint chain and the journal pages.
+  - **4b:** the cemetery thread: the gate with the Gravedigger, the lodge
+    and the ossuary. The burial register and ossuary niche close-ups, and
+    the five items from one Sol sheet. Exits can now need a story flag.
+  - **4c:** the cathedral thread: the cloister with the Sister, the choir
+    loft, and the nave's arch and great doors. The hymn book close-up, and
+    the vision "The singer".
+  - **The doors:** they lead to chapter 1's square when it's in the build.
+    Otherwise (the demo) they play an end card and return to the nave.
+  - **Art:** 16 Sol requests (IMG-0011–0026): 5 rooms now and then, 2 NPCs,
+    3 close-ups, 1 item sheet. Every then-edit aligned on the first round
+    (p90 1.03–1.56 px). Gateway spend is still $0.
+  - **Proof:** `ProloguePlaythrough`, on a new `Playthrough` base the
+    greybox shares, plays the whole chain:
+    - in GUT (`test_prologue.gd`);
+    - in the desktop game (`--qa=prologue`);
+    - in Chrome on the web export (`browser-qa.ts prologue`), which passes.
+
+    Screenshots are in `docs/qa/008/prologue/`. 123 GUT tests and the lint
+    pass.

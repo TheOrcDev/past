@@ -1,0 +1,77 @@
+{
+  "id": "IMG-0026",
+  "title": "Close-up: the dove's hymn book",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T22:12:06.809Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0017/IMG-0017-v3.png",
+          "sha256": "a66436e3476179ff8d3fa127202b2a2a4309e0f2788e15d1229c22a60d564b2a"
+        }
+      ],
+      "mask": null,
+      "prompt": "A close-up of the open hymn book on the music stand from the reference image, in exactly the same monochrome greyscale ink-wash gothic style: the two open pages of a small old hymn book fill the frame, lit by a shaft of moonlight: printed staves of music, and down both outer margins dozens of tiny handwritten names in a neat, slanting woman's hand, too small to read individually. A frayed ribbon bookmark lies across the gutter.\n\nAt the top of the left page, one printed line, exactly:\nREMEMBER US\n\nAll the handwritten names in the margins are tiny and illegible. No other readable text. No people or figures. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0026-v1.png",
+          "sha256": "10b1463d6dc0a6342ff253fcf858e57b9f0fffbc2759f9d6299b9fb3d290e98a",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0026-v2.png",
+          "sha256": "4a59c37c9e015929a6940445af3e563e9589e48cee8453cd43b1d509d92d0021",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0026-v3.png",
+          "sha256": "4911ca33dedb4142e1ac1d96fdf7873e23e25668387fe503892e003d785fb72f",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 105150,
+        "outputTokens": 715
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d05-f31d-78d3-a908-3c12c3469586",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d05-f31d-78d3-a908-3c12c3469586/exec-e8719d52-7fb3-4100-b451-91cf1d4afc6b.png",
+            "/Users/orcdev/.codex/generated_images/01a12d05-f31d-78d3-a908-3c12c3469586/exec-aab575f1-451b-4cf6-b4f8-1929d3957d12.png",
+            "/Users/orcdev/.codex/generated_images/01a12d05-f31d-78d3-a908-3c12c3469586/exec-c622c595-7d8d-450b-9904-d3e01f30f36b.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque images using the attached reference and your exact prompt.",
+            "Two images are complete. I’m generating the third with the same prompt and reference.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

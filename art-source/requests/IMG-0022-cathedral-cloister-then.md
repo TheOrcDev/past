@@ -1,6 +1,6 @@
 # IMG-0022 — The cathedral cloister, then
 
-status: delivered
+status: accepted
 operator-approval: not-required
 plan: 008
 requested: 2026-10-11 by Claude for plan 008, slice 4 (room P4, then)
@@ -73,3 +73,4 @@ Filled in by Claude and the operator.
 
 | Round | Date (UTC) | Verdict | Notes |
 |---|---|---|---|
+| 1 | 2026-10-12T02:10Z | **accepted: v1** | Claude's pick (#29). Both align (p90 1.03 and 1.18 px against IMG-0016 v2); v1's garden in bloom, robes on the line and sunset read best. |

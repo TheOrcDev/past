@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0023",
+  "title": "The choir loft, then",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T22:13:40.261Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0017/IMG-0017-v3.png",
+          "sha256": "a66436e3476179ff8d3fa127202b2a2a4309e0f2788e15d1229c22a60d564b2a"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit this image in place. Keep exactly the same composition, camera, perspective, horizon and every shape where it stands: the organ pipes and console and the doorway on the left, the stand with its open book, the balustrade, the nave and rose window beyond, the banners and the floor. Only change the time and the condition.\n\nRestore the same choir loft to how it looked decades earlier, during evening song, in full rich warm color, as a painterly gothic matte painting: gilded organ pipes gleaming, the music stands all upright in neat rows with open books, tall candles burning on brass stands, deep blue banners embroidered with gold hanging whole, the rose window blazing with colored light, the nave below glowing gold, polished floorboards. The key light comes from the same direction as in the original.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0023-v1.png",
+          "sha256": "ea697670167ef6cc9d45277a27536b3850ef3b9c1c175a034e4acd1a7c4425a7",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0023-v2.png",
+          "sha256": "4fdbee31c7fa52566182ded08dd0b1d6ef81b9d58aa6413bc07cf7fa7fe4bec0",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 167093,
+        "outputTokens": 933
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d07-605f-76c0-8c94-bfc22408d12a",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d07-605f-76c0-8c94-bfc22408d12a/exec-8fe7e394-e670-4ceb-b93a-477b4ac517da.png",
+            "/Users/orcdev/.codex/generated_images/01a12d07-605f-76c0-8c94-bfc22408d12a/exec-5d11cb07-27b6-461e-a80b-2242fdcc8a3b.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate two edits using the attached image and the exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

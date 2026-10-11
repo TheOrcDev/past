@@ -32,3 +32,46 @@ func look_altar() -> void:
 
 func look_rose_window() -> void:
 	await Say.line(&"cathedral", &"rose_window_look")
+
+
+func look_arch() -> void:
+	await Say.line(&"prologue/cathedral", &"arch_look")
+
+
+func look_doors() -> void:
+	await Say.line(&"prologue/cathedral", &"doors_look")
+
+
+func use_doors() -> void:
+	if GameState.get_flag(&"west_doors_open"):
+		await _through_the_doors()
+	else:
+		await Say.line(&"prologue/cathedral", &"doors_locked")
+
+
+## The west door key opens the great doors: the prologue's end (plan 008).
+func item_doors(item: ItemDef) -> void:
+	if item.id != &"west_door_key":
+		await Say.fallback(&"item")
+		return
+	Inventory.remove(&"west_door_key")
+	GameState.set_flag(&"west_doors_open")
+	await Say.line(&"prologue/cathedral", &"doors_open")
+	await _through_the_doors()
+
+
+## Into chapter 1's square, or, in a build without chapter 1 (the browser
+## demo), the prologue's closing card and back into the nave.
+func _through_the_doors() -> void:
+	if Chapters.in_build(&"cathedral_parvis"):
+		Rooms.goto.call_deferred(&"cathedral_parvis", &"from_cathedral", &"fade")
+		return
+	await Cutscenes.play(StepsCutscene.new(&"prologue_end", func(c: CutsceneSteps) -> void:
+		await c.fade(1.0, 1.5)
+		var card := EndCard.new("PAST", "The prologue ends here. The nameless city waits beyond the doors.")
+		get_tree().root.add_child(card)
+		card.fade_in()
+		await c.wait(5.5)
+		card.queue_free()
+		await c.fade(0.0, 1.0)))
+

@@ -1,0 +1,47 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/closeups/hymn_book/hymn_book.gd" id="1_leedd"]
+[ext_resource type="Texture2D" path="res://content/closeups/hymn_book/art/bg.png" id="2_7wgsr"]
+[ext_resource type="Script" path="res://src/core/hotspot.gd" id="3_cqkcy"]
+
+[node name="HymnBook" type="Node2D" unique_id=814458338]
+script = ExtResource("1_leedd")
+closeup_id = &"hymn_book"
+
+[node name="Background" type="Sprite2D" parent="." unique_id=2044642225]
+texture = ExtResource("2_7wgsr")
+centered = false
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=460434982]
+
+[node name="Words" type="Area2D" parent="Hotspots" unique_id=1667429203]
+script = ExtResource("3_cqkcy")
+id = &"words"
+display_name = "The hymn"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Words" unique_id=1473330412]
+polygon = PackedVector2Array(570, 178, 905, 178, 905, 272, 570, 272)
+
+[node name="Names" type="Area2D" parent="Hotspots" unique_id=1549996247]
+script = ExtResource("3_cqkcy")
+id = &"names"
+display_name = "Names in the margin"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Names" unique_id=1323018178]
+polygon = PackedVector2Array(280, 160, 500, 160, 460, 822, 258, 822)
+
+[node name="NamesRight" type="Area2D" parent="Hotspots" unique_id=1482478168]
+script = ExtResource("3_cqkcy")
+id = &"names_right"
+display_name = "Names in the margin"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/NamesRight" unique_id=1163116413]
+polygon = PackedVector2Array(1510, 200, 1722, 200, 1762, 882, 1560, 882)
+
+[node name="Ribbon" type="Area2D" parent="Hotspots" unique_id=1550304206]
+script = ExtResource("3_cqkcy")
+id = &"ribbon"
+display_name = "Ribbon"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Ribbon" unique_id=865613889]
+polygon = PackedVector2Array(980, 118, 1062, 118, 1172, 1000, 1080, 1012)

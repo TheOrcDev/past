@@ -1,0 +1,97 @@
+{
+  "background": "res://content/closeups/hymn_book/art/bg.png",
+  "hotspots": [
+    {
+      "id": "words",
+      "name": "The hymn",
+      "polygon": [
+        [
+          570,
+          178
+        ],
+        [
+          905,
+          178
+        ],
+        [
+          905,
+          272
+        ],
+        [
+          570,
+          272
+        ]
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "names",
+      "name": "Names in the margin",
+      "polygon": [
+        [
+          280,
+          160
+        ],
+        [
+          500,
+          160
+        ],
+        [
+          460,
+          822
+        ],
+        [
+          258,
+          822
+        ]
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "names_right",
+      "name": "Names in the margin",
+      "polygon": [
+        [
+          1510,
+          200
+        ],
+        [
+          1722,
+          200
+        ],
+        [
+          1762,
+          882
+        ],
+        [
+          1560,
+          882
+        ]
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "ribbon",
+      "name": "Ribbon",
+      "polygon": [
+        [
+          980,
+          118
+        ],
+        [
+          1062,
+          118
+        ],
+        [
+          1172,
+          1000
+        ],
+        [
+          1080,
+          1012
+        ]
+      ],
+      "pick_priority": 1
+    }
+  ]
+}

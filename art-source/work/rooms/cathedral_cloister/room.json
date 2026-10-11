@@ -1,0 +1,23 @@
+{
+  "id": "cathedral_cloister",
+  "display_name": "Cloister",
+  "now": "art-source/raw/IMG-0016/IMG-0016-v2.png",
+  "then": "art-source/raw/IMG-0022/IMG-0022-v1.png",
+  "walk": [[80, 735], [400, 775], [1100, 775], [1700, 715], [1880, 728], [1800, 1000], [200, 1000]],
+  "scale_zones": {"far_y": 715, "far_scale": 0.74, "near_y": 1000, "near_scale": 1.0},
+  "markers": {"default": [1000, 880], "from_nave": [190, 795], "from_loft": [1760, 775]},
+  "hotspots": [
+    {"id": "sister", "name": "Sister", "polygon": [[490, 805], [490, 430], [570, 398], [640, 430], [655, 805]], "walk_to": [740, 830], "default_verb": "talk", "pick_priority": 2},
+    {"id": "doorway", "name": "To the nave", "polygon": [[60, 645], [60, 300], [110, 240], [170, 258], [200, 330], [200, 645]], "walk_to": [150, 770],
+     "exit": {"room": "cathedral_nave", "entry": "from_cloister", "direction": "left"}},
+    {"id": "turret", "name": "Turret stair", "polygon": [[1740, 692], [1740, 420], [1790, 380], [1850, 410], [1870, 692]], "walk_to": [1790, 745],
+     "exit": {"room": "choir_loft", "entry": "from_cloister", "direction": "up", "requires_flag": "gd_lantern_mended"}},
+    {"id": "well", "name": "Well", "polygon": [[840, 702], [840, 450], [1110, 450], [1110, 702]], "walk_to": [980, 795], "pick_priority": 1},
+    {"id": "sundial", "name": "Sundial", "polygon": [[1290, 692], [1290, 500], [1372, 500], [1382, 692]], "walk_to": [1330, 785], "pick_priority": 1},
+    {"id": "roses", "name": "Dead roses", "polygon": [[300, 605], [300, 420], [1600, 420], [1600, 605]], "walk_to": [700, 795]}
+  ],
+  "npcs": [
+    {"scene": "res://content/characters/sister/sister.tscn", "name": "Sister", "position": [565, 805], "facing": "right", "era": "now"}
+  ],
+  "effects": {"preset": "exterior", "light": [1430, 90], "aim": 220}
+}

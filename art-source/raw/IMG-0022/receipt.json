@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0022",
+  "title": "The cathedral cloister, then",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T22:12:16.646Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0016/IMG-0016-v2.png",
+          "sha256": "14d0745eda619f396d013e242f8c830db10ff8a225966b1ea746246446466f7c"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit this image in place. Keep exactly the same composition, camera, perspective, horizon and every shape where it stands: the arcade, the doorway on the left, the stair turret on the right, the well, the sundial, the cathedral beyond and the walk. Only change the time and the condition.\n\nRestore the same cloister to how it looked decades earlier, on a golden summer evening, in full rich warm color, as a painterly gothic matte painting: the garden in full bloom with red and white roses climbing the columns, green lawns and herb beds, the well whole with a rope and bucket and water in it, the sundial sharp and clean, the choir's long blue-and-gold robes drying on a line between two columns, the cathedral's windows glowing, a warm sunset sky in place of the moon. The key light comes from the same direction as in the original.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0022-v1.png",
+          "sha256": "8f232f2c2a5a939d7332f03f63fc029330bff71251a9722ea85ec2ee9883c6f7",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0022-v2.png",
+          "sha256": "d3c737e223e4fa46b4029ec7e06a7cf86f85185235a46616b894ea0bb7e686de",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 73506,
+        "outputTokens": 698
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d06-1978-7c42-9e93-687379337cdd",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d06-1978-7c42-9e93-687379337cdd/exec-f30f8ced-ad8b-4245-9644-1f228ea9264e.png",
+            "/Users/orcdev/.codex/generated_images/01a12d06-1978-7c42-9e93-687379337cdd/exec-0cbe9105-79c4-47fa-80d9-f36fdad5bbb2.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate two edits from the reference using your prompt exactly.",
+            "DONE"
+          ]
+        }
+      }
+    }
+  ]
+}

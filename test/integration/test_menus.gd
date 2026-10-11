@@ -114,7 +114,7 @@ func test_the_settings_page_changes_settings() -> void:
 
 
 func test_reveal_hotspots_marks_what_can_be_used() -> void:
-	assert_eq(Menus.hotspots.reveal(), 4, "the statue, the altar, the rose window and the way back")
-	assert_eq(Menus.hotspots.markers().size(), 4)
+	assert_eq(Menus.hotspots.reveal(), 6, "the statue, the altar, the rose window, the way back, the cloister arch and the great doors")
+	assert_eq(Menus.hotspots.markers().size(), 6)
 	await wait_seconds(HotspotReveal.SECONDS + 0.3)
 	assert_eq(Menus.hotspots.markers().size(), 0, "gone after a few seconds")

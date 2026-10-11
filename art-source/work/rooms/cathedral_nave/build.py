@@ -69,6 +69,11 @@ def build_occluders(now, then) -> list[dict]:
     return specs
 
 
+# Plan 008: the aisle arch to the cloister, and the great doors (right) to the city.
+ARCH = [[985, 765], [985, 420], [1030, 378], [1082, 420], [1082, 765]]
+DOORS = [[1780, 1000], [1780, 780], [1920, 760], [1920, 1078]]
+
+
 def effects() -> list[dict]:
     depth = f"{RES}/depth_now.png"
     return [
@@ -108,13 +113,16 @@ def main() -> None:
         },
         "walk": {"now": WALK, "then": WALK},
         "scale_zones": {"far_y": 908, "far_scale": 0.62, "near_y": 1075, "near_scale": 1.0},
-        "markers": {"default": [900, 1010], "from_cemetery": [430, 1010]},
+        "markers": {"default": [900, 1010], "from_cemetery": [430, 1010], "from_cloister": [1030, 935]},
         "hotspots": [
             {"id": "statue", "name": "Statue of a saint", "polygon": STATUE, "walk_to": [480, 960], "default_verb": "use"},
             {"id": "altar", "name": "Altar", "polygon": ALTAR, "walk_to": [1460, 930]},
             {"id": "rose_window", "name": "Rose window", "polygon": ROSE_WINDOW, "walk_to": [1320, 935]},
             {"id": "exit_west", "name": "To the cemetery", "polygon": EXIT_WEST, "walk_to": [350, 1030],
              "exit": {"room": "cemetery_grave", "entry": "from_cathedral", "direction": "left"}},
+            {"id": "arch", "name": "Arch to the cloister", "polygon": ARCH, "walk_to": [1030, 925],
+             "exit": {"room": "cathedral_cloister", "entry": "from_nave", "direction": "up"}},
+            {"id": "doors", "name": "The great doors", "polygon": DOORS, "walk_to": [1720, 1015], "default_verb": "use", "pick_priority": 1},
         ],
         "occluders": occluders,
         "effects": effects(),

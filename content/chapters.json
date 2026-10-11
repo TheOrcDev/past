@@ -12,12 +12,15 @@
         "cemetery_gate",
         "sexton_lodge",
         "ossuary",
-        "cathedral_nave"
+        "cathedral_nave",
+        "cathedral_cloister",
+        "choir_loft"
       ],
       "closeups": [
         "tombstone",
         "burial_register",
-        "ossuary_niche"
+        "ossuary_niche",
+        "hymn_book"
       ],
       "dialogue": [
         "cemetery",
