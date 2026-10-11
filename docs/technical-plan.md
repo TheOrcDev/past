@@ -436,18 +436,30 @@ Built in plan 002:
 
 ### 6.5 Voice and subtitles — `Voice` (autoload)
 
-- **Playback:** when the balloon shows a line, it calls `Voice.play(line_id,
-  speaker)`.
-  - `Voice` loads `assets/audio/voice/en/<ID>.ogg` on demand. Cutscenes preload
-    their next lines.
+- **Playback:** when `Say` speaks a line, it calls `Voice.play(id)` with the
+  line's static ID.
+  - `Voice` loads `assets/audio/voice/en/<ID>.ogg` when the line is said.
+    Cutscenes preload their next lines if plan 003 slice 9 finds the first
+    line slow to start.
   - The line plays on the Voice bus, and the subtitle stays up until the audio
-    ends. A click skips.
+    ends. A click skips the line and stops its audio.
+  - `Voice.register(id, stream, envelope)` makes a line sayable without files,
+    for tests and previews.
+- **Buses:** Voice, Music, Ambience, SFX and UI, each sending to Master, in
+  `default_bus_layout.tres`. `addons/past_tools/new_bus_layout.gd` writes it.
 - **Browser demo:** voice players use `playback_type = Stream` (§7).
-- **Envelopes:** about 30 loudness values per second, computed offline and stored
-  per chapter in one table (ID → values). They drive Unknown's eyes and smoke,
-  and they can drive any NPC. Computing them offline gives the same result on
-  every platform, with no runtime analysis.
+- **Envelopes:** about 30 loudness values per second, computed offline. `post`
+  writes them into one table, `assets/audio/voice/en/envelopes.gd`: `RATE`,
+  and `LINES` from ID to bytes 0–255. `Voice.level()` reads the value at the
+  audio's position. Unknown's body eases its `voice_level` toward it, which
+  drives his eyes and smoke, and any NPC can do the same. Computing them
+  offline gives the same result on every platform, with no runtime analysis.
 - **Missing audio** falls back to text timing and shows up in content lint.
+  Unknown's body flickers at a syllable rate instead.
+- **Stalled audio:** a line whose audio stands still for 0.5 s, over at least
+  6 frames, has stalled (`Voice.stalled()`). Its audio is stopped, so it can't
+  start late, and the line keeps the time it would have had as text (decision
+  #40). That happens in a browser before the player's first click (§7).
 
 ### 6.6 Interface (plan 004)
 
@@ -591,7 +603,18 @@ Not needed. The browser gets only the prologue demo, so it fits in one `.pck`
   - Sample mode also ignores pitch in some cases (issues #117022, #123786), so
     footstep variety comes from pre-rendered variants.
 
-  Plan 003 measures Stream latency in the single-threaded build.
+  In the single-threaded build:
+  - **Sound waits for the first click.** Browsers play no sound until the
+    player clicks. Until then a voice line's audio never starts, so `Voice`
+    finds it stalled and the line keeps text timing (§6.5). `browser-qa.ts`
+    lets the page play sound from the start
+    (`--autoplay-policy=no-user-gesture-required`), as after that click.
+  - **Sound is mixed on the main thread,** between frames, so a frame longer
+    than the audio buffer holds the sound back and a line runs long. On
+    2026-10-11, at a load average near 50, the `voice` check held its 1 s line
+    for 1.41–2.01 s on a cold first load (longest frame 234 ms) and 1.09–1.13 s
+    warm. Plan 003 slice 9 measures it on a quiet machine, along with how long
+    the first line takes to start.
 - **Loading:**
   - The whole `.pck` downloads before the game starts; 4.7.2 has no streaming.
     A custom HTML shell shows a loading screen in the game's style.

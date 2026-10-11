@@ -28,8 +28,8 @@ const AURA_DARKNESS := 0.32
 @export var eye_state := EyeState.IDLE
 ## 0 calm, 1 agitated: wilder smoke.
 @export_range(0.0, 1.0) var agitation := 0.0
-## How loud his voice is, 0–1. Plan 003's Voice sets it from the line's
-## envelope; until then a stand-in flicker runs while he speaks.
+## How loud his voice is, 0–1: the playing line's envelope (Voice), or a
+## stand-in flicker while he speaks a line that has no audio yet.
 var voice_level := 0.0
 
 var tendrils: Tendrils
@@ -109,8 +109,12 @@ func _end_flare(id: int) -> void:
 
 func _process(delta: float) -> void:
 	_time += delta
-	if _speaking:
-		# Stand-in for the voice envelope until plan 003: a syllable-rate flicker.
+	# By path, so the scaffolds that build him still compile without autoloads.
+	var voice := get_node_or_null(^"/root/Voice")
+	if _speaking and voice and voice.is_playing():
+		voice_level = move_toward(voice_level, voice.level(), delta * 12.0)
+	elif _speaking:
+		# No audio for this line yet: a syllable-rate flicker stands in.
 		var target := 0.35 + 0.65 * absf(sin(_time * 9.0) * sin(_time * 3.7 + 1.3))
 		voice_level = move_toward(voice_level, target, delta * 6.0)
 	else:

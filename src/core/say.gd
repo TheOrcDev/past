@@ -1,10 +1,10 @@
 extends Node
 ## Speaks Dialogue Manager lines over the speaking actor (docs/technical-plan.md
-## §5.6): text above the speaker, held for a time based on its length and the
-## player's text speed, skipped with a left click. Settings can hide the text or
-## change its size. When a line offers responses, the allowed ones are shown
-## as choices; the player's pick is spoken by the player and the conversation
-## follows it. Voice joins in plan 003.
+## §5.6): text above the speaker, held until its voice ends (Voice), or for a
+## time based on its length and the player's text speed when it has no audio,
+## and skipped with a left click. Settings can hide the text or change its
+## size. When a line offers responses, the allowed ones are shown as choices;
+## the player's pick is spoken by the player and the conversation follows it.
 
 signal line_started(static_id: String, speaker: String, text: String)
 signal line_finished(static_id: String)
@@ -106,7 +106,10 @@ func _speak(static_id: String, speaker: String, text: String) -> void:
 	if actor:
 		actor.set_speaking(true)
 	line_started.emit(static_id, speaker, text)
-	await _hold(line_seconds(text))
+	if Voice.play(StringName(static_id)):
+		await _hold_voice(text)
+	else:
+		await _hold(line_seconds(text))
 	if is_instance_valid(actor):
 		actor.set_speaking(false)
 	line_finished.emit(static_id)
@@ -129,6 +132,22 @@ func _hold(seconds: float) -> void:
 	while not _skip and not fast_forward and elapsed < seconds:
 		await get_tree().process_frame
 		elapsed += get_process_delta_time()
+
+
+## Waits for the voiced line to end, or until skipped (which stops it). If its
+## audio stalls, as in a browser before the player's first click, the line
+## keeps the time it would have had as text.
+func _hold_voice(text: String) -> void:
+	_skip = false
+	var elapsed := 0.0
+	var stalled := false
+	while not _skip and not fast_forward and (Voice.is_playing() or (stalled and elapsed < line_seconds(text))):
+		if not stalled and Voice.stalled():
+			stalled = true
+			Voice.stop()
+		await get_tree().process_frame
+		elapsed += get_process_delta_time()
+	Voice.stop()
 
 
 func _actor_named(speaker: String) -> Actor:

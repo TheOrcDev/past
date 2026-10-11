@@ -126,6 +126,8 @@ func _run(scenario: String) -> void:
 			await _journal()
 		"toolkit_reel":
 			await _toolkit_reel()
+		"voice":
+			await _voice()
 		_:
 			_failures.append("unknown scenario %s" % scenario)
 	_finish("done")
@@ -676,6 +678,52 @@ func _use(hotspot_name: String, verb: StringName) -> void:
 	var glyph := Interaction.coin.glyph_position(verb)
 	Interaction.coin.point_at(glyph)
 	await Interaction.release_at(world, glyph)
+
+
+## Voice playback (plan 003 slice 5), with a tone made in memory until real
+## lines exist: the Voice bus is there, a voiced line holds for its audio, its
+## level follows the line's envelope and Unknown's body follows the level. In
+## the browser it checks streamed playback; browser-qa.ts lets the page play
+## sound before a click, as a player's first click does.
+func _voice() -> void:
+	await _enter(&"cathedral_nave")
+	_check(AudioServer.get_bus_index(&"Voice") >= 0, "the Voice bus exists")
+	var rate := 22050
+	var data := PackedByteArray()
+	data.resize(rate * 2)
+	for i in rate:
+		data.encode_s16(i * 2, int(sin(i * TAU * 220.0 / rate) * 6000.0))
+	var tone := AudioStreamWAV.new()
+	tone.format = AudioStreamWAV.FORMAT_16_BITS
+	tone.mix_rate = rate
+	tone.data = data
+	var rising := PackedFloat32Array()
+	for i in 30:
+		rising.append(i / 29.0)
+	Voice.register(&"CATH_ALTAR_LOOK_1", tone, rising)
+	# The line's level and Unknown's, at their highest, and the longest frame:
+	# the browser build mixes sound between frames, so long ones hold it back.
+	var peaks := [0.0, 0.0, 0, Time.get_ticks_msec()]
+	var body := Rooms.player.get_node("Body")
+	var track := func() -> void:
+		peaks[0] = maxf(peaks[0], Voice.level())
+		peaks[1] = maxf(peaks[1], body.voice_level)
+		var now := Time.get_ticks_msec()
+		if Say.speaking:
+			peaks[2] = maxi(peaks[2], now - peaks[3])
+		peaks[3] = now
+	get_tree().process_frame.connect(track)
+	var id: String = await _click_for_line((Rooms.current.hotspots.get_node("Altar") as Hotspot).focus_point())
+	var started := Time.get_ticks_msec()
+	await Say.line_finished
+	var held := (Time.get_ticks_msec() - started) / 1000.0
+	get_tree().process_frame.disconnect(track)
+	_check(id == "CATH_ALTAR_LOOK_1", "the altar's line plays voiced")
+	_check(absf(held - 1.0) < 0.4, "it held for its audio's 1 s (%.2f s; longest frame %d ms)" % [held, peaks[2]])
+	_check(peaks[0] > 0.7, "its audio played through the envelope (level peak %.2f)" % peaks[0])
+	_check(peaks[1] > 0.7, "Unknown's voice level followed it (peak %.2f)" % peaks[1])
+	await _settle()
+	Voice.unregister(&"CATH_ALTAR_LOOK_1")
 
 
 ## The fog gradients with grain on and off, in both eras, for judging banding.

@@ -165,3 +165,25 @@ About 2–3 working sessions, plus the operator's casting and listening sessions
     Retry-After header being read as "retry at once".
   - **Next:** slice 2 (casting) needs the plan tier and credit ceiling (board
     #4), the key in `.env`, and the publishing entity (#7).
+- **2026-10-11, slice 5:** the runtime, built and checked with a tone made in
+  memory, since no line has audio before casting.
+  - **Pieces:**
+    - the `Voice` autoload: loads a line's Ogg by its ID, plays it streamed on
+      the Voice bus, and reads its envelope from the table `post` will write;
+    - `Say` holds a voiced line until its audio ends, and a click skips it and
+      stops the audio. Subtitles already sit over their speaker, in the
+      speaker's color;
+    - Unknown's eyes and smoke follow the line's level. A line without audio
+      keeps text timing and his stand-in flicker;
+    - the buses: Voice, Music, Ambience, SFX and UI, into Master.
+  - **The browser:** the first run timed out. Chrome plays no sound before a
+    click, so the line's audio never started and the line waited forever. A
+    line whose audio stalls now keeps text timing (decision #40), and the
+    browser QA allows sound from the start.
+  - **Checks:**
+    - GUT: 4 tests in `test/integration/test_voice.gd` (113 in all);
+    - the `voice` QA scenario on macOS: held 1.00 s for 1 s of audio;
+    - in Chrome: 1.09–1.13 s on warm passes, but 1.41–2.01 s on a cold load
+      at a load average near 50. Long frames there hold back the build's
+      main-thread mixing. Slice 9 measures it on a quiet machine.
+  - **Left:** real lines go through it once slices 2–4 make them.

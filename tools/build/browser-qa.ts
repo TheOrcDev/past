@@ -1,6 +1,6 @@
 // Runs a QA scenario of the browser build in a visible Chrome window and
 // prints the game's [qa] lines, plus console errors, uncaught exceptions and
-// page crashes. Automation tabs are often hidden, and hidden
+// page crashes. Sound is allowed from the start, as after a player's first click. Automation tabs are often hidden, and hidden
 // tabs throttle requestAnimationFrame, so frame times only mean something in a
 // window like this one. It uses a throwaway profile and closes when done.
 //
@@ -44,6 +44,9 @@ const chrome = Bun.spawn(
     "--disable-backgrounding-occluded-windows",
     "--disable-renderer-backgrounding",
     "--disable-background-timer-throttling",
+    // A page plays no sound until the player's first click, and nothing here
+    // clicks: let it play from the start, as it can after that click.
+    "--autoplay-policy=no-user-gesture-required",
     `--window-size=${canvasW / scale},${canvasH / scale + 28}`,
     "--window-position=40,40",
     `--app=${pageUrl}`,

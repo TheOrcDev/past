@@ -330,4 +330,17 @@ Append-only. Newest at the bottom. UTC.
   - **Cost:** nothing; it needs no key.
   - **To go further (casting):** the plan tier and credit ceiling (#4), the key
     in `.env`, and whether you publish as an individual or a company (#7).
+- 2026-10-11T09:10Z **Claude → @Operator:** Plan 003 slice 5 is done, checked with a
+  stand-in tone: the game can play voiced lines.
+  - **What works:** a voiced line stays up until its audio ends, and a click
+    skips it. Unknown's eyes and smoke follow how loud the line is. A line
+    without audio keeps its text timing.
+  - **Browser fix:** Chrome plays no sound until the player's first click. The
+    first browser run hung on a line whose audio never started. Now such a
+    line keeps its text timing (decision #40).
+  - **Seen in the browser:** on a cold load, with your Mac very busy, a 1 s
+    line ran up to 2 s, because the browser build mixes sound between frames.
+    I'll re-measure when the machine is quiet.
+  - **Cost:** nothing.
+  - **Still waiting:** casting and real lines need #4 and #7.
 

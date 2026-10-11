@@ -31,6 +31,7 @@ Menus="*res://src/ui/menus.gd"
 Hints="*res://src/systems/hints.gd"
 Cutscenes="*res://src/systems/cinematics/cutscenes.gd"
 Journal="*res://src/systems/journal.gd"
+Voice="*res://src/systems/voice.gd"
 Qa="*res://src/core/qa.gd"
 
 [display]

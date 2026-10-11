@@ -1,0 +1,6 @@
+~ start
+
+Unknown: A voiced test line, long enough that as text alone it would stay up for a good few seconds. [ID:TEST_VOICE_1]
+Unknown: And a line with no audio at all, which falls back to text timing. [ID:TEST_VOICE_2]
+
+=> END
