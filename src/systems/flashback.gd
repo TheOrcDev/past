@@ -3,7 +3,8 @@ extends Node
 ## A vision blooms the room's past out from an anchor point: the then
 ## background dissolves in over the now one, each era's effects and occluders
 ## crossfade, the grade turns warm, then the camera drifts while something
-## plays, and finally the past drains back into the anchor.
+## plays, and finally the past drains back into the anchor. A vision is a
+## cutscene (`Vision`), so a skip snaps every step to its end.
 
 signal vision_started(origin: Vector2)
 signal vision_finished(origin: Vector2)
@@ -18,6 +19,7 @@ var playing := false
 
 var _grade_material: ShaderMaterial
 var _flare: Sprite2D
+var _drift: Camera2D
 
 
 func _ready() -> void:
@@ -97,26 +99,31 @@ func warm_up(room: Node) -> void:
 		shown[i].visible = was_visible[i]
 
 
-## Plays a cinematic flashback in `room`, blooming from `origin` (room pixels).
-## `during` is awaited while the past is shown; without it the past holds for
-## `hold_seconds`.
-func vision(room: Room, origin: Vector2, during := Callable(), hold_seconds := 6.0) -> void:
+## Plays the vision of the memory `id` in `room`, blooming from `origin` (room
+## pixels), as a cutscene: skippable, and noted in GameState once it ends.
+## `during` is awaited with the cutscene's steps while the past shows, as
+## during.call(c); without it the past holds for a few seconds.
+func vision(id: StringName, room: Room, origin: Vector2, during := Callable()) -> void:
+	await Cutscenes.play(Vision.new(id, room, origin, during))
+
+
+## A vision's way into the past, as cutscene steps.
+func open_past(c: CutsceneSteps, room: Room, origin: Vector2) -> void:
 	playing = true
-	Interaction.locked += 1
 	_unknown_reacts(true)
 	vision_started.emit(origin)
-	await _transition(room, origin, true)
+	await _transition(c, room, origin, true)
 	room.set_era(&"then")
-	var camera := _start_drift(room, origin)
-	if during.is_valid():
-		await during.call()
-	else:
-		await get_tree().create_timer(hold_seconds).timeout
-	await _end_drift(camera)
+	_drift = _start_drift(room, origin)
+
+
+## A vision's way back to the present, as cutscene steps.
+func close_past(c: CutsceneSteps, room: Room, origin: Vector2) -> void:
+	await _end_drift(c, _drift)
+	_drift = null
 	_unknown_reacts(false)
-	await _transition(room, origin, false)
+	await _transition(c, room, origin, false)
 	room.set_era(&"now")
-	Interaction.locked -= 1
 	playing = false
 	vision_finished.emit(origin)
 
@@ -134,7 +141,7 @@ func _unknown_reacts(into_past: bool) -> void:
 		player.play(&"flare")
 
 
-func _transition(room: Room, origin: Vector2, into_past: bool) -> void:
+func _transition(c: CutsceneSteps, room: Room, origin: Vector2, into_past: bool) -> void:
 	var now_layer := room.layers.get_node("Now") as CanvasItem
 	var then_layer := room.layers.get_node("Then") as CanvasItem
 	var then_background := then_layer.get_node("Background") as Sprite2D
@@ -158,7 +165,7 @@ func _transition(room: Room, origin: Vector2, into_past: bool) -> void:
 		node.visible = true
 	for node in fading_in:
 		node.modulate.a = 0.0
-	if into_past:
+	if into_past and not c.skipping:
 		_flash(room, origin)
 
 	var tween := create_tween().set_parallel(true).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
@@ -168,7 +175,7 @@ func _transition(room: Room, origin: Vector2, into_past: bool) -> void:
 		tween.tween_property(node, "modulate:a", 1.0, transition_seconds)
 	for node in fading_out:
 		tween.tween_property(node, "modulate:a", 0.0, transition_seconds)
-	await tween.finished
+	await _finish(c, tween)
 
 	then_background.material = null
 	for node in fading_in + fading_out:
@@ -214,12 +221,21 @@ func _start_drift(room: Room, origin: Vector2) -> Camera2D:
 	return camera
 
 
-func _end_drift(camera: Camera2D) -> void:
-	if camera == null:
+func _end_drift(c: CutsceneSteps, camera: Camera2D) -> void:
+	if camera == null or not is_instance_valid(camera):
 		return
 	(camera.get_meta(&"drift") as Tween).kill()
 	var tween := camera.create_tween().set_parallel(true).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(camera, "zoom", Vector2.ONE, 1.0)
 	tween.tween_property(camera, "position", Vector2(960, 540), 1.0)
-	await tween.finished
+	await _finish(c, tween)
 	camera.queue_free()
+
+
+## Waits for `tween`; once the scene is skipped, steps it straight to its end,
+## so every property lands where the watched run leaves it.
+func _finish(c: CutsceneSteps, tween: Tween) -> void:
+	while tween.is_running() and not c.skipping:
+		await get_tree().process_frame
+	if tween.is_running():
+		tween.custom_step(3600.0)

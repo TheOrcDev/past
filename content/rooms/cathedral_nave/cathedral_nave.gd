@@ -10,11 +10,10 @@ func _on_enter(_from: StringName) -> void:
 func use_statue() -> void:
 	await Say.line(&"cathedral", &"statue_use")
 	var statue := hotspots.get_node("Statue") as Hotspot
-	await Flashback.vision(self, statue.focus_point(), func() -> void:
-		await get_tree().create_timer(1.5).timeout
-		await Say.line(&"cathedral", &"statue_return")
-		await get_tree().create_timer(1.5).timeout)
-	GameState.remember(&"cathedral_statue")
+	await Flashback.vision(&"cathedral_statue", self, statue.focus_point(), func(c: CutsceneSteps) -> void:
+		await c.wait(1.5)
+		await c.say(&"cathedral", &"statue_return")
+		await c.wait(1.5))
 
 
 func look_altar() -> void:

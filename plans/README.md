@@ -13,7 +13,7 @@ REJECTED (one-line rationale).
 | [002](002-first-light-look-spike.md) | First light: prove the look of *Past* | M1 | L | 001; `AI_GATEWAY_API_KEY` in `.env`; $50 image budget (#26) | GATE: slices 1–7 done, 41 GUT tests pass, measurements in `docs/qa/002/`; waiting for the operator's look-gate sign-off |
 | [003](003-voice-of-the-world-audio-spike.md) | Voice of the world: ElevenLabs pipeline spike | M2 | M | 001; ElevenLabs key and credit ceiling (board #4) | TODO |
 | [004](004-point-and-click-core.md) | Point-and-click core: verb coin, inventory, dialogue UI, saves, settings | M3 | L | 002 | DONE 2026-10-11: 96 GUT tests pass; both builds finish the greybox chain; measurements in `docs/qa/004/` |
-| [005](005-cinematic-toolkit.md) | Cinematic toolkit: flashbacks, reveals, cutscene runner, journal | M4 | L | 002, 004 | IN PROGRESS: slices 1–2 (cutscene runner, skipping) done 2026-10-11 |
+| [005](005-cinematic-toolkit.md) | Cinematic toolkit: flashbacks, reveals, cutscene runner, journal | M4 | L | 002, 004 | IN PROGRESS: slices 1–3 (cutscene runner, skipping, visions) done 2026-10-11 |
 | 006 | Prologue vertical slice | M5 | XL | 003, 005, story track | Not written |
 | [007](007-the-grave.md) | The grave: start at Unknown's grave, close-up views | M5 (early) | M | 002, 004 | DONE 2026-10-10 (operator request) |
 

@@ -99,8 +99,8 @@ func test_reduce_camera_motion_keeps_the_camera_still() -> void:
 	await wait_for_signal(Closeups.opened, 5.0)
 	await Closeups.close()
 	var room := Rooms.current
-	Flashback.vision(room, altar.focus_point(), func() -> void:
-		await get_tree().create_timer(0.2).timeout)
+	Flashback.vision(&"test_memory", room, altar.focus_point(), func(c: CutsceneSteps) -> void:
+		await c.wait(0.2))
 	await wait_seconds(1.5)
 	assert_null(room.get_viewport().get_camera_2d(), "no drift during a vision")
 	await wait_for_signal(Flashback.vision_finished, 15.0)

@@ -291,17 +291,23 @@ Each is a small autoload or scene with one job, on top of the core.
   loaded at the same coordinates, so Unknown stays where he stood and the then
   and now images line up pixel for pixel.
 - **Vision** (cinematic):
-  - `await Flashback.vision(&"cathedral_altar")` runs the transition in, a
-    cutscene (§6.3), and the transition out.
-  - The player cannot act while it runs, and it can be skipped.
+  - `await Flashback.vision(&"cathedral_statue", room, anchor, during)` plays a
+    `Vision` cutscene (§6.3). Its steps are the transition in, `during`
+    (called with the cutscene's steps), and the transition out.
+  - The player cannot act while it runs, and it has letterbox bars like any
+    cutscene.
+  - **Skipping** steps its transition tweens straight to their end
+    (`Tween.custom_step`). The room is back in the present at once, with
+    Unknown where he stood.
+  - **Finishing**, watched or skipped, records the memory in `GameState`.
 - **Playable memory:** `Flashback.enter_memory(...)` switches the era and
   returns when the memory's exit condition fires.
 - **Memory vista:** a reveal (§6.3) played in the then era.
 - **Separate rooms:** a memory whose geography is too different for an in-room
   switch uses a separate room and a screen-capture crossfade. That is the
   exception.
-- **Records:** `Eras` records the memories seen in `GameState`, and the journal
-  reads them.
+- **Records:** a finished vision records its memory in `GameState.memories`,
+  and the journal reads them.
 
 ### 6.2 Flashback transition shader
 

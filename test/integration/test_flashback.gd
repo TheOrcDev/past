@@ -24,10 +24,10 @@ func after_each() -> void:
 func test_vision_shows_the_past_then_returns_to_the_present() -> void:
 	var room := Rooms.current
 	var origin := (room.hotspots.get_node("Statue") as Hotspot).focus_point()
-	await Flashback.vision(room, origin, func() -> void:
+	await Flashback.vision(&"test_memory", room, origin, func(c: CutsceneSteps) -> void:
 		_era_during_hold = room.era
 		assert_true(Interaction.locked > 0, "input is locked during the vision")
-		await get_tree().create_timer(0.5).timeout)
+		await c.wait(0.5))
 	assert_eq(_era_during_hold, &"then", "the past is shown during the hold")
 	assert_eq(room.era, &"now", "back in the present afterwards")
 	assert_eq(Interaction.locked, 0, "input unlocked")
@@ -81,7 +81,7 @@ func test_unknown_eyes_flare_as_the_vision_opens_and_settle_after() -> void:
 	var flared := [false]
 	var watch := func(_origin: Vector2) -> void: flared[0] = body.eye_state == UnknownBody.EyeState.FLARE
 	Flashback.vision_started.connect(watch)
-	await Flashback.vision(Rooms.current, Vector2(200, 500), func() -> void: await get_tree().create_timer(0.3).timeout)
+	await Flashback.vision(&"test_memory", Rooms.current, Vector2(200, 500), func(c: CutsceneSteps) -> void: await c.wait(0.3))
 	Flashback.vision_started.disconnect(watch)
 	assert_true(flared[0], "his eyes flare as the past opens")
 	await wait_seconds(1.5)
@@ -93,7 +93,32 @@ func test_the_memory_takes_his_body_as_the_vision_opens() -> void:
 	var playing := [&""]
 	var watch := func(_origin: Vector2) -> void: playing[0] = body.sprite.animation
 	Flashback.vision_started.connect(watch)
-	await Flashback.vision(Rooms.current, Vector2(200, 500), func() -> void: await get_tree().create_timer(0.3).timeout)
+	await Flashback.vision(&"test_memory", Rooms.current, Vector2(200, 500), func(c: CutsceneSteps) -> void: await c.wait(0.3))
 	Flashback.vision_started.disconnect(watch)
 	assert_true(String(playing[0]).begins_with("flare_"), "the flare reaction plays, got %s" % playing[0])
+
+
+func test_a_vision_records_its_memory() -> void:
+	GameState.reset()
+	await Flashback.vision(&"test_memory", Rooms.current, Vector2(200, 500), func(c: CutsceneSteps) -> void: await c.wait(0.2))
+	assert_eq(Array(GameState.memories), [&"test_memory"])
+	GameState.reset()
+
+
+func test_a_skipped_vision_returns_to_the_present_at_once() -> void:
+	GameState.reset()
+	var room := Rooms.current
+	var stood := Rooms.player.global_position
+	Flashback.vision(&"test_memory", room, Vector2(200, 500), func(c: CutsceneSteps) -> void: await c.wait(5.0))
+	await wait_for_signal(Flashback.vision_started, 5.0)
+	await wait_process_frames(3)
+	Cutscenes.skip()
+	await wait_until(func() -> bool: return not Flashback.playing and Cutscenes.current == null, 3.0)
+	assert_false(Flashback.playing, "over at once")
+	assert_eq(room.era, &"now", "back in the present")
+	assert_false(room.get_node("Layers/Then").visible)
+	assert_null((room.get_node("Layers/Then/Background") as Sprite2D).material, "dissolve material removed")
+	assert_eq(Rooms.player.global_position, stood, "Unknown where he stood")
+	assert_eq(Array(GameState.memories), [&"test_memory"], "the memory is still recorded")
+	GameState.reset()
 

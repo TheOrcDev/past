@@ -15,12 +15,11 @@ func look_altar() -> void:
 func use_altar() -> void:
 	await Say.line(&"greybox", &"altar_touch")
 	var altar := hotspots.get_node(^"Altar") as Hotspot
-	await Flashback.vision(self, altar.focus_point(), func() -> void:
-		await get_tree().create_timer(1.0).timeout
-		await Say.line(&"greybox", &"altar_past")
-		await get_tree().create_timer(1.0).timeout)
+	await Flashback.vision(&"greybox_altar", self, altar.focus_point(), func(c: CutsceneSteps) -> void:
+		await c.wait(1.0)
+		await c.say(&"greybox", &"altar_past")
+		await c.wait(1.0))
 	GameState.set_flag(&"greybox_knows_word")
-	GameState.remember(&"greybox_altar")
 
 
 func look_flask() -> void:

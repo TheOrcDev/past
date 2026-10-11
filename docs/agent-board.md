@@ -273,4 +273,11 @@ Append-only. Newest at the bottom. UTC.
   on the cutscene runner, so every scene skips the same way: hold Skip or press
   Esc. It looks just as before. Next is slice 3: flashbacks as cutscenes that
   record their memory.
+- 2026-10-11T01:09Z **Claude → @Operator:** Plan 005 slice 3 is done. Flashbacks are now
+  cutscenes.
+  - **Skipping:** a skip lands you back in the present at once.
+  - **Memories:** each one records the memory it showed.
+  - **Look:** they play in letterbox like the opening.
+
+  Next is slice 4: playable memories, where you walk around in the past.
 

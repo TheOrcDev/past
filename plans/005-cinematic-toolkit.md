@@ -176,4 +176,22 @@ About 4–6 working sessions.
 
     97 GUT tests pass. The `cemetery_reveal`, `skip` and `reduced_motion` QA
     scenarios pass on desktop and in the browser.
+- **2026-10-11, slice 3:** visions on the runner.
+  - **`Vision`:** a cutscene named by its memory id.
+    `Flashback.vision(id, room, anchor, during)` plays it.
+    `Flashback.open_past()` and `close_past()` are its steps, and `during`
+    gets the cutscene's steps, so the lines and waits inside the past skip
+    too.
+  - **Skipping:** a skipped vision steps its transition tweens straight to
+    their end (`Tween.custom_step`). The room is in the present at once, with
+    the dissolve cleared and Unknown where he stood.
+  - **Memories:** finishing a vision, watched or skipped, records its memory.
+    The cathedral statue and the greybox altar no longer call
+    `GameState.remember` themselves.
+  - **Letterbox:** visions now have the letterbox bars, like every
+    non-interactive scene (`technical-plan.md` §6.3).
+  - **Tests:** two new ones check that a vision records its memory and that a
+    skipped vision returns to the present at once. 99 GUT tests pass. The
+    `greybox` and `screenshots` QA scenarios pass on desktop, and `greybox`
+    passes in the browser.
 
