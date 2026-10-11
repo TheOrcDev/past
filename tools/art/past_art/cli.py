@@ -118,6 +118,29 @@ def cmd_pack(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_room(args: argparse.Namespace) -> int:
+    from . import room
+
+    root = Path(__file__).resolve().parents[3]
+    for room_json in args.rooms:
+        _print(room.build(Path(room_json).resolve(), root))
+    return 0
+
+
+def cmd_grid(args: argparse.Namespace) -> int:
+    from . import room
+
+    room.grid(Path(args.input), Path(args.out), args.step)
+    return 0
+
+
+def cmd_overlay(args: argparse.Namespace) -> int:
+    from . import room
+
+    room.overlay(Path(args.room).resolve(), Path(__file__).resolve().parents[3], Path(args.out))
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="past-art", description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
@@ -182,6 +205,21 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--name", required=True)
     p.add_argument("--shaded", action="store_true", help="keep the renders' shading: grey + alpha sheets")
     p.set_defaults(func=cmd_pack)
+
+    p = sub.add_parser("room", help="build rooms' art and room_spec.json from art-source/work/rooms/<id>/room.json")
+    p.add_argument("rooms", nargs="+", help="room.json files")
+    p.set_defaults(func=cmd_room)
+
+    p = sub.add_parser("grid", help="an image at 1920x1080 with a labelled grid, for tracing")
+    p.add_argument("--in", dest="input", required=True)
+    p.add_argument("--out", required=True)
+    p.add_argument("--step", type=int, default=100)
+    p.set_defaults(func=cmd_grid)
+
+    p = sub.add_parser("overlay", help="a room.json's walk area, hotspots and markers drawn on its now image")
+    p.add_argument("--room", required=True)
+    p.add_argument("--out", required=True)
+    p.set_defaults(func=cmd_overlay)
 
     args = parser.parse_args(argv)
     return args.func(args)

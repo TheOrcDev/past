@@ -344,3 +344,33 @@ XXL: five parts. It is re-estimated after slices 3 and 4.
 - **2026-10-11, slice 1:** the operator's "execute the entire plan" is taken
   as the sign-off for the story drafts, the look gate and memory figures
   (decision #48). The story docs are marked signed.
+- **2026-10-11, slice 2:** the production frame.
+  - **Rooms as data:** `past-art room <room.json>` builds a room's art and
+    `room_spec.json` from one data file. It covers:
+    - the now image graded to monochrome at 1920×1080;
+    - the then image aligned to it;
+    - depth, and occluders cut in both eras;
+    - an effects preset (`exterior` or `interior`), with ground mist and the
+      warm set for the past.
+
+    `past-art grid` and `past-art overlay` draw a labelled grid, and a
+    room's traced walk area and hotspots, onto its image.
+  - **Requests from templates:** `bun tools/images/new-request.ts specs.json`
+    writes request files from short specs and the shared prompts in
+    `art-source/style/prompts/` (now, then, closeup, npc, items).
+    `bun tools/images/index.ts` rebuilds `art-source/requests/INDEX.md`.
+  - **Chapters:** `content/chapters.json` lists each part's rooms,
+    close-ups, characters and dialogue folders, read by `Chapters`.
+    `tools/build/export.sh web` leaves every part not marked `web` out of
+    the demo, and fails if the pack still holds one of them.
+  - **Every room tested:** `test_rooms_all.gd` covers each registered room:
+    - its walk area and default marker;
+    - that every hotspot answers Look;
+    - that every exit lands on a marker that exists.
+
+    It found the nave's statue had no Look line, and now it has one.
+  - **QA tours:** `--qa=rooms --part=<id>` (or `--rooms=a,b`) shows every
+    room now and then and looks at every hotspot. It passes for the
+    prologue on desktop.
+  - The "QA from mid-game" item is the part's `flags` in
+    `content/chapters.json`, which the tour sets.

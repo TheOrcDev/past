@@ -1,0 +1,51 @@
+{
+  "_doc": "The game's parts and the rooms, close-ups and dialogue folders in each (plan 008, docs/story/atlas.md). Read by src/core/chapters.gd, by the every-room test and by tools/build/export.sh, which leaves every part without \"web\": true out of the browser demo (decision #20). Rooms are listed as they are built.",
+  "parts": [
+    {
+      "id": "prologue",
+      "title": "The Grave",
+      "web": true,
+      "start": "cemetery_grave",
+      "flags": [],
+      "rooms": ["cemetery_grave", "cathedral_nave"],
+      "closeups": ["tombstone"],
+      "dialogue": ["cemetery", "cathedral"]
+    },
+    {
+      "id": "ch1",
+      "title": "The Nameless Streets",
+      "start": "cathedral_parvis",
+      "flags": [],
+      "rooms": [],
+      "closeups": [],
+      "dialogue": ["ch1"]
+    },
+    {
+      "id": "ch2",
+      "title": "The Drowned Quarter",
+      "start": "flooded_stair",
+      "flags": [],
+      "rooms": [],
+      "closeups": [],
+      "dialogue": ["ch2"]
+    },
+    {
+      "id": "ch3",
+      "title": "The Hall of Records",
+      "start": "upper_avenue",
+      "flags": [],
+      "rooms": [],
+      "closeups": [],
+      "dialogue": ["ch3"]
+    },
+    {
+      "id": "ch4",
+      "title": "The Dovecote",
+      "start": "cathedral_roof",
+      "flags": [],
+      "rooms": [],
+      "closeups": [],
+      "dialogue": ["ch4"]
+    }
+  ]
+}

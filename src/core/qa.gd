@@ -10,7 +10,7 @@ const LONG_TIMEOUT_SECONDS := 150.0
 ## Scenarios that need the long timeout without the opening.
 const LONG_RUNS: Array[String] = ["greybox", "vista", "journal"]
 ## Scenarios that need longer still, in seconds.
-const TIMEOUTS := {"greybox_clip": 360.0, "toolkit_reel": 360.0}
+const TIMEOUTS := {"greybox_clip": 360.0, "toolkit_reel": 360.0, "rooms": 900.0}
 ## Scenarios that start from the opening instead of straight in the first room.
 const WITH_OPENING: Array[String] = ["cemetery_reveal", "grave", "grave_clip", "perf", "tour", "screenshots", "reduced_motion", "skip", "toolkit_reel"]
 
@@ -118,6 +118,8 @@ func _run(scenario: String) -> void:
 			await _skip()
 		"greybox":
 			await _greybox()
+		"rooms":
+			await _rooms()
 		"greybox_clip":
 			await _greybox_clip()
 		"vista":
@@ -304,6 +306,52 @@ func _grave() -> void:
 	_check(not Say.speaking, "the arrival line plays only once")
 	await get_tree().create_timer(0.5).timeout
 	await _shot("08_back_from_the_cathedral")
+
+
+## Tours rooms (plan 008): `--part=<id>` for a part's rooms with its story
+## flags, or `--rooms=a,b`. Each room is shown now and, if it has a past, then,
+## and every hotspot that isn't an exit is looked at and must answer with a line.
+func _rooms() -> void:
+	var rooms: Array[StringName] = []
+	if _args.has("rooms"):
+		for room in String(_args["rooms"]).split(","):
+			rooms.append(StringName(room))
+	else:
+		var part := Chapters.part(StringName(_args.get("part", "prologue")))
+		for flag: String in part.get("flags", []):
+			GameState.set_flag(StringName(flag))
+		for room: String in part.get("rooms", []):
+			rooms.append(StringName(room))
+	_check(not rooms.is_empty(), "there are rooms to tour")
+	var listen := func(_id: String, _speaker: String, _text: String) -> void:
+		Say.skip.call_deferred()
+	Say.line_started.connect(listen)
+	for room_id in rooms:
+		_mark(String(room_id))
+		await Rooms.goto(room_id, &"default", &"none")
+		await _settle()
+		await get_tree().create_timer(0.4).timeout
+		await _shot("%s_now" % room_id)
+		if Rooms.current.get_node("Layers/Then").get_child_count() > 0:
+			Rooms.current.set_era(&"then")
+			await get_tree().create_timer(0.4).timeout
+			await _shot("%s_then" % room_id)
+			Rooms.current.set_era(&"now")
+		for node in Rooms.current.hotspots.get_children():
+			var hotspot := node as Hotspot
+			if hotspot == null or hotspot is Exit or not hotspot.is_visible_in_tree():
+				continue
+			var spoken := [false]
+			var heard := func(_id: String, _speaker: String, _text: String) -> void:
+				spoken[0] = true
+			Say.line_started.connect(heard)
+			await hotspot.handle(&"look")
+			await _settle()
+			Say.line_started.disconnect(heard)
+			_check(spoken[0] or Closeups.current != null, "%s/%s answers Look" % [room_id, hotspot.id])
+			if Closeups.current:
+				await Closeups.close()
+	Say.line_started.disconnect(listen)
 
 
 ## Frame times through the whole slice (plan 002 slice 7): the opening, the

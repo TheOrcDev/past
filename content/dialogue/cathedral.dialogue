@@ -12,6 +12,12 @@ Unknown: And somehow, I was there to see it. [ID:CATH_STATUE_RETURN_2]
 
 => END
 
+~ statue_look
+
+Unknown: A saint with her hand held out. Whatever she was offering, nobody took it. [ID:CATH_STATUE_LOOK_1]
+
+=> END
+
 ~ altar_look
 
 Unknown: An altar. Whatever was worshipped here has stopped answering. [ID:CATH_ALTAR_LOOK_1]

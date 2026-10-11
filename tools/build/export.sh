@@ -17,6 +17,23 @@ rm -rf "$(dirname "$out")"
 mkdir -p "$(dirname "$out")"
 log="$ROOT/build/export-$target.log"
 
+# The browser demo carries only the parts marked "web" in content/chapters.json
+# (decision #20): the other parts' rooms, close-ups, characters and dialogue
+# are added to the Web preset's exclude filter for this export only.
+excluded=()
+if [[ "$target" == web ]]; then
+	while IFS= read -r path; do excluded+=("$path"); done < <(jq -r '.parts[] | select(.web != true) |
+		((.rooms // [])[] | "content/rooms/\(.)"), ((.closeups // [])[] | "content/closeups/\(.)"),
+		((.characters // [])[] | "content/characters/\(.)"), ((.dialogue // [])[] | "content/dialogue/\(.)")' "$ROOT/content/chapters.json")
+	if [[ ${#excluded[@]} -gt 0 ]]; then
+		cp "$ROOT/export_presets.cfg" "$ROOT/build/export_presets.cfg.bak"
+		trap 'mv "$ROOT/build/export_presets.cfg.bak" "$ROOT/export_presets.cfg"' EXIT
+		patterns="$(printf ', %s/*' "${excluded[@]}")"
+		awk -v extra="$patterns" '/^name="Web"/ { web = 1 } web && /^exclude_filter=/ { sub(/"$/, extra "\""); web = 0 } { print }' \
+			"$ROOT/build/export_presets.cfg.bak" > "$ROOT/export_presets.cfg"
+	fi
+fi
+
 "$ROOT/tools/godot.sh" --headless --import > "$log" 2>&1
 "$ROOT/tools/godot.sh" --headless "--export-$mode" "$preset" "$out" >> "$log" 2>&1 || {
 	cat "$log"
@@ -26,4 +43,10 @@ if grep -E "SCRIPT ERROR|^ERROR" "$log"; then
 	echo "export logged errors; see $log" >&2
 	exit 1
 fi
-echo "exported $target ($mode): $out"
+for path in ${excluded[@]+"${excluded[@]}"}; do
+	if grep -qa "res://$path/" "$(dirname "$out")/index.pck"; then
+		echo "the web pack still holds $path" >&2
+		exit 1
+	fi
+done
+echo "exported $target ($mode): $out${excluded[*]+, without ${#excluded[@]} chapter folders}"

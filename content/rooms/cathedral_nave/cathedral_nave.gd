@@ -22,6 +22,10 @@ func rewatch_cathedral_statue() -> Vision:
 		await c.wait(1.5))
 
 
+func look_statue() -> void:
+	await Say.line(&"cathedral", &"statue_look")
+
+
 func look_altar() -> void:
 	await Say.line(&"cathedral", &"altar_look")
 

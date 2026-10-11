@@ -8,6 +8,9 @@ is gone.
 
 ## Open image requests
 
+From plan 008 on, the full list is `../art-source/requests/INDEX.md`, rebuilt by
+`bun tools/images/index.ts`. The table below covers plan 002.
+
 | ID | Title | Status | Operator approval | Plan |
 |---|---|---|---|---|
 | IMG-0001 | Cathedral nave, now (A/B: Flare) | **accepted: v1** (style key) | approved | 002 |
@@ -413,3 +416,12 @@ Append-only. Newest at the bottom. UTC.
   look gate (#11) and memory figures (#5), recorded as decision #48. Any of
   it is still yours to change. #12 (the female base mesh) waits until the
   NPC route is chosen in slice 3, and may not be needed.
+- 2026-10-11T22:30Z **Claude → @Operator:** Plan 008 slice 2 is done: the production frame.
+  - **Rooms from data:** a room is now one data file, built by
+    `past-art room`.
+  - **Requests from templates:** requests are written from shared prompt
+    templates.
+  - **Demo stays small:** chapters 1–4 are left out of the browser demo
+    automatically.
+  - **Checks:** a test checks every room, and a QA tour shows each part's
+    rooms in both eras.
