@@ -120,6 +120,8 @@ func _run(scenario: String) -> void:
 			await _greybox()
 		"rooms":
 			await _rooms()
+		"npc":
+			await _npc()
 		"greybox_clip":
 			await _greybox_clip()
 		"vista":
@@ -306,6 +308,60 @@ func _grave() -> void:
 	_check(not Say.speaking, "the arrival line plays only once")
 	await get_tree().create_timer(0.5).timeout
 	await _shot("08_back_from_the_cathedral")
+
+
+## Shows an NPC (`--npc=<id>`) large over a grey backdrop and plays its
+## motions (plan 008 slice 3): idle, each talk loop while "speaking", and each
+## one-shot, with screenshots at their extremes. With `--room=<id>` it stands
+## in that room at the marker named by `--marker` instead.
+func _npc() -> void:
+	var npc_id: String = _args.get("npc", "gravedigger")
+	var npc := (load("res://content/characters/%s/%s.tscn" % [npc_id, npc_id]) as PackedScene).instantiate() as Actor
+	var stage := Node2D.new()
+	if _args.has("room"):
+		await Rooms.goto(StringName(_args["room"]), &"default", &"none")
+		npc.position = Rooms.current.marker_position(StringName(_args.get("marker", "default")))
+		Rooms.current.actors.add_child(npc)
+	else:
+		while Rooms.current == null:
+			await get_tree().process_frame
+		await _settle()
+		Rooms.clear()
+		var backdrop := ColorRect.new()
+		backdrop.color = Color(0.36, 0.37, 0.4)
+		backdrop.size = Vector2(1920, 1080)
+		stage.add_child(backdrop)
+		# The actor sets its own scale, so the stage is what's enlarged.
+		var zoom := Node2D.new()
+		zoom.scale = Vector2(2.2, 2.2)
+		zoom.position = Vector2(960, 1050)
+		stage.add_child(zoom)
+		zoom.add_child(npc)
+		get_tree().root.add_child(stage)
+	var body := npc.get_node("Body") as RigBody
+	_check(body != null, "%s has a RigBody" % npc_id)
+	await get_tree().create_timer(0.6).timeout
+	await _shot("%s_idle" % npc_id)
+	for anim: String in body.motions:
+		var motion: Dictionary = body.motions[anim]
+		if anim == "idle":
+			continue
+		if motion.get("loop", true):
+			body.play_animation(StringName(anim), false)
+			body.set_speaking(true)
+			for i in 3:
+				await get_tree().create_timer(0.37).timeout
+				await _shot("%s_%s_%d" % [npc_id, anim, i])
+			body.set_speaking(false)
+		else:
+			var length := float(motion.get("length", 1.0))
+			body.play_animation(StringName(anim), false)
+			for i in 3:
+				await get_tree().create_timer(length / 4.0).timeout
+				await _shot("%s_%s_%d" % [npc_id, anim, i])
+			await body.animation_finished
+	npc.queue_free()
+	stage.queue_free()
 
 
 ## Tours rooms (plan 008): `--part=<id>` for a part's rooms with its story

@@ -29,7 +29,6 @@ From plan 008 on, the full list is `../art-source/requests/INDEX.md`, rebuilt by
 | 4 | ElevenLabs plan tier and credit ceiling for the audio spike. The operator is getting a 12-month plan and will post the details. It must be a paid tier (Starter or above), because Free is non-commercial and requires attribution. | 2026-10-09 | Plan 003 |
 | 6 | An Apple Developer account for macOS signing and notarization: yes or no? | 2026-10-09 | First public desktop build |
 | 7 | Do you publish as an individual or as a company? This sets the ElevenLabs tier needed for music (`audio-pipeline.md` §2). | 2026-10-09 | Plan 003 |
-| 12 | May I download Blender Studio's CC0 female base mesh, as #32 allowed the male one? Five NPCs are women. | 2026-10-11 | Plan 008 slice 4 (the Sister) |
 | 13 | Git LFS storage: plan 008 adds about 3 GB of raw images. Is the account's LFS quota enough, or should raws stay out of git? | 2026-10-11 | Plan 008 slice 0 |
 
 ## Log
@@ -425,3 +424,12 @@ Append-only. Newest at the bottom. UTC.
     automatically.
   - **Checks:** a test checks every room, and a QA tour shows each part's
     rooms in both eras.
+- 2026-10-12T00:05Z **Claude → @Operator:** Plan 008 slice 3 is done: the NPC route,
+  proven on the Gravedigger.
+  - **How:** Sol paints each NPC once. The painting is meshed and skinned to
+    a few bones, so he breathes, nods while he talks and leans on his spade.
+    His feet stay planted.
+  - **Cost:** about 15 min an NPC instead of hours in Blender, and under
+    1 MiB of video memory (decision #49). The female base mesh (#12) isn't
+    needed after all.
+  - **See:** `docs/qa/008/npc/gravedigger-motions.jpg`.

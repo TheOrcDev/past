@@ -1,0 +1,77 @@
+{
+  "id": "IMG-0013",
+  "title": "NPC: the Gravedigger",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T21:54:23.042Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "1440x2560",
+      "quality": "high",
+      "n": 3,
+      "background": "transparent",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0011/IMG-0011-v1.png",
+          "sha256": "80415ee360bb08b7ba72c0b22490f4e30c8d056b827961d01a0574bcb364d65f"
+        }
+      ],
+      "mask": null,
+      "prompt": "A single full-body character for a dark gothic point-and-click adventure game, painted in the same monochrome greyscale ink-wash matte-painting style as the reference image: the old Gravedigger of a ruined cemetery: short, broad and heavy-set, in a long heavy patched coat with a deep hood pulled forward, thick gloves, mud-caked boots, a scarf wound at his throat, leaning slightly on a long-handled spade planted beside him.\n\nThey are a grey shade of a person: solid, made of mid and light greys with soft ink texture, never pure black, with no visible face (his face is lost in the deep shadow of his hood; only the tip of a nose and a grizzled beard edge catch a little light). Pose: standing, slightly stooped, his left hand resting on top of the spade's handle beside him, his right arm hanging relaxed at his side, his head a little forward. Shown whole from head to feet, facing three-quarters to the viewer's left, filling most of the image height, with a little space around them. Even soft light from the upper left with a gentle cool rim light. On a fully transparent background, with no ground, shadow or scenery.\n\nNo text, labels, letters or numbers. No other figures. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0013-v1.png",
+          "sha256": "57cd628ec6d0d42e6e2dd789a7aeae09125b04f8ccbb5e6afb1128bb175aa731",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0013-v2.png",
+          "sha256": "aea3ec9ef0da502490ee6ecc801c0a0d4cd1f6bcf806d4f9b16ec70c8cb05977",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0013-v3.png",
+          "sha256": "861a760cb7652a60078cea54b2a6179a9e7639daf068ac04bc32ee3338a7bb1f",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 132717,
+        "outputTokens": 712
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12cf5-b8b5-78b3-9c2b-39f20820d2e7",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12cf5-b8b5-78b3-9c2b-39f20820d2e7/exec-ae3b07f5-56d8-4616-bd60-c6e53b62144c.png",
+            "/Users/orcdev/.codex/generated_images/01a12cf5-b8b5-78b3-9c2b-39f20820d2e7/exec-70e579be-1ebf-4753-a72c-5525ef1d20ce.png",
+            "/Users/orcdev/.codex/generated_images/01a12cf5-b8b5-78b3-9c2b-39f20820d2e7/exec-8356c386-4510-47fd-aa49-1427caf5f4fd.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1024,
+              "height": 1536
+            },
+            {
+              "width": 1024,
+              "height": 1536
+            },
+            {
+              "width": 1024,
+              "height": 1536
+            }
+          ],
+          "messages": [
+            "I’ll generate three portrait variants using the reference and your exact prompt, with transparent backgrounds.",
+            "Two variants are generated. I’m generating the third with the same reference and prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

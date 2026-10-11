@@ -374,3 +374,15 @@ XXL: five parts. It is re-estimated after slices 3 and 4.
     prologue on desktop.
   - The "QA from mid-game" item is the part's `flags` in
     `content/chapters.json`, which the tour sets.
+- **2026-10-12, slice 3:** the NPC route is skinned paintings (decision
+  #49), not Blender.
+  - **Painting:** Sol painted the Gravedigger (IMG-0013 v2, transparent,
+    1024×1536). `past-art npc` trims and scales it.
+  - **Rig:** `addons/past_tools/new_npc.gd` meshes it (285 vertices) and
+    skins it to 7 bones. `RigBody` plays data motions: idle sway,
+    `talk_a`/`talk_b` bending with the voice, and the `lean` one-shot.
+  - **Checks:** `test_rig_body.gd` (4 tests), and an `npc` QA scenario that
+    shoots each motion.
+  - **Cost:** about 15 min an NPC after the tooling, and under 1 MiB of
+    video memory. A room with Unknown and two NPCs stays far below the
+    400 MiB stop.

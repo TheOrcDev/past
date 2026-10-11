@@ -127,6 +127,15 @@ def cmd_room(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_npc(args: argparse.Namespace) -> int:
+    from . import npc
+
+    root = Path(__file__).resolve().parents[3]
+    for npc_json in args.npcs:
+        _print(npc.build(Path(npc_json).resolve(), root))
+    return 0
+
+
 def cmd_grid(args: argparse.Namespace) -> int:
     from . import room
 
@@ -209,6 +218,10 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("room", help="build rooms' art and room_spec.json from art-source/work/rooms/<id>/room.json")
     p.add_argument("rooms", nargs="+", help="room.json files")
     p.set_defaults(func=cmd_room)
+
+    p = sub.add_parser("npc", help="prepare NPC paintings and npc_spec.json from art-source/work/characters/<id>/npc.json")
+    p.add_argument("npcs", nargs="+", help="npc.json files")
+    p.set_defaults(func=cmd_npc)
 
     p = sub.add_parser("grid", help="an image at 1920x1080 with a labelled grid, for tracing")
     p.add_argument("--in", dest="input", required=True)
