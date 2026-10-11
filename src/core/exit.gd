@@ -9,6 +9,9 @@ extends Hotspot
 @export var target_entry: StringName = &"default"
 ## Which way the exit cursor points: "left", "right", "up" or "down".
 @export var direction: StringName = &"right"
+## A story flag the way needs (plan 008): until GameState has it, the exit
+## doesn't lead anywhere and the room answers `locked_<id>()` instead.
+@export var requires_flag: StringName = &""
 
 
 func _init() -> void:
@@ -20,6 +23,21 @@ func _init() -> void:
 ## locked). Rooms is looked up by path so the room scaffold, which runs without
 ## autoloads, can still compile this class.
 func on_walk() -> void:
+	if not is_open():
+		var room := Room.of(self)
+		var answer := "locked_%s" % id
+		if room and room.has_method(answer):
+			await Callable(room, answer).call()
+		return
 	var rooms := get_node_or_null(^"/root/Rooms")
 	if target_room != &"" and rooms:
 		rooms.goto.call_deferred(target_room, target_entry, &"fade")
+
+
+## Whether the way is open: no flag needed, or GameState has it. GameState is
+## found by path, like Rooms, for the scaffolds.
+func is_open() -> bool:
+	if requires_flag == &"":
+		return true
+	var state := get_node_or_null(^"/root/GameState")
+	return state != null and bool(state.get_flag(requires_flag))

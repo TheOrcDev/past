@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemDef" format=3]
+
+[ext_resource type="Texture2D" path="res://content/items/hymn_book/icon.png" id="1_7mwge"]
+[ext_resource type="Script" path="res://src/core/item_def.gd" id="2_3rbet"]
+
+[resource]
+script = ExtResource("2_3rbet")
+id = &"hymn_book"
+display_name = "Hymn book"
+icon = ExtResource("1_7mwge")
+look_file = &"prologue/items"
+look_cue = &"hymn_book_look"

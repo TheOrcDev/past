@@ -1,0 +1,76 @@
+{
+  "id": "IMG-0018",
+  "title": "NPC: the Sister",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T22:05:27.928Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "1440x2560",
+      "quality": "high",
+      "n": 3,
+      "background": "transparent",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0013/IMG-0013-v2.png",
+          "sha256": "aea3ec9ef0da502490ee6ecc801c0a0d4cd1f6bcf806d4f9b16ec70c8cb05977"
+        }
+      ],
+      "mask": null,
+      "prompt": "A single full-body character for a dark gothic point-and-click adventure game, painted in the same monochrome greyscale ink-wash matte-painting style as the reference image: the last Sister of a cathedral choir: a tall, narrow nun in a long flowing dark-grey habit with a wide pale starched wimple and a dark veil falling to her shoulders, a simple wooden cross on a cord, her hands folded into her wide sleeves.\n\nThey are a grey shade of a person: solid, made of mid and light greys with soft ink texture, never pure black, with no visible face (her face is hidden in the deep shadow of her veil and wimple). Pose: standing upright and very straight, hands folded in front of her in her sleeves, head slightly bowed, facing three-quarters to the viewer's right. Shown whole from head to feet, facing three-quarters to the viewer's left, filling most of the image height, with a little space around them. Even soft light from the upper left with a gentle cool rim light. On a fully transparent background, with no ground, shadow or scenery.\n\nNo text, labels, letters or numbers. No other figures. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0018-v1.png",
+          "sha256": "6f65ad3af9e8e8711bab44647aa72d48e556fe9d3c48c8eed0f1aecf205848d7",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0018-v2.png",
+          "sha256": "5a2e03458dbc1651432fefe372ae6819ec8fa4353af1f683140d274dedbd969c",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0018-v3.png",
+          "sha256": "5f7908f0f686fa97d1b98d22148580ffa319d188ecc958c8a003dd1045153610",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 266908,
+        "outputTokens": 1507
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12cff-dcf6-7022-9586-c93ff6d33718",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12cff-dcf6-7022-9586-c93ff6d33718/exec-347c5265-107f-480f-8109-4616301a4b06.png",
+            "/Users/orcdev/.codex/generated_images/01a12cff-dcf6-7022-9586-c93ff6d33718/exec-12069d59-2ea5-4947-b403-3ffd55aabede.png",
+            "/Users/orcdev/.codex/generated_images/01a12cff-dcf6-7022-9586-c93ff6d33718/exec-f35a9ebb-b1c1-4971-bc9a-f4237c9f1db4.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1024,
+              "height": 1536
+            },
+            {
+              "width": 1024,
+              "height": 1536
+            },
+            {
+              "width": 1024,
+              "height": 1536
+            }
+          ],
+          "messages": [
+            "I’ll generate three portrait variants with transparent backgrounds, using the reference image and your exact prompt each time.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

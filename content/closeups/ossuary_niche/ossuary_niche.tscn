@@ -1,0 +1,31 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/closeups/ossuary_niche/ossuary_niche.gd" id="1_dejf1"]
+[ext_resource type="Texture2D" path="res://content/closeups/ossuary_niche/art/bg.png" id="2_t53d7"]
+[ext_resource type="Script" path="res://src/core/hotspot.gd" id="3_liwks"]
+
+[node name="OssuaryNiche" type="Node2D" unique_id=28533141]
+script = ExtResource("1_dejf1")
+closeup_id = &"ossuary_niche"
+
+[node name="Background" type="Sprite2D" parent="." unique_id=938114256]
+texture = ExtResource("2_t53d7")
+centered = false
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=1246027249]
+
+[node name="Marks" type="Area2D" parent="Hotspots" unique_id=382373765]
+script = ExtResource("3_liwks")
+id = &"marks"
+display_name = "Chisel marks"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Marks" unique_id=636129085]
+polygon = PackedVector2Array(950, 780, 1370, 780, 1370, 1010, 950, 1010)
+
+[node name="Plaque" type="Area2D" parent="Hotspots" unique_id=517121696]
+script = ExtResource("3_liwks")
+id = &"plaque"
+display_name = "Name plaque"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Plaque" unique_id=1597104001]
+polygon = PackedVector2Array(500, 770, 1370, 770, 1370, 1010, 500, 1010)

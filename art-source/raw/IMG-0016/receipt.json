@@ -1,0 +1,76 @@
+{
+  "id": "IMG-0016",
+  "title": "The cathedral cloister, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T22:06:54.175Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0011/IMG-0011-v1.png",
+          "sha256": "80415ee360bb08b7ba72c0b22490f4e30c8d056b827961d01a0574bcb364d65f"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: the square cloister walk of a ruined gothic cathedral at night, beside an overgrown garden, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: A gallery of pointed gothic arches on slender columns runs along the back, opening onto a square garden choked with dead roses that climb the columns. In the centre of the garden, a dry stone well with a broken iron winch, and to its right a cracked sundial on a pedestal. On the left, a small arched doorway leads back into the cathedral. On the right, a narrow round stair turret with an open arched doorway at its foot. The cathedral's tall windows and a spire loom above the arcade against the moonlit sky.\n\nThe lower third of the image is open, walkable ground: the flagstone cloister walk runs in front of the garden across the whole width. It is lit by pale moonlight with drifting fog or haze behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0016-v1.png",
+          "sha256": "4a1ba0a9403c5c031e3c5292f1fa2022269ee7f7ca751b23116abbc11d6cfc64",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0016-v2.png",
+          "sha256": "14d0745eda619f396d013e242f8c830db10ff8a225966b1ea746246446466f7c",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0016-v3.png",
+          "sha256": "6dd0746187a92800daf4f0fc5352c06b719259f9ea08060fa12c667e975505ac",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 127939,
+        "outputTokens": 708
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d01-2e13-7851-a055-94a41130f857",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d01-2e13-7851-a055-94a41130f857/exec-0f47ab4e-00dc-4514-bcd2-a9f744d70802.png",
+            "/Users/orcdev/.codex/generated_images/01a12d01-2e13-7851-a055-94a41130f857/exec-02446872-9240-4820-923b-0569aee0b8b1.png",
+            "/Users/orcdev/.codex/generated_images/01a12d01-2e13-7851-a055-94a41130f857/exec-52855778-65c4-4036-a440-b9b21bb17945.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque images using the reference and your exact prompt.",
+            "DONE"
+          ]
+        }
+      }
+    }
+  ]
+}

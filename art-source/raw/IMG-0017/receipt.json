@@ -1,0 +1,76 @@
+{
+  "id": "IMG-0017",
+  "title": "The choir loft, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T22:03:43.295Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/style/cathedral-nave-now-style-key.png",
+          "sha256": "1ea2d102a8e59a2eead4d5e9457dc883a20072c8cffefccf5eecc3dd10ee6634"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: the choir loft of a ruined gothic cathedral: a high wooden gallery above the nave, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: On the left, a towering wall of tall organ pipes, dusty and some bent, above a wooden organ console with broken keys. Across the middle, toppled wooden music stands lie on the floor; one music stand still stands upright near the centre, holding a single open hymn book. On the right, a carved stone balustrade at the gallery's edge looks out over the vast ruined nave below, with shafts of moonlight and a broken rose window far away. Torn banners hang from the vault. A small arched doorway at the far left leads to a stair down.\n\nThe lower third of the image is open, walkable ground: the gallery's wooden floor runs across the whole width in front of the stands. It is lit by shafts of pale moonlight from the nave's windows with drifting fog or haze behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0017-v1.png",
+          "sha256": "ae92d66df11bc64ebdb7e82c8071a96070446a177a8d0ae1e69e917162967212",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0017-v2.png",
+          "sha256": "23ceaf09fe110801463ca4542edb48103d1023369053fc5d8045eeb1980552f4",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0017-v3.png",
+          "sha256": "a66436e3476179ff8d3fa127202b2a2a4309e0f2788e15d1229c22a60d564b2a",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 184773,
+        "outputTokens": 1562
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12cfe-45f8-7041-89f1-6972055433e8",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12cfe-45f8-7041-89f1-6972055433e8/exec-04f62674-0893-4754-b89d-8017ebdedf23.png",
+            "/Users/orcdev/.codex/generated_images/01a12cfe-45f8-7041-89f1-6972055433e8/exec-379ae743-a7cf-4dfc-9f34-999e33a79406.png",
+            "/Users/orcdev/.codex/generated_images/01a12cfe-45f8-7041-89f1-6972055433e8/exec-04185869-448c-421c-b608-ce636f62578b.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque images using the reference and your prompt exactly.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

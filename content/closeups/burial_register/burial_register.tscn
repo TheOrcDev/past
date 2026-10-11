@@ -1,0 +1,39 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/closeups/burial_register/burial_register.gd" id="1_k10yl"]
+[ext_resource type="Texture2D" path="res://content/closeups/burial_register/art/bg.png" id="2_1yamr"]
+[ext_resource type="Script" path="res://src/core/hotspot.gd" id="3_hr4b2"]
+
+[node name="BurialRegister" type="Node2D" unique_id=1159204379]
+script = ExtResource("1_k10yl")
+closeup_id = &"burial_register"
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1440067530]
+texture = ExtResource("2_1yamr")
+centered = false
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=208496262]
+
+[node name="Entry" type="Area2D" parent="Hotspots" unique_id=997616700]
+script = ExtResource("3_hr4b2")
+id = &"entry"
+display_name = "An entry"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Entry" unique_id=1384656874]
+polygon = PackedVector2Array(380, 418, 865, 418, 865, 572, 380, 572)
+
+[node name="Margin" type="Area2D" parent="Hotspots" unique_id=84426705]
+script = ExtResource("3_hr4b2")
+id = &"margin"
+display_name = "A note in the margin"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Margin" unique_id=1011585959]
+polygon = PackedVector2Array(1535, 378, 1795, 378, 1795, 502, 1535, 502)
+
+[node name="Page" type="Area2D" parent="Hotspots" unique_id=1399555013]
+script = ExtResource("3_hr4b2")
+id = &"page"
+display_name = "The register"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Page" unique_id=79142260]
+polygon = PackedVector2Array(120, 150, 1700, 130, 1720, 1000, 120, 1000)

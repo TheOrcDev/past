@@ -108,6 +108,7 @@ func create_room(room_id: String, spec: Dictionary, replace := false) -> Error:
 			hotspot.target_room = StringName(exit_spec["room"])
 			hotspot.target_entry = StringName(exit_spec.get("entry", "default"))
 			hotspot.direction = StringName(exit_spec.get("direction", "right"))
+			hotspot.requires_flag = StringName(exit_spec.get("requires_flag", ""))
 		hotspot.id = StringName(hotspot_spec["id"])
 		hotspot.display_name = hotspot_spec.get("name", hotspot_spec["id"])
 		hotspot.default_verb = StringName(hotspot_spec.get("default_verb", "walk" if hotspot is Exit else "look"))
@@ -130,6 +131,23 @@ func create_room(room_id: String, spec: Dictionary, replace := false) -> Error:
 		if occluder.texture == null:
 			printerr("Occluder texture is missing or not imported: %s" % occluder_spec["texture"])
 			err = ERR_FILE_NOT_FOUND
+
+	# NPCs (plan 008): character scenes placed among the actors, standing at
+	# their feet position, optionally facing left and only in one era.
+	for npc_spec: Dictionary in spec.get("npcs", []):
+		var npc_scene := load(npc_spec["scene"]) as PackedScene
+		if npc_scene == null:
+			printerr("NPC scene is missing: %s" % npc_spec["scene"])
+			err = ERR_FILE_NOT_FOUND
+			continue
+		var npc := npc_scene.instantiate()
+		npc.name = npc_spec.get("name", npc.name)
+		actors.add_child(npc)
+		npc.owner = _root
+		npc.position = _point(npc_spec["position"])
+		if npc_spec.get("facing", "right") == "left":
+			npc.set(&"facing", AnimNames.Dir.L)
+		_tag_era(npc, npc_spec.get("era", ""))
 
 	for effect_spec: Dictionary in spec.get("effects", []):
 		var effect := _instantiate(effect_spec["type"])

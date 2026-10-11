@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemDef" format=3]
+
+[ext_resource type="Texture2D" path="res://content/items/west_door_key/icon.png" id="1_ijsbo"]
+[ext_resource type="Script" path="res://src/core/item_def.gd" id="2_4rtqb"]
+
+[resource]
+script = ExtResource("2_4rtqb")
+id = &"west_door_key"
+display_name = "West door key"
+icon = ExtResource("1_ijsbo")
+look_file = &"prologue/items"
+look_cue = &"west_door_key_look"

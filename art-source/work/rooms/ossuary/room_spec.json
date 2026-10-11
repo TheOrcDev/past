@@ -1,0 +1,429 @@
+{
+  "display_name": "Ossuary",
+  "layers": {
+    "now": [
+      {
+        "name": "Background",
+        "texture": "res://content/rooms/ossuary/art/bg_now.png"
+      }
+    ],
+    "then": [
+      {
+        "name": "Background",
+        "texture": "res://content/rooms/ossuary/art/bg_then.png"
+      }
+    ]
+  },
+  "walk": {
+    "now": [
+      [
+        320,
+        845
+      ],
+      [
+        650,
+        818
+      ],
+      [
+        1500,
+        815
+      ],
+      [
+        1700,
+        845
+      ],
+      [
+        1750,
+        1040
+      ],
+      [
+        250,
+        1040
+      ],
+      [
+        220,
+        905
+      ]
+    ],
+    "then": [
+      [
+        320,
+        845
+      ],
+      [
+        650,
+        818
+      ],
+      [
+        1500,
+        815
+      ],
+      [
+        1700,
+        845
+      ],
+      [
+        1750,
+        1040
+      ],
+      [
+        250,
+        1040
+      ],
+      [
+        220,
+        905
+      ]
+    ]
+  },
+  "scale_zones": {
+    "far_y": 818,
+    "far_scale": 0.82,
+    "near_y": 1040,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      1000,
+      930
+    ],
+    "from_gate": [
+      520,
+      880
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "stair",
+      "name": "Stair up",
+      "polygon": [
+        [
+          240,
+          825
+        ],
+        [
+          240,
+          430
+        ],
+        [
+          262,
+          140
+        ],
+        [
+          330,
+          105
+        ],
+        [
+          430,
+          140
+        ],
+        [
+          440,
+          430
+        ],
+        [
+          580,
+          805
+        ]
+      ],
+      "walk_to": [
+        470,
+        860
+      ],
+      "exit": {
+        "room": "cemetery_gate",
+        "entry": "from_ossuary",
+        "direction": "up"
+      }
+    },
+    {
+      "id": "nest",
+      "name": "Crow's nest",
+      "polygon": [
+        [
+          1560,
+          285
+        ],
+        [
+          1560,
+          170
+        ],
+        [
+          1640,
+          135
+        ],
+        [
+          1725,
+          170
+        ],
+        [
+          1735,
+          285
+        ]
+      ],
+      "walk_to": [
+        1610,
+        870
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "niches",
+      "name": "Burial niches",
+      "polygon": [
+        [
+          810,
+          800
+        ],
+        [
+          810,
+          330
+        ],
+        [
+          1390,
+          330
+        ],
+        [
+          1390,
+          800
+        ]
+      ],
+      "walk_to": [
+        1100,
+        860
+      ]
+    },
+    {
+      "id": "skulls",
+      "name": "Skulls",
+      "polygon": [
+        [
+          1655,
+          800
+        ],
+        [
+          1655,
+          300
+        ],
+        [
+          1900,
+          250
+        ],
+        [
+          1920,
+          800
+        ]
+      ],
+      "walk_to": [
+        1690,
+        900
+      ]
+    },
+    {
+      "id": "candles",
+      "name": "Candles",
+      "polygon": [
+        [
+          1600,
+          865
+        ],
+        [
+          1600,
+          780
+        ],
+        [
+          1750,
+          780
+        ],
+        [
+          1750,
+          865
+        ]
+      ],
+      "walk_to": [
+        1640,
+        900
+      ],
+      "pick_priority": 1
+    }
+  ],
+  "occluders": [],
+  "npcs": [],
+  "effects": [
+    {
+      "type": "FogLayer",
+      "name": "FogFar",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.85,
+          0.86,
+          0.88,
+          1.0
+        ],
+        "density": 0.26,
+        "velocity": [
+          0.006,
+          0.0
+        ],
+        "noise_scale": [
+          1.4,
+          0.8
+        ],
+        "band_top": 0.42,
+        "band_bottom": 0.9,
+        "depth_texture": "res://content/rooms/ossuary/art/depth_now.png",
+        "near_cutoff": 0.45,
+        "noise_seed": 3
+      }
+    },
+    {
+      "type": "LightShafts",
+      "name": "Shafts",
+      "era": "now",
+      "properties": {
+        "origin": [
+          1080,
+          60
+        ],
+        "aim": 180.0,
+        "spread": 36.0,
+        "beams": 6.0,
+        "intensity": 0.1,
+        "reach": 0.95,
+        "shaft_color": [
+          0.95,
+          0.96,
+          1.0,
+          1.0
+        ],
+        "flicker": 0.4
+      }
+    },
+    {
+      "type": "DustMotes",
+      "name": "Ash",
+      "era": "now",
+      "properties": {
+        "area": [
+          300,
+          200,
+          1400,
+          700
+        ],
+        "mote_color": [
+          0.85,
+          0.85,
+          0.88,
+          0.35
+        ],
+        "mote_count": 45,
+        "drift": [
+          4,
+          6
+        ],
+        "mote_size": 2.5
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "GroundMist",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.86,
+          0.87,
+          0.9,
+          1.0
+        ],
+        "density": 0.16,
+        "velocity": [
+          0.01,
+          0.0
+        ],
+        "noise_scale": [
+          2.6,
+          1.6
+        ],
+        "band_top": 0.84,
+        "band_bottom": 1.02,
+        "band_softness": 0.08,
+        "noise_seed": 27
+      },
+      "layer": "foreground"
+    },
+    {
+      "type": "LightShafts",
+      "name": "GoldenShafts",
+      "era": "then",
+      "properties": {
+        "origin": [
+          1080,
+          60
+        ],
+        "aim": 180.0,
+        "spread": 44.0,
+        "beams": 7.0,
+        "intensity": 0.14,
+        "reach": 1.0,
+        "shaft_color": [
+          1.0,
+          0.85,
+          0.55,
+          1.0
+        ],
+        "flicker": 0.25
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "WarmHaze",
+      "era": "then",
+      "properties": {
+        "fog_color": [
+          1.0,
+          0.9,
+          0.75,
+          1.0
+        ],
+        "density": 0.1,
+        "velocity": [
+          0.004,
+          0.0
+        ],
+        "noise_scale": [
+          1.2,
+          0.7
+        ],
+        "band_top": 0.3,
+        "band_bottom": 0.9,
+        "noise_seed": 13
+      }
+    },
+    {
+      "type": "DustMotes",
+      "name": "GoldenDust",
+      "era": "then",
+      "properties": {
+        "area": [
+          300,
+          150,
+          1500,
+          750
+        ],
+        "mote_color": [
+          1.0,
+          0.86,
+          0.55,
+          0.55
+        ],
+        "mote_count": 60,
+        "drift": [
+          3,
+          -4
+        ],
+        "mote_size": 2.5
+      }
+    }
+  ]
+}

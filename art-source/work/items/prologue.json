@@ -1,0 +1,7 @@
+[
+  {"id": "ossuary_key", "name": "Ossuary key", "icon": "res://content/items/ossuary_key/icon.png", "look_file": "prologue/items", "look_cue": "ossuary_key_look"},
+  {"id": "lantern_glass", "name": "Lantern glass", "icon": "res://content/items/lantern_glass/icon.png", "look_file": "prologue/items", "look_cue": "lantern_glass_look"},
+  {"id": "lantern", "name": "Lantern", "icon": "res://content/items/lantern/icon.png", "look_file": "prologue/items", "look_cue": "lantern_look"},
+  {"id": "hymn_book", "name": "Hymn book", "icon": "res://content/items/hymn_book/icon.png", "look_file": "prologue/items", "look_cue": "hymn_book_look"},
+  {"id": "west_door_key", "name": "West door key", "icon": "res://content/items/west_door_key/icon.png", "look_file": "prologue/items", "look_cue": "west_door_key_look"}
+]

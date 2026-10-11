@@ -1,0 +1,25 @@
+{
+  "id": "cemetery_gate",
+  "display_name": "Cemetery gate",
+  "now": "art-source/raw/IMG-0011/IMG-0011-v1.png",
+  "then": "art-source/raw/IMG-0012/IMG-0012-v1.png",
+  "walk": [[150, 760], [420, 725], [700, 705], [1000, 740], [1250, 795], [1550, 805], [1920, 812], [1920, 1000], [1400, 1012], [800, 1005], [300, 992], [120, 945]],
+  "scale_zones": {"far_y": 715, "far_scale": 0.72, "near_y": 1005, "near_scale": 1.0},
+  "markers": {"default": [700, 860], "from_grave": [1780, 900], "from_lodge": [440, 770], "from_ossuary": [1640, 840]},
+  "hotspots": [
+    {"id": "gravedigger", "name": "Gravedigger", "polygon": [[1005, 795], [1005, 520], [1060, 455], [1150, 450], [1205, 525], [1205, 795]], "walk_to": [950, 830], "default_verb": "talk", "pick_priority": 2},
+    {"id": "lodge_door", "name": "Lodge door", "polygon": [[388, 692], [388, 505], [418, 462], [452, 450], [486, 470], [504, 505], [504, 692]], "walk_to": [445, 750],
+     "exit": {"room": "sexton_lodge", "entry": "from_gate", "direction": "up"}},
+    {"id": "gate", "name": "Cemetery gate", "polygon": [[720, 672], [720, 420], [850, 398], [915, 398], [1000, 420], [1000, 672]], "walk_to": [860, 735], "default_verb": "look"},
+    {"id": "graves", "name": "Open graves", "polygon": [[1215, 785], [1235, 700], [1840, 690], [1890, 785]], "walk_to": [1480, 830]},
+    {"id": "pole", "name": "Lantern pole", "polygon": [[1318, 700], [1318, 382], [1405, 382], [1405, 500], [1352, 500], [1352, 700]], "walk_to": [1335, 820], "pick_priority": 1},
+    {"id": "crypt", "name": "Crypt steps", "polygon": [[1600, 565], [1640, 420], [1720, 398], [1795, 440], [1805, 565]], "walk_to": [1680, 825],
+     "exit": {"room": "ossuary", "entry": "from_gate", "direction": "up", "requires_flag": "ossuary_open"}},
+    {"id": "exit_east", "name": "To the grave", "polygon": [[1830, 812], [1920, 812], [1920, 1000], [1830, 1000]], "walk_to": [1885, 905],
+     "exit": {"room": "cemetery_grave", "entry": "from_gate", "direction": "right"}}
+  ],
+  "npcs": [
+    {"scene": "res://content/characters/gravedigger/gravedigger.tscn", "name": "Gravedigger", "position": [1105, 795], "facing": "left", "era": "now"}
+  ],
+  "effects": {"preset": "exterior", "light": [1380, 90], "aim": 225}
+}

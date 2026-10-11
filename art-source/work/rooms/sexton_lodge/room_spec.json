@@ -1,0 +1,458 @@
+{
+  "display_name": "Gravedigger's lodge",
+  "layers": {
+    "now": [
+      {
+        "name": "Background",
+        "texture": "res://content/rooms/sexton_lodge/art/bg_now.png"
+      }
+    ],
+    "then": [
+      {
+        "name": "Background",
+        "texture": "res://content/rooms/sexton_lodge/art/bg_then.png"
+      }
+    ]
+  },
+  "walk": {
+    "now": [
+      [
+        300,
+        800
+      ],
+      [
+        600,
+        748
+      ],
+      [
+        1350,
+        748
+      ],
+      [
+        1600,
+        792
+      ],
+      [
+        1660,
+        840
+      ],
+      [
+        1750,
+        1040
+      ],
+      [
+        150,
+        1040
+      ],
+      [
+        180,
+        880
+      ]
+    ],
+    "then": [
+      [
+        300,
+        800
+      ],
+      [
+        600,
+        748
+      ],
+      [
+        1350,
+        748
+      ],
+      [
+        1600,
+        792
+      ],
+      [
+        1660,
+        840
+      ],
+      [
+        1750,
+        1040
+      ],
+      [
+        150,
+        1040
+      ],
+      [
+        180,
+        880
+      ]
+    ]
+  },
+  "scale_zones": {
+    "far_y": 750,
+    "far_scale": 0.8,
+    "near_y": 1040,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      820,
+      900
+    ],
+    "from_gate": [
+      470,
+      820
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "door",
+      "name": "Door",
+      "polygon": [
+        [
+          315,
+          705
+        ],
+        [
+          315,
+          170
+        ],
+        [
+          480,
+          140
+        ],
+        [
+          595,
+          180
+        ],
+        [
+          595,
+          742
+        ]
+      ],
+      "walk_to": [
+        460,
+        790
+      ],
+      "exit": {
+        "room": "cemetery_gate",
+        "entry": "from_lodge",
+        "direction": "left"
+      }
+    },
+    {
+      "id": "stove",
+      "name": "Stove",
+      "polygon": [
+        [
+          90,
+          785
+        ],
+        [
+          90,
+          500
+        ],
+        [
+          262,
+          500
+        ],
+        [
+          262,
+          785
+        ]
+      ],
+      "walk_to": [
+        300,
+        840
+      ]
+    },
+    {
+      "id": "cot",
+      "name": "Cot",
+      "polygon": [
+        [
+          630,
+          705
+        ],
+        [
+          630,
+          500
+        ],
+        [
+          1100,
+          520
+        ],
+        [
+          1100,
+          705
+        ]
+      ],
+      "walk_to": [
+        850,
+        790
+      ]
+    },
+    {
+      "id": "keys",
+      "name": "Key wall",
+      "polygon": [
+        [
+          800,
+          455
+        ],
+        [
+          800,
+          305
+        ],
+        [
+          1290,
+          305
+        ],
+        [
+          1290,
+          455
+        ]
+      ],
+      "walk_to": [
+        1040,
+        780
+      ]
+    },
+    {
+      "id": "lanterns",
+      "name": "Lanterns",
+      "polygon": [
+        [
+          660,
+          252
+        ],
+        [
+          660,
+          150
+        ],
+        [
+          1330,
+          150
+        ],
+        [
+          1330,
+          252
+        ]
+      ],
+      "walk_to": [
+        980,
+        780
+      ]
+    },
+    {
+      "id": "register",
+      "name": "Burial register",
+      "polygon": [
+        [
+          1395,
+          765
+        ],
+        [
+          1395,
+          540
+        ],
+        [
+          1440,
+          420
+        ],
+        [
+          1710,
+          415
+        ],
+        [
+          1750,
+          520
+        ],
+        [
+          1750,
+          765
+        ]
+      ],
+      "walk_to": [
+        1500,
+        820
+      ],
+      "pick_priority": 1
+    }
+  ],
+  "occluders": [],
+  "npcs": [],
+  "effects": [
+    {
+      "type": "FogLayer",
+      "name": "FogFar",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.85,
+          0.86,
+          0.88,
+          1.0
+        ],
+        "density": 0.26,
+        "velocity": [
+          0.006,
+          0.0
+        ],
+        "noise_scale": [
+          1.4,
+          0.8
+        ],
+        "band_top": 0.42,
+        "band_bottom": 0.9,
+        "depth_texture": "res://content/rooms/sexton_lodge/art/depth_now.png",
+        "near_cutoff": 0.45,
+        "noise_seed": 3
+      }
+    },
+    {
+      "type": "LightShafts",
+      "name": "Shafts",
+      "era": "now",
+      "properties": {
+        "origin": [
+          1580,
+          280
+        ],
+        "aim": 215.0,
+        "spread": 36.0,
+        "beams": 6.0,
+        "intensity": 0.1,
+        "reach": 0.95,
+        "shaft_color": [
+          0.95,
+          0.96,
+          1.0,
+          1.0
+        ],
+        "flicker": 0.4
+      }
+    },
+    {
+      "type": "DustMotes",
+      "name": "Ash",
+      "era": "now",
+      "properties": {
+        "area": [
+          300,
+          200,
+          1400,
+          700
+        ],
+        "mote_color": [
+          0.85,
+          0.85,
+          0.88,
+          0.35
+        ],
+        "mote_count": 45,
+        "drift": [
+          4,
+          6
+        ],
+        "mote_size": 2.5
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "GroundMist",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.86,
+          0.87,
+          0.9,
+          1.0
+        ],
+        "density": 0.16,
+        "velocity": [
+          0.01,
+          0.0
+        ],
+        "noise_scale": [
+          2.6,
+          1.6
+        ],
+        "band_top": 0.84,
+        "band_bottom": 1.02,
+        "band_softness": 0.08,
+        "noise_seed": 27
+      },
+      "layer": "foreground"
+    },
+    {
+      "type": "LightShafts",
+      "name": "GoldenShafts",
+      "era": "then",
+      "properties": {
+        "origin": [
+          1580,
+          280
+        ],
+        "aim": 215.0,
+        "spread": 44.0,
+        "beams": 7.0,
+        "intensity": 0.14,
+        "reach": 1.0,
+        "shaft_color": [
+          1.0,
+          0.85,
+          0.55,
+          1.0
+        ],
+        "flicker": 0.25
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "WarmHaze",
+      "era": "then",
+      "properties": {
+        "fog_color": [
+          1.0,
+          0.9,
+          0.75,
+          1.0
+        ],
+        "density": 0.1,
+        "velocity": [
+          0.004,
+          0.0
+        ],
+        "noise_scale": [
+          1.2,
+          0.7
+        ],
+        "band_top": 0.3,
+        "band_bottom": 0.9,
+        "noise_seed": 13
+      }
+    },
+    {
+      "type": "DustMotes",
+      "name": "GoldenDust",
+      "era": "then",
+      "properties": {
+        "area": [
+          300,
+          150,
+          1500,
+          750
+        ],
+        "mote_color": [
+          1.0,
+          0.86,
+          0.55,
+          0.55
+        ],
+        "mote_count": 60,
+        "drift": [
+          3,
+          -4
+        ],
+        "mote_size": 2.5
+      }
+    }
+  ]
+}

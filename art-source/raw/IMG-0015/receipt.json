@@ -1,0 +1,76 @@
+{
+  "id": "IMG-0015",
+  "title": "The ossuary, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T22:05:20.101Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/style/cathedral-nave-now-style-key.png",
+          "sha256": "1ea2d102a8e59a2eead4d5e9457dc883a20072c8cffefccf5eecc3dd10ee6634"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: a low vaulted crypt beneath a cemetery chapel: an ossuary, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: The side walls are built of stacked skulls and long bones in neat rows. Along the back wall, three tiers of small arched burial niches, each with a small stone name plaque scraped smooth and blank. Stubs of melted candles stand on ledges. High on the right, on a stone ledge just below the vault, a crow's nest of twigs glinting with small scraps of metal and glass. On the left, a narrow stone stair climbs up to a heavy wooden door.\n\nThe lower third of the image is open, walkable ground: the crypt's stone floor is clear and open in the middle. It is lit by a pale shaft of moonlight falling from an iron grate in the vault onto the floor with drifting fog or haze behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0015-v1.png",
+          "sha256": "5fd82fbffc58e1b5962178062a210b6c64d9c2f44ca303d050c237e23d99b6e7",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0015-v2.png",
+          "sha256": "cb14f1ab7c50f42a7598b8c32b089c9f08530ea42ef1b833d687aa4392105337",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0015-v3.png",
+          "sha256": "e1010111ec88fdbb0bdf36ac839ca1795b8fdc8ecfa35eb9656cddb639d2d8d6",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 106153,
+        "outputTokens": 618
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12cff-be67-78a1-bb91-a1cc6dd89583",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12cff-be67-78a1-bb91-a1cc6dd89583/exec-846a70b3-7efe-4304-81f5-cdbbf2e483fa.png",
+            "/Users/orcdev/.codex/generated_images/01a12cff-be67-78a1-bb91-a1cc6dd89583/exec-02ec4aab-ec37-46b5-9cf3-8e3de64b3586.png",
+            "/Users/orcdev/.codex/generated_images/01a12cff-be67-78a1-bb91-a1cc6dd89583/exec-43d1e4c6-61e7-4388-849e-5b405686b8b1.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque images using the attached reference and your prompt exactly as written.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

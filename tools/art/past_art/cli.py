@@ -136,6 +136,23 @@ def cmd_npc(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_icons(args: argparse.Namespace) -> int:
+    from . import icons
+
+    root = Path(__file__).resolve().parents[3]
+    _print({"icons": icons.cut(Path(args.sheet), args.names, root / "content/items")})
+    return 0
+
+
+def cmd_closeup(args: argparse.Namespace) -> int:
+    from . import room
+
+    root = Path(__file__).resolve().parents[3]
+    for closeup_json in args.closeups:
+        _print(room.closeup(Path(closeup_json).resolve(), root))
+    return 0
+
+
 def cmd_grid(args: argparse.Namespace) -> int:
     from . import room
 
@@ -222,6 +239,15 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("npc", help="prepare NPC paintings and npc_spec.json from art-source/work/characters/<id>/npc.json")
     p.add_argument("npcs", nargs="+", help="npc.json files")
     p.set_defaults(func=cmd_npc)
+
+    p = sub.add_parser("icons", help="cut an item sheet into content/items/<name>/icon.png, in reading order")
+    p.add_argument("--sheet", required=True)
+    p.add_argument("names", nargs="+")
+    p.set_defaults(func=cmd_icons)
+
+    p = sub.add_parser("closeup", help="build close-ups' art and closeup_spec.json from art-source/work/closeups/<id>/closeup.json")
+    p.add_argument("closeups", nargs="+", help="closeup.json files")
+    p.set_defaults(func=cmd_closeup)
 
     p = sub.add_parser("grid", help="an image at 1920x1080 with a labelled grid, for tracing")
     p.add_argument("--in", dest="input", required=True)

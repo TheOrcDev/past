@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0020",
+  "title": "The Gravedigger's lodge, then",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T22:09:23.720Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0014/IMG-0014-v2.png",
+          "sha256": "007293b04cb0e4a9f28c332a9f68cfd2fc539efd55efc64882a894d5c677d1de"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit this image in place. Keep exactly the same composition, camera, perspective, horizon and every shape where it stands: the door on the left, the stove and the cot, the key board and lantern shelves on the back wall, the lectern and the window on the right, and the floor. Only change the time and the condition.\n\nRestore the same lodge to how it looked decades earlier, on a warm autumn evening, in full rich warm color, as a painterly gothic matte painting: the stove glowing with a lively fire, the lanterns on the shelves all lit and warm, a wreath of autumn leaves hung on the open door with golden evening light outside, a woman's knitted shawl on the peg by the cot, a vase of dried flowers on the sill, the ledger's pages clean and fresh, the floor swept. The key light comes from the same direction as in the original.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0020-v1.png",
+          "sha256": "2b0eb9b51fefce5d7b016194ff2d53602bd1729c52dc8f37d596fbfdaa19f61e",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0020-v2.png",
+          "sha256": "b61a7d47c133e64660f4a1bc10028afc646fa297db5dbd161257409ae69893d9",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 73380,
+        "outputTokens": 657
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d03-7731-7aa3-984b-c7bf3d818fd7",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d03-7731-7aa3-984b-c7bf3d818fd7/exec-a3290465-a6fa-46a5-acc7-b8a857428ee8.png",
+            "/Users/orcdev/.codex/generated_images/01a12d03-7731-7aa3-984b-c7bf3d818fd7/exec-2b4ac8d8-540f-4692-817a-06cc42b22a19.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate two versions using the attached image and your exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

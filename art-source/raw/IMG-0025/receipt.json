@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0025",
+  "title": "Close-up: an ossuary niche",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T22:11:23.536Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0015/IMG-0015-v1.png",
+          "sha256": "5fd82fbffc58e1b5962178062a210b6c64d9c2f44ca303d050c237e23d99b6e7"
+        }
+      ],
+      "mask": null,
+      "prompt": "A close-up of one of the arched burial niches in the back wall from the reference image, in exactly the same monochrome greyscale ink-wash gothic style: a single stone niche fills the frame straight on: inside it, a small stone urn and a dry, crumbling wreath; below it, a rectangular stone name plaque scraped smooth, covered in fresh, careful chisel marks where letters used to be. Candle stubs and skulls at the edges, cold moonlight from above.\n\nNo readable text, letters or numbers anywhere. No people or figures. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0025-v1.png",
+          "sha256": "480018e523a7c10879f0e1718d067c74bd46306d387c67161a0872dc1e955043",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0025-v2.png",
+          "sha256": "7d6fd93dfecabe4968772f18dd159bae3ca11ba7b26c93b73ebe0857b7667bfb",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 262713,
+        "outputTokens": 925
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d05-49e7-7132-a06e-edc1aaedf0c2",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d05-49e7-7132-a06e-edc1aaedf0c2/exec-7bff8144-06c2-4cd2-90d4-a8796b97dfc0.png",
+            "/Users/orcdev/.codex/generated_images/01a12d05-49e7-7132-a06e-edc1aaedf0c2/exec-ed612f0c-6e9d-4ed3-8dfb-6966e4ee106f.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate two wide, opaque images using the reference and your exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

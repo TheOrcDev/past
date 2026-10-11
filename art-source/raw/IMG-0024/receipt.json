@@ -1,0 +1,77 @@
+{
+  "id": "IMG-0024",
+  "title": "Close-up: the burial register",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T22:09:23.727Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0014/IMG-0014-v2.png",
+          "sha256": "007293b04cb0e4a9f28c332a9f68cfd2fc539efd55efc64882a894d5c677d1de"
+        }
+      ],
+      "mask": null,
+      "prompt": "A close-up of the huge open ledger on the wooden lectern from the reference image, in exactly the same monochrome greyscale ink-wash gothic style: the two open pages of an old burial register fill the frame, seen from above at a slight angle, lit by cold moonlight from a window to the right. Faded ruled columns of handwritten entries in old ink, most of them blurred, smudged or scratched out. One entry in the middle of the left page stands out, in clear old handwriting. A note is written in the right page's margin.\n\nThe only legible handwriting, exactly as written and nothing else readable:\nU—\npaid by a dove\nStone defaced by order of the Registrar\n\nand in the right margin:\nOssuary: key 13\n\nEverything else on the pages is illegible scribble. No people or figures. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0024-v1.png",
+          "sha256": "57ff02720495c10ffedfe1c28e9d79410e9c50ebaaee78652fc5864585010f65",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0024-v2.png",
+          "sha256": "dceb21d41ccd2c34c78d0fade2f366a48aa5ee96fc42344cdfc217d92dff795e",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0024-v3.png",
+          "sha256": "39c1c0265b8e4a2141a4a46e2c1d605bd05c392c09453dbf22a42a21a48ebf68",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 147630,
+        "outputTokens": 705
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d03-7731-7ed2-986a-197a6c47a181",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d03-7731-7ed2-986a-197a6c47a181/exec-413bca8f-c173-41d9-af06-981f1108fc74.png",
+            "/Users/orcdev/.codex/generated_images/01a12d03-7731-7ed2-986a-197a6c47a181/exec-a5895d83-e012-4437-a56c-db0461cc6bf1.png",
+            "/Users/orcdev/.codex/generated_images/01a12d03-7731-7ed2-986a-197a6c47a181/exec-683e9062-0998-475a-84bc-077cda2249c4.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1671,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque ledger close-ups from the reference, using your prompt exactly each time.",
+            "Two images are complete. I’m generating the third from the original reference with the same prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

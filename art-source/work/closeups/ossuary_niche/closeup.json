@@ -1,0 +1,8 @@
+{
+  "id": "ossuary_niche",
+  "image": "art-source/raw/IMG-0025/IMG-0025-v1.png",
+  "hotspots": [
+    {"id": "marks", "name": "Chisel marks", "polygon": [[950, 780], [1370, 780], [1370, 1010], [950, 1010]], "pick_priority": 1},
+    {"id": "plaque", "name": "Name plaque", "polygon": [[500, 770], [1370, 770], [1370, 1010], [500, 1010]]}
+  ]
+}

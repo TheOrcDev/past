@@ -1,0 +1,18 @@
+{
+  "id": "ossuary",
+  "display_name": "Ossuary",
+  "now": "art-source/raw/IMG-0015/IMG-0015-v1.png",
+  "then": "art-source/raw/IMG-0021/IMG-0021-v2.png",
+  "walk": [[320, 845], [650, 818], [1500, 815], [1700, 845], [1750, 1040], [250, 1040], [220, 905]],
+  "scale_zones": {"far_y": 818, "far_scale": 0.82, "near_y": 1040, "near_scale": 1.05},
+  "markers": {"default": [1000, 930], "from_gate": [520, 880]},
+  "hotspots": [
+    {"id": "stair", "name": "Stair up", "polygon": [[240, 825], [240, 430], [262, 140], [330, 105], [430, 140], [440, 430], [580, 805]], "walk_to": [470, 860],
+     "exit": {"room": "cemetery_gate", "entry": "from_ossuary", "direction": "up"}},
+    {"id": "nest", "name": "Crow's nest", "polygon": [[1560, 285], [1560, 170], [1640, 135], [1725, 170], [1735, 285]], "walk_to": [1610, 870], "pick_priority": 1},
+    {"id": "niches", "name": "Burial niches", "polygon": [[810, 800], [810, 330], [1390, 330], [1390, 800]], "walk_to": [1100, 860]},
+    {"id": "skulls", "name": "Skulls", "polygon": [[1655, 800], [1655, 300], [1900, 250], [1920, 800]], "walk_to": [1690, 900]},
+    {"id": "candles", "name": "Candles", "polygon": [[1600, 865], [1600, 780], [1750, 780], [1750, 865]], "walk_to": [1640, 900], "pick_priority": 1}
+  ],
+  "effects": {"preset": "interior", "light": [1080, 60], "aim": 180}
+}

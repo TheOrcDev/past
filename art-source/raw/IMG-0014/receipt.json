@@ -1,0 +1,76 @@
+{
+  "id": "IMG-0014",
+  "title": "The Gravedigger's lodge, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T22:03:43.295Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/style/cathedral-nave-now-style-key.png",
+          "sha256": "1ea2d102a8e59a2eead4d5e9457dc883a20072c8cffefccf5eecc3dd10ee6634"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: the cramped interior of an old cemetery gatekeeper's stone lodge at night, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: On the left, a cold cast-iron stove with a crooked flue pipe, and beside it a narrow cot with a rumpled blanket. Along the back wall, a long wooden board hung with dozens of old iron keys on hooks, and above it shelves of old, dead lanterns. On the right, under a small leaded window letting in moonlight, a tall wooden lectern holding a huge open ledger. In the left wall, a heavy wooden door stands ajar onto the night fog.\n\nThe lower third of the image is open, walkable ground: a worn flagstone floor runs across the whole width of the room, clear of furniture in the middle. It is lit by pale moonlight from the window on the right and a faint glow of fog through the door with drifting fog or haze behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0014-v1.png",
+          "sha256": "d26175247db20507cf5cd840ac95904ff90c342e6c84feddd99561b65da066e4",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0014-v2.png",
+          "sha256": "007293b04cb0e4a9f28c332a9f68cfd2fc539efd55efc64882a894d5c677d1de",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0014-v3.png",
+          "sha256": "8a58be890aa3810654725da2084d77cf05bce414e2fb0f74f6f7b71c1069b47f",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 215836,
+        "outputTokens": 1413
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12cfe-45f8-7a82-8b39-d76646c3e0db",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12cfe-45f8-7a82-8b39-d76646c3e0db/exec-0ee7b3a9-b550-4fdb-9aa4-4c9b8c1137b5.png",
+            "/Users/orcdev/.codex/generated_images/01a12cfe-45f8-7a82-8b39-d76646c3e0db/exec-2a7bcf2c-e995-4da3-ad42-2c8ea6ebf4c1.png",
+            "/Users/orcdev/.codex/generated_images/01a12cfe-45f8-7a82-8b39-d76646c3e0db/exec-a54bd7bb-4de4-49b9-b9d8-5f3eb2b6feb0.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll use the reference for three separate generations with your prompt unchanged.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

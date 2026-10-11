@@ -58,6 +58,10 @@
     "from_cathedral": [
       1760,
       920
+    ],
+    "from_gate": [
+      170,
+      930
     ]
   },
   "hotspots": [
@@ -270,6 +274,37 @@
         "room": "cathedral_nave",
         "entry": "from_cemetery",
         "direction": "right"
+      }
+    },
+    {
+      "id": "exit_west",
+      "name": "To the gate",
+      "polygon": [
+        [
+          0,
+          840
+        ],
+        [
+          90,
+          838
+        ],
+        [
+          90,
+          1062
+        ],
+        [
+          0,
+          1062
+        ]
+      ],
+      "walk_to": [
+        40,
+        935
+      ],
+      "exit": {
+        "room": "cemetery_gate",
+        "entry": "from_grave",
+        "direction": "left"
       }
     }
   ],

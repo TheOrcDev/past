@@ -1,0 +1,19 @@
+{
+  "id": "sexton_lodge",
+  "display_name": "Gravedigger's lodge",
+  "now": "art-source/raw/IMG-0014/IMG-0014-v2.png",
+  "then": "art-source/raw/IMG-0020/IMG-0020-v1.png",
+  "walk": [[300, 800], [600, 748], [1350, 748], [1600, 792], [1660, 840], [1750, 1040], [150, 1040], [180, 880]],
+  "scale_zones": {"far_y": 750, "far_scale": 0.8, "near_y": 1040, "near_scale": 1.05},
+  "markers": {"default": [820, 900], "from_gate": [470, 820]},
+  "hotspots": [
+    {"id": "door", "name": "Door", "polygon": [[315, 705], [315, 170], [480, 140], [595, 180], [595, 742]], "walk_to": [460, 790],
+     "exit": {"room": "cemetery_gate", "entry": "from_lodge", "direction": "left"}},
+    {"id": "stove", "name": "Stove", "polygon": [[90, 785], [90, 500], [262, 500], [262, 785]], "walk_to": [300, 840]},
+    {"id": "cot", "name": "Cot", "polygon": [[630, 705], [630, 500], [1100, 520], [1100, 705]], "walk_to": [850, 790]},
+    {"id": "keys", "name": "Key wall", "polygon": [[800, 455], [800, 305], [1290, 305], [1290, 455]], "walk_to": [1040, 780]},
+    {"id": "lanterns", "name": "Lanterns", "polygon": [[660, 252], [660, 150], [1330, 150], [1330, 252]], "walk_to": [980, 780]},
+    {"id": "register", "name": "Burial register", "polygon": [[1395, 765], [1395, 540], [1440, 420], [1710, 415], [1750, 520], [1750, 765]], "walk_to": [1500, 820], "pick_priority": 1}
+  ],
+  "effects": {"preset": "interior", "light": [1580, 280], "aim": 215}
+}

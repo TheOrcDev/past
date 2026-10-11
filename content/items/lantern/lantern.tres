@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemDef" format=3]
+
+[ext_resource type="Texture2D" path="res://content/items/lantern/icon.png" id="1_fbtde"]
+[ext_resource type="Script" path="res://src/core/item_def.gd" id="2_u70ly"]
+
+[resource]
+script = ExtResource("2_u70ly")
+id = &"lantern"
+display_name = "Lantern"
+icon = ExtResource("1_fbtde")
+look_file = &"prologue/items"
+look_cue = &"lantern_look"

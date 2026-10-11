@@ -28,6 +28,8 @@ ANGEL = [[350, 500], [350, 262], [392, 206], [440, 216], [462, 300], [462, 500]]
 MAUSOLEUM = [[110, 580], [110, 262], [200, 172], [300, 200], [395, 300], [395, 580]]
 CITY = [[1030, 380], [1030, 200], [1150, 60], [1300, 40], [1500, 90], [1700, 160], [1800, 380]]
 EXIT_EAST = [[1820, 815], [1920, 815], [1920, 1062], [1820, 1062]]
+# Plan 008: the path west leads to the cemetery gate.
+EXIT_WEST = [[0, 840], [90, 838], [90, 1062], [0, 1062]]
 
 
 def build_background() -> dict:
@@ -63,7 +65,7 @@ def main() -> None:
         "layers": {"now": [{"name": "Background", "texture": f"{RES}/bg_now.png"}]},
         "walk": {"now": WALK},
         "scale_zones": {"far_y": 800, "far_scale": 0.82, "near_y": 1060, "near_scale": 1.0},
-        "markers": {"default": [900, 905], "from_cathedral": [1760, 920]},
+        "markers": {"default": [900, 905], "from_cathedral": [1760, 920], "from_gate": [170, 930]},
         "hotspots": [
             {"id": "gravestone", "name": "Gravestone", "polygon": GRAVESTONE, "walk_to": [730, 870], "pick_priority": 1},
             {"id": "grave", "name": "Grave", "polygon": GRAVE, "walk_to": [880, 880]},
@@ -72,6 +74,8 @@ def main() -> None:
             {"id": "city", "name": "The city", "polygon": CITY, "walk_to": [1400, 880]},
             {"id": "exit_east", "name": "To the cathedral", "polygon": EXIT_EAST, "walk_to": [1880, 930],
              "exit": {"room": "cathedral_nave", "entry": "from_cemetery", "direction": "right"}},
+            {"id": "exit_west", "name": "To the gate", "polygon": EXIT_WEST, "walk_to": [40, 935],
+             "exit": {"room": "cemetery_gate", "entry": "from_grave", "direction": "left"}},
         ],
         "occluders": [],
         "effects": effects(),

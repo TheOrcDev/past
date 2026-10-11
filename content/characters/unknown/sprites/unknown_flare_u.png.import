@@ -3,15 +3,17 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cm2oe2aosdlss"
-path="res://.godot/imported/unknown_flare_u.png-86ed435706c9e4ee24e4a589cd085d5d.ctex"
+path.s3tc="res://.godot/imported/unknown_flare_u.png-86ed435706c9e4ee24e4a589cd085d5d.s3tc.ctex"
+path.etc2="res://.godot/imported/unknown_flare_u.png-86ed435706c9e4ee24e4a589cd085d5d.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://content/characters/unknown/sprites/unknown_flare_u.png"
-dest_files=["res://.godot/imported/unknown_flare_u.png-86ed435706c9e4ee24e4a589cd085d5d.ctex"]
+dest_files=["res://.godot/imported/unknown_flare_u.png-86ed435706c9e4ee24e4a589cd085d5d.s3tc.ctex", "res://.godot/imported/unknown_flare_u.png-86ed435706c9e4ee24e4a589cd085d5d.etc2.ctex"]
 
 [params]
 

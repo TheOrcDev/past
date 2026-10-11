@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0019",
+  "title": "Item sheet: the prologue",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T22:06:37.543Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "transparent",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0013/IMG-0013-v2.png",
+          "sha256": "aea3ec9ef0da502490ee6ecc801c0a0d4cd1f6bcf806d4f9b16ec70c8cb05977"
+        }
+      ],
+      "mask": null,
+      "prompt": "A sheet of five separate inventory item icons for a dark gothic point-and-click adventure game, painted in the monochrome greyscale ink-wash style of the reference image, each object drawn whole and alone, in a three by two grid with generous empty space between them, nothing overlapping or touching:\n\n1. a small old iron key with a round bow and a blank tin tag on a loop of string; 2. a cylindrical glass lantern chimney, slightly smoky; 3. an old iron hand lantern with its glass in place and a faint warm glow inside; 4. a small worn leather hymn book, closed, with a frayed ribbon bookmark; 5. a very large ornate black iron church door key.\n\nEach object is lit from the upper left with a soft rim light, slightly three-quarter view, as a clean cut-out on a fully transparent background, with no shadows, labels, frames or scenery. No text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0019-v1.png",
+          "sha256": "f8670baab6b1c2568c6f603d94836a194b305fc0d253ca248c88420c3649001d",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0019-v2.png",
+          "sha256": "a39fd3ea87e0992a053c54dfad2ea9675c1b4ea07b2f8a4c6b6bee7995c35a9c",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 146934,
+        "outputTokens": 892
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d00-ed2f-7a01-93cb-dea79bdd2e97",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d00-ed2f-7a01-93cb-dea79bdd2e97/exec-65417c00-12ac-474c-83bd-4fc080fdd185.png",
+            "/Users/orcdev/.codex/generated_images/01a12d00-ed2f-7a01-93cb-dea79bdd2e97/exec-517d3b55-ca5d-4a24-94d9-e587fd332e2f.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1536,
+              "height": 1024
+            },
+            {
+              "width": 1225,
+              "height": 1284
+            }
+          ],
+          "messages": [
+            "I’ll generate two sheets using the reference image and your prompt exactly as written.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

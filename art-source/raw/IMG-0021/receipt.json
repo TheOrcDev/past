@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0021",
+  "title": "The ossuary, then",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T22:10:53.701Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0015/IMG-0015-v1.png",
+          "sha256": "5fd82fbffc58e1b5962178062a210b6c64d9c2f44ca303d050c237e23d99b6e7"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit this image in place. Keep exactly the same composition, camera, perspective, horizon and every shape where it stands: the stair and door on the left, the skull walls, the three tiers of niches, the vault and its grate, the ledges and the floor. Only change the time and the condition.\n\nRestore the same ossuary to how it looked decades earlier, when it was tended, in full rich warm color, as a painterly gothic matte painting: every niche plaque freshly painted with gold lettering (unreadable at this distance), fresh flowers and wreaths laid in the niches, rows of lit candles on every ledge in warm amber light, clean swept stone, the crow's nest gone from the ledge, a warm glow of sunset through the vault grate. The key light comes from the same direction as in the original.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0021-v1.png",
+          "sha256": "8ca00ea68e6d69d6d7920878fa676b01555ea2afe157cfeb746c64937eb1153e",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0021-v2.png",
+          "sha256": "4ed69feb2623b083de5c808e33b1567433ab15c3398fe0da59518df2a8bf6489",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 75714,
+        "outputTokens": 639
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d04-d578-7770-881b-b568cac02728",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d04-d578-7770-881b-b568cac02728/exec-aa00af0f-945b-47bb-a001-86293d03d116.png",
+            "/Users/orcdev/.codex/generated_images/01a12d04-d578-7770-881b-b568cac02728/exec-22986441-2e08-4b7d-ab6f-d2bc2883b5ee.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate two wide, opaque edits using your prompt exactly as provided.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

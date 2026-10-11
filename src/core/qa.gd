@@ -382,6 +382,10 @@ func _rooms() -> void:
 	var listen := func(_id: String, _speaker: String, _text: String) -> void:
 		Say.skip.call_deferred()
 	Say.line_started.connect(listen)
+	# The game's own start fades into its first room; let it land first.
+	while Rooms.current == null:
+		await get_tree().process_frame
+	await _settle()
 	for room_id in rooms:
 		_mark(String(room_id))
 		await Rooms.goto(room_id, &"default", &"none")

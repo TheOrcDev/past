@@ -7,9 +7,27 @@
       "web": true,
       "start": "cemetery_grave",
       "flags": [],
-      "rooms": ["cemetery_grave", "cathedral_nave"],
-      "closeups": ["tombstone"],
-      "dialogue": ["cemetery", "cathedral", "prologue"]
+      "rooms": [
+        "cemetery_grave",
+        "cemetery_gate",
+        "sexton_lodge",
+        "ossuary",
+        "cathedral_nave"
+      ],
+      "closeups": [
+        "tombstone",
+        "burial_register",
+        "ossuary_niche"
+      ],
+      "dialogue": [
+        "cemetery",
+        "cathedral",
+        "prologue"
+      ],
+      "characters": [
+        "gravedigger",
+        "sister"
+      ]
     },
     {
       "id": "ch1",
@@ -18,7 +36,9 @@
       "flags": [],
       "rooms": [],
       "closeups": [],
-      "dialogue": ["ch1"]
+      "dialogue": [
+        "ch1"
+      ]
     },
     {
       "id": "ch2",
@@ -27,7 +47,9 @@
       "flags": [],
       "rooms": [],
       "closeups": [],
-      "dialogue": ["ch2"]
+      "dialogue": [
+        "ch2"
+      ]
     },
     {
       "id": "ch3",
@@ -36,7 +58,9 @@
       "flags": [],
       "rooms": [],
       "closeups": [],
-      "dialogue": ["ch3"]
+      "dialogue": [
+        "ch3"
+      ]
     },
     {
       "id": "ch4",
@@ -45,7 +69,9 @@
       "flags": [],
       "rooms": [],
       "closeups": [],
-      "dialogue": ["ch4"]
+      "dialogue": [
+        "ch4"
+      ]
     }
   ]
 }

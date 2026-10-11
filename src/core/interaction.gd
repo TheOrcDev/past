@@ -89,6 +89,9 @@ func double_click_at(world: Vector2) -> void:
 	var exit := hotspot_at(world) as Exit
 	if exit == null or locked > 0:
 		return
+	if not exit.is_open():
+		use(exit, &"walk")
+		return
 	_press_hotspot = null
 	Rooms.player.stop()
 	await Rooms.goto(exit.target_room, exit.target_entry, &"fade")

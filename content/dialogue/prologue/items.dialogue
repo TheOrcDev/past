@@ -1,0 +1,29 @@
+~ ossuary_key_look
+
+Unknown: Key thirteen, with a blank tag. Unlucky for somebody. [ID:PRO_ITEM_OSSUARY_KEY]
+
+=> END
+
+~ lantern_glass_look
+
+Unknown: A lantern glass, a little smoky. The crow had good taste. [ID:PRO_ITEM_LANTERN_GLASS]
+
+=> END
+
+~ lantern_look
+
+Unknown: The Gravedigger's lantern, lit. A small light, but it's on my side. [ID:PRO_ITEM_LANTERN]
+
+=> END
+
+~ hymn_book_look
+
+Unknown: Her hymn book. Names in every margin, in a careful hand. [ID:PRO_ITEM_HYMN_BOOK]
+
+=> END
+
+~ west_door_key_look
+
+Unknown: The key to the great doors. Heavy, the way important things are. [ID:PRO_ITEM_WEST_DOOR_KEY]
+
+=> END

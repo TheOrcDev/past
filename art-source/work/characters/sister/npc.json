@@ -1,0 +1,27 @@
+{
+  "id": "sister",
+  "speaker": "Sister",
+  "painting": "art-source/raw/IMG-0018/IMG-0018-v2.png",
+  "height": 470,
+  "feet": [520, 1520],
+  "speech": [560, 0],
+  "subtitle_color": [0.78, 0.82, 0.9],
+  "grid": 28,
+  "bones": [
+    {"name": "Base", "parent": "", "from": [520, 1520], "to": [520, 1000]},
+    {"name": "Spine", "parent": "Base", "from": [520, 980], "to": [560, 420]},
+    {"name": "Head", "parent": "Spine", "from": [590, 380], "to": [560, 30]},
+    {"name": "Veil", "parent": "Head", "from": [470, 320], "to": [330, 900]},
+    {"name": "Sleeves", "parent": "Spine", "from": [560, 560], "to": [690, 800]}
+  ],
+  "motions": {
+    "idle": {"loop": true, "bones": {"Spine": [0.6, 0.2, 0.0], "Head": [1.0, 0.12, 0.8], "Veil": [1.2, 0.15, 0.4]}},
+    "talk_a": {"loop": true, "bones": {"Spine": [0.7, 0.25, 0.0], "Head": [1.2, 0.2, 1.0], "Veil": [1.0, 0.2, 0.3]},
+               "voice": {"Head": 4.0, "Sleeves": -4.0}},
+    "talk_b": {"loop": true, "bones": {"Spine": [0.9, 0.3, 0.0], "Head": [1.4, 0.25, 0.5], "Veil": [1.2, 0.25, 0.2]},
+               "voice": {"Head": -3.0, "Spine": 1.5, "Sleeves": 6.0}},
+    "conduct": {"loop": false, "length": 1.8, "keys": {
+      "Sleeves": [[0.0, 0.0], [0.35, -9.0], [0.7, 0.0], [1.05, -9.0], [1.4, 0.0]],
+      "Head": [[0.0, 0.0], [0.35, 3.0], [0.7, 0.0], [1.05, 3.0], [1.8, 0.0]]}}
+  }
+}

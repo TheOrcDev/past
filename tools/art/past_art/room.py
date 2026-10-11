@@ -129,6 +129,7 @@ def build(room_json: Path, root: Path) -> dict:
         "markers": spec["markers"],
         "hotspots": spec["hotspots"],
         "occluders": occluders,
+        "npcs": spec.get("npcs", []),
         "effects": effects(spec, res, then is not None),
     }
     out = room_json.parent / "room_spec.json"
@@ -177,3 +178,17 @@ def overlay(room_json: Path, root: Path, out: Path) -> None:
     for polygon in spec.get("occluders", {}).values():
         cv2.polylines(image, [poly(polygon)], True, (255, 128, 0), 2)
     save(out, image)
+
+
+def closeup(closeup_json: Path, root: Path) -> dict:
+    """Builds a close-up's background and closeup_spec.json from one data file
+    (`art-source/work/closeups/<id>/closeup.json`: id, image, hotspots)."""
+    spec = json.loads(closeup_json.read_text())
+    closeup_id = spec["id"]
+    art = root / "content/closeups" / closeup_id / "art"
+    art.mkdir(parents=True, exist_ok=True)
+    image = grade.resize(load(root / spec["image"]), SIZE)
+    save(art / "bg.png", image if spec.get("grade") == "keep" else grade.monochrome(image))
+    out = closeup_json.parent / "closeup_spec.json"
+    out.write_text(json.dumps({"background": f"res://content/closeups/{closeup_id}/art/bg.png", "hotspots": spec["hotspots"]}, indent=2) + "\n")
+    return {"closeup": closeup_id, "spec": str(out)}
