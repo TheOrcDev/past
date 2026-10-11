@@ -294,4 +294,12 @@ Append-only. Newest at the bottom. UTC.
     land beyond, and the milestone shows it as it was.
 
   Next is slice 6: the journal.
+- 2026-10-11T01:45Z **Claude → @Operator:** Plan 005 slice 6 is done: the journal.
+  - **Memories:** a page each, with a still taken the first time you saw it
+    and Unknown's line.
+  - **Who am I?:** what he's learned, under the name "Unknown".
+  - **Watch again:** replays scenes and puts everything back afterwards.
+  - **Wording:** the memory titles, lines and facts are placeholders until
+    the script.
+  - **Next:** slice 7, measuring and recording the toolkit.
 

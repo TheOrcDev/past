@@ -38,6 +38,8 @@ func run(c: CutsceneSteps) -> void:
 	if Settings.reduce_camera_motion:
 		stage.crossfade_to_vista(c)
 	await c.shot(stage.animation, &"reveal")
+	if era == &"then":
+		Journal.capture_when_drawn(id)
 	await c.fade(1.0, fade_out_seconds)
 	# A freed camera leaves the view where it was; hand it back to the room's.
 	var view := stage.get_viewport()

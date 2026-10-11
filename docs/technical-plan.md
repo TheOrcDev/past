@@ -486,11 +486,26 @@ operator.
     step more direct, counted in `GameState.hints`, and the last line repeats.
   - **`none`** plays once every goal is done.
 
-### 6.7 Journal (plan 005)
+### 6.7 Journal (plan 005 slice 6)
 
-- One page per memory, with a still from its flashback and one voiced line.
-- The *Who am I?* page is built from facts in `GameState`.
-- A rewatch list of the cutscenes registered by `CutsceneRunner`.
+- **Contents:** `content/journal/entries.gd` lists what the journal shows:
+  memory titles and the cue of each memory's line, fact texts, and the
+  cutscenes that can be watched again.
+- **Memories:** one page per memory seen, with a still and one voiced line
+  (`content/dialogue/journal.dialogue`).
+  - The `Journal` autoload captures the still the first time the memory shows,
+    from the screen a frame after the past appears. That happens in a vision,
+    a playable memory or a memory vista.
+  - Stills are 640×360, kept in `user://journal/` beside the saves.
+- **Who am I?** is built from `GameState.facts`, recorded with
+  `GameState.learn()`. The name field reads "Unknown" until the end.
+- **Watch again:**
+  - The runner notes every named cutscene in `GameState.cutscenes_seen`
+    (save version 3).
+  - `Journal.rewatch(id)` goes to the scene's room if it has one, where the
+    room's `rewatch_<id>()` makes the cutscene, and plays it.
+  - Afterwards it puts back the room, where Unknown stood and the whole of
+    `GameState`, so watching again never changes the game.
 
 ### 6.8 Saves
 

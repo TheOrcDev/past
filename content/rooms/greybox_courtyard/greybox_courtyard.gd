@@ -17,7 +17,7 @@ func look_path() -> void:
 
 func use_path() -> void:
 	await Say.line(&"greybox", &"path_use")
-	await Cutscenes.play(RevealCutscene.new(&"greybox_vista", VISTA))
+	await Cutscenes.play(rewatch_greybox_vista())
 
 
 func look_milestone() -> void:
@@ -26,4 +26,14 @@ func look_milestone() -> void:
 
 func use_milestone() -> void:
 	await Say.line(&"greybox", &"milestone_use")
-	await Cutscenes.play(RevealCutscene.new(&"greybox_milestone", VISTA, &"then"))
+	await Cutscenes.play(rewatch_greybox_milestone())
+
+
+## The reveal and the memory vista, for using the path and the milestone, and
+## for watching them again from the journal.
+func rewatch_greybox_vista() -> RevealCutscene:
+	return RevealCutscene.new(&"greybox_vista", VISTA)
+
+
+func rewatch_greybox_milestone() -> RevealCutscene:
+	return RevealCutscene.new(&"greybox_milestone", VISTA, &"then")

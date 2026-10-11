@@ -44,10 +44,9 @@ func choose(id: StringName) -> void:
 	bar.hide_now()
 	match id:
 		&"journal":
-			var page := MenuScreen.new()
+			var page := JournalScreen.new()
 			page.title = "Journal"
-			page.ready.connect(func() -> void:
-				page.get_node(^"Content").add_child(MenuScreen.text_line("Nothing is written here yet.", 32)))
+			page.rewatch.connect(func(id: StringName) -> void: Journal.rewatch.call_deferred(id))
 			open_page(page)
 		&"save":
 			# The thumbnail is the game as it was, so it waits for a frame without the bar.

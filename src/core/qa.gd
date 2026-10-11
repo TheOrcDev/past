@@ -8,7 +8,7 @@ extends Node
 const TIMEOUT_SECONDS := 60.0
 const LONG_TIMEOUT_SECONDS := 150.0
 ## Scenarios that need the long timeout without the opening.
-const LONG_RUNS: Array[String] = ["greybox", "vista"]
+const LONG_RUNS: Array[String] = ["greybox", "vista", "journal"]
 ## Scenarios that need longer still, in seconds.
 const TIMEOUTS := {"greybox_clip": 360.0}
 ## Scenarios that start from the opening instead of straight in the first room.
@@ -46,6 +46,7 @@ func _ready() -> void:
 	# Scripted runs keep their saves apart from a player's, and run on the
 	# default settings whatever the player chose.
 	Saves.directory = "user://qa-saves"
+	Journal.directory = "user://qa-journal"
 	Settings.path = "user://qa-settings.cfg"
 	Settings.reset({&"fullscreen": false})
 	Menus.enabled = false
@@ -121,6 +122,8 @@ func _run(scenario: String) -> void:
 			await _greybox_clip()
 		"vista":
 			await _vista()
+		"journal":
+			await _journal()
 		_:
 			_failures.append("unknown scenario %s" % scenario)
 	_finish("done")
@@ -578,6 +581,34 @@ func _vista() -> void:
 	_check(Cutscenes.fade_amount() == 0.0 and get_viewport().get_canvas_transform() == Transform2D.IDENTITY, "the courtyard shows as it was")
 	_check(&"greybox_milestone" in GameState.memories, "the memory vista is remembered")
 	await _shot("07_back_in_the_courtyard")
+
+
+## The journal (plan 005 slice 6): after reading the gravestone and seeing the
+## statue's memory, its pages show what Unknown learned, the memory's still
+## and line, and the scenes to watch again.
+func _journal() -> void:
+	await _enter(&"cemetery_grave")
+	var skip_lines := func(_id: String, _speaker: String, _text: String) -> void: Say.skip.call_deferred()
+	Say.line_started.connect(skip_lines)
+	await Closeups.open(&"tombstone", Rooms.current.hotspots.get_node("Gravestone") as Hotspot)
+	for spot in ["Name", "Inscription"]:
+		await Interaction.click_at((Closeups.current.hotspots.get_node(spot) as Hotspot).focus_point())
+		await _settle()
+	await Closeups.close()
+	await Rooms.goto(&"cathedral_nave", &"default", &"none")
+	await _settle()
+	Interaction.click_at((Rooms.current.hotspots.get_node("Statue") as Hotspot).focus_point())
+	await Flashback.vision_finished
+	await _settle()
+	Say.line_started.disconnect(skip_lines)
+	_check(FileAccess.file_exists(Journal.still_path(&"cathedral_statue")), "the memory's still was kept")
+	await Menus.choose(&"journal")
+	await get_tree().create_timer(0.3).timeout
+	await _shot("01_who_am_i")
+	await (Menus.screen as JournalScreen).show_memory(&"cathedral_statue")
+	await get_tree().create_timer(0.3).timeout
+	await _shot("02_the_saints_hand")
+	Menus.screen.close()
 
 
 ## The fog gradients with grain on and off, in both eras, for judging banding.

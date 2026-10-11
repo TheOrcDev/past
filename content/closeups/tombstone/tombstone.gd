@@ -4,11 +4,13 @@ extends Closeup
 
 
 func look_name() -> void:
+	GameState.learn(&"name_u")
 	await Say.line(&"cemetery", &"name_look")
 
 
 func look_inscription() -> void:
 	GameState.set_flag(&"tombstone_read")
+	GameState.learn(&"a_dove")
 	await Say.line(&"cemetery", &"inscription_look")
 
 

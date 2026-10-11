@@ -55,6 +55,7 @@ func play(cutscene: Cutscene) -> void:
 	skip_button.reset()
 	Say.fast_forward = false
 	letterbox.hide_bars(0.0 if current.skipping else BARS_SECONDS)
+	GameState.saw_cutscene(cutscene.id)
 	current = null
 	Interaction.locked -= 1
 	finished.emit(cutscene.id)

@@ -142,6 +142,12 @@ func _migrate_from_1(data: Dictionary) -> Dictionary:
 	return data
 
 
+## 2 → 3: the journal's facts and the cutscenes seen start empty.
+func _migrate_from_2(data: Dictionary) -> Dictionary:
+	data.merge({"facts": [], "cutscenes_seen": []})
+	return data
+
+
 func _on_room_shown(_room: Room) -> void:
 	if not autosave:
 		return

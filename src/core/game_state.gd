@@ -7,7 +7,8 @@ extends Node
 signal replaced
 
 ## 1: flags and the inventory (plan 001). 2: the full state (plan 004 slice 6).
-const SAVE_VERSION := 2
+## 3: facts and the cutscenes seen, for the journal (plan 005 slice 6).
+const SAVE_VERSION := 3
 
 var flags := {}
 ## Carried item ids, in the order found (see the Inventory autoload).
@@ -18,6 +19,11 @@ var room_states := {}
 var memories: Array[StringName] = []
 ## Hint progress by puzzle id (plan 004 slice 9).
 var hints := {}
+## What Unknown has learned about himself, in the order learned, for the
+## journal's "Who am I?" page.
+var facts: Array[StringName] = []
+## The cutscenes played so far, watched or skipped, for rewatching.
+var cutscenes_seen: Array[StringName] = []
 var play_seconds := 0.0
 
 
@@ -46,6 +52,18 @@ func remember(id: StringName) -> void:
 		memories.append(id)
 
 
+## Notes that Unknown has learned the fact `id` about himself.
+func learn(id: StringName) -> void:
+	if not id in facts:
+		facts.append(id)
+
+
+## Notes that the cutscene `id` has played.
+func saw_cutscene(id: StringName) -> void:
+	if id != &"" and not id in cutscenes_seen:
+		cutscenes_seen.append(id)
+
+
 ## Back to the state of a new game.
 func reset() -> void:
 	from_dict({})
@@ -63,6 +81,8 @@ func to_dict() -> Dictionary:
 		"room_states": rooms,
 		"memories": Array(memories).map(func(id: StringName) -> String: return String(id)),
 		"hints": _text_keys(hints),
+		"facts": Array(facts).map(func(id: StringName) -> String: return String(id)),
+		"cutscenes_seen": Array(cutscenes_seen).map(func(id: StringName) -> String: return String(id)),
 		"play_seconds": play_seconds,
 	}
 
@@ -78,6 +98,8 @@ func from_dict(data: Dictionary) -> void:
 		room_states[StringName(str(room_id))] = _name_keys(rooms[room_id])
 	memories.assign(Array(data.get("memories", [])).map(func(id: Variant) -> StringName: return StringName(str(id))))
 	hints = _name_keys(data.get("hints", {}))
+	facts.assign(Array(data.get("facts", [])).map(func(id: Variant) -> StringName: return StringName(str(id))))
+	cutscenes_seen.assign(Array(data.get("cutscenes_seen", [])).map(func(id: Variant) -> StringName: return StringName(str(id))))
 	play_seconds = float(data.get("play_seconds", 0.0))
 	replaced.emit()
 

@@ -24,6 +24,7 @@ func _init(memory: StringName, in_room: Room, anchor: Vector2, while_past := Cal
 
 func run(c: CutsceneSteps) -> void:
 	await Flashback.open_past(c, room, origin)
+	Journal.capture_when_drawn(id)
 	if during.is_valid():
 		await during.call(c)
 	else:

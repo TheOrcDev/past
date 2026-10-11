@@ -122,6 +122,7 @@ func vision(id: StringName, room: Room, origin: Vector2, during := Callable()) -
 func enter_memory(id: StringName, room: Room, origin: Vector2, done: Variant) -> void:
 	await Cutscenes.play(StepsCutscene.new(&"", func(c: CutsceneSteps) -> void: await open_past(c, room, origin, false)))
 	in_memory = true
+	Journal.capture_when_drawn(id)
 	var shut: Array[Hotspot] = []
 	for node in room.hotspots.get_children():
 		if node is Exit and node.visible:

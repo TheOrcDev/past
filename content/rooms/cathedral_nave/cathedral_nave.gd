@@ -9,8 +9,14 @@ func _on_enter(_from: StringName) -> void:
 
 func use_statue() -> void:
 	await Say.line(&"cathedral", &"statue_use")
+	await Cutscenes.play(rewatch_cathedral_statue())
+
+
+## The statue's vision, for using the statue and for watching it again from
+## the journal.
+func rewatch_cathedral_statue() -> Vision:
 	var statue := hotspots.get_node("Statue") as Hotspot
-	await Flashback.vision(&"cathedral_statue", self, statue.focus_point(), func(c: CutsceneSteps) -> void:
+	return Vision.new(&"cathedral_statue", self, statue.focus_point(), func(c: CutsceneSteps) -> void:
 		await c.wait(1.5)
 		await c.say(&"cathedral", &"statue_return")
 		await c.wait(1.5))

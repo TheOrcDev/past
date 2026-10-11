@@ -30,6 +30,7 @@ Settings="*res://src/core/settings.gd"
 Menus="*res://src/ui/menus.gd"
 Hints="*res://src/systems/hints.gd"
 Cutscenes="*res://src/systems/cinematics/cutscenes.gd"
+Journal="*res://src/systems/journal.gd"
 Qa="*res://src/core/qa.gd"
 
 [display]
@@ -50,7 +51,7 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://add
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://content/dialogue/sandbox.dialogue", "res://content/dialogue/core.dialogue", "res://content/dialogue/cathedral.dialogue", "res://content/dialogue/cemetery.dialogue", "res://content/dialogue/hints.dialogue", "res://content/dialogue/greybox.dialogue")
+locale/translations_pot_files=PackedStringArray("res://content/dialogue/sandbox.dialogue", "res://content/dialogue/core.dialogue", "res://content/dialogue/cathedral.dialogue", "res://content/dialogue/cemetery.dialogue", "res://content/dialogue/hints.dialogue", "res://content/dialogue/greybox.dialogue", "res://content/dialogue/journal.dialogue")
 
 [navigation]
 

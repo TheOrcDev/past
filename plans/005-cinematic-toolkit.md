@@ -237,4 +237,30 @@ About 4–6 working sessions.
 
     103 GUT tests pass. A `vista` QA scenario passes on desktop and in the
     browser.
+- **2026-10-11, slice 6:** the journal.
+  - **State:** `GameState` keeps `facts` and `cutscenes_seen` (save version 3;
+    `_migrate_from_2` adds them). The runner notes every named cutscene. The
+    gravestone teaches two facts: the U, and the dove.
+  - **`Journal` autoload:**
+    - captures a memory's still the first time it shows, in a vision, a
+      playable memory or a memory vista, into `user://journal/`;
+    - lists the memories and watchable scenes;
+    - rewatches.
+  - **Rewatching:** a rewatch goes to the scene's room if needed. The room's
+    `rewatch_<id>()` makes the cutscene; the cathedral and the greybox
+    courtyard have them. Afterwards it puts back the room, Unknown's place
+    and all of `GameState`.
+  - **The journal page** (`JournalScreen`) replaces the top bar's placeholder:
+    - on the left, "Who am I?", the memories and "Watch again";
+    - on the right, the facts under "Name: Unknown", or a memory's still with
+      its line from `content/dialogue/journal.dialogue`.
+  - **Tests:** five new ones:
+    - version 2 saves migrate;
+    - the runner notes cutscenes;
+    - a still is kept once;
+    - the page lists what was seen and learned;
+    - watching again, in the same room or another, changes nothing.
+
+    108 GUT tests pass. A `journal` QA scenario passes on desktop and in the
+    browser.
 
