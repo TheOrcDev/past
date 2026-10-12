@@ -44,6 +44,8 @@ if grep -E "SCRIPT ERROR|^ERROR" "$log"; then
 	echo "export logged errors; see $log" >&2
 	exit 1
 fi
+# The loading screen's pictures sit beside the custom shell (web/shell.html).
+[[ "$target" == web ]] && cp -R "$ROOT/web/loading" "$(dirname "$out")/"
 listing="$(python3 "$ROOT/tools/build/pck_list.py" "$(dirname "$out")/index.pck" 2>/dev/null || true)"
 for path in ${excluded[@]+"${excluded[@]}"}; do
 	if grep -q "^$path/" <<< "$listing"; then

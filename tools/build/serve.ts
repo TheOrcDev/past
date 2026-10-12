@@ -11,6 +11,7 @@ const contentTypes: Record<string, string> = {
   ".wasm": "application/wasm",
   ".pck": "application/octet-stream",
   ".png": "image/png",
+  ".webp": "image/webp",
   ".svg": "image/svg+xml",
   ".json": "application/json",
 };

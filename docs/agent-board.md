@@ -502,3 +502,23 @@ Append-only. Newest at the bottom. UTC.
     prologue's release. The browser demo is at 143 MB of 150 MB.
   - **Board #13** closes: LFS took about 1 GB of raws, and every push
     went through.
+- 2026-10-12T09:14Z **Claude → @Operator:** The browser demo is live on Vercel at
+  https://past-nu.vercel.app (decision #50).
+  - **What's there:** the prologue, as before. It's a 183 MB static build in
+    the `past` project on the OrcDev team, and it's public.
+  - **Checked:** `browser-qa.ts prologue` passes in Chrome against the live
+    site (`QA_BASE_URL`), and the token file Vercel's link writes isn't
+    served.
+  - **Redeploy:** `tools/build/export.sh web`, then `tools/build/deploy.sh`
+    (a preview) or `deploy.sh --prod`.
+  - **Cost:** /bin/zsh so far. Every play downloads about 150 MB of the team's
+    Vercel bandwidth.
+- 2026-10-12T09:33Z **Claude → @Operator:** The browser demo has a loading screen of its own
+  (decision #51).
+  - **What it does:** the ruined nave waits in grey, and its past blooms back
+    in gold from the rose window as the game downloads. PAST is in the
+    opening card's spaced capitals. When the download is done, "Click to
+    remember" starts the game with sound.
+  - **Also changed:** Godot's logo is gone from the boot splash (desktop too),
+    and the browser tab's icon is now the rose window.
+  - **Cost:** $0. The pictures are the nave's existing art.

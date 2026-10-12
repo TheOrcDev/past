@@ -6,6 +6,7 @@
 //
 // Usage (with `bun tools/build/serve.ts` running):
 //   bun tools/build/browser-qa.ts [scenario=perf] [canvas=1920x1080] [passes=2] [shots-dir]
+// QA_BASE_URL checks a deployed build instead, e.g. https://past-nu.vercel.app.
 // With a shots-dir, each screenshot the scenario takes is also captured from
 // the page into that folder, since the game's own land in the browser's storage.
 // A capture lands a moment after the game's own shot, so motion may have moved on.
@@ -26,7 +27,8 @@ const passes = Number(process.argv[4] ?? 2);
 const shotsDir = process.argv[5];
 if (shotsDir) mkdirSync(shotsDir, { recursive: true });
 const captures: Promise<void>[] = [];
-const pageUrl = `http://localhost:8060/?qa=${scenario}`;
+const baseUrl = new URL(process.env.QA_BASE_URL ?? "http://localhost:8060/");
+const pageUrl = `${baseUrl.origin}/?qa=${scenario}`;
 
 const profile = mkdtempSync(join(tmpdir(), "past-chrome-"));
 // Retina Macs draw two device pixels per CSS pixel; --app windows add a ~28 px title bar.
@@ -65,7 +67,7 @@ async function pageSocketUrl(): Promise<string> {
   while (Date.now() < deadline) {
     try {
       const targets = (await (await fetch(`http://127.0.0.1:${PORT}/json`)).json()) as { type: string; url: string; webSocketDebuggerUrl: string }[];
-      const page = targets.find((t) => t.type === "page" && t.url.includes("localhost:8060"));
+      const page = targets.find((t) => t.type === "page" && t.url.startsWith(baseUrl.origin));
       if (page) return page.webSocketDebuggerUrl;
     } catch {
       // Chrome is still starting.

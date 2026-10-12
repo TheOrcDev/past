@@ -30,7 +30,7 @@ browser as a demo (#20).
 | Build | What | Where |
 |---|---|---|
 | **Desktop** (full game) | macOS universal, Windows, Linux | itch.io downloads first, Steam later |
-| **Browser demo** | The prologue, exported for the web | itch.io |
+| **Browser demo** | The prologue, exported for the web | Vercel, the `past` project on the OrcDev team: https://past-nu.vercel.app (decision #50). itch.io can still carry it later. |
 
 - **Renderer:** Compatibility everywhere (OpenGL 3.3 on desktop, WebGL 2 in the
   browser), so the demo and the full game look identical. It renders in 8-bit
@@ -597,6 +597,15 @@ Not needed. The browser gets only the prologue demo, so it fits in one `.pck`
 
 ## 7. Browser demo specifics
 
+- **Loading screen:** `web/shell.html` is the Web preset's custom HTML shell
+  (decision #51), from 4.7.2's default. The ruined nave waits in grey while the
+  engine and pack download, and its past blooms back in colour from the rose
+  window. When the download ends, "Click to remember" starts the engine, so
+  sound is allowed from the first line. `?qa=` runs skip the click. The
+  pictures are made by `tools/build/loading_art.sh` and copied in by
+  `export.sh`. Godot's boot splash shows no image on any platform, only
+  `#050507`.
+
 - **Audio:** the browser's default "Sample" playback has three problems:
   - it cannot run bus effects;
   - it decodes a whole clip on the main thread the first time it plays, which
@@ -707,6 +716,9 @@ Not needed. The browser gets only the prologue demo, so it fits in one `.pck`
        uncaught exceptions and page crashes. macOS counts a covered window as
        hidden, and Chrome would then stop the game's frames, so the tool starts
        Chrome with its backgrounding switched off.
+    5. `tools/build/deploy.sh` uploads `build/web` to Vercel as a preview, or
+       to https://past-nu.vercel.app with `--prod`. `QA_BASE_URL=<url>` points
+       `browser-qa.ts` at a deployed build instead of the local server.
   - **Scenarios for measuring and recording:**
     - `grave` checks the start (plan 007): the arrival line, the gravestone's
       close-up and its lines, and the exits both ways, with screenshots;
