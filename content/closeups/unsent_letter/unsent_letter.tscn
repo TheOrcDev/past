@@ -1,0 +1,31 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/closeups/unsent_letter/unsent_letter.gd" id="1_70lh7"]
+[ext_resource type="Texture2D" path="res://content/closeups/unsent_letter/art/bg.png" id="2_r0jq0"]
+[ext_resource type="Script" path="res://src/core/hotspot.gd" id="3_66aey"]
+
+[node name="UnsentLetter" type="Node2D" unique_id=926808062]
+script = ExtResource("1_70lh7")
+closeup_id = &"unsent_letter"
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1345986077]
+texture = ExtResource("2_r0jq0")
+centered = false
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=1206318454]
+
+[node name="Sign" type="Area2D" parent="Hotspots" unique_id=1115911714]
+script = ExtResource("3_66aey")
+id = &"sign"
+display_name = "Signature"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Sign" unique_id=727311868]
+polygon = PackedVector2Array(1280, 650, 1440, 650, 1440, 780, 1280, 780)
+
+[node name="Text" type="Area2D" parent="Hotspots" unique_id=938212014]
+script = ExtResource("3_66aey")
+id = &"text"
+display_name = "The letter"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Text" unique_id=760470098]
+polygon = PackedVector2Array(440, 420, 1500, 420, 1500, 980, 440, 980)

@@ -1,0 +1,182 @@
+{
+  "display_name": "Bell chamber",
+  "now": "art-source/raw/IMG-0140/IMG-0140-v1.png",
+  "walk": [
+    [
+      100,
+      820
+    ],
+    [
+      1700,
+      820
+    ],
+    [
+      1850,
+      1060
+    ],
+    [
+      50,
+      1060
+    ]
+  ],
+  "scale_zones": {
+    "far_y": 820,
+    "far_scale": 0.9,
+    "near_y": 1060,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      1000,
+      930
+    ],
+    "from_stair": [
+      260,
+      860
+    ],
+    "from_belfry": [
+      1560,
+      870
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "registrar",
+      "name": "Registrar",
+      "polygon": [
+        [
+          350,
+          840
+        ],
+        [
+          350,
+          300
+        ],
+        [
+          580,
+          300
+        ],
+        [
+          580,
+          840
+        ]
+      ],
+      "walk_to": [
+        700,
+        880
+      ],
+      "default_verb": "talk",
+      "pick_priority": 2
+    },
+    {
+      "id": "stair",
+      "name": "Down the stair",
+      "polygon": [
+        [
+          20,
+          780
+        ],
+        [
+          20,
+          500
+        ],
+        [
+          200,
+          500
+        ],
+        [
+          200,
+          780
+        ]
+      ],
+      "walk_to": [
+        240,
+        860
+      ],
+      "exit": {
+        "room": "bell_stair",
+        "entry": "from_chamber",
+        "direction": "left"
+      }
+    },
+    {
+      "id": "ladder",
+      "name": "Ladder up",
+      "polygon": [
+        [
+          1600,
+          840
+        ],
+        [
+          1600,
+          40
+        ],
+        [
+          1800,
+          40
+        ],
+        [
+          1800,
+          840
+        ]
+      ],
+      "walk_to": [
+        1560,
+        870
+      ],
+      "exit": {
+        "room": "belfry_top",
+        "entry": "from_chamber",
+        "direction": "up",
+        "requires_flag": "got_ledger"
+      }
+    },
+    {
+      "id": "bells",
+      "name": "Bells",
+      "polygon": [
+        [
+          620,
+          600
+        ],
+        [
+          620,
+          300
+        ],
+        [
+          1300,
+          300
+        ],
+        [
+          1300,
+          600
+        ]
+      ],
+      "walk_to": [
+        960,
+        880
+      ]
+    }
+  ],
+  "npcs": [
+    {
+      "scene": "res://content/characters/registrar/registrar.tscn",
+      "name": "Registrar",
+      "position": [
+        460,
+        840
+      ],
+      "facing": "right"
+    }
+  ],
+  "effects": {
+    "preset": "interior",
+    "light": [
+      1400,
+      380
+    ],
+    "aim": 200
+  },
+  "id": "bell_chamber",
+  "then": "art-source/raw/IMG-0153/IMG-0153-v1.png"
+}

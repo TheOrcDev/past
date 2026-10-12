@@ -1,0 +1,51 @@
+{
+  "background": "res://content/closeups/unsent_letter/art/bg.png",
+  "hotspots": [
+    {
+      "id": "sign",
+      "name": "Signature",
+      "polygon": [
+        [
+          1280,
+          650
+        ],
+        [
+          1440,
+          650
+        ],
+        [
+          1440,
+          780
+        ],
+        [
+          1280,
+          780
+        ]
+      ],
+      "pick_priority": 2
+    },
+    {
+      "id": "text",
+      "name": "The letter",
+      "polygon": [
+        [
+          440,
+          420
+        ],
+        [
+          1500,
+          420
+        ],
+        [
+          1500,
+          980
+        ],
+        [
+          440,
+          980
+        ]
+      ],
+      "pick_priority": 1
+    }
+  ]
+}

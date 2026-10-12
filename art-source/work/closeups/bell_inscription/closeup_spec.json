@@ -1,0 +1,50 @@
+{
+  "background": "res://content/closeups/bell_inscription/art/bg.png",
+  "hotspots": [
+    {
+      "id": "text",
+      "name": "Inscription",
+      "polygon": [
+        [
+          60,
+          580
+        ],
+        [
+          1880,
+          580
+        ],
+        [
+          1880,
+          760
+        ],
+        [
+          60,
+          760
+        ]
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "metal",
+      "name": "The bell",
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          1920,
+          0
+        ],
+        [
+          1920,
+          1080
+        ],
+        [
+          0,
+          1080
+        ]
+      ]
+    }
+  ]
+}

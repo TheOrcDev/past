@@ -1,0 +1,53 @@
+{
+  "id": "gravestone_restored",
+  "image": "art-source/raw/IMG-0148/IMG-0148-v1.png",
+  "hotspots": [
+    {
+      "id": "name",
+      "name": "The name",
+      "polygon": [
+        [
+          660,
+          480
+        ],
+        [
+          1360,
+          480
+        ],
+        [
+          1360,
+          630
+        ],
+        [
+          660,
+          630
+        ]
+      ],
+      "pick_priority": 2
+    },
+    {
+      "id": "inscription",
+      "name": "The inscription",
+      "polygon": [
+        [
+          600,
+          630
+        ],
+        [
+          1420,
+          630
+        ],
+        [
+          1420,
+          760
+        ],
+        [
+          600,
+          760
+        ]
+      ],
+      "pick_priority": 2
+    }
+  ],
+  "grade": "keep"
+}

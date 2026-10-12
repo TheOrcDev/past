@@ -1,0 +1,187 @@
+{
+  "display_name": "The Dove's room",
+  "now": "art-source/raw/IMG-0137/IMG-0137-v1.png",
+  "now_grade": "keep",
+  "walk": [
+    [
+      150,
+      780
+    ],
+    [
+      1600,
+      780
+    ],
+    [
+      1850,
+      1060
+    ],
+    [
+      100,
+      1060
+    ]
+  ],
+  "scale_zones": {
+    "far_y": 780,
+    "far_scale": 0.9,
+    "near_y": 1060,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      1000,
+      900
+    ],
+    "from_dovecote": [
+      1500,
+      840
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "ladder",
+      "name": "Ladder up",
+      "polygon": [
+        [
+          1480,
+          780
+        ],
+        [
+          1480,
+          30
+        ],
+        [
+          1740,
+          30
+        ],
+        [
+          1740,
+          780
+        ]
+      ],
+      "walk_to": [
+        1500,
+        840
+      ],
+      "exit": {
+        "room": "dovecote",
+        "entry": "from_room",
+        "direction": "up"
+      }
+    },
+    {
+      "id": "desk",
+      "name": "Writing desk",
+      "polygon": [
+        [
+          810,
+          740
+        ],
+        [
+          810,
+          500
+        ],
+        [
+          1200,
+          500
+        ],
+        [
+          1200,
+          740
+        ]
+      ],
+      "walk_to": [
+        1000,
+        820
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "banner",
+      "name": "Choir banner",
+      "polygon": [
+        [
+          520,
+          520
+        ],
+        [
+          520,
+          280
+        ],
+        [
+          660,
+          280
+        ],
+        [
+          660,
+          520
+        ]
+      ],
+      "walk_to": [
+        600,
+        820
+      ]
+    },
+    {
+      "id": "keepsakes",
+      "name": "Keepsakes",
+      "polygon": [
+        [
+          200,
+          440
+        ],
+        [
+          200,
+          360
+        ],
+        [
+          480,
+          360
+        ],
+        [
+          480,
+          440
+        ]
+      ],
+      "walk_to": [
+        400,
+        820
+      ]
+    },
+    {
+      "id": "bed",
+      "name": "Bed",
+      "polygon": [
+        [
+          30,
+          800
+        ],
+        [
+          30,
+          520
+        ],
+        [
+          590,
+          520
+        ],
+        [
+          590,
+          800
+        ]
+      ],
+      "walk_to": [
+        400,
+        840
+      ]
+    }
+  ],
+  "effects": {
+    "preset": "interior",
+    "light": [
+      1030,
+      280
+    ],
+    "aim": 200
+  },
+  "id": "dove_room",
+  "then": "art-source/raw/IMG-0150/IMG-0150-v1.png"
+}

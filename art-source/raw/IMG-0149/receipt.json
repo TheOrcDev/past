@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0149",
+  "title": "The cathedral roof, then",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T01:25:44.363Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0133/IMG-0133-v3.png",
+          "sha256": "1d647f640d7af670ce22a02f437d43526b3f29701fae7c1c0579773927021705"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit this image in place. Keep exactly the same composition, camera, perspective, horizon and every shape where it stands: the roof ridge and walkway, the pinnacles, the bridge door, the stones, the belfry and the city below. Only change the time and the condition.\n\nRestore the same roof to how it looked decades earlier, on a summer evening, in full rich warm color, as a painterly gothic matte painting: the lead roof gleaming, gold pennants flying from every pinnacle, the city far below in full warm colour with terracotta roofs, gilded spires, green gardens and blue canals, a glowing sunset sky. The key light comes from the same direction as in the original.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0149-v1.png",
+          "sha256": "551720fb2347cd50fa85a9086268b351d9b02387369cf431450fd955b9e10d29",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0149-v2.png",
+          "sha256": "9277ad47d23644a6604ebc76741b120bb1b2cf4f2199c750b24db79c15c6c0a3",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 156335,
+        "outputTokens": 661
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12db7-378e-79d1-ad62-d2bf8fd0a618",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12db7-378e-79d1-ad62-d2bf8fd0a618/exec-d3c7f5f2-4bb6-4537-b07e-3e34d13cc79b.png",
+            "/Users/orcdev/.codex/generated_images/01a12db7-378e-79d1-ad62-d2bf8fd0a618/exec-7b67ef48-50ef-4e85-9ebe-e6365a52521a.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 2123,
+              "height": 741
+            },
+            {
+              "width": 2122,
+              "height": 741
+            }
+          ],
+          "messages": [
+            "I’ll generate two edits using the attached image and your exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

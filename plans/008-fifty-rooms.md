@@ -501,3 +501,27 @@ XXL: five parts. It is re-estimated after slices 3 and 4.
     Hangman, told who he hanged, says "Some of it."
   - **Proof:** `Ch3Playthrough` passes in GUT and as `--qa=ch3` on desktop
     (`docs/qa/008/ch3/`).
+- **2026-10-12, slice 8:** chapter 4, The Dovecote, plays from the cathedral
+  roof to the epilogue. The story is complete.
+  - **Chart and script:** `docs/story/ch4-puzzles.md` is one line through
+    the Dove to the bell. The script is in `content/dialogue/ch4/`, with 10
+    hint goals and two journal pages.
+  - **The journal's name field** now reads "Ulric" once the names are
+    returned (`game-design.md` §9).
+  - **Art (IMG-0133–0154):**
+    - 10 rooms, six with a then image (p90 1.42–1.67 px). The Dove's room
+      and the epilogue keep their colour: the room carries her trace of
+      blue, and the grave at dawn is an edit of IMG-0009 in full colour,
+      the stone recut ULRIC.
+    - The Dove, whose veil keeps its faint blue (`keep_color`).
+    - 4 close-ups and an item sheet.
+  - **The finale:** Elise forgives him for the letter he never sent. He
+    gives Edmund Vey his name, and Edmund hands over the Ledger. At the
+    bell, Unknown reads every name, Elise's, then his own, then the city's,
+    Aurelle. The belfry's then is the city restored, and the epilogue
+    follows at dawn.
+  - **Fixed:** two chapter 4 hint goals reused prologue cue names (`stone`
+    and `dove`), which broke the hints file. `lint.gd` now fails on a
+    duplicate `[ID:…]` across the game, or a duplicate cue in a file.
+  - **Proof:** `Ch4Playthrough` passes in GUT and as `--qa=ch4` on desktop
+    (`docs/qa/008/ch4/`).

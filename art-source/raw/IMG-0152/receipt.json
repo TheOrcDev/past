@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0152",
+  "title": "Behind the rose window, then (the song of names)",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T01:26:49.335Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0138/IMG-0138-v1.png",
+          "sha256": "4dc24004fc0ef409604ecdd23507d02a3b26049bcb9d48e7bd29eaf3680c0079"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit this image in place. Keep exactly the same composition, camera, perspective, horizon and every shape where it stands: the rose window and its tracery, the balustrade, the ledge, both doors and the nave below. Only change the time and the condition.\n\nRestore the same ledge to how it looked decades earlier, during evening song, in full rich warm color, as a painterly gothic matte painting: the rose window whole and blazing with stained glass in deep blue, ruby red and gold, coloured light pouring through it, the nave far below glowing gold and full of candles, blue and gold banners, warm candlelight on the ledge. The key light comes from the same direction as in the original.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0152-v1.png",
+          "sha256": "e5377511b3d343d1da90e24ebf2aa0bc74db93d96c29001394ad3d4c7d03adb8",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0152-v2.png",
+          "sha256": "e04953bfa1b6a004aa42f4aa5c320452f2efd75415f563a2f711a530bdad2ae6",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 91120,
+        "outputTokens": 641
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12db8-355c-7fd2-a572-cc60e17443f9",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12db8-355c-7fd2-a572-cc60e17443f9/exec-30899e2c-6282-416b-be8d-2e19cf12e5a6.png",
+            "/Users/orcdev/.codex/generated_images/01a12db8-355c-7fd2-a572-cc60e17443f9/exec-2efe62f5-6afa-4492-9af9-b3e82a192752.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1671,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate two wide, opaque edits of the attached image using your prompt exactly.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

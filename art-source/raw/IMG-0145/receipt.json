@@ -1,0 +1,76 @@
+{
+  "id": "IMG-0145",
+  "title": "Close-up: the unsent letter",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T01:25:10.599Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0017/IMG-0017-v3.png",
+          "sha256": "a66436e3476179ff8d3fa127202b2a2a4309e0f2788e15d1229c22a60d564b2a"
+        }
+      ],
+      "mask": null,
+      "prompt": "A close-up of a folded letter on a small writing desk, opened from the reference image, in exactly the same monochrome greyscale ink-wash gothic style: an old handwritten letter on cream paper, opened flat on a wooden desk by moonlight, a broken red wax seal beside it, a few short lines in a hurried, slanting man's hand, then a signature.\n\nThe letter reads exactly, and nothing else is readable:\nElise.\nI can't undo it. I'm sorry.\nI was afraid of a city that remembered.\nand the signature is a single letter:\nU\nNo people or figures. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0145-v1.png",
+          "sha256": "c1f4a1e73d8d61ce87e5a875e2b33da35b6257e413cf3a5c7a1cc5632599af01",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0145-v2.png",
+          "sha256": "e084a85abc36b42dbcde5c670e6141731c334a4397bbcfa991b0a1b03491d766",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0145-v3.png",
+          "sha256": "f105beeb79e6b08129868286f1bbd6b55ba13e6b5927a6d1c131e7ebd50d11fd",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 211452,
+        "outputTokens": 784
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12db6-b3a7-7ef1-8cf3-ee49177ad8eb",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12db6-b3a7-7ef1-8cf3-ee49177ad8eb/exec-6d9ec13f-cc2b-4ce0-b328-11a86d874fee.png",
+            "/Users/orcdev/.codex/generated_images/01a12db6-b3a7-7ef1-8cf3-ee49177ad8eb/exec-28cd3956-f9a3-4033-b277-c28c4946e311.png",
+            "/Users/orcdev/.codex/generated_images/01a12db6-b3a7-7ef1-8cf3-ee49177ad8eb/exec-c33af7de-31d6-469d-817c-733b4b15b7e2.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate three edits using the attached image and your exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

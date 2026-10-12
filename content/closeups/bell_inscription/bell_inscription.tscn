@@ -1,0 +1,31 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/closeups/bell_inscription/bell_inscription.gd" id="1_nyx2d"]
+[ext_resource type="Texture2D" path="res://content/closeups/bell_inscription/art/bg.png" id="2_vii3b"]
+[ext_resource type="Script" path="res://src/core/hotspot.gd" id="3_smsgp"]
+
+[node name="BellInscription" type="Node2D" unique_id=237162159]
+script = ExtResource("1_nyx2d")
+closeup_id = &"bell_inscription"
+
+[node name="Background" type="Sprite2D" parent="." unique_id=491787075]
+texture = ExtResource("2_vii3b")
+centered = false
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=2101192361]
+
+[node name="Text" type="Area2D" parent="Hotspots" unique_id=870465456]
+script = ExtResource("3_smsgp")
+id = &"text"
+display_name = "Inscription"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Text" unique_id=745732279]
+polygon = PackedVector2Array(60, 580, 1880, 580, 1880, 760, 60, 760)
+
+[node name="Metal" type="Area2D" parent="Hotspots" unique_id=5919222]
+script = ExtResource("3_smsgp")
+id = &"metal"
+display_name = "The bell"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Metal" unique_id=1674019282]
+polygon = PackedVector2Array(0, 0, 1920, 0, 1920, 1080, 0, 1080)

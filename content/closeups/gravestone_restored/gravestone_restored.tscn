@@ -1,0 +1,31 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/closeups/gravestone_restored/gravestone_restored.gd" id="1_ey6wr"]
+[ext_resource type="Texture2D" path="res://content/closeups/gravestone_restored/art/bg.png" id="2_6anc7"]
+[ext_resource type="Script" path="res://src/core/hotspot.gd" id="3_4j50h"]
+
+[node name="GravestoneRestored" type="Node2D" unique_id=2146015093]
+script = ExtResource("1_ey6wr")
+closeup_id = &"gravestone_restored"
+
+[node name="Background" type="Sprite2D" parent="." unique_id=146045870]
+texture = ExtResource("2_6anc7")
+centered = false
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=161443776]
+
+[node name="Name" type="Area2D" parent="Hotspots" unique_id=640231079]
+script = ExtResource("3_4j50h")
+id = &"name"
+display_name = "The name"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Name" unique_id=290331849]
+polygon = PackedVector2Array(660, 480, 1360, 480, 1360, 630, 660, 630)
+
+[node name="Inscription" type="Area2D" parent="Hotspots" unique_id=1035722897]
+script = ExtResource("3_4j50h")
+id = &"inscription"
+display_name = "The inscription"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Inscription" unique_id=331409704]
+polygon = PackedVector2Array(600, 630, 1420, 630, 1420, 760, 600, 760)

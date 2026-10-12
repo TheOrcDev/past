@@ -1,0 +1,383 @@
+{
+  "display_name": "Bell chamber",
+  "layers": {
+    "now": [
+      {
+        "name": "Background",
+        "texture": "res://content/rooms/bell_chamber/art/bg_now.png"
+      }
+    ],
+    "then": [
+      {
+        "name": "Background",
+        "texture": "res://content/rooms/bell_chamber/art/bg_then.png"
+      }
+    ]
+  },
+  "walk": {
+    "now": [
+      [
+        100,
+        820
+      ],
+      [
+        1700,
+        820
+      ],
+      [
+        1850,
+        1060
+      ],
+      [
+        50,
+        1060
+      ]
+    ],
+    "then": [
+      [
+        100,
+        820
+      ],
+      [
+        1700,
+        820
+      ],
+      [
+        1850,
+        1060
+      ],
+      [
+        50,
+        1060
+      ]
+    ]
+  },
+  "scale_zones": {
+    "far_y": 820,
+    "far_scale": 0.9,
+    "near_y": 1060,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      1000,
+      930
+    ],
+    "from_stair": [
+      260,
+      860
+    ],
+    "from_belfry": [
+      1560,
+      870
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "registrar",
+      "name": "Registrar",
+      "polygon": [
+        [
+          350,
+          840
+        ],
+        [
+          350,
+          300
+        ],
+        [
+          580,
+          300
+        ],
+        [
+          580,
+          840
+        ]
+      ],
+      "walk_to": [
+        700,
+        880
+      ],
+      "default_verb": "talk",
+      "pick_priority": 2
+    },
+    {
+      "id": "stair",
+      "name": "Down the stair",
+      "polygon": [
+        [
+          20,
+          780
+        ],
+        [
+          20,
+          500
+        ],
+        [
+          200,
+          500
+        ],
+        [
+          200,
+          780
+        ]
+      ],
+      "walk_to": [
+        240,
+        860
+      ],
+      "exit": {
+        "room": "bell_stair",
+        "entry": "from_chamber",
+        "direction": "left"
+      }
+    },
+    {
+      "id": "ladder",
+      "name": "Ladder up",
+      "polygon": [
+        [
+          1600,
+          840
+        ],
+        [
+          1600,
+          40
+        ],
+        [
+          1800,
+          40
+        ],
+        [
+          1800,
+          840
+        ]
+      ],
+      "walk_to": [
+        1560,
+        870
+      ],
+      "exit": {
+        "room": "belfry_top",
+        "entry": "from_chamber",
+        "direction": "up",
+        "requires_flag": "got_ledger"
+      }
+    },
+    {
+      "id": "bells",
+      "name": "Bells",
+      "polygon": [
+        [
+          620,
+          600
+        ],
+        [
+          620,
+          300
+        ],
+        [
+          1300,
+          300
+        ],
+        [
+          1300,
+          600
+        ]
+      ],
+      "walk_to": [
+        960,
+        880
+      ]
+    }
+  ],
+  "occluders": [],
+  "npcs": [
+    {
+      "scene": "res://content/characters/registrar/registrar.tscn",
+      "name": "Registrar",
+      "position": [
+        460,
+        840
+      ],
+      "facing": "right"
+    }
+  ],
+  "effects": [
+    {
+      "type": "FogLayer",
+      "name": "FogFar",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.85,
+          0.86,
+          0.88,
+          1.0
+        ],
+        "density": 0.26,
+        "velocity": [
+          0.006,
+          0.0
+        ],
+        "noise_scale": [
+          1.4,
+          0.8
+        ],
+        "band_top": 0.42,
+        "band_bottom": 0.9,
+        "depth_texture": "res://content/rooms/bell_chamber/art/depth_now.png",
+        "near_cutoff": 0.45,
+        "noise_seed": 3
+      }
+    },
+    {
+      "type": "LightShafts",
+      "name": "Shafts",
+      "era": "now",
+      "properties": {
+        "origin": [
+          1400,
+          380
+        ],
+        "aim": 200.0,
+        "spread": 36.0,
+        "beams": 6.0,
+        "intensity": 0.1,
+        "reach": 0.95,
+        "shaft_color": [
+          0.95,
+          0.96,
+          1.0,
+          1.0
+        ],
+        "flicker": 0.4
+      }
+    },
+    {
+      "type": "DustMotes",
+      "name": "Ash",
+      "era": "now",
+      "properties": {
+        "area": [
+          300,
+          200,
+          1400,
+          700
+        ],
+        "mote_color": [
+          0.85,
+          0.85,
+          0.88,
+          0.35
+        ],
+        "mote_count": 45,
+        "drift": [
+          4,
+          6
+        ],
+        "mote_size": 2.5
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "GroundMist",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.86,
+          0.87,
+          0.9,
+          1.0
+        ],
+        "density": 0.16,
+        "velocity": [
+          0.01,
+          0.0
+        ],
+        "noise_scale": [
+          2.6,
+          1.6
+        ],
+        "band_top": 0.84,
+        "band_bottom": 1.02,
+        "band_softness": 0.08,
+        "noise_seed": 27
+      },
+      "layer": "foreground"
+    },
+    {
+      "type": "LightShafts",
+      "name": "GoldenShafts",
+      "era": "then",
+      "properties": {
+        "origin": [
+          1400,
+          380
+        ],
+        "aim": 200.0,
+        "spread": 44.0,
+        "beams": 7.0,
+        "intensity": 0.14,
+        "reach": 1.0,
+        "shaft_color": [
+          1.0,
+          0.85,
+          0.55,
+          1.0
+        ],
+        "flicker": 0.25
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "WarmHaze",
+      "era": "then",
+      "properties": {
+        "fog_color": [
+          1.0,
+          0.9,
+          0.75,
+          1.0
+        ],
+        "density": 0.1,
+        "velocity": [
+          0.004,
+          0.0
+        ],
+        "noise_scale": [
+          1.2,
+          0.7
+        ],
+        "band_top": 0.3,
+        "band_bottom": 0.9,
+        "noise_seed": 13
+      }
+    },
+    {
+      "type": "DustMotes",
+      "name": "GoldenDust",
+      "era": "then",
+      "properties": {
+        "area": [
+          300,
+          150,
+          1500,
+          750
+        ],
+        "mote_color": [
+          1.0,
+          0.86,
+          0.55,
+          0.55
+        ],
+        "mote_count": 60,
+        "drift": [
+          3,
+          -4
+        ],
+        "mote_size": 2.5
+      }
+    }
+  ]
+}

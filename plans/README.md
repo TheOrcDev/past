@@ -16,7 +16,7 @@ REJECTED (one-line rationale).
 | [005](005-cinematic-toolkit.md) | Cinematic toolkit: flashbacks, reveals, cutscene runner, journal | M4 | L | 002, 004 | DONE 2026-10-11: 109 GUT tests pass; one of each kind runs in both builds; reel in `docs/qa/005/` |
 | [006](006-prologue-vertical-slice.md) | Prologue vertical slice | M5 | XL | 003, 005, story track | TODO: written 2026-10-11; waits on plan 003 (board #4, #7), the story track, the look gate (#31) and budgets |
 | [007](007-the-grave.md) | The grave: start at Unknown's grave, close-up views | M5 (early) | M | 002, 004 | DONE 2026-10-10 (operator request) |
-| [008](008-fifty-rooms.md) | Fifty rooms: the story after the grave, 13 NPCs, art by GPT-6.1 Sol | Story track + M7 (early) | XXL | 004, 005, 007; story sign-off (board #10) and look gate (#11) before volume art | IN PROGRESS: slices 0–7 done (Sol engine #47; story #48; frame; NPCs #49; prologue, chapters 1–3 and all four reveals) |
+| [008](008-fifty-rooms.md) | Fifty rooms: the story after the grave, 13 NPCs, art by GPT-6.1 Sol | Story track + M7 (early) | XXL | 004, 005, 007; story sign-off (board #10) and look gate (#11) before volume art | IN PROGRESS: slices 0–8 done (all 50 rooms play, prologue to epilogue); slice 9 (whole-game pass) next |
 
 ## Dependency notes
 

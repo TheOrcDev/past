@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0144",
+  "title": "Item sheet: chapter 4",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T01:27:07.450Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "transparent",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0019/IMG-0019-v1.png",
+          "sha256": "f8670baab6b1c2568c6f603d94836a194b305fc0d253ca248c88420c3649001d"
+        }
+      ],
+      "mask": null,
+      "prompt": "A sheet of four separate inventory item icons for a dark gothic point-and-click adventure game, painted in the monochrome greyscale ink-wash style of the reference image, each object drawn whole and alone, in a two by two grid with generous empty space between them, nothing overlapping or touching:\n\n1. a large rough rectangular block of carved grey stone, broken at one end; 2. a small old iron key with a dove-shaped bow; 3. a folded, sealed paper letter with a broken red wax seal; 4. an enormous ancient leather-bound book with brass corners and clasps, closed.\n\nEach object is lit from the upper left with a soft rim light, slightly three-quarter view, as a clean cut-out on a fully transparent background, with no shadows, labels, frames or scenery. No text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0144-v1.png",
+          "sha256": "dbec9643e159d0de51ddca5afa66ce715439bf55de9bae5e569487e7d15c2af3",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0144-v2.png",
+          "sha256": "239ce209f9ccf657ea2b64e9d58d912c7f98d057a530fbce630fffc769cd58ec",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 69440,
+        "outputTokens": 610
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12db8-7c17-7661-9672-eccfa7ed9744",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12db8-7c17-7661-9672-eccfa7ed9744/exec-3a08b704-5b32-43aa-84ec-275c1f1771fc.png",
+            "/Users/orcdev/.codex/generated_images/01a12db8-7c17-7661-9672-eccfa7ed9744/exec-80c97115-cfff-4169-ad19-28ecab503705.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1536,
+              "height": 1024
+            },
+            {
+              "width": 1536,
+              "height": 1024
+            }
+          ],
+          "messages": [
+            "I’ll generate the two sheets using the attached reference and your exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

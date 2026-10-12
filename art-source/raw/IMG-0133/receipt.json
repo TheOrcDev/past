@@ -1,0 +1,76 @@
+{
+  "id": "IMG-0133",
+  "title": "The cathedral roof, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T01:22:22.206Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0064/IMG-0064-v1.png",
+          "sha256": "a8400af03b8f535b02032ab1de3370e18a70c8d6a2864046219aa3ad6a9454f6"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: a walkway along the lead roof ridge of a huge gothic cathedral, high above a city at night, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: The roof ridge runs from the left foreground into the distance, flanked by carved stone pinnacles. On the left, the arched door of the covered bridge opens onto the roof. Loose stones and broken slates lie along the ridge; one large loose block of stone sits by itself near the centre. Beyond, the entire grey city spreads out far below in fog, and on the right the great belfry tower rises out of frame.\n\nThe lower third of the image is open, walkable ground: the flat lead walkway along the ridge runs across the lower third. It is lit by a huge full moon with drifting fog or haze behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0133-v1.png",
+          "sha256": "16cec41434f171f16a95fe448e2eed3191198e0696a493c95fa84af111aa9b49",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0133-v2.png",
+          "sha256": "221228b6e4edacdd02348018f50b6cd4158410e451d5de2e50d7eac09774d47c",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0133-v3.png",
+          "sha256": "1d647f640d7af670ce22a02f437d43526b3f29701fae7c1c0579773927021705",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 99548,
+        "outputTokens": 665
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12db4-2233-7000-be82-ec3ccac65e55",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12db4-2233-7000-be82-ec3ccac65e55/exec-c86ff08e-63e3-45f7-a4ce-42a86b2f19df.png",
+            "/Users/orcdev/.codex/generated_images/01a12db4-2233-7000-be82-ec3ccac65e55/exec-777af93c-54b1-413a-8dbb-592d77446fdd.png",
+            "/Users/orcdev/.codex/generated_images/01a12db4-2233-7000-be82-ec3ccac65e55/exec-6f686a62-0f66-4a1b-9c5c-59c090d1c2a1.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 2123,
+              "height": 741
+            },
+            {
+              "width": 2123,
+              "height": 741
+            },
+            {
+              "width": 2123,
+              "height": 741
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque images using your exact prompt and the attached reference.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

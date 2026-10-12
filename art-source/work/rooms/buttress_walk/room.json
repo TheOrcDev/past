@@ -1,0 +1,143 @@
+{
+  "display_name": "Flying buttresses",
+  "now": "art-source/raw/IMG-0134/IMG-0134-v1.png",
+  "walk": [
+    [
+      100,
+      700
+    ],
+    [
+      1140,
+      680
+    ],
+    [
+      1140,
+      780
+    ],
+    [
+      100,
+      800
+    ]
+  ],
+  "scale_zones": {
+    "far_y": 680,
+    "far_scale": 0.6,
+    "near_y": 800,
+    "near_scale": 0.66
+  },
+  "markers": {
+    "default": [
+      600,
+      740
+    ],
+    "from_roof": [
+      180,
+      750
+    ],
+    "from_gallery": [
+      1100,
+      730
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "to_roof",
+      "name": "Back to the roof",
+      "polygon": [
+        [
+          0,
+          820
+        ],
+        [
+          0,
+          560
+        ],
+        [
+          150,
+          560
+        ],
+        [
+          150,
+          820
+        ]
+      ],
+      "walk_to": [
+        160,
+        750
+      ],
+      "exit": {
+        "room": "cathedral_roof",
+        "entry": "from_buttress",
+        "direction": "left"
+      }
+    },
+    {
+      "id": "gap",
+      "name": "Gap",
+      "polygon": [
+        [
+          1150,
+          820
+        ],
+        [
+          1150,
+          640
+        ],
+        [
+          1340,
+          640
+        ],
+        [
+          1340,
+          820
+        ]
+      ],
+      "walk_to": [
+        1110,
+        730
+      ],
+      "exit": {
+        "room": "gargoyle_gallery",
+        "entry": "from_buttress",
+        "direction": "right",
+        "requires_flag": "buttress_bridged"
+      },
+      "pick_priority": 2
+    },
+    {
+      "id": "wall",
+      "name": "Cathedral wall",
+      "polygon": [
+        [
+          0,
+          560
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          400,
+          0
+        ],
+        [
+          400,
+          560
+        ]
+      ],
+      "walk_to": [
+        300,
+        750
+      ]
+    }
+  ],
+  "effects": {
+    "preset": "exterior",
+    "light": [
+      1370,
+      80
+    ],
+    "aim": 200
+  },
+  "id": "buttress_walk"
+}

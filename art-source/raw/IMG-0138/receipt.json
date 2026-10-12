@@ -1,0 +1,84 @@
+{
+  "id": "IMG-0138",
+  "title": "Behind the rose window, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T01:23:54.711Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0017/IMG-0017-v3.png",
+          "sha256": "a66436e3476179ff8d3fa127202b2a2a4309e0f2788e15d1229c22a60d564b2a"
+        },
+        {
+          "path": "art-source/raw/IMG-0064/IMG-0064-v1.png",
+          "sha256": "a8400af03b8f535b02032ab1de3370e18a70c8d6a2864046219aa3ad6a9454f6"
+        },
+        {
+          "path": "art-source/raw/IMG-0001/IMG-0001-v1.png",
+          "sha256": "1ea2d102a8e59a2eead4d5e9457dc883a20072c8cffefccf5eecc3dd10ee6634"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: a narrow stone ledge high inside a gothic cathedral, behind its great broken rose window, at night, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: The huge round rose window fills the upper half, seen from behind, much of its glass broken, the moon showing through. Below the ledge's balustrade, the vast ruined nave far below. On the left, the door back out to the roof; on the right, a small door into a spiral stair.\n\nThe lower third of the image is open, walkable ground: the ledge's floor runs across the lower third behind the balustrade. It is lit by moonlight through the rose window with drifting fog or haze behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0138-v1.png",
+          "sha256": "4dc24004fc0ef409604ecdd23507d02a3b26049bcb9d48e7bd29eaf3680c0079",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0138-v2.png",
+          "sha256": "0263c0ceb5f018237af7b309036394965561484a2031fc9b6a69d842a2397270",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0138-v3.png",
+          "sha256": "ffc7562ae5faccca04507f15c0965a638089bd6756051e8f022130d9e77fe9b2",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 204281,
+        "outputTokens": 1516
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12db5-8b43-7ac2-bdf4-98d678fb23d2",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12db5-8b43-7ac2-bdf4-98d678fb23d2/exec-ee1dac2c-1414-43b6-b42a-bc487b3fc2d1.png",
+            "/Users/orcdev/.codex/generated_images/01a12db5-8b43-7ac2-bdf4-98d678fb23d2/exec-e0a6fdfa-c409-47bb-b4c0-b5c8508eee60.png",
+            "/Users/orcdev/.codex/generated_images/01a12db5-8b43-7ac2-bdf4-98d678fb23d2/exec-833750fe-3be8-4ea2-84a8-ea73195b8853.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque images using the attached references and your exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

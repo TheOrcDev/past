@@ -1,0 +1,166 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/rooms/gargoyle_gallery/gargoyle_gallery.gd" id="1_6c7su"]
+[ext_resource type="Texture2D" path="res://content/rooms/gargoyle_gallery/art/bg_now.png" id="2_4vvf8"]
+[ext_resource type="Script" path="res://src/systems/effects/fog_layer.gd" id="3_x5qtg"]
+[ext_resource type="Texture2D" path="res://content/rooms/gargoyle_gallery/art/depth_now.png" id="4_l4ovm"]
+[ext_resource type="Script" path="res://src/systems/effects/light_shafts.gd" id="5_ar31u"]
+[ext_resource type="Script" path="res://src/core/scale_zones.gd" id="6_7gf2t"]
+[ext_resource type="Script" path="res://src/core/exit.gd" id="7_vfm7a"]
+[ext_resource type="Script" path="res://src/core/hotspot.gd" id="8_jel63"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_kwiwv"]
+vertices = PackedVector2Array(1800, 1060, 250, 1060, 500, 800, 1700, 780)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(500, 800, 1700, 780, 1800, 1060, 250, 1060)])
+agent_radius = 0.0
+
+[node name="GargoyleGallery" type="Node2D" unique_id=370180846]
+script = ExtResource("1_6c7su")
+room_id = &"gargoyle_gallery"
+display_name = "Gargoyle gallery"
+
+[node name="Layers" type="Node2D" parent="." unique_id=1563827979]
+
+[node name="Now" type="Node2D" parent="Layers" unique_id=992825950]
+
+[node name="Background" type="Sprite2D" parent="Layers/Now" unique_id=300381741]
+texture = ExtResource("2_4vvf8")
+centered = false
+
+[node name="FogFar" type="ColorRect" parent="Layers/Now" unique_id=166417207]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_x5qtg")
+fog_color = Color(0.85, 0.86, 0.89, 1)
+density = 0.3
+velocity = Vector2(0.005, 0)
+noise_scale = Vector2(1.4, 0.8)
+band_top = 0.3
+band_bottom = 0.75
+depth_texture = ExtResource("4_l4ovm")
+near_cutoff = 0.4
+noise_seed = 21
+
+[node name="FogLow" type="ColorRect" parent="Layers/Now" unique_id=992303499]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_x5qtg")
+fog_color = Color(0.8, 0.82, 0.86, 1)
+density = 0.24
+velocity = Vector2(-0.008, 0)
+noise_scale = Vector2(2.2, 1.1)
+band_top = 0.5
+band_bottom = 0.82
+depth_texture = ExtResource("4_l4ovm")
+near_cutoff = 0.55
+noise_seed = 23
+
+[node name="Moonlight" type="ColorRect" parent="Layers/Now" unique_id=1393088828]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("5_ar31u")
+origin = Vector2(480, 90)
+aim = 160.0
+spread = 30.0
+beams = 5.0
+intensity = 0.07
+shaft_color = Color(0.9, 0.93, 1, 1)
+flicker = 0.3
+
+[node name="Then" type="Node2D" parent="Layers" unique_id=636997539]
+
+[node name="WalkAreas" type="Node2D" parent="." unique_id=541534618]
+
+[node name="Now" type="NavigationRegion2D" parent="WalkAreas" unique_id=1641376537]
+navigation_polygon = SubResource("NavigationPolygon_kwiwv")
+
+[node name="Then" type="NavigationRegion2D" parent="WalkAreas" unique_id=1334377342]
+enabled = false
+
+[node name="ScaleZones" type="Node2D" parent="." unique_id=488641159]
+script = ExtResource("6_7gf2t")
+far_y = 780.0
+far_scale = 0.8
+near_y = 1060.0
+near_scale = 1.05
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=90923670]
+
+[node name="ToButtress" type="Area2D" parent="Hotspots" unique_id=771512478]
+script = ExtResource("7_vfm7a")
+target_room = &"buttress_walk"
+target_entry = &"from_gallery"
+direction = &"left"
+id = &"to_buttress"
+display_name = "Back across the buttress"
+default_verb = &"walk"
+walk_offset = Vector2(340, 1000)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/ToButtress" unique_id=2024434105]
+polygon = PackedVector2Array(0, 1060, 0, 880, 260, 880, 260, 1060)
+
+[node name="KeyGargoyle" type="Area2D" parent="Hotspots" unique_id=285544185]
+script = ExtResource("8_jel63")
+id = &"key_gargoyle"
+display_name = "Gargoyle with a key"
+default_verb = &"use"
+walk_offset = Vector2(700, 830)
+pick_priority = 2
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/KeyGargoyle" unique_id=809765364]
+polygon = PackedVector2Array(500, 660, 500, 320, 770, 320, 770, 660)
+
+[node name="Gargoyles" type="Area2D" parent="Hotspots" unique_id=1911197655]
+script = ExtResource("8_jel63")
+id = &"gargoyles"
+display_name = "Gargoyles"
+walk_offset = Vector2(900, 830)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Gargoyles" unique_id=967788669]
+polygon = PackedVector2Array(20, 660, 20, 180, 1280, 180, 1280, 660)
+
+[node name="ToDovecote" type="Area2D" parent="Hotspots" unique_id=1074666725]
+script = ExtResource("7_vfm7a")
+target_room = &"dovecote"
+target_entry = &"from_gallery"
+id = &"to_dovecote"
+display_name = "To the dovecote"
+default_verb = &"walk"
+walk_offset = Vector2(1580, 800)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/ToDovecote" unique_id=84719705]
+polygon = PackedVector2Array(1480, 780, 1480, 320, 1720, 320, 1720, 780)
+
+[node name="Exits" type="Node2D" parent="." unique_id=243083009]
+
+[node name="Markers" type="Node2D" parent="." unique_id=1545603013]
+
+[node name="default" type="Marker2D" parent="Markers" unique_id=1236248121]
+position = Vector2(1000, 920)
+
+[node name="from_buttress" type="Marker2D" parent="Markers" unique_id=1163004855]
+position = Vector2(380, 1000)
+
+[node name="from_dovecote" type="Marker2D" parent="Markers" unique_id=43562342]
+position = Vector2(1580, 800)
+
+[node name="Actors" type="Node2D" parent="." unique_id=1002609783]
+y_sort_enabled = true
+
+[node name="Foreground" type="Node2D" parent="." unique_id=39903934]
+
+[node name="GroundMist" type="ColorRect" parent="Foreground" unique_id=189471618 groups=["era_now"]]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_x5qtg")
+fog_color = Color(0.86, 0.87, 0.9, 1)
+density = 0.16
+velocity = Vector2(0.01, 0)
+noise_scale = Vector2(2.6, 1.6)
+band_top = 0.84
+band_bottom = 1.02
+band_softness = 0.08
+noise_seed = 27
+
+[node name="Cinematics" type="Node2D" parent="." unique_id=351719307]

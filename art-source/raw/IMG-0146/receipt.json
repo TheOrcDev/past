@@ -1,0 +1,76 @@
+{
+  "id": "IMG-0146",
+  "title": "Close-up: the Ledger's first page",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T01:26:31.256Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0111/IMG-0111-v2.png",
+          "sha256": "130470b00b905fbb9ccc82235a74cb91d79c55fe474cee81f0e59a52758baf14"
+        }
+      ],
+      "mask": null,
+      "prompt": "A close-up of the great Ledger of Names, held open from the reference image, in exactly the same monochrome greyscale ink-wash gothic style: an enormous ancient book open to its first page, held up close by moonlight: the page is ruled, almost entirely blank except for its first line, handwritten and struck through with a single hard line. On the facing page, filled with tiny struck-through names, the very last line at the bottom is in a different, tidier hand, also struck through.\n\nThe first line reads exactly: Edmund Vey\nThe last line at the bottom of the facing page reads exactly: The High Magistrate\nAll other names are tiny and illegible. No people or figures. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0146-v1.png",
+          "sha256": "822a0140c362168976cad611e16f23d1ad5c496517dd740a396ab4a1975400b4",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0146-v2.png",
+          "sha256": "dbc2627aa1e8e324670738f36e7a27c090c245a372e1c3f85ab8f3b9080b5634",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0146-v3.png",
+          "sha256": "b1bff098004a2c94cba88b16c148efe2e923d52a347a142d748a2b5c6722ad38",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 100693,
+        "outputTokens": 810
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12db7-eeb6-7d90-ad83-647cc824aec8",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12db7-eeb6-7d90-ad83-647cc824aec8/exec-8290785a-4db4-4566-891f-1d5d66e12bc5.png",
+            "/Users/orcdev/.codex/generated_images/01a12db7-eeb6-7d90-ad83-647cc824aec8/exec-845f3071-d2f4-4204-a5b5-fd76365b8e5c.png",
+            "/Users/orcdev/.codex/generated_images/01a12db7-eeb6-7d90-ad83-647cc824aec8/exec-aa47bbfb-144d-4c7f-9914-eaa1ca225fbe.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque images from the attached reference using your prompt exactly.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

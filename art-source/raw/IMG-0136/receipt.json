@@ -1,0 +1,77 @@
+{
+  "id": "IMG-0136",
+  "title": "The dovecote, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T01:26:59.884Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0064/IMG-0064-v1.png",
+          "sha256": "a8400af03b8f535b02032ab1de3370e18a70c8d6a2864046219aa3ad6a9454f6"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: a round stone dovecote on a flat stretch of cathedral roof at night, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: In the centre, a round stone dovecote tower with rows of little arched nest holes, grey doves on every ledge, and one pure white dove. A small door at its base, and a wooden trapdoor in the roof beside it leading down into an attic. On the right, a door into the cathedral's tower. The city below in fog.\n\nThe lower third of the image is open, walkable ground: the flat roof around the dovecote runs across the lower third. It is lit by moonlight with drifting fog or haze behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0136-v1.png",
+          "sha256": "45f91d279806a03cfbaf79c414c2b3518db37ff481bf5168f646cb84a26658dd",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0136-v2.png",
+          "sha256": "59d48729064e2b9f97f5afb054d512072933241cf1388685ce3fe8f739083fbd",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0136-v3.png",
+          "sha256": "5a540e42431e3b19e64424a08023a8b4a22f5ef51a46266e6ff58b93d232a8ea",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 168158,
+        "outputTokens": 789
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12db8-5e96-7761-a9a6-416bcd2615ab",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12db8-5e96-7761-a9a6-416bcd2615ab/exec-6a658b3d-f179-4e08-b88d-ecce398ff428.png",
+            "/Users/orcdev/.codex/generated_images/01a12db8-5e96-7761-a9a6-416bcd2615ab/exec-57410ada-65eb-4482-b425-93000d8927ff.png",
+            "/Users/orcdev/.codex/generated_images/01a12db8-5e96-7761-a9a6-416bcd2615ab/exec-a17ebadf-ee10-4b01-a0f7-17a0d98abd46.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 2123,
+              "height": 741
+            },
+            {
+              "width": 2123,
+              "height": 741
+            },
+            {
+              "width": 2123,
+              "height": 741
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque images from the reference using your prompt exactly.",
+            "I’m using the imagegen skill for the three reference-based generations.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

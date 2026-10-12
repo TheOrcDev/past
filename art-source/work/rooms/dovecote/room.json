@@ -1,0 +1,245 @@
+{
+  "display_name": "The dovecote",
+  "now": "art-source/raw/IMG-0136/IMG-0136-v1.png",
+  "walk": [
+    [
+      150,
+      820
+    ],
+    [
+      1500,
+      820
+    ],
+    [
+      1700,
+      1060
+    ],
+    [
+      150,
+      1060
+    ]
+  ],
+  "scale_zones": {
+    "far_y": 820,
+    "far_scale": 0.88,
+    "near_y": 1060,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      900,
+      950
+    ],
+    "from_gallery": [
+      260,
+      940
+    ],
+    "from_room": [
+      1200,
+      880
+    ],
+    "from_ledge": [
+      1640,
+      880
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "dove",
+      "name": "The Dove",
+      "polygon": [
+        [
+          620,
+          840
+        ],
+        [
+          620,
+          500
+        ],
+        [
+          760,
+          470
+        ],
+        [
+          800,
+          840
+        ]
+      ],
+      "walk_to": [
+        560,
+        900
+      ],
+      "default_verb": "talk",
+      "pick_priority": 3
+    },
+    {
+      "id": "door",
+      "name": "Dovecote door",
+      "polygon": [
+        [
+          840,
+          820
+        ],
+        [
+          840,
+          600
+        ],
+        [
+          940,
+          600
+        ],
+        [
+          940,
+          820
+        ]
+      ],
+      "walk_to": [
+        880,
+        880
+      ],
+      "pick_priority": 2
+    },
+    {
+      "id": "doves",
+      "name": "Doves",
+      "polygon": [
+        [
+          720,
+          580
+        ],
+        [
+          720,
+          100
+        ],
+        [
+          1040,
+          100
+        ],
+        [
+          1040,
+          580
+        ]
+      ],
+      "walk_to": [
+        900,
+        880
+      ]
+    },
+    {
+      "id": "trapdoor",
+      "name": "Trapdoor",
+      "polygon": [
+        [
+          1100,
+          860
+        ],
+        [
+          1100,
+          740
+        ],
+        [
+          1320,
+          740
+        ],
+        [
+          1320,
+          860
+        ]
+      ],
+      "walk_to": [
+        1200,
+        900
+      ],
+      "exit": {
+        "room": "dove_room",
+        "entry": "from_dovecote",
+        "direction": "down",
+        "requires_flag": "dove_room_ok"
+      }
+    },
+    {
+      "id": "tower_door",
+      "name": "Tower door",
+      "polygon": [
+        [
+          1720,
+          840
+        ],
+        [
+          1720,
+          240
+        ],
+        [
+          1860,
+          240
+        ],
+        [
+          1860,
+          840
+        ]
+      ],
+      "walk_to": [
+        1640,
+        900
+      ],
+      "exit": {
+        "room": "rose_window_ledge",
+        "entry": "from_dovecote",
+        "direction": "right",
+        "requires_flag": "dove_forgave"
+      }
+    },
+    {
+      "id": "to_gallery",
+      "name": "Back to the gallery",
+      "polygon": [
+        [
+          0,
+          1060
+        ],
+        [
+          0,
+          600
+        ],
+        [
+          140,
+          600
+        ],
+        [
+          140,
+          1060
+        ]
+      ],
+      "walk_to": [
+        220,
+        940
+      ],
+      "exit": {
+        "room": "gargoyle_gallery",
+        "entry": "from_dovecote",
+        "direction": "left"
+      }
+    }
+  ],
+  "npcs": [
+    {
+      "scene": "res://content/characters/dove/dove.tscn",
+      "name": "Dove",
+      "position": [
+        700,
+        840
+      ],
+      "facing": "right"
+    }
+  ],
+  "effects": {
+    "preset": "exterior",
+    "light": [
+      1300,
+      90
+    ],
+    "aim": 200
+  },
+  "id": "dovecote",
+  "then": "art-source/raw/IMG-0154/IMG-0154-v2.png"
+}

@@ -1,0 +1,169 @@
+{
+  "display_name": "Gargoyle gallery",
+  "now": "art-source/raw/IMG-0135/IMG-0135-v3.png",
+  "walk": [
+    [
+      500,
+      800
+    ],
+    [
+      1700,
+      780
+    ],
+    [
+      1800,
+      1060
+    ],
+    [
+      250,
+      1060
+    ]
+  ],
+  "scale_zones": {
+    "far_y": 780,
+    "far_scale": 0.8,
+    "near_y": 1060,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      1000,
+      920
+    ],
+    "from_buttress": [
+      380,
+      1000
+    ],
+    "from_dovecote": [
+      1580,
+      800
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "to_buttress",
+      "name": "Back across the buttress",
+      "polygon": [
+        [
+          0,
+          1060
+        ],
+        [
+          0,
+          880
+        ],
+        [
+          260,
+          880
+        ],
+        [
+          260,
+          1060
+        ]
+      ],
+      "walk_to": [
+        340,
+        1000
+      ],
+      "exit": {
+        "room": "buttress_walk",
+        "entry": "from_gallery",
+        "direction": "left"
+      }
+    },
+    {
+      "id": "key_gargoyle",
+      "name": "Gargoyle with a key",
+      "polygon": [
+        [
+          500,
+          660
+        ],
+        [
+          500,
+          320
+        ],
+        [
+          770,
+          320
+        ],
+        [
+          770,
+          660
+        ]
+      ],
+      "walk_to": [
+        700,
+        830
+      ],
+      "default_verb": "use",
+      "pick_priority": 2
+    },
+    {
+      "id": "gargoyles",
+      "name": "Gargoyles",
+      "polygon": [
+        [
+          20,
+          660
+        ],
+        [
+          20,
+          180
+        ],
+        [
+          1280,
+          180
+        ],
+        [
+          1280,
+          660
+        ]
+      ],
+      "walk_to": [
+        900,
+        830
+      ]
+    },
+    {
+      "id": "to_dovecote",
+      "name": "To the dovecote",
+      "polygon": [
+        [
+          1480,
+          780
+        ],
+        [
+          1480,
+          320
+        ],
+        [
+          1720,
+          320
+        ],
+        [
+          1720,
+          780
+        ]
+      ],
+      "walk_to": [
+        1580,
+        800
+      ],
+      "exit": {
+        "room": "dovecote",
+        "entry": "from_gallery",
+        "direction": "right"
+      }
+    }
+  ],
+  "effects": {
+    "preset": "exterior",
+    "light": [
+      480,
+      90
+    ],
+    "aim": 160
+  },
+  "id": "gargoyle_gallery"
+}

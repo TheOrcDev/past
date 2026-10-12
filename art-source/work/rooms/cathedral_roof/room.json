@@ -1,0 +1,208 @@
+{
+  "display_name": "Cathedral roof",
+  "now": "art-source/raw/IMG-0133/IMG-0133-v3.png",
+  "walk": [
+    [
+      60,
+      600
+    ],
+    [
+      170,
+      600
+    ],
+    [
+      420,
+      760
+    ],
+    [
+      720,
+      960
+    ],
+    [
+      780,
+      1060
+    ],
+    [
+      0,
+      1060
+    ],
+    [
+      0,
+      760
+    ]
+  ],
+  "scale_zones": {
+    "far_y": 600,
+    "far_scale": 0.62,
+    "near_y": 1060,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      300,
+      900
+    ],
+    "from_bridge": [
+      110,
+      640
+    ],
+    "from_buttress": [
+      680,
+      1000
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "bridge_door",
+      "name": "Back to the bridge",
+      "polygon": [
+        [
+          20,
+          560
+        ],
+        [
+          20,
+          320
+        ],
+        [
+          130,
+          320
+        ],
+        [
+          130,
+          560
+        ]
+      ],
+      "walk_to": [
+        110,
+        630
+      ],
+      "exit": {
+        "room": "covered_bridge",
+        "entry": "from_roof",
+        "direction": "left"
+      }
+    },
+    {
+      "id": "stone",
+      "name": "Loose stone",
+      "polygon": [
+        [
+          350,
+          870
+        ],
+        [
+          350,
+          790
+        ],
+        [
+          450,
+          790
+        ],
+        [
+          450,
+          870
+        ]
+      ],
+      "walk_to": [
+        330,
+        880
+      ],
+      "default_verb": "use",
+      "pick_priority": 2
+    },
+    {
+      "id": "to_buttress",
+      "name": "Along the ridge",
+      "polygon": [
+        [
+          640,
+          1060
+        ],
+        [
+          640,
+          940
+        ],
+        [
+          800,
+          940
+        ],
+        [
+          800,
+          1060
+        ]
+      ],
+      "walk_to": [
+        700,
+        1010
+      ],
+      "exit": {
+        "room": "buttress_walk",
+        "entry": "from_roof",
+        "direction": "down"
+      }
+    },
+    {
+      "id": "city",
+      "name": "The city",
+      "polygon": [
+        [
+          300,
+          800
+        ],
+        [
+          300,
+          200
+        ],
+        [
+          1400,
+          200
+        ],
+        [
+          1400,
+          800
+        ]
+      ],
+      "walk_to": [
+        400,
+        800
+      ]
+    },
+    {
+      "id": "belfry",
+      "name": "The belfry",
+      "polygon": [
+        [
+          1580,
+          1040
+        ],
+        [
+          1580,
+          120
+        ],
+        [
+          1900,
+          120
+        ],
+        [
+          1900,
+          1040
+        ]
+      ],
+      "walk_to": [
+        600,
+        930
+      ]
+    }
+  ],
+  "effects": {
+    "preset": "exterior",
+    "light": [
+      1250,
+      120
+    ],
+    "aim": 220
+  },
+  "id": "cathedral_roof",
+  "then": "art-source/raw/IMG-0149/IMG-0149-v2.png"
+}

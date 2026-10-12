@@ -1,0 +1,77 @@
+{
+  "id": "IMG-0143",
+  "title": "NPC: the Dove",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T01:25:00.235Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "1440x2560",
+      "quality": "high",
+      "n": 3,
+      "background": "transparent",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0013/IMG-0013-v2.png",
+          "sha256": "aea3ec9ef0da502490ee6ecc801c0a0d4cd1f6bcf806d4f9b16ec70c8cb05977"
+        }
+      ],
+      "mask": null,
+      "prompt": "A single full-body character for a dark gothic point-and-click adventure game, painted in the same monochrome greyscale ink-wash matte-painting style as the reference image: the Dove: a slight, graceful woman in a long simple choir singer's gown and a long flowing veil over her head and shoulders; the veil is a very faint, soft blue, the only hint of color on her. A small white dove perches on her raised right hand.\n\nThey are a grey shade of a person: solid, made of mid and light greys with soft ink texture, never pure black, with no visible face (her face is hidden behind her veil, turned slightly toward the dove). Pose: standing gently, her right hand raised at shoulder height with the dove on it, her left hand at her side holding the veil's edge, facing three-quarters to the viewer's right. Shown whole from head to feet, facing three-quarters to the viewer's left, filling most of the image height, with a little space around them. Even soft light from the upper left with a gentle cool rim light. On a fully transparent background, with no ground, shadow or scenery.\n\nNo text, labels, letters or numbers. No other figures. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0143-v1.png",
+          "sha256": "e7e6bede37d29427146239f4f0b6eea0e17f09a6b20580a726c16626c4f2a3c0",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0143-v2.png",
+          "sha256": "ed1bbfa46140072a2d5c995530544a2cd8f09629a1e68db957efabe358c008c6",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0143-v3.png",
+          "sha256": "0a404c0ba39ac9e180a7274c2270f7f3fe10d623cdf23d69c2ac7a028d04e7f2",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 98253,
+        "outputTokens": 1276
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12db6-8b26-7e43-9f8a-70851e6e319f",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12db6-8b26-7e43-9f8a-70851e6e319f/exec-2ba0ebc8-2df2-42ee-b255-02fc31662833.png",
+            "/Users/orcdev/.codex/generated_images/01a12db6-8b26-7e43-9f8a-70851e6e319f/exec-5b77cf7c-d4f6-432b-a4c2-3c9b0fa21577.png",
+            "/Users/orcdev/.codex/generated_images/01a12db6-8b26-7e43-9f8a-70851e6e319f/exec-0d834a52-4eaf-42ec-91e8-54869c1268ed.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1024,
+              "height": 1536
+            },
+            {
+              "width": 1024,
+              "height": 1536
+            },
+            {
+              "width": 1024,
+              "height": 1536
+            }
+          ],
+          "messages": [
+            "I’ll generate three portrait images from the attached reference, using your prompt exactly and a transparent background.",
+            "Two images are generated. I’ll generate the third with the same prompt and reference.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

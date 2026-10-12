@@ -1,0 +1,141 @@
+{
+  "display_name": "Bell stair",
+  "now": "art-source/raw/IMG-0139/IMG-0139-v1.png",
+  "walk": [
+    [
+      100,
+      820
+    ],
+    [
+      1600,
+      820
+    ],
+    [
+      1800,
+      1060
+    ],
+    [
+      100,
+      1060
+    ]
+  ],
+  "scale_zones": {
+    "far_y": 820,
+    "far_scale": 0.9,
+    "near_y": 1060,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      900,
+      930
+    ],
+    "from_ledge": [
+      300,
+      880
+    ],
+    "from_chamber": [
+      1450,
+      860
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "door",
+      "name": "Back to the ledge",
+      "polygon": [
+        [
+          100,
+          860
+        ],
+        [
+          100,
+          340
+        ],
+        [
+          280,
+          340
+        ],
+        [
+          280,
+          860
+        ]
+      ],
+      "walk_to": [
+        300,
+        880
+      ],
+      "exit": {
+        "room": "rose_window_ledge",
+        "entry": "from_stair",
+        "direction": "left"
+      }
+    },
+    {
+      "id": "up",
+      "name": "Up the stair",
+      "polygon": [
+        [
+          1400,
+          840
+        ],
+        [
+          1400,
+          160
+        ],
+        [
+          1680,
+          160
+        ],
+        [
+          1680,
+          840
+        ]
+      ],
+      "walk_to": [
+        1450,
+        860
+      ],
+      "exit": {
+        "room": "bell_chamber",
+        "entry": "from_stair",
+        "direction": "up"
+      }
+    },
+    {
+      "id": "ropes",
+      "name": "Bell ropes",
+      "polygon": [
+        [
+          480,
+          800
+        ],
+        [
+          480,
+          0
+        ],
+        [
+          1080,
+          0
+        ],
+        [
+          1080,
+          800
+        ]
+      ],
+      "walk_to": [
+        800,
+        880
+      ]
+    }
+  ],
+  "effects": {
+    "preset": "interior",
+    "light": [
+      500,
+      240
+    ],
+    "aim": 150
+  },
+  "id": "bell_stair"
+}

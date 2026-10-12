@@ -1,0 +1,31 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/closeups/ledger_page/ledger_page.gd" id="1_gplq6"]
+[ext_resource type="Texture2D" path="res://content/closeups/ledger_page/art/bg.png" id="2_7is66"]
+[ext_resource type="Script" path="res://src/core/hotspot.gd" id="3_l52mx"]
+
+[node name="LedgerPage" type="Node2D" unique_id=209713273]
+script = ExtResource("1_gplq6")
+closeup_id = &"ledger_page"
+
+[node name="Background" type="Sprite2D" parent="." unique_id=14227778]
+texture = ExtResource("2_7is66")
+centered = false
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=605491681]
+
+[node name="First" type="Area2D" parent="Hotspots" unique_id=929319511]
+script = ExtResource("3_l52mx")
+id = &"first"
+display_name = "The first line"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/First" unique_id=1239737476]
+polygon = PackedVector2Array(480, 190, 780, 190, 780, 290, 480, 290)
+
+[node name="Last" type="Area2D" parent="Hotspots" unique_id=232027141]
+script = ExtResource("3_l52mx")
+id = &"last"
+display_name = "The last line"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Last" unique_id=403830619]
+polygon = PackedVector2Array(1240, 800, 1640, 800, 1640, 900, 1240, 900)

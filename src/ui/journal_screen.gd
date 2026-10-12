@@ -50,7 +50,8 @@ func _build(content: VBoxContainer) -> void:
 ## The "Who am I?" page.
 func show_self() -> void:
 	_clear()
-	_page.add_child(text_line("Name: Unknown", 40, Color.WHITE))
+	# The name field reads "Unknown" until the end (game-design.md §9).
+	_page.add_child(text_line("Name: %s" % ("Ulric" if GameState.get_flag(&"names_returned") else "Unknown"), 40, Color.WHITE))
 	if GameState.facts.is_empty():
 		_page.add_child(text_line("Nothing I know of yet.", 30))
 	for id in GameState.facts:

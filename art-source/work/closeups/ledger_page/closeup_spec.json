@@ -1,0 +1,51 @@
+{
+  "background": "res://content/closeups/ledger_page/art/bg.png",
+  "hotspots": [
+    {
+      "id": "first",
+      "name": "The first line",
+      "polygon": [
+        [
+          480,
+          190
+        ],
+        [
+          780,
+          190
+        ],
+        [
+          780,
+          290
+        ],
+        [
+          480,
+          290
+        ]
+      ],
+      "pick_priority": 2
+    },
+    {
+      "id": "last",
+      "name": "The last line",
+      "polygon": [
+        [
+          1240,
+          800
+        ],
+        [
+          1640,
+          800
+        ],
+        [
+          1640,
+          900
+        ],
+        [
+          1240,
+          900
+        ]
+      ],
+      "pick_priority": 2
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "id": "IMG-0137",
+  "title": "The Dove's room, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T01:22:22.191Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0017/IMG-0017-v3.png",
+          "sha256": "a66436e3476179ff8d3fa127202b2a2a4309e0f2788e15d1229c22a60d564b2a"
+        },
+        {
+          "path": "art-source/raw/IMG-0064/IMG-0064-v1.png",
+          "sha256": "a8400af03b8f535b02032ab1de3370e18a70c8d6a2864046219aa3ad6a9454f6"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: a small attic room under a cathedral's roof at night, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: A narrow bed with a patched quilt on the left; a small writing desk under a round window in the centre with a folded letter on it; on the wall, a faded choir banner that is a soft, faint blue, the only color in the image; keepsakes on a shelf: a hymn book, a white feather, a little carved dove. A ladder up to a trapdoor on the right.\n\nThe lower third of the image is open, walkable ground: the attic floorboards run across the lower third. It is lit by moonlight through the round window with drifting fog or haze behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0137-v1.png",
+          "sha256": "4a6b9d6d5beadba086c569bf0ca5d1831af74d8efbb957a50163b65552ab2f36",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0137-v2.png",
+          "sha256": "04d356550abd39a886f0bff4e3fc126e3897ec4441df0712753ef8f5339cb6c1",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0137-v3.png",
+          "sha256": "6e1ee397dae3f0a015d7ebb34f0554ef652350ef8ba1e2e13fe2767b471d5319",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 134865,
+        "outputTokens": 871
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12db4-2233-7571-ba5d-2f4c1be1aad4",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12db4-2233-7571-ba5d-2f4c1be1aad4/exec-f14b27e1-0af9-4e74-b63f-0031c00913fd.png",
+            "/Users/orcdev/.codex/generated_images/01a12db4-2233-7571-ba5d-2f4c1be1aad4/exec-66dd214b-006c-4340-b104-4e155642c7ce.png",
+            "/Users/orcdev/.codex/generated_images/01a12db4-2233-7571-ba5d-2f4c1be1aad4/exec-f0731478-9b7c-445d-b2ad-d227189f05a0.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque images using both references and your prompt exactly as written.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

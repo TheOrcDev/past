@@ -1,0 +1,103 @@
+{
+  "display_name": "The belfry",
+  "now": "art-source/raw/IMG-0141/IMG-0141-v2.png",
+  "walk": [
+    [
+      560,
+      700
+    ],
+    [
+      1360,
+      700
+    ],
+    [
+      1700,
+      1060
+    ],
+    [
+      220,
+      1060
+    ]
+  ],
+  "scale_zones": {
+    "far_y": 700,
+    "far_scale": 0.8,
+    "near_y": 1060,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      960,
+      900
+    ],
+    "from_chamber": [
+      700,
+      1000
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "bell",
+      "name": "The great bell",
+      "polygon": [
+        [
+          860,
+          500
+        ],
+        [
+          860,
+          220
+        ],
+        [
+          1060,
+          220
+        ],
+        [
+          1060,
+          500
+        ]
+      ],
+      "walk_to": [
+        960,
+        760
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "city",
+      "name": "The city",
+      "polygon": [
+        [
+          0,
+          700
+        ],
+        [
+          0,
+          200
+        ],
+        [
+          500,
+          200
+        ],
+        [
+          500,
+          700
+        ]
+      ],
+      "walk_to": [
+        500,
+        900
+      ]
+    }
+  ],
+  "effects": {
+    "preset": "exterior",
+    "light": [
+      1350,
+      120
+    ],
+    "aim": 200
+  },
+  "id": "belfry_top",
+  "then": "art-source/raw/IMG-0151/IMG-0151-v1.png"
+}

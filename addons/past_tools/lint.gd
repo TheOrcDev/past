@@ -10,6 +10,9 @@ const DIALOGUE_DIR := "res://content/dialogue"
 const STRUCTURE := ["~ ", "=>", "do ", "do! ", "set ", "$>", "if ", "elif ", "else", "while ", "match ", "when ", "- ", "#", "import ", "using "]
 
 var _problems: PackedStringArray = []
+## Every [ID:…] seen so far, with where (plan 008: IDs are voice file names
+## and translation keys, so each must be unique across the game).
+var _ids := {}
 
 
 func _initialize() -> void:
@@ -55,8 +58,22 @@ func _lint_dialogue(dir: String) -> void:
 			continue
 		var path := dir.path_join(file)
 		var lines := FileAccess.get_file_as_string(path).split("\n")
+		var cues := {}
+		var id_pattern := RegEx.create_from_string("\\[ID:([^\\]]+)\\]")
 		for i in lines.size():
-			var text := _without_random_prefix(lines[i].strip_edges())
+			var raw := lines[i].strip_edges()
+			if raw.begins_with("~ "):
+				if cues.has(raw):
+					_problems.append("%s:%d: cue %s is defined twice" % [path, i + 1, raw])
+				cues[raw] = true
+			var found := id_pattern.search(raw)
+			if found:
+				var id := found.get_string(1)
+				if _ids.has(id):
+					_problems.append("%s:%d: [ID:%s] is also used at %s" % [path, i + 1, id, _ids[id]])
+				else:
+					_ids[id] = "%s:%d" % [path, i + 1]
+			var text := _without_random_prefix(raw)
 			# A response ("- …") is spoken by Unknown once picked, so it needs an ID
 			# too, unless it only jumps ("- => label").
 			if text.begins_with("- ") and not text.substr(2).strip_edges().begins_with("=>"):

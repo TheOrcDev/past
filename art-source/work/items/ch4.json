@@ -1,0 +1,6 @@
+[
+  {"id": "loose_stone", "name": "Loose stone", "icon": "res://content/items/loose_stone/icon.png", "look_file": "ch4/items", "look_cue": "loose_stone_look"},
+  {"id": "dovecote_key", "name": "Dovecote key", "icon": "res://content/items/dovecote_key/icon.png", "look_file": "ch4/items", "look_cue": "dovecote_key_look"},
+  {"id": "unsent_letter", "name": "Unsent letter", "icon": "res://content/items/unsent_letter/icon.png", "look_file": "ch4/items", "look_cue": "unsent_letter_look"},
+  {"id": "ledger", "name": "The Ledger of Names", "icon": "res://content/items/ledger/icon.png", "look_file": "ch4/items", "look_cue": "ledger_look"}
+]

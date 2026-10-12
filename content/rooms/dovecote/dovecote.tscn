@@ -1,0 +1,250 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/rooms/dovecote/dovecote.gd" id="1_0dauu"]
+[ext_resource type="Texture2D" path="res://content/rooms/dovecote/art/bg_now.png" id="2_om4lx"]
+[ext_resource type="Script" path="res://src/systems/effects/fog_layer.gd" id="3_pjbqx"]
+[ext_resource type="Texture2D" path="res://content/rooms/dovecote/art/depth_now.png" id="4_ecbh7"]
+[ext_resource type="Script" path="res://src/systems/effects/light_shafts.gd" id="5_chidy"]
+[ext_resource type="Texture2D" path="res://content/rooms/dovecote/art/bg_then.png" id="6_hupul"]
+[ext_resource type="Script" path="res://src/systems/effects/dust_motes.gd" id="7_daa8i"]
+[ext_resource type="Script" path="res://src/core/scale_zones.gd" id="8_x0j1l"]
+[ext_resource type="Script" path="res://src/core/hotspot.gd" id="9_lewdg"]
+[ext_resource type="Script" path="res://src/core/exit.gd" id="10_yurxj"]
+[ext_resource type="PackedScene" path="res://content/characters/dove/dove.tscn" id="11_ao6tg"]
+[ext_resource type="Script" path="res://src/core/actor.gd" id="12_oikcn"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_rbcr0"]
+vertices = PackedVector2Array(1700, 1060, 150, 1060, 150, 820, 1500, 820)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(150, 820, 1500, 820, 1700, 1060, 150, 1060)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_tmdy4"]
+vertices = PackedVector2Array(1700, 1060, 150, 1060, 150, 820, 1500, 820)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(150, 820, 1500, 820, 1700, 1060, 150, 1060)])
+agent_radius = 0.0
+
+[node name="Dovecote" type="Node2D" unique_id=1759368589]
+script = ExtResource("1_0dauu")
+room_id = &"dovecote"
+display_name = "The dovecote"
+
+[node name="Layers" type="Node2D" parent="." unique_id=1297066843]
+
+[node name="Now" type="Node2D" parent="Layers" unique_id=703168617]
+
+[node name="Background" type="Sprite2D" parent="Layers/Now" unique_id=200524264]
+texture = ExtResource("2_om4lx")
+centered = false
+
+[node name="FogFar" type="ColorRect" parent="Layers/Now" unique_id=1683095482]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_pjbqx")
+fog_color = Color(0.85, 0.86, 0.89, 1)
+density = 0.3
+velocity = Vector2(0.005, 0)
+noise_scale = Vector2(1.4, 0.8)
+band_top = 0.3
+band_bottom = 0.75
+depth_texture = ExtResource("4_ecbh7")
+near_cutoff = 0.4
+noise_seed = 21
+
+[node name="FogLow" type="ColorRect" parent="Layers/Now" unique_id=1702715188]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_pjbqx")
+fog_color = Color(0.8, 0.82, 0.86, 1)
+density = 0.24
+velocity = Vector2(-0.008, 0)
+noise_scale = Vector2(2.2, 1.1)
+band_top = 0.5
+band_bottom = 0.82
+depth_texture = ExtResource("4_ecbh7")
+near_cutoff = 0.55
+noise_seed = 23
+
+[node name="Moonlight" type="ColorRect" parent="Layers/Now" unique_id=1467701956]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("5_chidy")
+origin = Vector2(1300, 90)
+aim = 200.0
+spread = 30.0
+beams = 5.0
+intensity = 0.07
+shaft_color = Color(0.9, 0.93, 1, 1)
+flicker = 0.3
+
+[node name="Then" type="Node2D" parent="Layers" unique_id=1383143969]
+
+[node name="Background" type="Sprite2D" parent="Layers/Then" unique_id=762345903]
+texture = ExtResource("6_hupul")
+centered = false
+
+[node name="GoldenShafts" type="ColorRect" parent="Layers/Then" unique_id=1959230924]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("5_chidy")
+origin = Vector2(1300, 90)
+aim = 200.0
+spread = 44.0
+beams = 7.0
+intensity = 0.14
+reach = 1.0
+shaft_color = Color(1, 0.85, 0.55, 1)
+flicker = 0.25
+
+[node name="WarmHaze" type="ColorRect" parent="Layers/Then" unique_id=1777623365]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_pjbqx")
+fog_color = Color(1, 0.9, 0.75, 1)
+density = 0.1
+velocity = Vector2(0.004, 0)
+noise_scale = Vector2(1.2, 0.7)
+band_top = 0.3
+band_bottom = 0.9
+noise_seed = 13
+
+[node name="GoldenDust" type="CPUParticles2D" parent="Layers/Then" unique_id=32064918]
+script = ExtResource("7_daa8i")
+area = Rect2(300, 150, 1500, 750)
+mote_color = Color(1, 0.86, 0.55, 0.55)
+drift = Vector2(3, -4)
+mote_size = 2.5
+
+[node name="WalkAreas" type="Node2D" parent="." unique_id=983314343]
+
+[node name="Now" type="NavigationRegion2D" parent="WalkAreas" unique_id=107630565]
+navigation_polygon = SubResource("NavigationPolygon_rbcr0")
+
+[node name="Then" type="NavigationRegion2D" parent="WalkAreas" unique_id=262649565]
+navigation_polygon = SubResource("NavigationPolygon_tmdy4")
+enabled = false
+
+[node name="ScaleZones" type="Node2D" parent="." unique_id=363180239]
+script = ExtResource("8_x0j1l")
+far_y = 820.0
+far_scale = 0.88
+near_y = 1060.0
+near_scale = 1.05
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=1981915232]
+
+[node name="Dove" type="Area2D" parent="Hotspots" unique_id=1557198322]
+script = ExtResource("9_lewdg")
+id = &"dove"
+display_name = "The Dove"
+default_verb = &"talk"
+walk_offset = Vector2(560, 900)
+pick_priority = 3
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Dove" unique_id=748504926]
+polygon = PackedVector2Array(620, 840, 620, 500, 760, 470, 800, 840)
+
+[node name="Door" type="Area2D" parent="Hotspots" unique_id=1213954827]
+script = ExtResource("9_lewdg")
+id = &"door"
+display_name = "Dovecote door"
+walk_offset = Vector2(880, 880)
+pick_priority = 2
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Door" unique_id=1641839290]
+polygon = PackedVector2Array(840, 820, 840, 600, 940, 600, 940, 820)
+
+[node name="Doves" type="Area2D" parent="Hotspots" unique_id=1981046593]
+script = ExtResource("9_lewdg")
+id = &"doves"
+display_name = "Doves"
+walk_offset = Vector2(900, 880)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Doves" unique_id=2111595059]
+polygon = PackedVector2Array(720, 580, 720, 100, 1040, 100, 1040, 580)
+
+[node name="Trapdoor" type="Area2D" parent="Hotspots" unique_id=156959767]
+script = ExtResource("10_yurxj")
+target_room = &"dove_room"
+target_entry = &"from_dovecote"
+direction = &"down"
+requires_flag = &"dove_room_ok"
+id = &"trapdoor"
+display_name = "Trapdoor"
+default_verb = &"walk"
+walk_offset = Vector2(1200, 900)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Trapdoor" unique_id=1591831996]
+polygon = PackedVector2Array(1100, 860, 1100, 740, 1320, 740, 1320, 860)
+
+[node name="TowerDoor" type="Area2D" parent="Hotspots" unique_id=433846163]
+script = ExtResource("10_yurxj")
+target_room = &"rose_window_ledge"
+target_entry = &"from_dovecote"
+requires_flag = &"dove_forgave"
+id = &"tower_door"
+display_name = "Tower door"
+default_verb = &"walk"
+walk_offset = Vector2(1640, 900)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/TowerDoor" unique_id=545993072]
+polygon = PackedVector2Array(1720, 840, 1720, 240, 1860, 240, 1860, 840)
+
+[node name="ToGallery" type="Area2D" parent="Hotspots" unique_id=1660907918]
+script = ExtResource("10_yurxj")
+target_room = &"gargoyle_gallery"
+target_entry = &"from_dovecote"
+direction = &"left"
+id = &"to_gallery"
+display_name = "Back to the gallery"
+default_verb = &"walk"
+walk_offset = Vector2(220, 940)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/ToGallery" unique_id=466499423]
+polygon = PackedVector2Array(0, 1060, 0, 600, 140, 600, 140, 1060)
+
+[node name="Exits" type="Node2D" parent="." unique_id=2069465779]
+
+[node name="Markers" type="Node2D" parent="." unique_id=921059053]
+
+[node name="default" type="Marker2D" parent="Markers" unique_id=853623054]
+position = Vector2(900, 950)
+
+[node name="from_gallery" type="Marker2D" parent="Markers" unique_id=1376946857]
+position = Vector2(260, 940)
+
+[node name="from_room" type="Marker2D" parent="Markers" unique_id=1373021252]
+position = Vector2(1200, 880)
+
+[node name="from_ledge" type="Marker2D" parent="Markers" unique_id=133573697]
+position = Vector2(1640, 880)
+
+[node name="Actors" type="Node2D" parent="." unique_id=1026305473]
+y_sort_enabled = true
+
+[node name="Dove" type="Node2D" parent="Actors" unique_id=292800305 instance=ExtResource("11_ao6tg")]
+position = Vector2(700, 840)
+script = ExtResource("12_oikcn")
+speaker_name = "Dove"
+speaker_aliases = PackedStringArray("Elise")
+talk_animations = Array[StringName]([&"talk_a", &"talk_b"])
+subtitle_color = Color(0.75, 0.85, 1, 1)
+speech_offset = Vector2(-26.467993, -440.88873)
+
+[node name="Foreground" type="Node2D" parent="." unique_id=87501653]
+
+[node name="GroundMist" type="ColorRect" parent="Foreground" unique_id=1083678173 groups=["era_now"]]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_pjbqx")
+fog_color = Color(0.86, 0.87, 0.9, 1)
+density = 0.16
+velocity = Vector2(0.01, 0)
+noise_scale = Vector2(2.6, 1.6)
+band_top = 0.84
+band_bottom = 1.02
+band_softness = 0.08
+noise_seed = 27
+
+[node name="Cinematics" type="Node2D" parent="." unique_id=860412129]

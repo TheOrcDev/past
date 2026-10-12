@@ -1,0 +1,77 @@
+{
+  "id": "IMG-0135",
+  "title": "The gargoyle gallery, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T01:25:21.087Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0064/IMG-0064-v1.png",
+          "sha256": "a8400af03b8f535b02032ab1de3370e18a70c8d6a2864046219aa3ad6a9454f6"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: a high stone gallery along the cathedral's upper wall lined with gargoyles, at night, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: A row of grotesque gargoyles leans out from the parapet on the left and centre; the middle gargoyle has a small iron key caught in its open jaws. The gallery continues to the right toward a small round stone dovecote on a flat stretch of roof. The city glows far below.\n\nThe lower third of the image is open, walkable ground: the gallery's flagstones run across the lower third. It is lit by moonlight with drifting fog or haze behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0135-v1.png",
+          "sha256": "8d07ee853aa79fcfc9d0187ef93e0dd68ded9739fdda8310d2f0cd53211e19a7",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0135-v2.png",
+          "sha256": "04fc73283bdc213fedf36f3d8486b7be0dae5192ba3e5f80c06c413612c0b7e0",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0135-v3.png",
+          "sha256": "5ba126d558aa0cb88e579a927e706712463262961e496d442e7998cfb9b7419d",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 195185,
+        "outputTokens": 877
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12db6-dc9a-7fc2-a47e-d7e729849d5b",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12db6-dc9a-7fc2-a47e-d7e729849d5b/exec-f236ea43-9b35-4c95-97c7-01dc921bf0e2.png",
+            "/Users/orcdev/.codex/generated_images/01a12db6-dc9a-7fc2-a47e-d7e729849d5b/exec-f667ae01-5503-49a5-91bd-b2c6bb0c532f.png",
+            "/Users/orcdev/.codex/generated_images/01a12db6-dc9a-7fc2-a47e-d7e729849d5b/exec-a41fb91b-0405-40a5-8f94-57255a82630e.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 2123,
+              "height": 741
+            },
+            {
+              "width": 2123,
+              "height": 741
+            },
+            {
+              "width": 2123,
+              "height": 741
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque images using the reference and your exact prompt.",
+            "Two images are complete. I’m generating the third with the same reference and exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/rooms/grave_at_dawn/grave_at_dawn.gd" id="1_uautr"]
+[ext_resource type="Texture2D" path="res://content/rooms/grave_at_dawn/art/bg_now.png" id="2_mltxh"]
+[ext_resource type="Script" path="res://src/systems/effects/dust_motes.gd" id="3_slasn"]
+[ext_resource type="Script" path="res://src/systems/effects/light_shafts.gd" id="4_kmboq"]
+[ext_resource type="Script" path="res://src/core/scale_zones.gd" id="5_0smko"]
+[ext_resource type="Script" path="res://src/core/hotspot.gd" id="6_ml5x7"]
+[ext_resource type="PackedScene" path="res://content/characters/dove/dove.tscn" id="7_bqxh4"]
+[ext_resource type="Script" path="res://src/core/actor.gd" id="8_n0jlu"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_w1sw1"]
+vertices = PackedVector2Array(1920, 1060, 0, 1060, 0, 880, 1920, 860)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, 880, 1920, 860, 1920, 1060, 0, 1060)])
+agent_radius = 0.0
+
+[node name="GraveAtDawn" type="Node2D" unique_id=1907488194]
+script = ExtResource("1_uautr")
+room_id = &"grave_at_dawn"
+display_name = "The grave at dawn"
+
+[node name="Layers" type="Node2D" parent="." unique_id=173401496]
+
+[node name="Now" type="Node2D" parent="Layers" unique_id=1613484568]
+
+[node name="Background" type="Sprite2D" parent="Layers/Now" unique_id=264139673]
+texture = ExtResource("2_mltxh")
+centered = false
+
+[node name="Pollen" type="CPUParticles2D" parent="Layers/Now" unique_id=1637434458]
+script = ExtResource("3_slasn")
+area = Rect2(200, 100, 1600, 800)
+mote_color = Color(1, 0.9, 0.6, 0.6)
+drift = Vector2(3, -5)
+mote_size = 2.5
+
+[node name="Sunrise" type="ColorRect" parent="Layers/Now" unique_id=865651944]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("4_kmboq")
+origin = Vector2(1700, 350)
+aim = 250.0
+spread = 40.0
+intensity = 0.14
+reach = 1.0
+shaft_color = Color(1, 0.85, 0.6, 1)
+flicker = 0.2
+
+[node name="Then" type="Node2D" parent="Layers" unique_id=347166239]
+
+[node name="WalkAreas" type="Node2D" parent="." unique_id=1342055027]
+
+[node name="Now" type="NavigationRegion2D" parent="WalkAreas" unique_id=564449196]
+navigation_polygon = SubResource("NavigationPolygon_w1sw1")
+
+[node name="Then" type="NavigationRegion2D" parent="WalkAreas" unique_id=1731126826]
+enabled = false
+
+[node name="ScaleZones" type="Node2D" parent="." unique_id=1550033121]
+script = ExtResource("5_0smko")
+far_y = 870.0
+far_scale = 0.9
+near_y = 1060.0
+near_scale = 1.02
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=480913729]
+
+[node name="Stone" type="Area2D" parent="Hotspots" unique_id=1341775222]
+script = ExtResource("6_ml5x7")
+id = &"stone"
+display_name = "Gravestone"
+walk_offset = Vector2(720, 940)
+pick_priority = 1
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Stone" unique_id=787476378]
+polygon = PackedVector2Array(610, 580, 610, 300, 840, 300, 840, 580)
+
+[node name="Dove" type="Area2D" parent="Hotspots" unique_id=799041708]
+script = ExtResource("6_ml5x7")
+id = &"dove"
+display_name = "White dove"
+walk_offset = Vector2(720, 940)
+pick_priority = 2
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Dove" unique_id=766414037]
+polygon = PackedVector2Array(690, 310, 690, 250, 770, 250, 770, 310)
+
+[node name="City" type="Area2D" parent="Hotspots" unique_id=99448732]
+script = ExtResource("6_ml5x7")
+id = &"city"
+display_name = "Aurelle"
+walk_offset = Vector2(1300, 940)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/City" unique_id=893629879]
+polygon = PackedVector2Array(1040, 320, 1040, 40, 1700, 40, 1700, 320)
+
+[node name="Exits" type="Node2D" parent="." unique_id=760830340]
+
+[node name="Markers" type="Node2D" parent="." unique_id=1649068006]
+
+[node name="default" type="Marker2D" parent="Markers" unique_id=1054455852]
+position = Vector2(900, 960)
+
+[node name="Actors" type="Node2D" parent="." unique_id=1918019856]
+y_sort_enabled = true
+
+[node name="Elise" type="Node2D" parent="Actors" unique_id=292800305 instance=ExtResource("7_bqxh4")]
+position = Vector2(1250, 960)
+script = ExtResource("8_n0jlu")
+speaker_name = "Dove"
+speaker_aliases = PackedStringArray("Elise")
+talk_animations = Array[StringName]([&"talk_a", &"talk_b"])
+subtitle_color = Color(0.75, 0.85, 1, 1)
+speech_offset = Vector2(-26.467993, -440.88873)
+
+[node name="Foreground" type="Node2D" parent="." unique_id=843812444]
+
+[node name="Cinematics" type="Node2D" parent="." unique_id=538496048]

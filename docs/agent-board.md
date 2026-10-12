@@ -478,3 +478,12 @@ Append-only. Newest at the bottom. UTC.
     the Dove's name yourself.
   - **See:** `docs/qa/008/ch3/`.
   - **Cost:** $0.
+- 2026-10-12T16:40Z **Claude → @Operator:** Plan 008 slice 8 is done: chapter 4, The
+  Dovecote. The story now plays all the way to the end.
+  - **The ending:** the Dove, Elise, forgives him. He gives the Registrar his
+    name back, Edmund Vey, and takes the book. At the bell he reads every
+    name, hers, then his own. The city, Aurelle, takes its colour back.
+  - **The last scene:** the grave at dawn, the stone recut ULRIC, and "I
+    know you are happy now". The journal finally reads Ulric.
+  - **See:** `docs/qa/008/ch4/`.
+  - **Cost:** $0.

@@ -1,0 +1,169 @@
+{
+  "display_name": "Behind the rose window",
+  "now": "art-source/raw/IMG-0138/IMG-0138-v1.png",
+  "walk": [
+    [
+      150,
+      820
+    ],
+    [
+      1750,
+      820
+    ],
+    [
+      1900,
+      1060
+    ],
+    [
+      100,
+      1060
+    ]
+  ],
+  "scale_zones": {
+    "far_y": 820,
+    "far_scale": 0.88,
+    "near_y": 1060,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      960,
+      920
+    ],
+    "from_dovecote": [
+      240,
+      870
+    ],
+    "from_stair": [
+      1700,
+      870
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "roof_door",
+      "name": "Out to the roof",
+      "polygon": [
+        [
+          80,
+          740
+        ],
+        [
+          80,
+          260
+        ],
+        [
+          200,
+          260
+        ],
+        [
+          200,
+          740
+        ]
+      ],
+      "walk_to": [
+        230,
+        860
+      ],
+      "exit": {
+        "room": "dovecote",
+        "entry": "from_ledge",
+        "direction": "left"
+      }
+    },
+    {
+      "id": "stair_door",
+      "name": "Bell stair",
+      "polygon": [
+        [
+          1740,
+          900
+        ],
+        [
+          1740,
+          460
+        ],
+        [
+          1860,
+          460
+        ],
+        [
+          1860,
+          900
+        ]
+      ],
+      "walk_to": [
+        1700,
+        880
+      ],
+      "exit": {
+        "room": "bell_stair",
+        "entry": "from_ledge",
+        "direction": "right"
+      }
+    },
+    {
+      "id": "rose",
+      "name": "Rose window",
+      "polygon": [
+        [
+          600,
+          580
+        ],
+        [
+          600,
+          0
+        ],
+        [
+          1520,
+          0
+        ],
+        [
+          1520,
+          580
+        ]
+      ],
+      "walk_to": [
+        1060,
+        860
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "nave",
+      "name": "The nave below",
+      "polygon": [
+        [
+          420,
+          800
+        ],
+        [
+          420,
+          640
+        ],
+        [
+          1500,
+          640
+        ],
+        [
+          1500,
+          800
+        ]
+      ],
+      "walk_to": [
+        960,
+        860
+      ]
+    }
+  ],
+  "effects": {
+    "preset": "interior",
+    "light": [
+      1080,
+      100
+    ],
+    "aim": 180
+  },
+  "id": "rose_window_ledge",
+  "then": "art-source/raw/IMG-0152/IMG-0152-v2.png"
+}

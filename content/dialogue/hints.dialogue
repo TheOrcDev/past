@@ -1042,21 +1042,21 @@ Unknown: Use the far door at the end of the covered bridge. [ID:HINT_CH4_ROOF_3]
 
 => END
 
-~ stone_1
+~ stone4_1
 
-Unknown: A gap ahead will need filling. [ID:HINT_STONE_1]
-
-=> END
-
-~ stone_2
-
-Unknown: The loose stone block on the roof ridge. [ID:HINT_STONE_2]
+Unknown: A gap ahead will need filling. [ID:HINT_STONE4_1]
 
 => END
 
-~ stone_3
+~ stone4_2
 
-Unknown: Take the loose stone on the cathedral roof. [ID:HINT_STONE_3]
+Unknown: The loose stone block on the roof ridge. [ID:HINT_STONE4_2]
+
+=> END
+
+~ stone4_3
+
+Unknown: Take the loose stone on the cathedral roof. [ID:HINT_STONE4_3]
 
 => END
 
@@ -1096,21 +1096,21 @@ Unknown: Take the key from the gargoyle's jaws. [ID:HINT_DOVECOTE_KEY_3]
 
 => END
 
-~ dove_1
+~ dove4_1
 
-Unknown: Someone lives in the dovecote. [ID:HINT_DOVE_1]
-
-=> END
-
-~ dove_2
-
-Unknown: The dovecote key, on the dovecote door. [ID:HINT_DOVE_2]
+Unknown: Someone lives in the dovecote. [ID:HINT_DOVE4_1]
 
 => END
 
-~ dove_3
+~ dove4_2
 
-Unknown: Use the dovecote key on the dovecote's door, and talk to her. [ID:HINT_DOVE_3]
+Unknown: The dovecote key, on the dovecote door. [ID:HINT_DOVE4_2]
+
+=> END
+
+~ dove4_3
+
+Unknown: Use the dovecote key on the dovecote's door, and talk to her. [ID:HINT_DOVE4_3]
 
 => END
 

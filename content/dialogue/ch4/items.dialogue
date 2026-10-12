@@ -1,0 +1,23 @@
+~ loose_stone_look
+
+Unknown: A block of the cathedral. I'll give it back, in a manner of speaking. [ID:CH4_ITEM_LOOSE_STONE]
+
+=> END
+
+~ dovecote_key_look
+
+Unknown: A little key with a dove for a bow. [ID:CH4_ITEM_DOVECOTE_KEY]
+
+=> END
+
+~ unsent_letter_look
+
+Unknown: My letter to her. Years late. [ID:CH4_ITEM_UNSENT_LETTER]
+
+=> END
+
+~ ledger_look
+
+Unknown: The Ledger of Names. Every name in the city, and mine last. Heavier than it should be. [ID:CH4_ITEM_LEDGER]
+
+=> END

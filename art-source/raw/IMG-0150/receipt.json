@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0150",
+  "title": "The Dove's room, then",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T01:26:54.672Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0137/IMG-0137-v1.png",
+          "sha256": "4a6b9d6d5beadba086c569bf0ca5d1831af74d8efbb957a50163b65552ab2f36"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit this image in place. Keep exactly the same composition, camera, perspective, horizon and every shape where it stands: the bed, the desk and chair, the round window, the banner, the shelf, the ladder and the beams. Only change the time and the condition.\n\nRestore the same room to how it looked decades earlier, when the singer lived here, in full rich warm color, as a painterly gothic matte painting: the banner bright blue and gold, a colourful patchwork quilt, fresh flowers on the desk with sheet music, candles lit, a birdcage with a white dove, warm golden sunset light through the round window. The key light comes from the same direction as in the original.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0150-v1.png",
+          "sha256": "e025e5464f3bbc7d11f0b11800d02fb1d75fa4fcf2a8460146d44a89a64c9736",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0150-v2.png",
+          "sha256": "70aa0d1371adae85288e2c15bb71ad7240a73ad458e1e712e60de981d3143b4e",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 92538,
+        "outputTokens": 640
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12db8-4a2f-7781-99af-db4514640a99",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12db8-4a2f-7781-99af-db4514640a99/exec-d5216ef1-6264-4436-a383-e9fea9b29e11.png",
+            "/Users/orcdev/.codex/generated_images/01a12db8-4a2f-7781-99af-db4514640a99/exec-63716dc4-91f8-4b12-bb24-241d20d41a31.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate two wide, opaque edits using your prompt exactly.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

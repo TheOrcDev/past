@@ -1,0 +1,163 @@
+~ chamber_arrival4
+
+Unknown: The bell chamber. And him. [ID:CH4_CHAMBER_ARRIVAL_1]
+
+=> END
+
+~ bells_look
+
+Unknown: Three great bells. The biggest one's up top. [ID:CH4_BELLS_LOOK_1]
+
+=> END
+
+~ ladder_up4_look
+
+Unknown: A ladder to the top of the tower. [ID:CH4_LADDER_UP_LOOK_1]
+
+=> END
+
+~ ladder_up4_blocked
+
+Unknown: Not without the book. [ID:CH4_LADDER_UP_BLOCKED_1]
+
+=> END
+
+~ registrar4_look
+
+Unknown: The Registrar, holding the Ledger like a child he's afraid will wake. [ID:CH4_REG_LOOK_1]
+
+=> END
+
+~ registrar4_talk
+
+if GameState.get_flag("registrar_named")
+	Edmund: Go on, Magistrate. Ring it. I'll hold the lamp. I always did. [ID:CH4_EDMUND_AFTER_1]
+	=> END
+Registrar: Stay back. One more step and I strike every name again. Twice over, so they never come back. [ID:CH4_REG_THREAT_1]
+- Give me the book. [ID:CH4_REG_ASK_GIVE]
+	Registrar: Give? You never gave anything in your life. You took. You taught me. [ID:CH4_REG_GIVE_1]
+	=> END
+- You were right about me. [ID:CH4_REG_ASK_RIGHT]
+	Registrar: Of course I was. [ID:CH4_REG_RIGHT_1]
+	Unknown: But not about them. They'd rather hurt than forget. I know, because I've been carrying what they lost. [ID:CH4_REG_RIGHT_2]
+	Registrar: That's sentiment. [ID:CH4_REG_RIGHT_3]
+	=> END
+- Edmund. Your name is Edmund Vey. [if GameState.get_flag("knows_edmund") /] [ID:CH4_REG_ASK_NAME]
+	do GameState.set_flag("registrar_named")
+	Registrar: ... [ID:CH4_REG_NAME_1]
+	Registrar: How... [ID:CH4_REG_NAME_2]
+	Unknown: It was the first line in the book. I wrote it. I've been carrying it ever since. Here. It's yours. [ID:CH4_REG_NAME_3]
+	Edmund: Edmund. My mother called me Ed. I had a mother. [ID:CH4_REG_NAME_4]
+	Edmund: Take it. Take the book. I don't want to be the last man holding it. [ID:CH4_REG_NAME_5]
+	do Inventory.add("ledger")
+	=> END
+- Not yet. [ID:CH4_REG_ASK_NOT_YET]
+	=> END
+
+~ ledger_open_look
+
+Unknown: The Ledger, open at its first page. One line, in my hand: Edmund Vey. Struck. [ID:CH4_LEDGER_OPEN_LOOK_1]
+
+=> END
+
+~ belfry_arrival
+
+Unknown: The top of the world. The whole city, waiting. [ID:CH4_BELFRY_ARRIVAL_1]
+
+=> END
+
+~ city_below_look
+
+Unknown: Every roof I took the colour from. [ID:CH4_CITY_BELOW_LOOK_1]
+
+=> END
+
+~ great_bell_look
+
+Unknown: The great bell. A bell carries to everyone who ever had a name. [ID:CH4_GREAT_BELL_LOOK_1]
+
+=> END
+
+~ great_bell_noledger
+
+Unknown: Not yet. I need the book. [ID:CH4_GREAT_BELL_NOLEDGER_1]
+
+=> END
+
+~ finale
+
+Unknown: I open the book. Every line in my hand. [ID:CH4_FINALE_1]
+Unknown: Tobias. Agathe. Barnaby. Mathis. Fennick. Hesper. [ID:CH4_FINALE_2]
+Unknown: Corin. Maud. Aldous. Isolde. Bram. Lisette. [ID:CH4_FINALE_3]
+Unknown: And every name after them, one for every stroke of the bell, until my voice goes and the bell keeps on without me. [ID:CH4_FINALE_4]
+Unknown: Elise. [ID:CH4_FINALE_5]
+Unknown: And the last line. The one Edmund wrote. Mine. [ID:CH4_FINALE_6]
+Unknown: Ulric. I give it to the city. It's the only thing I have that was ever mine to give. [ID:CH4_FINALE_7]
+Unknown: Aurelle. Your name is Aurelle. Remember it. [ID:CH4_FINALE_8]
+
+=> END
+
+~ epilogue
+
+Unknown: Morning. I'd forgotten morning. [ID:CH4_EPILOGUE_1]
+Elise: You're fading. [ID:CH4_EPILOGUE_2]
+Unknown: I know. It's all right. I gave it all back. There's not much left of me that wasn't theirs. [ID:CH4_EPILOGUE_3]
+Elise: There's this. [ID:CH4_EPILOGUE_4]
+Elise: Ulric. I know you are happy now. [ID:CH4_EPILOGUE_5]
+Unknown: Yes. Yes, I am. [ID:CH4_EPILOGUE_6]
+
+=> END
+
+~ dawn_stone_look
+
+Unknown: ULRIC. Freshly cut. She's a better stonecutter than the first one. [ID:CH4_DAWN_STONE_LOOK_1]
+
+=> END
+
+~ dawn_city_look
+
+Unknown: Aurelle, in the sun. Every colour back where it belongs. [ID:CH4_DAWN_CITY_LOOK_1]
+
+=> END
+
+~ dawn_dove_look
+
+Unknown: A white dove, on my stone. Of course. [ID:CH4_DAWN_DOVE_LOOK_1]
+
+=> END
+
+~ inscription4_look
+
+Unknown: "I know you are happy now. Your dove." Still there. Still true, now. [ID:CH4_INSCRIPTION_LOOK_1]
+
+=> END
+
+~ name4_look
+
+Unknown: ULRIC. My name. It looks good on me. [ID:CH4_NAME_LOOK_1]
+
+=> END
+
+~ bell_text_look
+
+Unknown: Cast around the bell's lip: "I carry to all who were ever named." [ID:CH4_BELL_TEXT_LOOK_1]
+
+=> END
+
+~ bell_metal_look
+
+Unknown: Bronze, green with age, and cold. Not for much longer. [ID:CH4_BELL_METAL_LOOK_1]
+
+=> END
+
+~ ledger_page_look
+
+Unknown: The last page. The last line, in Edmund's hand: "The High Magistrate. Struck." [ID:CH4_LEDGER_PAGE_LOOK_1]
+
+=> END
+
+~ ledger_first_look
+
+Unknown: The first line, in mine: "Edmund Vey." Struck. The beginning and the end, each written by the other. [ID:CH4_LEDGER_FIRST_LOOK_1]
+
+=> END

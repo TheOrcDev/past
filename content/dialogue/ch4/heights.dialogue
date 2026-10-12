@@ -1,0 +1,329 @@
+~ roof_arrival
+
+Unknown: The top of the cathedral. The whole city, all at once, and all of it grey. [ID:CH4_ROOF_ARRIVAL_1]
+
+=> END
+
+~ ridge_city_look
+
+Unknown: Every street I emptied, laid out like a confession. [ID:CH4_RIDGE_CITY_LOOK_1]
+
+=> END
+
+~ belfry_far_look
+
+Unknown: The belfry. He's up there with the book. [ID:CH4_BELFRY_FAR_LOOK_1]
+
+=> END
+
+~ stone_look
+
+Unknown: A loose block of stone, about as long as I am tall. [ID:CH4_STONE_LOOK_1]
+
+=> END
+
+~ stone_take
+
+Unknown: Heavy. Shadows are stronger than they look. [ID:CH4_STONE_TAKE_1]
+
+=> END
+
+~ bridge_door_look
+
+Unknown: Back to the covered bridge. [ID:CH4_BRIDGE_DOOR_LOOK_1]
+
+=> END
+
+~ buttress_arrival
+
+Unknown: A flying buttress. Built to hold a cathedral up, not a shadow. [ID:CH4_BUTTRESS_ARRIVAL_1]
+
+=> END
+
+~ buttress_gap_look
+
+Unknown: A slab's fallen out. The fog below goes on a long way. [ID:CH4_BUTTRESS_GAP_LOOK_1]
+
+=> END
+
+~ buttress_gap_blocked
+
+Unknown: I'm not jumping that. Something to fill the gap, though. [ID:CH4_BUTTRESS_GAP_BLOCKED_1]
+
+=> END
+
+~ buttress_gap_bridged
+
+Unknown: The stone fits. Cathedrals were built a block at a time. So, apparently, are apologies. [ID:CH4_BUTTRESS_GAP_BRIDGED_1]
+
+=> END
+
+~ cathedral_wall_look
+
+Unknown: The cathedral's flank, windows taller than houses. [ID:CH4_WALL_LOOK_1]
+
+=> END
+
+~ gallery_arrival
+
+Unknown: Gargoyles. A gallery of critics. [ID:CH4_GALLERY_ARRIVAL_1]
+
+=> END
+
+~ gargoyles_look
+
+Unknown: Faces carved to frighten off the dark. They're not doing well tonight. [ID:CH4_GARGOYLES_LOOK_1]
+
+=> END
+
+~ key_gargoyle_look
+
+Unknown: That one has a key in its mouth. Someone hid it where only a bird could reach. [ID:CH4_KEY_GARGOYLE_LOOK_1]
+
+=> END
+
+~ key_gargoyle_take
+
+Unknown: Sorry. I need that more than you do. [ID:CH4_KEY_GARGOYLE_TAKE_1]
+
+=> END
+
+~ key_gargoyle_empty
+
+Unknown: Its jaws are empty now. It looks almost relieved. [ID:CH4_KEY_GARGOYLE_EMPTY_1]
+
+=> END
+
+~ dovecote_arrival
+
+Unknown: A dovecote, on top of the world. Grey doves. And one white. [ID:CH4_DOVECOTE_ARRIVAL_1]
+
+=> END
+
+~ doves_look
+
+Unknown: Grey doves, all asleep. And one white one, awake, watching me. [ID:CH4_DOVES_LOOK_1]
+
+=> END
+
+~ dovecote_door_look
+
+Unknown: The dovecote door. Locked, from the outside. [ID:CH4_DOVECOTE_DOOR_LOOK_1]
+
+=> END
+
+~ dovecote_door_open
+
+Unknown: The key turns. Someone comes out. [ID:CH4_DOVECOTE_DOOR_OPEN_1]
+
+=> END
+
+~ trapdoor4_look
+
+Unknown: A trapdoor, down into an attic. [ID:CH4_TRAPDOOR_LOOK_1]
+
+=> END
+
+~ trapdoor4_locked
+
+Unknown: That's someone's home. I'm not walking into it uninvited. Not this time. [ID:CH4_TRAPDOOR_LOCKED_1]
+
+=> END
+
+~ tower_door4_look
+
+Unknown: The door into the tower. And up. [ID:CH4_TOWER_DOOR_LOOK_1]
+
+=> END
+
+~ tower_door4_locked
+
+Unknown: Not yet. There's something I have to say first, and somebody I have to say it to. [ID:CH4_TOWER_DOOR_LOCKED_1]
+
+=> END
+
+~ dove_look
+
+Unknown: A woman in a veil, with a white dove on her hand. There's colour in that veil. Just a little. [ID:CH4_DOVE_LOOK_1]
+
+=> END
+
+~ dove_talk
+
+if GameState.get_flag("dove_forgave")
+	Dove: Go on. He's waiting. And then come back to me. [ID:CH4_DOVE_AFTER_1]
+	=> END
+if not GameState.get_flag("dove_met")
+	do GameState.set_flag("dove_met")
+	Dove: There you are. [ID:CH4_DOVE_MEET_1]
+	Unknown: You know me. [ID:CH4_DOVE_MEET_2]
+	Dove: I'd know you in the dark. I've had a lot of practice. [ID:CH4_DOVE_MEET_3]
+	Dove: You took my name, Ulric. You didn't take you. I kept you. Somebody had to. [ID:CH4_DOVE_MEET_4]
+=> dove_ask
+
+~ dove_ask
+
+Dove: Well? [ID:CH4_DOVE_ASK]
+- Why did you forgive me? [ID:CH4_DOVE_ASK_WHY]
+	Dove: I didn't, for a long time. I sat up here hating you, with no name to sign it with. [ID:CH4_DOVE_WHY_1]
+	Dove: Then I found I couldn't hate a man who'd made himself so small. You were so frightened, at the end. [ID:CH4_DOVE_WHY_2]
+	=> dove_ask
+- The Registrar has the book. [ID:CH4_DOVE_ASK_BOOK]
+	Dove: I know. I heard him on the stair, muttering like a pen on paper. [ID:CH4_DOVE_BOOK_1]
+	Dove: You could take it from him. You were always good at taking things. [ID:CH4_DOVE_BOOK_2]
+	Dove: Or you could give something, for once. [ID:CH4_DOVE_BOOK_3]
+	=> dove_ask
+- May I see your room? [if not GameState.get_flag("dove_room_ok") /] [ID:CH4_DOVE_ASK_ROOM]
+	do GameState.set_flag("dove_room_ok")
+	Dove: You may. Don't touch the hymn book. [ID:CH4_DOVE_ROOM_1]
+	Dove: There's a letter on the desk. You wrote it. You never sent it. You should read it before you do anything brave. [ID:CH4_DOVE_ROOM_2]
+	=> dove_ask
+- Goodbye. [ID:CH4_DOVE_ASK_BYE]
+	Dove: Don't say that. You always said that. [ID:CH4_DOVE_BYE]
+	=> END
+
+~ dove_letter
+
+Unknown: I wrote this. I couldn't say it then. I'll say it now. [ID:CH4_DOVE_LETTER_1]
+Unknown: I'm sorry. For your name, and for every name. I was afraid of a city that remembered, so I made one that couldn't. [ID:CH4_DOVE_LETTER_2]
+Dove: ... [ID:CH4_DOVE_LETTER_3]
+Dove: You finally said it to my face. Even if you haven't got one. [ID:CH4_DOVE_LETTER_4]
+Dove: Here. I kept this for you, the night they broke your stone. The Gravedigger put moss over it, and I put it in my heart. [ID:CH4_DOVE_LETTER_5]
+Dove: The U. The beginning of you. It's enough to start from. Now go and give them back theirs. [ID:CH4_DOVE_LETTER_6]
+
+=> END
+
+~ dove_other
+
+Dove: That's not what I'm waiting for. [ID:CH4_DOVE_OTHER_1]
+
+=> END
+
+~ dove_room_arrival
+
+Unknown: Her room. Small, careful, and full of the things she refused to forget. [ID:CH4_DOVE_ROOM_ARRIVAL_1]
+
+=> END
+
+~ banner_look
+
+Unknown: The choir's banner. Blue. Real blue. The only colour I've seen in this city that wasn't a memory. [ID:CH4_BANNER_LOOK_1]
+
+=> END
+
+~ keepsakes_look
+
+Unknown: A hymn book, a white feather, a little carved dove. A whole life, on one shelf. [ID:CH4_KEEPSAKES_LOOK_1]
+
+=> END
+
+~ bed_look
+
+Unknown: A narrow bed. She slept up here, alone, keeping watch over a city that forgot her. [ID:CH4_BED_LOOK_1]
+
+=> END
+
+~ desk4_look
+
+Unknown: A writing desk, and a folded letter. [ID:CH4_DESK_LOOK_1]
+
+=> END
+
+~ desk4_take
+
+Unknown: My handwriting. I'll take it. It's mine to deliver. [ID:CH4_DESK_TAKE_1]
+
+=> END
+
+~ desk4_empty
+
+Unknown: The desk is bare. The letter is where it should have been years ago. [ID:CH4_DESK_EMPTY_1]
+
+=> END
+
+~ ladder4_look
+
+Unknown: Back up to the dovecote. [ID:CH4_LADDER_LOOK_1]
+
+=> END
+
+~ letter_text_look
+
+Unknown: "Elise. I can't undo it. I'm sorry. I was afraid of a city that remembered." [ID:CH4_LETTER_TEXT_LOOK_1]
+
+=> END
+
+~ letter_sign_look
+
+Unknown: Signed with a single U. Of course. [ID:CH4_LETTER_SIGN_LOOK_1]
+
+=> END
+
+~ ledge_arrival
+
+Unknown: Behind the rose window. The nave far below, where I first saw the past. [ID:CH4_LEDGE_ARRIVAL_1]
+
+=> END
+
+~ rose_look
+
+Unknown: The rose window, from behind. The moon fills in the missing glass. [ID:CH4_ROSE_LOOK_1]
+
+=> END
+
+~ rose_use
+
+Unknown: The lead's still warm, where the sun used to come through. [ID:CH4_ROSE_USE_1]
+
+=> END
+
+~ song_return
+
+Unknown: The whole cathedral full. And her voice, above all of them, singing the names. Every name I'd taken, one after another. [ID:CH4_SONG_RETURN_1]
+Unknown: And me, in the doorway, with my book. I walk up the aisle. Everyone watches. [ID:CH4_SONG_RETURN_2]
+Unknown: And I take her name in front of all of them, so they'll know what singing costs. [ID:CH4_SONG_RETURN_3]
+Unknown: Elise. Her name was Elise. [ID:CH4_SONG_RETURN_4]
+
+=> END
+
+~ nave_below_look
+
+Unknown: The nave, far below. The saint's statue, the altar. Where all this started, for me. [ID:CH4_NAVE_BELOW_LOOK_1]
+
+=> END
+
+~ ledge_door_look
+
+Unknown: Back out to the roof. [ID:CH4_LEDGE_DOOR_LOOK_1]
+
+=> END
+
+~ stair_door_look
+
+Unknown: A door to the bell stair. [ID:CH4_STAIR_DOOR_LOOK_1]
+
+=> END
+
+~ stair_arrival4
+
+Unknown: The bell stair. Ropes, hanging still. Something's waiting at the top. [ID:CH4_STAIR_ARRIVAL_1]
+
+=> END
+
+~ ropes4_look
+
+Unknown: Bell ropes, thick as my arm. Nobody's rung them since I died. [ID:CH4_ROPES_LOOK_1]
+
+=> END
+
+~ stair_up_look4
+
+Unknown: Up. [ID:CH4_STAIR_UP_LOOK_1]
+
+=> END
+
+~ stair_down_look4
+
+Unknown: Back down. [ID:CH4_STAIR_DOWN_LOOK_1]
+
+=> END

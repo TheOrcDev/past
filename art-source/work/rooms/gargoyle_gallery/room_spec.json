@@ -1,0 +1,277 @@
+{
+  "display_name": "Gargoyle gallery",
+  "layers": {
+    "now": [
+      {
+        "name": "Background",
+        "texture": "res://content/rooms/gargoyle_gallery/art/bg_now.png"
+      }
+    ]
+  },
+  "walk": {
+    "now": [
+      [
+        500,
+        800
+      ],
+      [
+        1700,
+        780
+      ],
+      [
+        1800,
+        1060
+      ],
+      [
+        250,
+        1060
+      ]
+    ]
+  },
+  "scale_zones": {
+    "far_y": 780,
+    "far_scale": 0.8,
+    "near_y": 1060,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      1000,
+      920
+    ],
+    "from_buttress": [
+      380,
+      1000
+    ],
+    "from_dovecote": [
+      1580,
+      800
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "to_buttress",
+      "name": "Back across the buttress",
+      "polygon": [
+        [
+          0,
+          1060
+        ],
+        [
+          0,
+          880
+        ],
+        [
+          260,
+          880
+        ],
+        [
+          260,
+          1060
+        ]
+      ],
+      "walk_to": [
+        340,
+        1000
+      ],
+      "exit": {
+        "room": "buttress_walk",
+        "entry": "from_gallery",
+        "direction": "left"
+      }
+    },
+    {
+      "id": "key_gargoyle",
+      "name": "Gargoyle with a key",
+      "polygon": [
+        [
+          500,
+          660
+        ],
+        [
+          500,
+          320
+        ],
+        [
+          770,
+          320
+        ],
+        [
+          770,
+          660
+        ]
+      ],
+      "walk_to": [
+        700,
+        830
+      ],
+      "default_verb": "use",
+      "pick_priority": 2
+    },
+    {
+      "id": "gargoyles",
+      "name": "Gargoyles",
+      "polygon": [
+        [
+          20,
+          660
+        ],
+        [
+          20,
+          180
+        ],
+        [
+          1280,
+          180
+        ],
+        [
+          1280,
+          660
+        ]
+      ],
+      "walk_to": [
+        900,
+        830
+      ]
+    },
+    {
+      "id": "to_dovecote",
+      "name": "To the dovecote",
+      "polygon": [
+        [
+          1480,
+          780
+        ],
+        [
+          1480,
+          320
+        ],
+        [
+          1720,
+          320
+        ],
+        [
+          1720,
+          780
+        ]
+      ],
+      "walk_to": [
+        1580,
+        800
+      ],
+      "exit": {
+        "room": "dovecote",
+        "entry": "from_gallery",
+        "direction": "right"
+      }
+    }
+  ],
+  "occluders": [],
+  "npcs": [],
+  "effects": [
+    {
+      "type": "FogLayer",
+      "name": "FogFar",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.85,
+          0.86,
+          0.89,
+          1.0
+        ],
+        "density": 0.3,
+        "velocity": [
+          0.005,
+          0.0
+        ],
+        "noise_scale": [
+          1.4,
+          0.8
+        ],
+        "band_top": 0.3,
+        "band_bottom": 0.75,
+        "depth_texture": "res://content/rooms/gargoyle_gallery/art/depth_now.png",
+        "near_cutoff": 0.4,
+        "noise_seed": 21
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "FogLow",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.8,
+          0.82,
+          0.86,
+          1.0
+        ],
+        "density": 0.24,
+        "velocity": [
+          -0.008,
+          0.0
+        ],
+        "noise_scale": [
+          2.2,
+          1.1
+        ],
+        "band_top": 0.5,
+        "band_bottom": 0.82,
+        "depth_texture": "res://content/rooms/gargoyle_gallery/art/depth_now.png",
+        "near_cutoff": 0.55,
+        "noise_seed": 23
+      }
+    },
+    {
+      "type": "LightShafts",
+      "name": "Moonlight",
+      "era": "now",
+      "properties": {
+        "origin": [
+          480,
+          90
+        ],
+        "aim": 160.0,
+        "spread": 30.0,
+        "beams": 5.0,
+        "intensity": 0.07,
+        "reach": 0.9,
+        "shaft_color": [
+          0.9,
+          0.93,
+          1.0,
+          1.0
+        ],
+        "flicker": 0.3
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "GroundMist",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.86,
+          0.87,
+          0.9,
+          1.0
+        ],
+        "density": 0.16,
+        "velocity": [
+          0.01,
+          0.0
+        ],
+        "noise_scale": [
+          2.6,
+          1.6
+        ],
+        "band_top": 0.84,
+        "band_bottom": 1.02,
+        "band_softness": 0.08,
+        "noise_seed": 27
+      },
+      "layer": "foreground"
+    }
+  ]
+}

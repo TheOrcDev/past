@@ -1,0 +1,251 @@
+{
+  "display_name": "Flying buttresses",
+  "layers": {
+    "now": [
+      {
+        "name": "Background",
+        "texture": "res://content/rooms/buttress_walk/art/bg_now.png"
+      }
+    ]
+  },
+  "walk": {
+    "now": [
+      [
+        100,
+        700
+      ],
+      [
+        1140,
+        680
+      ],
+      [
+        1140,
+        780
+      ],
+      [
+        100,
+        800
+      ]
+    ]
+  },
+  "scale_zones": {
+    "far_y": 680,
+    "far_scale": 0.6,
+    "near_y": 800,
+    "near_scale": 0.66
+  },
+  "markers": {
+    "default": [
+      600,
+      740
+    ],
+    "from_roof": [
+      180,
+      750
+    ],
+    "from_gallery": [
+      1100,
+      730
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "to_roof",
+      "name": "Back to the roof",
+      "polygon": [
+        [
+          0,
+          820
+        ],
+        [
+          0,
+          560
+        ],
+        [
+          150,
+          560
+        ],
+        [
+          150,
+          820
+        ]
+      ],
+      "walk_to": [
+        160,
+        750
+      ],
+      "exit": {
+        "room": "cathedral_roof",
+        "entry": "from_buttress",
+        "direction": "left"
+      }
+    },
+    {
+      "id": "gap",
+      "name": "Gap",
+      "polygon": [
+        [
+          1150,
+          820
+        ],
+        [
+          1150,
+          640
+        ],
+        [
+          1340,
+          640
+        ],
+        [
+          1340,
+          820
+        ]
+      ],
+      "walk_to": [
+        1110,
+        730
+      ],
+      "exit": {
+        "room": "gargoyle_gallery",
+        "entry": "from_buttress",
+        "direction": "right",
+        "requires_flag": "buttress_bridged"
+      },
+      "pick_priority": 2
+    },
+    {
+      "id": "wall",
+      "name": "Cathedral wall",
+      "polygon": [
+        [
+          0,
+          560
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          400,
+          0
+        ],
+        [
+          400,
+          560
+        ]
+      ],
+      "walk_to": [
+        300,
+        750
+      ]
+    }
+  ],
+  "occluders": [],
+  "npcs": [],
+  "effects": [
+    {
+      "type": "FogLayer",
+      "name": "FogFar",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.85,
+          0.86,
+          0.89,
+          1.0
+        ],
+        "density": 0.3,
+        "velocity": [
+          0.005,
+          0.0
+        ],
+        "noise_scale": [
+          1.4,
+          0.8
+        ],
+        "band_top": 0.3,
+        "band_bottom": 0.75,
+        "depth_texture": "res://content/rooms/buttress_walk/art/depth_now.png",
+        "near_cutoff": 0.4,
+        "noise_seed": 21
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "FogLow",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.8,
+          0.82,
+          0.86,
+          1.0
+        ],
+        "density": 0.24,
+        "velocity": [
+          -0.008,
+          0.0
+        ],
+        "noise_scale": [
+          2.2,
+          1.1
+        ],
+        "band_top": 0.5,
+        "band_bottom": 0.82,
+        "depth_texture": "res://content/rooms/buttress_walk/art/depth_now.png",
+        "near_cutoff": 0.55,
+        "noise_seed": 23
+      }
+    },
+    {
+      "type": "LightShafts",
+      "name": "Moonlight",
+      "era": "now",
+      "properties": {
+        "origin": [
+          1370,
+          80
+        ],
+        "aim": 200.0,
+        "spread": 30.0,
+        "beams": 5.0,
+        "intensity": 0.07,
+        "reach": 0.9,
+        "shaft_color": [
+          0.9,
+          0.93,
+          1.0,
+          1.0
+        ],
+        "flicker": 0.3
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "GroundMist",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.86,
+          0.87,
+          0.9,
+          1.0
+        ],
+        "density": 0.16,
+        "velocity": [
+          0.01,
+          0.0
+        ],
+        "noise_scale": [
+          2.6,
+          1.6
+        ],
+        "band_top": 0.84,
+        "band_bottom": 1.02,
+        "band_softness": 0.08,
+        "noise_seed": 27
+      },
+      "layer": "foreground"
+    }
+  ]
+}

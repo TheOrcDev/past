@@ -1,0 +1,76 @@
+{
+  "id": "IMG-0147",
+  "title": "Close-up: the great bell's inscription",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T01:28:15.679Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0064/IMG-0064-v1.png",
+          "sha256": "a8400af03b8f535b02032ab1de3370e18a70c8d6a2864046219aa3ad6a9454f6"
+        }
+      ],
+      "mask": null,
+      "prompt": "A close-up of the lip of a great bronze bell from the reference image, in exactly the same monochrome greyscale ink-wash gothic style: the curved lower rim of an enormous ancient bronze bell fills the frame, green with verdigris, cold moonlight; a raised inscription runs around its lip in classic Roman capitals.\n\nThe inscription reads exactly, and nothing else:\nI CARRY TO ALL WHO WERE EVER NAMED\nNo people or figures. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0147-v1.png",
+          "sha256": "edf65c3766fac6936a50bf0f64603ee7132adb27268bdf1e3c0f6348f27f0449",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0147-v2.png",
+          "sha256": "4013dc32df6b0fdaf861be46b1d1ab77e6c7e47aa25737a866eae7c9ac2f1b7e",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0147-v3.png",
+          "sha256": "f12d241af1c36d1295965994c49bb4c16aac1d4133a9737a2b945154b86a3ed1",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 95668,
+        "outputTokens": 685
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12db9-86a8-7282-9204-e49d82bbdca9",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12db9-86a8-7282-9204-e49d82bbdca9/exec-74b5057a-fec8-414b-a09b-af033cd88431.png",
+            "/Users/orcdev/.codex/generated_images/01a12db9-86a8-7282-9204-e49d82bbdca9/exec-278e0e18-1ac5-4f9b-b963-e4e69975b0ab.png",
+            "/Users/orcdev/.codex/generated_images/01a12db9-86a8-7282-9204-e49d82bbdca9/exec-363eb038-d4b7-4d99-a000-206658678094.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 2121,
+              "height": 741
+            },
+            {
+              "width": 2123,
+              "height": 741
+            },
+            {
+              "width": 2123,
+              "height": 741
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque images using the reference and your prompt exactly.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

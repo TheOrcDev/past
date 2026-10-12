@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://xj1ncakk6gvs"
+path="res://.godot/imported/heights.dialogue-8d109a501cd8f325d1a155496f0da143.tres"
+
+[deps]
+
+source_file="res://content/dialogue/ch4/heights.dialogue"
+dest_files=["res://.godot/imported/heights.dialogue-8d109a501cd8f325d1a155496f0da143.tres"]
+
+[params]
+
+defaults=true

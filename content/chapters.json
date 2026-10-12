@@ -340,15 +340,33 @@
         "registrar_fled",
         "ch3_done"
       ],
-      "rooms": [],
-      "closeups": [],
+      "rooms": [
+        "cathedral_roof",
+        "buttress_walk",
+        "gargoyle_gallery",
+        "dovecote",
+        "dove_room",
+        "rose_window_ledge",
+        "bell_stair",
+        "bell_chamber",
+        "belfry_top",
+        "grave_at_dawn"
+      ],
+      "closeups": [
+        "unsent_letter",
+        "ledger_page",
+        "bell_inscription",
+        "gravestone_restored"
+      ],
       "dialogue": [
         "ch4"
       ],
       "cutscenes": [
         "heights_reveal"
       ],
-      "characters": [],
+      "characters": [
+        "dove"
+      ],
       "memories": [
         "cathedral_statue",
         "prologue_singer",

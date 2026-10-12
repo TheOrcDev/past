@@ -92,6 +92,9 @@ func run() -> void:
 	await _shot("05_the_empty_vault")
 	await _leave("Passage", &"covered_bridge")
 	await _verb("FarDoor", &"use")
+	if Chapters.in_build(&"cathedral_roof"):
+		while Rooms.current == null or Rooms.current.room_id != &"cathedral_roof":
+			await _tree.process_frame
 	await _until_free()
 	check.call(GameState.get_flag(&"ch3_done"), "across the bridge")
 	_stop_listening()

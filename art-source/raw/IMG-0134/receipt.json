@@ -1,0 +1,76 @@
+{
+  "id": "IMG-0134",
+  "title": "The flying buttresses, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T01:24:01.907Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0064/IMG-0064-v1.png",
+          "sha256": "a8400af03b8f535b02032ab1de3370e18a70c8d6a2864046219aa3ad6a9454f6"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: a perilous walk across the tops of flying buttresses on the side of a gothic cathedral, high above fog at night, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: Two great flying buttresses arch out from the cathedral wall; a narrow stone walkway runs across the nearer buttress from the left, then stops at a gap where a slab has fallen away, a sheer drop into fog below. Beyond the gap, the walkway continues to a gallery of gargoyles on the right. The cathedral's flank and tall windows rise behind.\n\nThe lower third of the image is open, walkable ground: the nearer stone walkway runs across the lower third up to the gap. It is lit by moonlight with drifting fog or haze behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0134-v1.png",
+          "sha256": "06c4a2596271530f8ac3c09e522867088ae361fc99f883995a29a96d69f637b0",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0134-v2.png",
+          "sha256": "1831d80bdce22d8d654805360c47b3897d7e701be291b13b5e2460ef5ea9bb6d",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0134-v3.png",
+          "sha256": "5a4638ade1f660a2a348bdd25eed0971769ee5e646b89515159a9cc936aa2021",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 119985,
+        "outputTokens": 709
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12db5-a752-7403-9333-df5c0397e7b3",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12db5-a752-7403-9333-df5c0397e7b3/exec-654f3b6a-ae3a-4f50-88af-cd762732a2e3.png",
+            "/Users/orcdev/.codex/generated_images/01a12db5-a752-7403-9333-df5c0397e7b3/exec-6f380160-7b2d-46d8-88e2-334afa383843.png",
+            "/Users/orcdev/.codex/generated_images/01a12db5-a752-7403-9333-df5c0397e7b3/exec-9eee13d0-b8bd-4d41-b186-e0699b78dec6.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 2123,
+              "height": 741
+            },
+            {
+              "width": 2123,
+              "height": 741
+            },
+            {
+              "width": 2123,
+              "height": 741
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque images using your exact prompt and the attached reference each time.",
+            "DONE"
+          ]
+        }
+      }
+    }
+  ]
+}
