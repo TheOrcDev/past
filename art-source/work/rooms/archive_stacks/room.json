@@ -1,0 +1,167 @@
+{
+  "display_name": "The stacks",
+  "now": "art-source/raw/IMG-0111/IMG-0111-v2.png",
+  "walk": [
+    [
+      300,
+      900
+    ],
+    [
+      1000,
+      820
+    ],
+    [
+      1500,
+      820
+    ],
+    [
+      1700,
+      900
+    ],
+    [
+      1800,
+      1060
+    ],
+    [
+      200,
+      1060
+    ]
+  ],
+  "scale_zones": {
+    "far_y": 820,
+    "far_scale": 0.86,
+    "near_y": 1060,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      900,
+      950
+    ],
+    "from_hall": [
+      350,
+      960
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "arch",
+      "name": "Back to the hall",
+      "polygon": [
+        [
+          20,
+          960
+        ],
+        [
+          20,
+          120
+        ],
+        [
+          300,
+          120
+        ],
+        [
+          300,
+          960
+        ]
+      ],
+      "walk_to": [
+        330,
+        960
+      ],
+      "exit": {
+        "room": "hall_of_records",
+        "entry": "from_stacks",
+        "direction": "left"
+      }
+    },
+    {
+      "id": "lectern",
+      "name": "Index",
+      "polygon": [
+        [
+          1520,
+          780
+        ],
+        [
+          1520,
+          400
+        ],
+        [
+          1890,
+          400
+        ],
+        [
+          1890,
+          780
+        ]
+      ],
+      "walk_to": [
+        1500,
+        880
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "ledgers",
+      "name": "Ledgers",
+      "polygon": [
+        [
+          400,
+          800
+        ],
+        [
+          400,
+          50
+        ],
+        [
+          900,
+          50
+        ],
+        [
+          900,
+          800
+        ]
+      ],
+      "walk_to": [
+        650,
+        880
+      ]
+    },
+    {
+      "id": "moths",
+      "name": "Moths",
+      "polygon": [
+        [
+          1000,
+          300
+        ],
+        [
+          1000,
+          40
+        ],
+        [
+          1220,
+          40
+        ],
+        [
+          1220,
+          300
+        ]
+      ],
+      "walk_to": [
+        1100,
+        860
+      ]
+    }
+  ],
+  "effects": {
+    "preset": "interior",
+    "light": [
+      1110,
+      180
+    ],
+    "aim": 180
+  },
+  "id": "archive_stacks"
+}

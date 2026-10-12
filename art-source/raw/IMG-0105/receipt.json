@@ -1,0 +1,77 @@
+{
+  "id": "IMG-0105",
+  "title": "The gallows square, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T01:00:01.559Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0063/IMG-0063-v1.png",
+          "sha256": "58db2e7b42e05e4f95a7e387f0dffdbbaedab5f895866a286b94d3bcf3cbeae8"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: a bare paved square in the upper city at night, with a gallows, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: In the centre, a tall wooden gallows on a raised platform with a few steps, a single noose hanging from its beam. Around the edges, the empty iron frames of a flower market's stalls, rusted. Tall grim buildings behind; on the right, an archway back to the avenue.\n\nThe lower third of the image is open, walkable ground: the open paving of the square runs across the lower third, in front of the gallows. It is lit by pale moonlight behind the gallows with drifting fog or haze behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0105-v1.png",
+          "sha256": "7786b26ecb0fcf766ccfeac8c71454cc38997bfdcf2349946aae0545069f2878",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0105-v2.png",
+          "sha256": "37f0179d10496ae0bd74ad3aad48f6987d7464ee2518f60ddb24d489f275396a",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0105-v3.png",
+          "sha256": "f47b657f4b96d8f50eaf3fb46cec7b611d0a1f0f854992860d50a8a2f39d2bef",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 144901,
+        "outputTokens": 859
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d9f-ad8c-7ec2-8f2a-33f82487debd",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d9f-ad8c-7ec2-8f2a-33f82487debd/exec-0bd5eb5e-0632-4e6b-999d-99ae374ac607.png",
+            "/Users/orcdev/.codex/generated_images/01a12d9f-ad8c-7ec2-8f2a-33f82487debd/exec-ec38f477-d310-421c-b6cc-047fd5c7215b.png",
+            "/Users/orcdev/.codex/generated_images/01a12d9f-ad8c-7ec2-8f2a-33f82487debd/exec-fe7f8777-9125-4dd0-be9e-87e6adc954cd.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 2123,
+              "height": 741
+            },
+            {
+              "width": 2123,
+              "height": 741
+            },
+            {
+              "width": 2123,
+              "height": 741
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque scenes using the reference and your exact prompt.",
+            "Two scenes are generated. I’m generating the third with the same reference and exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

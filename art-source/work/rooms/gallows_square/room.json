@@ -1,0 +1,186 @@
+{
+  "display_name": "Gallows square",
+  "now": "art-source/raw/IMG-0105/IMG-0105-v2.png",
+  "walk": [
+    [
+      100,
+      820
+    ],
+    [
+      700,
+      790
+    ],
+    [
+      1300,
+      790
+    ],
+    [
+      1800,
+      820
+    ],
+    [
+      1850,
+      1060
+    ],
+    [
+      150,
+      1060
+    ]
+  ],
+  "scale_zones": {
+    "far_y": 790,
+    "far_scale": 0.84,
+    "near_y": 1060,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      1000,
+      930
+    ],
+    "from_avenue": [
+      1620,
+      860
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "hangman",
+      "name": "Hangman",
+      "polygon": [
+        [
+          530,
+          880
+        ],
+        [
+          530,
+          450
+        ],
+        [
+          620,
+          410
+        ],
+        [
+          740,
+          450
+        ],
+        [
+          750,
+          880
+        ]
+      ],
+      "walk_to": [
+        820,
+        910
+      ],
+      "default_verb": "talk",
+      "pick_priority": 2
+    },
+    {
+      "id": "beam",
+      "name": "Gallows",
+      "polygon": [
+        [
+          880,
+          780
+        ],
+        [
+          880,
+          230
+        ],
+        [
+          1160,
+          230
+        ],
+        [
+          1160,
+          780
+        ]
+      ],
+      "walk_to": [
+        1020,
+        840
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "frames",
+      "name": "Market frames",
+      "polygon": [
+        [
+          20,
+          780
+        ],
+        [
+          20,
+          300
+        ],
+        [
+          500,
+          300
+        ],
+        [
+          500,
+          780
+        ]
+      ],
+      "walk_to": [
+        350,
+        860
+      ]
+    },
+    {
+      "id": "arch",
+      "name": "Back to the avenue",
+      "polygon": [
+        [
+          1560,
+          780
+        ],
+        [
+          1560,
+          400
+        ],
+        [
+          1720,
+          400
+        ],
+        [
+          1720,
+          780
+        ]
+      ],
+      "walk_to": [
+        1630,
+        840
+      ],
+      "exit": {
+        "room": "upper_avenue",
+        "entry": "from_gallows",
+        "direction": "right"
+      }
+    }
+  ],
+  "npcs": [
+    {
+      "scene": "res://content/characters/hangman/hangman.tscn",
+      "name": "Hangman",
+      "position": [
+        640,
+        880
+      ],
+      "facing": "right",
+      "era": "now"
+    }
+  ],
+  "effects": {
+    "preset": "exterior",
+    "light": [
+      1430,
+      110
+    ],
+    "aim": 190
+  },
+  "id": "gallows_square",
+  "then": "art-source/raw/IMG-0121/IMG-0121-v1.png"
+}

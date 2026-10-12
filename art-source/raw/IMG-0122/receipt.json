@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0122",
+  "title": "The theatre front, then",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T01:08:39.569Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0106/IMG-0106-v1.png",
+          "sha256": "f01e26de5691f2b243172a846204485892d1861c99444ec51a46f250b33cf086"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit this image in place. Keep exactly the same composition, camera, perspective, horizon and every shape where it stands: the facade, the columns, the doors, the steps, the poster boards, the marquee and the lamps. Only change the time and the condition.\n\nRestore the same theatre to how it looked decades earlier, on an opening night, in full rich warm color, as a painterly gothic matte painting: no chain on the doors, which stand open with golden light inside, the marquee blazing with warm bulbs, colorful fresh posters on the boards, red carpet on the steps, lamps lit, a deep blue evening sky. The key light comes from the same direction as in the original.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0122-v1.png",
+          "sha256": "f6ccee28623bcb786d461be5d65db772153c33c8b98aaa71e0297f3187c44736",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0122-v2.png",
+          "sha256": "2e55d699499371e72a0bfbd21819af998ed73ba34eeb95f673203877fda085c7",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 133815,
+        "outputTokens": 833
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12da7-9477-7252-aeb9-69ba6d248df6",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12da7-9477-7252-aeb9-69ba6d248df6/exec-66ef9ef6-ca51-41c3-b175-d33d4cfec580.png",
+            "/Users/orcdev/.codex/generated_images/01a12da7-9477-7252-aeb9-69ba6d248df6/exec-a6e5c605-4385-400c-925b-654d2a58e683.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 2123,
+              "height": 741
+            },
+            {
+              "width": 2123,
+              "height": 741
+            }
+          ],
+          "messages": [
+            "I’ll make two wide, opaque versions using your prompt exactly.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "id": "IMG-0113",
+  "title": "The Registrar's chamber, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T01:04:28.628Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0014/IMG-0014-v2.png",
+          "sha256": "007293b04cb0e4a9f28c332a9f68cfd2fc539efd55efc64882a894d5c677d1de"
+        },
+        {
+          "path": "art-source/raw/IMG-0063/IMG-0063-v1.png",
+          "sha256": "58db2e7b42e05e4f95a7e387f0dffdbbaedab5f895866a286b94d3bcf3cbeae8"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: a narrow, orderly clerk's chamber in a gothic records hall at night, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: A tall standing desk on the left with stacks of papers squared exactly. The back wall is a grid of hundreds of pigeonholes, each with a rolled paper. On the right, a huge round steel vault door with a ring of brass letter dials around a central wheel. A narrow door on the far left.\n\nThe lower third of the image is open, walkable ground: the polished floor runs across the lower third. It is lit by a single lamp on the desk and moonlight with drifting fog or haze behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0113-v1.png",
+          "sha256": "d9d2d50164a9516d041738a77a969fe47d406c2a54bb12c3ec613bac6ce8afcf",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0113-v2.png",
+          "sha256": "cd02f162e3f1de16c480d337aae37cb890a3d6b1ff21bdd0a89d41c4e78f87c0",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0113-v3.png",
+          "sha256": "3385f0b4b0e8732c403ae9fcdbfcd3d2b370adbe75040bcb40c357a6ea4da8a3",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 146051,
+        "outputTokens": 872
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12da3-c031-70f0-a702-bfff69dd9065",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12da3-c031-70f0-a702-bfff69dd9065/exec-03d1d34e-db47-4898-8771-77266f110428.png",
+            "/Users/orcdev/.codex/generated_images/01a12da3-c031-70f0-a702-bfff69dd9065/exec-f5d14699-67d1-4205-adbd-c494107f89b0.png",
+            "/Users/orcdev/.codex/generated_images/01a12da3-c031-70f0-a702-bfff69dd9065/exec-47ef4ec8-498b-4f16-b471-742460a20bb6.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque scenes using both references and your prompt exactly as written.",
+            "Two images are complete. I’m generating the third with the same references and exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "background": "res://content/closeups/vault_lectern/art/bg.png",
+  "hotspots": [
+    {
+      "id": "dust",
+      "name": "Dust",
+      "polygon": [
+        [
+          600,
+          220
+        ],
+        [
+          1260,
+          220
+        ],
+        [
+          1260,
+          580
+        ],
+        [
+          600,
+          580
+        ]
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "chains",
+      "name": "Chains",
+      "polygon": [
+        [
+          120,
+          560
+        ],
+        [
+          300,
+          560
+        ],
+        [
+          300,
+          1060
+        ],
+        [
+          120,
+          1060
+        ]
+      ],
+      "pick_priority": 1
+    }
+  ]
+}

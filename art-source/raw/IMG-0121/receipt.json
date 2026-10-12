@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0121",
+  "title": "The gallows square, then",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T01:07:25.542Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0105/IMG-0105-v2.png",
+          "sha256": "37f0179d10496ae0bd74ad3aad48f6987d7464ee2518f60ddb24d489f275396a"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit this image in place. Keep exactly the same composition, camera, perspective, horizon and every shape where it stands: the platform's footprint, the market frames, the buildings and the archway. Only change the time and the condition.\n\nRestore the same square to how it looked years earlier, before the gallows was built, in full rich warm color, as a painterly gothic matte painting: no gallows at all: in its place a carved stone well with a little roof, the market frames full of flower stalls under bright awnings with roses, lilies and tulips in buckets, warm sunlit paving. The key light comes from the same direction as in the original.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0121-v1.png",
+          "sha256": "80de7f385882d7c70df95345a4dfd2ce072aa8ec8196e995e59b9281f1f0c478",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0121-v2.png",
+          "sha256": "348d19bc2681cc2068ddb276eee738c15a62c21bcee31a01c3d512341d82b27e",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 135045,
+        "outputTokens": 774
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12da6-7341-7663-99b0-b9bc716a5335",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12da6-7341-7663-99b0-b9bc716a5335/exec-c221bbef-d2b4-4a19-b0e3-31ba3e40106c.png",
+            "/Users/orcdev/.codex/generated_images/01a12da6-7341-7663-99b0-b9bc716a5335/exec-3a93277a-cf3c-46f5-9e48-f2dd55eb4316.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 2123,
+              "height": 741
+            },
+            {
+              "width": 2122,
+              "height": 741
+            }
+          ],
+          "messages": [
+            "I’ll generate two edits of the attached image using your prompt exactly.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

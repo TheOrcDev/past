@@ -1,0 +1,76 @@
+{
+  "id": "IMG-0106",
+  "title": "The theatre front, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T01:02:03.621Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0063/IMG-0063-v1.png",
+          "sha256": "58db2e7b42e05e4f95a7e387f0dffdbbaedab5f895866a286b94d3bcf3cbeae8"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: the front of an ornate baroque theatre in a gothic upper city at night, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: A grand carved facade with columns, masks and a dark marquee of unlit bulbs. Its tall double doors in the centre are wrapped in a heavy iron chain with a padlock. Torn, peeling posters on boards either side of the doors (unreadable), one large playbill frame on the left. Steps up to the doors. On the left, the avenue continues.\n\nThe lower third of the image is open, walkable ground: the paved forecourt in front of the steps runs across the lower third. It is lit by pale moonlight with drifting fog or haze behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0106-v1.png",
+          "sha256": "f01e26de5691f2b243172a846204485892d1861c99444ec51a46f250b33cf086",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0106-v2.png",
+          "sha256": "7f0a52d8fbad626875c83888ce799219abc2667f9af851651566123f49e48b29",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0106-v3.png",
+          "sha256": "cd57b9d3592fb8496c9e7f04acfc1d3cbb84b9624d82de9059e8cde50ccabd32",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 96480,
+        "outputTokens": 625
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12da1-89c2-7d80-8084-24e005ad053a",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12da1-89c2-7d80-8084-24e005ad053a/exec-00d357c7-61e6-43b9-a3c9-7abef68ca8af.png",
+            "/Users/orcdev/.codex/generated_images/01a12da1-89c2-7d80-8084-24e005ad053a/exec-429f2ca9-5069-4040-aeb8-31caa7315ad5.png",
+            "/Users/orcdev/.codex/generated_images/01a12da1-89c2-7d80-8084-24e005ad053a/exec-ff52d7d8-b160-41a1-97e5-2285f024ab6b.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 2123,
+              "height": 741
+            },
+            {
+              "width": 2123,
+              "height": 741
+            },
+            {
+              "width": 2123,
+              "height": 741
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque scenes using the reference and your exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

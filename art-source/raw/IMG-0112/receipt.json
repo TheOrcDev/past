@@ -1,0 +1,80 @@
+{
+  "id": "IMG-0112",
+  "title": "The Magistrate's office, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T01:02:46.876Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0014/IMG-0014-v2.png",
+          "sha256": "007293b04cb0e4a9f28c332a9f68cfd2fc539efd55efc64882a894d5c677d1de"
+        },
+        {
+          "path": "art-source/raw/IMG-0063/IMG-0063-v1.png",
+          "sha256": "58db2e7b42e05e4f95a7e387f0dffdbbaedab5f895866a286b94d3bcf3cbeae8"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: a severe, high gothic office in the Hall of Records at night, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: A great dark wooden desk in the centre with a blotter, an inkwell, a quill stand and a heavy closed book. Behind it, a tall window over the city. On the left wall, a large portrait of a robed man slashed across where the face was. On the right, a cold fireplace and bookshelves. The carved double door on the left.\n\nThe lower third of the image is open, walkable ground: the stone floor in front of the desk runs across the lower third. It is lit by moonlight through the tall window with drifting fog or haze behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0112-v1.png",
+          "sha256": "134171a0878727d880dc66317770a865e5336b844b43d9e665319ceeec62b554",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0112-v2.png",
+          "sha256": "e766fac26a9d728408d923d03dc4890c7f33f9e46a58159ab385803613a9fb1b",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0112-v3.png",
+          "sha256": "b2ad2744901f12328a151ab208e9d4f7bafcf61dfdb2a3871372a41201e9cf21",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 239025,
+        "outputTokens": 1567
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12da2-32b6-7fa0-a27f-6fa35e8a4a69",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12da2-32b6-7fa0-a27f-6fa35e8a4a69/exec-c6c6474f-4361-4f57-acaa-cf739d1d7cc1.png",
+            "/Users/orcdev/.codex/generated_images/01a12da2-32b6-7fa0-a27f-6fa35e8a4a69/exec-8a96fcd6-ea9a-4b0b-9a97-c30bfa06cef2.png",
+            "/Users/orcdev/.codex/generated_images/01a12da2-32b6-7fa0-a27f-6fa35e8a4a69/exec-42878c26-9f76-40bd-93a6-120ff3ea793e.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate three images using the supplied prompt and both references.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

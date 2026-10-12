@@ -1,0 +1,51 @@
+{
+  "background": "res://content/closeups/playbill/art/bg.png",
+  "hotspots": [
+    {
+      "id": "cast",
+      "name": "Cast",
+      "polygon": [
+        [
+          580,
+          480
+        ],
+        [
+          1420,
+          480
+        ],
+        [
+          1420,
+          590
+        ],
+        [
+          580,
+          590
+        ]
+      ],
+      "pick_priority": 2
+    },
+    {
+      "id": "title",
+      "name": "Title",
+      "polygon": [
+        [
+          420,
+          100
+        ],
+        [
+          1520,
+          100
+        ],
+        [
+          1520,
+          480
+        ],
+        [
+          420,
+          480
+        ]
+      ],
+      "pick_priority": 1
+    }
+  ]
+}

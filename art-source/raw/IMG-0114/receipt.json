@@ -1,0 +1,80 @@
+{
+  "id": "IMG-0114",
+  "title": "The vault, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T01:06:22.480Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0014/IMG-0014-v2.png",
+          "sha256": "007293b04cb0e4a9f28c332a9f68cfd2fc539efd55efc64882a894d5c677d1de"
+        },
+        {
+          "path": "art-source/raw/IMG-0063/IMG-0063-v1.png",
+          "sha256": "58db2e7b42e05e4f95a7e387f0dffdbbaedab5f895866a286b94d3bcf3cbeae8"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: the inside of a round stone vault at night, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: A round chamber with a domed ceiling. In the centre, an ornate empty lectern on a raised step where a great book once lay, a faint dust outline of the book on its slope. Iron chains hang loose. On the left, the open round vault door. On the right, a narrow arched door to a passage.\n\nThe lower third of the image is open, walkable ground: the stone floor around the lectern runs across the lower third. It is lit by a shaft of moonlight from an oculus with drifting fog or haze behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0114-v1.png",
+          "sha256": "219cf66fafbdb231db49e6d524996369a89e094aa35a29634e48243ae9f9d52e",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0114-v2.png",
+          "sha256": "1b5c55e4c28ed4c0501acf6bc6674d89f0432b6af9a7afc580d76cd2fc3af97b",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0114-v3.png",
+          "sha256": "0a11c7d96af90a0780ec713c4abaf6556e3fc3c4103a88a97a537c0b8950e5c0",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 105407,
+        "outputTokens": 757
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12da5-7cec-7b23-ab38-909a01ebce65",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12da5-7cec-7b23-ab38-909a01ebce65/exec-a609c698-0d5a-4262-b6b1-3f58b8d061f8.png",
+            "/Users/orcdev/.codex/generated_images/01a12da5-7cec-7b23-ab38-909a01ebce65/exec-27dcdd82-2acc-4424-94b3-36688c826fd2.png",
+            "/Users/orcdev/.codex/generated_images/01a12da5-7cec-7b23-ab38-909a01ebce65/exec-0fa3c634-7303-49ba-bf3e-2fc0ab9990a1.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque images using both references and your prompt exactly as provided.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

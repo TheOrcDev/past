@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0119",
+  "title": "Item sheet: chapter 3",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T01:05:05.287Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "transparent",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0019/IMG-0019-v1.png",
+          "sha256": "f8670baab6b1c2568c6f603d94836a194b305fc0d253ca248c88420c3649001d"
+        }
+      ],
+      "mask": null,
+      "prompt": "A sheet of two separate inventory item icons for a dark gothic point-and-click adventure game, painted in the monochrome greyscale ink-wash style of the reference image, each object drawn whole and alone, in a two by one grid with generous empty space between them, nothing overlapping or touching:\n\n1. a heavy black iron padlock key with a square bow, on a short length of iron chain; 2. a long elegant white feather quill pen with an ink-stained nib.\n\nEach object is lit from the upper left with a soft rim light, slightly three-quarter view, as a clean cut-out on a fully transparent background, with no shadows, labels, frames or scenery. No text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0119-v1.png",
+          "sha256": "2abaec4558ce7882c720b14c59abfd34cf68f0b4f424b0e78b475d626187d148",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0119-v2.png",
+          "sha256": "4cb975cd8a2ee0c45e33dd1485acbc3639081a55d5a57358c58da20975ad8e96",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 69428,
+        "outputTokens": 605
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12da4-4f61-7cf1-8749-09d03d846738",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12da4-4f61-7cf1-8749-09d03d846738/exec-a09cd1c6-4a71-48aa-a20b-0d0c38ce08f7.png",
+            "/Users/orcdev/.codex/generated_images/01a12da4-4f61-7cf1-8749-09d03d846738/exec-16f3156a-33ea-423c-868d-2cf7e7a4e06d.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1774,
+              "height": 887
+            },
+            {
+              "width": 1774,
+              "height": 887
+            }
+          ],
+          "messages": [
+            "I’ll generate two separate images using the reference, your exact prompt, and transparent backgrounds.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

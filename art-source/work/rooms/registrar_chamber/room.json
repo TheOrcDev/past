@@ -1,0 +1,210 @@
+{
+  "display_name": "Registrar's chamber",
+  "now": "art-source/raw/IMG-0113/IMG-0113-v2.png",
+  "walk": [
+    [
+      100,
+      780
+    ],
+    [
+      1800,
+      780
+    ],
+    [
+      1900,
+      1060
+    ],
+    [
+      50,
+      1060
+    ]
+  ],
+  "scale_zones": {
+    "far_y": 780,
+    "far_scale": 0.9,
+    "near_y": 1060,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      1000,
+      900
+    ],
+    "from_hall": [
+      260,
+      850
+    ],
+    "from_vault": [
+      1500,
+      860
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "registrar",
+      "name": "Registrar",
+      "polygon": [
+        [
+          570,
+          800
+        ],
+        [
+          570,
+          300
+        ],
+        [
+          740,
+          300
+        ],
+        [
+          740,
+          800
+        ]
+      ],
+      "walk_to": [
+        820,
+        850
+      ],
+      "default_verb": "talk",
+      "pick_priority": 2
+    },
+    {
+      "id": "door",
+      "name": "Back to the hall",
+      "polygon": [
+        [
+          40,
+          700
+        ],
+        [
+          40,
+          200
+        ],
+        [
+          220,
+          200
+        ],
+        [
+          220,
+          700
+        ]
+      ],
+      "walk_to": [
+        250,
+        830
+      ],
+      "exit": {
+        "room": "hall_of_records",
+        "entry": "from_chamber",
+        "direction": "left"
+      }
+    },
+    {
+      "id": "vault",
+      "name": "Vault door",
+      "polygon": [
+        [
+          1520,
+          740
+        ],
+        [
+          1520,
+          140
+        ],
+        [
+          1900,
+          140
+        ],
+        [
+          1900,
+          740
+        ]
+      ],
+      "walk_to": [
+        1550,
+        840
+      ],
+      "exit": {
+        "room": "ledger_vault",
+        "entry": "from_chamber",
+        "direction": "right",
+        "requires_flag": "vault_open"
+      }
+    },
+    {
+      "id": "desk",
+      "name": "Standing desk",
+      "polygon": [
+        [
+          200,
+          700
+        ],
+        [
+          200,
+          290
+        ],
+        [
+          560,
+          290
+        ],
+        [
+          560,
+          700
+        ]
+      ],
+      "walk_to": [
+        420,
+        830
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "pigeonholes",
+      "name": "Pigeonholes",
+      "polygon": [
+        [
+          760,
+          630
+        ],
+        [
+          760,
+          30
+        ],
+        [
+          1480,
+          30
+        ],
+        [
+          1480,
+          630
+        ]
+      ],
+      "walk_to": [
+        1100,
+        830
+      ]
+    }
+  ],
+  "npcs": [
+    {
+      "scene": "res://content/characters/registrar/registrar.tscn",
+      "name": "Registrar",
+      "position": [
+        650,
+        800
+      ],
+      "facing": "right",
+      "era": "now"
+    }
+  ],
+  "effects": {
+    "preset": "interior",
+    "light": [
+      740,
+      180
+    ],
+    "aim": 160
+  },
+  "id": "registrar_chamber",
+  "then": "art-source/raw/IMG-0132/IMG-0132-v2.png"
+}

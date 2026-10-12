@@ -1,0 +1,74 @@
+{
+  "id": "ledger_index",
+  "image": "art-source/raw/IMG-0129/IMG-0129-v3.png",
+  "hotspots": [
+    {
+      "id": "dove",
+      "name": "An entry",
+      "polygon": [
+        [
+          180,
+          220
+        ],
+        [
+          920,
+          220
+        ],
+        [
+          920,
+          350
+        ],
+        [
+          180,
+          350
+        ]
+      ],
+      "pick_priority": 2
+    },
+    {
+      "id": "last",
+      "name": "The last entry",
+      "polygon": [
+        [
+          1360,
+          830
+        ],
+        [
+          1760,
+          830
+        ],
+        [
+          1760,
+          950
+        ],
+        [
+          1360,
+          950
+        ]
+      ],
+      "pick_priority": 2
+    },
+    {
+      "id": "names",
+      "name": "Index of names",
+      "polygon": [
+        [
+          100,
+          50
+        ],
+        [
+          1850,
+          50
+        ],
+        [
+          1850,
+          1040
+        ],
+        [
+          100,
+          1040
+        ]
+      ]
+    }
+  ]
+}

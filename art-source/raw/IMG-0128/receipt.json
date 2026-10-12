@@ -1,0 +1,76 @@
+{
+  "id": "IMG-0128",
+  "title": "Close-up: the playbill",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T01:11:41.929Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0106/IMG-0106-v1.png",
+          "sha256": "f01e26de5691f2b243172a846204485892d1861c99444ec51a46f250b33cf086"
+        }
+      ],
+      "mask": null,
+      "prompt": "A close-up of the old playbill in its frame beside the theatre doors from the reference image, in exactly the same monochrome greyscale ink-wash gothic style: a tattered theatre playbill fills the frame, with an engraved border of masks and a woodcut of a puppet magistrate holding a great book over tiny figures.\n\nThe large title reads exactly:\nTHE MAGISTRATE AND THE BOOK\nand a smaller line beneath reads exactly:\nAll parts played by the company\nNo other readable text. No people or figures. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0128-v1.png",
+          "sha256": "d719e6e89bc09992c17a3e9d652fb4d9c06c08b719c32900a50a511a29f2526c",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0128-v2.png",
+          "sha256": "0a9e59fef6c14c11dc24c540433dd87a99e184260ec509e07c9ae45f0190c6e9",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0128-v3.png",
+          "sha256": "bd622cb5f703976434434224d1965336faf40193bbe74ec59203f23156e7329d",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 96491,
+        "outputTokens": 792
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12daa-5cc4-74d0-9570-5b2aaa4cde70",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12daa-5cc4-74d0-9570-5b2aaa4cde70/exec-549f429f-2909-4131-be75-8adbabac837e.png",
+            "/Users/orcdev/.codex/generated_images/01a12daa-5cc4-74d0-9570-5b2aaa4cde70/exec-61a4581c-fccf-4688-bab9-333babc6d635.png",
+            "/Users/orcdev/.codex/generated_images/01a12daa-5cc4-74d0-9570-5b2aaa4cde70/exec-746728db-6452-4eb4-ab1a-803d141a59d3.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1024,
+              "height": 1536
+            },
+            {
+              "width": 1024,
+              "height": 1536
+            },
+            {
+              "width": 1448,
+              "height": 1086
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque edits using the reference image and your prompt exactly.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

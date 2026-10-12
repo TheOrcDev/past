@@ -470,3 +470,11 @@ Append-only. Newest at the bottom. UTC.
     doing. Draining the quarter gives three people their names back.
   - **See:** `docs/qa/008/ch2/`.
   - **Cost:** $0 (Sol).
+- 2026-10-12T14:30Z **Claude → @Operator:** Plan 008 slice 7 is done: chapter 3, The
+  Hall of Records, plays from the upper avenue to the covered bridge.
+  - **What's in it:** 12 rooms, and three people to talk to (the Hangman, the
+    Puppeteer and her play, the Registrar).
+  - **The playable memory:** you play as Ulric at his own desk, and strike
+    the Dove's name yourself.
+  - **See:** `docs/qa/008/ch3/`.
+  - **Cost:** $0.

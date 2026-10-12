@@ -1,0 +1,217 @@
+{
+  "display_name": "Backstage",
+  "now": "art-source/raw/IMG-0108/IMG-0108-v3.png",
+  "walk": [
+    [
+      200,
+      770
+    ],
+    [
+      1000,
+      760
+    ],
+    [
+      1700,
+      760
+    ],
+    [
+      1750,
+      1060
+    ],
+    [
+      200,
+      1060
+    ]
+  ],
+  "scale_zones": {
+    "far_y": 760,
+    "far_scale": 0.88,
+    "near_y": 1060,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      900,
+      900
+    ],
+    "from_stage": [
+      320,
+      830
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "to_stage",
+      "name": "Back to the stage",
+      "polygon": [
+        [
+          100,
+          760
+        ],
+        [
+          100,
+          200
+        ],
+        [
+          400,
+          200
+        ],
+        [
+          400,
+          760
+        ]
+      ],
+      "walk_to": [
+        300,
+        820
+      ],
+      "exit": {
+        "room": "theater_stage",
+        "entry": "from_backstage",
+        "direction": "left"
+      }
+    },
+    {
+      "id": "magistrate",
+      "name": "Magistrate puppet",
+      "polygon": [
+        [
+          1010,
+          540
+        ],
+        [
+          1010,
+          190
+        ],
+        [
+          1130,
+          190
+        ],
+        [
+          1130,
+          540
+        ]
+      ],
+      "walk_to": [
+        1080,
+        800
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "dove",
+      "name": "Dove puppet",
+      "polygon": [
+        [
+          1150,
+          540
+        ],
+        [
+          1150,
+          200
+        ],
+        [
+          1260,
+          200
+        ],
+        [
+          1260,
+          540
+        ]
+      ],
+      "walk_to": [
+        1200,
+        800
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "clerk",
+      "name": "Clerk puppet",
+      "polygon": [
+        [
+          1290,
+          540
+        ],
+        [
+          1290,
+          180
+        ],
+        [
+          1450,
+          180
+        ],
+        [
+          1450,
+          540
+        ]
+      ],
+      "walk_to": [
+        1360,
+        800
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "ropes",
+      "name": "Ropes",
+      "polygon": [
+        [
+          500,
+          600
+        ],
+        [
+          500,
+          0
+        ],
+        [
+          800,
+          0
+        ],
+        [
+          800,
+          600
+        ]
+      ],
+      "walk_to": [
+        650,
+        800
+      ]
+    },
+    {
+      "id": "trapdoor",
+      "name": "Trapdoor",
+      "polygon": [
+        [
+          1000,
+          950
+        ],
+        [
+          1000,
+          840
+        ],
+        [
+          1500,
+          840
+        ],
+        [
+          1500,
+          950
+        ]
+      ],
+      "walk_to": [
+        1250,
+        980
+      ]
+    }
+  ],
+  "effects": {
+    "preset": "interior",
+    "light": [
+      460,
+      400
+    ],
+    "aim": 160
+  },
+  "id": "theater_backstage"
+}

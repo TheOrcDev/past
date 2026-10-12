@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0125",
+  "title": "The Magistrate's office, then (the playable memory)",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T01:08:45.394Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0112/IMG-0112-v1.png",
+          "sha256": "134171a0878727d880dc66317770a865e5336b844b43d9e665319ceeec62b554"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit this image in place. Keep exactly the same composition, camera, perspective, horizon and every shape where it stands: the desk and its chair, the portrait, the window, the fireplace, the bookshelves and the door. Only change the time and the condition.\n\nRestore the same office to how it looked decades earlier, late at night while the Magistrate worked, in full rich warm color, as a painterly gothic matte painting: a roaring fire in the fireplace, the portrait whole showing a stern dark-robed man with his face lost in deep shadow, candles lit on the desk, and on the desk an enormous open ledger with a quill lying across it and an inkwell, warm firelight, a dark night outside the window. The key light comes from the same direction as in the original.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0125-v1.png",
+          "sha256": "6f1b09d4c7b3c86eecf60c6dbe711dca1a5cc931739ceb21a758bf28fd90b240",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0125-v2.png",
+          "sha256": "8b6c1aabf5471c8704c09030bf6b67f560ca58f655f86e713708683c9283ddec",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 69642,
+        "outputTokens": 448
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12da7-ab2c-7233-bb36-26717f9b3718",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12da7-ab2c-7233-bb36-26717f9b3718/exec-547d5594-e414-497a-88a0-4f747aa7fd5f.png",
+            "/Users/orcdev/.codex/generated_images/01a12da7-ab2c-7233-bb36-26717f9b3718/exec-ad2112d5-2523-4ced-a096-ccddaff5462b.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate two edits using the supplied image and your exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

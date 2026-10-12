@@ -1,0 +1,39 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/closeups/ledger_index/ledger_index.gd" id="1_xxh87"]
+[ext_resource type="Texture2D" path="res://content/closeups/ledger_index/art/bg.png" id="2_5e8te"]
+[ext_resource type="Script" path="res://src/core/hotspot.gd" id="3_evkno"]
+
+[node name="LedgerIndex" type="Node2D" unique_id=2047776176]
+script = ExtResource("1_xxh87")
+closeup_id = &"ledger_index"
+
+[node name="Background" type="Sprite2D" parent="." unique_id=945267395]
+texture = ExtResource("2_5e8te")
+centered = false
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=1747804755]
+
+[node name="Dove" type="Area2D" parent="Hotspots" unique_id=1875561437]
+script = ExtResource("3_evkno")
+id = &"dove"
+display_name = "An entry"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Dove" unique_id=2116624113]
+polygon = PackedVector2Array(180, 220, 920, 220, 920, 350, 180, 350)
+
+[node name="Last" type="Area2D" parent="Hotspots" unique_id=5435274]
+script = ExtResource("3_evkno")
+id = &"last"
+display_name = "The last entry"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Last" unique_id=1770683200]
+polygon = PackedVector2Array(1360, 830, 1760, 830, 1760, 950, 1360, 950)
+
+[node name="Names" type="Area2D" parent="Hotspots" unique_id=44808504]
+script = ExtResource("3_evkno")
+id = &"names"
+display_name = "Index of names"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Names" unique_id=329650267]
+polygon = PackedVector2Array(100, 50, 1850, 50, 1850, 1040, 100, 1040)

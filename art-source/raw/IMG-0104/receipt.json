@@ -1,0 +1,76 @@
+{
+  "id": "IMG-0104",
+  "title": "The upper avenue, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T00:58:54.892Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0063/IMG-0063-v1.png",
+          "sha256": "58db2e7b42e05e4f95a7e387f0dffdbbaedab5f895866a286b94d3bcf3cbeae8"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: a grand, severe gothic avenue in the upper city at night, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: Tall stern buildings with columns and dark windows line both sides. Left of centre, a tall stone plinth with a robed magistrate's statue whose head has been knocked off; edicts are carved into the plinth. On the left, an archway leading off toward a bare square with a gallows silhouetted beyond. Centre right, the avenue continues to a baroque theatre front with a dark marquee. At the far right end of the avenue, the vast dark facade and great gate of the Hall of Records. Iron lamp posts with cold flames.\n\nThe lower third of the image is open, walkable ground: the broad flagstone avenue runs across the whole lower third. It is lit by pale moonlight with drifting fog or haze behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0104-v1.png",
+          "sha256": "712ceb4dc5ed30a1de1ca322185984203fe6fa266b33c283a2d5d78f1528eb48",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0104-v2.png",
+          "sha256": "b6826a8d51f5691722c28ed7033e16bd8f2c05570614c3ccac2354c3931e8d11",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0104-v3.png",
+          "sha256": "c3a93c64d0e1405635e0e55e24ee9a72d229392e3373ba4f4d5c4ca08ce13758",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 262978,
+        "outputTokens": 1673
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d9e-a988-78c0-a1d4-d788f4c721ee",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d9e-a988-78c0-a1d4-d788f4c721ee/exec-f3dc6e06-46f7-4af6-8755-dddef35a1800.png",
+            "/Users/orcdev/.codex/generated_images/01a12d9e-a988-78c0-a1d4-d788f4c721ee/exec-5059d569-67c0-4a14-a3b3-389b6497d758.png",
+            "/Users/orcdev/.codex/generated_images/01a12d9e-a988-78c0-a1d4-d788f4c721ee/exec-587c8a5f-ef7f-49f9-8b93-7fdc75e339d4.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 2123,
+              "height": 741
+            },
+            {
+              "width": 2123,
+              "height": 741
+            },
+            {
+              "width": 2123,
+              "height": 741
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque images using the attached reference and your prompt exactly.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

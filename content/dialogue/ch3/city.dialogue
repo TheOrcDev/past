@@ -1,0 +1,296 @@
+~ avenue_arrival
+
+Unknown: The upper city. Mine, apparently. I'd like to speak to whoever designed it. Oh. [ID:CH3_AVENUE_ARRIVAL_1]
+
+=> END
+
+~ statue_look
+
+Unknown: A statue of a magistrate. Someone took his head off. I can't say I blame them. [ID:CH3_STATUE_LOOK_1]
+
+=> END
+
+~ statue_use
+
+Unknown: The robes are mine. The ring on the stone hand is mine. The head, wisely, is elsewhere. [ID:CH3_STATUE_USE_1]
+
+=> END
+
+~ plinth_look
+
+Unknown: Edicts carved into the plinth. "Order is memory's mercy." I wrote that. I can tell. It's terrible. [ID:CH3_PLINTH_LOOK_1]
+
+=> END
+
+~ lamps3_look
+
+Unknown: Lamps all the way down the avenue, burning cold and very straight. [ID:CH3_LAMPS_LOOK_1]
+
+=> END
+
+~ gallows_arrival
+
+Unknown: A gallows. I have a feeling we've met. [ID:CH3_GALLOWS_ARRIVAL_1]
+
+=> END
+
+~ gallows_look
+
+Unknown: One beam, one rope, one very patient platform. [ID:CH3_GALLOWS_LOOK_1]
+
+=> END
+
+~ beam_use
+
+Unknown: The wood is worn smooth where hands held on. One pair of hands, holding very tight. [ID:CH3_BEAM_USE_1]
+
+=> END
+
+~ refusal_return
+
+Unknown: The square full of people. A nameless man on the platform, and a hangman who won't pull the lever. [ID:CH3_REFUSAL_RETURN_1]
+Unknown: "I don't hang men who can't say who they are." And the burned figure in black takes out a book. [ID:CH3_REFUSAL_RETURN_2]
+Unknown: One stroke of a pen, and the big man forgets his own name. Then he pulls the lever. [ID:CH3_REFUSAL_RETURN_3]
+
+=> END
+
+~ market_frames_look
+
+Unknown: A flower market's frames, rusted bare. Somebody sold roses here, before there was a gallows to look at. [ID:CH3_MARKET_FRAMES_LOOK_1]
+
+=> END
+
+~ hangman_look
+
+Unknown: A huge man with a coil of rope and very gentle hands. [ID:CH3_HM_LOOK_1]
+
+=> END
+
+~ hangman_talk
+
+if not GameState.get_flag("hangman_met")
+	do GameState.set_flag("hangman_met")
+	Hangman: Sorry. Didn't see you there. Nobody comes to the square, these days. [ID:CH3_HM_MEET_1]
+	Hangman: I don't blame them. I wouldn't, if I didn't work here. [ID:CH3_HM_MEET_2]
+=> hangman_ask
+
+~ hangman_ask
+
+Hangman: Something I can do? Short of the obvious. [ID:CH3_HM_ASK]
+- Who was the last man you hanged? [ID:CH3_HM_ASK_LAST]
+	Hangman: A man the Registrar brought me, at night. No name. They'd taken it off him in the book first. [ID:CH3_HM_LAST_1]
+	Hangman: He didn't struggle. He asked me to be quick, and he said sorry. Not to me. To someone who wasn't there. [ID:CH3_HM_LAST_2]
+	Hangman: I've thought about that sorry every day since. Sorry. [ID:CH3_HM_LAST_3]
+	=> hangman_ask
+- Why is the theatre chained? [if not GameState.get_flag("got_chain_key") /] [ID:CH3_HM_ASK_THEATRE]
+	Hangman: Orders. The Registrar's. Nobody gathers, nobody remembers together. I keep the key. [ID:CH3_HM_THEATRE_1]
+	Hangman: I keep everything I'm given. That's the sort of man I am, apparently. [ID:CH3_HM_THEATRE_2]
+	=> hangman_ask
+- You refused, once. I saw it. [if GameState.get_flag("refusal_seen") and not GameState.get_flag("got_chain_key") /] [ID:CH3_HM_ASK_REFUSED]
+	do GameState.set_flag("got_chain_key")
+	Hangman: I... refused? [ID:CH3_HM_REFUSED_1]
+	Unknown: A nameless man, on that platform. You said you don't hang men who can't say who they are. [ID:CH3_HM_REFUSED_2]
+	Hangman: That sounds like someone I'd like to have been. [ID:CH3_HM_REFUSED_3]
+	Hangman: Here. Take the theatre key. Let them gather. Let them remember together, if they can. [ID:CH3_HM_REFUSED_4]
+	do Inventory.add("chain_key")
+	=> hangman_ask
+- It was me you hanged. [if GameState.get_flag("knows_ulric") and not GameState.get_flag("hangman_told") /] [ID:CH3_HM_ASK_ME]
+	do GameState.set_flag("hangman_told")
+	Hangman: You. [ID:CH3_HM_ME_1]
+	Hangman: I always wondered whether that man deserved it. [ID:CH3_HM_ME_2]
+	Unknown: Did he? [ID:CH3_HM_ME_3]
+	Hangman: Some of it. [ID:CH3_HM_ME_4]
+	Hangman: Not the sorry, though. He didn't deserve to have to say that alone. [ID:CH3_HM_ME_5]
+	=> hangman_ask
+- Goodbye. [ID:CH3_HM_ASK_BYE]
+	Hangman: Mind how you go. Mind it very carefully. [ID:CH3_HM_BYE]
+	=> END
+
+~ arch_back_look
+
+Unknown: Back to the avenue. [ID:CH3_ARCH_BACK_LOOK_1]
+
+=> END
+
+~ facade_arrival
+
+Unknown: A theatre, chained shut. Somebody decided this city had had enough stories. [ID:CH3_FACADE_ARRIVAL_1]
+
+=> END
+
+~ theater_doors_look
+
+Unknown: Big doors, bigger chain. [ID:CH3_DOORS_LOOK_1]
+
+=> END
+
+~ theater_doors_chained
+
+Unknown: Chained and padlocked. The Hangman keeps a lot of keys. [ID:CH3_DOORS_CHAINED_1]
+
+=> END
+
+~ theater_doors_unchained
+
+Unknown: The chain falls off like it's been waiting to. [ID:CH3_DOORS_UNCHAINED_1]
+
+=> END
+
+~ marquee_look
+
+Unknown: A marquee, every bulb dark. It used to spell something. [ID:CH3_MARQUEE_LOOK_1]
+
+=> END
+
+~ posters_look
+
+Unknown: Posters for plays nobody remembers. The paper's held on better than the audiences. [ID:CH3_POSTERS_LOOK_1]
+
+=> END
+
+~ playbill_title_look
+
+Unknown: "The Magistrate and the Book." Tonight and every night. [ID:CH3_PLAYBILL_TITLE_LOOK_1]
+
+=> END
+
+~ playbill_cast_look
+
+Unknown: "All parts played by the company." A company of one, I'd guess. [ID:CH3_PLAYBILL_CAST_LOOK_1]
+
+=> END
+
+~ stage_arrival
+
+Unknown: A theatre with nobody in the seats, and somebody on the stage anyway. [ID:CH3_STAGE_ARRIVAL_1]
+
+=> END
+
+~ seats_look
+
+Unknown: Rows of empty seats, all facing the right way, just in case. [ID:CH3_SEATS_LOOK_1]
+
+=> END
+
+~ boards_use
+
+Unknown: The boards remember footsteps. Hundreds of them, coming in to sit down. [ID:CH3_BOARDS_USE_1]
+
+=> END
+
+~ opening_night_return
+
+Unknown: Every seat full. Candles in the boxes, the curtain going up, a whole city holding its breath at once. [ID:CH3_OPENING_RETURN_1]
+
+=> END
+
+~ booth_look
+
+Unknown: A puppet booth, centre stage. Small, but it's clearly the most important thing in the building. [ID:CH3_BOOTH_LOOK_1]
+
+=> END
+
+~ puppeteer_look
+
+Unknown: A woman in a mask, with a magistrate on one hand and a dove on the other. [ID:CH3_PUP_LOOK_1]
+
+=> END
+
+~ puppeteer_talk
+
+if not GameState.get_flag("puppeteer_met")
+	do GameState.set_flag("puppeteer_met")
+	Puppeteer: An audience! A real one! Sit, sit. Anywhere. Everywhere's free. [ID:CH3_PUP_MEET_1]
+	Puppeteer: I play every night, you know. To the seats. The seats are very polite. [ID:CH3_PUP_MEET_2]
+=> puppeteer_ask
+
+~ puppeteer_ask
+
+Puppeteer: Well, my audience? [ID:CH3_PUP_ASK]
+- Show me the play. [ID:CH3_PUP_ASK_SHOW]
+	do GameState.set_flag("saw_show")
+	Puppeteer: Ladies and gentlemen. Gentleman. Shadow. The Magistrate and the Book! [ID:CH3_SHOW_1]
+	Puppeteer: (as the Magistrate) A name is a privilege! I shall keep them all in my book, safe from the people who'd misuse them. [ID:CH3_SHOW_2]
+	Puppeteer: (as the Clerk) And where shall we keep the book, Your Honour? [ID:CH3_SHOW_3]
+	Puppeteer: (as the Magistrate) In a vault behind your own chamber, Clerk, that opens to one word. I'll write it once, at my own desk, and never again. [ID:CH3_SHOW_4]
+	Puppeteer: (as the Dove) You can't take all their names! I'll sing them, every one, so somebody remembers. [ID:CH3_SHOW_5]
+	Puppeteer: (as the Magistrate) Then I'll take yours too. Watch me. [ID:CH3_SHOW_6]
+	Puppeteer: (as the Clerk) And who will take yours, Your Honour? [ID:CH3_SHOW_7]
+	Puppeteer: Curtain! Applause is customary. [ID:CH3_SHOW_8]
+	Unknown: Where did you learn this play? [ID:CH3_SHOW_9]
+	Puppeteer: I don't remember writing it. I remember a clerk who watched from the back every night, writing everything down. [ID:CH3_SHOW_10]
+	Puppeteer: He left his quill in my clerk puppet's hand the night the lights went out. Take it, if you like. Props should go home. [ID:CH3_SHOW_11]
+	=> puppeteer_ask
+- Who are you? [ID:CH3_PUP_ASK_WHO]
+	Puppeteer: The company. Leading lady, villain, chorus, the orchestra when I hum. [ID:CH3_PUP_WHO_1]
+	Puppeteer: I had a name once. It was on the posters, very big. Now the posters just say the company. [ID:CH3_PUP_WHO_2]
+	=> puppeteer_ask
+- Goodbye. [ID:CH3_PUP_ASK_BYE]
+	Puppeteer: Leaving before the encore. Critics. [ID:CH3_PUP_BYE]
+	=> END
+
+~ foyer_look
+
+Unknown: Back out through the foyer. [ID:CH3_FOYER_LOOK_1]
+
+=> END
+
+~ backstage_arrival
+
+Unknown: Backstage. Ropes, sandbags and three puppets watching me. [ID:CH3_BACKSTAGE_ARRIVAL_1]
+
+=> END
+
+~ puppet_magistrate_look
+
+Unknown: The Magistrate puppet. Big robes, big book, small heart. It's an unflattering likeness. It's a good likeness. [ID:CH3_PUPPET_MAG_LOOK_1]
+
+=> END
+
+~ puppet_dove_look
+
+Unknown: The Dove puppet, in a little veil. Someone carved her with care. [ID:CH3_PUPPET_DOVE_LOOK_1]
+
+=> END
+
+~ puppet_clerk_look
+
+Unknown: The Clerk puppet, thin as a ruler, holding a real quill. [ID:CH3_PUPPET_CLERK_LOOK_1]
+
+=> END
+
+~ puppet_clerk_use
+
+Unknown: I'm not taking a prop without asking the company. Theatres have rules. [ID:CH3_PUPPET_CLERK_USE_1]
+
+=> END
+
+~ puppet_clerk_take
+
+Unknown: A real clerk's quill, ink still on the nib. Thank you, Clerk. [ID:CH3_PUPPET_CLERK_TAKE_1]
+
+=> END
+
+~ puppet_clerk_empty
+
+Unknown: The Clerk's hands are empty now. He looks lighter. [ID:CH3_PUPPET_CLERK_EMPTY_1]
+
+=> END
+
+~ ropes_look
+
+Unknown: Ropes and sandbags, holding up the scenery of plays nobody watches. [ID:CH3_ROPES_LOOK_1]
+
+=> END
+
+~ trapdoor_look
+
+Unknown: A trapdoor, for villains who need to disappear. Noted. [ID:CH3_TRAPDOOR_LOOK_1]
+
+=> END
+
+~ wings_look
+
+Unknown: Back to the stage. [ID:CH3_WINGS_LOOK_1]
+
+=> END

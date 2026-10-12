@@ -1,0 +1,250 @@
+{
+  "display_name": "The Magistrate's office",
+  "now": "art-source/raw/IMG-0112/IMG-0112-v1.png",
+  "walk": [
+    [
+      200,
+      900
+    ],
+    [
+      700,
+      780
+    ],
+    [
+      1400,
+      780
+    ],
+    [
+      1800,
+      900
+    ],
+    [
+      1800,
+      1060
+    ],
+    [
+      200,
+      1060
+    ]
+  ],
+  "scale_zones": {
+    "far_y": 780,
+    "far_scale": 0.88,
+    "near_y": 1060,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      1000,
+      900
+    ],
+    "from_hall": [
+      300,
+      960
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "door",
+      "name": "Back to the hall",
+      "polygon": [
+        [
+          100,
+          880
+        ],
+        [
+          100,
+          120
+        ],
+        [
+          300,
+          120
+        ],
+        [
+          300,
+          880
+        ]
+      ],
+      "walk_to": [
+        320,
+        950
+      ],
+      "exit": {
+        "room": "hall_of_records",
+        "entry": "from_office",
+        "direction": "left"
+      }
+    },
+    {
+      "id": "desk",
+      "name": "Desk",
+      "polygon": [
+        [
+          720,
+          770
+        ],
+        [
+          720,
+          520
+        ],
+        [
+          1300,
+          520
+        ],
+        [
+          1300,
+          770
+        ]
+      ],
+      "walk_to": [
+        1000,
+        830
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "ledger",
+      "name": "The Ledger",
+      "polygon": [
+        [
+          880,
+          620
+        ],
+        [
+          880,
+          520
+        ],
+        [
+          1160,
+          520
+        ],
+        [
+          1160,
+          620
+        ]
+      ],
+      "walk_to": [
+        1000,
+        830
+      ],
+      "era": "then",
+      "pick_priority": 3
+    },
+    {
+      "id": "fire",
+      "name": "Fire",
+      "polygon": [
+        [
+          1650,
+          760
+        ],
+        [
+          1650,
+          500
+        ],
+        [
+          1880,
+          500
+        ],
+        [
+          1880,
+          760
+        ]
+      ],
+      "walk_to": [
+        1650,
+        870
+      ],
+      "era": "then",
+      "pick_priority": 3
+    },
+    {
+      "id": "portrait",
+      "name": "Slashed portrait",
+      "polygon": [
+        [
+          520,
+          500
+        ],
+        [
+          520,
+          100
+        ],
+        [
+          700,
+          100
+        ],
+        [
+          700,
+          500
+        ]
+      ],
+      "walk_to": [
+        620,
+        860
+      ]
+    },
+    {
+      "id": "window",
+      "name": "Window",
+      "polygon": [
+        [
+          900,
+          500
+        ],
+        [
+          900,
+          0
+        ],
+        [
+          1260,
+          0
+        ],
+        [
+          1260,
+          500
+        ]
+      ],
+      "walk_to": [
+        1100,
+        820
+      ]
+    },
+    {
+      "id": "fireplace",
+      "name": "Fireplace",
+      "polygon": [
+        [
+          1600,
+          760
+        ],
+        [
+          1600,
+          380
+        ],
+        [
+          1900,
+          380
+        ],
+        [
+          1900,
+          760
+        ]
+      ],
+      "walk_to": [
+        1650,
+        870
+      ]
+    }
+  ],
+  "effects": {
+    "preset": "interior",
+    "light": [
+      1080,
+      150
+    ],
+    "aim": 190
+  },
+  "id": "magistrate_office",
+  "then": "art-source/raw/IMG-0125/IMG-0125-v1.png"
+}

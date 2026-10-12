@@ -1,0 +1,77 @@
+{
+  "id": "IMG-0116",
+  "title": "NPC: the Hangman",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T00:58:54.892Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "1440x2560",
+      "quality": "high",
+      "n": 3,
+      "background": "transparent",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0013/IMG-0013-v2.png",
+          "sha256": "aea3ec9ef0da502490ee6ecc801c0a0d4cd1f6bcf806d4f9b16ec70c8cb05977"
+        }
+      ],
+      "mask": null,
+      "prompt": "A single full-body character for a dark gothic point-and-click adventure game, painted in the same monochrome greyscale ink-wash matte-painting style as the reference image: the city's Hangman: a huge, broad, heavy man in a long rough hooded smock belted with rope, a coil of rope over one shoulder, enormous gentle hands.\n\nThey are a grey shade of a person: solid, made of mid and light greys with soft ink texture, never pure black, with no visible face (his face is hidden in the shadow of his deep hood). Pose: standing with his big hands folded in front of him, head slightly bowed, facing three-quarters to the viewer's right. Shown whole from head to feet, facing three-quarters to the viewer's left, filling most of the image height, with a little space around them. Even soft light from the upper left with a gentle cool rim light. On a fully transparent background, with no ground, shadow or scenery.\n\nNo text, labels, letters or numbers. No other figures. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0116-v1.png",
+          "sha256": "2c9d1abf8db2aa9c9a896c88a9a11ed67515ed855e258189abf87220c241f606",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0116-v2.png",
+          "sha256": "497758c48bdfd8059dcaebfdc8ebec8276569a4cb444b967a55f131ab4f9d515",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0116-v3.png",
+          "sha256": "2f84f0ccc6f85e0bf1b6d0031b41d79939a4bdaa86787b212766a0694f88e476",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 125052,
+        "outputTokens": 1160
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d9e-a988-7270-b9e5-db9bedbfd475",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d9e-a988-7270-b9e5-db9bedbfd475/exec-790c2f11-6b01-42ef-bcb3-d4ababb48006.png",
+            "/Users/orcdev/.codex/generated_images/01a12d9e-a988-7270-b9e5-db9bedbfd475/exec-7684c9ae-ac7a-4197-be7d-daac5bda2d81.png",
+            "/Users/orcdev/.codex/generated_images/01a12d9e-a988-7270-b9e5-db9bedbfd475/exec-84ece69b-a81b-4652-bb89-47991526f667.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1024,
+              "height": 1536
+            },
+            {
+              "width": 1024,
+              "height": 1536
+            },
+            {
+              "width": 1024,
+              "height": 1536
+            }
+          ],
+          "messages": [
+            "I’ll generate three images from the reference using your prompt exactly, with transparent backgrounds.",
+            "Two images are generated. I’m generating the third with the same prompt and reference.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

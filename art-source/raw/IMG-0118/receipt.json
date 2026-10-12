@@ -1,0 +1,77 @@
+{
+  "id": "IMG-0118",
+  "title": "NPC: the Registrar",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T01:03:12.967Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "1440x2560",
+      "quality": "high",
+      "n": 3,
+      "background": "transparent",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0013/IMG-0013-v2.png",
+          "sha256": "aea3ec9ef0da502490ee6ecc801c0a0d4cd1f6bcf806d4f9b16ec70c8cb05977"
+        }
+      ],
+      "mask": null,
+      "prompt": "A single full-body character for a dark gothic point-and-click adventure game, painted in the same monochrome greyscale ink-wash matte-painting style as the reference image: the Registrar: a very tall, very thin clerk in a long black frock coat with a high stiff collar, an extremely tall stovepipe hat, ink-stained cuffs, a quill pen tucked behind one ear, holding a slim ledger against his chest.\n\nThey are a grey shade of a person: solid, made of mid and light greys with soft ink texture, never pure black, with no visible face (his face is lost in the shadow under the brim of his tall hat and his high collar). Pose: standing perfectly upright and precise, both hands holding the ledger to his chest, facing three-quarters to the viewer's right. Shown whole from head to feet, facing three-quarters to the viewer's left, filling most of the image height, with a little space around them. Even soft light from the upper left with a gentle cool rim light. On a fully transparent background, with no ground, shadow or scenery.\n\nNo text, labels, letters or numbers. No other figures. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0118-v1.png",
+          "sha256": "3f40abf9995cbcb51935d7290bed056cd379d19e5344a3db40bb039f56c9a043",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0118-v2.png",
+          "sha256": "dc989cbacf53b4f9786d7692426ce6138a847321b010719f281868984894b786",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0118-v3.png",
+          "sha256": "6994f3b8036977be068e3f0c26e32f25711695f0ac980962bf59a85823341f43",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 135694,
+        "outputTokens": 723
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12da2-98a1-7182-b932-c8e5792225d3",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12da2-98a1-7182-b932-c8e5792225d3/exec-531b5ae2-fba8-4f3e-8c78-0ba1152cb32e.png",
+            "/Users/orcdev/.codex/generated_images/01a12da2-98a1-7182-b932-c8e5792225d3/exec-f9152f2e-c76c-40f4-a4a1-2d59b68c225f.png",
+            "/Users/orcdev/.codex/generated_images/01a12da2-98a1-7182-b932-c8e5792225d3/exec-2e6479d8-5602-431d-bfa3-6d9c9367cf0f.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1024,
+              "height": 1536
+            },
+            {
+              "width": 1024,
+              "height": 1536
+            },
+            {
+              "width": 1024,
+              "height": 1536
+            }
+          ],
+          "messages": [
+            "I’ll generate three portrait variations using the attached reference and your exact prompt.",
+            "Two images are generated. I’m generating the third with the same reference and exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

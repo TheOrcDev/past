@@ -1,0 +1,276 @@
+{
+  "display_name": "Hall of Records",
+  "now": "art-source/raw/IMG-0110/IMG-0110-v2.png",
+  "walk": [
+    [
+      350,
+      1060
+    ],
+    [
+      700,
+      860
+    ],
+    [
+      950,
+      660
+    ],
+    [
+      1250,
+      660
+    ],
+    [
+      1500,
+      860
+    ],
+    [
+      1700,
+      1060
+    ]
+  ],
+  "scale_zones": {
+    "far_y": 660,
+    "far_scale": 0.62,
+    "near_y": 1060,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      1000,
+      900
+    ],
+    "from_gate": [
+      600,
+      1010
+    ],
+    "from_stacks": [
+      960,
+      690
+    ],
+    "from_chamber": [
+      1060,
+      680
+    ],
+    "from_office": [
+      1200,
+      700
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "to_gate",
+      "name": "Out to the gate",
+      "polygon": [
+        [
+          0,
+          1060
+        ],
+        [
+          0,
+          940
+        ],
+        [
+          300,
+          940
+        ],
+        [
+          300,
+          1060
+        ]
+      ],
+      "walk_to": [
+        450,
+        1030
+      ],
+      "exit": {
+        "room": "records_gate",
+        "entry": "from_hall",
+        "direction": "down"
+      }
+    },
+    {
+      "id": "register",
+      "name": "Visitors' register",
+      "polygon": [
+        [
+          40,
+          880
+        ],
+        [
+          40,
+          570
+        ],
+        [
+          350,
+          570
+        ],
+        [
+          350,
+          880
+        ]
+      ],
+      "walk_to": [
+        600,
+        960
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "stacks_door",
+      "name": "To the stacks",
+      "polygon": [
+        [
+          650,
+          680
+        ],
+        [
+          650,
+          380
+        ],
+        [
+          820,
+          380
+        ],
+        [
+          820,
+          680
+        ]
+      ],
+      "walk_to": [
+        960,
+        690
+      ],
+      "exit": {
+        "room": "archive_stacks",
+        "entry": "from_hall",
+        "direction": "up",
+        "requires_flag": "signed_in"
+      }
+    },
+    {
+      "id": "chamber_door",
+      "name": "Registrar's door",
+      "polygon": [
+        [
+          990,
+          670
+        ],
+        [
+          990,
+          420
+        ],
+        [
+          1130,
+          420
+        ],
+        [
+          1130,
+          670
+        ]
+      ],
+      "walk_to": [
+        1060,
+        680
+      ],
+      "exit": {
+        "room": "registrar_chamber",
+        "entry": "from_hall",
+        "direction": "up",
+        "requires_flag": "signed_in"
+      }
+    },
+    {
+      "id": "office_door",
+      "name": "Magistrate's door",
+      "polygon": [
+        [
+          1210,
+          670
+        ],
+        [
+          1210,
+          380
+        ],
+        [
+          1390,
+          380
+        ],
+        [
+          1390,
+          670
+        ]
+      ],
+      "walk_to": [
+        1200,
+        700
+      ],
+      "exit": {
+        "room": "magistrate_office",
+        "entry": "from_hall",
+        "direction": "up",
+        "requires_flag": "office_permitted"
+      }
+    },
+    {
+      "id": "drawers",
+      "name": "Drawers",
+      "polygon": [
+        [
+          1500,
+          620
+        ],
+        [
+          1500,
+          0
+        ],
+        [
+          1900,
+          0
+        ],
+        [
+          1900,
+          620
+        ]
+      ],
+      "walk_to": [
+        1400,
+        800
+      ]
+    },
+    {
+      "id": "desks",
+      "name": "Clerks' desks",
+      "polygon": [
+        [
+          460,
+          840
+        ],
+        [
+          460,
+          650
+        ],
+        [
+          880,
+          650
+        ],
+        [
+          880,
+          840
+        ]
+      ],
+      "walk_to": [
+        750,
+        880
+      ]
+    }
+  ],
+  "effects": {
+    "preset": "interior",
+    "light": [
+      1020,
+      120
+    ],
+    "aim": 180
+  },
+  "id": "hall_of_records",
+  "then": "art-source/raw/IMG-0124/IMG-0124-v1.png"
+}

@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0120",
+  "title": "The upper avenue, then",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T01:06:30.650Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0104/IMG-0104-v1.png",
+          "sha256": "712ceb4dc5ed30a1de1ca322185984203fe6fa266b33c283a2d5d78f1528eb48"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit this image in place. Keep exactly the same composition, camera, perspective, horizon and every shape where it stands: the buildings, the archway, the plinth and the statue, the lamps, the theatre and the Hall of Records. Only change the time and the condition.\n\nRestore the same avenue to how it looked decades earlier, on the day of a grand parade, in full rich warm color, as a painterly gothic matte painting: the statue whole with a stern bearded head and gilded robes, blue and gold banners hanging from every building, bunting across the avenue, flower petals on the paving, lamps lit warm, a bright afternoon sky. The key light comes from the same direction as in the original.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0120-v1.png",
+          "sha256": "48a33114e6610b509d2e99318aea0d497094f9ed607bad800ad4a61384e2e875",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0120-v2.png",
+          "sha256": "22036155aca2fc50c3d47024f46ac1c59667bc3c6c4ac771fe143a6c0a0b28fa",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 198533,
+        "outputTokens": 894
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12da5-9cf4-74e0-91c2-fab68104d532",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12da5-9cf4-74e0-91c2-fab68104d532/exec-2cf47176-e7c9-408d-881e-a22ac7347824.png",
+            "/Users/orcdev/.codex/generated_images/01a12da5-9cf4-74e0-91c2-fab68104d532/exec-437973c5-449e-4264-946c-bf14ef16c9fd.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 2122,
+              "height": 741
+            },
+            {
+              "width": 2123,
+              "height": 741
+            }
+          ],
+          "messages": [
+            "I’ll generate two edits from the attached image using your exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

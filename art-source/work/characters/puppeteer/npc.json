@@ -1,0 +1,214 @@
+{
+  "speaker": "Puppeteer",
+  "painting": "art-source/raw/IMG-0117/IMG-0117-v2.png",
+  "height": 480,
+  "feet": [
+    650,
+    1500
+  ],
+  "speech": [
+    650,
+    0
+  ],
+  "subtitle_color": [
+    0.95,
+    0.8,
+    0.88
+  ],
+  "aliases": [
+    "Lisette"
+  ],
+  "bones": [
+    {
+      "name": "Base",
+      "parent": "",
+      "from": [
+        650,
+        1500
+      ],
+      "to": [
+        650,
+        1100
+      ]
+    },
+    {
+      "name": "Body",
+      "parent": "Base",
+      "from": [
+        620,
+        1050
+      ],
+      "to": [
+        620,
+        380
+      ]
+    },
+    {
+      "name": "Head",
+      "parent": "Body",
+      "from": [
+        620,
+        330
+      ],
+      "to": [
+        620,
+        30
+      ]
+    },
+    {
+      "name": "PuppetL",
+      "parent": "Body",
+      "from": [
+        520,
+        460
+      ],
+      "to": [
+        260,
+        200
+      ]
+    },
+    {
+      "name": "PuppetR",
+      "parent": "Body",
+      "from": [
+        760,
+        470
+      ],
+      "to": [
+        920,
+        320
+      ]
+    }
+  ],
+  "motions": {
+    "idle": {
+      "loop": true,
+      "bones": {
+        "Body": [
+          0.7,
+          0.2,
+          0.0
+        ],
+        "Head": [
+          1.2,
+          0.15,
+          0.6
+        ],
+        "PuppetL": [
+          3.0,
+          0.4,
+          0.0
+        ],
+        "PuppetR": [
+          3.0,
+          0.35,
+          1.5
+        ]
+      }
+    },
+    "talk_a": {
+      "loop": true,
+      "bones": {
+        "Body": [
+          0.8,
+          0.3,
+          0.0
+        ],
+        "Head": [
+          1.4,
+          0.25,
+          1.0
+        ]
+      },
+      "voice": {
+        "Head": 4.0,
+        "PuppetL": -10.0
+      }
+    },
+    "talk_b": {
+      "loop": true,
+      "bones": {
+        "Body": [
+          1.0,
+          0.3,
+          0.0
+        ],
+        "Head": [
+          1.4,
+          0.3,
+          0.5
+        ]
+      },
+      "voice": {
+        "Head": -4.0,
+        "PuppetR": 12.0
+      }
+    },
+    "perform": {
+      "loop": false,
+      "length": 2.4,
+      "keys": {
+        "PuppetL": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.4,
+            -14.0
+          ],
+          [
+            0.8,
+            6.0
+          ],
+          [
+            1.2,
+            -14.0
+          ],
+          [
+            2.4,
+            0.0
+          ]
+        ],
+        "PuppetR": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.6,
+            14.0
+          ],
+          [
+            1.2,
+            -6.0
+          ],
+          [
+            1.8,
+            14.0
+          ],
+          [
+            2.4,
+            0.0
+          ]
+        ],
+        "Body": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.2,
+            3.0
+          ],
+          [
+            2.4,
+            0.0
+          ]
+        ]
+      }
+    }
+  },
+  "id": "puppeteer",
+  "grid": 28
+}

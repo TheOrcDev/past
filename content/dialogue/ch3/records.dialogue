@@ -1,0 +1,392 @@
+~ gate_arrival3
+
+Unknown: The Hall of Records. Where they kept the names. Where I kept the names. [ID:CH3_GATE_ARRIVAL_1]
+
+=> END
+
+~ records_gate_look
+
+Unknown: A gate as tall as a church, and a lock shaped like a seal. [ID:CH3_RGATE_LOOK_1]
+
+=> END
+
+~ records_gate_sealed
+
+Unknown: Sealed. I think I know the seal. [ID:CH3_RGATE_SEALED_1]
+
+=> END
+
+~ records_gate_open
+
+Unknown: The ring turns the lock. Of course it does. The building knows its master. [ID:CH3_RGATE_OPEN_1]
+
+=> END
+
+~ clerks_look
+
+Unknown: Stone clerks, holding stone books, and the books are blank. Very fitting. [ID:CH3_CLERKS_LOOK_1]
+
+=> END
+
+~ windows_look
+
+Unknown: A thousand windows, every one dark. A thousand desks behind them, probably. [ID:CH3_WINDOWS_LOOK_1]
+
+=> END
+
+~ hall_arrival
+
+Unknown: Drawers, floor to ceiling, as far as the dark goes. Every one with a name in it. Struck through. [ID:CH3_HALL_ARRIVAL_1]
+
+=> END
+
+~ drawers_look
+
+Unknown: Drawers full of index cards. Name, address, date struck. Neat handwriting. I'd recognise it anywhere now. [ID:CH3_DRAWERS_LOOK_1]
+
+=> END
+
+~ desks_look
+
+Unknown: Long desks for clerks who no longer remember they're clerks. [ID:CH3_DESKS_LOOK_1]
+
+=> END
+
+~ register_look3
+
+Unknown: A visitors' register, and an inkwell. "All who enter shall sign." [ID:CH3_REGISTER_LOOK_1]
+
+=> END
+
+~ register_unsigned
+
+Unknown: I need something to write with. My finger isn't up to it. [ID:CH3_REGISTER_UNSIGNED_1]
+
+=> END
+
+~ register_signed
+
+Unknown: "Unknown." In a clerk's quill, in the Hall of Records. Someone will appreciate the joke. [ID:CH3_REGISTER_SIGNED_1]
+
+=> END
+
+~ inner_doors_unsigned
+
+Unknown: "All who enter shall sign." The doors seem to mean it. [ID:CH3_INNER_UNSIGNED_1]
+
+=> END
+
+~ office_door_look
+
+Unknown: A grand carved door. The Magistrate's, by the look of all that self-importance. [ID:CH3_OFFICE_DOOR_LOOK_1]
+
+=> END
+
+~ office_door_locked
+
+Unknown: Locked. Somebody holds the key to my office, and it isn't me. [ID:CH3_OFFICE_DOOR_LOCKED_1]
+
+=> END
+
+~ stacks_arrival
+
+Unknown: The stacks. Ledgers to the ceiling, and moths who've read them all. [ID:CH3_STACKS_ARRIVAL_1]
+
+=> END
+
+~ ledgers_look
+
+Unknown: Ledgers, every spine numbered. Years of my handwriting. [ID:CH3_LEDGERS_LOOK_1]
+
+=> END
+
+~ moths_look
+
+Unknown: Moths. They eat the margins and leave the names. Even the moths have standards. [ID:CH3_MOTHS_LOOK_1]
+
+=> END
+
+~ index_names_look
+
+Unknown: The index of names. Thousands of entries. I'm looking for a singer. [ID:CH3_INDEX_NAMES_LOOK_1]
+
+=> END
+
+~ index_dove_look
+
+Unknown: "Singer, cathedral choir, called the Dove. Struck by the High Magistrate's own hand, at his own desk." [ID:CH3_INDEX_DOVE_LOOK_1]
+Unknown: His own desk. My own desk. [ID:CH3_INDEX_DOVE_LOOK_2]
+
+=> END
+
+~ index_last_look
+
+Unknown: The last entry in the index is in a different hand. Tidier. "The High Magistrate." Struck. [ID:CH3_INDEX_LAST_LOOK_1]
+
+=> END
+
+~ chamber_arrival
+
+Unknown: A chamber as tidy as a held breath. [ID:CH3_CHAMBER_ARRIVAL_1]
+
+=> END
+
+~ pigeonholes_look
+
+Unknown: Pigeonholes, hundreds of them, each with a rolled order. Every one signed with my seal. [ID:CH3_PIGEONHOLES_LOOK_1]
+
+=> END
+
+~ standing_desk_look
+
+Unknown: A standing desk. Papers squared to the edge. Somebody here has never sat down in his life. [ID:CH3_STANDING_DESK_LOOK_1]
+
+=> END
+
+~ standing_desk_use
+
+Unknown: The wood remembers a younger man at this desk, nervous, and a voice telling him to hold still. [ID:CH3_STANDING_DESK_USE_1]
+
+=> END
+
+~ first_entry_return
+
+Unknown: A young clerk, very new, very proud of his new post. And the Magistrate with the book, open to its first page. [ID:CH3_FIRST_ENTRY_RETURN_1]
+Unknown: "Let's see if it works, Clerk. Hold still." And the young man's name, Edmund Vey, is the first line in the Ledger. [ID:CH3_FIRST_ENTRY_RETURN_2]
+Unknown: He was my test. My first. [ID:CH3_FIRST_ENTRY_RETURN_3]
+
+=> END
+
+~ registrar_look
+
+Unknown: A tall man in a tall hat, standing very straight in a very straight room. [ID:CH3_REG_LOOK_1]
+
+=> END
+
+~ registrar_talk
+
+if GameState.get_flag("registrar_fled")
+	=> END
+if not GameState.get_flag("registrar_met")
+	do GameState.set_flag("registrar_met")
+	Registrar: You signed in. Good. Most don't, these days. Most don't know how. [ID:CH3_REG_MEET_1]
+	Registrar: I know who you are, Magistrate. I wrote you down. [ID:CH3_REG_MEET_2]
+	Unknown: Then you're ahead of me. [ID:CH3_REG_MEET_3]
+	Registrar: I always was. You just never noticed. [ID:CH3_REG_MEET_4]
+=> registrar_ask
+
+~ registrar_ask
+
+Registrar: Yes? [ID:CH3_REG_ASK]
+- Who are you? [ID:CH3_REG_ASK_WHO]
+	Registrar: Your clerk. Your Registrar. The man who kept your book after you'd gone. [ID:CH3_REG_WHO_1]
+	Registrar: I don't have a name. You took it. You were testing the pen. [ID:CH3_REG_WHO_2]
+	=> registrar_ask
+- Why did you strike me? [ID:CH3_REG_ASK_WHY]
+	Registrar: Because you'd stopped. You took her name, and then you sat at that desk and wept, and you wouldn't take another. [ID:CH3_REG_WHY_1]
+	Registrar: A city with no names doesn't hurt, Magistrate. It doesn't grieve, it doesn't riot, it doesn't remember. You taught me that. [ID:CH3_REG_WHY_2]
+	Registrar: I only finished the lesson. [ID:CH3_REG_WHY_3]
+	=> registrar_ask
+- I want to see my office. [if GameState.get_flag("knows_office") and not GameState.get_flag("office_permitted") /] [ID:CH3_REG_ASK_OFFICE]
+	do GameState.set_flag("office_permitted")
+	Registrar: Of course you do. [ID:CH3_REG_OFFICE_1]
+	Registrar: The door's open. Sit at the desk. Remember. I'd very much like to see your face when you do. [ID:CH3_REG_OFFICE_2]
+	Unknown: I don't have a face. [ID:CH3_REG_OFFICE_3]
+	Registrar: No. That's rather the point. [ID:CH3_REG_OFFICE_4]
+	=> registrar_ask
+- Where is the Ledger? [ID:CH3_REG_ASK_LEDGER]
+	Registrar: Behind that door. It opens to one word, and you wrote it. Once. [ID:CH3_REG_LEDGER_1]
+	=> registrar_ask
+- Goodbye. [ID:CH3_REG_ASK_BYE]
+	Registrar: You'll be back. You never could leave a thing unfinished. [ID:CH3_REG_BYE]
+	=> END
+
+~ vault_look
+
+Unknown: A round vault door with a ring of letter dials. One word, and it opens. [ID:CH3_VAULT_LOOK_1]
+
+=> END
+
+~ vault_dial
+
+Unknown: One word. [ID:CH3_VAULT_DIAL]
+- ORDER. [ID:CH3_VAULT_ORDER]
+	Unknown: Nothing. Too obvious, even for me. [ID:CH3_VAULT_ORDER_1]
+	=> END
+- MERCY. [ID:CH3_VAULT_MERCY]
+	Unknown: Nothing. I wasn't that kind of man. [ID:CH3_VAULT_MERCY_1]
+	=> END
+- SILENCE. [if GameState.get_flag("knows_vault_word") /] [ID:CH3_VAULT_SILENCE]
+	do GameState.set_flag("vault_open")
+	Unknown: Silence. What I wanted for her. What I got for everyone. [ID:CH3_VAULT_SILENCE_1]
+	=> END
+- Never mind. [ID:CH3_VAULT_NEVERMIND]
+	=> END
+
+~ registrar_flees
+
+Registrar: No. [ID:CH3_FLEES_1]
+Registrar: You don't get to undo it. Not after I carried it for you. [ID:CH3_FLEES_2]
+Registrar: If you want the names, Magistrate, come and take them. From the top of the world. [ID:CH3_FLEES_3]
+Unknown: He's taken the book. Up. Toward the cathedral. [ID:CH3_FLEES_4]
+
+=> END
+
+~ vault_door_shut
+
+Unknown: The vault won't open without its word. [ID:CH3_VAULT_DOOR_SHUT_1]
+
+=> END
+
+~ narrow_door_look
+
+Unknown: Back to the hall. [ID:CH3_NARROW_DOOR_LOOK_1]
+
+=> END
+
+~ office_arrival
+
+Unknown: My office. It still smells of ink and certainty. [ID:CH3_OFFICE_ARRIVAL_1]
+
+=> END
+
+~ portrait_look
+
+Unknown: A portrait of the High Magistrate, slashed across the face. Very thorough. The frame's held up better than he did. [ID:CH3_PORTRAIT_LOOK_1]
+
+=> END
+
+~ office_window_look
+
+Unknown: The whole city from my window. I could see everything from here, and I chose not to. [ID:CH3_OFFICE_WINDOW_LOOK_1]
+
+=> END
+
+~ fireplace3_look
+
+Unknown: A cold hearth. I used to burn the petitions in it, I think. That would be like me. [ID:CH3_FIREPLACE_LOOK_1]
+
+=> END
+
+~ desk_look3
+
+Unknown: My desk. Inkwell, blotter, a quill stand, and a closed book. [ID:CH3_DESK_LOOK_1]
+
+=> END
+
+~ desk_use3
+
+Unknown: My hands know this desk. They know exactly where the inkwell is. I'd rather they didn't. [ID:CH3_DESK_USE_1]
+
+=> END
+
+~ office_in
+
+Unknown: The fire's lit. The ink's wet. And these are my hands, and this time I can feel them. [ID:CH3_OFFICE_IN_1]
+
+=> END
+
+~ office_ledger_look
+
+Unknown: The Ledger, open on the desk. The last page. One line left, waiting. [ID:CH3_OFFICE_LEDGER_LOOK_1]
+
+=> END
+
+~ office_ledger_use
+
+Unknown: I write the vault's word on the first leaf, where only I'll ever look: SILENCE. [ID:CH3_OFFICE_LEDGER_USE_1]
+Unknown: Then I write her name. I know it as I write it. I loved her, and I write it anyway. [ID:CH3_OFFICE_LEDGER_USE_2]
+Unknown: And I strike it through. And she's standing in the doorway, and she looks at me, and she doesn't know why she came. [ID:CH3_OFFICE_LEDGER_USE_3]
+Unknown: I did that. I did that to her with this hand. [ID:CH3_OFFICE_LEDGER_USE_4]
+
+=> END
+
+~ office_fire_look
+
+Unknown: The fire, burning petitions. I was warm, while they forgot. [ID:CH3_OFFICE_FIRE_LOOK_1]
+
+=> END
+
+~ desk_book_look
+
+Unknown: A heavy closed book. Not the Ledger. The ledger of the ledgers, maybe. I kept count of my counting. [ID:CH3_DESK_BOOK_LOOK_1]
+
+=> END
+
+~ desk_inkwell_look
+
+Unknown: The inkwell, dried to a crust. The last thing it wrote was her name. [ID:CH3_DESK_INKWELL_LOOK_1]
+
+=> END
+
+~ desk_blotter_look
+
+Unknown: The blotter, with a word pressed into it backwards. If I hold my head at an angle... no. It's gone. [ID:CH3_DESK_BLOTTER_LOOK_1]
+
+=> END
+
+~ office_door_back_look
+
+Unknown: Back to the hall. [ID:CH3_OFFICE_DOOR_BACK_LOOK_1]
+
+=> END
+
+~ vault_arrival
+
+Unknown: The vault. And no book in it. [ID:CH3_VAULT_ARRIVAL_1]
+
+=> END
+
+~ lectern_look
+
+Unknown: An empty lectern with the shape of a book in the dust. He took it. [ID:CH3_LECTERN_LOOK_1]
+
+=> END
+
+~ lectern_dust_look
+
+Unknown: The outline of the Ledger in the dust. Big. Heavy. He ran with that? Motivated man. [ID:CH3_LECTERN_DUST_LOOK_1]
+
+=> END
+
+~ lectern_chains_look
+
+Unknown: Chains that held the book down. Unlocked. He had the key all along. [ID:CH3_LECTERN_CHAINS_LOOK_1]
+
+=> END
+
+~ arch_door_look
+
+Unknown: A passage, out toward the covered bridge. [ID:CH3_ARCH_DOOR_LOOK_1]
+
+=> END
+
+~ vault_back_look
+
+Unknown: Back to the Registrar's chamber. [ID:CH3_VAULT_BACK_LOOK_1]
+
+=> END
+
+~ bridge3_arrival
+
+Unknown: A covered bridge to the cathedral. Up there somewhere is the Registrar, the book, and the end of all this. [ID:CH3_BRIDGE_ARRIVAL_1]
+
+=> END
+
+~ bridge_windows_look
+
+Unknown: The city below, all of it grey. I did that. I'm going to undo it. [ID:CH3_BRIDGE_WINDOWS_LOOK_1]
+
+=> END
+
+~ banners3_look
+
+Unknown: Banners, torn. The upper city's colours, before I took them. [ID:CH3_BANNERS_LOOK_1]
+
+=> END
+
+~ far_door_look
+
+Unknown: The far door. The cathedral roof is on the other side. [ID:CH3_FAR_DOOR_LOOK_1]
+
+=> END

@@ -1,0 +1,80 @@
+{
+  "id": "IMG-0110",
+  "title": "The Hall of Records, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T00:58:54.889Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0014/IMG-0014-v2.png",
+          "sha256": "007293b04cb0e4a9f28c332a9f68cfd2fc539efd55efc64882a894d5c677d1de"
+        },
+        {
+          "path": "art-source/raw/IMG-0063/IMG-0063-v1.png",
+          "sha256": "58db2e7b42e05e4f95a7e387f0dffdbbaedab5f895866a286b94d3bcf3cbeae8"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: the inside of a vast gothic hall of records at night, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: Walls of small wooden drawers rise into darkness on both sides with tall rolling ladders. Long empty clerks' desks run down the middle. On the left, a lectern with a large open visitors' register and an inkwell. At the far end, three doors: an archway into dark book stacks on the left, a narrow door marked by a hanging lamp in the centre, and a grand carved double door on the right. Moonlight through high windows.\n\nThe lower third of the image is open, walkable ground: the long stone floor between the desks runs across the lower third. It is lit by shafts of moonlight from high windows with drifting fog or haze behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0110-v1.png",
+          "sha256": "99224c65818cf9e978ff91f43b0458771e2259494adbc81e60fead32433971c1",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0110-v2.png",
+          "sha256": "7d3d84e9e230588923e03a3f80ee305b94dc829baf1eb8b578acf2aff14b5858",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0110-v3.png",
+          "sha256": "7a04dc7d025bb08e800305f19040f68fb7cd7653161437bbe6246f1e3829f45d",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 109365,
+        "outputTokens": 1298
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d9e-a988-7243-af8c-2d778de665e6",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d9e-a988-7243-af8c-2d778de665e6/exec-20358a77-678c-4762-8a08-250ad48cd3a5.png",
+            "/Users/orcdev/.codex/generated_images/01a12d9e-a988-7243-af8c-2d778de665e6/exec-fda23668-93d1-464b-9fa1-23df92710914.png",
+            "/Users/orcdev/.codex/generated_images/01a12d9e-a988-7243-af8c-2d778de665e6/exec-3463e46d-4b34-4636-9be3-b3d3eb7a9b04.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll use the image generation tool for three wide, opaque images with your exact prompt and both references.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

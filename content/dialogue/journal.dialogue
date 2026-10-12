@@ -70,6 +70,42 @@ Unknown: The keepers in a line, their names struck one by one. The man striking 
 
 => END
 
+~ ch3_refusal
+
+Unknown: The Hangman refusing to hang a nameless man, and the burned figure striking his name for it. [ID:JOURNAL_CH3_REFUSAL]
+
+=> END
+
+~ ch3_opening_night
+
+Unknown: The theatre full to the boxes, candles lit, the whole city holding its breath at once. [ID:JOURNAL_CH3_OPENING_NIGHT]
+
+=> END
+
+~ ch3_first_entry
+
+Unknown: A proud young clerk, and the Magistrate testing the new Ledger on him first. [ID:JOURNAL_CH3_FIRST_ENTRY]
+
+=> END
+
+~ ch3_office
+
+Unknown: My own desk, my own hand: SILENCE on the first leaf, and her name, written and struck. [ID:JOURNAL_CH3_OFFICE]
+
+=> END
+
+~ ch4_song
+
+Unknown: Elise singing every taken name in the cathedral, and me walking up the aisle to take hers. [ID:JOURNAL_CH4_SONG]
+
+=> END
+
+~ ch4_city
+
+Unknown: The whole city in colour, from the top of the bell tower, every name come home. [ID:JOURNAL_CH4_CITY]
+
+=> END
+
 ~ greybox_altar
 
 Unknown: The chapel before the fire, and one word carved into its altar: Mercy. [ID:JOURNAL_GREYBOX_ALTAR]

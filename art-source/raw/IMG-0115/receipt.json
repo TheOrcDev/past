@@ -1,0 +1,77 @@
+{
+  "id": "IMG-0115",
+  "title": "The covered bridge, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T01:07:57.793Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0063/IMG-0063-v1.png",
+          "sha256": "58db2e7b42e05e4f95a7e387f0dffdbbaedab5f895866a286b94d3bcf3cbeae8"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: the inside of a long enclosed stone bridge between two gothic buildings, high above the city at night, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: A covered walkway with pointed arched windows along both sides showing the city far below and the cathedral's towers ahead; the passage recedes from the left to a far door at the right end that opens onto the cathedral's roof. Banners hang torn from the vault.\n\nThe lower third of the image is open, walkable ground: the stone floor of the walkway runs across the lower third. It is lit by moonlight through the arched windows with drifting fog or haze behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0115-v1.png",
+          "sha256": "f0ae01c46674a8ca063ad0332f612eb8f35930da5a700acead2c096326cd22f5",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0115-v2.png",
+          "sha256": "dbbf887ffb2e0e587137f78dd62f515df396e0e295cfe8b200caccd604d44fb4",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0115-v3.png",
+          "sha256": "8c9984d5520c1fdf5351862b9c4cec8c8799eeb4c680ebb5b42c1b7ebb30327b",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 157817,
+        "outputTokens": 1319
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12da6-f140-7902-ab55-6dadcf58ff39",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12da6-f140-7902-ab55-6dadcf58ff39/exec-30819fbe-8b30-40fd-8754-ff4abecc6a7a.png",
+            "/Users/orcdev/.codex/generated_images/01a12da6-f140-7902-ab55-6dadcf58ff39/exec-faf517f9-ea24-4b52-af68-989b0dbe5755.png",
+            "/Users/orcdev/.codex/generated_images/01a12da6-f140-7902-ab55-6dadcf58ff39/exec-c0079ada-23ff-41da-bd9c-d597ca0bcbcf.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 2123,
+              "height": 741
+            },
+            {
+              "width": 2123,
+              "height": 741
+            },
+            {
+              "width": 2123,
+              "height": 741
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque images using your exact prompt and the attached reference.",
+            "Two images are complete. I’m generating the third with the same prompt and reference.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

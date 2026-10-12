@@ -1,0 +1,454 @@
+{
+  "display_name": "Upper avenue",
+  "layers": {
+    "now": [
+      {
+        "name": "Background",
+        "texture": "res://content/rooms/upper_avenue/art/bg_now.png"
+      }
+    ],
+    "then": [
+      {
+        "name": "Background",
+        "texture": "res://content/rooms/upper_avenue/art/bg_then.png"
+      }
+    ]
+  },
+  "walk": {
+    "now": [
+      [
+        100,
+        850
+      ],
+      [
+        600,
+        820
+      ],
+      [
+        1300,
+        820
+      ],
+      [
+        1800,
+        850
+      ],
+      [
+        1800,
+        1060
+      ],
+      [
+        100,
+        1060
+      ]
+    ],
+    "then": [
+      [
+        100,
+        850
+      ],
+      [
+        600,
+        820
+      ],
+      [
+        1300,
+        820
+      ],
+      [
+        1800,
+        850
+      ],
+      [
+        1800,
+        1060
+      ],
+      [
+        100,
+        1060
+      ]
+    ]
+  },
+  "scale_zones": {
+    "far_y": 820,
+    "far_scale": 0.85,
+    "near_y": 1060,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      900,
+      950
+    ],
+    "from_ferry": [
+      300,
+      960
+    ],
+    "from_gallows": [
+      240,
+      900
+    ],
+    "from_facade": [
+      1150,
+      870
+    ],
+    "from_gate": [
+      1640,
+      880
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "to_gallows",
+      "name": "To the gallows square",
+      "polygon": [
+        [
+          60,
+          880
+        ],
+        [
+          60,
+          260
+        ],
+        [
+          270,
+          260
+        ],
+        [
+          270,
+          880
+        ]
+      ],
+      "walk_to": [
+        200,
+        900
+      ],
+      "exit": {
+        "room": "gallows_square",
+        "entry": "from_avenue",
+        "direction": "left"
+      }
+    },
+    {
+      "id": "statue",
+      "name": "Headless statue",
+      "polygon": [
+        [
+          540,
+          540
+        ],
+        [
+          540,
+          170
+        ],
+        [
+          780,
+          170
+        ],
+        [
+          780,
+          540
+        ]
+      ],
+      "walk_to": [
+        660,
+        920
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "plinth",
+      "name": "Plinth",
+      "polygon": [
+        [
+          540,
+          880
+        ],
+        [
+          540,
+          540
+        ],
+        [
+          800,
+          540
+        ],
+        [
+          800,
+          880
+        ]
+      ],
+      "walk_to": [
+        660,
+        920
+      ]
+    },
+    {
+      "id": "to_theatre",
+      "name": "To the theatre",
+      "polygon": [
+        [
+          1000,
+          860
+        ],
+        [
+          1000,
+          560
+        ],
+        [
+          1340,
+          560
+        ],
+        [
+          1340,
+          860
+        ]
+      ],
+      "walk_to": [
+        1150,
+        870
+      ],
+      "exit": {
+        "room": "theater_facade",
+        "entry": "from_avenue",
+        "direction": "up"
+      }
+    },
+    {
+      "id": "to_records",
+      "name": "To the Hall of Records",
+      "polygon": [
+        [
+          1600,
+          830
+        ],
+        [
+          1600,
+          560
+        ],
+        [
+          1760,
+          560
+        ],
+        [
+          1760,
+          830
+        ]
+      ],
+      "walk_to": [
+        1660,
+        870
+      ],
+      "exit": {
+        "room": "records_gate",
+        "entry": "from_avenue",
+        "direction": "up"
+      }
+    },
+    {
+      "id": "lamps",
+      "name": "Lamps",
+      "polygon": [
+        [
+          1790,
+          880
+        ],
+        [
+          1790,
+          400
+        ],
+        [
+          1910,
+          400
+        ],
+        [
+          1910,
+          880
+        ]
+      ],
+      "walk_to": [
+        1700,
+        900
+      ]
+    }
+  ],
+  "occluders": [],
+  "npcs": [],
+  "effects": [
+    {
+      "type": "FogLayer",
+      "name": "FogFar",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.85,
+          0.86,
+          0.89,
+          1.0
+        ],
+        "density": 0.3,
+        "velocity": [
+          0.005,
+          0.0
+        ],
+        "noise_scale": [
+          1.4,
+          0.8
+        ],
+        "band_top": 0.3,
+        "band_bottom": 0.75,
+        "depth_texture": "res://content/rooms/upper_avenue/art/depth_now.png",
+        "near_cutoff": 0.4,
+        "noise_seed": 21
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "FogLow",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.8,
+          0.82,
+          0.86,
+          1.0
+        ],
+        "density": 0.24,
+        "velocity": [
+          -0.008,
+          0.0
+        ],
+        "noise_scale": [
+          2.2,
+          1.1
+        ],
+        "band_top": 0.5,
+        "band_bottom": 0.82,
+        "depth_texture": "res://content/rooms/upper_avenue/art/depth_now.png",
+        "near_cutoff": 0.55,
+        "noise_seed": 23
+      }
+    },
+    {
+      "type": "LightShafts",
+      "name": "Moonlight",
+      "era": "now",
+      "properties": {
+        "origin": [
+          1460,
+          90
+        ],
+        "aim": 200.0,
+        "spread": 30.0,
+        "beams": 5.0,
+        "intensity": 0.07,
+        "reach": 0.9,
+        "shaft_color": [
+          0.9,
+          0.93,
+          1.0,
+          1.0
+        ],
+        "flicker": 0.3
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "GroundMist",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.86,
+          0.87,
+          0.9,
+          1.0
+        ],
+        "density": 0.16,
+        "velocity": [
+          0.01,
+          0.0
+        ],
+        "noise_scale": [
+          2.6,
+          1.6
+        ],
+        "band_top": 0.84,
+        "band_bottom": 1.02,
+        "band_softness": 0.08,
+        "noise_seed": 27
+      },
+      "layer": "foreground"
+    },
+    {
+      "type": "LightShafts",
+      "name": "GoldenShafts",
+      "era": "then",
+      "properties": {
+        "origin": [
+          1460,
+          90
+        ],
+        "aim": 200.0,
+        "spread": 44.0,
+        "beams": 7.0,
+        "intensity": 0.14,
+        "reach": 1.0,
+        "shaft_color": [
+          1.0,
+          0.85,
+          0.55,
+          1.0
+        ],
+        "flicker": 0.25
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "WarmHaze",
+      "era": "then",
+      "properties": {
+        "fog_color": [
+          1.0,
+          0.9,
+          0.75,
+          1.0
+        ],
+        "density": 0.1,
+        "velocity": [
+          0.004,
+          0.0
+        ],
+        "noise_scale": [
+          1.2,
+          0.7
+        ],
+        "band_top": 0.3,
+        "band_bottom": 0.9,
+        "noise_seed": 13
+      }
+    },
+    {
+      "type": "DustMotes",
+      "name": "GoldenDust",
+      "era": "then",
+      "properties": {
+        "area": [
+          300,
+          150,
+          1500,
+          750
+        ],
+        "mote_color": [
+          1.0,
+          0.86,
+          0.55,
+          0.55
+        ],
+        "mote_count": 60,
+        "drift": [
+          3,
+          -4
+        ],
+        "mote_size": 2.5
+      }
+    }
+  ]
+}

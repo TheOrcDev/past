@@ -1,0 +1,81 @@
+{
+  "id": "IMG-0108",
+  "title": "Backstage, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T01:05:25.746Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0014/IMG-0014-v2.png",
+          "sha256": "007293b04cb0e4a9f28c332a9f68cfd2fc539efd55efc64882a894d5c677d1de"
+        },
+        {
+          "path": "art-source/raw/IMG-0063/IMG-0063-v1.png",
+          "sha256": "58db2e7b42e05e4f95a7e387f0dffdbbaedab5f895866a286b94d3bcf3cbeae8"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: the backstage area of an old theatre at night, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: Ropes, pulleys and sandbags hang from the flies. A wooden rack holds three large marionettes on strings: a robed magistrate with a book, a small dove-like woman in a veil, and a thin clerk holding a real long feather quill. Stacked painted flats, a costume trunk, a trapdoor in the floor. On the left, a gap in the curtains back to the stage.\n\nThe lower third of the image is open, walkable ground: the wooden stage floor runs across the lower third. It is lit by a single cold work light with drifting fog or haze behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0108-v1.png",
+          "sha256": "c2a6fac4bdd7eb425117c388523fc2d47d0133d27d4f8b09adb11eaca1af6982",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0108-v2.png",
+          "sha256": "598fd948310fa1987a2be41bd1f3dda58387242a87684a5c9bda4cb6a4816b07",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0108-v3.png",
+          "sha256": "34b824327037f6a0066eadd081141ff180ea058be3ed8d281547ccdf1447706b",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 131808,
+        "outputTokens": 1439
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12da4-9f50-7a22-8be4-de513a6283a9",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12da4-9f50-7a22-8be4-de513a6283a9/exec-12e9964a-d6b3-4e62-832e-4b9d5f4dcfe8.png",
+            "/Users/orcdev/.codex/generated_images/01a12da4-9f50-7a22-8be4-de513a6283a9/exec-a03e9030-b63f-42aa-a034-c3917a4dae1a.png",
+            "/Users/orcdev/.codex/generated_images/01a12da4-9f50-7a22-8be4-de513a6283a9/exec-232e691d-6846-459a-9173-3380df6a47de.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1671,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll use the image generation tool for three separate edits, each with both references and your prompt verbatim.",
+            "Two images are complete. I’m generating the third with the same references and unchanged prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

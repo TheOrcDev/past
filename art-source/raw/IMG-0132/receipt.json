@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0132",
+  "title": "The Registrar's chamber, then",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T01:15:56.725Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0113/IMG-0113-v2.png",
+          "sha256": "cd02f162e3f1de16c480d337aae37cb890a3d6b1ff21bdd0a89d41c4e78f87c0"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit this image in place. Keep exactly the same composition, camera, perspective, horizon and every shape where it stands: the narrow door, the standing desk, the wall of pigeonholes, the round vault door with its dials, the window and the floor. Only change the time and the condition.\n\nRestore the same chamber to how it looked decades earlier, on the day a new clerk started work, in full rich warm color, as a painterly gothic matte painting: the chamber freshly built and gleaming: polished brass dials on the vault door, the pigeonholes empty and new, a new standing desk with a vase of flowers and a fresh ledger, lamps lit warm, morning sunlight through the window. The key light comes from the same direction as in the original.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0132-v1.png",
+          "sha256": "631638c91f038cc3c7096a06a760b862bb0128b44e054e54014a370e4e65ba3f",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0132-v2.png",
+          "sha256": "ebd054dc0524e79f2f4563a6abfc3d903d1bf7f173efe58c53cc0958cceaa2cb",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 163367,
+        "outputTokens": 684
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12dae-4013-73b2-98a4-9313cc38668d",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12dae-4013-73b2-98a4-9313cc38668d/exec-58d2dcdd-8fcd-42cd-aa09-f53879adca1a.png",
+            "/Users/orcdev/.codex/generated_images/01a12dae-4013-73b2-98a4-9313cc38668d/exec-b933f7a0-22cc-4e19-9111-b1bc054197aa.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate two edits using your exact prompt and the attached image.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,168 @@
+{
+  "id": "covered_bridge",
+  "display_name": "Covered bridge",
+  "now": "art-source/raw/IMG-0115/IMG-0115-v2.png",
+  "walk": [
+    [
+      0,
+      880
+    ],
+    [
+      1500,
+      800
+    ],
+    [
+      1880,
+      790
+    ],
+    [
+      1900,
+      1060
+    ],
+    [
+      0,
+      1060
+    ]
+  ],
+  "scale_zones": {
+    "far_y": 790,
+    "far_scale": 0.72,
+    "near_y": 1060,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      800,
+      950
+    ],
+    "from_vault": [
+      150,
+      960
+    ],
+    "from_roof": [
+      1700,
+      840
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "to_vault",
+      "name": "Back to the vault",
+      "polygon": [
+        [
+          0,
+          1060
+        ],
+        [
+          0,
+          860
+        ],
+        [
+          120,
+          860
+        ],
+        [
+          120,
+          1060
+        ]
+      ],
+      "walk_to": [
+        140,
+        960
+      ],
+      "exit": {
+        "room": "ledger_vault",
+        "entry": "from_bridge",
+        "direction": "left"
+      }
+    },
+    {
+      "id": "far_door",
+      "name": "Far door",
+      "polygon": [
+        [
+          1690,
+          790
+        ],
+        [
+          1690,
+          500
+        ],
+        [
+          1820,
+          500
+        ],
+        [
+          1820,
+          790
+        ]
+      ],
+      "walk_to": [
+        1720,
+        820
+      ],
+      "default_verb": "use",
+      "pick_priority": 1
+    },
+    {
+      "id": "windows",
+      "name": "Windows",
+      "polygon": [
+        [
+          100,
+          620
+        ],
+        [
+          100,
+          60
+        ],
+        [
+          1300,
+          60
+        ],
+        [
+          1300,
+          620
+        ]
+      ],
+      "walk_to": [
+        700,
+        900
+      ]
+    },
+    {
+      "id": "banners",
+      "name": "Banners",
+      "polygon": [
+        [
+          1300,
+          300
+        ],
+        [
+          1300,
+          0
+        ],
+        [
+          1700,
+          0
+        ],
+        [
+          1700,
+          300
+        ]
+      ],
+      "walk_to": [
+        1400,
+        840
+      ]
+    }
+  ],
+  "effects": {
+    "preset": "interior",
+    "light": [
+      600,
+      150
+    ],
+    "aim": 200
+  }
+}

@@ -1,0 +1,187 @@
+{
+  "speaker": "Hangman",
+  "painting": "art-source/raw/IMG-0116/IMG-0116-v1.png",
+  "height": 520,
+  "feet": [
+    560,
+    1500
+  ],
+  "speech": [
+    560,
+    0
+  ],
+  "subtitle_color": [
+    0.85,
+    0.82,
+    0.74
+  ],
+  "aliases": [
+    "Bram"
+  ],
+  "bones": [
+    {
+      "name": "Base",
+      "parent": "",
+      "from": [
+        560,
+        1500
+      ],
+      "to": [
+        560,
+        1150
+      ]
+    },
+    {
+      "name": "Body",
+      "parent": "Base",
+      "from": [
+        520,
+        1100
+      ],
+      "to": [
+        520,
+        420
+      ]
+    },
+    {
+      "name": "Head",
+      "parent": "Body",
+      "from": [
+        560,
+        380
+      ],
+      "to": [
+        580,
+        30
+      ]
+    },
+    {
+      "name": "Hands",
+      "parent": "Body",
+      "from": [
+        520,
+        560
+      ],
+      "to": [
+        680,
+        720
+      ]
+    },
+    {
+      "name": "Rope",
+      "parent": "Body",
+      "from": [
+        340,
+        200
+      ],
+      "to": [
+        220,
+        760
+      ]
+    }
+  ],
+  "motions": {
+    "idle": {
+      "loop": true,
+      "bones": {
+        "Body": [
+          0.6,
+          0.15,
+          0.0
+        ],
+        "Head": [
+          1.0,
+          0.1,
+          0.8
+        ],
+        "Rope": [
+          1.0,
+          0.15,
+          0.3
+        ]
+      }
+    },
+    "talk_a": {
+      "loop": true,
+      "bones": {
+        "Body": [
+          0.6,
+          0.22,
+          0.0
+        ],
+        "Head": [
+          1.0,
+          0.2,
+          1.0
+        ]
+      },
+      "voice": {
+        "Head": 3.0,
+        "Hands": -4.0
+      }
+    },
+    "talk_b": {
+      "loop": true,
+      "bones": {
+        "Body": [
+          0.8,
+          0.25,
+          0.0
+        ],
+        "Head": [
+          1.2,
+          0.25,
+          0.5
+        ]
+      },
+      "voice": {
+        "Head": -4.0,
+        "Body": 1.0
+      }
+    },
+    "coil_rope": {
+      "loop": false,
+      "length": 2.0,
+      "keys": {
+        "Hands": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.5,
+            -10.0
+          ],
+          [
+            1.0,
+            4.0
+          ],
+          [
+            1.5,
+            -10.0
+          ],
+          [
+            2.0,
+            0.0
+          ]
+        ],
+        "Head": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.0,
+            -5.0
+          ],
+          [
+            2.0,
+            0.0
+          ]
+        ]
+      }
+    }
+  },
+  "id": "hangman",
+  "grid": 28
+}

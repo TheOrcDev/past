@@ -1,0 +1,4 @@
+[
+  {"id": "chain_key", "name": "Chain key", "icon": "res://content/items/chain_key/icon.png", "look_file": "ch3/items", "look_cue": "chain_key_look"},
+  {"id": "clerk_quill", "name": "Clerk's quill", "icon": "res://content/items/clerk_quill/icon.png", "look_file": "ch3/items", "look_cue": "clerk_quill_look"}
+]

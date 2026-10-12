@@ -1,0 +1,205 @@
+{
+  "display_name": "Theatre",
+  "now": "art-source/raw/IMG-0106/IMG-0106-v1.png",
+  "walk": [
+    [
+      100,
+      940
+    ],
+    [
+      900,
+      955
+    ],
+    [
+      1500,
+      955
+    ],
+    [
+      1900,
+      950
+    ],
+    [
+      1900,
+      1060
+    ],
+    [
+      100,
+      1060
+    ]
+  ],
+  "scale_zones": {
+    "far_y": 945,
+    "far_scale": 0.92,
+    "near_y": 1060,
+    "near_scale": 1.02
+  },
+  "markers": {
+    "default": [
+      800,
+      1000
+    ],
+    "from_avenue": [
+      200,
+      1000
+    ],
+    "from_stage": [
+      1210,
+      990
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "doors",
+      "name": "Chained doors",
+      "polygon": [
+        [
+          1060,
+          890
+        ],
+        [
+          1060,
+          540
+        ],
+        [
+          1360,
+          540
+        ],
+        [
+          1360,
+          890
+        ]
+      ],
+      "walk_to": [
+        1210,
+        990
+      ],
+      "exit": {
+        "room": "theater_stage",
+        "entry": "from_facade",
+        "direction": "up",
+        "requires_flag": "theater_open"
+      },
+      "pick_priority": 1
+    },
+    {
+      "id": "marquee",
+      "name": "Marquee",
+      "polygon": [
+        [
+          860,
+          420
+        ],
+        [
+          860,
+          160
+        ],
+        [
+          1500,
+          160
+        ],
+        [
+          1500,
+          420
+        ]
+      ],
+      "walk_to": [
+        1100,
+        990
+      ]
+    },
+    {
+      "id": "playbill",
+      "name": "Playbill",
+      "polygon": [
+        [
+          700,
+          760
+        ],
+        [
+          700,
+          500
+        ],
+        [
+          830,
+          500
+        ],
+        [
+          830,
+          760
+        ]
+      ],
+      "walk_to": [
+        760,
+        990
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "posters",
+      "name": "Posters",
+      "polygon": [
+        [
+          1560,
+          760
+        ],
+        [
+          1560,
+          500
+        ],
+        [
+          1680,
+          500
+        ],
+        [
+          1680,
+          760
+        ]
+      ],
+      "walk_to": [
+        1600,
+        990
+      ]
+    },
+    {
+      "id": "to_avenue",
+      "name": "Back to the avenue",
+      "polygon": [
+        [
+          0,
+          800
+        ],
+        [
+          200,
+          800
+        ],
+        [
+          200,
+          1060
+        ],
+        [
+          0,
+          1060
+        ]
+      ],
+      "walk_to": [
+        150,
+        1000
+      ],
+      "exit": {
+        "room": "upper_avenue",
+        "entry": "from_facade",
+        "direction": "left"
+      }
+    }
+  ],
+  "effects": {
+    "preset": "exterior",
+    "light": [
+      380,
+      60
+    ],
+    "aim": 160
+  },
+  "id": "theater_facade",
+  "then": "art-source/raw/IMG-0122/IMG-0122-v1.png"
+}

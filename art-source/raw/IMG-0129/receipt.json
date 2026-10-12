@@ -1,0 +1,77 @@
+{
+  "id": "IMG-0129",
+  "title": "Close-up: the index of names",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T01:09:38.441Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0111/IMG-0111-v2.png",
+          "sha256": "130470b00b905fbb9ccc82235a74cb91d79c55fe474cee81f0e59a52758baf14"
+        }
+      ],
+      "mask": null,
+      "prompt": "A close-up of the enormous open index ledger on the reading lectern from the reference image, in exactly the same monochrome greyscale ink-wash gothic style: the two open pages fill the frame: dense columns of tiny handwritten index entries, almost all struck through with single lines. On the left page, one entry stands out, larger and clear. At the very bottom of the right page, the last entry, in a different, tidier hand, also clear.\n\nThe clear entry on the left page reads exactly:\nSinger, cathedral choir, called the Dove\nStruck by the High Magistrate's own hand, at his own desk\nThe last entry at the bottom right reads exactly:\nThe High Magistrate\nEverything else is illegible. No people or figures. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0129-v1.png",
+          "sha256": "54327bcc7a540ded745a0fb8c1001031be58ddbf9e85c460a50e0e522bdd9b1b",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0129-v2.png",
+          "sha256": "6acbbc9997c0c5735ede25509d15d1c59174fd651082db912c587074e91936d2",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0129-v3.png",
+          "sha256": "f33f989920879211f389de7f031cdc80753a1afb186c1afc0a3bcc3b031d61b2",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 233770,
+        "outputTokens": 888
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12da8-7a82-7753-bc31-cf934daaefe0",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12da8-7a82-7753-bc31-cf934daaefe0/exec-1e94d974-1673-4f39-bc50-f68d9ca8b3c6.png",
+            "/Users/orcdev/.codex/generated_images/01a12da8-7a82-7753-bc31-cf934daaefe0/exec-22b3fb4b-9532-4c9b-bf63-33d9f7052517.png",
+            "/Users/orcdev/.codex/generated_images/01a12da8-7a82-7753-bc31-cf934daaefe0/exec-38fbe33f-2341-4022-adfb-3885775ebb1d.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1671,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque images using the reference and your exact prompt.",
+            "Two images are complete. The third is generating.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

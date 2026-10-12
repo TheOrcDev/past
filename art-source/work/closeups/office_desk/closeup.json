@@ -1,0 +1,75 @@
+{
+  "id": "office_desk",
+  "image": "art-source/raw/IMG-0130/IMG-0130-v1.png",
+  "hotspots": [
+    {
+      "id": "book",
+      "name": "Closed book",
+      "polygon": [
+        [
+          0,
+          60
+        ],
+        [
+          520,
+          60
+        ],
+        [
+          520,
+          560
+        ],
+        [
+          0,
+          560
+        ]
+      ],
+      "pick_priority": 2
+    },
+    {
+      "id": "inkwell",
+      "name": "Inkwell",
+      "polygon": [
+        [
+          1280,
+          290
+        ],
+        [
+          1520,
+          290
+        ],
+        [
+          1520,
+          600
+        ],
+        [
+          1280,
+          600
+        ]
+      ],
+      "pick_priority": 2
+    },
+    {
+      "id": "blotter",
+      "name": "Blotter",
+      "polygon": [
+        [
+          300,
+          200
+        ],
+        [
+          1480,
+          200
+        ],
+        [
+          1480,
+          960
+        ],
+        [
+          300,
+          960
+        ]
+      ],
+      "pick_priority": 1
+    }
+  ]
+}

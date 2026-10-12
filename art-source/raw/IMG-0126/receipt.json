@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0126",
+  "title": "The gate of the Hall of Records, then",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T01:09:38.444Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0109/IMG-0109-v1.png",
+          "sha256": "2879aab676be363bf4446f4187ccbdbb18f230588d351f244fc4543ea630e07f"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit this image in place. Keep exactly the same composition, camera, perspective, horizon and every shape where it stands: the gate, the two stone clerks and their books, the facade, the lamps and the approach. Only change the time and the condition.\n\nRestore the same gate to how it looked decades earlier, on a busy morning, in full rich warm color, as a painterly gothic matte painting: the gate standing open with warm light inside, the stone clerks' books carved full of tiny names, blue and gold banners on the facade, windows lit warm, flower urns by the gate, bright morning sunlight. The key light comes from the same direction as in the original.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0126-v1.png",
+          "sha256": "e0cbceaa93e1ac1236f870df5ecdc3237d4e1a409841b6a0bc798a984b9933c4",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0126-v2.png",
+          "sha256": "98773bf20c29e5d82c1d1205576c5cd3ca048ee30d6e224ca9c986489fd6ac32",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 316353,
+        "outputTokens": 1284
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12da8-7a8a-7240-b161-93cf46b2c863",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12da8-7a8a-7240-b161-93cf46b2c863/exec-a26922cf-5122-4967-ae7a-afeb2fd093f3.png",
+            "/Users/orcdev/.codex/generated_images/01a12da8-7a8a-7240-b161-93cf46b2c863/exec-b3b479f3-c3a9-47a5-b948-706978916aa1.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 2122,
+              "height": 741
+            },
+            {
+              "width": 2122,
+              "height": 741
+            }
+          ],
+          "messages": [
+            "I’ll generate two edits from the attached image, using your prompt verbatim.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

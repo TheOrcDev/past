@@ -1,0 +1,177 @@
+{
+  "display_name": "Gate of the Hall of Records",
+  "now": "art-source/raw/IMG-0109/IMG-0109-v1.png",
+  "walk": [
+    [
+      100,
+      880
+    ],
+    [
+      900,
+      880
+    ],
+    [
+      1500,
+      880
+    ],
+    [
+      1800,
+      880
+    ],
+    [
+      1850,
+      1060
+    ],
+    [
+      100,
+      1060
+    ]
+  ],
+  "scale_zones": {
+    "far_y": 880,
+    "far_scale": 0.92,
+    "near_y": 1060,
+    "near_scale": 1.04
+  },
+  "markers": {
+    "default": [
+      1000,
+      960
+    ],
+    "from_avenue": [
+      250,
+      960
+    ],
+    "from_hall": [
+      1160,
+      920
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "gate",
+      "name": "Records gate",
+      "polygon": [
+        [
+          1020,
+          830
+        ],
+        [
+          1020,
+          200
+        ],
+        [
+          1310,
+          200
+        ],
+        [
+          1310,
+          830
+        ]
+      ],
+      "walk_to": [
+        1160,
+        900
+      ],
+      "exit": {
+        "room": "hall_of_records",
+        "entry": "from_gate",
+        "direction": "up",
+        "requires_flag": "records_gate_open"
+      }
+    },
+    {
+      "id": "to_avenue",
+      "name": "Back to the avenue",
+      "polygon": [
+        [
+          0,
+          880
+        ],
+        [
+          120,
+          880
+        ],
+        [
+          120,
+          1060
+        ],
+        [
+          0,
+          1060
+        ]
+      ],
+      "walk_to": [
+        150,
+        960
+      ],
+      "exit": {
+        "room": "upper_avenue",
+        "entry": "from_gate",
+        "direction": "left"
+      }
+    },
+    {
+      "id": "clerks",
+      "name": "Stone clerks",
+      "polygon": [
+        [
+          740,
+          800
+        ],
+        [
+          740,
+          220
+        ],
+        [
+          880,
+          220
+        ],
+        [
+          880,
+          800
+        ]
+      ],
+      "walk_to": [
+        810,
+        920
+      ]
+    },
+    {
+      "id": "windows",
+      "name": "Windows",
+      "polygon": [
+        [
+          700,
+          200
+        ],
+        [
+          700,
+          0
+        ],
+        [
+          1400,
+          0
+        ],
+        [
+          1400,
+          200
+        ]
+      ],
+      "walk_to": [
+        1000,
+        920
+      ]
+    }
+  ],
+  "effects": {
+    "preset": "exterior",
+    "light": [
+      370,
+      90
+    ],
+    "aim": 160
+  },
+  "id": "records_gate",
+  "then": "art-source/raw/IMG-0126/IMG-0126-v1.png"
+}

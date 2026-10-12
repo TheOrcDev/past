@@ -1,0 +1,143 @@
+{
+  "display_name": "The vault",
+  "now": "art-source/raw/IMG-0114/IMG-0114-v3.png",
+  "walk": [
+    [
+      200,
+      820
+    ],
+    [
+      1700,
+      820
+    ],
+    [
+      1850,
+      1060
+    ],
+    [
+      100,
+      1060
+    ]
+  ],
+  "scale_zones": {
+    "far_y": 820,
+    "far_scale": 0.9,
+    "near_y": 1060,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      950,
+      940
+    ],
+    "from_chamber": [
+      320,
+      880
+    ],
+    "from_bridge": [
+      1700,
+      880
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "lectern",
+      "name": "Empty lectern",
+      "polygon": [
+        [
+          790,
+          800
+        ],
+        [
+          790,
+          470
+        ],
+        [
+          1110,
+          470
+        ],
+        [
+          1110,
+          800
+        ]
+      ],
+      "walk_to": [
+        950,
+        880
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "vault_door",
+      "name": "Back to the chamber",
+      "polygon": [
+        [
+          90,
+          800
+        ],
+        [
+          90,
+          320
+        ],
+        [
+          400,
+          320
+        ],
+        [
+          400,
+          800
+        ]
+      ],
+      "walk_to": [
+        320,
+        860
+      ],
+      "exit": {
+        "room": "registrar_chamber",
+        "entry": "from_vault",
+        "direction": "left"
+      }
+    },
+    {
+      "id": "passage",
+      "name": "Passage",
+      "polygon": [
+        [
+          1680,
+          780
+        ],
+        [
+          1680,
+          320
+        ],
+        [
+          1860,
+          320
+        ],
+        [
+          1860,
+          780
+        ]
+      ],
+      "walk_to": [
+        1700,
+        880
+      ],
+      "exit": {
+        "room": "covered_bridge",
+        "entry": "from_vault",
+        "direction": "right"
+      }
+    }
+  ],
+  "effects": {
+    "preset": "interior",
+    "light": [
+      900,
+      60
+    ],
+    "aim": 180
+  },
+  "id": "ledger_vault",
+  "then": "art-source/raw/IMG-0127/IMG-0127-v1.png"
+}

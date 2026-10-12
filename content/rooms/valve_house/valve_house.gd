@@ -31,6 +31,7 @@ func use_valve() -> void:
 	if not &"ch2_signing" in GameState.memories:
 		await Cutscenes.play(rewatch_ch2_signing())
 		GameState.learn(&"i_am_ulric")
+		GameState.set_flag(&"knows_ulric")
 		GameState.learn(&"the_flood")
 		await Say.line(DIALOGUE, &"signing_after")
 	await Rooms.player.play(&"use")

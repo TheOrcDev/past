@@ -1,0 +1,31 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/closeups/vault_lectern/vault_lectern.gd" id="1_prmv5"]
+[ext_resource type="Texture2D" path="res://content/closeups/vault_lectern/art/bg.png" id="2_3t1ey"]
+[ext_resource type="Script" path="res://src/core/hotspot.gd" id="3_nd1py"]
+
+[node name="VaultLectern" type="Node2D" unique_id=734858591]
+script = ExtResource("1_prmv5")
+closeup_id = &"vault_lectern"
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1414918085]
+texture = ExtResource("2_3t1ey")
+centered = false
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=1948689832]
+
+[node name="Dust" type="Area2D" parent="Hotspots" unique_id=577023058]
+script = ExtResource("3_nd1py")
+id = &"dust"
+display_name = "Dust"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Dust" unique_id=575788603]
+polygon = PackedVector2Array(600, 220, 1260, 220, 1260, 580, 600, 580)
+
+[node name="Chains" type="Area2D" parent="Hotspots" unique_id=751009266]
+script = ExtResource("3_nd1py")
+id = &"chains"
+display_name = "Chains"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Chains" unique_id=1253158695]
+polygon = PackedVector2Array(120, 560, 300, 560, 300, 1060, 120, 1060)

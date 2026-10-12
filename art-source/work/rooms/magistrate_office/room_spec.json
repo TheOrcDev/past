@@ -1,0 +1,460 @@
+{
+  "display_name": "The Magistrate's office",
+  "layers": {
+    "now": [
+      {
+        "name": "Background",
+        "texture": "res://content/rooms/magistrate_office/art/bg_now.png"
+      }
+    ],
+    "then": [
+      {
+        "name": "Background",
+        "texture": "res://content/rooms/magistrate_office/art/bg_then.png"
+      }
+    ]
+  },
+  "walk": {
+    "now": [
+      [
+        200,
+        900
+      ],
+      [
+        700,
+        780
+      ],
+      [
+        1400,
+        780
+      ],
+      [
+        1800,
+        900
+      ],
+      [
+        1800,
+        1060
+      ],
+      [
+        200,
+        1060
+      ]
+    ],
+    "then": [
+      [
+        200,
+        900
+      ],
+      [
+        700,
+        780
+      ],
+      [
+        1400,
+        780
+      ],
+      [
+        1800,
+        900
+      ],
+      [
+        1800,
+        1060
+      ],
+      [
+        200,
+        1060
+      ]
+    ]
+  },
+  "scale_zones": {
+    "far_y": 780,
+    "far_scale": 0.88,
+    "near_y": 1060,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      1000,
+      900
+    ],
+    "from_hall": [
+      300,
+      960
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "door",
+      "name": "Back to the hall",
+      "polygon": [
+        [
+          100,
+          880
+        ],
+        [
+          100,
+          120
+        ],
+        [
+          300,
+          120
+        ],
+        [
+          300,
+          880
+        ]
+      ],
+      "walk_to": [
+        320,
+        950
+      ],
+      "exit": {
+        "room": "hall_of_records",
+        "entry": "from_office",
+        "direction": "left"
+      }
+    },
+    {
+      "id": "desk",
+      "name": "Desk",
+      "polygon": [
+        [
+          720,
+          770
+        ],
+        [
+          720,
+          520
+        ],
+        [
+          1300,
+          520
+        ],
+        [
+          1300,
+          770
+        ]
+      ],
+      "walk_to": [
+        1000,
+        830
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "ledger",
+      "name": "The Ledger",
+      "polygon": [
+        [
+          880,
+          620
+        ],
+        [
+          880,
+          520
+        ],
+        [
+          1160,
+          520
+        ],
+        [
+          1160,
+          620
+        ]
+      ],
+      "walk_to": [
+        1000,
+        830
+      ],
+      "era": "then",
+      "pick_priority": 3
+    },
+    {
+      "id": "fire",
+      "name": "Fire",
+      "polygon": [
+        [
+          1650,
+          760
+        ],
+        [
+          1650,
+          500
+        ],
+        [
+          1880,
+          500
+        ],
+        [
+          1880,
+          760
+        ]
+      ],
+      "walk_to": [
+        1650,
+        870
+      ],
+      "era": "then",
+      "pick_priority": 3
+    },
+    {
+      "id": "portrait",
+      "name": "Slashed portrait",
+      "polygon": [
+        [
+          520,
+          500
+        ],
+        [
+          520,
+          100
+        ],
+        [
+          700,
+          100
+        ],
+        [
+          700,
+          500
+        ]
+      ],
+      "walk_to": [
+        620,
+        860
+      ]
+    },
+    {
+      "id": "window",
+      "name": "Window",
+      "polygon": [
+        [
+          900,
+          500
+        ],
+        [
+          900,
+          0
+        ],
+        [
+          1260,
+          0
+        ],
+        [
+          1260,
+          500
+        ]
+      ],
+      "walk_to": [
+        1100,
+        820
+      ]
+    },
+    {
+      "id": "fireplace",
+      "name": "Fireplace",
+      "polygon": [
+        [
+          1600,
+          760
+        ],
+        [
+          1600,
+          380
+        ],
+        [
+          1900,
+          380
+        ],
+        [
+          1900,
+          760
+        ]
+      ],
+      "walk_to": [
+        1650,
+        870
+      ]
+    }
+  ],
+  "occluders": [],
+  "npcs": [],
+  "effects": [
+    {
+      "type": "FogLayer",
+      "name": "FogFar",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.85,
+          0.86,
+          0.88,
+          1.0
+        ],
+        "density": 0.26,
+        "velocity": [
+          0.006,
+          0.0
+        ],
+        "noise_scale": [
+          1.4,
+          0.8
+        ],
+        "band_top": 0.42,
+        "band_bottom": 0.9,
+        "depth_texture": "res://content/rooms/magistrate_office/art/depth_now.png",
+        "near_cutoff": 0.45,
+        "noise_seed": 3
+      }
+    },
+    {
+      "type": "LightShafts",
+      "name": "Shafts",
+      "era": "now",
+      "properties": {
+        "origin": [
+          1080,
+          150
+        ],
+        "aim": 190.0,
+        "spread": 36.0,
+        "beams": 6.0,
+        "intensity": 0.1,
+        "reach": 0.95,
+        "shaft_color": [
+          0.95,
+          0.96,
+          1.0,
+          1.0
+        ],
+        "flicker": 0.4
+      }
+    },
+    {
+      "type": "DustMotes",
+      "name": "Ash",
+      "era": "now",
+      "properties": {
+        "area": [
+          300,
+          200,
+          1400,
+          700
+        ],
+        "mote_color": [
+          0.85,
+          0.85,
+          0.88,
+          0.35
+        ],
+        "mote_count": 45,
+        "drift": [
+          4,
+          6
+        ],
+        "mote_size": 2.5
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "GroundMist",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.86,
+          0.87,
+          0.9,
+          1.0
+        ],
+        "density": 0.16,
+        "velocity": [
+          0.01,
+          0.0
+        ],
+        "noise_scale": [
+          2.6,
+          1.6
+        ],
+        "band_top": 0.84,
+        "band_bottom": 1.02,
+        "band_softness": 0.08,
+        "noise_seed": 27
+      },
+      "layer": "foreground"
+    },
+    {
+      "type": "LightShafts",
+      "name": "GoldenShafts",
+      "era": "then",
+      "properties": {
+        "origin": [
+          1080,
+          150
+        ],
+        "aim": 190.0,
+        "spread": 44.0,
+        "beams": 7.0,
+        "intensity": 0.14,
+        "reach": 1.0,
+        "shaft_color": [
+          1.0,
+          0.85,
+          0.55,
+          1.0
+        ],
+        "flicker": 0.25
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "WarmHaze",
+      "era": "then",
+      "properties": {
+        "fog_color": [
+          1.0,
+          0.9,
+          0.75,
+          1.0
+        ],
+        "density": 0.1,
+        "velocity": [
+          0.004,
+          0.0
+        ],
+        "noise_scale": [
+          1.2,
+          0.7
+        ],
+        "band_top": 0.3,
+        "band_bottom": 0.9,
+        "noise_seed": 13
+      }
+    },
+    {
+      "type": "DustMotes",
+      "name": "GoldenDust",
+      "era": "then",
+      "properties": {
+        "area": [
+          300,
+          150,
+          1500,
+          750
+        ],
+        "mote_color": [
+          1.0,
+          0.86,
+          0.55,
+          0.55
+        ],
+        "mote_count": 60,
+        "drift": [
+          3,
+          -4
+        ],
+        "mote_size": 2.5
+      }
+    }
+  ]
+}

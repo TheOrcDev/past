@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemDef" format=3]
+
+[ext_resource type="Texture2D" path="res://content/items/chain_key/icon.png" id="1_rtdin"]
+[ext_resource type="Script" path="res://src/core/item_def.gd" id="2_n05su"]
+
+[resource]
+script = ExtResource("2_n05su")
+id = &"chain_key"
+display_name = "Chain key"
+icon = ExtResource("1_rtdin")
+look_file = &"ch3/items"
+look_cue = &"chain_key_look"

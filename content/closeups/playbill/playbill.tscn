@@ -1,0 +1,31 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/closeups/playbill/playbill.gd" id="1_p434v"]
+[ext_resource type="Texture2D" path="res://content/closeups/playbill/art/bg.png" id="2_vspgc"]
+[ext_resource type="Script" path="res://src/core/hotspot.gd" id="3_1i8hw"]
+
+[node name="Playbill" type="Node2D" unique_id=1309945991]
+script = ExtResource("1_p434v")
+closeup_id = &"playbill"
+
+[node name="Background" type="Sprite2D" parent="." unique_id=877068604]
+texture = ExtResource("2_vspgc")
+centered = false
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=2022938156]
+
+[node name="Cast" type="Area2D" parent="Hotspots" unique_id=2082439640]
+script = ExtResource("3_1i8hw")
+id = &"cast"
+display_name = "Cast"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Cast" unique_id=1118742703]
+polygon = PackedVector2Array(580, 480, 1420, 480, 1420, 590, 580, 590)
+
+[node name="Title" type="Area2D" parent="Hotspots" unique_id=2077643701]
+script = ExtResource("3_1i8hw")
+id = &"title"
+display_name = "Title"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Title" unique_id=1289263704]
+polygon = PackedVector2Array(420, 100, 1520, 100, 1520, 480, 420, 480)

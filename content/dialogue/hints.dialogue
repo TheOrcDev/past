@@ -772,6 +772,438 @@ Unknown: Use the valve in the valve house. [ID:HINT_SIGNING_3]
 
 => END
 
+~ ch3_avenue_1
+
+Unknown: Corin was going upstream, to the city on the hill. [ID:HINT_CH3_AVENUE_1]
+
+=> END
+
+~ ch3_avenue_2
+
+Unknown: The valve house: Corin's ferry goes on to the upper city. [ID:HINT_CH3_AVENUE_2]
+
+=> END
+
+~ ch3_avenue_3
+
+Unknown: Turn the valve, and ride with Corin. [ID:HINT_CH3_AVENUE_3]
+
+=> END
+
+~ hangman_1
+
+Unknown: A gallows, off the avenue. Somebody tends it. [ID:HINT_HANGMAN_1]
+
+=> END
+
+~ hangman_2
+
+Unknown: Through the archway on the left of the avenue, to the gallows square. [ID:HINT_HANGMAN_2]
+
+=> END
+
+~ hangman_3
+
+Unknown: Talk to the Hangman in the gallows square. [ID:HINT_HANGMAN_3]
+
+=> END
+
+~ refusal_1
+
+Unknown: The gallows beam is worn by one pair of hands. [ID:HINT_REFUSAL_1]
+
+=> END
+
+~ refusal_2
+
+Unknown: Touch the gallows beam. [ID:HINT_REFUSAL_2]
+
+=> END
+
+~ refusal_3
+
+Unknown: Use the gallows beam in the gallows square. [ID:HINT_REFUSAL_3]
+
+=> END
+
+~ chain_key_1
+
+Unknown: The Hangman refused once. He should know. [ID:HINT_CHAIN_KEY_1]
+
+=> END
+
+~ chain_key_2
+
+Unknown: Tell the Hangman he refused, once. [ID:HINT_CHAIN_KEY_2]
+
+=> END
+
+~ chain_key_3
+
+Unknown: Talk to the Hangman: 'You refused, once. I saw it.' [ID:HINT_CHAIN_KEY_3]
+
+=> END
+
+~ theater_1
+
+Unknown: A theatre, chained shut. A key would help. [ID:HINT_THEATER_1]
+
+=> END
+
+~ theater_2
+
+Unknown: The Hangman's key, on the theatre doors. [ID:HINT_THEATER_2]
+
+=> END
+
+~ theater_3
+
+Unknown: Use the chain key on the theatre's doors. [ID:HINT_THEATER_3]
+
+=> END
+
+~ show_1
+
+Unknown: A puppeteer with no audience. [ID:HINT_SHOW_1]
+
+=> END
+
+~ show_2
+
+Unknown: Talk to the Puppeteer on the stage, and watch her play. [ID:HINT_SHOW_2]
+
+=> END
+
+~ show_3
+
+Unknown: Ask the Puppeteer to show you the play. [ID:HINT_SHOW_3]
+
+=> END
+
+~ quill_1
+
+Unknown: The clerk puppet backstage holds a real clerk's quill. [ID:HINT_QUILL_1]
+
+=> END
+
+~ quill_2
+
+Unknown: Through the wings, backstage. The clerk puppet. [ID:HINT_QUILL_2]
+
+=> END
+
+~ quill_3
+
+Unknown: Use the clerk puppet backstage to take the quill. [ID:HINT_QUILL_3]
+
+=> END
+
+~ records_gate_1
+
+Unknown: The Hall of Records is sealed with my seal. [ID:HINT_RECORDS_GATE_1]
+
+=> END
+
+~ records_gate_2
+
+Unknown: The ring, on the records gate's lock. [ID:HINT_RECORDS_GATE_2]
+
+=> END
+
+~ records_gate_3
+
+Unknown: Use the seal ring on the gate of the Hall of Records. [ID:HINT_RECORDS_GATE_3]
+
+=> END
+
+~ sign_in_1
+
+Unknown: 'All who enter shall sign.' I have a quill now. [ID:HINT_SIGN_IN_1]
+
+=> END
+
+~ sign_in_2
+
+Unknown: The visitors' register on the lectern in the hall. [ID:HINT_SIGN_IN_2]
+
+=> END
+
+~ sign_in_3
+
+Unknown: Use the clerk's quill on the visitors' register. [ID:HINT_SIGN_IN_3]
+
+=> END
+
+~ office_ref_1
+
+Unknown: The stacks keep an index of every name. The Dove's will be there. [ID:HINT_OFFICE_REF_1]
+
+=> END
+
+~ office_ref_2
+
+Unknown: Through the archway on the left of the hall, to the stacks. The index. [ID:HINT_OFFICE_REF_2]
+
+=> END
+
+~ office_ref_3
+
+Unknown: In the stacks, look at the index, and find the Dove's entry. [ID:HINT_OFFICE_REF_3]
+
+=> END
+
+~ permit_1
+
+Unknown: My office is locked, and the Registrar has the keys. [ID:HINT_PERMIT_1]
+
+=> END
+
+~ permit_2
+
+Unknown: Ask the Registrar to let me into my office. [ID:HINT_PERMIT_2]
+
+=> END
+
+~ permit_3
+
+Unknown: Talk to the Registrar: 'I want to see my office.' [ID:HINT_PERMIT_3]
+
+=> END
+
+~ office_1
+
+Unknown: My desk remembers what I did there. [ID:HINT_OFFICE_1]
+
+=> END
+
+~ office_2
+
+Unknown: Sit at my desk. Touch it. [ID:HINT_OFFICE_2]
+
+=> END
+
+~ office_3
+
+Unknown: Use the desk in the Magistrate's office, and in the past, the Ledger on it. [ID:HINT_OFFICE_3]
+
+=> END
+
+~ vault_1
+
+Unknown: The vault opens to one word I wrote once. [ID:HINT_VAULT_1]
+
+=> END
+
+~ vault_2
+
+Unknown: The word I wrote on the Ledger's first leaf: SILENCE. [ID:HINT_VAULT_2]
+
+=> END
+
+~ vault_3
+
+Unknown: Use the vault door in the Registrar's chamber and choose SILENCE. [ID:HINT_VAULT_3]
+
+=> END
+
+~ bridge_1
+
+Unknown: He's taken the book up toward the cathedral. [ID:HINT_BRIDGE_1]
+
+=> END
+
+~ bridge_2
+
+Unknown: Through the vault, the passage, the covered bridge. [ID:HINT_BRIDGE_2]
+
+=> END
+
+~ bridge_3
+
+Unknown: Go through the vault to the covered bridge, and out the far door. [ID:HINT_BRIDGE_3]
+
+=> END
+
+~ ch4_roof_1
+
+Unknown: The Registrar ran for the cathedral's heights. [ID:HINT_CH4_ROOF_1]
+
+=> END
+
+~ ch4_roof_2
+
+Unknown: Across the covered bridge, through the far door. [ID:HINT_CH4_ROOF_2]
+
+=> END
+
+~ ch4_roof_3
+
+Unknown: Use the far door at the end of the covered bridge. [ID:HINT_CH4_ROOF_3]
+
+=> END
+
+~ stone_1
+
+Unknown: A gap ahead will need filling. [ID:HINT_STONE_1]
+
+=> END
+
+~ stone_2
+
+Unknown: The loose stone block on the roof ridge. [ID:HINT_STONE_2]
+
+=> END
+
+~ stone_3
+
+Unknown: Take the loose stone on the cathedral roof. [ID:HINT_STONE_3]
+
+=> END
+
+~ buttress_1
+
+Unknown: The buttress walk has a slab missing. [ID:HINT_BUTTRESS_1]
+
+=> END
+
+~ buttress_2
+
+Unknown: Put the loose stone in the gap. [ID:HINT_BUTTRESS_2]
+
+=> END
+
+~ buttress_3
+
+Unknown: Use the loose stone on the gap in the buttress walk. [ID:HINT_BUTTRESS_3]
+
+=> END
+
+~ dovecote_key_1
+
+Unknown: The dovecote is locked. A bird would hide a key somewhere high. [ID:HINT_DOVECOTE_KEY_1]
+
+=> END
+
+~ dovecote_key_2
+
+Unknown: One of the gargoyles has something in its mouth. [ID:HINT_DOVECOTE_KEY_2]
+
+=> END
+
+~ dovecote_key_3
+
+Unknown: Take the key from the gargoyle's jaws. [ID:HINT_DOVECOTE_KEY_3]
+
+=> END
+
+~ dove_1
+
+Unknown: Someone lives in the dovecote. [ID:HINT_DOVE_1]
+
+=> END
+
+~ dove_2
+
+Unknown: The dovecote key, on the dovecote door. [ID:HINT_DOVE_2]
+
+=> END
+
+~ dove_3
+
+Unknown: Use the dovecote key on the dovecote's door, and talk to her. [ID:HINT_DOVE_3]
+
+=> END
+
+~ letter_1
+
+Unknown: She said there's a letter on her desk. [ID:HINT_LETTER_1]
+
+=> END
+
+~ letter_2
+
+Unknown: Down the trapdoor to her room. The desk. [ID:HINT_LETTER_2]
+
+=> END
+
+~ letter_3
+
+Unknown: In the Dove's room, take the letter from the desk. [ID:HINT_LETTER_3]
+
+=> END
+
+~ forgive_1
+
+Unknown: That letter was always meant for her. [ID:HINT_FORGIVE_1]
+
+=> END
+
+~ forgive_2
+
+Unknown: Give the Dove the letter. [ID:HINT_FORGIVE_2]
+
+=> END
+
+~ forgive_3
+
+Unknown: Give the unsent letter to the Dove. [ID:HINT_FORGIVE_3]
+
+=> END
+
+~ song_1
+
+Unknown: The rose window watched the night I took her name. [ID:HINT_SONG_1]
+
+=> END
+
+~ song_2
+
+Unknown: Through the tower door, to the ledge behind the rose window. Touch the window. [ID:HINT_SONG_2]
+
+=> END
+
+~ song_3
+
+Unknown: Use the rose window. [ID:HINT_SONG_3]
+
+=> END
+
+~ edmund_1
+
+Unknown: He was my first entry. I know his name. [ID:HINT_EDMUND_1]
+
+=> END
+
+~ edmund_2
+
+Unknown: Say his name to him: Edmund Vey. [ID:HINT_EDMUND_2]
+
+=> END
+
+~ edmund_3
+
+Unknown: Talk to the Registrar in the bell chamber and give him his name. [ID:HINT_EDMUND_3]
+
+=> END
+
+~ ring_1
+
+Unknown: The bell carries to everyone who ever had a name. [ID:HINT_RING_1]
+
+=> END
+
+~ ring_2
+
+Unknown: Up the ladder to the belfry, with the book. [ID:HINT_RING_2]
+
+=> END
+
+~ ring_3
+
+Unknown: Use the Ledger on the great bell. [ID:HINT_RING_3]
+
+=> END
+
 ~ none
 
 Unknown: Nothing pulls at me right now. The rest of me is still out there, somewhere. [ID:HINT_NONE_1]

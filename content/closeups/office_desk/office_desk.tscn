@@ -1,0 +1,39 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/closeups/office_desk/office_desk.gd" id="1_8noqr"]
+[ext_resource type="Texture2D" path="res://content/closeups/office_desk/art/bg.png" id="2_gq15s"]
+[ext_resource type="Script" path="res://src/core/hotspot.gd" id="3_lps2e"]
+
+[node name="OfficeDesk" type="Node2D" unique_id=203032036]
+script = ExtResource("1_8noqr")
+closeup_id = &"office_desk"
+
+[node name="Background" type="Sprite2D" parent="." unique_id=2133221281]
+texture = ExtResource("2_gq15s")
+centered = false
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=1974150776]
+
+[node name="Book" type="Area2D" parent="Hotspots" unique_id=975020176]
+script = ExtResource("3_lps2e")
+id = &"book"
+display_name = "Closed book"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Book" unique_id=495644243]
+polygon = PackedVector2Array(0, 60, 520, 60, 520, 560, 0, 560)
+
+[node name="Inkwell" type="Area2D" parent="Hotspots" unique_id=553693426]
+script = ExtResource("3_lps2e")
+id = &"inkwell"
+display_name = "Inkwell"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Inkwell" unique_id=1062294606]
+polygon = PackedVector2Array(1280, 290, 1520, 290, 1520, 600, 1280, 600)
+
+[node name="Blotter" type="Area2D" parent="Hotspots" unique_id=780558431]
+script = ExtResource("3_lps2e")
+id = &"blotter"
+display_name = "Blotter"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Blotter" unique_id=1646117321]
+polygon = PackedVector2Array(300, 200, 1480, 200, 1480, 960, 300, 960)

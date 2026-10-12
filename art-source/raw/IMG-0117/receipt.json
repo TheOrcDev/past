@@ -1,0 +1,77 @@
+{
+  "id": "IMG-0117",
+  "title": "NPC: the Puppeteer",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T01:01:02.189Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "1440x2560",
+      "quality": "high",
+      "n": 3,
+      "background": "transparent",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0013/IMG-0013-v2.png",
+          "sha256": "aea3ec9ef0da502490ee6ecc801c0a0d4cd1f6bcf806d4f9b16ec70c8cb05977"
+        }
+      ],
+      "mask": null,
+      "prompt": "A single full-body character for a dark gothic point-and-click adventure game, painted in the same monochrome greyscale ink-wash matte-painting style as the reference image: the Puppeteer: a slender woman in a dramatic cape cut like a stage curtain with tassels, a theatrical half-mask over her eyes, a glove puppet on each hand: a robed magistrate and a little veiled dove.\n\nThey are a grey shade of a person: solid, made of mid and light greys with soft ink texture, never pure black, with no visible face (the half-mask and the shadow of her hood hide her face). Pose: standing theatrically with both puppet hands raised at shoulder height as if mid-performance, facing three-quarters to the viewer's right. Shown whole from head to feet, facing three-quarters to the viewer's left, filling most of the image height, with a little space around them. Even soft light from the upper left with a gentle cool rim light. On a fully transparent background, with no ground, shadow or scenery.\n\nNo text, labels, letters or numbers. No other figures. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0117-v1.png",
+          "sha256": "0b6b63232e008a502bc2817963e8fd389892cda1b4500ba85c0bc3a204bc6ac8",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0117-v2.png",
+          "sha256": "6dfc14b6657629d866ab00cc3d7e674f8df4e9dee15f2964af4bcd8a389dbec4",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0117-v3.png",
+          "sha256": "bb38d829a02f12352baafdc40e3f22563d93a4b2693e257c3d19e898580aa601",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 97835,
+        "outputTokens": 1112
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12da0-9a19-7531-8406-d0218eace2ef",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12da0-9a19-7531-8406-d0218eace2ef/exec-20f9aaf5-7829-4f60-a734-63948f90ae4b.png",
+            "/Users/orcdev/.codex/generated_images/01a12da0-9a19-7531-8406-d0218eace2ef/exec-6a2d1afd-16d0-450a-afba-fb1bf1b0c1d5.png",
+            "/Users/orcdev/.codex/generated_images/01a12da0-9a19-7531-8406-d0218eace2ef/exec-5f7bcd59-ef7b-4965-a42a-ca9e393ba3c4.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1024,
+              "height": 1536
+            },
+            {
+              "width": 1024,
+              "height": 1536
+            },
+            {
+              "width": 1024,
+              "height": 1536
+            }
+          ],
+          "messages": [
+            "I’ll generate three portrait images using the reference and your exact prompt, each with a transparent background.",
+            "Two images are generated. I’m generating the third with the same reference and exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

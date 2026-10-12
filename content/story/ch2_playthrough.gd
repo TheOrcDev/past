@@ -75,6 +75,9 @@ func run() -> void:
 	await _give(&"sluice_key", "Valve")
 	check.call(GameState.get_flag(&"valve_unlocked"), "Aldous's key unlocks the valve")
 	await _verb("Valve", &"use")
+	if Chapters.in_build(&"upper_avenue"):
+		while Rooms.current == null or Rooms.current.room_id != &"upper_avenue":
+			await _tree.process_frame
 	await _until_free()
 	check.call(&"ch2_signing" in GameState.memories and &"i_am_ulric" in GameState.facts, "the signing: Ulric")
 	check.call(GameState.get_flag(&"ch2_done"), "the quarter drains")

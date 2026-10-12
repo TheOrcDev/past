@@ -484,3 +484,20 @@ XXL: five parts. It is re-estimated after slices 3 and 4.
   - **Proof:** `Ch2Playthrough` passes in GUT and as `--qa=ch2` on desktop
     (`docs/qa/008/ch2/`). The prologue and chapter 1 tests now follow the
     way on into the next chapter when it ships.
+- **2026-10-12, slice 7:** chapter 3, The Hall of Records, plays from the
+  upper avenue to the covered bridge.
+  - **Chart and script:** `docs/story/ch3-puzzles.md` has two threads (the
+    gallows and the theatre) that lead into the Hall. The script is in
+    `content/dialogue/ch3/`, with 14 hint goals and four journal pages.
+  - **Art (IMG-0104–0132):**
+    - 12 rooms, nine with a then image, all aligned on their first round
+      (p90 1.10–1.59 px);
+    - 3 NPCs (the Hangman, the Puppeteer with a bone for each puppet, and
+      the Registrar);
+    - 4 close-ups and an item sheet.
+  - **The turn:** a playable memory as Ulric at his own desk. He writes the
+    vault's word, SILENCE, and strikes the Dove's name. Opening the vault
+    sends the Registrar running for the belfry with the Ledger. The
+    Hangman, told who he hanged, says "Some of it."
+  - **Proof:** `Ch3Playthrough` passes in GUT and as `--qa=ch3` on desktop
+    (`docs/qa/008/ch3/`).

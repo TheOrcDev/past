@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0127",
+  "title": "The vault, then",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T01:10:32.752Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0114/IMG-0114-v3.png",
+          "sha256": "0a11c7d96af90a0780ec713c4abaf6556e3fc3c4103a88a97a537c0b8950e5c0"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit this image in place. Keep exactly the same composition, camera, perspective, horizon and every shape where it stands: the round chamber, the dome and oculus, the lectern and its step, both doors and the floor. Only change the time and the condition.\n\nRestore the same vault to how it looked decades earlier, when the Ledger lay here, in full rich warm color, as a painterly gothic matte painting: an enormous ancient leather-bound book lying open on the lectern, its pages glowing softly with warm golden light, chains of polished brass holding it, candles in the wall niches, warm light everywhere. The key light comes from the same direction as in the original.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0127-v1.png",
+          "sha256": "334029ab0647a0a854b73d545128bbcf91991c04681a4dd95dbcf732ab84a06b",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0127-v2.png",
+          "sha256": "4f4b32511a1e7d75bd6186f6b2ad4da829e9fbbd1811ebd47b57a719e04f6481",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 69683,
+        "outputTokens": 579
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12da9-4e8c-7723-ac9f-a097d8651ef5",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12da9-4e8c-7723-ac9f-a097d8651ef5/exec-ddca1249-dc56-404f-bd39-0be98574ffc9.png",
+            "/Users/orcdev/.codex/generated_images/01a12da9-4e8c-7723-ac9f-a097d8651ef5/exec-83802c12-e866-4c59-8ab6-2c89a35e3e4a.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate two edits using your prompt exactly as provided.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

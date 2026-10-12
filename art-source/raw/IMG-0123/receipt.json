@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0123",
+  "title": "The stage, then",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T01:06:30.650Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0107/IMG-0107-v2.png",
+          "sha256": "cae0a3d2f5eea79a30eab1c266d8de243dc9f362255ecbe7eefb044ca3aff7e6"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit this image in place. Keep exactly the same composition, camera, perspective, horizon and every shape where it stands: the proscenium, the curtains, the booth, the seats, the boxes and the doors. Only change the time and the condition.\n\nRestore the same theatre to how it looked decades earlier, during a sold-out performance, in full rich warm color, as a painterly gothic matte painting: rich red velvet curtains, gilded boxes with candles, the puppet booth freshly painted in red and gold stripes, footlights glowing along the stage, warm golden light everywhere. The key light comes from the same direction as in the original.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0123-v1.png",
+          "sha256": "08512b42ce3b9c8901f49c26a3eced766867a1b17b80691d09b09ff6d7f7bc88",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0123-v2.png",
+          "sha256": "a14ce53f7779538f2363d32426e1975509dee83ddd7eea6a7453dfc4abed1068",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 200292,
+        "outputTokens": 895
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12da5-9cf1-78b2-a067-7d6e9614272b",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12da5-9cf1-78b2-a067-7d6e9614272b/exec-1ba8f5f6-79dc-4522-bd75-948ae8763768.png",
+            "/Users/orcdev/.codex/generated_images/01a12da5-9cf1-78b2-a067-7d6e9614272b/exec-e455d3cd-cc91-4ba0-97b8-c35256560365.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate two edits from the attached image using your exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

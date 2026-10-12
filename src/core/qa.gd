@@ -10,7 +10,7 @@ const LONG_TIMEOUT_SECONDS := 150.0
 ## Scenarios that need the long timeout without the opening.
 const LONG_RUNS: Array[String] = ["greybox", "vista", "journal"]
 ## Scenarios that need longer still, in seconds.
-const TIMEOUTS := {"reveals": 300.0, "greybox_clip": 360.0, "toolkit_reel": 360.0, "rooms": 900.0, "prologue": 600.0, "ch1": 900.0, "ch2": 900.0}
+const TIMEOUTS := {"reveals": 300.0, "greybox_clip": 360.0, "toolkit_reel": 360.0, "rooms": 900.0, "prologue": 600.0, "ch1": 900.0, "ch2": 900.0, "ch3": 900.0}
 ## Scenarios that start from the opening instead of straight in the first room.
 const WITH_OPENING: Array[String] = ["cemetery_reveal", "grave", "grave_clip", "perf", "tour", "screenshots", "reduced_motion", "skip", "toolkit_reel"]
 
@@ -132,6 +132,10 @@ func _run(scenario: String) -> void:
 			await _enter(&"cemetery_grave")
 			GameState.reset()
 			await Ch2Playthrough.new(get_tree(), _check, _shot).run()
+		"ch3":
+			await _enter(&"cemetery_grave")
+			GameState.reset()
+			await Ch3Playthrough.new(get_tree(), _check, _shot).run()
 		"npc":
 			await _npc()
 		"reveals":

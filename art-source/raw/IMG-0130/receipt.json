@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0130",
+  "title": "Close-up: the Magistrate's desk",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T01:11:28.928Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0112/IMG-0112-v1.png",
+          "sha256": "134171a0878727d880dc66317770a865e5336b844b43d9e665319ceeec62b554"
+        }
+      ],
+      "mask": null,
+      "prompt": "A close-up of the top of the great desk from the reference image, in exactly the same monochrome greyscale ink-wash gothic style: seen from above: a leather blotter with faint backwards marks pressed into it, a dried-up crystal inkwell, an empty quill stand, and a heavy closed leather book with brass corners, moonlight across them.\n\nNo readable text, letters or numbers anywhere. No people or figures. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0130-v1.png",
+          "sha256": "e920bac49e780c3086038ae11fbbcd5c65abfe631e3f4b615d382545e4865164",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0130-v2.png",
+          "sha256": "99853f9a81ed75086085587717d6b812ccfbf13a625d7bdca2bc862609abab9a",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 69244,
+        "outputTokens": 409
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12daa-29fa-7240-92bc-61e90c294947",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12daa-29fa-7240-92bc-61e90c294947/exec-dc5f7eb3-2dd1-4fd6-9a38-23968db1b633.png",
+            "/Users/orcdev/.codex/generated_images/01a12daa-29fa-7240-92bc-61e90c294947/exec-9db2d08e-da0f-46df-9e18-fe2315780b2e.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate two wide, opaque images using the reference and your exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

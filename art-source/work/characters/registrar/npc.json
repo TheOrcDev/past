@@ -1,0 +1,169 @@
+{
+  "speaker": "Registrar",
+  "painting": "art-source/raw/IMG-0118/IMG-0118-v2.png",
+  "height": 560,
+  "feet": [
+    500,
+    1510
+  ],
+  "speech": [
+    480,
+    0
+  ],
+  "subtitle_color": [
+    0.8,
+    0.8,
+    0.9
+  ],
+  "aliases": [
+    "Edmund Vey"
+  ],
+  "bones": [
+    {
+      "name": "Base",
+      "parent": "",
+      "from": [
+        500,
+        1510
+      ],
+      "to": [
+        500,
+        1100
+      ]
+    },
+    {
+      "name": "Body",
+      "parent": "Base",
+      "from": [
+        500,
+        1050
+      ],
+      "to": [
+        540,
+        360
+      ]
+    },
+    {
+      "name": "Head",
+      "parent": "Body",
+      "from": [
+        560,
+        320
+      ],
+      "to": [
+        500,
+        20
+      ]
+    },
+    {
+      "name": "Ledger",
+      "parent": "Body",
+      "from": [
+        540,
+        500
+      ],
+      "to": [
+        660,
+        560
+      ]
+    }
+  ],
+  "motions": {
+    "idle": {
+      "loop": true,
+      "bones": {
+        "Body": [
+          0.3,
+          0.15,
+          0.0
+        ],
+        "Head": [
+          0.6,
+          0.1,
+          0.5
+        ]
+      }
+    },
+    "talk_a": {
+      "loop": true,
+      "bones": {
+        "Body": [
+          0.4,
+          0.2,
+          0.0
+        ],
+        "Head": [
+          0.8,
+          0.2,
+          1.0
+        ]
+      },
+      "voice": {
+        "Head": 3.0
+      }
+    },
+    "talk_b": {
+      "loop": true,
+      "bones": {
+        "Body": [
+          0.5,
+          0.25,
+          0.0
+        ],
+        "Head": [
+          0.8,
+          0.25,
+          0.5
+        ]
+      },
+      "voice": {
+        "Head": -3.0,
+        "Ledger": -4.0
+      }
+    },
+    "write": {
+      "loop": false,
+      "length": 1.6,
+      "keys": {
+        "Ledger": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.4,
+            -8.0
+          ],
+          [
+            1.2,
+            -8.0
+          ],
+          [
+            1.6,
+            0.0
+          ]
+        ],
+        "Head": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.4,
+            6.0
+          ],
+          [
+            1.2,
+            6.0
+          ],
+          [
+            1.6,
+            0.0
+          ]
+        ]
+      }
+    }
+  },
+  "id": "registrar",
+  "grid": 28
+}

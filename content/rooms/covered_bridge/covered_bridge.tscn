@@ -1,0 +1,157 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/rooms/covered_bridge/covered_bridge.gd" id="1_hr8lv"]
+[ext_resource type="Texture2D" path="res://content/rooms/covered_bridge/art/bg_now.png" id="2_f6y4u"]
+[ext_resource type="Script" path="res://src/systems/effects/fog_layer.gd" id="3_tjt1v"]
+[ext_resource type="Texture2D" path="res://content/rooms/covered_bridge/art/depth_now.png" id="4_kjvsg"]
+[ext_resource type="Script" path="res://src/systems/effects/light_shafts.gd" id="5_m33xp"]
+[ext_resource type="Script" path="res://src/systems/effects/dust_motes.gd" id="6_5xtig"]
+[ext_resource type="Script" path="res://src/core/scale_zones.gd" id="7_mw3oq"]
+[ext_resource type="Script" path="res://src/core/exit.gd" id="8_jxmo1"]
+[ext_resource type="Script" path="res://src/core/hotspot.gd" id="9_f2605"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ij1pp"]
+vertices = PackedVector2Array(1900, 1060, 0, 1060, 0, 880, 1500, 800, 1880, 790)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, 880, 1500, 800, 1880, 790, 1900, 1060, 0, 1060)])
+agent_radius = 0.0
+
+[node name="CoveredBridge" type="Node2D" unique_id=430028628]
+script = ExtResource("1_hr8lv")
+room_id = &"covered_bridge"
+display_name = "Covered bridge"
+
+[node name="Layers" type="Node2D" parent="." unique_id=1801600473]
+
+[node name="Now" type="Node2D" parent="Layers" unique_id=1369672618]
+
+[node name="Background" type="Sprite2D" parent="Layers/Now" unique_id=1834126588]
+texture = ExtResource("2_f6y4u")
+centered = false
+
+[node name="FogFar" type="ColorRect" parent="Layers/Now" unique_id=986697673]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_tjt1v")
+fog_color = Color(0.85, 0.86, 0.88, 1)
+density = 0.26
+velocity = Vector2(0.006, 0)
+noise_scale = Vector2(1.4, 0.8)
+band_top = 0.42
+band_bottom = 0.9
+depth_texture = ExtResource("4_kjvsg")
+noise_seed = 3
+
+[node name="Shafts" type="ColorRect" parent="Layers/Now" unique_id=102301871]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("5_m33xp")
+origin = Vector2(600, 150)
+aim = 200.0
+spread = 36.0
+intensity = 0.1
+reach = 0.95
+shaft_color = Color(0.95, 0.96, 1, 1)
+flicker = 0.4
+
+[node name="Ash" type="CPUParticles2D" parent="Layers/Now" unique_id=1273643908]
+script = ExtResource("6_5xtig")
+area = Rect2(300, 200, 1400, 700)
+mote_color = Color(0.85, 0.85, 0.88, 0.35)
+mote_count = 45
+drift = Vector2(4, 6)
+mote_size = 2.5
+
+[node name="Then" type="Node2D" parent="Layers" unique_id=1739243809]
+
+[node name="WalkAreas" type="Node2D" parent="." unique_id=1564125628]
+
+[node name="Now" type="NavigationRegion2D" parent="WalkAreas" unique_id=586136584]
+navigation_polygon = SubResource("NavigationPolygon_ij1pp")
+
+[node name="Then" type="NavigationRegion2D" parent="WalkAreas" unique_id=475798957]
+enabled = false
+
+[node name="ScaleZones" type="Node2D" parent="." unique_id=1293626197]
+script = ExtResource("7_mw3oq")
+far_y = 790.0
+far_scale = 0.72
+near_y = 1060.0
+near_scale = 1.05
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=1244946755]
+
+[node name="ToVault" type="Area2D" parent="Hotspots" unique_id=658855102]
+script = ExtResource("8_jxmo1")
+target_room = &"ledger_vault"
+target_entry = &"from_bridge"
+direction = &"left"
+id = &"to_vault"
+display_name = "Back to the vault"
+default_verb = &"walk"
+walk_offset = Vector2(140, 960)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/ToVault" unique_id=11834541]
+polygon = PackedVector2Array(0, 1060, 0, 860, 120, 860, 120, 1060)
+
+[node name="FarDoor" type="Area2D" parent="Hotspots" unique_id=999372375]
+script = ExtResource("9_f2605")
+id = &"far_door"
+display_name = "Far door"
+default_verb = &"use"
+walk_offset = Vector2(1720, 820)
+pick_priority = 1
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/FarDoor" unique_id=1379272531]
+polygon = PackedVector2Array(1690, 790, 1690, 500, 1820, 500, 1820, 790)
+
+[node name="Windows" type="Area2D" parent="Hotspots" unique_id=1115184613]
+script = ExtResource("9_f2605")
+id = &"windows"
+display_name = "Windows"
+walk_offset = Vector2(700, 900)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Windows" unique_id=948846931]
+polygon = PackedVector2Array(100, 620, 100, 60, 1300, 60, 1300, 620)
+
+[node name="Banners" type="Area2D" parent="Hotspots" unique_id=32845752]
+script = ExtResource("9_f2605")
+id = &"banners"
+display_name = "Banners"
+walk_offset = Vector2(1400, 840)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Banners" unique_id=429714378]
+polygon = PackedVector2Array(1300, 300, 1300, 0, 1700, 0, 1700, 300)
+
+[node name="Exits" type="Node2D" parent="." unique_id=1856027353]
+
+[node name="Markers" type="Node2D" parent="." unique_id=1662034857]
+
+[node name="default" type="Marker2D" parent="Markers" unique_id=627353842]
+position = Vector2(800, 950)
+
+[node name="from_vault" type="Marker2D" parent="Markers" unique_id=825126809]
+position = Vector2(150, 960)
+
+[node name="from_roof" type="Marker2D" parent="Markers" unique_id=392179122]
+position = Vector2(1700, 840)
+
+[node name="Actors" type="Node2D" parent="." unique_id=1171284978]
+y_sort_enabled = true
+
+[node name="Foreground" type="Node2D" parent="." unique_id=1372605621]
+
+[node name="GroundMist" type="ColorRect" parent="Foreground" unique_id=169616181 groups=["era_now"]]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_tjt1v")
+fog_color = Color(0.86, 0.87, 0.9, 1)
+density = 0.16
+velocity = Vector2(0.01, 0)
+noise_scale = Vector2(2.6, 1.6)
+band_top = 0.84
+band_bottom = 1.02
+band_softness = 0.08
+noise_seed = 27
+
+[node name="Cinematics" type="Node2D" parent="." unique_id=1526022782]

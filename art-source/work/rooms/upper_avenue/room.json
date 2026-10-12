@@ -1,0 +1,242 @@
+{
+  "display_name": "Upper avenue",
+  "now": "art-source/raw/IMG-0104/IMG-0104-v1.png",
+  "walk": [
+    [
+      100,
+      850
+    ],
+    [
+      600,
+      820
+    ],
+    [
+      1300,
+      820
+    ],
+    [
+      1800,
+      850
+    ],
+    [
+      1800,
+      1060
+    ],
+    [
+      100,
+      1060
+    ]
+  ],
+  "scale_zones": {
+    "far_y": 820,
+    "far_scale": 0.85,
+    "near_y": 1060,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      900,
+      950
+    ],
+    "from_ferry": [
+      300,
+      960
+    ],
+    "from_gallows": [
+      240,
+      900
+    ],
+    "from_facade": [
+      1150,
+      870
+    ],
+    "from_gate": [
+      1640,
+      880
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "to_gallows",
+      "name": "To the gallows square",
+      "polygon": [
+        [
+          60,
+          880
+        ],
+        [
+          60,
+          260
+        ],
+        [
+          270,
+          260
+        ],
+        [
+          270,
+          880
+        ]
+      ],
+      "walk_to": [
+        200,
+        900
+      ],
+      "exit": {
+        "room": "gallows_square",
+        "entry": "from_avenue",
+        "direction": "left"
+      }
+    },
+    {
+      "id": "statue",
+      "name": "Headless statue",
+      "polygon": [
+        [
+          540,
+          540
+        ],
+        [
+          540,
+          170
+        ],
+        [
+          780,
+          170
+        ],
+        [
+          780,
+          540
+        ]
+      ],
+      "walk_to": [
+        660,
+        920
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "plinth",
+      "name": "Plinth",
+      "polygon": [
+        [
+          540,
+          880
+        ],
+        [
+          540,
+          540
+        ],
+        [
+          800,
+          540
+        ],
+        [
+          800,
+          880
+        ]
+      ],
+      "walk_to": [
+        660,
+        920
+      ]
+    },
+    {
+      "id": "to_theatre",
+      "name": "To the theatre",
+      "polygon": [
+        [
+          1000,
+          860
+        ],
+        [
+          1000,
+          560
+        ],
+        [
+          1340,
+          560
+        ],
+        [
+          1340,
+          860
+        ]
+      ],
+      "walk_to": [
+        1150,
+        870
+      ],
+      "exit": {
+        "room": "theater_facade",
+        "entry": "from_avenue",
+        "direction": "up"
+      }
+    },
+    {
+      "id": "to_records",
+      "name": "To the Hall of Records",
+      "polygon": [
+        [
+          1600,
+          830
+        ],
+        [
+          1600,
+          560
+        ],
+        [
+          1760,
+          560
+        ],
+        [
+          1760,
+          830
+        ]
+      ],
+      "walk_to": [
+        1660,
+        870
+      ],
+      "exit": {
+        "room": "records_gate",
+        "entry": "from_avenue",
+        "direction": "up"
+      }
+    },
+    {
+      "id": "lamps",
+      "name": "Lamps",
+      "polygon": [
+        [
+          1790,
+          880
+        ],
+        [
+          1790,
+          400
+        ],
+        [
+          1910,
+          400
+        ],
+        [
+          1910,
+          880
+        ]
+      ],
+      "walk_to": [
+        1700,
+        900
+      ]
+    }
+  ],
+  "effects": {
+    "preset": "exterior",
+    "light": [
+      1460,
+      90
+    ],
+    "aim": 200
+  },
+  "id": "upper_avenue",
+  "then": "art-source/raw/IMG-0120/IMG-0120-v1.png"
+}

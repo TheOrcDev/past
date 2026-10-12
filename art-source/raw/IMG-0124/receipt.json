@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0124",
+  "title": "The Hall of Records, then",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T01:07:17.716Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0110/IMG-0110-v2.png",
+          "sha256": "7d3d84e9e230588923e03a3f80ee305b94dc829baf1eb8b578acf2aff14b5858"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit this image in place. Keep exactly the same composition, camera, perspective, horizon and every shape where it stands: the walls of drawers, the ladders, the desks, the lectern, the windows and the three doors. Only change the time and the condition.\n\nRestore the same hall to how it looked decades earlier, on a busy working day, in full rich warm color, as a painterly gothic matte painting: the desks covered in neat papers, inkwells and lit green-shaded lamps, the brass handles of the drawers polished and gleaming, warm sunlight through the high windows, blue and gold banners. The key light comes from the same direction as in the original.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0124-v1.png",
+          "sha256": "70de08d7a49468249e7def7024d0e92116055dce08bde8421c512ea8d3f613e7",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0124-v2.png",
+          "sha256": "3764b4488dc8c67cca6e9c6edec8b81afff689abe3de9eeb9e494eab132aae87",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 72093,
+        "outputTokens": 582
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12da6-54ad-7873-baa4-1b4a15f42a1c",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12da6-54ad-7873-baa4-1b4a15f42a1c/exec-ef9650e2-ae2b-4f8b-835f-5d68452c0930.png",
+            "/Users/orcdev/.codex/generated_images/01a12da6-54ad-7873-baa4-1b4a15f42a1c/exec-35680788-c486-4939-912f-83faa2156c6f.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate two edits of the attached image using your prompt exactly.",
+            "DONE"
+          ]
+        }
+      }
+    }
+  ]
+}
