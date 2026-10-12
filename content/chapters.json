@@ -30,6 +30,9 @@
       "characters": [
         "gravedigger",
         "sister"
+      ],
+      "cutscenes": [
+        "cemetery_reveal"
       ]
     },
     {
@@ -87,6 +90,9 @@
       ],
       "items": [
         "lantern"
+      ],
+      "cutscenes": [
+        "old_town_reveal"
       ]
     },
     {
@@ -98,6 +104,9 @@
       "closeups": [],
       "dialogue": [
         "ch2"
+      ],
+      "cutscenes": [
+        "drowned_quarter_reveal"
       ]
     },
     {
@@ -109,6 +118,9 @@
       "closeups": [],
       "dialogue": [
         "ch3"
+      ],
+      "cutscenes": [
+        "upper_city_reveal"
       ]
     },
     {
@@ -120,6 +132,9 @@
       "closeups": [],
       "dialogue": [
         "ch4"
+      ],
+      "cutscenes": [
+        "heights_reveal"
       ]
     }
   ]

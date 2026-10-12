@@ -1,0 +1,12 @@
+{
+  "id": "upper_city_reveal",
+  "ring0": "art-source/raw/IMG-0063/IMG-0063-v1.png",
+  "ring1": "art-source/raw/IMG-0067/IMG-0067-v1.png",
+  "ring2": "art-source/raw/IMG-0071/IMG-0071-v2.png",
+  "feet": [
+    1000,
+    920
+  ],
+  "title": "The Hall of Records",
+  "place": "The upper city"
+}

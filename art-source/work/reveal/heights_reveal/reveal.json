@@ -1,0 +1,12 @@
+{
+  "id": "heights_reveal",
+  "ring0": "art-source/raw/IMG-0064/IMG-0064-v1.png",
+  "ring1": "art-source/raw/IMG-0068/IMG-0068-v2.png",
+  "ring2": "art-source/raw/IMG-0072/IMG-0072-v1.png",
+  "feet": [
+    400,
+    960
+  ],
+  "title": "The Dovecote",
+  "place": "The cathedral's heights"
+}

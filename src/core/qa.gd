@@ -10,7 +10,7 @@ const LONG_TIMEOUT_SECONDS := 150.0
 ## Scenarios that need the long timeout without the opening.
 const LONG_RUNS: Array[String] = ["greybox", "vista", "journal"]
 ## Scenarios that need longer still, in seconds.
-const TIMEOUTS := {"greybox_clip": 360.0, "toolkit_reel": 360.0, "rooms": 900.0, "prologue": 600.0, "ch1": 900.0}
+const TIMEOUTS := {"reveals": 300.0, "greybox_clip": 360.0, "toolkit_reel": 360.0, "rooms": 900.0, "prologue": 600.0, "ch1": 900.0}
 ## Scenarios that start from the opening instead of straight in the first room.
 const WITH_OPENING: Array[String] = ["cemetery_reveal", "grave", "grave_clip", "perf", "tour", "screenshots", "reduced_motion", "skip", "toolkit_reel"]
 
@@ -130,6 +130,8 @@ func _run(scenario: String) -> void:
 			await Ch1Playthrough.new(get_tree(), _check, _shot).run()
 		"npc":
 			await _npc()
+		"reveals":
+			await _reveals()
 		"greybox_clip":
 			await _greybox_clip()
 		"vista":
@@ -701,6 +703,29 @@ func _vista() -> void:
 	_check(&"greybox_milestone" in GameState.memories, "the memory vista is remembered")
 	await _shot("07_back_in_the_courtyard")
 	print("[qa] video memory in the courtyard, the vista loaded: %.1f MiB" % (Performance.get_monitor(Performance.RENDER_VIDEO_MEM_USED) / 1048576.0))
+
+
+## Plays each area's discovery reveal (plan 008), with shots at its close start,
+## mid pull-back and full vista: `--reveals=a,b` or all four.
+func _reveals() -> void:
+	await _enter(&"cemetery_grave")
+	var ids := String(_args.get("reveals", "old_town_reveal,drowned_quarter_reveal,upper_city_reveal,heights_reveal")).split(",")
+	for reveal_id in ids:
+		_mark(reveal_id)
+		var scene := load("res://content/cutscenes/%s/%s.tscn" % [reveal_id, reveal_id]) as PackedScene
+		Cutscenes.play(RevealCutscene.new(StringName(reveal_id), scene))
+		var stage: RevealStage = null
+		while stage == null:
+			await get_tree().process_frame
+			stage = get_tree().current_scene.get_node_or_null(NodePath(reveal_id.to_pascal_case())) as RevealStage
+		for moment: Array in [[2.0, "1_close"], [7.0, "2_pulling_back"], [11.5, "3_vista"]]:
+			while is_instance_valid(stage) and stage.animation.current_animation_position < moment[0]:
+				await get_tree().process_frame
+			await _shot("%s_%s" % [reveal_id, moment[1]])
+		while Cutscenes.current != null:
+			await get_tree().process_frame
+		await _settle()
+		_check(Cutscenes.fade_amount() == 0.0, "%s returns to the room" % reveal_id)
 
 
 ## The journal (plan 005 slice 6): after reading the gravestone and seeing the

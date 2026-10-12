@@ -1,0 +1,103 @@
+{
+  "id": "IMG-0061",
+  "title": "Vista: the old town, ring 0",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T00:02:04.047Z",
+      "model": "openai/gpt-image-2.5-flare",
+      "size": "3072x1072",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0027/IMG-0027-v1.png",
+          "sha256": "388618b140387bbcc631be93ec8cecc601aa232891a37e48c4ea13dad7f605ad"
+        }
+      ],
+      "mask": null,
+      "prompt": "A very wide panorama at night from the top of a great gothic cathedral's west steps, looking down over a whole ruined old town: in the lower left foreground the broad worn top step and the edge of the cathedral square, an open flat landing a little left of centre in the lower half; beyond it, a sea of steep gabled rooftops, chimneys and narrow streets lit by cold pale lamps, a sloping market square with a fountain, arched stone bridges over black canals, and a massive clock tower with a great round clock face rising right of centre. On the far right, the land falls away to a fog-drowned lower quarter with the arches of an aqueduct marching into the mist. A full moon behind thin clouds, spires everywhere dissolving into fog. The figure-free spot described stays clearly lit so a small black figure would read there. Monochrome greyscale ink-wash gothic matte painting, heavy layered fog between depth planes, strong rim light on silhouettes, exactly the style of the reference image. No people, figures or creatures. No readable text, watermark or border.",
+      "files": [
+        {
+          "file": "IMG-0061-v1.png",
+          "sha256": "db7c9fe01f6779906f267dc0f227fcd2e0cae2ce8beee320aee371db2bfd177c",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0061-v2.png",
+          "sha256": "6b012c03f50b2451efccff201d116dfbbbe028c5e11e988ea0e72de96c8258d1",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 3496,
+        "outputTokens": 2160
+      },
+      "costUsd": 0.091328,
+      "costSource": "gateway",
+      "warnings": [],
+      "providerMetadata": {
+        "openai": {
+          "images": [
+            {
+              "created": 1791763343,
+              "size": "3072x1072",
+              "quality": "high",
+              "background": "opaque",
+              "outputFormat": "png",
+              "imageTokens": 1508,
+              "textTokens": 240
+            },
+            {
+              "created": 1791763343,
+              "size": "3072x1072",
+              "quality": "high",
+              "background": "opaque",
+              "outputFormat": "png",
+              "imageTokens": 1508,
+              "textTokens": 240
+            }
+          ]
+        },
+        "gateway": {
+          "routing": {
+            "originalModelId": "openai/gpt-image-2.5-flare",
+            "resolvedProvider": "openai",
+            "fallbacksAvailable": [],
+            "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+            "canonicalSlug": "openai/gpt-image-2.5-flare",
+            "finalProvider": "openai",
+            "modelAttemptCount": 1,
+            "modelAttempts": [
+              {
+                "canonicalSlug": "openai/gpt-image-2.5-flare",
+                "success": true,
+                "providerAttemptCount": 1,
+                "providerAttempts": [
+                  {
+                    "provider": "openai",
+                    "credentialType": "system",
+                    "success": true,
+                    "startTime": 1791763324894,
+                    "endTime": 1791763345882,
+                    "statusCode": 200
+                  }
+                ]
+              }
+            ],
+            "totalProviderAttemptCount": 1
+          },
+          "cost": "0.091328",
+          "marketCost": "0.091328",
+          "surchargeCost": "0",
+          "gatewayCost": "0.091328",
+          "inferenceCost": "0.091328",
+          "inputInferenceCost": "0",
+          "outputInferenceCost": "0.091328",
+          "generationId": "gen_01M4PPN7NHFCBSNVDAKSMMY2JP"
+        }
+      }
+    }
+  ]
+}

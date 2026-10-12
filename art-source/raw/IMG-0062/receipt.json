@@ -1,0 +1,107 @@
+{
+  "id": "IMG-0062",
+  "title": "Vista: the drowned quarter, ring 0",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T00:02:04.055Z",
+      "model": "openai/gpt-image-2.5-flare",
+      "size": "3072x1072",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "docs/reference/concept-03-swamp-ruins.png",
+          "sha256": "dbfd2ccb9582e31abb9d590ad3c67f9b4037fd42d1f669cc11afff0f2091f1eb"
+        },
+        {
+          "path": "art-source/raw/IMG-0043/IMG-0043-v1.png",
+          "sha256": "1122879787cdd732eca774e741d662b1c4ce4c5b3253853fc14de86468ff63a4"
+        }
+      ],
+      "mask": null,
+      "prompt": "A very wide panorama at night over a drowned city quarter: in the lower left foreground the top of a broad stone stair descending into still black water, with an open landing a little left of centre in the lower half; beyond it, the upper floors and roofs of sunken houses standing out of mirror-still water, dead trees rising from the flood, a canal of drowned streets, a half-sunk chapel's spire, a long timber hospice on stilts, and across the whole background a great ruined stone aqueduct marching left to right on tall arches into the fog, one span broken. Moonlight shimmering on the water. The figure-free spot described stays clearly lit so a small black figure would read there. Monochrome greyscale ink-wash gothic matte painting, heavy layered fog between depth planes, strong rim light on silhouettes, exactly the style of the reference image. No people, figures or creatures. No readable text, watermark or border.",
+      "files": [
+        {
+          "file": "IMG-0062-v1.png",
+          "sha256": "ed051eeb78e48107feb34bb73402af5139a6dcfd4f62b8f13d063ba93a70ac95",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0062-v2.png",
+          "sha256": "f0ecf5904b1a3a59cbea0ae9ee0af7f90f257cbacff4177546084ed2e084cc80",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 6470,
+        "outputTokens": 2160
+      },
+      "costUsd": 0.115246,
+      "costSource": "gateway",
+      "warnings": [],
+      "providerMetadata": {
+        "openai": {
+          "images": [
+            {
+              "created": 1791763343,
+              "size": "3072x1072",
+              "quality": "high",
+              "background": "opaque",
+              "outputFormat": "png",
+              "imageTokens": 3016,
+              "textTokens": 219
+            },
+            {
+              "created": 1791763343,
+              "size": "3072x1072",
+              "quality": "high",
+              "background": "opaque",
+              "outputFormat": "png",
+              "imageTokens": 3016,
+              "textTokens": 219
+            }
+          ]
+        },
+        "gateway": {
+          "routing": {
+            "originalModelId": "openai/gpt-image-2.5-flare",
+            "resolvedProvider": "openai",
+            "fallbacksAvailable": [],
+            "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+            "canonicalSlug": "openai/gpt-image-2.5-flare",
+            "finalProvider": "openai",
+            "modelAttemptCount": 1,
+            "modelAttempts": [
+              {
+                "canonicalSlug": "openai/gpt-image-2.5-flare",
+                "success": true,
+                "providerAttemptCount": 1,
+                "providerAttempts": [
+                  {
+                    "provider": "openai",
+                    "credentialType": "system",
+                    "success": true,
+                    "startTime": 1791763324903,
+                    "endTime": 1791763346119,
+                    "statusCode": 200
+                  }
+                ]
+              }
+            ],
+            "totalProviderAttemptCount": 1
+          },
+          "cost": "0.115246",
+          "marketCost": "0.115246",
+          "surchargeCost": "0",
+          "gatewayCost": "0.115246",
+          "inferenceCost": "0.115246",
+          "inputInferenceCost": "0",
+          "outputInferenceCost": "0.115246",
+          "generationId": "gen_01M4PPN7SCSNVFMDKK3Z2A8AV3"
+        }
+      }
+    }
+  ]
+}

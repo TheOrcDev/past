@@ -1,0 +1,71 @@
+{
+  "rings": [
+    {
+      "texture": "res://content/cutscenes/old_town_reveal/art/ring0.png",
+      "position": [
+        0.0,
+        0.0
+      ],
+      "scale": 1.0
+    },
+    {
+      "texture": "res://content/cutscenes/old_town_reveal/art/ring1.png",
+      "position": [
+        0.0,
+        520.0
+      ],
+      "scale": 0.5
+    },
+    {
+      "texture": "res://content/cutscenes/old_town_reveal/art/ring2.png",
+      "position": [
+        316.0,
+        654.0
+      ],
+      "scale": 0.25
+    }
+  ],
+  "world_size": [
+    3072,
+    1072
+  ],
+  "feather": 0.08,
+  "zoom_point": [
+    700,
+    788
+  ],
+  "unknown": {
+    "feet": [
+      700,
+      870
+    ],
+    "height": 260,
+    "facing": "idle_r"
+  },
+  "start": {
+    "zoom": 2.4,
+    "center": [
+      700,
+      740
+    ]
+  },
+  "end": {
+    "zoom": 0.7491,
+    "center": [
+      1536.0,
+      536.0
+    ]
+  },
+  "alignment": [
+    {
+      "ring": 1,
+      "residual_p90_px": 2.47,
+      "scale": 1.0015
+    },
+    {
+      "ring": 2,
+      "residual_p90_px": 2.97,
+      "scale": 1.0032
+    }
+  ]
+}

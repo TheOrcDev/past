@@ -5,12 +5,19 @@ extends Room
 ## <verb>_<hotspot_id>.
 
 const DIALOGUE := &"ch1/streets"
+const REVEAL := preload("res://content/cutscenes/old_town_reveal/old_town_reveal.tscn")
 
 
+## The first arrival plays the old town's discovery reveal (game-design.md §7).
 func _on_shown() -> void:
 	if not GameState.get_flag(&"ch1_arrived"):
 		GameState.set_flag(&"ch1_arrived")
+		await Cutscenes.play(rewatch_old_town_reveal())
 		await Say.line(DIALOGUE, &"parvis_arrival")
+
+
+func rewatch_old_town_reveal() -> RevealCutscene:
+	return RevealCutscene.new(&"old_town_reveal", REVEAL)
 
 
 func talk_crier() -> void:

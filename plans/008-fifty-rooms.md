@@ -440,3 +440,23 @@ XXL: five parts. It is re-estimated after slices 3 and 4.
   - **Proof:** `Ch1Playthrough` passes in GUT and as `--qa=ch1` on desktop
     (`docs/qa/008/ch1/`). The prologue still passes in Chrome. 124 GUT tests
     and the lint pass.
+- **2026-10-12, slice 5b:** the four areas' discovery reveals.
+  - **Rings:** each is three 3:1 rings through the gateway (decision #47):
+    ring 0 from Flare, and rings 1 and 2 as Sunburst 2× repaints of the
+    centre of the ring outside (IMG-0061–0072, $1.14). The registrations
+    are p90 1.66–2.97 px.
+  - **Builder:** `past-art reveal` replaces the cemetery's hand-written
+    build. One `reveal.json` gives ring 0 and Unknown's feet; `--sources`
+    cuts the crops for the next ring's request, and the build writes the
+    rings and `reveal_spec.json` for `new_reveal.gd`. That scaffold now
+    shrinks long titles to fit.
+  - **In the game:** the old town's reveal plays on the first arrival in
+    `cathedral_parvis` and can be rewatched from the journal. The other
+    three are built and wait for their chapters.
+  - **Memory vistas:** as in plan 005, a vista replays its reveal in the
+    warm grade, and each area's colour vista is a room's then image
+    (`clock_face`, `aqueduct_channel`, `belfry_top`). So the atlas's
+    "3 + past" needs no extra ring.
+  - **Checks:** a `reveals` QA scenario shoots each one
+    (`docs/qa/008/reveals/`). Chapter cutscenes are left out of the web
+    pack.

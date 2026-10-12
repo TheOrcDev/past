@@ -24,7 +24,8 @@ excluded=()
 if [[ "$target" == web ]]; then
 	while IFS= read -r path; do excluded+=("$path"); done < <(jq -r '.parts[] | select(.web != true) |
 		((.rooms // [])[] | "content/rooms/\(.)"), ((.closeups // [])[] | "content/closeups/\(.)"),
-		((.characters // [])[] | "content/characters/\(.)"), ((.dialogue // [])[] | "content/dialogue/\(.)")' "$ROOT/content/chapters.json")
+		((.characters // [])[] | "content/characters/\(.)"), ((.dialogue // [])[] | "content/dialogue/\(.)"),
+		((.cutscenes // [])[] | "content/cutscenes/\(.)")' "$ROOT/content/chapters.json")
 	if [[ ${#excluded[@]} -gt 0 ]]; then
 		cp "$ROOT/export_presets.cfg" "$ROOT/build/export_presets.cfg.bak"
 		trap 'mv "$ROOT/build/export_presets.cfg.bak" "$ROOT/export_presets.cfg"' EXIT

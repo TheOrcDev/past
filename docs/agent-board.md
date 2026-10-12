@@ -455,3 +455,8 @@ Append-only. Newest at the bottom. UTC.
     files. It's back to 143 MB, under its 150 MB budget.
   - **See:** `docs/qa/008/ch1/`.
   - **Cost:** $0.
+- 2026-10-12T07:15Z **Claude → @Operator:** Plan 008 slice 5b: every area now has its
+  pull-back reveal with a title card: the old town, the drowned quarter, the
+  upper city and the cathedral heights. The old town's plays when you first
+  step out of the cathedral. See `docs/qa/008/reveals/`. These were the first
+  images that needed the gateway (3:1 panoramas): $1.14 of the $50.

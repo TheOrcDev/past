@@ -103,7 +103,10 @@ func _build(spec: Dictionary, out: String, title_text: String, place_text: Strin
 	card.alignment = BoxContainer.ALIGNMENT_CENTER
 	card.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_add(title_layer, card, root)
-	_add(card, _label("Name", title_text, 132, 34), root)
+	# 132 px spaced capitals fit a short name like PAST; longer area titles
+	# shrink to stay inside the 1920 px screen (plan 008), spacing with them.
+	var title_size := mini(132, floori((1680.0 / maxi(title_text.length(), 1) - 20.0) / 0.78))
+	_add(card, _label("Name", title_text, title_size, roundi(34.0 * title_size / 132.0)), root)
 	_add(card, _label("Place", place_text, 40, 10), root)
 
 	var player := AnimationPlayer.new()

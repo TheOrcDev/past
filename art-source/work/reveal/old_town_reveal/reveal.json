@@ -1,0 +1,12 @@
+{
+  "id": "old_town_reveal",
+  "ring0": "art-source/raw/IMG-0061/IMG-0061-v2.png",
+  "ring1": "art-source/raw/IMG-0065/IMG-0065-v2.png",
+  "ring2": "art-source/raw/IMG-0069/IMG-0069-v1.png",
+  "feet": [
+    700,
+    870
+  ],
+  "title": "The Nameless Streets",
+  "place": "The old town"
+}

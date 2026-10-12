@@ -1,0 +1,103 @@
+{
+  "id": "IMG-0071",
+  "title": "Vista: upper city, ring 2",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T00:06:42.763Z",
+      "model": "openai/gpt-image-2.5-sunburst",
+      "size": "3072x1072",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/work/reveal/upper_city_reveal/ring2_source.png",
+          "sha256": "30e355d0b61c55a36f16eb2d7e2d771b84e64d2e42a3ad4ec98902aad23c0c33"
+        }
+      ],
+      "mask": null,
+      "prompt": "This image is a crop from a wide painting of a severe gothic upper city at night. Repaint it as a full-resolution painting of the same view. Keep the composition, the horizon, the shapes, the values and every object exactly where they are, so it lines up with the crop when scaled up.\n\nAdd the fine detail a closer view would show: polished wet flagstones of the avenue, iron lamp posts, carved stone facades and columns, banners, drifting fog. The same monochrome greyscale ink-wash style as the source.\n\nNo people, figures or creatures. No text, watermark or border.",
+      "files": [
+        {
+          "file": "IMG-0071-v1.png",
+          "sha256": "eae8f5bf6be07bf0092d6178f4ce449ded1be80300157cd73305606dd941b959",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0071-v2.png",
+          "sha256": "655e02bd65809efc6de7fdb79ae320131ab2c4dee05d9c01a489f95f60b1b382",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 3318,
+        "outputTokens": 2160
+      },
+      "costUsd": 0.090498,
+      "costSource": "gateway",
+      "warnings": [],
+      "providerMetadata": {
+        "openai": {
+          "images": [
+            {
+              "created": 1791763638,
+              "size": "3072x1072",
+              "quality": "high",
+              "background": "opaque",
+              "outputFormat": "png",
+              "imageTokens": 1518,
+              "textTokens": 141
+            },
+            {
+              "created": 1791763638,
+              "size": "3072x1072",
+              "quality": "high",
+              "background": "opaque",
+              "outputFormat": "png",
+              "imageTokens": 1518,
+              "textTokens": 141
+            }
+          ]
+        },
+        "gateway": {
+          "routing": {
+            "originalModelId": "openai/gpt-image-2.5-sunburst",
+            "resolvedProvider": "openai",
+            "fallbacksAvailable": [],
+            "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+            "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+            "finalProvider": "openai",
+            "modelAttemptCount": 1,
+            "modelAttempts": [
+              {
+                "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+                "success": true,
+                "providerAttemptCount": 1,
+                "providerAttempts": [
+                  {
+                    "provider": "openai",
+                    "credentialType": "system",
+                    "success": true,
+                    "startTime": 1791763604913,
+                    "endTime": 1791763640552,
+                    "statusCode": 200
+                  }
+                ]
+              }
+            ],
+            "totalProviderAttemptCount": 1
+          },
+          "cost": "0.090498",
+          "marketCost": "0.090498",
+          "surchargeCost": "0",
+          "gatewayCost": "0.090498",
+          "inferenceCost": "0.090498",
+          "inputInferenceCost": "0",
+          "outputInferenceCost": "0.090498",
+          "generationId": "gen_01M4PPXR587YV5873AJ4PTJSNQ"
+        }
+      }
+    }
+  ]
+}

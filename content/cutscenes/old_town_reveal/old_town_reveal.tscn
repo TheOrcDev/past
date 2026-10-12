@@ -1,0 +1,121 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://src/systems/cinematics/reveal_stage.gd" id="1_0vu7j"]
+[ext_resource type="Script" path="res://src/systems/cinematics/reveal.gd" id="2_3mvmx"]
+[ext_resource type="Texture2D" path="res://content/cutscenes/old_town_reveal/art/ring0.png" id="3_om2xc"]
+[ext_resource type="Texture2D" path="res://content/cutscenes/old_town_reveal/art/ring1.png" id="4_xwoer"]
+[ext_resource type="Texture2D" path="res://content/cutscenes/old_town_reveal/art/ring2.png" id="5_mlmpi"]
+[ext_resource type="Script" path="res://src/systems/unknown/unknown_body.gd" id="6_u32px"]
+[ext_resource type="Resource" path="res://content/characters/unknown/unknown_sprites.tres" id="7_ksxs7"]
+
+[sub_resource type="FontVariation" id="FontVariation_7ywts"]
+spacing_glyph = 21
+
+[sub_resource type="FontVariation" id="FontVariation_0xo4e"]
+spacing_glyph = 10
+
+[sub_resource type="Animation" id="Animation_841e0"]
+length = 13.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Reveal:progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 11),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(9.5, 12.6),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"show_title"
+}, {
+"args": [],
+"method": &"hide_title"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eibdy"]
+_data = {
+&"reveal": SubResource("Animation_841e0")
+}
+
+[node name="OldTownReveal" type="Node2D" unique_id=851226162]
+script = ExtResource("1_0vu7j")
+
+[node name="Reveal" type="Node2D" parent="." unique_id=382984190]
+script = ExtResource("2_3mvmx")
+start_center = Vector2(700, 740)
+end_zoom = 0.7491
+
+[node name="Ring0" type="Sprite2D" parent="Reveal" unique_id=980146334]
+texture = ExtResource("3_om2xc")
+centered = false
+
+[node name="Ring1" type="Sprite2D" parent="Reveal" unique_id=505447144]
+texture_filter = 4
+position = Vector2(0, 520)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_xwoer")
+centered = false
+
+[node name="Ring2" type="Sprite2D" parent="Reveal" unique_id=1281114041]
+texture_filter = 4
+position = Vector2(316, 654)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_mlmpi")
+centered = false
+
+[node name="Unknown" type="Node2D" parent="Reveal" unique_id=951478988]
+position = Vector2(700, 870)
+scale = Vector2(0.5416667, 0.5416667)
+script = ExtResource("6_u32px")
+sprites = ExtResource("7_ksxs7")
+
+[node name="Title" type="CanvasLayer" parent="." unique_id=1231928520]
+layer = 55
+
+[node name="Card" type="VBoxContainer" parent="Title" unique_id=811453358]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Name" type="Label" parent="Title/Card" unique_id=1118028924]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_7ywts")
+theme_override_font_sizes/font_size = 82
+theme_override_colors/font_color = Color(0.9, 0.91, 0.94, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7)
+theme_override_constants/shadow_offset_y = 4
+text = "THE NAMELESS STREETS"
+horizontal_alignment = 1
+
+[node name="Place" type="Label" parent="Title/Card" unique_id=1227501674]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_0xo4e")
+theme_override_font_sizes/font_size = 40
+theme_override_colors/font_color = Color(0.9, 0.91, 0.94, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7)
+theme_override_constants/shadow_offset_y = 4
+text = "The old town"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1622145269]
+libraries/ = SubResource("AnimationLibrary_eibdy")

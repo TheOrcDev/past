@@ -1,0 +1,121 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://src/systems/cinematics/reveal_stage.gd" id="1_mgoow"]
+[ext_resource type="Script" path="res://src/systems/cinematics/reveal.gd" id="2_hp3bx"]
+[ext_resource type="Texture2D" path="res://content/cutscenes/upper_city_reveal/art/ring0.png" id="3_um53k"]
+[ext_resource type="Texture2D" path="res://content/cutscenes/upper_city_reveal/art/ring1.png" id="4_1frak"]
+[ext_resource type="Texture2D" path="res://content/cutscenes/upper_city_reveal/art/ring2.png" id="5_7cesi"]
+[ext_resource type="Script" path="res://src/systems/unknown/unknown_body.gd" id="6_eq27g"]
+[ext_resource type="Resource" path="res://content/characters/unknown/unknown_sprites.tres" id="7_pt5k8"]
+
+[sub_resource type="FontVariation" id="FontVariation_6mjlr"]
+spacing_glyph = 22
+
+[sub_resource type="FontVariation" id="FontVariation_j3epy"]
+spacing_glyph = 10
+
+[sub_resource type="Animation" id="Animation_e02mp"]
+length = 13.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Reveal:progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 11),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(9.5, 12.6),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"show_title"
+}, {
+"args": [],
+"method": &"hide_title"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sjnyw"]
+_data = {
+&"reveal": SubResource("Animation_e02mp")
+}
+
+[node name="UpperCityReveal" type="Node2D" unique_id=1522723742]
+script = ExtResource("1_mgoow")
+
+[node name="Reveal" type="Node2D" parent="." unique_id=1576405622]
+script = ExtResource("2_hp3bx")
+start_center = Vector2(1000, 790)
+end_zoom = 0.7491
+
+[node name="Ring0" type="Sprite2D" parent="Reveal" unique_id=753627475]
+texture = ExtResource("3_um53k")
+centered = false
+
+[node name="Ring1" type="Sprite2D" parent="Reveal" unique_id=1037647895]
+texture_filter = 4
+position = Vector2(232, 536)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_1frak")
+centered = false
+
+[node name="Ring2" type="Sprite2D" parent="Reveal" unique_id=853135463]
+texture_filter = 4
+position = Vector2(616, 704)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_7cesi")
+centered = false
+
+[node name="Unknown" type="Node2D" parent="Reveal" unique_id=1656829284]
+position = Vector2(1000, 920)
+scale = Vector2(0.5416667, 0.5416667)
+script = ExtResource("6_eq27g")
+sprites = ExtResource("7_pt5k8")
+
+[node name="Title" type="CanvasLayer" parent="." unique_id=2043156184]
+layer = 55
+
+[node name="Card" type="VBoxContainer" parent="Title" unique_id=1564206723]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Name" type="Label" parent="Title/Card" unique_id=626221792]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_6mjlr")
+theme_override_font_sizes/font_size = 87
+theme_override_colors/font_color = Color(0.9, 0.91, 0.94, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7)
+theme_override_constants/shadow_offset_y = 4
+text = "THE HALL OF RECORDS"
+horizontal_alignment = 1
+
+[node name="Place" type="Label" parent="Title/Card" unique_id=513262835]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_j3epy")
+theme_override_font_sizes/font_size = 40
+theme_override_colors/font_color = Color(0.9, 0.91, 0.94, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7)
+theme_override_constants/shadow_offset_y = 4
+text = "The upper city"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1509293930]
+libraries/ = SubResource("AnimationLibrary_sjnyw")

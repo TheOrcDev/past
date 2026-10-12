@@ -153,6 +153,16 @@ def cmd_closeup(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_reveal(args: argparse.Namespace) -> int:
+    from . import reveal
+
+    root = Path(__file__).resolve().parents[3]
+    for reveal_json in args.reveals:
+        path = Path(reveal_json).resolve()
+        _print(reveal.sources(path, root) if args.sources else reveal.build(path, root))
+    return 0
+
+
 def cmd_grid(args: argparse.Namespace) -> int:
     from . import room
 
@@ -249,6 +259,11 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("closeup", help="build close-ups' art and closeup_spec.json from art-source/work/closeups/<id>/closeup.json")
     p.add_argument("closeups", nargs="+", help="closeup.json files")
     p.set_defaults(func=cmd_closeup)
+
+    p = sub.add_parser("reveal", help="a reveal's ring sources (--sources) or its rings and reveal_spec.json, from art-source/work/reveal/<id>/reveal.json")
+    p.add_argument("--sources", action="store_true")
+    p.add_argument("reveals", nargs="+")
+    p.set_defaults(func=cmd_reveal)
 
     p = sub.add_parser("grid", help="an image at 1920x1080 with a labelled grid, for tracing")
     p.add_argument("--in", dest="input", required=True)

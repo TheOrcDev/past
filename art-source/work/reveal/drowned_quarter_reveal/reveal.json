@@ -1,0 +1,12 @@
+{
+  "id": "drowned_quarter_reveal",
+  "ring0": "art-source/raw/IMG-0062/IMG-0062-v1.png",
+  "ring1": "art-source/raw/IMG-0066/IMG-0066-v2.png",
+  "ring2": "art-source/raw/IMG-0070/IMG-0070-v2.png",
+  "feet": [
+    900,
+    940
+  ],
+  "title": "The Drowned Quarter",
+  "place": "The lower city"
+}

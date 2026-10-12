@@ -1,0 +1,71 @@
+{
+  "rings": [
+    {
+      "texture": "res://content/cutscenes/drowned_quarter_reveal/art/ring0.png",
+      "position": [
+        0.0,
+        0.0
+      ],
+      "scale": 1.0
+    },
+    {
+      "texture": "res://content/cutscenes/drowned_quarter_reveal/art/ring1.png",
+      "position": [
+        132.0,
+        536.0
+      ],
+      "scale": 0.5
+    },
+    {
+      "texture": "res://content/cutscenes/drowned_quarter_reveal/art/ring2.png",
+      "position": [
+        516.0,
+        724.0
+      ],
+      "scale": 0.25
+    }
+  ],
+  "world_size": [
+    3072,
+    1072
+  ],
+  "feather": 0.08,
+  "zoom_point": [
+    900,
+    858
+  ],
+  "unknown": {
+    "feet": [
+      900,
+      940
+    ],
+    "height": 260,
+    "facing": "idle_r"
+  },
+  "start": {
+    "zoom": 2.4,
+    "center": [
+      900,
+      810
+    ]
+  },
+  "end": {
+    "zoom": 0.7491,
+    "center": [
+      1536.0,
+      536.0
+    ]
+  },
+  "alignment": [
+    {
+      "ring": 1,
+      "residual_p90_px": 2.01,
+      "scale": 1.0007
+    },
+    {
+      "ring": 2,
+      "residual_p90_px": 2.11,
+      "scale": 1.0102
+    }
+  ]
+}

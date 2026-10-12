@@ -1,0 +1,71 @@
+{
+  "rings": [
+    {
+      "texture": "res://content/cutscenes/upper_city_reveal/art/ring0.png",
+      "position": [
+        0.0,
+        0.0
+      ],
+      "scale": 1.0
+    },
+    {
+      "texture": "res://content/cutscenes/upper_city_reveal/art/ring1.png",
+      "position": [
+        232.0,
+        536.0
+      ],
+      "scale": 0.5
+    },
+    {
+      "texture": "res://content/cutscenes/upper_city_reveal/art/ring2.png",
+      "position": [
+        616.0,
+        704.0
+      ],
+      "scale": 0.25
+    }
+  ],
+  "world_size": [
+    3072,
+    1072
+  ],
+  "feather": 0.08,
+  "zoom_point": [
+    1000,
+    838
+  ],
+  "unknown": {
+    "feet": [
+      1000,
+      920
+    ],
+    "height": 260,
+    "facing": "idle_r"
+  },
+  "start": {
+    "zoom": 2.4,
+    "center": [
+      1000,
+      790
+    ]
+  },
+  "end": {
+    "zoom": 0.7491,
+    "center": [
+      1536.0,
+      536.0
+    ]
+  },
+  "alignment": [
+    {
+      "ring": 1,
+      "residual_p90_px": 1.66,
+      "scale": 1.0005
+    },
+    {
+      "ring": 2,
+      "residual_p90_px": 1.94,
+      "scale": 0.9997
+    }
+  ]
+}

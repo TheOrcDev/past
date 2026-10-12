@@ -1,0 +1,103 @@
+{
+  "id": "IMG-0068",
+  "title": "Vista: heights, ring 1",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T00:04:39.024Z",
+      "model": "openai/gpt-image-2.5-sunburst",
+      "size": "3072x1072",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/work/reveal/heights_reveal/ring1_source.png",
+          "sha256": "54e49a47a4a099560add7f4ba934e0c2385293207d3ed295a30999f1610db424"
+        }
+      ],
+      "mask": null,
+      "prompt": "This image is a crop from a wide painting of a gothic cathedral roof walkway above a city at night. Repaint it as a full-resolution painting of the same view. Keep the composition, the horizon, the shapes, the values and every object exactly where they are, so it lines up with the crop when scaled up.\n\nAdd the fine detail a closer view would show: lead roof sheets, carved pinnacles and gargoyles, wet stone of the walkway, the city's rooftops far below in fog. The same monochrome greyscale ink-wash style as the source.\n\nNo people, figures or creatures. No text, watermark or border.",
+      "files": [
+        {
+          "file": "IMG-0068-v1.png",
+          "sha256": "df7059fcaf8126fad010780e27c79674192257f366af77f4ce18be7a9c883d83",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0068-v2.png",
+          "sha256": "cf62d38e2b1ab79fe741d23dc7bd262d005cb0d1b07fd2b09a92b2c16bdd31da",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 3330,
+        "outputTokens": 2160
+      },
+      "costUsd": 0.090558,
+      "costSource": "gateway",
+      "warnings": [],
+      "providerMetadata": {
+        "openai": {
+          "images": [
+            {
+              "created": 1791763515,
+              "size": "3072x1072",
+              "quality": "high",
+              "background": "opaque",
+              "outputFormat": "png",
+              "imageTokens": 1518,
+              "textTokens": 147
+            },
+            {
+              "created": 1791763515,
+              "size": "3072x1072",
+              "quality": "high",
+              "background": "opaque",
+              "outputFormat": "png",
+              "imageTokens": 1518,
+              "textTokens": 147
+            }
+          ]
+        },
+        "gateway": {
+          "routing": {
+            "originalModelId": "openai/gpt-image-2.5-sunburst",
+            "resolvedProvider": "openai",
+            "fallbacksAvailable": [],
+            "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+            "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+            "finalProvider": "openai",
+            "modelAttemptCount": 1,
+            "modelAttempts": [
+              {
+                "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+                "success": true,
+                "providerAttemptCount": 1,
+                "providerAttempts": [
+                  {
+                    "provider": "openai",
+                    "credentialType": "system",
+                    "success": true,
+                    "startTime": 1791763487659,
+                    "endTime": 1791763517863,
+                    "statusCode": 200
+                  }
+                ]
+              }
+            ],
+            "totalProviderAttemptCount": 1
+          },
+          "cost": "0.090558",
+          "marketCost": "0.090558",
+          "surchargeCost": "0",
+          "gatewayCost": "0.090558",
+          "inferenceCost": "0.090558",
+          "inputInferenceCost": "0",
+          "outputInferenceCost": "0.090558",
+          "generationId": "gen_01M4PPT5M3G1786GJ4178YWT8B"
+        }
+      }
+    }
+  ]
+}

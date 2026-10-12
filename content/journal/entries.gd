@@ -34,6 +34,7 @@ const REWATCH := {
 	&"cathedral_statue": {"title": "The saint's hand", "room": &"cathedral_nave"},
 	&"prologue_edict": {"title": "The edict", "room": &"ossuary"},
 	&"prologue_singer": {"title": "The singer", "room": &"choir_loft"},
+	&"old_town_reveal": {"title": "The Nameless Streets", "room": &"cathedral_parvis"},
 	&"ch1_wedding": {"title": "The wedding", "room": &"market_square"},
 	&"ch1_toast": {"title": "A toast", "room": &"tavern_lost_name"},
 	&"ch1_old_town": {"title": "The old town", "room": &"clock_face"},

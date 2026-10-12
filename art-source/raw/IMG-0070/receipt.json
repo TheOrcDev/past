@@ -1,0 +1,103 @@
+{
+  "id": "IMG-0070",
+  "title": "Vista: drowned quarter, ring 2",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T00:06:42.678Z",
+      "model": "openai/gpt-image-2.5-sunburst",
+      "size": "3072x1072",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/work/reveal/drowned_quarter_reveal/ring2_source.png",
+          "sha256": "11ea6dc75f6ce6442b0c6248f7d8def8d24a9395a73137a998f1908507c41787"
+        }
+      ],
+      "mask": null,
+      "prompt": "This image is a crop from a wide painting of a drowned gothic city quarter at night. Repaint it as a full-resolution painting of the same view. Keep the composition, the horizon, the shapes, the values and every object exactly where they are, so it lines up with the crop when scaled up.\n\nAdd the fine detail a closer view would show: wet stone steps and moss, rippling black water with moonlight glints, sunken windows and shutters, dead branches, drifting mist. The same monochrome greyscale ink-wash style as the source.\n\nNo people, figures or creatures. No text, watermark or border.",
+      "files": [
+        {
+          "file": "IMG-0070-v1.png",
+          "sha256": "9ea57763876d9c26bbb0c6543e5acd5827e28332b53a889b56c5b6f24db93be5",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0070-v2.png",
+          "sha256": "f534ea287a3acd1422d7687a571a8228e36e53733378b4d94dc7cb1399c09081",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 3326,
+        "outputTokens": 2160
+      },
+      "costUsd": 0.090538,
+      "costSource": "gateway",
+      "warnings": [],
+      "providerMetadata": {
+        "openai": {
+          "images": [
+            {
+              "created": 1791763645,
+              "size": "3072x1072",
+              "quality": "high",
+              "background": "opaque",
+              "outputFormat": "png",
+              "imageTokens": 1518,
+              "textTokens": 145
+            },
+            {
+              "created": 1791763645,
+              "size": "3072x1072",
+              "quality": "high",
+              "background": "opaque",
+              "outputFormat": "png",
+              "imageTokens": 1518,
+              "textTokens": 145
+            }
+          ]
+        },
+        "gateway": {
+          "routing": {
+            "originalModelId": "openai/gpt-image-2.5-sunburst",
+            "resolvedProvider": "openai",
+            "fallbacksAvailable": [],
+            "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+            "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+            "finalProvider": "openai",
+            "modelAttemptCount": 1,
+            "modelAttempts": [
+              {
+                "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+                "success": true,
+                "providerAttemptCount": 1,
+                "providerAttempts": [
+                  {
+                    "provider": "openai",
+                    "credentialType": "system",
+                    "success": true,
+                    "startTime": 1791763611438,
+                    "endTime": 1791763648726,
+                    "statusCode": 200
+                  }
+                ]
+              }
+            ],
+            "totalProviderAttemptCount": 1
+          },
+          "cost": "0.090538",
+          "marketCost": "0.090538",
+          "surchargeCost": "0",
+          "gatewayCost": "0.090538",
+          "inferenceCost": "0.090538",
+          "inputInferenceCost": "0",
+          "outputInferenceCost": "0.090538",
+          "generationId": "gen_01M4PPXYFDT608GV6QDRPH22MV"
+        }
+      }
+    }
+  ]
+}
