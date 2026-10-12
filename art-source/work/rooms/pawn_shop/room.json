@@ -1,0 +1,247 @@
+{
+  "id": "pawn_shop",
+  "display_name": "The Broker's shop",
+  "now": "art-source/raw/IMG-0036/IMG-0036-v2.png",
+  "walk": [
+    [
+      150,
+      742
+    ],
+    [
+      600,
+      722
+    ],
+    [
+      620,
+      832
+    ],
+    [
+      1300,
+      882
+    ],
+    [
+      1620,
+      912
+    ],
+    [
+      1650,
+      1050
+    ],
+    [
+      300,
+      1050
+    ],
+    [
+      120,
+      902
+    ]
+  ],
+  "scale_zones": {
+    "far_y": 725,
+    "far_scale": 0.84,
+    "near_y": 1050,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      700,
+      930
+    ],
+    "from_market": [
+      250,
+      782
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "broker",
+      "name": "Broker",
+      "polygon": [
+        [
+          1310,
+          902
+        ],
+        [
+          1310,
+          560
+        ],
+        [
+          1420,
+          540
+        ],
+        [
+          1520,
+          560
+        ],
+        [
+          1540,
+          902
+        ]
+      ],
+      "walk_to": [
+        1220,
+        930
+      ],
+      "default_verb": "talk",
+      "pick_priority": 3
+    },
+    {
+      "id": "door",
+      "name": "Door",
+      "polygon": [
+        [
+          90,
+          712
+        ],
+        [
+          90,
+          140
+        ],
+        [
+          210,
+          140
+        ],
+        [
+          210,
+          712
+        ]
+      ],
+      "walk_to": [
+        230,
+        770
+      ],
+      "exit": {
+        "room": "market_square",
+        "entry": "from_pawn",
+        "direction": "left"
+      }
+    },
+    {
+      "id": "cabinet",
+      "name": "Glass cabinet",
+      "polygon": [
+        [
+          1430,
+          560
+        ],
+        [
+          1430,
+          200
+        ],
+        [
+          1640,
+          200
+        ],
+        [
+          1640,
+          560
+        ]
+      ],
+      "walk_to": [
+        1380,
+        930
+      ],
+      "pick_priority": 2
+    },
+    {
+      "id": "scale",
+      "name": "Scale",
+      "polygon": [
+        [
+          960,
+          540
+        ],
+        [
+          960,
+          390
+        ],
+        [
+          1140,
+          390
+        ],
+        [
+          1140,
+          540
+        ]
+      ],
+      "walk_to": [
+        1050,
+        880
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "clocks",
+      "name": "Clocks",
+      "polygon": [
+        [
+          320,
+          520
+        ],
+        [
+          320,
+          300
+        ],
+        [
+          700,
+          300
+        ],
+        [
+          700,
+          520
+        ]
+      ],
+      "walk_to": [
+        520,
+        760
+      ]
+    },
+    {
+      "id": "portraits",
+      "name": "Portraits",
+      "polygon": [
+        [
+          1100,
+          280
+        ],
+        [
+          1100,
+          60
+        ],
+        [
+          1420,
+          60
+        ],
+        [
+          1420,
+          280
+        ]
+      ],
+      "walk_to": [
+        1150,
+        880
+      ]
+    }
+  ],
+  "npcs": [
+    {
+      "scene": "res://content/characters/broker/broker.tscn",
+      "name": "Broker",
+      "position": [
+        1420,
+        902
+      ],
+      "facing": "left",
+      "era": "now"
+    }
+  ],
+  "effects": {
+    "preset": "interior",
+    "light": [
+      470,
+      150
+    ],
+    "aim": 135
+  },
+  "then": "art-source/raw/IMG-0058/IMG-0058-v1.png"
+}

@@ -1,0 +1,464 @@
+{
+  "display_name": "The Broker's shop",
+  "layers": {
+    "now": [
+      {
+        "name": "Background",
+        "texture": "res://content/rooms/pawn_shop/art/bg_now.png"
+      }
+    ],
+    "then": [
+      {
+        "name": "Background",
+        "texture": "res://content/rooms/pawn_shop/art/bg_then.png"
+      }
+    ]
+  },
+  "walk": {
+    "now": [
+      [
+        150,
+        742
+      ],
+      [
+        600,
+        722
+      ],
+      [
+        620,
+        832
+      ],
+      [
+        1300,
+        882
+      ],
+      [
+        1620,
+        912
+      ],
+      [
+        1650,
+        1050
+      ],
+      [
+        300,
+        1050
+      ],
+      [
+        120,
+        902
+      ]
+    ],
+    "then": [
+      [
+        150,
+        742
+      ],
+      [
+        600,
+        722
+      ],
+      [
+        620,
+        832
+      ],
+      [
+        1300,
+        882
+      ],
+      [
+        1620,
+        912
+      ],
+      [
+        1650,
+        1050
+      ],
+      [
+        300,
+        1050
+      ],
+      [
+        120,
+        902
+      ]
+    ]
+  },
+  "scale_zones": {
+    "far_y": 725,
+    "far_scale": 0.84,
+    "near_y": 1050,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      700,
+      930
+    ],
+    "from_market": [
+      250,
+      782
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "broker",
+      "name": "Broker",
+      "polygon": [
+        [
+          1310,
+          902
+        ],
+        [
+          1310,
+          560
+        ],
+        [
+          1420,
+          540
+        ],
+        [
+          1520,
+          560
+        ],
+        [
+          1540,
+          902
+        ]
+      ],
+      "walk_to": [
+        1220,
+        930
+      ],
+      "default_verb": "talk",
+      "pick_priority": 3
+    },
+    {
+      "id": "door",
+      "name": "Door",
+      "polygon": [
+        [
+          90,
+          712
+        ],
+        [
+          90,
+          140
+        ],
+        [
+          210,
+          140
+        ],
+        [
+          210,
+          712
+        ]
+      ],
+      "walk_to": [
+        230,
+        770
+      ],
+      "exit": {
+        "room": "market_square",
+        "entry": "from_pawn",
+        "direction": "left"
+      }
+    },
+    {
+      "id": "cabinet",
+      "name": "Glass cabinet",
+      "polygon": [
+        [
+          1430,
+          560
+        ],
+        [
+          1430,
+          200
+        ],
+        [
+          1640,
+          200
+        ],
+        [
+          1640,
+          560
+        ]
+      ],
+      "walk_to": [
+        1380,
+        930
+      ],
+      "pick_priority": 2
+    },
+    {
+      "id": "scale",
+      "name": "Scale",
+      "polygon": [
+        [
+          960,
+          540
+        ],
+        [
+          960,
+          390
+        ],
+        [
+          1140,
+          390
+        ],
+        [
+          1140,
+          540
+        ]
+      ],
+      "walk_to": [
+        1050,
+        880
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "clocks",
+      "name": "Clocks",
+      "polygon": [
+        [
+          320,
+          520
+        ],
+        [
+          320,
+          300
+        ],
+        [
+          700,
+          300
+        ],
+        [
+          700,
+          520
+        ]
+      ],
+      "walk_to": [
+        520,
+        760
+      ]
+    },
+    {
+      "id": "portraits",
+      "name": "Portraits",
+      "polygon": [
+        [
+          1100,
+          280
+        ],
+        [
+          1100,
+          60
+        ],
+        [
+          1420,
+          60
+        ],
+        [
+          1420,
+          280
+        ]
+      ],
+      "walk_to": [
+        1150,
+        880
+      ]
+    }
+  ],
+  "occluders": [],
+  "npcs": [
+    {
+      "scene": "res://content/characters/broker/broker.tscn",
+      "name": "Broker",
+      "position": [
+        1420,
+        902
+      ],
+      "facing": "left",
+      "era": "now"
+    }
+  ],
+  "effects": [
+    {
+      "type": "FogLayer",
+      "name": "FogFar",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.85,
+          0.86,
+          0.88,
+          1.0
+        ],
+        "density": 0.26,
+        "velocity": [
+          0.006,
+          0.0
+        ],
+        "noise_scale": [
+          1.4,
+          0.8
+        ],
+        "band_top": 0.42,
+        "band_bottom": 0.9,
+        "depth_texture": "res://content/rooms/pawn_shop/art/depth_now.png",
+        "near_cutoff": 0.45,
+        "noise_seed": 3
+      }
+    },
+    {
+      "type": "LightShafts",
+      "name": "Shafts",
+      "era": "now",
+      "properties": {
+        "origin": [
+          470,
+          150
+        ],
+        "aim": 135.0,
+        "spread": 36.0,
+        "beams": 6.0,
+        "intensity": 0.1,
+        "reach": 0.95,
+        "shaft_color": [
+          0.95,
+          0.96,
+          1.0,
+          1.0
+        ],
+        "flicker": 0.4
+      }
+    },
+    {
+      "type": "DustMotes",
+      "name": "Ash",
+      "era": "now",
+      "properties": {
+        "area": [
+          300,
+          200,
+          1400,
+          700
+        ],
+        "mote_color": [
+          0.85,
+          0.85,
+          0.88,
+          0.35
+        ],
+        "mote_count": 45,
+        "drift": [
+          4,
+          6
+        ],
+        "mote_size": 2.5
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "GroundMist",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.86,
+          0.87,
+          0.9,
+          1.0
+        ],
+        "density": 0.16,
+        "velocity": [
+          0.01,
+          0.0
+        ],
+        "noise_scale": [
+          2.6,
+          1.6
+        ],
+        "band_top": 0.84,
+        "band_bottom": 1.02,
+        "band_softness": 0.08,
+        "noise_seed": 27
+      },
+      "layer": "foreground"
+    },
+    {
+      "type": "LightShafts",
+      "name": "GoldenShafts",
+      "era": "then",
+      "properties": {
+        "origin": [
+          470,
+          150
+        ],
+        "aim": 135.0,
+        "spread": 44.0,
+        "beams": 7.0,
+        "intensity": 0.14,
+        "reach": 1.0,
+        "shaft_color": [
+          1.0,
+          0.85,
+          0.55,
+          1.0
+        ],
+        "flicker": 0.25
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "WarmHaze",
+      "era": "then",
+      "properties": {
+        "fog_color": [
+          1.0,
+          0.9,
+          0.75,
+          1.0
+        ],
+        "density": 0.1,
+        "velocity": [
+          0.004,
+          0.0
+        ],
+        "noise_scale": [
+          1.2,
+          0.7
+        ],
+        "band_top": 0.3,
+        "band_bottom": 0.9,
+        "noise_seed": 13
+      }
+    },
+    {
+      "type": "DustMotes",
+      "name": "GoldenDust",
+      "era": "then",
+      "properties": {
+        "area": [
+          300,
+          150,
+          1500,
+          750
+        ],
+        "mote_color": [
+          1.0,
+          0.86,
+          0.55,
+          0.55
+        ],
+        "mote_count": 60,
+        "drift": [
+          3,
+          -4
+        ],
+        "mote_size": 2.5
+      }
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0059",
+  "title": "Close-up: the Broker's cabinet",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T23:06:54.863Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0036/IMG-0036-v2.png",
+          "sha256": "a8110c5d60853e8ad1faf7ebe209cd33643d888fdce09bf5f2ce24073b38c767"
+        }
+      ],
+      "mask": null,
+      "prompt": "A close-up of the locked glass-fronted cabinet behind the counter from the reference image, in exactly the same monochrome greyscale ink-wash gothic style: seen straight on through dusty, slightly reflective glass: a velvet cushion on a shelf holding a single heavy signet ring with a large flat oval seal face worn smooth, a small brass keyhole lock on the cabinet's frame at the right, cobwebs in the corners, moonlight glinting on the glass.\n\nNo readable text, letters or numbers anywhere. No people or figures. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0059-v1.png",
+          "sha256": "9c0150e6e27878c9e7af3984e9bbe6d8f67992681b1d03f63545a55492cafb2b",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0059-v2.png",
+          "sha256": "98785a13c8b131adeb50ebca550df4c370db3ebd704c9cda4c6863d69bee792b",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 75213,
+        "outputTokens": 445
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d38-1fc8-7ab3-94e8-2214f4ebcd7d",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d38-1fc8-7ab3-94e8-2214f4ebcd7d/exec-4c89da42-6a5a-4b55-a726-d81092f83a37.png",
+            "/Users/orcdev/.codex/generated_images/01a12d38-1fc8-7ab3-94e8-2214f4ebcd7d/exec-b5781681-1748-4b78-bf6a-ba9cab94a787.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1366,
+              "height": 1151
+            }
+          ],
+          "messages": [
+            "I’ll generate two wide, opaque edits using the reference and your exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

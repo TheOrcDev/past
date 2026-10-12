@@ -1,0 +1,284 @@
+{
+  "display_name": "Canal bridge",
+  "now": "art-source/raw/IMG-0037/IMG-0037-v1.png",
+  "walk": [
+    [
+      150,
+      728
+    ],
+    [
+      370,
+      708
+    ],
+    [
+      700,
+      772
+    ],
+    [
+      1000,
+      832
+    ],
+    [
+      1350,
+      862
+    ],
+    [
+      1700,
+      902
+    ],
+    [
+      1720,
+      1040
+    ],
+    [
+      200,
+      1040
+    ],
+    [
+      100,
+      900
+    ]
+  ],
+  "scale_zones": {
+    "far_y": 710,
+    "far_scale": 0.72,
+    "near_y": 1040,
+    "near_scale": 1.02
+  },
+  "markers": {
+    "default": [
+      800,
+      905
+    ],
+    "from_market": [
+      170,
+      900
+    ],
+    "from_tower": [
+      280,
+      762
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "to_market",
+      "name": "To the market",
+      "polygon": [
+        [
+          0,
+          762
+        ],
+        [
+          100,
+          762
+        ],
+        [
+          100,
+          1052
+        ],
+        [
+          0,
+          1052
+        ]
+      ],
+      "walk_to": [
+        140,
+        882
+      ],
+      "exit": {
+        "room": "market_square",
+        "entry": "from_bridge",
+        "direction": "left"
+      }
+    },
+    {
+      "id": "over_bridge",
+      "name": "Over the bridge",
+      "polygon": [
+        [
+          140,
+          702
+        ],
+        [
+          140,
+          540
+        ],
+        [
+          300,
+          540
+        ],
+        [
+          342,
+          702
+        ]
+      ],
+      "walk_to": [
+        260,
+        742
+      ],
+      "exit": {
+        "room": "clock_tower_base",
+        "entry": "from_bridge",
+        "direction": "up"
+      }
+    },
+    {
+      "id": "bridge",
+      "name": "Bridge",
+      "polygon": [
+        [
+          480,
+          522
+        ],
+        [
+          480,
+          432
+        ],
+        [
+          900,
+          402
+        ],
+        [
+          1200,
+          422
+        ],
+        [
+          1650,
+          602
+        ],
+        [
+          1650,
+          700
+        ],
+        [
+          700,
+          700
+        ]
+      ],
+      "walk_to": [
+        700,
+        802
+      ]
+    },
+    {
+      "id": "bridge_lamp",
+      "name": "Lamp",
+      "polygon": [
+        [
+          915,
+          422
+        ],
+        [
+          915,
+          250
+        ],
+        [
+          975,
+          250
+        ],
+        [
+          975,
+          422
+        ]
+      ],
+      "walk_to": [
+        850,
+        815
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "canal",
+      "name": "Canal",
+      "polygon": [
+        [
+          740,
+          762
+        ],
+        [
+          740,
+          702
+        ],
+        [
+          1700,
+          702
+        ],
+        [
+          1700,
+          842
+        ],
+        [
+          1350,
+          832
+        ]
+      ],
+      "walk_to": [
+        1100,
+        862
+      ]
+    },
+    {
+      "id": "boat",
+      "name": "Rowing boat",
+      "polygon": [
+        [
+          380,
+          742
+        ],
+        [
+          380,
+          650
+        ],
+        [
+          590,
+          640
+        ],
+        [
+          590,
+          742
+        ]
+      ],
+      "walk_to": [
+        430,
+        768
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "tower_far",
+      "name": "Clock tower",
+      "polygon": [
+        [
+          1330,
+          300
+        ],
+        [
+          1330,
+          40
+        ],
+        [
+          1580,
+          40
+        ],
+        [
+          1580,
+          300
+        ]
+      ],
+      "walk_to": [
+        1200,
+        882
+      ]
+    }
+  ],
+  "effects": {
+    "preset": "exterior",
+    "light": [
+      1210,
+      90
+    ],
+    "aim": 200
+  },
+  "id": "canal_bridge",
+  "then": "art-source/raw/IMG-0046/IMG-0046-v1.png"
+}

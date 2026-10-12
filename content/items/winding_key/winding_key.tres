@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemDef" format=3]
+
+[ext_resource type="Texture2D" path="res://content/items/winding_key/icon.png" id="1_ifbmp"]
+[ext_resource type="Script" path="res://src/core/item_def.gd" id="2_dpgrp"]
+
+[resource]
+script = ExtResource("2_dpgrp")
+id = &"winding_key"
+display_name = "Winding key"
+icon = ExtResource("1_ifbmp")
+look_file = &"ch1/items"
+look_cue = &"winding_key_look"

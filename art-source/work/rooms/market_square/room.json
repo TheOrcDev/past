@@ -1,0 +1,304 @@
+{
+  "display_name": "Market square",
+  "now": "art-source/raw/IMG-0035/IMG-0035-v1.png",
+  "walk": [
+    [
+      100,
+      762
+    ],
+    [
+      400,
+      742
+    ],
+    [
+      760,
+      792
+    ],
+    [
+      1430,
+      792
+    ],
+    [
+      1560,
+      702
+    ],
+    [
+      1800,
+      722
+    ],
+    [
+      1840,
+      1000
+    ],
+    [
+      200,
+      1040
+    ],
+    [
+      80,
+      902
+    ]
+  ],
+  "scale_zones": {
+    "far_y": 705,
+    "far_scale": 0.72,
+    "near_y": 1040,
+    "near_scale": 1.02
+  },
+  "markers": {
+    "default": [
+      1000,
+      900
+    ],
+    "from_street": [
+      140,
+      902
+    ],
+    "from_pawn": [
+      140,
+      772
+    ],
+    "from_bridge": [
+      1420,
+      725
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "pawn_door",
+      "name": "Pawnshop door",
+      "polygon": [
+        [
+          50,
+          722
+        ],
+        [
+          50,
+          300
+        ],
+        [
+          200,
+          300
+        ],
+        [
+          200,
+          722
+        ]
+      ],
+      "walk_to": [
+        140,
+        768
+      ],
+      "exit": {
+        "room": "pawn_shop",
+        "entry": "from_market",
+        "direction": "left"
+      }
+    },
+    {
+      "id": "window",
+      "name": "Shop window",
+      "polygon": [
+        [
+          200,
+          702
+        ],
+        [
+          200,
+          180
+        ],
+        [
+          440,
+          180
+        ],
+        [
+          440,
+          702
+        ]
+      ],
+      "walk_to": [
+        330,
+        768
+      ]
+    },
+    {
+      "id": "ribbon",
+      "name": "Ribbon",
+      "polygon": [
+        [
+          1060,
+          522
+        ],
+        [
+          1060,
+          382
+        ],
+        [
+          1170,
+          382
+        ],
+        [
+          1170,
+          522
+        ]
+      ],
+      "walk_to": [
+        1150,
+        810
+      ],
+      "default_verb": "use",
+      "pick_priority": 2
+    },
+    {
+      "id": "saint",
+      "name": "Weeping saint",
+      "polygon": [
+        [
+          880,
+          642
+        ],
+        [
+          880,
+          232
+        ],
+        [
+          1000,
+          222
+        ],
+        [
+          1080,
+          642
+        ]
+      ],
+      "walk_to": [
+        1000,
+        810
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "fountain",
+      "name": "Fountain",
+      "polygon": [
+        [
+          780,
+          782
+        ],
+        [
+          800,
+          642
+        ],
+        [
+          1400,
+          642
+        ],
+        [
+          1420,
+          782
+        ]
+      ],
+      "walk_to": [
+        1100,
+        812
+      ]
+    },
+    {
+      "id": "stalls",
+      "name": "Market stalls",
+      "polygon": [
+        [
+          440,
+          662
+        ],
+        [
+          440,
+          402
+        ],
+        [
+          860,
+          402
+        ],
+        [
+          860,
+          662
+        ]
+      ],
+      "walk_to": [
+        650,
+        792
+      ]
+    },
+    {
+      "id": "to_bridge",
+      "name": "To the bridge",
+      "polygon": [
+        [
+          1280,
+          682
+        ],
+        [
+          1280,
+          502
+        ],
+        [
+          1520,
+          502
+        ],
+        [
+          1520,
+          682
+        ]
+      ],
+      "walk_to": [
+        1420,
+        722
+      ],
+      "exit": {
+        "room": "canal_bridge",
+        "entry": "from_market",
+        "direction": "right"
+      }
+    },
+    {
+      "id": "to_street",
+      "name": "To the street of lamps",
+      "polygon": [
+        [
+          0,
+          822
+        ],
+        [
+          90,
+          822
+        ],
+        [
+          90,
+          1062
+        ],
+        [
+          0,
+          1062
+        ]
+      ],
+      "walk_to": [
+        130,
+        905
+      ],
+      "exit": {
+        "room": "street_of_lamps",
+        "entry": "from_market",
+        "direction": "left"
+      }
+    }
+  ],
+  "effects": {
+    "preset": "exterior",
+    "light": [
+      1340,
+      120
+    ],
+    "aim": 225
+  },
+  "id": "market_square",
+  "then": "art-source/raw/IMG-0049/IMG-0049-v1.png"
+}

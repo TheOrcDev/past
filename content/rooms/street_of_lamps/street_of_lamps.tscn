@@ -1,0 +1,269 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/rooms/street_of_lamps/street_of_lamps.gd" id="1_vfcoh"]
+[ext_resource type="Texture2D" path="res://content/rooms/street_of_lamps/art/bg_now.png" id="2_7cjta"]
+[ext_resource type="Script" path="res://src/systems/effects/fog_layer.gd" id="3_q35h1"]
+[ext_resource type="Texture2D" path="res://content/rooms/street_of_lamps/art/depth_now.png" id="4_w0b6c"]
+[ext_resource type="Script" path="res://src/systems/effects/light_shafts.gd" id="5_410re"]
+[ext_resource type="Script" path="res://src/systems/effects/dust_motes.gd" id="6_dmkbg"]
+[ext_resource type="Texture2D" path="res://content/rooms/street_of_lamps/art/bg_then.png" id="7_vlsfv"]
+[ext_resource type="Script" path="res://src/core/scale_zones.gd" id="8_1cr5o"]
+[ext_resource type="Script" path="res://src/core/hotspot.gd" id="9_plfyv"]
+[ext_resource type="Script" path="res://src/core/exit.gd" id="10_v5mxn"]
+[ext_resource type="PackedScene" path="res://content/characters/lamplighter/lamplighter.tscn" id="11_b6wo8"]
+[ext_resource type="Script" path="res://src/core/actor.gd" id="12_wbiry"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_bsxjk"]
+vertices = PackedVector2Array(1850, 842, 1880, 1030, 200, 1030, 1620, 772, 1300, 718, 1520, 722, 1000, 762, 120, 832, 600, 792, 110, 950)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 3, 2, 6), PackedInt32Array(7, 8, 6, 2, 9)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(120, 832, 600, 792, 1000, 762, 1300, 718, 1520, 722, 1620, 772, 1850, 842, 1880, 1030, 200, 1030, 110, 950)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_xkm55"]
+vertices = PackedVector2Array(1850, 842, 1880, 1030, 200, 1030, 1620, 772, 1300, 718, 1520, 722, 1000, 762, 120, 832, 600, 792, 110, 950)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 3, 2, 6), PackedInt32Array(7, 8, 6, 2, 9)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(120, 832, 600, 792, 1000, 762, 1300, 718, 1520, 722, 1620, 772, 1850, 842, 1880, 1030, 200, 1030, 110, 950)])
+agent_radius = 0.0
+
+[node name="StreetOfLamps" type="Node2D" unique_id=995493079]
+script = ExtResource("1_vfcoh")
+room_id = &"street_of_lamps"
+display_name = "Street of lamps"
+
+[node name="Layers" type="Node2D" parent="." unique_id=1324297133]
+
+[node name="Now" type="Node2D" parent="Layers" unique_id=553129217]
+
+[node name="Background" type="Sprite2D" parent="Layers/Now" unique_id=756575630]
+texture = ExtResource("2_7cjta")
+centered = false
+
+[node name="FogFar" type="ColorRect" parent="Layers/Now" unique_id=1896346924]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_q35h1")
+fog_color = Color(0.85, 0.86, 0.89, 1)
+density = 0.3
+velocity = Vector2(0.005, 0)
+noise_scale = Vector2(1.4, 0.8)
+band_top = 0.3
+band_bottom = 0.75
+depth_texture = ExtResource("4_w0b6c")
+near_cutoff = 0.4
+noise_seed = 21
+
+[node name="FogLow" type="ColorRect" parent="Layers/Now" unique_id=1958932370]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_q35h1")
+fog_color = Color(0.8, 0.82, 0.86, 1)
+density = 0.24
+velocity = Vector2(-0.008, 0)
+noise_scale = Vector2(2.2, 1.1)
+band_top = 0.5
+band_bottom = 0.82
+depth_texture = ExtResource("4_w0b6c")
+near_cutoff = 0.55
+noise_seed = 23
+
+[node name="Moonlight" type="ColorRect" parent="Layers/Now" unique_id=2115262410]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("5_410re")
+origin = Vector2(1480, 80)
+aim = 220.0
+spread = 30.0
+beams = 5.0
+intensity = 0.07
+shaft_color = Color(0.9, 0.93, 1, 1)
+flicker = 0.3
+
+[node name="WarmLamps" type="ColorRect" parent="Layers/Now" unique_id=1828209797]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_q35h1")
+fog_color = Color(1, 0.72, 0.35, 1)
+density = 0.32
+velocity = Vector2(0.003, 0)
+noise_scale = Vector2(1.2, 0.7)
+band_top = 0.05
+band_bottom = 0.85
+noise_seed = 41
+
+[node name="WarmMotes" type="CPUParticles2D" parent="Layers/Now" unique_id=2120958907]
+script = ExtResource("6_dmkbg")
+area = Rect2(200, 100, 1500, 700)
+mote_color = Color(1, 0.85, 0.55, 0.5)
+mote_count = 50
+drift = Vector2(3, -4)
+mote_size = 2.5
+
+[node name="Then" type="Node2D" parent="Layers" unique_id=398963288]
+
+[node name="Background" type="Sprite2D" parent="Layers/Then" unique_id=461557013]
+texture = ExtResource("7_vlsfv")
+centered = false
+
+[node name="GoldenShafts" type="ColorRect" parent="Layers/Then" unique_id=95577278]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("5_410re")
+origin = Vector2(1480, 80)
+aim = 220.0
+spread = 44.0
+beams = 7.0
+intensity = 0.14
+reach = 1.0
+shaft_color = Color(1, 0.85, 0.55, 1)
+flicker = 0.25
+
+[node name="WarmHaze" type="ColorRect" parent="Layers/Then" unique_id=1296897400]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_q35h1")
+fog_color = Color(1, 0.9, 0.75, 1)
+density = 0.1
+velocity = Vector2(0.004, 0)
+noise_scale = Vector2(1.2, 0.7)
+band_top = 0.3
+band_bottom = 0.9
+noise_seed = 13
+
+[node name="GoldenDust" type="CPUParticles2D" parent="Layers/Then" unique_id=1393542680]
+script = ExtResource("6_dmkbg")
+area = Rect2(300, 150, 1500, 750)
+mote_color = Color(1, 0.86, 0.55, 0.55)
+drift = Vector2(3, -4)
+mote_size = 2.5
+
+[node name="WalkAreas" type="Node2D" parent="." unique_id=359032128]
+
+[node name="Now" type="NavigationRegion2D" parent="WalkAreas" unique_id=1907559593]
+navigation_polygon = SubResource("NavigationPolygon_bsxjk")
+
+[node name="Then" type="NavigationRegion2D" parent="WalkAreas" unique_id=889916314]
+navigation_polygon = SubResource("NavigationPolygon_xkm55")
+enabled = false
+
+[node name="ScaleZones" type="Node2D" parent="." unique_id=1385019044]
+script = ExtResource("8_1cr5o")
+far_y = 720.0
+far_scale = 0.7
+near_y = 1030.0
+near_scale = 1.02
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=927612746]
+
+[node name="Lamplighter" type="Area2D" parent="Hotspots" unique_id=1725505817]
+script = ExtResource("9_plfyv")
+id = &"lamplighter"
+display_name = "Lamplighter"
+default_verb = &"talk"
+walk_offset = Vector2(830, 860)
+pick_priority = 2
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Lamplighter" unique_id=1022543844]
+polygon = PackedVector2Array(920, 828, 920, 450, 1000, 430, 1080, 450, 1092, 828)
+
+[node name="ShedDoor" type="Area2D" parent="Hotspots" unique_id=554083389]
+script = ExtResource("10_v5mxn")
+target_room = &"lamplighter_shed"
+target_entry = &"from_street"
+direction = &"left"
+id = &"shed_door"
+display_name = "Shed door"
+default_verb = &"walk"
+walk_offset = Vector2(220, 852)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/ShedDoor" unique_id=1328508661]
+polygon = PackedVector2Array(110, 802, 110, 470, 180, 420, 250, 470, 262, 802)
+
+[node name="ToParvis" type="Area2D" parent="Hotspots" unique_id=1766409114]
+script = ExtResource("10_v5mxn")
+target_room = &"cathedral_parvis"
+target_entry = &"from_street"
+direction = &"left"
+id = &"to_parvis"
+display_name = "To the square"
+default_verb = &"walk"
+walk_offset = Vector2(130, 935)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/ToParvis" unique_id=1537416689]
+polygon = PackedVector2Array(0, 852, 90, 852, 90, 1062, 0, 1062)
+
+[node name="ToMarket" type="Area2D" parent="Hotspots" unique_id=2094970706]
+script = ExtResource("10_v5mxn")
+target_room = &"market_square"
+target_entry = &"from_street"
+direction = &"up"
+id = &"to_market"
+display_name = "To the market"
+default_verb = &"walk"
+walk_offset = Vector2(1400, 738)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/ToMarket" unique_id=1005265555]
+polygon = PackedVector2Array(1300, 722, 1300, 560, 1520, 560, 1520, 722)
+
+[node name="Lamps" type="Area2D" parent="Hotspots" unique_id=1848101037]
+script = ExtResource("9_plfyv")
+id = &"lamps"
+display_name = "Lamps"
+walk_offset = Vector2(460, 872)
+pick_priority = 1
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Lamps" unique_id=1979045676]
+polygon = PackedVector2Array(330, 842, 330, 100, 540, 100, 540, 300, 432, 300, 432, 842)
+
+[node name="Shops" type="Area2D" parent="Hotspots" unique_id=1366052670]
+script = ExtResource("9_plfyv")
+id = &"shops"
+display_name = "Shuttered shops"
+walk_offset = Vector2(800, 802)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Shops" unique_id=1925126659]
+polygon = PackedVector2Array(600, 762, 600, 350, 1000, 450, 1000, 742)
+
+[node name="Exits" type="Node2D" parent="." unique_id=1463499881]
+
+[node name="Markers" type="Node2D" parent="." unique_id=1351143302]
+
+[node name="default" type="Marker2D" parent="Markers" unique_id=700285763]
+position = Vector2(700, 920)
+
+[node name="from_parvis" type="Marker2D" parent="Markers" unique_id=1239005598]
+position = Vector2(150, 935)
+
+[node name="from_shed" type="Marker2D" parent="Markers" unique_id=655547005]
+position = Vector2(235, 872)
+
+[node name="from_market" type="Marker2D" parent="Markers" unique_id=1153034547]
+position = Vector2(1400, 748)
+
+[node name="Actors" type="Node2D" parent="." unique_id=1144565314]
+y_sort_enabled = true
+
+[node name="Lamplighter" type="Node2D" parent="Actors" unique_id=388013345 groups=["era_now"] instance=ExtResource("11_b6wo8")]
+position = Vector2(1005, 828)
+script = ExtResource("12_wbiry")
+speaker_name = "Lamplighter"
+speaker_aliases = PackedStringArray("Mathis")
+talk_animations = Array[StringName]([&"talk_a", &"talk_b"])
+subtitle_color = Color(0.95, 0.83, 0.55, 1)
+speech_offset = Vector2(-12.600626, -459.82297)
+
+[node name="Foreground" type="Node2D" parent="." unique_id=1067873262]
+
+[node name="GroundMist" type="ColorRect" parent="Foreground" unique_id=997974362 groups=["era_now"]]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_q35h1")
+fog_color = Color(0.86, 0.87, 0.9, 1)
+density = 0.16
+velocity = Vector2(0.01, 0)
+noise_scale = Vector2(2.6, 1.6)
+band_top = 0.84
+band_bottom = 1.02
+band_softness = 0.08
+noise_seed = 27
+
+[node name="Cinematics" type="Node2D" parent="." unique_id=1919480722]

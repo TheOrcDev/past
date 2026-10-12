@@ -1,0 +1,299 @@
+{
+  "display_name": "Clockworks",
+  "now": "art-source/raw/IMG-0041/IMG-0041-v1.png",
+  "walk": [
+    [
+      460,
+      808
+    ],
+    [
+      1500,
+      808
+    ],
+    [
+      1660,
+      862
+    ],
+    [
+      1680,
+      1040
+    ],
+    [
+      120,
+      1040
+    ],
+    [
+      120,
+      932
+    ],
+    [
+      460,
+      922
+    ]
+  ],
+  "scale_zones": {
+    "far_y": 808,
+    "far_scale": 0.82,
+    "near_y": 1040,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      900,
+      922
+    ],
+    "from_tower": [
+      330,
+      965
+    ],
+    "from_face": [
+      400,
+      845
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "trapdoor",
+      "name": "Trapdoor",
+      "polygon": [
+        [
+          100,
+          912
+        ],
+        [
+          200,
+          832
+        ],
+        [
+          460,
+          832
+        ],
+        [
+          400,
+          912
+        ]
+      ],
+      "walk_to": [
+        330,
+        950
+      ],
+      "exit": {
+        "room": "clock_tower_base",
+        "entry": "from_works",
+        "direction": "down"
+      }
+    },
+    {
+      "id": "ladder",
+      "name": "Ladder up",
+      "polygon": [
+        [
+          150,
+          782
+        ],
+        [
+          150,
+          20
+        ],
+        [
+          262,
+          20
+        ],
+        [
+          322,
+          782
+        ]
+      ],
+      "walk_to": [
+        390,
+        830
+      ],
+      "exit": {
+        "room": "clock_face",
+        "entry": "from_works",
+        "direction": "up",
+        "requires_flag": "clock_wound"
+      }
+    },
+    {
+      "id": "escapement",
+      "name": "Escapement",
+      "polygon": [
+        [
+          1290,
+          702
+        ],
+        [
+          1290,
+          300
+        ],
+        [
+          1450,
+          240
+        ],
+        [
+          1600,
+          300
+        ],
+        [
+          1640,
+          560
+        ],
+        [
+          1550,
+          702
+        ]
+      ],
+      "walk_to": [
+        1420,
+        835
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "post",
+      "name": "Winding post",
+      "polygon": [
+        [
+          1590,
+          802
+        ],
+        [
+          1590,
+          430
+        ],
+        [
+          1700,
+          430
+        ],
+        [
+          1700,
+          802
+        ]
+      ],
+      "walk_to": [
+        1560,
+        845
+      ],
+      "pick_priority": 2
+    },
+    {
+      "id": "pendulum",
+      "name": "Pendulum",
+      "polygon": [
+        [
+          850,
+          702
+        ],
+        [
+          850,
+          420
+        ],
+        [
+          1090,
+          420
+        ],
+        [
+          1090,
+          702
+        ]
+      ],
+      "walk_to": [
+        970,
+        835
+      ]
+    },
+    {
+      "id": "gears",
+      "name": "Gears",
+      "polygon": [
+        [
+          350,
+          622
+        ],
+        [
+          350,
+          262
+        ],
+        [
+          860,
+          262
+        ],
+        [
+          860,
+          622
+        ]
+      ],
+      "walk_to": [
+        600,
+        835
+      ]
+    },
+    {
+      "id": "chalk",
+      "name": "Chalk mark",
+      "polygon": [
+        [
+          1700,
+          452
+        ],
+        [
+          1700,
+          370
+        ],
+        [
+          1802,
+          370
+        ],
+        [
+          1802,
+          452
+        ]
+      ],
+      "walk_to": [
+        1560,
+        845
+      ],
+      "era": "then",
+      "pick_priority": 3
+    },
+    {
+      "id": "apprentice_bench",
+      "name": "Bench",
+      "polygon": [
+        [
+          1580,
+          902
+        ],
+        [
+          1580,
+          762
+        ],
+        [
+          1900,
+          762
+        ],
+        [
+          1900,
+          902
+        ]
+      ],
+      "walk_to": [
+        1560,
+        880
+      ],
+      "era": "then",
+      "pick_priority": 2
+    }
+  ],
+  "effects": {
+    "preset": "interior",
+    "light": [
+      1050,
+      60
+    ],
+    "aim": 190
+  },
+  "id": "clockworks",
+  "then": "art-source/raw/IMG-0047/IMG-0047-v1.png"
+}

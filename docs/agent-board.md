@@ -443,3 +443,15 @@ Append-only. Newest at the bottom. UTC.
   - **Checked:** a scripted player finishes it in the tests, in the desktop
     game and in Chrome. See `docs/qa/008/prologue/`.
   - **Cost:** $0. All the art is Sol's, on your ChatGPT plan.
+- 2026-10-12T05:45Z **Claude → @Operator:** Plan 008 slice 5 is done: chapter 1, The
+  Nameless Streets, plays from the great doors to the lower gate.
+  - **What's in it:** 12 new rooms with their colour pasts, four people to
+    talk to (the Crier, the Lamplighter, the Broker, the Clockmaker), five
+    close-ups, and a playable memory inside the clock.
+  - **The first turn:** the Lamplighter gets his name back, Mathis, and his
+    street keeps its warm light. Unknown learns the memories he sees aren't
+    his.
+  - **Fixed on the way:** the browser demo's download had doubled from stray
+    files. It's back to 143 MB, under its 150 MB budget.
+  - **See:** `docs/qa/008/ch1/`.
+  - **Cost:** $0.

@@ -36,11 +36,57 @@
       "id": "ch1",
       "title": "The Nameless Streets",
       "start": "cathedral_parvis",
-      "flags": [],
-      "rooms": [],
-      "closeups": [],
+      "flags": [
+        "tombstone_read",
+        "gd_met",
+        "register_read",
+        "got_ossuary_key",
+        "ossuary_open",
+        "got_lantern_glass",
+        "gd_lantern_mended",
+        "sister_met",
+        "sister_dove",
+        "sister_wants_book",
+        "got_hymn_book",
+        "got_west_door_key",
+        "west_doors_open"
+      ],
+      "rooms": [
+        "cathedral_parvis",
+        "street_of_lamps",
+        "lamplighter_shed",
+        "market_square",
+        "pawn_shop",
+        "canal_bridge",
+        "alley_of_doors",
+        "tavern_lost_name",
+        "clock_tower_base",
+        "clockworks",
+        "clock_face",
+        "lower_gate"
+      ],
+      "closeups": [
+        "lamp_ledger",
+        "edict_board",
+        "tavern_tally",
+        "escapement",
+        "seal_cabinet"
+      ],
       "dialogue": [
         "ch1"
+      ],
+      "characters": [
+        "crier",
+        "lamplighter",
+        "broker",
+        "clockmaker"
+      ],
+      "memories": [
+        "cathedral_statue",
+        "prologue_singer"
+      ],
+      "items": [
+        "lantern"
       ]
     },
     {

@@ -1,0 +1,77 @@
+{
+  "id": "IMG-0028",
+  "title": "NPC: the Crier",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T22:51:27.546Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "1440x2560",
+      "quality": "high",
+      "n": 3,
+      "background": "transparent",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0013/IMG-0013-v2.png",
+          "sha256": "aea3ec9ef0da502490ee6ecc801c0a0d4cd1f6bcf806d4f9b16ec70c8cb05977"
+        }
+      ],
+      "mask": null,
+      "prompt": "A single full-body character for a dark gothic point-and-click adventure game, painted in the same monochrome greyscale ink-wash matte-painting style as the reference image: the old town Crier: a tall, thin man in a long, many-caped greatcoat and a battered tricorn hat, a roll of old proclamations under his left arm and a large brass handbell raised high in his right hand.\n\nThey are a grey shade of a person: solid, made of mid and light greys with soft ink texture, never pure black, with no visible face (his face is lost in the shadow under his tricorn and the high turned-up collar of his coat). Pose: standing tall and theatrical, mid-announcement, the handbell raised beside his head, facing three-quarters to the viewer's right. Shown whole from head to feet, facing three-quarters to the viewer's left, filling most of the image height, with a little space around them. Even soft light from the upper left with a gentle cool rim light. On a fully transparent background, with no ground, shadow or scenery.\n\nNo text, labels, letters or numbers. No other figures. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0028-v1.png",
+          "sha256": "b1340862e2ddfd202f11a10539d451420f82ebaf3722b3e66579708e0352414b",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0028-v2.png",
+          "sha256": "e0ca75c8e3ffd5f85013df009e4b5960442b198e59b5c1cf65de953579f62447",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0028-v3.png",
+          "sha256": "a39eb6a9d0d2c66c33a9560220e631255f6ef54827ac5df33bd0904b8eaf763a",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 105778,
+        "outputTokens": 1160
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d29-f93e-7250-b6d3-d45b00c35d89",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d29-f93e-7250-b6d3-d45b00c35d89/exec-ace2f5e2-09fc-4235-b90b-b6c30dd1710c.png",
+            "/Users/orcdev/.codex/generated_images/01a12d29-f93e-7250-b6d3-d45b00c35d89/exec-2c27c51a-e3fa-42e7-8a55-0548d79526a8.png",
+            "/Users/orcdev/.codex/generated_images/01a12d29-f93e-7250-b6d3-d45b00c35d89/exec-531f2300-fb8f-4419-8202-3f6862d5b6be.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1024,
+              "height": 1536
+            },
+            {
+              "width": 1024,
+              "height": 1536
+            },
+            {
+              "width": 1024,
+              "height": 1536
+            }
+          ],
+          "messages": [
+            "I’ll generate three portrait variants from the reference, each with a transparent background and your exact prompt.",
+            "Two variants are generated. I’m generating the third with the same reference and exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

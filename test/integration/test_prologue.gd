@@ -25,6 +25,7 @@ func test_the_prologue_plays_to_the_doors() -> void:
 	play.call()
 	await wait_until(func() -> bool: return done[0], 300.0)
 	assert_true(done[0], "the prologue finished")
-	assert_eq(Rooms.current.room_id, &"cathedral_nave")
+	# The doors open on chapter 1 where it ships, and on the end card in the demo.
+	assert_eq(Rooms.current.room_id, &"cathedral_parvis" if Chapters.in_build(&"cathedral_parvis") else &"cathedral_nave")
 	for memory in [&"prologue_edict", &"prologue_singer"]:
 		assert_true(memory in GameState.memories, "remembers %s" % memory)

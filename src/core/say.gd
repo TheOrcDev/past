@@ -154,7 +154,7 @@ func _actor_named(speaker: String) -> Actor:
 	if Rooms.current == null:
 		return null
 	for child in Rooms.current.actors.get_children():
-		if child is Actor and child.speaker_name == speaker:
+		if child is Actor and (child.speaker_name == speaker or speaker in child.speaker_aliases):
 			return child
 	return null
 

@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0058",
+  "title": "The Broker's shop, then",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T23:05:53.510Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0036/IMG-0036-v2.png",
+          "sha256": "a8110c5d60853e8ad1faf7ebe209cd33643d888fdce09bf5f2ce24073b38c767"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit this image in place. Keep exactly the same composition, camera, perspective, horizon and every shape where it stands: the door and window on the left, the shelves, the counter and scale, the glass cabinet and the floor. Only change the time and the condition.\n\nRestore the same shop to how it looked decades earlier, as a fine jeweller's on a bright afternoon, in full rich warm color, as a painterly gothic matte painting: polished glass cases glittering with gold and silver jewellery, gleaming brass clocks all running, the portraits turned the right way round showing warm painted faces, a brass bell over the door, warm sunlight through the window, polished floor. The key light comes from the same direction as in the original.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0058-v1.png",
+          "sha256": "656264d2a90dc6fe3695bc124d7739545d345fd531f6318f5db8db7da5593e1e",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0058-v2.png",
+          "sha256": "fd108bc574b320a4e4202f99f584e04d98626d4c6f5f0b489ff346e8ccf42639",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 194474,
+        "outputTokens": 908
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d37-2fa5-7d91-ae00-fc9882e31311",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d37-2fa5-7d91-ae00-fc9882e31311/exec-8b9b8cc6-a529-4ca7-89c3-e30deb46cd2b.png",
+            "/Users/orcdev/.codex/generated_images/01a12d37-2fa5-7d91-ae00-fc9882e31311/exec-8d24ef57-2ab3-463d-8ff7-11df90fa7ed9.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll make two edits from the attached image using your prompt exactly.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

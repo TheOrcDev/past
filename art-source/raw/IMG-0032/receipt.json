@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0032",
+  "title": "Item sheet: chapter 1",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T22:55:54.739Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "transparent",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0019/IMG-0019-v1.png",
+          "sha256": "f8670baab6b1c2568c6f603d94836a194b305fc0d253ca248c88420c3649001d"
+        }
+      ],
+      "mask": null,
+      "prompt": "A sheet of four separate inventory item icons for a dark gothic point-and-click adventure game, painted in the monochrome greyscale ink-wash style of the reference image, each object drawn whole and alone, in a two by two grid with generous empty space between them, nothing overlapping or touching:\n\n1. a large iron clock-winding key: a square socket on a long shaft with a crank handle; 2. a short stub of a white wax candle in a little brass holder, a scrap of faded ribbon tied round it; 3. a lamplighter's small brass hand lamp whose flame glows a warm golden yellow, the only color on the sheet; 4. a heavy gold signet ring with a large flat oval seal face, its engraving worn smooth.\n\nEach object is lit from the upper left with a soft rim light, slightly three-quarter view, as a clean cut-out on a fully transparent background, with no shadows, labels, frames or scenery. No text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0032-v1.png",
+          "sha256": "f0c53785e4acfa62ff75e2ee80a0bf47d33892f71da3cb206274356d31d51a76",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0032-v2.png",
+          "sha256": "a855dbb1c6846e51bb786b352025188fc0de802b23c32094e9bf7915e6d2d14e",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 171573,
+        "outputTokens": 802
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d2e-0c44-78c1-a8e3-0297978b646d",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d2e-0c44-78c1-a8e3-0297978b646d/exec-b135f161-3bcc-4c24-b8de-6adaab97e756.png",
+            "/Users/orcdev/.codex/generated_images/01a12d2e-0c44-78c1-a8e3-0297978b646d/exec-46917bc2-f185-4f2b-811a-01332504c2c0.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1536,
+              "height": 1024
+            },
+            {
+              "width": 1536,
+              "height": 1024
+            }
+          ],
+          "messages": [
+            "I’ll generate two images using the reference and your exact prompt, with transparent backgrounds.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0056",
+  "title": "Close-up: the tavern's slate of debts",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T23:03:41.394Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0039/IMG-0039-v2.png",
+          "sha256": "bc4faab55013c7c367d8f8e1b1996786ab9be544b68a7f0a623add5b032d2d35"
+        }
+      ],
+      "mask": null,
+      "prompt": "A close-up of the slate board of debts on the tavern wall from the reference image, in exactly the same monochrome greyscale ink-wash gothic style: a framed slate fills the frame: two chalked columns of debts, each line a scratched-out name followed by a small sum. Every name has been struck through with hard, angry chalk lines until it is unreadable; the sums are still clear.\n\nOnly small numbers are readable (sums such as 3, 12, 7, 20); every name is scratched out and illegible. No other text. No people or figures. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0056-v1.png",
+          "sha256": "74e2cdc3475b224e156f23debb15407b32e6352c03c216337cbfb850a56d403d",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0056-v2.png",
+          "sha256": "00db9e2930daca2f4c468e3e9e20e2d1591aafa772efe0968f7b201371ed1380",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 141490,
+        "outputTokens": 862
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d35-2b7b-7f10-9a9c-b3b6dea52941",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d35-2b7b-7f10-9a9c-b3b6dea52941/exec-bd35d00b-0291-4e18-9e4d-fb2fdd07b468.png",
+            "/Users/orcdev/.codex/generated_images/01a12d35-2b7b-7f10-9a9c-b3b6dea52941/exec-8ff5be6f-c36d-4dc6-bbe2-8816c24e8ea5.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate two wide, opaque edits using the reference image and your exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

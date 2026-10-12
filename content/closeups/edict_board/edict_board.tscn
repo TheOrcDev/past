@@ -1,0 +1,39 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/closeups/edict_board/edict_board.gd" id="1_3u4do"]
+[ext_resource type="Texture2D" path="res://content/closeups/edict_board/art/bg.png" id="2_h6n5p"]
+[ext_resource type="Script" path="res://src/core/hotspot.gd" id="3_k4jny"]
+
+[node name="EdictBoard" type="Node2D" unique_id=1643533341]
+script = ExtResource("1_3u4do")
+closeup_id = &"edict_board"
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1489202463]
+texture = ExtResource("2_h6n5p")
+centered = false
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=446706839]
+
+[node name="Time" type="Area2D" parent="Hotspots" unique_id=1854701571]
+script = ExtResource("3_k4jny")
+id = &"time"
+display_name = "Posted at…"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Time" unique_id=19788613]
+polygon = PackedVector2Array(700, 660, 1240, 660, 1240, 750, 700, 750)
+
+[node name="Seal" type="Area2D" parent="Hotspots" unique_id=499978799]
+script = ExtResource("3_k4jny")
+id = &"seal"
+display_name = "Wax seal"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Seal" unique_id=1554305682]
+polygon = PackedVector2Array(840, 760, 1100, 760, 1100, 950, 840, 950)
+
+[node name="Main" type="Area2D" parent="Hotspots" unique_id=28923629]
+script = ExtResource("3_k4jny")
+id = &"main"
+display_name = "The edict"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Main" unique_id=279020496]
+polygon = PackedVector2Array(630, 150, 1310, 150, 1310, 650, 630, 650)

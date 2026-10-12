@@ -9,6 +9,9 @@ signal _one_shot_ended
 
 ## The name this actor speaks under in .dialogue files, for example "Unknown".
 @export var speaker_name := ""
+## Other names the same actor speaks under, for example the real name an NPC
+## remembers (plan 008).
+@export var speaker_aliases: PackedStringArray = []
 ## Pixels per second at scale 1, unless the body's walk was rendered with its
 ## own ground speed. Farther away (smaller) is slower on screen.
 @export var walk_speed := 320.0

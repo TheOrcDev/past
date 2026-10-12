@@ -131,3 +131,24 @@ func _settle() -> void:
 	await _tree.process_frame
 	while Interaction.locked > 0 or Say.speaking or Rooms.player.is_walking or Closeups.busy:
 		await _tree.process_frame
+
+## A click on a close-up's hotspot.
+func _closeup_click(hotspot_name: String) -> void:
+	await Interaction.click_at((Closeups.current.hotspots.get_node(hotspot_name) as Hotspot).focus_point())
+	await _settle()
+
+
+## Backs out of the open close-up.
+func _close() -> void:
+	Interaction.right_click()
+	while Closeups.current != null or Closeups.busy:
+		await _tree.process_frame
+	await _settle()
+
+
+## Waits until the memory has been recorded and its cutscene has ended.
+func _until_memory(memory: StringName) -> void:
+	while not memory in GameState.memories or Cutscenes.current != null:
+		await _tree.process_frame
+	await _settle()
+	check.call(memory in GameState.memories, "the memory %s" % memory)

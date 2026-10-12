@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemDef" format=3]
+
+[ext_resource type="Texture2D" path="res://content/items/seal_ring/icon.png" id="1_3dxno"]
+[ext_resource type="Script" path="res://src/core/item_def.gd" id="2_xrx1p"]
+
+[resource]
+script = ExtResource("2_xrx1p")
+id = &"seal_ring"
+display_name = "Seal ring"
+icon = ExtResource("1_3dxno")
+look_file = &"ch1/items"
+look_cue = &"seal_ring_look"

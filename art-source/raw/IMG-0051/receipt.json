@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0051",
+  "title": "The lower gate, then",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T23:01:01.720Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0043/IMG-0043-v1.png",
+          "sha256": "1122879787cdd732eca774e741d662b1c4ce4c5b3253853fc14de86468ff63a4"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit this image in place. Keep exactly the same composition, camera, perspective, horizon and every shape where it stands: the portcullis and its arch, the steps, the walls, the chain and the tower above. Only change the time and the condition.\n\nRestore the same gate to how it looked decades earlier, on a busy afternoon, in full rich warm color, as a painterly gothic matte painting: the portcullis raised open and the arch showing a sunny canal-side street with boats beyond instead of floodwater, flower baskets on the walls, the steps swept clean, the chain oiled, warm sunlight. The key light comes from the same direction as in the original.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0051-v1.png",
+          "sha256": "4da80a8a475a8b6148d8e0c5ab25b6c6169bb283b7d952bb2bf96f3673306111",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0051-v2.png",
+          "sha256": "ff08d386a061ff30198a05e0eb05d073e2750b9c05f016598cab1b87def5ee95",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 73193,
+        "outputTokens": 531
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d32-bb78-7172-b62d-1495189279ec",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d32-bb78-7172-b62d-1495189279ec/exec-d2b16e79-b4c3-4875-bc63-f8f39369c7c0.png",
+            "/Users/orcdev/.codex/generated_images/01a12d32-bb78-7172-b62d-1495189279ec/exec-6215574e-fca9-4e4f-ac1b-4b8210ce9f89.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate two edits using your prompt exactly as provided.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

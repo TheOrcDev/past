@@ -1,0 +1,336 @@
+{
+  "display_name": "Street of lamps",
+  "now": "art-source/raw/IMG-0033/IMG-0033-v1.png",
+  "walk": [
+    [
+      120,
+      832
+    ],
+    [
+      600,
+      792
+    ],
+    [
+      1000,
+      762
+    ],
+    [
+      1300,
+      718
+    ],
+    [
+      1520,
+      722
+    ],
+    [
+      1620,
+      772
+    ],
+    [
+      1850,
+      842
+    ],
+    [
+      1880,
+      1030
+    ],
+    [
+      200,
+      1030
+    ],
+    [
+      110,
+      950
+    ]
+  ],
+  "scale_zones": {
+    "far_y": 720,
+    "far_scale": 0.7,
+    "near_y": 1030,
+    "near_scale": 1.02
+  },
+  "markers": {
+    "default": [
+      700,
+      920
+    ],
+    "from_parvis": [
+      150,
+      935
+    ],
+    "from_shed": [
+      235,
+      872
+    ],
+    "from_market": [
+      1400,
+      748
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "lamplighter",
+      "name": "Lamplighter",
+      "polygon": [
+        [
+          920,
+          828
+        ],
+        [
+          920,
+          450
+        ],
+        [
+          1000,
+          430
+        ],
+        [
+          1080,
+          450
+        ],
+        [
+          1092,
+          828
+        ]
+      ],
+      "walk_to": [
+        830,
+        860
+      ],
+      "default_verb": "talk",
+      "pick_priority": 2
+    },
+    {
+      "id": "shed_door",
+      "name": "Shed door",
+      "polygon": [
+        [
+          110,
+          802
+        ],
+        [
+          110,
+          470
+        ],
+        [
+          180,
+          420
+        ],
+        [
+          250,
+          470
+        ],
+        [
+          262,
+          802
+        ]
+      ],
+      "walk_to": [
+        220,
+        852
+      ],
+      "exit": {
+        "room": "lamplighter_shed",
+        "entry": "from_street",
+        "direction": "left"
+      }
+    },
+    {
+      "id": "to_parvis",
+      "name": "To the square",
+      "polygon": [
+        [
+          0,
+          852
+        ],
+        [
+          90,
+          852
+        ],
+        [
+          90,
+          1062
+        ],
+        [
+          0,
+          1062
+        ]
+      ],
+      "walk_to": [
+        130,
+        935
+      ],
+      "exit": {
+        "room": "cathedral_parvis",
+        "entry": "from_street",
+        "direction": "left"
+      }
+    },
+    {
+      "id": "to_market",
+      "name": "To the market",
+      "polygon": [
+        [
+          1300,
+          722
+        ],
+        [
+          1300,
+          560
+        ],
+        [
+          1520,
+          560
+        ],
+        [
+          1520,
+          722
+        ]
+      ],
+      "walk_to": [
+        1400,
+        738
+      ],
+      "exit": {
+        "room": "market_square",
+        "entry": "from_street",
+        "direction": "up"
+      }
+    },
+    {
+      "id": "lamps",
+      "name": "Lamps",
+      "polygon": [
+        [
+          330,
+          842
+        ],
+        [
+          330,
+          100
+        ],
+        [
+          540,
+          100
+        ],
+        [
+          540,
+          300
+        ],
+        [
+          432,
+          300
+        ],
+        [
+          432,
+          842
+        ]
+      ],
+      "walk_to": [
+        460,
+        872
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "shops",
+      "name": "Shuttered shops",
+      "polygon": [
+        [
+          600,
+          762
+        ],
+        [
+          600,
+          350
+        ],
+        [
+          1000,
+          450
+        ],
+        [
+          1000,
+          742
+        ]
+      ],
+      "walk_to": [
+        800,
+        802
+      ]
+    }
+  ],
+  "npcs": [
+    {
+      "scene": "res://content/characters/lamplighter/lamplighter.tscn",
+      "name": "Lamplighter",
+      "position": [
+        1005,
+        828
+      ],
+      "facing": "left",
+      "era": "now"
+    }
+  ],
+  "effects": {
+    "preset": "exterior",
+    "light": [
+      1480,
+      80
+    ],
+    "aim": 220,
+    "extra": [
+      {
+        "type": "FogLayer",
+        "name": "WarmLamps",
+        "era": "now",
+        "properties": {
+          "fog_color": [
+            1.0,
+            0.72,
+            0.35,
+            1.0
+          ],
+          "density": 0.32,
+          "velocity": [
+            0.003,
+            0.0
+          ],
+          "noise_scale": [
+            1.2,
+            0.7
+          ],
+          "band_top": 0.05,
+          "band_bottom": 0.85,
+          "noise_seed": 41
+        }
+      },
+      {
+        "type": "DustMotes",
+        "name": "WarmMotes",
+        "era": "now",
+        "properties": {
+          "area": [
+            200,
+            100,
+            1500,
+            700
+          ],
+          "mote_color": [
+            1.0,
+            0.85,
+            0.55,
+            0.5
+          ],
+          "mote_count": 50,
+          "drift": [
+            3,
+            -4
+          ],
+          "mote_size": 2.5
+        }
+      }
+    ]
+  },
+  "id": "street_of_lamps",
+  "then": "art-source/raw/IMG-0045/IMG-0045-v2.png"
+}

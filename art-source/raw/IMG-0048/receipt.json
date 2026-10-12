@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0048",
+  "title": "The lamplighter's shed, then",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T23:01:01.725Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0034/IMG-0034-v2.png",
+          "sha256": "791bd2bdb60ebaa8cd680ada7dd4b3f607abbc77710807a56d2674378029c699"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit this image in place. Keep exactly the same composition, camera, perspective, horizon and every shape where it stands: the door, the round window, the shelves, the wick coils, the pole, the workbench and the floor. Only change the time and the condition.\n\nRestore the same shed to how it looked decades earlier, on a warm evening, in full rich warm color, as a painterly gothic matte painting: clean whitewashed walls with no marks on them, shelves of bright brass oil cans, neat coils of new wick, a wedding garland of white flowers and ribbon hung over the door, a lamp lit warm on the workbench, golden evening light through the round window. The key light comes from the same direction as in the original.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0048-v1.png",
+          "sha256": "cd593a55cb4e202b4dee9e2d46828ef767e4330260cc5fd76ba1ac58cceaec93",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0048-v2.png",
+          "sha256": "54630af54444fc41ab8817f0fd77e506ac81c90dc8ea12902accf8b8782b5d8d",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 93480,
+        "outputTokens": 586
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d32-bb79-7501-8753-634996e940ae",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d32-bb79-7501-8753-634996e940ae/exec-a253415d-7dd2-494d-8ee6-ef21423efa07.png",
+            "/Users/orcdev/.codex/generated_images/01a12d32-bb79-7501-8753-634996e940ae/exec-9e1710a2-b96e-4630-9703-c753dd8eac5f.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate two edits using the attached image and your exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

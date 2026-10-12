@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0047",
+  "title": "Inside the clock, then (the apprentice's memory)",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T22:59:16.222Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0041/IMG-0041-v1.png",
+          "sha256": "a6548c1d6962750fab74ff5a23c6b69820df0a62a728673f249e6ae2a9be01eb"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit this image in place. Keep exactly the same composition, camera, perspective, horizon and every shape where it stands: every gear and wheel, the pendulum, the escape wheel and its anchor, the winding post, the ladder, the trapdoor and the gallery floor. Only change the time and the condition.\n\nRestore the same clockworks to how it looked decades earlier, when the clock ran, in full rich warm color, as a painterly gothic matte painting: polished brass gears gleaming, the escapement whole and engaged, warm oil lamps hanging along the gallery, a tidy apprentice's workbench, sawdust on the boards, warm sunset light through the clock face's glass. On the wooden beam right beside the escape wheel, a hand-chalked note reading exactly: THIRD TOOTH The key light comes from the same direction as in the original.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0047-v1.png",
+          "sha256": "f965cbb0f895da363e4b2eab235336d1a9d2c4a435c0287e4f6f98ece29f3846",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0047-v2.png",
+          "sha256": "aec5129274f33ce69a52341b1ff7d915d4c36b7bb700a1e8291132522f10ef81",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 126494,
+        "outputTokens": 818
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d31-1edc-7f33-801e-f34317715343",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d31-1edc-7f33-801e-f34317715343/exec-1514dff0-3c48-49ea-bd07-18283bf609bc.png",
+            "/Users/orcdev/.codex/generated_images/01a12d31-1edc-7f33-801e-f34317715343/exec-6f7fac4b-b165-46a9-a1a8-fbf94e6f77fb.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate two edits using your prompt exactly as provided.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

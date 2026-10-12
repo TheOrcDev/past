@@ -48,6 +48,7 @@ func create_npc(spec: Dictionary) -> Error:
 	_root = actor
 	actor.name = npc_id.to_pascal_case()
 	actor.speaker_name = spec["speaker"]
+	actor.speaker_aliases = PackedStringArray(spec.get("aliases", []))
 	var tint: Array = spec.get("subtitle_color", [0.9, 0.9, 0.9])
 	actor.subtitle_color = Color(tint[0], tint[1], tint[2])
 	actor.speech_offset = (_point(spec["speech"]) - feet) * scale_factor

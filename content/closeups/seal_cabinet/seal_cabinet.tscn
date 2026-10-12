@@ -1,0 +1,39 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/closeups/seal_cabinet/seal_cabinet.gd" id="1_rxkwr"]
+[ext_resource type="Texture2D" path="res://content/closeups/seal_cabinet/art/bg.png" id="2_5o8tj"]
+[ext_resource type="Script" path="res://src/core/hotspot.gd" id="3_osgy1"]
+
+[node name="SealCabinet" type="Node2D" unique_id=386836178]
+script = ExtResource("1_rxkwr")
+closeup_id = &"seal_cabinet"
+
+[node name="Background" type="Sprite2D" parent="." unique_id=2021124928]
+texture = ExtResource("2_5o8tj")
+centered = false
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=1998758746]
+
+[node name="Ring" type="Area2D" parent="Hotspots" unique_id=1075447249]
+script = ExtResource("3_osgy1")
+id = &"ring"
+display_name = "Ring"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Ring" unique_id=1832207600]
+polygon = PackedVector2Array(830, 460, 1090, 460, 1090, 620, 830, 620)
+
+[node name="Lock" type="Area2D" parent="Hotspots" unique_id=1368441634]
+script = ExtResource("3_osgy1")
+id = &"lock"
+display_name = "Lock"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Lock" unique_id=994173820]
+polygon = PackedVector2Array(1520, 440, 1640, 440, 1640, 640, 1520, 640)
+
+[node name="Glass" type="Area2D" parent="Hotspots" unique_id=1600937714]
+script = ExtResource("3_osgy1")
+id = &"glass"
+display_name = "Glass"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Glass" unique_id=1606777774]
+polygon = PackedVector2Array(300, 60, 1660, 60, 1660, 1020, 300, 1020)

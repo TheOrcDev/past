@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://c7hvu7x6k6s0r"
+path="res://.godot/imported/tower.dialogue-fd79ec06db6ef7472e13447804d0c908.tres"
+
+[deps]
+
+source_file="res://content/dialogue/ch1/tower.dialogue"
+dest_files=["res://.godot/imported/tower.dialogue-fd79ec06db6ef7472e13447804d0c908.tres"]
+
+[params]
+
+defaults=true

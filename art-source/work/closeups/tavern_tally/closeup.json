@@ -1,0 +1,74 @@
+{
+  "id": "tavern_tally",
+  "image": "art-source/raw/IMG-0056/IMG-0056-v2.png",
+  "hotspots": [
+    {
+      "id": "sums",
+      "name": "Sums",
+      "polygon": [
+        [
+          760,
+          120
+        ],
+        [
+          900,
+          120
+        ],
+        [
+          900,
+          980
+        ],
+        [
+          760,
+          980
+        ]
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "sums_right",
+      "name": "Sums",
+      "polygon": [
+        [
+          1660,
+          120
+        ],
+        [
+          1820,
+          120
+        ],
+        [
+          1820,
+          980
+        ],
+        [
+          1660,
+          980
+        ]
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "names",
+      "name": "Names",
+      "polygon": [
+        [
+          150,
+          100
+        ],
+        [
+          1860,
+          100
+        ],
+        [
+          1860,
+          1000
+        ],
+        [
+          150,
+          1000
+        ]
+      ]
+    }
+  ]
+}

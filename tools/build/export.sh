@@ -43,8 +43,9 @@ if grep -E "SCRIPT ERROR|^ERROR" "$log"; then
 	echo "export logged errors; see $log" >&2
 	exit 1
 fi
+listing="$(python3 "$ROOT/tools/build/pck_list.py" "$(dirname "$out")/index.pck" 2>/dev/null || true)"
 for path in ${excluded[@]+"${excluded[@]}"}; do
-	if grep -qa "res://$path/" "$(dirname "$out")/index.pck"; then
+	if grep -q "^$path/" <<< "$listing"; then
 		echo "the web pack still holds $path" >&2
 		exit 1
 	fi

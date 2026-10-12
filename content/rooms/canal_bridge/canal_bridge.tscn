@@ -1,0 +1,239 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/rooms/canal_bridge/canal_bridge.gd" id="1_lj0sl"]
+[ext_resource type="Texture2D" path="res://content/rooms/canal_bridge/art/bg_now.png" id="2_68d65"]
+[ext_resource type="Script" path="res://src/systems/effects/fog_layer.gd" id="3_jcik2"]
+[ext_resource type="Texture2D" path="res://content/rooms/canal_bridge/art/depth_now.png" id="4_spgtr"]
+[ext_resource type="Script" path="res://src/systems/effects/light_shafts.gd" id="5_6ana7"]
+[ext_resource type="Texture2D" path="res://content/rooms/canal_bridge/art/bg_then.png" id="6_vuov3"]
+[ext_resource type="Script" path="res://src/systems/effects/dust_motes.gd" id="7_ft6xd"]
+[ext_resource type="Script" path="res://src/core/scale_zones.gd" id="8_kmb2p"]
+[ext_resource type="Script" path="res://src/core/exit.gd" id="9_mvn0b"]
+[ext_resource type="Script" path="res://src/core/hotspot.gd" id="10_hdb0x"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_yymm8"]
+vertices = PackedVector2Array(1350, 862, 1700, 902, 1720, 1040, 200, 1040, 1000, 832, 150, 728, 370, 708, 700, 772, 100, 900)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 4, 3, 8)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(150, 728, 370, 708, 700, 772, 1000, 832, 1350, 862, 1700, 902, 1720, 1040, 200, 1040, 100, 900)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_h68b0"]
+vertices = PackedVector2Array(1350, 862, 1700, 902, 1720, 1040, 200, 1040, 1000, 832, 150, 728, 370, 708, 700, 772, 100, 900)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 4, 3, 8)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(150, 728, 370, 708, 700, 772, 1000, 832, 1350, 862, 1700, 902, 1720, 1040, 200, 1040, 100, 900)])
+agent_radius = 0.0
+
+[node name="CanalBridge" type="Node2D" unique_id=645963233]
+script = ExtResource("1_lj0sl")
+room_id = &"canal_bridge"
+display_name = "Canal bridge"
+
+[node name="Layers" type="Node2D" parent="." unique_id=1421526447]
+
+[node name="Now" type="Node2D" parent="Layers" unique_id=1296143812]
+
+[node name="Background" type="Sprite2D" parent="Layers/Now" unique_id=1190780031]
+texture = ExtResource("2_68d65")
+centered = false
+
+[node name="FogFar" type="ColorRect" parent="Layers/Now" unique_id=365138878]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_jcik2")
+fog_color = Color(0.85, 0.86, 0.89, 1)
+density = 0.3
+velocity = Vector2(0.005, 0)
+noise_scale = Vector2(1.4, 0.8)
+band_top = 0.3
+band_bottom = 0.75
+depth_texture = ExtResource("4_spgtr")
+near_cutoff = 0.4
+noise_seed = 21
+
+[node name="FogLow" type="ColorRect" parent="Layers/Now" unique_id=61941681]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_jcik2")
+fog_color = Color(0.8, 0.82, 0.86, 1)
+density = 0.24
+velocity = Vector2(-0.008, 0)
+noise_scale = Vector2(2.2, 1.1)
+band_top = 0.5
+band_bottom = 0.82
+depth_texture = ExtResource("4_spgtr")
+near_cutoff = 0.55
+noise_seed = 23
+
+[node name="Moonlight" type="ColorRect" parent="Layers/Now" unique_id=2025650956]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("5_6ana7")
+origin = Vector2(1210, 90)
+aim = 200.0
+spread = 30.0
+beams = 5.0
+intensity = 0.07
+shaft_color = Color(0.9, 0.93, 1, 1)
+flicker = 0.3
+
+[node name="Then" type="Node2D" parent="Layers" unique_id=1473766910]
+
+[node name="Background" type="Sprite2D" parent="Layers/Then" unique_id=7142021]
+texture = ExtResource("6_vuov3")
+centered = false
+
+[node name="GoldenShafts" type="ColorRect" parent="Layers/Then" unique_id=1525897792]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("5_6ana7")
+origin = Vector2(1210, 90)
+aim = 200.0
+spread = 44.0
+beams = 7.0
+intensity = 0.14
+reach = 1.0
+shaft_color = Color(1, 0.85, 0.55, 1)
+flicker = 0.25
+
+[node name="WarmHaze" type="ColorRect" parent="Layers/Then" unique_id=1255817658]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_jcik2")
+fog_color = Color(1, 0.9, 0.75, 1)
+density = 0.1
+velocity = Vector2(0.004, 0)
+noise_scale = Vector2(1.2, 0.7)
+band_top = 0.3
+band_bottom = 0.9
+noise_seed = 13
+
+[node name="GoldenDust" type="CPUParticles2D" parent="Layers/Then" unique_id=1843874227]
+script = ExtResource("7_ft6xd")
+area = Rect2(300, 150, 1500, 750)
+mote_color = Color(1, 0.86, 0.55, 0.55)
+drift = Vector2(3, -4)
+mote_size = 2.5
+
+[node name="WalkAreas" type="Node2D" parent="." unique_id=200458135]
+
+[node name="Now" type="NavigationRegion2D" parent="WalkAreas" unique_id=1438036854]
+navigation_polygon = SubResource("NavigationPolygon_yymm8")
+
+[node name="Then" type="NavigationRegion2D" parent="WalkAreas" unique_id=675169]
+navigation_polygon = SubResource("NavigationPolygon_h68b0")
+enabled = false
+
+[node name="ScaleZones" type="Node2D" parent="." unique_id=1455085116]
+script = ExtResource("8_kmb2p")
+far_y = 710.0
+far_scale = 0.72
+near_y = 1040.0
+near_scale = 1.02
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=1603693071]
+
+[node name="ToMarket" type="Area2D" parent="Hotspots" unique_id=1539023933]
+script = ExtResource("9_mvn0b")
+target_room = &"market_square"
+target_entry = &"from_bridge"
+direction = &"left"
+id = &"to_market"
+display_name = "To the market"
+default_verb = &"walk"
+walk_offset = Vector2(140, 882)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/ToMarket" unique_id=168301021]
+polygon = PackedVector2Array(0, 762, 100, 762, 100, 1052, 0, 1052)
+
+[node name="OverBridge" type="Area2D" parent="Hotspots" unique_id=784444942]
+script = ExtResource("9_mvn0b")
+target_room = &"clock_tower_base"
+target_entry = &"from_bridge"
+direction = &"up"
+id = &"over_bridge"
+display_name = "Over the bridge"
+default_verb = &"walk"
+walk_offset = Vector2(260, 742)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/OverBridge" unique_id=1325063710]
+polygon = PackedVector2Array(140, 702, 140, 540, 300, 540, 342, 702)
+
+[node name="Bridge" type="Area2D" parent="Hotspots" unique_id=711321652]
+script = ExtResource("10_hdb0x")
+id = &"bridge"
+display_name = "Bridge"
+walk_offset = Vector2(700, 802)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Bridge" unique_id=1006637736]
+polygon = PackedVector2Array(480, 522, 480, 432, 900, 402, 1200, 422, 1650, 602, 1650, 700, 700, 700)
+
+[node name="BridgeLamp" type="Area2D" parent="Hotspots" unique_id=1551770125]
+script = ExtResource("10_hdb0x")
+id = &"bridge_lamp"
+display_name = "Lamp"
+walk_offset = Vector2(850, 815)
+pick_priority = 1
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/BridgeLamp" unique_id=925024448]
+polygon = PackedVector2Array(915, 422, 915, 250, 975, 250, 975, 422)
+
+[node name="Canal" type="Area2D" parent="Hotspots" unique_id=155163390]
+script = ExtResource("10_hdb0x")
+id = &"canal"
+display_name = "Canal"
+walk_offset = Vector2(1100, 862)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Canal" unique_id=2008191203]
+polygon = PackedVector2Array(740, 762, 740, 702, 1700, 702, 1700, 842, 1350, 832)
+
+[node name="Boat" type="Area2D" parent="Hotspots" unique_id=116728624]
+script = ExtResource("10_hdb0x")
+id = &"boat"
+display_name = "Rowing boat"
+walk_offset = Vector2(430, 768)
+pick_priority = 1
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Boat" unique_id=900224394]
+polygon = PackedVector2Array(380, 742, 380, 650, 590, 640, 590, 742)
+
+[node name="TowerFar" type="Area2D" parent="Hotspots" unique_id=271660003]
+script = ExtResource("10_hdb0x")
+id = &"tower_far"
+display_name = "Clock tower"
+walk_offset = Vector2(1200, 882)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/TowerFar" unique_id=171446762]
+polygon = PackedVector2Array(1330, 300, 1330, 40, 1580, 40, 1580, 300)
+
+[node name="Exits" type="Node2D" parent="." unique_id=1938606795]
+
+[node name="Markers" type="Node2D" parent="." unique_id=1746089631]
+
+[node name="default" type="Marker2D" parent="Markers" unique_id=233158670]
+position = Vector2(800, 905)
+
+[node name="from_market" type="Marker2D" parent="Markers" unique_id=662755764]
+position = Vector2(170, 900)
+
+[node name="from_tower" type="Marker2D" parent="Markers" unique_id=89257639]
+position = Vector2(280, 762)
+
+[node name="Actors" type="Node2D" parent="." unique_id=34574568]
+y_sort_enabled = true
+
+[node name="Foreground" type="Node2D" parent="." unique_id=1609558370]
+
+[node name="GroundMist" type="ColorRect" parent="Foreground" unique_id=1158177823 groups=["era_now"]]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_jcik2")
+fog_color = Color(0.86, 0.87, 0.9, 1)
+density = 0.16
+velocity = Vector2(0.01, 0)
+noise_scale = Vector2(2.6, 1.6)
+band_top = 0.84
+band_bottom = 1.02
+band_softness = 0.08
+noise_seed = 27
+
+[node name="Cinematics" type="Node2D" parent="." unique_id=513578490]

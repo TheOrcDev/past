@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0050",
+  "title": "The tavern, then (the toast)",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T23:03:47.864Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0039/IMG-0039-v2.png",
+          "sha256": "bc4faab55013c7c367d8f8e1b1996786ab9be544b68a7f0a623add5b032d2d35"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit this image in place. Keep exactly the same composition, camera, perspective, horizon and every shape where it stands: the fireplace and mantel, the slate board, the door, the bar and the mirror, the tables and chairs and the beams. Only change the time and the condition.\n\nRestore the same tavern to how it looked decades earlier, on the night of a wedding party, in full rich warm color, as a painterly gothic matte painting: a roaring fire in the fireplace, a lit white candle on the mantel tied with a ribbon, the chairs upright around tables laid with tankards and food, garlands of white flowers on the beams, the bar polished and full of bottles, the mirror bright, warm candlelight everywhere. The key light comes from the same direction as in the original.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0050-v1.png",
+          "sha256": "84a78841281f523a8e34165873913ade96295bf532bff69fcff821d0b68032e6",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0050-v2.png",
+          "sha256": "f9665554453487fc7e052baa007c1560e0c7776f4e2dde631f6fac57bb3a5496",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 212430,
+        "outputTokens": 1110
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d35-444f-70f2-bf39-9c3f36fd99f0",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d35-444f-70f2-bf39-9c3f36fd99f0/exec-bdb5ef61-5275-405e-8767-33b0bbb909b5.png",
+            "/Users/orcdev/.codex/generated_images/01a12d35-444f-70f2-bf39-9c3f36fd99f0/exec-8168e2a0-7459-474e-a6e9-6f91f8823d28.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate two wide, opaque edits using your prompt exactly.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

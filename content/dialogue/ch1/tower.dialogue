@@ -1,0 +1,360 @@
+~ pawn_arrival
+
+Unknown: Clocks, dolls, rings, portraits. Everybody's yesterday, priced to sell. [ID:CH1_PAWN_ARRIVAL_1]
+
+=> END
+
+~ broker_look
+
+Unknown: A round man in a hood, behind a counter of everyone's yesterdays. [ID:CH1_BROKER_LOOK_1]
+
+=> END
+
+~ broker_talk
+
+if not GameState.get_flag("broker_met")
+	do GameState.set_flag("broker_met")
+	Broker: A customer! Buying, selling, or simply staring? Staring's free, until it isn't. [ID:CH1_BROKER_MEET_1]
+	Unknown: What do you sell? [ID:CH1_BROKER_MEET_2]
+	Broker: Everything. I know what all of it is worth. I've no idea what any of it is for. [ID:CH1_BROKER_MEET_3]
+=> broker_ask
+
+~ broker_ask
+
+Broker: Well? [ID:CH1_BROKER_WELL]
+- Do you have the Clockmaker's key? [if GameState.get_flag("clockmaker_wants") and not GameState.get_flag("got_winding_key") /] [ID:CH1_BROKER_ASK_KEY]
+	Broker: The winding key. He pawned it. Can't remember why, and neither can he. [ID:CH1_BROKER_KEY_1]
+	Broker: It's not for money. Money's boring. Bring me something with a story in it. [ID:CH1_BROKER_KEY_2]
+	=> broker_ask
+- What's in the cabinet? [if not GameState.get_flag("got_seal_ring") /] [ID:CH1_BROKER_ASK_CABINET]
+	Broker: A ring. Heavy. Gold. It bites. [ID:CH1_BROKER_CABINET_1]
+	Unknown: Rings don't bite. [ID:CH1_BROKER_CABINET_2]
+	Broker: This one does. Whoever tries it on gets the strangest feeling of being watched. [ID:CH1_BROKER_CABINET_3]
+	=> broker_ask
+- May I try the ring on? [if GameState.get_flag("got_winding_key") and not GameState.get_flag("got_seal_ring") /] [ID:CH1_BROKER_ASK_RING]
+	Broker: Go on, then, since you've stopped pretending not to stare. [ID:CH1_BROKER_RING_1]
+	Unknown: It fits. As if it were made for my hand. [ID:CH1_BROKER_RING_2]
+	Broker: Keep it. It never fit anyone else, and it frightens the customers. [ID:CH1_BROKER_RING_3]
+	do GameState.set_flag("got_seal_ring")
+	do Inventory.add("seal_ring")
+	=> broker_ask
+- Goodbye. [ID:CH1_BROKER_ASK_BYE]
+	Broker: Come back richer, or stranger. [ID:CH1_BROKER_BYE]
+	=> END
+
+~ broker_lantern
+
+Broker: A lantern. Mended, by the look. Mended for a stranger, I'd wager. Now that's a story. [ID:CH1_BROKER_LANTERN_1]
+Broker: One winding key, for one lantern with a story in it. I'll call that fair. [ID:CH1_BROKER_LANTERN_2]
+
+=> END
+
+~ broker_other
+
+Broker: Hm. No story in that one. [ID:CH1_BROKER_OTHER_1]
+
+=> END
+
+~ shop_clocks_look
+
+Unknown: Stopped clocks, all at different times. None of them agree, which is the most honest thing in here. [ID:CH1_SHOP_CLOCKS_LOOK_1]
+
+=> END
+
+~ portraits_look
+
+Unknown: Portraits, all turned to the wall. He couldn't bear to look at them, or couldn't remember why he should. [ID:CH1_PORTRAITS_LOOK_1]
+
+=> END
+
+~ scale_look
+
+Unknown: A brass scale. It weighs everything and decides nothing. [ID:CH1_SCALE_LOOK_1]
+
+=> END
+
+~ cabinet_ring_look
+
+Unknown: A heavy gold seal ring on a velvet cushion. The seal's worn smooth. [ID:CH1_CABINET_RING_LOOK_1]
+
+=> END
+
+~ cabinet_lock_look
+
+Unknown: Locked. The key's in that coat, along with half the city. [ID:CH1_CABINET_LOCK_LOOK_1]
+
+=> END
+
+~ cabinet_glass_look
+
+Unknown: My reflection should be in the glass. It isn't. Consistent, at least. [ID:CH1_CABINET_GLASS_LOOK_1]
+
+=> END
+
+~ tower_arrival
+
+Unknown: The clock tower. Up close, it's mostly silence. [ID:CH1_TOWER_ARRIVAL_1]
+
+=> END
+
+~ clock_look
+
+Unknown: The great clock, stopped. The hands hang like they've given up. [ID:CH1_CLOCK_LOOK_1]
+
+=> END
+
+~ clock_struck_look
+
+Unknown: Running again. Every tick sounds like it's surprised at itself. [ID:CH1_CLOCK_STRUCK_LOOK_1]
+
+=> END
+
+~ workbench_look
+
+Unknown: Springs, cogs and tools, sorted by a man who can't remember what for. [ID:CH1_WORKBENCH_LOOK_1]
+
+=> END
+
+~ tower_door_look
+
+Unknown: The door into the tower. [ID:CH1_TOWER_DOOR_LOOK_1]
+
+=> END
+
+~ tower_door_dark
+
+Unknown: Pitch black in there, and full of teeth. I'd want a light. [ID:CH1_TOWER_DOOR_DARK_1]
+
+=> END
+
+~ stair_down_look
+
+Unknown: Steps down, toward the lower town and the smell of water. [ID:CH1_STAIR_DOWN_LOOK_1]
+
+=> END
+
+~ clockmaker_look
+
+Unknown: A small, fussy man, holding a pile of springs as if they might escape. [ID:CH1_CM_LOOK_1]
+
+=> END
+
+~ clockmaker_talk
+
+if GameState.get_flag("clock_struck")
+	Clockmaker: Listen to it. Tick. Tick. Do you know how long I've waited to be annoyed by that? [ID:CH1_CM_AFTER_1]
+	=> END
+if not GameState.get_flag("clockmaker_met")
+	do GameState.set_flag("clockmaker_met")
+	Clockmaker: Shh. Listen. [ID:CH1_CM_MEET_1]
+	Clockmaker: Nothing. Still nothing. Forty years of nothing, or four minutes. I can't tell. [ID:CH1_CM_MEET_2]
+	Clockmaker: I keep it ready. Oiled, cleaned. Ready. [ID:CH1_CM_MEET_3]
+	Unknown: Ready for what? [ID:CH1_CM_MEET_4]
+	Clockmaker: To strike. Which it mustn't. I think. [ID:CH1_CM_MEET_5]
+=> clockmaker_ask
+
+~ clockmaker_ask
+
+Clockmaker: Yes, yes? [ID:CH1_CM_YES]
+- Why mustn't it strike? [ID:CH1_CM_ASK_WHY]
+	Clockmaker: It stopped at an hour. If it starts again, the hour ends, and something ends with it. [ID:CH1_CM_WHY_1]
+	Clockmaker: And set it wrong, it strikes the wrong thing. Worse. [ID:CH1_CM_WHY_2]
+	=> clockmaker_ask
+- What would it need, to run? [ID:CH1_CM_ASK_NEED]
+	do GameState.set_flag("clockmaker_wants")
+	Clockmaker: Three things. My winding key, which I pawned to the Broker, for a reason I've misplaced. [ID:CH1_CM_NEED_1]
+	Clockmaker: A light inside. It's black as a pocket in there. [ID:CH1_CM_NEED_2]
+	Clockmaker: And the hour it stopped at. Set it to anything else and... well. I'd rather not find out. [ID:CH1_CM_NEED_3]
+	=> clockmaker_ask
+- It stopped at eleven. [if GameState.get_flag("knows_eleven") /] [ID:CH1_CM_ASK_ELEVEN]
+	Clockmaker: Eleven. Yes. Eleven bells. I can almost hear it. [ID:CH1_CM_ELEVEN_1]
+	Clockmaker: Set the hands to eleven, up behind the face. Then let it strike once, and see what ends. [ID:CH1_CM_ELEVEN_2]
+	=> clockmaker_ask
+- How does the escapement go? [if GameState.get_flag("clockworks_seen") /] [ID:CH1_CM_ASK_ESCAPEMENT]
+	Clockmaker: I knew. I knew it like my own hands. It's gone. [ID:CH1_CM_ESCAPEMENT_1]
+	Clockmaker: Ask the clock. Clocks remember better than people do. [ID:CH1_CM_ESCAPEMENT_2]
+	=> clockmaker_ask
+- Goodbye. [ID:CH1_CM_ASK_BYE]
+	Clockmaker: Shh. [ID:CH1_CM_BYE]
+	=> END
+
+~ clockworks_arrival
+
+Unknown: The inside of a clock. Gears the size of carts, all holding their breath. [ID:CH1_WORKS_ARRIVAL_1]
+
+=> END
+
+~ gears_look
+
+Unknown: Every tooth meshed with another, waiting for permission. [ID:CH1_GEARS_LOOK_1]
+
+=> END
+
+~ pendulum_look
+
+Unknown: A pendulum as tall as a house, hanging dead straight. [ID:CH1_PENDULUM_LOOK_1]
+
+=> END
+
+~ escapement_unknown
+
+Unknown: A loose pin and a wheel with a hundred teeth. I could guess. I'd rather not guess with a clock this size. [ID:CH1_ESCAPEMENT_UNKNOWN_1]
+
+=> END
+
+~ escapement_set
+
+Unknown: Third tooth. It drops in like it was always there. [ID:CH1_ESCAPEMENT_SET_1]
+
+=> END
+
+~ escapement_done
+
+Unknown: Set, and holding. [ID:CH1_ESCAPEMENT_DONE_1]
+
+=> END
+
+~ wheel_look
+
+Unknown: The escape wheel. Teeth like a comb. [ID:CH1_WHEEL_LOOK_1]
+
+=> END
+
+~ pin_look
+
+Unknown: The pallet pin, loose in its slot. It belongs on a tooth. Which one is the question. [ID:CH1_PIN_LOOK_1]
+
+=> END
+
+~ post_look
+
+Unknown: A square iron post. Something's meant to fit on it and turn. [ID:CH1_POST_LOOK_1]
+
+=> END
+
+~ post_slips
+
+Unknown: It turns, and slips. Something's loose further in. [ID:CH1_POST_SLIPS_1]
+
+=> END
+
+~ post_wound
+
+Unknown: There. Wound. It's holding its breath now, instead of just not breathing. [ID:CH1_POST_WOUND_1]
+
+=> END
+
+~ ladder_up_look
+
+Unknown: A ladder up, to the back of the clock face. [ID:CH1_LADDER_UP_LOOK_1]
+
+=> END
+
+~ ladder_up_locked
+
+Unknown: Nothing up there will move until the works do. [ID:CH1_LADDER_UP_LOCKED_1]
+
+=> END
+
+~ apprentice_in
+
+Unknown: Brass and lamplight. A boy at the bench, and an old man teaching him. [ID:CH1_APPRENTICE_IN_1]
+
+=> END
+
+~ apprentice_mark
+
+Unknown: Chalk on the beam: "Third tooth." The old man drew it, and the boy copied it under. Same hand, younger. [ID:CH1_APPRENTICE_MARK_1]
+
+=> END
+
+~ apprentice_out
+
+Unknown: The boy was the Clockmaker. And now I know what he forgot. [ID:CH1_APPRENTICE_OUT_1]
+
+=> END
+
+~ apprentice_bench_look
+
+Unknown: The bench, tidy then too. Some things don't change, even when everything else does. [ID:CH1_APPRENTICE_BENCH_LOOK_1]
+
+=> END
+
+~ face_arrival
+
+Unknown: Behind the face of the clock. The city looks back at me through the glass. [ID:CH1_FACE_ARRIVAL_1]
+
+=> END
+
+~ hands_look
+
+Unknown: The hands, each as long as a man, stopped at nothing in particular. [ID:CH1_HANDS_LOOK_1]
+
+=> END
+
+~ hands_unknown
+
+Unknown: I could set them anywhere. The Clockmaker said anywhere would be worse. [ID:CH1_HANDS_UNKNOWN_1]
+
+=> END
+
+~ hands_set
+
+Unknown: Eleven. And then I let go. [ID:CH1_HANDS_SET_1]
+
+=> END
+
+~ hands_done
+
+Unknown: They're moving on their own now. Best not to argue. [ID:CH1_HANDS_DONE_1]
+
+=> END
+
+~ old_town_return
+
+Unknown: The whole town as it was. Gold roofs, a full market, every lamp warm. [ID:CH1_OLD_TOWN_RETURN_1]
+Unknown: And far down, at the bottom of the stair, the lower gate swinging open. [ID:CH1_OLD_TOWN_RETURN_2]
+
+=> END
+
+~ glass_look
+
+Unknown: Frosted glass, cracked. The city through it is all spires and fog. [ID:CH1_GLASS_LOOK_1]
+
+=> END
+
+~ ladder_down_look
+
+Unknown: Back down into the works. [ID:CH1_LADDER_DOWN_LOOK_1]
+
+=> END
+
+~ lower_gate_arrival
+
+Unknown: The end of the old town. The rest of the city is underwater. [ID:CH1_LOWER_ARRIVAL_1]
+
+=> END
+
+~ portcullis_look
+
+Unknown: A portcullis, and beyond it, water. A great deal of water. [ID:CH1_PORTCULLIS_LOOK_1]
+
+=> END
+
+~ portcullis_shut
+
+Unknown: Shut fast. Its chain runs all the way up to the clock. [ID:CH1_PORTCULLIS_SHUT_1]
+
+=> END
+
+~ chain_look
+
+Unknown: A chain as thick as my arm, climbing the wall toward the tower. [ID:CH1_CHAIN_LOOK_1]
+
+=> END
+
+~ stair_up_look
+
+Unknown: Back up to the tower square. [ID:CH1_STAIR_UP_LOOK_1]
+
+=> END

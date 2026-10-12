@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0045",
+  "title": "The street of lamps, then",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T22:59:14.551Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0033/IMG-0033-v1.png",
+          "sha256": "741a52715c196aa2d69ee9cc30c5258aa1cce2f6ba5b85703b5df1f5ad4736c9"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit this image in place. Keep exactly the same composition, camera, perspective, horizon and every shape where it stands: every lamp post, the shed door and ladder on the left, the houses and shopfronts, the street's curve and the market beyond. Only change the time and the condition.\n\nRestore the same street to how it looked decades earlier, on a summer evening, in full rich warm color, as a painterly gothic matte painting: every lamp burning with a warm golden flame that lights the walls around it, painted shutters open, bright shop signs, flower boxes in every window, the shed door painted green, the market beyond lit and busy-looking, a warm dusk sky. The key light comes from the same direction as in the original.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0045-v1.png",
+          "sha256": "d2500145a5e5deb7cb0bb9e3232f4e85b00aafb365725a8e6d2b8bac7c0cfd76",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0045-v2.png",
+          "sha256": "749201eb159266d7496f17d5c61356ad4c88fa59d7b6a0fe2c50aa5f1996807d",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 73334,
+        "outputTokens": 620
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d31-1882-78c3-bfe1-c8eb72cb81f1",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d31-1882-78c3-bfe1-c8eb72cb81f1/exec-2afe8794-0a44-487d-b48f-cfda6344477e.png",
+            "/Users/orcdev/.codex/generated_images/01a12d31-1882-78c3-bfe1-c8eb72cb81f1/exec-3a280e30-92ce-4953-a8bd-7cde40718ffa.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate two wide, opaque edits using the attached image and your exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

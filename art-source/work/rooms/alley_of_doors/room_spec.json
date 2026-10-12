@@ -1,0 +1,453 @@
+{
+  "display_name": "Alley of doors",
+  "layers": {
+    "now": [
+      {
+        "name": "Background",
+        "texture": "res://content/rooms/alley_of_doors/art/bg_now.png"
+      }
+    ],
+    "then": [
+      {
+        "name": "Background",
+        "texture": "res://content/rooms/alley_of_doors/art/bg_then.png"
+      }
+    ]
+  },
+  "walk": {
+    "now": [
+      [
+        260,
+        902
+      ],
+      [
+        600,
+        892
+      ],
+      [
+        1250,
+        882
+      ],
+      [
+        1700,
+        892
+      ],
+      [
+        1760,
+        1050
+      ],
+      [
+        300,
+        1050
+      ],
+      [
+        220,
+        962
+      ]
+    ],
+    "then": [
+      [
+        260,
+        902
+      ],
+      [
+        600,
+        892
+      ],
+      [
+        1250,
+        882
+      ],
+      [
+        1700,
+        892
+      ],
+      [
+        1760,
+        1050
+      ],
+      [
+        300,
+        1050
+      ],
+      [
+        220,
+        962
+      ]
+    ]
+  },
+  "scale_zones": {
+    "far_y": 882,
+    "far_scale": 0.86,
+    "near_y": 1050,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      900,
+      962
+    ],
+    "from_parvis": [
+      210,
+      985
+    ],
+    "from_tavern": [
+      1620,
+      932
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "to_parvis",
+      "name": "Down to the square",
+      "polygon": [
+        [
+          0,
+          922
+        ],
+        [
+          200,
+          922
+        ],
+        [
+          222,
+          1062
+        ],
+        [
+          0,
+          1062
+        ]
+      ],
+      "walk_to": [
+        190,
+        990
+      ],
+      "exit": {
+        "room": "cathedral_parvis",
+        "entry": "from_alley",
+        "direction": "down"
+      }
+    },
+    {
+      "id": "board",
+      "name": "Notice board",
+      "polygon": [
+        [
+          60,
+          702
+        ],
+        [
+          60,
+          232
+        ],
+        [
+          332,
+          332
+        ],
+        [
+          332,
+          702
+        ]
+      ],
+      "walk_to": [
+        330,
+        932
+      ]
+    },
+    {
+      "id": "doors",
+      "name": "Doors",
+      "polygon": [
+        [
+          380,
+          882
+        ],
+        [
+          380,
+          330
+        ],
+        [
+          680,
+          380
+        ],
+        [
+          680,
+          882
+        ]
+      ],
+      "walk_to": [
+        530,
+        912
+      ]
+    },
+    {
+      "id": "steps",
+      "name": "Steps",
+      "polygon": [
+        [
+          850,
+          882
+        ],
+        [
+          900,
+          600
+        ],
+        [
+          1190,
+          600
+        ],
+        [
+          1250,
+          882
+        ]
+      ],
+      "walk_to": [
+        1050,
+        902
+      ]
+    },
+    {
+      "id": "sign",
+      "name": "Tavern sign",
+      "polygon": [
+        [
+          1330,
+          502
+        ],
+        [
+          1330,
+          380
+        ],
+        [
+          1512,
+          380
+        ],
+        [
+          1512,
+          502
+        ]
+      ],
+      "walk_to": [
+        1420,
+        912
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "tavern_door",
+      "name": "Tavern door",
+      "polygon": [
+        [
+          1585,
+          887
+        ],
+        [
+          1585,
+          560
+        ],
+        [
+          1640,
+          510
+        ],
+        [
+          1700,
+          560
+        ],
+        [
+          1715,
+          887
+        ]
+      ],
+      "walk_to": [
+        1640,
+        922
+      ],
+      "exit": {
+        "room": "tavern_lost_name",
+        "entry": "from_alley",
+        "direction": "right"
+      }
+    }
+  ],
+  "occluders": [],
+  "npcs": [],
+  "effects": [
+    {
+      "type": "FogLayer",
+      "name": "FogFar",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.85,
+          0.86,
+          0.89,
+          1.0
+        ],
+        "density": 0.3,
+        "velocity": [
+          0.005,
+          0.0
+        ],
+        "noise_scale": [
+          1.4,
+          0.8
+        ],
+        "band_top": 0.3,
+        "band_bottom": 0.75,
+        "depth_texture": "res://content/rooms/alley_of_doors/art/depth_now.png",
+        "near_cutoff": 0.4,
+        "noise_seed": 21
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "FogLow",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.8,
+          0.82,
+          0.86,
+          1.0
+        ],
+        "density": 0.24,
+        "velocity": [
+          -0.008,
+          0.0
+        ],
+        "noise_scale": [
+          2.2,
+          1.1
+        ],
+        "band_top": 0.5,
+        "band_bottom": 0.82,
+        "depth_texture": "res://content/rooms/alley_of_doors/art/depth_now.png",
+        "near_cutoff": 0.55,
+        "noise_seed": 23
+      }
+    },
+    {
+      "type": "LightShafts",
+      "name": "Moonlight",
+      "era": "now",
+      "properties": {
+        "origin": [
+          1270,
+          70
+        ],
+        "aim": 200.0,
+        "spread": 30.0,
+        "beams": 5.0,
+        "intensity": 0.07,
+        "reach": 0.9,
+        "shaft_color": [
+          0.9,
+          0.93,
+          1.0,
+          1.0
+        ],
+        "flicker": 0.3
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "GroundMist",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.86,
+          0.87,
+          0.9,
+          1.0
+        ],
+        "density": 0.16,
+        "velocity": [
+          0.01,
+          0.0
+        ],
+        "noise_scale": [
+          2.6,
+          1.6
+        ],
+        "band_top": 0.84,
+        "band_bottom": 1.02,
+        "band_softness": 0.08,
+        "noise_seed": 27
+      },
+      "layer": "foreground"
+    },
+    {
+      "type": "LightShafts",
+      "name": "GoldenShafts",
+      "era": "then",
+      "properties": {
+        "origin": [
+          1270,
+          70
+        ],
+        "aim": 200.0,
+        "spread": 44.0,
+        "beams": 7.0,
+        "intensity": 0.14,
+        "reach": 1.0,
+        "shaft_color": [
+          1.0,
+          0.85,
+          0.55,
+          1.0
+        ],
+        "flicker": 0.25
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "WarmHaze",
+      "era": "then",
+      "properties": {
+        "fog_color": [
+          1.0,
+          0.9,
+          0.75,
+          1.0
+        ],
+        "density": 0.1,
+        "velocity": [
+          0.004,
+          0.0
+        ],
+        "noise_scale": [
+          1.2,
+          0.7
+        ],
+        "band_top": 0.3,
+        "band_bottom": 0.9,
+        "noise_seed": 13
+      }
+    },
+    {
+      "type": "DustMotes",
+      "name": "GoldenDust",
+      "era": "then",
+      "properties": {
+        "area": [
+          300,
+          150,
+          1500,
+          750
+        ],
+        "mote_color": [
+          1.0,
+          0.86,
+          0.55,
+          0.55
+        ],
+        "mote_count": 60,
+        "drift": [
+          3,
+          -4
+        ],
+        "mote_size": 2.5
+      }
+    }
+  ]
+}

@@ -129,6 +129,9 @@
       }
     }
   },
+  "aliases": [
+    "Agathe"
+  ],
   "texture": "res://content/characters/sister/sister.png",
   "feet": [
     144.3,

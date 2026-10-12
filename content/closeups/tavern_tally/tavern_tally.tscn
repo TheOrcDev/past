@@ -1,0 +1,39 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/closeups/tavern_tally/tavern_tally.gd" id="1_l0kp6"]
+[ext_resource type="Texture2D" path="res://content/closeups/tavern_tally/art/bg.png" id="2_qqrrj"]
+[ext_resource type="Script" path="res://src/core/hotspot.gd" id="3_1nnjl"]
+
+[node name="TavernTally" type="Node2D" unique_id=374315388]
+script = ExtResource("1_l0kp6")
+closeup_id = &"tavern_tally"
+
+[node name="Background" type="Sprite2D" parent="." unique_id=849136686]
+texture = ExtResource("2_qqrrj")
+centered = false
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=1723699106]
+
+[node name="Sums" type="Area2D" parent="Hotspots" unique_id=1115708762]
+script = ExtResource("3_1nnjl")
+id = &"sums"
+display_name = "Sums"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Sums" unique_id=403844925]
+polygon = PackedVector2Array(760, 120, 900, 120, 900, 980, 760, 980)
+
+[node name="SumsRight" type="Area2D" parent="Hotspots" unique_id=602887986]
+script = ExtResource("3_1nnjl")
+id = &"sums_right"
+display_name = "Sums"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/SumsRight" unique_id=1643131774]
+polygon = PackedVector2Array(1660, 120, 1820, 120, 1820, 980, 1660, 980)
+
+[node name="Names" type="Area2D" parent="Hotspots" unique_id=728254789]
+script = ExtResource("3_1nnjl")
+id = &"names"
+display_name = "Names"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Names" unique_id=1582812617]
+polygon = PackedVector2Array(150, 100, 1860, 100, 1860, 1000, 150, 1000)

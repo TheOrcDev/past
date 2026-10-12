@@ -1,0 +1,154 @@
+{
+  "display_name": "Behind the clock face",
+  "now": "art-source/raw/IMG-0042/IMG-0042-v1.png",
+  "walk": [
+    [
+      460,
+      832
+    ],
+    [
+      1650,
+      832
+    ],
+    [
+      1680,
+      947
+    ],
+    [
+      300,
+      947
+    ],
+    [
+      430,
+      892
+    ]
+  ],
+  "scale_zones": {
+    "far_y": 832,
+    "far_scale": 0.85,
+    "near_y": 947,
+    "near_scale": 0.95
+  },
+  "markers": {
+    "default": [
+      1000,
+      900
+    ],
+    "from_works": [
+      480,
+      902
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "hatch",
+      "name": "Ladder down",
+      "polygon": [
+        [
+          120,
+          882
+        ],
+        [
+          120,
+          610
+        ],
+        [
+          450,
+          640
+        ],
+        [
+          450,
+          882
+        ]
+      ],
+      "walk_to": [
+        480,
+        905
+      ],
+      "exit": {
+        "room": "clockworks",
+        "entry": "from_face",
+        "direction": "down"
+      }
+    },
+    {
+      "id": "hands",
+      "name": "Clock hands",
+      "polygon": [
+        [
+          620,
+          20
+        ],
+        [
+          760,
+          20
+        ],
+        [
+          1000,
+          180
+        ],
+        [
+          1390,
+          520
+        ],
+        [
+          1340,
+          582
+        ],
+        [
+          960,
+          332
+        ],
+        [
+          640,
+          110
+        ]
+      ],
+      "walk_to": [
+        1000,
+        905
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "glass",
+      "name": "Clock face",
+      "polygon": [
+        [
+          300,
+          602
+        ],
+        [
+          300,
+          0
+        ],
+        [
+          1700,
+          0
+        ],
+        [
+          1700,
+          642
+        ],
+        [
+          1000,
+          682
+        ]
+      ],
+      "walk_to": [
+        900,
+        905
+      ]
+    }
+  ],
+  "effects": {
+    "preset": "interior",
+    "light": [
+      1270,
+      90
+    ],
+    "aim": 200
+  },
+  "id": "clock_face",
+  "then": "art-source/raw/IMG-0052/IMG-0052-v1.png"
+}

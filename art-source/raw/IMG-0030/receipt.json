@@ -1,0 +1,77 @@
+{
+  "id": "IMG-0030",
+  "title": "NPC: the Broker",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T22:51:27.557Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "1440x2560",
+      "quality": "high",
+      "n": 3,
+      "background": "transparent",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0013/IMG-0013-v2.png",
+          "sha256": "aea3ec9ef0da502490ee6ecc801c0a0d4cd1f6bcf806d4f9b16ec70c8cb05977"
+        }
+      ],
+      "mask": null,
+      "prompt": "A single full-body character for a dark gothic point-and-click adventure game, painted in the same monochrome greyscale ink-wash matte-painting style as the reference image: the Broker, a pawnbroker: a short, round man in a long hooded coat with bulging pockets stuffed with trinkets and chains, round wire spectacles, ink-stained fingerless gloves, holding up a small brass hand-scale.\n\nThey are a grey shade of a person: solid, made of mid and light greys with soft ink texture, never pure black, with no visible face (his face is hidden in the shadow of his hood; only the two round lenses of his spectacles catch the light). Pose: standing, leaning slightly forward with interest, holding the little scale up in one hand as if weighing something, the other hand on his belly, facing three-quarters to the viewer's right. Shown whole from head to feet, facing three-quarters to the viewer's left, filling most of the image height, with a little space around them. Even soft light from the upper left with a gentle cool rim light. On a fully transparent background, with no ground, shadow or scenery.\n\nNo text, labels, letters or numbers. No other figures. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0030-v1.png",
+          "sha256": "49fcdc187c272d6a157a191c688721f012b3d305d3bc6cd680f7c4547a435653",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0030-v2.png",
+          "sha256": "48a4039fbe23d380d0c6a1f83c4d3e505d79cdd3ba9b26aaa09b1901a1029b1f",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0030-v3.png",
+          "sha256": "9a400abe9a77dfe4bac66525ca3cabd8efc3a3aeeb8bce6512aec0070a6c6d78",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 105927,
+        "outputTokens": 1208
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d29-f93e-7f83-8f63-175040311eec",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d29-f93e-7f83-8f63-175040311eec/exec-4ed635e4-8f41-4da5-a7a2-2dd04719ede8.png",
+            "/Users/orcdev/.codex/generated_images/01a12d29-f93e-7f83-8f63-175040311eec/exec-91b91270-fe9a-44c7-beb3-f4bcaad35128.png",
+            "/Users/orcdev/.codex/generated_images/01a12d29-f93e-7f83-8f63-175040311eec/exec-19c1a6a3-2481-4567-8a2f-4e5f0e7c6cd8.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1024,
+              "height": 1536
+            },
+            {
+              "width": 1024,
+              "height": 1536
+            },
+            {
+              "width": 1024,
+              "height": 1536
+            }
+          ],
+          "messages": [
+            "I’ll generate three portrait variants from the reference, each with the exact prompt and a transparent background.",
+            "Two variants are generated. I’m generating the third with the same prompt and reference.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0044",
+  "title": "The cathedral square, then",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T22:57:49.235Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0027/IMG-0027-v1.png",
+          "sha256": "388618b140387bbcc631be93ec8cecc601aa232891a37e48c4ea13dad7f605ad"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit this image in place. Keep exactly the same composition, camera, perspective, horizon and every shape where it stands: the cathedral front and its doors on the left, the crier's platform and post, the trough, the houses, the lamp street, the alley, the clock tower and the square. Only change the time and the condition.\n\nRestore the same cathedral square to how it looked decades earlier, on a market-day evening, in full rich warm color, as a painterly gothic matte painting: deep blue banners embroidered with gold hung from the houses, the crier's platform garlanded with flowers, the trough full of clear water, flower boxes and lit windows, pigeons on the clean cobbles, the cathedral doors open with warm candlelight inside, the clock tower's face gilded, a warm sunset sky in place of the moon. The key light comes from the same direction as in the original.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0044-v1.png",
+          "sha256": "283d8ff08865388ebcb9319eb54e688270b114dc1c52cc60a53bb46fca1e68ea",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0044-v2.png",
+          "sha256": "ae02a36b5f765e150912e5fe61138a2c5d3c93a941e3feef0131fc4196028a28",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 96269,
+        "outputTokens": 776
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d2f-cb9d-7bc3-9e77-1b1ad4dfec94",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d2f-cb9d-7bc3-9e77-1b1ad4dfec94/exec-9c9cb1c2-ad1a-4c2a-b5ab-c2df26499efd.png",
+            "/Users/orcdev/.codex/generated_images/01a12d2f-cb9d-7bc3-9e77-1b1ad4dfec94/exec-22baba4b-5301-44fe-926d-684ded02c22c.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1671,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll make two edits of the attached image using your prompt exactly.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

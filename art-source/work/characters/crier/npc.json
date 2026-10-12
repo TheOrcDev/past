@@ -1,0 +1,21 @@
+{
+  "id": "crier", "speaker": "Crier", "painting": "art-source/raw/IMG-0028/IMG-0028-v1.png",
+  "height": 470, "feet": [530, 1515], "speech": [560, 0], "subtitle_color": [0.9, 0.84, 0.7], "grid": 28,
+  "aliases": ["Barnaby"],
+  "bones": [
+    {"name": "Base", "parent": "", "from": [530, 1515], "to": [530, 1000]},
+    {"name": "Spine", "parent": "Base", "from": [500, 980], "to": [560, 330]},
+    {"name": "Head", "parent": "Spine", "from": [580, 300], "to": [560, 100]},
+    {"name": "ArmR", "parent": "Spine", "from": [320, 340], "to": [210, 190]},
+    {"name": "HandR", "parent": "ArmR", "from": [210, 190], "to": [240, 40]},
+    {"name": "ArmL", "parent": "Spine", "from": [700, 420], "to": [720, 700]}
+  ],
+  "motions": {
+    "idle": {"loop": true, "bones": {"Spine": [0.6, 0.2, 0.0], "Head": [1.2, 0.15, 0.7], "ArmR": [1.5, 0.22, 0.3], "HandR": [2.0, 0.3, 0.9]}},
+    "talk_a": {"loop": true, "bones": {"Spine": [0.8, 0.3, 0.0], "Head": [1.4, 0.25, 1.0]}, "voice": {"Head": 4.0, "ArmR": -8.0, "HandR": 10.0}},
+    "talk_b": {"loop": true, "bones": {"Spine": [1.0, 0.35, 0.0], "Head": [1.6, 0.3, 0.5]}, "voice": {"Head": -3.0, "Spine": 1.5, "HandR": -14.0}},
+    "ring_bell": {"loop": false, "length": 0.9, "keys": {
+      "HandR": [[0.0, 0.0], [0.15, 18.0], [0.3, -18.0], [0.45, 18.0], [0.6, -18.0], [0.9, 0.0]],
+      "ArmR": [[0.0, 0.0], [0.3, -6.0], [0.9, 0.0]]}}
+  }
+}

@@ -1,0 +1,229 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/rooms/pawn_shop/pawn_shop.gd" id="1_eaem3"]
+[ext_resource type="Texture2D" path="res://content/rooms/pawn_shop/art/bg_now.png" id="2_b16im"]
+[ext_resource type="Script" path="res://src/systems/effects/fog_layer.gd" id="3_b07ud"]
+[ext_resource type="Texture2D" path="res://content/rooms/pawn_shop/art/depth_now.png" id="4_yanua"]
+[ext_resource type="Script" path="res://src/systems/effects/light_shafts.gd" id="5_jswrt"]
+[ext_resource type="Script" path="res://src/systems/effects/dust_motes.gd" id="6_gpye4"]
+[ext_resource type="Texture2D" path="res://content/rooms/pawn_shop/art/bg_then.png" id="7_apawj"]
+[ext_resource type="Script" path="res://src/core/scale_zones.gd" id="8_0j32k"]
+[ext_resource type="Script" path="res://src/core/hotspot.gd" id="9_jkxvv"]
+[ext_resource type="Script" path="res://src/core/exit.gd" id="10_5nq6t"]
+[ext_resource type="PackedScene" path="res://content/characters/broker/broker.tscn" id="11_3oks8"]
+[ext_resource type="Script" path="res://src/core/actor.gd" id="12_pkg6t"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_trj2v"]
+vertices = PackedVector2Array(1300, 882, 1620, 912, 1650, 1050, 300, 1050, 620, 832, 150, 742, 600, 722, 120, 902)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 4, 3, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(150, 742, 600, 722, 620, 832, 1300, 882, 1620, 912, 1650, 1050, 300, 1050, 120, 902)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_v4f88"]
+vertices = PackedVector2Array(1300, 882, 1620, 912, 1650, 1050, 300, 1050, 620, 832, 150, 742, 600, 722, 120, 902)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 4, 3, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(150, 742, 600, 722, 620, 832, 1300, 882, 1620, 912, 1650, 1050, 300, 1050, 120, 902)])
+agent_radius = 0.0
+
+[node name="PawnShop" type="Node2D" unique_id=30478286]
+script = ExtResource("1_eaem3")
+room_id = &"pawn_shop"
+display_name = "The Broker's shop"
+
+[node name="Layers" type="Node2D" parent="." unique_id=389810884]
+
+[node name="Now" type="Node2D" parent="Layers" unique_id=1267724025]
+
+[node name="Background" type="Sprite2D" parent="Layers/Now" unique_id=723405524]
+texture = ExtResource("2_b16im")
+centered = false
+
+[node name="FogFar" type="ColorRect" parent="Layers/Now" unique_id=111798042]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_b07ud")
+fog_color = Color(0.85, 0.86, 0.88, 1)
+density = 0.26
+velocity = Vector2(0.006, 0)
+noise_scale = Vector2(1.4, 0.8)
+band_top = 0.42
+band_bottom = 0.9
+depth_texture = ExtResource("4_yanua")
+noise_seed = 3
+
+[node name="Shafts" type="ColorRect" parent="Layers/Now" unique_id=1178080730]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("5_jswrt")
+origin = Vector2(470, 150)
+aim = 135.0
+spread = 36.0
+intensity = 0.1
+reach = 0.95
+shaft_color = Color(0.95, 0.96, 1, 1)
+flicker = 0.4
+
+[node name="Ash" type="CPUParticles2D" parent="Layers/Now" unique_id=1864059840]
+script = ExtResource("6_gpye4")
+area = Rect2(300, 200, 1400, 700)
+mote_color = Color(0.85, 0.85, 0.88, 0.35)
+mote_count = 45
+drift = Vector2(4, 6)
+mote_size = 2.5
+
+[node name="Then" type="Node2D" parent="Layers" unique_id=1641937986]
+
+[node name="Background" type="Sprite2D" parent="Layers/Then" unique_id=1450631652]
+texture = ExtResource("7_apawj")
+centered = false
+
+[node name="GoldenShafts" type="ColorRect" parent="Layers/Then" unique_id=2016845911]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("5_jswrt")
+origin = Vector2(470, 150)
+aim = 135.0
+spread = 44.0
+beams = 7.0
+intensity = 0.14
+reach = 1.0
+shaft_color = Color(1, 0.85, 0.55, 1)
+flicker = 0.25
+
+[node name="WarmHaze" type="ColorRect" parent="Layers/Then" unique_id=1302832845]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_b07ud")
+fog_color = Color(1, 0.9, 0.75, 1)
+density = 0.1
+velocity = Vector2(0.004, 0)
+noise_scale = Vector2(1.2, 0.7)
+band_top = 0.3
+band_bottom = 0.9
+noise_seed = 13
+
+[node name="GoldenDust" type="CPUParticles2D" parent="Layers/Then" unique_id=396823581]
+script = ExtResource("6_gpye4")
+area = Rect2(300, 150, 1500, 750)
+mote_color = Color(1, 0.86, 0.55, 0.55)
+drift = Vector2(3, -4)
+mote_size = 2.5
+
+[node name="WalkAreas" type="Node2D" parent="." unique_id=189541472]
+
+[node name="Now" type="NavigationRegion2D" parent="WalkAreas" unique_id=573134763]
+navigation_polygon = SubResource("NavigationPolygon_trj2v")
+
+[node name="Then" type="NavigationRegion2D" parent="WalkAreas" unique_id=1343908580]
+navigation_polygon = SubResource("NavigationPolygon_v4f88")
+enabled = false
+
+[node name="ScaleZones" type="Node2D" parent="." unique_id=1493667092]
+script = ExtResource("8_0j32k")
+far_y = 725.0
+far_scale = 0.84
+near_y = 1050.0
+near_scale = 1.05
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=602457141]
+
+[node name="Broker" type="Area2D" parent="Hotspots" unique_id=1676211892]
+script = ExtResource("9_jkxvv")
+id = &"broker"
+display_name = "Broker"
+default_verb = &"talk"
+walk_offset = Vector2(1220, 930)
+pick_priority = 3
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Broker" unique_id=670885247]
+polygon = PackedVector2Array(1310, 902, 1310, 560, 1420, 540, 1520, 560, 1540, 902)
+
+[node name="Door" type="Area2D" parent="Hotspots" unique_id=739640914]
+script = ExtResource("10_5nq6t")
+target_room = &"market_square"
+target_entry = &"from_pawn"
+direction = &"left"
+id = &"door"
+display_name = "Door"
+default_verb = &"walk"
+walk_offset = Vector2(230, 770)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Door" unique_id=515382593]
+polygon = PackedVector2Array(90, 712, 90, 140, 210, 140, 210, 712)
+
+[node name="Cabinet" type="Area2D" parent="Hotspots" unique_id=1766947334]
+script = ExtResource("9_jkxvv")
+id = &"cabinet"
+display_name = "Glass cabinet"
+walk_offset = Vector2(1380, 930)
+pick_priority = 2
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Cabinet" unique_id=383025851]
+polygon = PackedVector2Array(1430, 560, 1430, 200, 1640, 200, 1640, 560)
+
+[node name="Scale" type="Area2D" parent="Hotspots" unique_id=1242927512]
+script = ExtResource("9_jkxvv")
+id = &"scale"
+display_name = "Scale"
+walk_offset = Vector2(1050, 880)
+pick_priority = 1
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Scale" unique_id=350901267]
+polygon = PackedVector2Array(960, 540, 960, 390, 1140, 390, 1140, 540)
+
+[node name="Clocks" type="Area2D" parent="Hotspots" unique_id=724521424]
+script = ExtResource("9_jkxvv")
+id = &"clocks"
+display_name = "Clocks"
+walk_offset = Vector2(520, 760)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Clocks" unique_id=1024181315]
+polygon = PackedVector2Array(320, 520, 320, 300, 700, 300, 700, 520)
+
+[node name="Portraits" type="Area2D" parent="Hotspots" unique_id=1271462255]
+script = ExtResource("9_jkxvv")
+id = &"portraits"
+display_name = "Portraits"
+walk_offset = Vector2(1150, 880)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Portraits" unique_id=42022763]
+polygon = PackedVector2Array(1100, 280, 1100, 60, 1420, 60, 1420, 280)
+
+[node name="Exits" type="Node2D" parent="." unique_id=887353945]
+
+[node name="Markers" type="Node2D" parent="." unique_id=1223122232]
+
+[node name="default" type="Marker2D" parent="Markers" unique_id=1418743095]
+position = Vector2(700, 930)
+
+[node name="from_market" type="Marker2D" parent="Markers" unique_id=1767982069]
+position = Vector2(250, 782)
+
+[node name="Actors" type="Node2D" parent="." unique_id=751456462]
+y_sort_enabled = true
+
+[node name="Broker" type="Node2D" parent="Actors" unique_id=557659455 groups=["era_now"] instance=ExtResource("11_3oks8")]
+position = Vector2(1420, 902)
+script = ExtResource("12_pkg6t")
+speaker_name = "Broker"
+speaker_aliases = PackedStringArray("Fennick")
+talk_animations = Array[StringName]([&"talk_a", &"talk_b"])
+subtitle_color = Color(0.82, 0.9, 0.78, 1)
+speech_offset = Vector2(-21.267736, -402.4201)
+
+[node name="Foreground" type="Node2D" parent="." unique_id=1315180270]
+
+[node name="GroundMist" type="ColorRect" parent="Foreground" unique_id=1495203215 groups=["era_now"]]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_b07ud")
+fog_color = Color(0.86, 0.87, 0.9, 1)
+density = 0.16
+velocity = Vector2(0.01, 0)
+noise_scale = Vector2(2.6, 1.6)
+band_top = 0.84
+band_bottom = 1.02
+band_softness = 0.08
+noise_seed = 27
+
+[node name="Cinematics" type="Node2D" parent="." unique_id=324822175]

@@ -1,0 +1,503 @@
+{
+  "display_name": "Clock tower",
+  "layers": {
+    "now": [
+      {
+        "name": "Background",
+        "texture": "res://content/rooms/clock_tower_base/art/bg_now.png"
+      }
+    ],
+    "then": [
+      {
+        "name": "Background",
+        "texture": "res://content/rooms/clock_tower_base/art/bg_then.png"
+      }
+    ]
+  },
+  "walk": {
+    "now": [
+      [
+        100,
+        792
+      ],
+      [
+        500,
+        762
+      ],
+      [
+        820,
+        762
+      ],
+      [
+        1000,
+        772
+      ],
+      [
+        1500,
+        782
+      ],
+      [
+        1560,
+        802
+      ],
+      [
+        1700,
+        832
+      ],
+      [
+        1700,
+        1050
+      ],
+      [
+        150,
+        1050
+      ],
+      [
+        80,
+        902
+      ]
+    ],
+    "then": [
+      [
+        100,
+        792
+      ],
+      [
+        500,
+        762
+      ],
+      [
+        820,
+        762
+      ],
+      [
+        1000,
+        772
+      ],
+      [
+        1500,
+        782
+      ],
+      [
+        1560,
+        802
+      ],
+      [
+        1700,
+        832
+      ],
+      [
+        1700,
+        1050
+      ],
+      [
+        150,
+        1050
+      ],
+      [
+        80,
+        902
+      ]
+    ]
+  },
+  "scale_zones": {
+    "far_y": 762,
+    "far_scale": 0.78,
+    "near_y": 1050,
+    "near_scale": 1.03
+  },
+  "markers": {
+    "default": [
+      900,
+      900
+    ],
+    "from_bridge": [
+      320,
+      822
+    ],
+    "from_works": [
+      730,
+      802
+    ],
+    "from_lower": [
+      1630,
+      852
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "clockmaker",
+      "name": "Clockmaker",
+      "polygon": [
+        [
+          1290,
+          808
+        ],
+        [
+          1290,
+          502
+        ],
+        [
+          1350,
+          472
+        ],
+        [
+          1422,
+          502
+        ],
+        [
+          1422,
+          808
+        ]
+      ],
+      "walk_to": [
+        1210,
+        840
+      ],
+      "default_verb": "talk",
+      "pick_priority": 2
+    },
+    {
+      "id": "tower_door",
+      "name": "Tower door",
+      "polygon": [
+        [
+          650,
+          752
+        ],
+        [
+          650,
+          430
+        ],
+        [
+          730,
+          400
+        ],
+        [
+          810,
+          430
+        ],
+        [
+          810,
+          752
+        ]
+      ],
+      "walk_to": [
+        730,
+        792
+      ],
+      "exit": {
+        "room": "clockworks",
+        "entry": "from_tower",
+        "direction": "up",
+        "requires_flag": "mathis_named"
+      }
+    },
+    {
+      "id": "clock",
+      "name": "The clock",
+      "polygon": [
+        [
+          640,
+          202
+        ],
+        [
+          640,
+          10
+        ],
+        [
+          850,
+          10
+        ],
+        [
+          850,
+          202
+        ]
+      ],
+      "walk_to": [
+        740,
+        802
+      ]
+    },
+    {
+      "id": "workbench",
+      "name": "Workbench",
+      "polygon": [
+        [
+          1000,
+          762
+        ],
+        [
+          1000,
+          522
+        ],
+        [
+          1290,
+          522
+        ],
+        [
+          1290,
+          762
+        ]
+      ],
+      "walk_to": [
+        1150,
+        802
+      ]
+    },
+    {
+      "id": "stairs",
+      "name": "Stair to the lower gate",
+      "polygon": [
+        [
+          1560,
+          802
+        ],
+        [
+          1560,
+          582
+        ],
+        [
+          1800,
+          582
+        ],
+        [
+          1832,
+          802
+        ]
+      ],
+      "walk_to": [
+        1620,
+        832
+      ],
+      "exit": {
+        "room": "lower_gate",
+        "entry": "from_tower",
+        "direction": "right"
+      }
+    },
+    {
+      "id": "to_bridge",
+      "name": "To the bridge",
+      "polygon": [
+        [
+          100,
+          762
+        ],
+        [
+          100,
+          602
+        ],
+        [
+          430,
+          602
+        ],
+        [
+          430,
+          762
+        ]
+      ],
+      "walk_to": [
+        300,
+        802
+      ],
+      "exit": {
+        "room": "canal_bridge",
+        "entry": "from_tower",
+        "direction": "left"
+      }
+    }
+  ],
+  "occluders": [],
+  "npcs": [
+    {
+      "scene": "res://content/characters/clockmaker/clockmaker.tscn",
+      "name": "Clockmaker",
+      "position": [
+        1355,
+        808
+      ],
+      "facing": "left",
+      "era": "now"
+    }
+  ],
+  "effects": [
+    {
+      "type": "FogLayer",
+      "name": "FogFar",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.85,
+          0.86,
+          0.89,
+          1.0
+        ],
+        "density": 0.3,
+        "velocity": [
+          0.005,
+          0.0
+        ],
+        "noise_scale": [
+          1.4,
+          0.8
+        ],
+        "band_top": 0.3,
+        "band_bottom": 0.75,
+        "depth_texture": "res://content/rooms/clock_tower_base/art/depth_now.png",
+        "near_cutoff": 0.4,
+        "noise_seed": 21
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "FogLow",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.8,
+          0.82,
+          0.86,
+          1.0
+        ],
+        "density": 0.24,
+        "velocity": [
+          -0.008,
+          0.0
+        ],
+        "noise_scale": [
+          2.2,
+          1.1
+        ],
+        "band_top": 0.5,
+        "band_bottom": 0.82,
+        "depth_texture": "res://content/rooms/clock_tower_base/art/depth_now.png",
+        "near_cutoff": 0.55,
+        "noise_seed": 23
+      }
+    },
+    {
+      "type": "LightShafts",
+      "name": "Moonlight",
+      "era": "now",
+      "properties": {
+        "origin": [
+          340,
+          140
+        ],
+        "aim": 160.0,
+        "spread": 30.0,
+        "beams": 5.0,
+        "intensity": 0.07,
+        "reach": 0.9,
+        "shaft_color": [
+          0.9,
+          0.93,
+          1.0,
+          1.0
+        ],
+        "flicker": 0.3
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "GroundMist",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.86,
+          0.87,
+          0.9,
+          1.0
+        ],
+        "density": 0.16,
+        "velocity": [
+          0.01,
+          0.0
+        ],
+        "noise_scale": [
+          2.6,
+          1.6
+        ],
+        "band_top": 0.84,
+        "band_bottom": 1.02,
+        "band_softness": 0.08,
+        "noise_seed": 27
+      },
+      "layer": "foreground"
+    },
+    {
+      "type": "LightShafts",
+      "name": "GoldenShafts",
+      "era": "then",
+      "properties": {
+        "origin": [
+          340,
+          140
+        ],
+        "aim": 160.0,
+        "spread": 44.0,
+        "beams": 7.0,
+        "intensity": 0.14,
+        "reach": 1.0,
+        "shaft_color": [
+          1.0,
+          0.85,
+          0.55,
+          1.0
+        ],
+        "flicker": 0.25
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "WarmHaze",
+      "era": "then",
+      "properties": {
+        "fog_color": [
+          1.0,
+          0.9,
+          0.75,
+          1.0
+        ],
+        "density": 0.1,
+        "velocity": [
+          0.004,
+          0.0
+        ],
+        "noise_scale": [
+          1.2,
+          0.7
+        ],
+        "band_top": 0.3,
+        "band_bottom": 0.9,
+        "noise_seed": 13
+      }
+    },
+    {
+      "type": "DustMotes",
+      "name": "GoldenDust",
+      "era": "then",
+      "properties": {
+        "area": [
+          300,
+          150,
+          1500,
+          750
+        ],
+        "mote_color": [
+          1.0,
+          0.86,
+          0.55,
+          0.55
+        ],
+        "mote_count": 60,
+        "drift": [
+          3,
+          -4
+        ],
+        "mote_size": 2.5
+      }
+    }
+  ]
+}

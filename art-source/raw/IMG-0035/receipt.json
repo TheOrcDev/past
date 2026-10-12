@@ -1,0 +1,77 @@
+{
+  "id": "IMG-0035",
+  "title": "The market square, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T22:58:31.561Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0027/IMG-0027-v1.png",
+          "sha256": "388618b140387bbcc631be93ec8cecc601aa232891a37e48c4ea13dad7f605ad"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: a sloping old-town market square at night, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: Rows of empty wooden market stalls under torn, sagging awnings on both sides. In the centre, a dry stone fountain with a statue of a weeping saint on it, a long faded ribbon tied around the saint's wrist. On the left, a narrow pawnshop front with a bay window crammed with clocks and trinkets behind dusty glass, and a door beside it. On the right, the square opens toward an arched stone bridge over a canal, a clock tower beyond.\n\nThe lower third of the image is open, walkable ground: the cobbled square runs across the whole width, open in the middle. It is lit by pale moonlight with drifting fog or haze behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0035-v1.png",
+          "sha256": "7bc54ec0b77f9b70c3abd99f77a5a32be6d95be4e96e0b3e3ae7e7ac64192f2c",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0035-v2.png",
+          "sha256": "a27d0170576e4af921e881a74a2d4ae8b2d7920a14ccac9d6822d1832fc0f052",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0035-v3.png",
+          "sha256": "761516517caf2828fdabde952e15919a10ced450a8bc92482ce5f0d2f89ece3f",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 127736,
+        "outputTokens": 714
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d30-70ed-7bc3-817f-aef814d733d3",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d30-70ed-7bc3-817f-aef814d733d3/exec-76846586-c917-4d1c-bba3-932426752459.png",
+            "/Users/orcdev/.codex/generated_images/01a12d30-70ed-7bc3-817f-aef814d733d3/exec-1b9bfdd9-f7cb-41ae-982b-c8e4f962b5d1.png",
+            "/Users/orcdev/.codex/generated_images/01a12d30-70ed-7bc3-817f-aef814d733d3/exec-b1b832db-5008-4cc0-beb9-248eff77356c.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque images using the attached reference and your exact prompt.",
+            "Two images are complete. I’m generating the third with the same reference and exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

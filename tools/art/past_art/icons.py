@@ -17,7 +17,9 @@ PAD = 0.08
 MIN_AREA = 2000
 
 
-def cut(sheet_path: Path, names: list[str], out_dir: Path) -> list[dict]:
+def cut(sheet_path: Path, names: list[str], out_dir: Path, colour: set[str] = frozenset()) -> list[dict]:
+    """`colour` names the icons that keep their color; the rest go grey, like the
+    present they belong to (decision #24)."""
     sheet = load(sheet_path)
     alpha = (sheet[:, :, 3] > 12).astype(np.uint8)
     # Close small gaps so an object's thin parts (a key's ring and tag) stay one piece.
@@ -36,6 +38,9 @@ def cut(sheet_path: Path, names: list[str], out_dir: Path) -> list[dict]:
         square = np.zeros((side, side, 4), np.uint8)
         square[(side - h) // 2:(side - h) // 2 + h, (side - w) // 2:(side - w) // 2 + w] = crop
         icon = cv2.resize(square, (SIZE, SIZE), interpolation=cv2.INTER_AREA)
+        if name not in colour:
+            grey = cv2.cvtColor(icon[:, :, :3], cv2.COLOR_BGR2GRAY)
+            icon = np.dstack([grey, grey, grey, icon[:, :, 3]])
         path = out_dir / name / "icon.png"
         path.parent.mkdir(parents=True, exist_ok=True)
         save(path, icon)

@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0049",
+  "title": "The market square, then (the wedding)",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T23:02:18.035Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0035/IMG-0035-v1.png",
+          "sha256": "7bc54ec0b77f9b70c3abd99f77a5a32be6d95be4e96e0b3e3ae7e7ac64192f2c"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit this image in place. Keep exactly the same composition, camera, perspective, horizon and every shape where it stands: the fountain and the saint, the stalls and awnings, the pawnshop window and door, the houses, the bridge and the clock tower. Only change the time and the condition.\n\nRestore the same market square to how it looked decades earlier, on a wedding-day evening, in full rich warm color, as a painterly gothic matte painting: the fountain running with clear water, the saint clean white marble with a fresh silk ribbon on her wrist, the stalls full of fruit, flowers and bread under bright striped awnings, garlands of white flowers strung across the square, rose petals scattered on the cobbles, the lamps lit warm gold, the pawnshop a bright jeweller's window, a warm sunset sky. The key light comes from the same direction as in the original.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0049-v1.png",
+          "sha256": "2c2bf2cb196acbc87b78feb6de8f6a2409e4ecc2182c48c067b995db4e746e0c",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0049-v2.png",
+          "sha256": "f00be79ee435d8e11b8c4bd4dd87400822dd81090aee1e889038c41aa392a3bf",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 100657,
+        "outputTokens": 710
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d33-e5da-7dc1-a5c4-9c835a18efee",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d33-e5da-7dc1-a5c4-9c835a18efee/exec-ca54e7d4-c032-46e0-a24a-48c175947519.png",
+            "/Users/orcdev/.codex/generated_images/01a12d33-e5da-7dc1-a5c4-9c835a18efee/exec-c2d9dd45-a8d3-4880-b253-01798bcf7c56.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate two edits from the attached image using your exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

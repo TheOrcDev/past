@@ -1,0 +1,233 @@
+{
+  "display_name": "Tavern",
+  "now": "art-source/raw/IMG-0039/IMG-0039-v2.png",
+  "walk": [
+    [
+      450,
+      702
+    ],
+    [
+      1000,
+      622
+    ],
+    [
+      1240,
+      642
+    ],
+    [
+      1262,
+      782
+    ],
+    [
+      1500,
+      902
+    ],
+    [
+      1600,
+      1050
+    ],
+    [
+      200,
+      1050
+    ],
+    [
+      200,
+      902
+    ],
+    [
+      420,
+      822
+    ]
+  ],
+  "scale_zones": {
+    "far_y": 625,
+    "far_scale": 0.7,
+    "near_y": 1050,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      900,
+      880
+    ],
+    "from_alley": [
+      1080,
+      660
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "back_door",
+      "name": "Door",
+      "polygon": [
+        [
+          1010,
+          602
+        ],
+        [
+          1010,
+          300
+        ],
+        [
+          1160,
+          300
+        ],
+        [
+          1160,
+          602
+        ]
+      ],
+      "walk_to": [
+        1080,
+        655
+      ],
+      "exit": {
+        "room": "alley_of_doors",
+        "entry": "from_tavern",
+        "direction": "up"
+      }
+    },
+    {
+      "id": "mantel",
+      "name": "Mantel",
+      "polygon": [
+        [
+          20,
+          362
+        ],
+        [
+          20,
+          230
+        ],
+        [
+          400,
+          230
+        ],
+        [
+          400,
+          362
+        ]
+      ],
+      "walk_to": [
+        430,
+        830
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "fireplace",
+      "name": "Fireplace",
+      "polygon": [
+        [
+          20,
+          762
+        ],
+        [
+          20,
+          362
+        ],
+        [
+          400,
+          362
+        ],
+        [
+          400,
+          762
+        ]
+      ],
+      "walk_to": [
+        430,
+        840
+      ]
+    },
+    {
+      "id": "slate",
+      "name": "Slate",
+      "polygon": [
+        [
+          660,
+          422
+        ],
+        [
+          660,
+          240
+        ],
+        [
+          900,
+          240
+        ],
+        [
+          900,
+          422
+        ]
+      ],
+      "walk_to": [
+        800,
+        700
+      ]
+    },
+    {
+      "id": "bar",
+      "name": "Bar",
+      "polygon": [
+        [
+          1260,
+          782
+        ],
+        [
+          1260,
+          472
+        ],
+        [
+          1900,
+          472
+        ],
+        [
+          1900,
+          782
+        ]
+      ],
+      "walk_to": [
+        1300,
+        840
+      ]
+    },
+    {
+      "id": "mirror",
+      "name": "Mirror",
+      "polygon": [
+        [
+          1640,
+          442
+        ],
+        [
+          1640,
+          120
+        ],
+        [
+          1900,
+          120
+        ],
+        [
+          1900,
+          442
+        ]
+      ],
+      "walk_to": [
+        1400,
+        880
+      ],
+      "pick_priority": 1
+    }
+  ],
+  "effects": {
+    "preset": "interior",
+    "light": [
+      450,
+      280
+    ],
+    "aim": 145
+  },
+  "id": "tavern_lost_name",
+  "then": "art-source/raw/IMG-0050/IMG-0050-v2.png"
+}

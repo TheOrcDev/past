@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0052",
+  "title": "Behind the clock face, then (the old town vista)",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T23:02:23.808Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0042/IMG-0042-v1.png",
+          "sha256": "ee270b3e3feed46d0a55c9aa5d146db94ec3ec822db350d83c2c61e3c0aee9b2"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit this image in place. Keep exactly the same composition, camera, perspective, horizon and every shape where it stands: the clock face's frame and glass, the two hands, the walkway and railing, the ladder hatch and the city beyond the glass. Only change the time and the condition.\n\nRestore the same view to how it looked decades earlier, at golden sunset, in full rich warm color, as a painterly gothic matte painting: clean clear glass, the hands gilded, and through the glass the whole old town in its golden age: warm terracotta roofs, gilded spires, banners, a busy market and every lamp lit, under a glowing sunset sky. The key light comes from the same direction as in the original.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0052-v1.png",
+          "sha256": "ab3c3d5cae18236fd59667cdf0dc939281c477ef1718f12a1cc956bed93b43eb",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0052-v2.png",
+          "sha256": "536ebbe9a2846bc1d6dc1d204aef53edc7356d611533b043e4a523b5a439a6a8",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 143278,
+        "outputTokens": 588
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d33-fbe6-7e82-aa1f-442c6d5e91f3",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d33-fbe6-7e82-aa1f-442c6d5e91f3/exec-d9416dbb-c2b2-44e2-9f67-99160a598225.png",
+            "/Users/orcdev/.codex/generated_images/01a12d33-fbe6-7e82-aa1f-442c6d5e91f3/exec-cca7a921-8ee1-42b6-bf6d-a3af43a969da.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate two edits using your prompt exactly, each with the attached image as its reference.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

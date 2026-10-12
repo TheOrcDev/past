@@ -1,0 +1,31 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/closeups/lamp_ledger/lamp_ledger.gd" id="1_n7207"]
+[ext_resource type="Texture2D" path="res://content/closeups/lamp_ledger/art/bg.png" id="2_sh6tm"]
+[ext_resource type="Script" path="res://src/core/hotspot.gd" id="3_vyx28"]
+
+[node name="LampLedger" type="Node2D" unique_id=1601513151]
+script = ExtResource("1_n7207")
+closeup_id = &"lamp_ledger"
+
+[node name="Background" type="Sprite2D" parent="." unique_id=899129132]
+texture = ExtResource("2_sh6tm")
+centered = false
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=625643619]
+
+[node name="Last" type="Area2D" parent="Hotspots" unique_id=2081180266]
+script = ExtResource("3_vyx28")
+id = &"last"
+display_name = "The last marks"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Last" unique_id=1484195717]
+polygon = PackedVector2Array(1560, 860, 1900, 860, 1900, 1060, 1560, 1060)
+
+[node name="Marks" type="Area2D" parent="Hotspots" unique_id=354968939]
+script = ExtResource("3_vyx28")
+id = &"marks"
+display_name = "Tally marks"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Marks" unique_id=981286385]
+polygon = PackedVector2Array(40, 40, 1880, 40, 1880, 1040, 40, 1040)

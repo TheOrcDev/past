@@ -1,0 +1,248 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/rooms/clock_tower_base/clock_tower_base.gd" id="1_rfeis"]
+[ext_resource type="Texture2D" path="res://content/rooms/clock_tower_base/art/bg_now.png" id="2_cht5h"]
+[ext_resource type="Script" path="res://src/systems/effects/fog_layer.gd" id="3_3t25e"]
+[ext_resource type="Texture2D" path="res://content/rooms/clock_tower_base/art/depth_now.png" id="4_7s63q"]
+[ext_resource type="Script" path="res://src/systems/effects/light_shafts.gd" id="5_hun60"]
+[ext_resource type="Texture2D" path="res://content/rooms/clock_tower_base/art/bg_then.png" id="6_0sqxo"]
+[ext_resource type="Script" path="res://src/systems/effects/dust_motes.gd" id="7_2bpo3"]
+[ext_resource type="Script" path="res://src/core/scale_zones.gd" id="8_irfep"]
+[ext_resource type="Script" path="res://src/core/hotspot.gd" id="9_curp2"]
+[ext_resource type="Script" path="res://src/core/exit.gd" id="10_56u5w"]
+[ext_resource type="PackedScene" path="res://content/characters/clockmaker/clockmaker.tscn" id="11_g1yay"]
+[ext_resource type="Script" path="res://src/core/actor.gd" id="12_kf85x"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_gggo7"]
+vertices = PackedVector2Array(1700, 832, 1700, 1050, 150, 1050, 1560, 802, 1500, 782, 1000, 772, 100, 792, 500, 762, 820, 762, 80, 902)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 3, 2, 5), PackedInt32Array(6, 7, 8, 5, 2, 9)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(100, 792, 500, 762, 820, 762, 1000, 772, 1500, 782, 1560, 802, 1700, 832, 1700, 1050, 150, 1050, 80, 902)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_rqfq4"]
+vertices = PackedVector2Array(1700, 832, 1700, 1050, 150, 1050, 1560, 802, 1500, 782, 1000, 772, 100, 792, 500, 762, 820, 762, 80, 902)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 3, 2, 5), PackedInt32Array(6, 7, 8, 5, 2, 9)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(100, 792, 500, 762, 820, 762, 1000, 772, 1500, 782, 1560, 802, 1700, 832, 1700, 1050, 150, 1050, 80, 902)])
+agent_radius = 0.0
+
+[node name="ClockTowerBase" type="Node2D" unique_id=450527094]
+script = ExtResource("1_rfeis")
+room_id = &"clock_tower_base"
+display_name = "Clock tower"
+
+[node name="Layers" type="Node2D" parent="." unique_id=1123497943]
+
+[node name="Now" type="Node2D" parent="Layers" unique_id=1377545971]
+
+[node name="Background" type="Sprite2D" parent="Layers/Now" unique_id=26635376]
+texture = ExtResource("2_cht5h")
+centered = false
+
+[node name="FogFar" type="ColorRect" parent="Layers/Now" unique_id=1996283062]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_3t25e")
+fog_color = Color(0.85, 0.86, 0.89, 1)
+density = 0.3
+velocity = Vector2(0.005, 0)
+noise_scale = Vector2(1.4, 0.8)
+band_top = 0.3
+band_bottom = 0.75
+depth_texture = ExtResource("4_7s63q")
+near_cutoff = 0.4
+noise_seed = 21
+
+[node name="FogLow" type="ColorRect" parent="Layers/Now" unique_id=1326533838]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_3t25e")
+fog_color = Color(0.8, 0.82, 0.86, 1)
+density = 0.24
+velocity = Vector2(-0.008, 0)
+noise_scale = Vector2(2.2, 1.1)
+band_top = 0.5
+band_bottom = 0.82
+depth_texture = ExtResource("4_7s63q")
+near_cutoff = 0.55
+noise_seed = 23
+
+[node name="Moonlight" type="ColorRect" parent="Layers/Now" unique_id=1027585268]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("5_hun60")
+origin = Vector2(340, 140)
+aim = 160.0
+spread = 30.0
+beams = 5.0
+intensity = 0.07
+shaft_color = Color(0.9, 0.93, 1, 1)
+flicker = 0.3
+
+[node name="Then" type="Node2D" parent="Layers" unique_id=170213225]
+
+[node name="Background" type="Sprite2D" parent="Layers/Then" unique_id=675992123]
+texture = ExtResource("6_0sqxo")
+centered = false
+
+[node name="GoldenShafts" type="ColorRect" parent="Layers/Then" unique_id=987846473]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("5_hun60")
+origin = Vector2(340, 140)
+aim = 160.0
+spread = 44.0
+beams = 7.0
+intensity = 0.14
+reach = 1.0
+shaft_color = Color(1, 0.85, 0.55, 1)
+flicker = 0.25
+
+[node name="WarmHaze" type="ColorRect" parent="Layers/Then" unique_id=1282088059]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_3t25e")
+fog_color = Color(1, 0.9, 0.75, 1)
+density = 0.1
+velocity = Vector2(0.004, 0)
+noise_scale = Vector2(1.2, 0.7)
+band_top = 0.3
+band_bottom = 0.9
+noise_seed = 13
+
+[node name="GoldenDust" type="CPUParticles2D" parent="Layers/Then" unique_id=969995876]
+script = ExtResource("7_2bpo3")
+area = Rect2(300, 150, 1500, 750)
+mote_color = Color(1, 0.86, 0.55, 0.55)
+drift = Vector2(3, -4)
+mote_size = 2.5
+
+[node name="WalkAreas" type="Node2D" parent="." unique_id=1908774585]
+
+[node name="Now" type="NavigationRegion2D" parent="WalkAreas" unique_id=923438891]
+navigation_polygon = SubResource("NavigationPolygon_gggo7")
+
+[node name="Then" type="NavigationRegion2D" parent="WalkAreas" unique_id=1472160719]
+navigation_polygon = SubResource("NavigationPolygon_rqfq4")
+enabled = false
+
+[node name="ScaleZones" type="Node2D" parent="." unique_id=1032393288]
+script = ExtResource("8_irfep")
+far_y = 762.0
+far_scale = 0.78
+near_y = 1050.0
+near_scale = 1.03
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=965485614]
+
+[node name="Clockmaker" type="Area2D" parent="Hotspots" unique_id=910735375]
+script = ExtResource("9_curp2")
+id = &"clockmaker"
+display_name = "Clockmaker"
+default_verb = &"talk"
+walk_offset = Vector2(1210, 840)
+pick_priority = 2
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Clockmaker" unique_id=466683256]
+polygon = PackedVector2Array(1290, 808, 1290, 502, 1350, 472, 1422, 502, 1422, 808)
+
+[node name="TowerDoor" type="Area2D" parent="Hotspots" unique_id=224278474]
+script = ExtResource("10_56u5w")
+target_room = &"clockworks"
+target_entry = &"from_tower"
+direction = &"up"
+requires_flag = &"mathis_named"
+id = &"tower_door"
+display_name = "Tower door"
+default_verb = &"walk"
+walk_offset = Vector2(730, 792)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/TowerDoor" unique_id=813184992]
+polygon = PackedVector2Array(650, 752, 650, 430, 730, 400, 810, 430, 810, 752)
+
+[node name="Clock" type="Area2D" parent="Hotspots" unique_id=401570598]
+script = ExtResource("9_curp2")
+id = &"clock"
+display_name = "The clock"
+walk_offset = Vector2(740, 802)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Clock" unique_id=4381663]
+polygon = PackedVector2Array(640, 202, 640, 10, 850, 10, 850, 202)
+
+[node name="Workbench" type="Area2D" parent="Hotspots" unique_id=2030006446]
+script = ExtResource("9_curp2")
+id = &"workbench"
+display_name = "Workbench"
+walk_offset = Vector2(1150, 802)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Workbench" unique_id=766533768]
+polygon = PackedVector2Array(1000, 762, 1000, 522, 1290, 522, 1290, 762)
+
+[node name="Stairs" type="Area2D" parent="Hotspots" unique_id=967339735]
+script = ExtResource("10_56u5w")
+target_room = &"lower_gate"
+target_entry = &"from_tower"
+id = &"stairs"
+display_name = "Stair to the lower gate"
+default_verb = &"walk"
+walk_offset = Vector2(1620, 832)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Stairs" unique_id=471122095]
+polygon = PackedVector2Array(1560, 802, 1560, 582, 1800, 582, 1832, 802)
+
+[node name="ToBridge" type="Area2D" parent="Hotspots" unique_id=1378712295]
+script = ExtResource("10_56u5w")
+target_room = &"canal_bridge"
+target_entry = &"from_tower"
+direction = &"left"
+id = &"to_bridge"
+display_name = "To the bridge"
+default_verb = &"walk"
+walk_offset = Vector2(300, 802)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/ToBridge" unique_id=1987470999]
+polygon = PackedVector2Array(100, 762, 100, 602, 430, 602, 430, 762)
+
+[node name="Exits" type="Node2D" parent="." unique_id=957713176]
+
+[node name="Markers" type="Node2D" parent="." unique_id=32861972]
+
+[node name="default" type="Marker2D" parent="Markers" unique_id=793450047]
+position = Vector2(900, 900)
+
+[node name="from_bridge" type="Marker2D" parent="Markers" unique_id=1097267725]
+position = Vector2(320, 822)
+
+[node name="from_works" type="Marker2D" parent="Markers" unique_id=2140292891]
+position = Vector2(730, 802)
+
+[node name="from_lower" type="Marker2D" parent="Markers" unique_id=1198128277]
+position = Vector2(1630, 852)
+
+[node name="Actors" type="Node2D" parent="." unique_id=1118974414]
+y_sort_enabled = true
+
+[node name="Clockmaker" type="Node2D" parent="Actors" unique_id=1926978580 groups=["era_now"] instance=ExtResource("11_g1yay")]
+position = Vector2(1355, 808)
+script = ExtResource("12_kf85x")
+speaker_name = "Clockmaker"
+speaker_aliases = PackedStringArray("Hesper")
+talk_animations = Array[StringName]([&"talk_a", &"talk_b"])
+subtitle_color = Color(0.85, 0.8, 0.95, 1)
+speech_offset = Vector2(27.868057, -421.9544)
+
+[node name="Foreground" type="Node2D" parent="." unique_id=989555576]
+
+[node name="GroundMist" type="ColorRect" parent="Foreground" unique_id=1316430130 groups=["era_now"]]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_3t25e")
+fog_color = Color(0.86, 0.87, 0.9, 1)
+density = 0.16
+velocity = Vector2(0.01, 0)
+noise_scale = Vector2(2.6, 1.6)
+band_top = 0.84
+band_bottom = 1.02
+band_softness = 0.08
+noise_seed = 27
+
+[node name="Cinematics" type="Node2D" parent="." unique_id=1822949193]

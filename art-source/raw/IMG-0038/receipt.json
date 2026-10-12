@@ -1,0 +1,76 @@
+{
+  "id": "IMG-0038",
+  "title": "The alley of doors, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T22:56:05.360Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0027/IMG-0027-v1.png",
+          "sha256": "388618b140387bbcc631be93ec8cecc601aa232891a37e48c4ea13dad7f605ad"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: a steep, narrow stepped alley between tall gothic houses at night, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: Front doors line both sides of the alley, and above every door is a pale rectangle where a brass nameplate has been pried off, the screw holes still showing. On the left, a wooden notice board crowded with pinned paper edicts with wax seals, unreadable at this distance. At the top of the alley on the right, a low tavern doorway under a hanging signboard painted over blank. Laundry lines and iron balconies overhead.\n\nThe lower third of the image is open, walkable ground: the alley's stone landing and the bottom of its steps run across the foreground. It is lit by pale moonlight with drifting fog or haze behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0038-v1.png",
+          "sha256": "78d520a88d65b4133ea83189614bb6f610394cf77beff54e91bf1f8faccad459",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0038-v2.png",
+          "sha256": "4b790fc9e73e2e18fe56fc33079d1fdaa345220729aad1673a47bbd5a2abaffe",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0038-v3.png",
+          "sha256": "d4b0c87a107bc178de73365d91fad3f710f1dfd825b8a26e7fe6061a61186e62",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 245260,
+        "outputTokens": 1572
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d2e-35f3-71f0-81b2-03ce92c225b2",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d2e-35f3-71f0-81b2-03ce92c225b2/exec-fa6ddde1-74eb-4f54-a23f-6a3ff6ef5979.png",
+            "/Users/orcdev/.codex/generated_images/01a12d2e-35f3-71f0-81b2-03ce92c225b2/exec-c0d99fca-560b-4d25-8b6b-7e9b92fdc242.png",
+            "/Users/orcdev/.codex/generated_images/01a12d2e-35f3-71f0-81b2-03ce92c225b2/exec-377ffeff-4874-419c-8372-d6ba212440dd.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque variants using the reference and your exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

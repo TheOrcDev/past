@@ -1,0 +1,76 @@
+{
+  "id": "IMG-0041",
+  "title": "Inside the clock, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T22:54:37.267Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0014/IMG-0014-v2.png",
+          "sha256": "007293b04cb0e4a9f28c332a9f68cfd2fc539efd55efc64882a894d5c677d1de"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: the inside of a great clock tower's mechanism at night, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: Towering iron gears and wheels of every size fill the space, meshed into each other; a huge pendulum hangs still in the centre. On the right, the escapement: a large toothed escape wheel with its anchor and pallet pin hanging loose, and beside it a square iron winding post. Pale light falls through the backs of the clock face's glass high above. A wooden ladder on the left climbs up to a high gallery; an open trapdoor in the floor at the left.\n\nThe lower third of the image is open, walkable ground: a wooden gallery floor runs in front of the machinery across the whole width. It is lit by shafts of pale moonlight through the clock face's glass with drifting fog or haze behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0041-v1.png",
+          "sha256": "a6548c1d6962750fab74ff5a23c6b69820df0a62a728673f249e6ae2a9be01eb",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0041-v2.png",
+          "sha256": "be377700e19c5cb4bbeac9b33f9f3dfcf9d2fd30d9d9c13ce3d873b5287034e3",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0041-v3.png",
+          "sha256": "63f1ac9249d0d290b68de2bdb106cb84c55e15852ce7dc177c43404e85de8013",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 133423,
+        "outputTokens": 792
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d2c-dd8e-72e2-981d-207ca254f6ec",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d2c-dd8e-72e2-981d-207ca254f6ec/exec-8c5c39e6-a08a-4e0e-83b3-18bc171e9647.png",
+            "/Users/orcdev/.codex/generated_images/01a12d2c-dd8e-72e2-981d-207ca254f6ec/exec-d2b52252-a6af-4d06-aa27-b0ad0e4df79c.png",
+            "/Users/orcdev/.codex/generated_images/01a12d2c-dd8e-72e2-981d-207ca254f6ec/exec-a8ea9067-3a65-436f-82ae-e228ea239777.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque images using the reference and your prompt exactly.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

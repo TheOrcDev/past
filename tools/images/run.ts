@@ -2,6 +2,7 @@
 // A request whose model is codex/gpt-6.1-sol runs through Sol instead (#44).
 // Usage, from the repository root: bun tools/images/run.ts IMG-0001 [--dry-run]
 import { readdirSync, readFileSync } from "node:fs";
+import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { generateImage } from "ai";
 import { credentialUsable, currentCredential, describeCredential } from "./src/credentials";
@@ -47,7 +48,8 @@ try {
     }
   }
 
-  const workDir = join(repoRoot, "build", "sol", `${id}-${Date.now()}`);
+  // Outside the project: Godot would import anything under it (decision #20's pack).
+  const workDir = join(tmpdir(), "past-sol", `${id}-${Date.now()}`);
   const generate = sol ? makeSolGenerate({ workDir }) : generateImage;
   const result = await runRequest(request, { root: repoRoot, rawDir, ledgerPath, requestPath, generate, pricing });
   console.log(`round ${result.round}: ${result.files.join(", ")} — $${result.costUsd.toFixed(3)} (${result.costSource})`);

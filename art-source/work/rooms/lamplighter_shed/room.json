@@ -1,0 +1,197 @@
+{
+  "display_name": "Lamplighter's shed",
+  "now": "art-source/raw/IMG-0034/IMG-0034-v2.png",
+  "walk": [
+    [
+      220,
+      772
+    ],
+    [
+      700,
+      737
+    ],
+    [
+      1380,
+      747
+    ],
+    [
+      1420,
+      852
+    ],
+    [
+      1560,
+      1050
+    ],
+    [
+      150,
+      1050
+    ],
+    [
+      120,
+      902
+    ]
+  ],
+  "scale_zones": {
+    "far_y": 740,
+    "far_scale": 0.8,
+    "near_y": 1050,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      800,
+      900
+    ],
+    "from_street": [
+      330,
+      790
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "door",
+      "name": "Door",
+      "polygon": [
+        [
+          240,
+          722
+        ],
+        [
+          240,
+          200
+        ],
+        [
+          430,
+          200
+        ],
+        [
+          430,
+          722
+        ]
+      ],
+      "walk_to": [
+        330,
+        782
+      ],
+      "exit": {
+        "room": "street_of_lamps",
+        "entry": "from_shed",
+        "direction": "left"
+      }
+    },
+    {
+      "id": "tallies",
+      "name": "Tally marks",
+      "polygon": [
+        [
+          460,
+          702
+        ],
+        [
+          460,
+          60
+        ],
+        [
+          640,
+          60
+        ],
+        [
+          640,
+          702
+        ]
+      ],
+      "walk_to": [
+        560,
+        782
+      ]
+    },
+    {
+      "id": "oil",
+      "name": "Oil jars",
+      "polygon": [
+        [
+          660,
+          522
+        ],
+        [
+          660,
+          280
+        ],
+        [
+          1000,
+          280
+        ],
+        [
+          1000,
+          522
+        ]
+      ],
+      "walk_to": [
+        830,
+        782
+      ]
+    },
+    {
+      "id": "wicks",
+      "name": "Wick coils",
+      "polygon": [
+        [
+          1040,
+          522
+        ],
+        [
+          1040,
+          340
+        ],
+        [
+          1330,
+          340
+        ],
+        [
+          1330,
+          522
+        ]
+      ],
+      "walk_to": [
+        1180,
+        782
+      ]
+    },
+    {
+      "id": "bench",
+      "name": "Workbench",
+      "polygon": [
+        [
+          1400,
+          842
+        ],
+        [
+          1400,
+          540
+        ],
+        [
+          1900,
+          540
+        ],
+        [
+          1900,
+          842
+        ]
+      ],
+      "walk_to": [
+        1380,
+        862
+      ]
+    }
+  ],
+  "effects": {
+    "preset": "interior",
+    "light": [
+      800,
+      120
+    ],
+    "aim": 190
+  },
+  "id": "lamplighter_shed",
+  "then": "art-source/raw/IMG-0048/IMG-0048-v1.png"
+}

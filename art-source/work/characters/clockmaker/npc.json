@@ -1,0 +1,19 @@
+{
+  "id": "clockmaker", "speaker": "Clockmaker", "painting": "art-source/raw/IMG-0031/IMG-0031-v1.png",
+  "height": 420, "feet": [500, 1515], "speech": [600, 0], "subtitle_color": [0.85, 0.8, 0.95], "grid": 28,
+  "aliases": ["Hesper"],
+  "bones": [
+    {"name": "Base", "parent": "", "from": [500, 1515], "to": [500, 1100]},
+    {"name": "Spine", "parent": "Base", "from": [480, 1050], "to": [470, 300]},
+    {"name": "Head", "parent": "Spine", "from": [560, 280], "to": [600, 60]},
+    {"name": "Bundle", "parent": "Spine", "from": [600, 450], "to": [700, 620]}
+  ],
+  "motions": {
+    "idle": {"loop": true, "bones": {"Spine": [0.5, 0.2, 0.0], "Head": [1.6, 0.1, 0.5], "Bundle": [1.0, 0.25, 0.3]}},
+    "talk_a": {"loop": true, "bones": {"Spine": [0.6, 0.3, 0.0], "Head": [1.4, 0.25, 1.0]}, "voice": {"Head": 5.0, "Bundle": -3.0}},
+    "talk_b": {"loop": true, "bones": {"Spine": [0.8, 0.35, 0.0], "Head": [1.6, 0.3, 0.5]}, "voice": {"Head": -4.0, "Spine": 1.5}},
+    "fuss": {"loop": false, "length": 1.2, "keys": {
+      "Head": [[0.0, 0.0], [0.3, -6.0], [0.6, 6.0], [0.9, -6.0], [1.2, 0.0]],
+      "Bundle": [[0.0, 0.0], [0.6, -4.0], [1.2, 0.0]]}}
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "IMG-0037",
+  "title": "The canal bridge, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T22:54:37.257Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0027/IMG-0027-v1.png",
+          "sha256": "388618b140387bbcc631be93ec8cecc601aa232891a37e48c4ea13dad7f605ad"
+        },
+        {
+          "path": "docs/reference/concept-04-city-triptych.png",
+          "sha256": "b51413dd0140255ba68eee0f42e10000c0a0ce301df2ad442ceeb781c5f22f96"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: a high arched stone bridge over a still black canal in the old town at night, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: A high, arched stone bridge crosses the canal from the left middle ground to the right, with an iron lamp burning cold at its crown. Tall gothic houses rise straight out of the water on both banks, their reflections in the canal. Beyond the bridge on the right, the foot of a massive clock tower. A small rowing boat is moored at the left bank.\n\nThe lower third of the image is open, walkable ground: a broad stone quay along the canal fills the foreground, joining the bridge's rising deck. It is lit by pale moonlight with drifting fog or haze behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0037-v1.png",
+          "sha256": "a11e4711f0eaa6c29474d071a755afad10ef4b4a5a2f66592e99d555b0640ed5",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0037-v2.png",
+          "sha256": "7f1082df5382600a8d9035f88891c790500c2cb0fefa5a4cb1aacabeff8c6c7b",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0037-v3.png",
+          "sha256": "8f16410cb38ee547b54f76674f7848fdbe5e4a96ae37b997d2b5bd15ccb4bbc6",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 216164,
+        "outputTokens": 859
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d2c-dd8d-78a2-ac18-2a1a7360cce6",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d2c-dd8d-78a2-ac18-2a1a7360cce6/exec-3decebdd-e0c1-4237-9d05-71569b475b37.png",
+            "/Users/orcdev/.codex/generated_images/01a12d2c-dd8d-78a2-ac18-2a1a7360cce6/exec-93018113-4165-4eeb-b246-1b22f0ff346d.png",
+            "/Users/orcdev/.codex/generated_images/01a12d2c-dd8d-78a2-ac18-2a1a7360cce6/exec-19dd2e2e-8c80-4803-89ab-2f16343170a7.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque scenes using both references and your prompt exactly as provided.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

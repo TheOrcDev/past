@@ -409,3 +409,34 @@ XXL: five parts. It is re-estimated after slices 3 and 4.
 
     Screenshots are in `docs/qa/008/prologue/`. 123 GUT tests and the lint
     pass.
+- **2026-10-12, slice 5:** chapter 1, The Nameless Streets, plays from the
+  great doors to the lower gate.
+  - **Chart and script:** `docs/story/ch1-puzzles.md` has three threads (the
+    lamp, the key, the hour) that meet at the clock. The script is in
+    `content/dialogue/ch1/`, with 14 new hint goals and four journal pages.
+  - **Art (IMG-0027–0060):**
+    - 12 rooms, all with a then image; every then-edit aligned on its first
+      round, at p90 1.02–2.02 px;
+    - 4 NPCs (the Crier, the Lamplighter, the Broker, the Clockmaker);
+    - 5 close-ups (the tally wall, the edict, the slate, the escapement, the
+      seal cabinet);
+    - 1 item sheet. Gateway spend is still $0.
+  - **The turn:** Mathis gets his name back and his street keeps its warm
+    light. The apprentice's playable memory gives the third tooth. Eleven
+    bells strike the memory vista of the old town.
+  - **New:**
+    - `Actor.speaker_aliases`, for NPCs who remember their names;
+    - NPC paintings and item icons graded grey, apart from what keeps color
+      (decision #24);
+    - `Chapters.start_state` and part `items` and `memories`, to start
+      mid-game;
+    - `past-art icons --colour`.
+  - **Pack fix:** the browser pack had grown to 304 MB. Sol's scratch copies
+    and `build/screenshots` were inside the project and got imported. Now
+    `build/` carries a `.gdignore` (made by `tools/godot.sh`), Sol's scratch
+    goes to the system temp folder, and `export.sh` checks the pack's real
+    file list (`tools/build/pck_list.py`). The demo pack is 143 MB of its
+    150 MB budget.
+  - **Proof:** `Ch1Playthrough` passes in GUT and as `--qa=ch1` on desktop
+    (`docs/qa/008/ch1/`). The prologue still passes in Chrome. 124 GUT tests
+    and the lint pass.

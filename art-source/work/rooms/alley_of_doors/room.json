@@ -1,0 +1,237 @@
+{
+  "display_name": "Alley of doors",
+  "now": "art-source/raw/IMG-0038/IMG-0038-v3.png",
+  "walk": [
+    [
+      260,
+      902
+    ],
+    [
+      600,
+      892
+    ],
+    [
+      1250,
+      882
+    ],
+    [
+      1700,
+      892
+    ],
+    [
+      1760,
+      1050
+    ],
+    [
+      300,
+      1050
+    ],
+    [
+      220,
+      962
+    ]
+  ],
+  "scale_zones": {
+    "far_y": 882,
+    "far_scale": 0.86,
+    "near_y": 1050,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      900,
+      962
+    ],
+    "from_parvis": [
+      210,
+      985
+    ],
+    "from_tavern": [
+      1620,
+      932
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "to_parvis",
+      "name": "Down to the square",
+      "polygon": [
+        [
+          0,
+          922
+        ],
+        [
+          200,
+          922
+        ],
+        [
+          222,
+          1062
+        ],
+        [
+          0,
+          1062
+        ]
+      ],
+      "walk_to": [
+        190,
+        990
+      ],
+      "exit": {
+        "room": "cathedral_parvis",
+        "entry": "from_alley",
+        "direction": "down"
+      }
+    },
+    {
+      "id": "board",
+      "name": "Notice board",
+      "polygon": [
+        [
+          60,
+          702
+        ],
+        [
+          60,
+          232
+        ],
+        [
+          332,
+          332
+        ],
+        [
+          332,
+          702
+        ]
+      ],
+      "walk_to": [
+        330,
+        932
+      ]
+    },
+    {
+      "id": "doors",
+      "name": "Doors",
+      "polygon": [
+        [
+          380,
+          882
+        ],
+        [
+          380,
+          330
+        ],
+        [
+          680,
+          380
+        ],
+        [
+          680,
+          882
+        ]
+      ],
+      "walk_to": [
+        530,
+        912
+      ]
+    },
+    {
+      "id": "steps",
+      "name": "Steps",
+      "polygon": [
+        [
+          850,
+          882
+        ],
+        [
+          900,
+          600
+        ],
+        [
+          1190,
+          600
+        ],
+        [
+          1250,
+          882
+        ]
+      ],
+      "walk_to": [
+        1050,
+        902
+      ]
+    },
+    {
+      "id": "sign",
+      "name": "Tavern sign",
+      "polygon": [
+        [
+          1330,
+          502
+        ],
+        [
+          1330,
+          380
+        ],
+        [
+          1512,
+          380
+        ],
+        [
+          1512,
+          502
+        ]
+      ],
+      "walk_to": [
+        1420,
+        912
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "tavern_door",
+      "name": "Tavern door",
+      "polygon": [
+        [
+          1585,
+          887
+        ],
+        [
+          1585,
+          560
+        ],
+        [
+          1640,
+          510
+        ],
+        [
+          1700,
+          560
+        ],
+        [
+          1715,
+          887
+        ]
+      ],
+      "walk_to": [
+        1640,
+        922
+      ],
+      "exit": {
+        "room": "tavern_lost_name",
+        "entry": "from_alley",
+        "direction": "right"
+      }
+    }
+  ],
+  "effects": {
+    "preset": "exterior",
+    "light": [
+      1270,
+      70
+    ],
+    "aim": 200
+  },
+  "id": "alley_of_doors",
+  "then": "art-source/raw/IMG-0060/IMG-0060-v2.png"
+}

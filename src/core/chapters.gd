@@ -44,3 +44,18 @@ static func all_rooms() -> Array[StringName]:
 ## marked "web" (decision #20).
 static func in_build(room_id: StringName) -> bool:
 	return ResourceLoader.exists(Rooms.ROOM_PATH % [room_id, room_id])
+
+
+## Gives GameState what a player holds on reaching `part`'s start: its story
+## flags, memories and carried items (for QA and tests that start mid-game).
+static func start_state(part: Dictionary) -> void:
+	var state: Node = (Engine.get_main_loop() as SceneTree).root.get_node(^"GameState")
+	var inventory: Node = (Engine.get_main_loop() as SceneTree).root.get_node(^"Inventory")
+	for flag: String in part.get("flags", []):
+		state.set_flag(StringName(flag))
+	for memory: String in part.get("memories", []):
+		state.remember(StringName(memory))
+	for item: String in part.get("items", []):
+		if not inventory.has(StringName(item)):
+			inventory.add(StringName(item))
+

@@ -140,6 +140,9 @@
       }
     }
   },
+  "aliases": [
+    "Tobias"
+  ],
   "texture": "res://content/characters/gravedigger/gravedigger.png",
   "feet": [
     155.3,

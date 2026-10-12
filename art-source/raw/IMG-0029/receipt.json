@@ -1,0 +1,76 @@
+{
+  "id": "IMG-0029",
+  "title": "NPC: the Lamplighter",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T22:53:39.218Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "1440x2560",
+      "quality": "high",
+      "n": 3,
+      "background": "transparent",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0013/IMG-0013-v2.png",
+          "sha256": "aea3ec9ef0da502490ee6ecc801c0a0d4cd1f6bcf806d4f9b16ec70c8cb05977"
+        }
+      ],
+      "mask": null,
+      "prompt": "A single full-body character for a dark gothic point-and-click adventure game, painted in the same monochrome greyscale ink-wash matte-painting style as the reference image: the old town Lamplighter: a tall, very thin, slightly stooped man in a long work coat and a wide-brimmed hat, a short wooden ladder slung over his shoulder and a long brass lighting pole held upright in one hand.\n\nThey are a grey shade of a person: solid, made of mid and light greys with soft ink texture, never pure black, with no visible face (his face is hidden in the deep shadow of his wide hat brim and a scarf wound over his mouth). Pose: standing patiently, the lighting pole planted beside him and reaching above his head, the ladder on his shoulder, facing three-quarters to the viewer's right. Shown whole from head to feet, facing three-quarters to the viewer's left, filling most of the image height, with a little space around them. Even soft light from the upper left with a gentle cool rim light. On a fully transparent background, with no ground, shadow or scenery.\n\nNo text, labels, letters or numbers. No other figures. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0029-v1.png",
+          "sha256": "823da5fe1675144187dff572ac1a907f602f6988fb33e90f2040366941a45582",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0029-v2.png",
+          "sha256": "2cb94cb6ec4f43671229414585ff212337151ae1ed5a96ae2864657d590aba29",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0029-v3.png",
+          "sha256": "9387b270e84fcf8101888a74597ae38dcf93c74cc32b4b84335d3f46958e7dea",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 276239,
+        "outputTokens": 1496
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d2b-fae6-7262-a2db-5eb488869b61",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d2b-fae6-7262-a2db-5eb488869b61/exec-8bb913ad-14d4-45d5-bf9c-5cce141c8ac2.png",
+            "/Users/orcdev/.codex/generated_images/01a12d2b-fae6-7262-a2db-5eb488869b61/exec-7a77f6ce-c821-4239-b027-ec08c4b386aa.png",
+            "/Users/orcdev/.codex/generated_images/01a12d2b-fae6-7262-a2db-5eb488869b61/exec-46f59dd7-79c9-45d2-93e7-8434aea6efd1.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1024,
+              "height": 1536
+            },
+            {
+              "width": 1024,
+              "height": 1536
+            },
+            {
+              "width": 1024,
+              "height": 1536
+            }
+          ],
+          "messages": [
+            "I’ll generate three portrait variants using the reference image and your exact prompt, each with a transparent background.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

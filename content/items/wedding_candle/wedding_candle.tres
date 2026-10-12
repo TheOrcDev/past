@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemDef" format=3]
+
+[ext_resource type="Texture2D" path="res://content/items/wedding_candle/icon.png" id="1_rgrao"]
+[ext_resource type="Script" path="res://src/core/item_def.gd" id="2_8xwt8"]
+
+[resource]
+script = ExtResource("2_8xwt8")
+id = &"wedding_candle"
+display_name = "Wedding candle"
+icon = ExtResource("1_rgrao")
+look_file = &"ch1/items"
+look_cue = &"wedding_candle_look"

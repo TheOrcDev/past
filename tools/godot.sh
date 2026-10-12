@@ -11,4 +11,7 @@ if [[ ! -x "$GODOT_BIN" ]]; then
 	exit 1
 fi
 
+# build/ holds exports, screenshots and logs; Godot must never import it.
+mkdir -p "$ROOT/build" && touch "$ROOT/build/.gdignore"
+
 exec "$GODOT_BIN" --path "$ROOT" "$@"

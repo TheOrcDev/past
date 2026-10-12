@@ -1,0 +1,382 @@
+~ parvis_arrival
+
+Unknown: So this is the city. It looks like it's waiting for someone to say its name. [ID:CH1_PARVIS_ARRIVAL_1]
+
+=> END
+
+~ parvis_doors_look
+
+Unknown: The great doors, and the cathedral behind them. The way back to my grave, if I get homesick. [ID:CH1_PARVIS_DOORS_LOOK_1]
+
+=> END
+
+~ platform_look
+
+Unknown: A crier's platform. Whatever's announced here, everybody hears. Then forgets. [ID:CH1_PLATFORM_LOOK_1]
+
+=> END
+
+~ trough_look
+
+Unknown: A horse trough, dry. No horses, either. Nobody remembers what they were called. [ID:CH1_TROUGH_LOOK_1]
+
+=> END
+
+~ tower_far_look
+
+Unknown: A clock tower. Stopped. I can tell from here. [ID:CH1_TOWER_FAR_LOOK_1]
+
+=> END
+
+~ crier_look
+
+Unknown: A man with a bell, shouting into an empty square. Optimism, again. [ID:CH1_CRIER_LOOK_1]
+
+=> END
+
+~ crier_talk
+
+if not GameState.get_flag("crier_met")
+	do GameState.set_flag("crier_met")
+	Crier: Hear ye! Hear ye! The bridge tolls are lowered! The spring fair is— ah. A listener! [ID:CH1_CRIER_MEET_1]
+	Crier: You're news! A walking shadow, in the square! I'll cry you at the next bell. [ID:CH1_CRIER_MEET_2]
+	Unknown: Which bell is that? [ID:CH1_CRIER_MEET_3]
+	Crier: The next one. There's always a next one. There hasn't been, lately. [ID:CH1_CRIER_MEET_4]
+=> crier_ask
+
+~ crier_ask
+
+Crier: Well, friend? [ID:CH1_CRIER_WELL]
+- What's the latest news? [ID:CH1_CRIER_ASK_NEWS]
+	do GameState.set_flag("knows_eleven")
+	Crier: Hear ye! At eleven bells, the High Magistrate— [ID:CH1_CRIER_NEWS_1]
+	Crier: ...the High Magistrate... [ID:CH1_CRIER_NEWS_2]
+	Crier: It goes, every time. Right there. Like a word dropped down a well. [ID:CH1_CRIER_NEWS_3]
+	Unknown: Eleven bells. That's something. [ID:CH1_CRIER_NEWS_4]
+	=> crier_ask
+- Where is everyone? [ID:CH1_CRIER_ASK_WHERE]
+	Crier: Here! Doing what they always did. The Lamplighter's on the lamp street. [ID:CH1_CRIER_WHERE_1]
+	Crier: The Broker's in his shop off the market. The Clockmaker's under the tower, keeping a stopped clock ready. [ID:CH1_CRIER_WHERE_2]
+	=> crier_ask
+- Who was the High Magistrate? [if GameState.get_flag("knows_eleven") /] [ID:CH1_CRIER_ASK_WHO]
+	Crier: Somebody important. Important enough to be news. That's all I've got. [ID:CH1_CRIER_WHO_1]
+	Unknown: That makes two of us. [ID:CH1_CRIER_WHO_2]
+	=> crier_ask
+- Goodbye. [ID:CH1_CRIER_ASK_BYE]
+	Crier: Hear ye! A shadow departs! ...Nobody heard. Still counts. [ID:CH1_CRIER_BYE]
+	=> END
+
+~ lamps_look
+
+Unknown: Every lamp is lit, and none of them light anything. Cold flames, like a picture of a fire. [ID:CH1_LAMPS_LOOK_1]
+
+=> END
+
+~ lamps_warm_look
+
+Unknown: Every lamp on the street, warm and gold. Mathis has been busy. [ID:CH1_LAMPS_WARM_LOOK_1]
+
+=> END
+
+~ lamps_use
+
+Unknown: Not hot, not cold. Just absent. [ID:CH1_LAMPS_USE_1]
+
+=> END
+
+~ shops_look
+
+Unknown: Shutters down, signs blank. A whole street that forgot what it sold. [ID:CH1_SHOPS_LOOK_1]
+
+=> END
+
+~ shed_door_look
+
+Unknown: A shed. Oil, by the smell. Or the memory of oil. [ID:CH1_SHED_DOOR_LOOK_1]
+
+=> END
+
+~ lamplighter_look
+
+Unknown: A tall man with a long pole, lighting lamps that don't light. [ID:CH1_LL_LOOK_1]
+
+=> END
+
+~ lamplighter_talk
+
+if GameState.get_flag("mathis_named")
+	Mathis: Clara used to say I lit them too slow. She was right. I'm taking my time now. [ID:CH1_MATHIS_AFTER_1]
+	=> END
+if not GameState.get_flag("lamplighter_met")
+	do GameState.set_flag("lamplighter_met")
+	Lamplighter: Evening. It's always evening. [ID:CH1_LL_MEET_1]
+	Lamplighter: I light them, every one, every night. Then I go back to the start and light them again. [ID:CH1_LL_MEET_2]
+=> lamplighter_ask
+
+~ lamplighter_ask
+
+Lamplighter: Something you need? [ID:CH1_LL_NEED]
+- Why don't they give any light? [ID:CH1_LL_ASK_LIGHT]
+	do GameState.set_flag("lamplighter_wants")
+	Lamplighter: Oil's good. Wick's good. It's the flame. It doesn't remember how to be warm. [ID:CH1_LL_LIGHT_1]
+	Lamplighter: I'd give a great deal for one lamp that gave light. Just one. [ID:CH1_LL_LIGHT_2]
+	=> lamplighter_ask
+- What are the marks in your shed? [if GameState.get_flag("shed_seen") /] [ID:CH1_LL_ASK_MARKS]
+	Lamplighter: One for every name I can't remember. I add one whenever I notice a new gap. [ID:CH1_LL_MARKS_1]
+	Lamplighter: There are a lot of gaps. [ID:CH1_LL_MARKS_2]
+	=> lamplighter_ask
+- Goodbye. [ID:CH1_LL_ASK_BYE]
+	Lamplighter: Mind the dark. It's most of what there is. [ID:CH1_LL_BYE]
+	=> END
+
+~ lamplighter_candle
+
+Lamplighter: A wedding candle. Where did you— [ID:CH1_LL_CANDLE_1]
+Lamplighter: It's catching. Look at that. It's warm. [ID:CH1_LL_CANDLE_2]
+Unknown: I've seen that candle lit before. A wedding, in the market. A man lit every lamp on this street from it, for his daughter. [ID:CH1_LL_CANDLE_3]
+Lamplighter: ... [ID:CH1_LL_CANDLE_4]
+Lamplighter: That's my memory. That's my daughter. How do you have my memory? [ID:CH1_LL_CANDLE_5]
+Unknown: I don't know. I think I've been carrying it. Here. It's yours. [ID:CH1_LL_CANDLE_6]
+Mathis: Clara. Her name was Clara. And mine... mine is Mathis. [ID:CH1_LL_CANDLE_7]
+Mathis: Mathis. I'd forgotten I had one. [ID:CH1_LL_CANDLE_8]
+Mathis: Take the lamp. You'll need light where you're going, and I've a whole street of it now. [ID:CH1_LL_CANDLE_9]
+
+=> END
+
+~ lamplighter_after
+
+Unknown: Not my memory. His. I've been walking around with other people's lives in my pockets. [ID:CH1_LL_AFTER_1]
+Unknown: So what else am I carrying? And who did I take it from? [ID:CH1_LL_AFTER_2]
+
+=> END
+
+~ lamplighter_other
+
+Lamplighter: Kind of you. It won't light, though. Nothing does. [ID:CH1_LL_OTHER_1]
+
+=> END
+
+~ shed_arrival
+
+Unknown: Tally marks. Floor to ceiling, in fives. [ID:CH1_SHED_ARRIVAL_1]
+
+=> END
+
+~ tallies_look
+
+Unknown: Each mark a name somebody lost. He's been counting a long time. [ID:CH1_TALLIES_LOOK_1]
+
+=> END
+
+~ ledger_marks_look
+
+Unknown: Thousands. And he's the only one keeping count. [ID:CH1_LEDGER_MARKS_LOOK_1]
+
+=> END
+
+~ ledger_last_look
+
+Unknown: The last group isn't finished. Four marks, waiting for a fifth. [ID:CH1_LEDGER_LAST_LOOK_1]
+
+=> END
+
+~ oil_look
+
+Unknown: Lamp oil. The one thing in here that still knows what it's for. [ID:CH1_OIL_LOOK_1]
+
+=> END
+
+~ wicks_look
+
+Unknown: Coils of wick, enough to light the city twice. [ID:CH1_WICKS_LOOK_1]
+
+=> END
+
+~ bench_shed_look
+
+Unknown: A workbench, a lamp chimney, tools laid out just so. A careful man. [ID:CH1_BENCH_SHED_LOOK_1]
+
+=> END
+
+~ market_arrival
+
+Unknown: A market with nothing for sale. Except, apparently, by one man. [ID:CH1_MARKET_ARRIVAL_1]
+
+=> END
+
+~ stalls_look
+
+Unknown: Empty stalls. The awnings are still trying their best. [ID:CH1_STALLS_LOOK_1]
+
+=> END
+
+~ saint_look
+
+Unknown: A weeping saint, with a faded ribbon tied round her wrist. Somebody tied it there to remember something. [ID:CH1_SAINT_LOOK_1]
+
+=> END
+
+~ ribbon_use
+
+Unknown: Silk, once. It's warm, which silk shouldn't be. [ID:CH1_RIBBON_USE_1]
+
+=> END
+
+~ wedding_return
+
+Unknown: A wedding. Petals, music, and the whole street lit gold. [ID:CH1_WEDDING_RETURN_1]
+Unknown: An old man lit every lamp from the bride's candle, one by one, and she laughed at how slow he was. [ID:CH1_WEDDING_RETURN_2]
+Unknown: Then the whole procession went up the alley to the tavern, singing. [ID:CH1_WEDDING_RETURN_3]
+
+=> END
+
+~ pawn_door_look
+
+Unknown: A shop full of other people's things. My kind of place, apparently. [ID:CH1_PAWN_DOOR_LOOK_1]
+
+=> END
+
+~ alley_doors_look
+
+Unknown: Every nameplate pried off. You can still see the screw holes. [ID:CH1_ALLEY_DOORS_LOOK_1]
+
+=> END
+
+~ edict_main_look
+
+Unknown: "By order of the High Magistrate: a name is a privilege, not a right." Charming. [ID:CH1_EDICT_MAIN_LOOK_1]
+
+=> END
+
+~ edict_time_look
+
+Unknown: "Posted at the eleventh bell." Eleven again. [ID:CH1_EDICT_TIME_LOOK_1]
+
+=> END
+
+~ edict_seal_look
+
+Unknown: A seal at the bottom of every order. The same one, again and again. [ID:CH1_EDICT_SEAL_LOOK_1]
+
+=> END
+
+~ tavern_door_look
+
+Unknown: A tavern. The sign's been painted over. [ID:CH1_TAVERN_DOOR_LOOK_1]
+
+=> END
+
+~ tavern_arrival
+
+Unknown: A tavern with nobody drinking. That's how you know something's really wrong. [ID:CH1_TAVERN_ARRIVAL_1]
+
+=> END
+
+~ mirror_look
+
+Unknown: The mirror shows the bar, the stools, the door. Not me. I'm choosing not to take it personally. [ID:CH1_MIRROR_LOOK_1]
+
+=> END
+
+~ bar_look
+
+Unknown: A bar, and every bottle empty. Not drunk. Just empty. [ID:CH1_BAR_LOOK_1]
+
+=> END
+
+~ bar_use
+
+Unknown: The wood's worn smooth where elbows used to be. [ID:CH1_BAR_USE_1]
+
+=> END
+
+~ toast_return
+
+Unknown: A full house, glasses up, a name shouted for the happy couple... [ID:CH1_TOAST_RETURN_1]
+Unknown: And everyone stopped, mid-word, and forgot it. Then laughed, as if nothing had happened. [ID:CH1_TOAST_RETURN_2]
+
+=> END
+
+~ slate_look
+
+Unknown: A slate of debts. [ID:CH1_SLATE_LOOK_1]
+
+=> END
+
+~ tally_names_look
+
+Unknown: Every name on it scratched out. Nobody owes anything if nobody's anyone. [ID:CH1_TALLY_NAMES_LOOK_1]
+
+=> END
+
+~ tally_sums_look
+
+Unknown: The sums are still there. Money remembers better than people. [ID:CH1_TALLY_SUMS_LOOK_1]
+
+=> END
+
+~ mantel_look
+
+Unknown: A cold fireplace, and a mantel with nothing much on it. [ID:CH1_MANTEL_LOOK_1]
+
+=> END
+
+~ mantel_candle_look
+
+Unknown: A candle stub on the mantel, with a scrap of ribbon. That's the bride's candle. [ID:CH1_MANTEL_CANDLE_LOOK_1]
+
+=> END
+
+~ mantel_take
+
+Unknown: Sorry, bride. Someone needs this more than you do now. [ID:CH1_MANTEL_TAKE_1]
+
+=> END
+
+~ mantel_empty
+
+Unknown: Just the mantel now. [ID:CH1_MANTEL_EMPTY_1]
+
+=> END
+
+~ bridge_look
+
+Unknown: A high bridge, and the canal under it like a sheet of black glass. [ID:CH1_BRIDGE_LOOK_1]
+
+=> END
+
+~ canal_look
+
+Unknown: Still water. It isn't even reflecting the right things. [ID:CH1_CANAL_LOOK_1]
+
+=> END
+
+~ boat_look
+
+Unknown: A rowing boat, tied up, going nowhere. I know the feeling. [ID:CH1_BOAT_LOOK_1]
+
+=> END
+
+~ bridge_lamp_look
+
+Unknown: A lamp at the top of the bridge, burning cold like the rest. [ID:CH1_BRIDGE_LAMP_LOOK_1]
+
+=> END
+
+~ alley_steps_look
+
+Unknown: Steps climbing on into the fog. Nothing up there is calling me yet. [ID:CH1_ALLEY_STEPS_LOOK_1]
+
+=> END
+
+~ fountain_look
+
+Unknown: A dry fountain. Coins in the bottom, all of them wishes nobody remembers making. [ID:CH1_FOUNTAIN_LOOK_1]
+
+=> END
+
+~ fireplace_look
+
+Unknown: A cold hearth. The ashes are older than anything else in here. [ID:CH1_FIREPLACE_LOOK_1]
+
+=> END

@@ -1,0 +1,21 @@
+{
+  "id": "broker", "speaker": "Broker", "painting": "art-source/raw/IMG-0030/IMG-0030-v1.png",
+  "height": 400, "feet": [640, 1515], "speech": [560, 0], "subtitle_color": [0.82, 0.9, 0.78], "grid": 28,
+  "aliases": ["Fennick"],
+  "bones": [
+    {"name": "Base", "parent": "", "from": [640, 1515], "to": [650, 1050]},
+    {"name": "Spine", "parent": "Base", "from": [600, 1000], "to": [560, 350]},
+    {"name": "Head", "parent": "Spine", "from": [560, 300], "to": [560, 30]},
+    {"name": "ArmL", "parent": "Spine", "from": [720, 340], "to": [880, 200]},
+    {"name": "Scale", "parent": "ArmL", "from": [880, 200], "to": [880, 410]},
+    {"name": "ArmBelly", "parent": "Spine", "from": [420, 350], "to": [560, 620]}
+  ],
+  "motions": {
+    "idle": {"loop": true, "bones": {"Spine": [0.6, 0.2, 0.0], "Head": [1.2, 0.15, 0.7], "Scale": [2.0, 0.4, 0.0]}},
+    "talk_a": {"loop": true, "bones": {"Spine": [0.8, 0.3, 0.0], "Head": [1.4, 0.25, 1.0], "Scale": [2.0, 0.4, 0.0]}, "voice": {"Head": 4.0, "ArmL": -4.0, "Scale": 6.0}},
+    "talk_b": {"loop": true, "bones": {"Spine": [1.0, 0.35, 0.0], "Head": [1.6, 0.3, 0.5], "Scale": [2.0, 0.4, 0.0]}, "voice": {"Head": -3.0, "ArmBelly": -6.0}},
+    "weigh": {"loop": false, "length": 1.6, "keys": {
+      "ArmL": [[0.0, 0.0], [0.4, -6.0], [0.8, 4.0], [1.2, -3.0], [1.6, 0.0]],
+      "Scale": [[0.0, 0.0], [0.4, 10.0], [0.8, -10.0], [1.2, 6.0], [1.6, 0.0]]}}
+  }
+}

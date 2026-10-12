@@ -140,7 +140,7 @@ def cmd_icons(args: argparse.Namespace) -> int:
     from . import icons
 
     root = Path(__file__).resolve().parents[3]
-    _print({"icons": icons.cut(Path(args.sheet), args.names, root / "content/items")})
+    _print({"icons": icons.cut(Path(args.sheet), args.names, root / "content/items", set(args.colour))})
     return 0
 
 
@@ -242,6 +242,7 @@ def main(argv: list[str] | None = None) -> int:
 
     p = sub.add_parser("icons", help="cut an item sheet into content/items/<name>/icon.png, in reading order")
     p.add_argument("--sheet", required=True)
+    p.add_argument("--colour", nargs="*", default=[], help="icons that keep their color; the rest go grey")
     p.add_argument("names", nargs="+")
     p.set_defaults(func=cmd_icons)
 

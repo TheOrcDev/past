@@ -1,0 +1,76 @@
+{
+  "id": "IMG-0027",
+  "title": "The cathedral square, now (chapter 1 style key)",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T22:51:27.556Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0011/IMG-0011-v1.png",
+          "sha256": "80415ee360bb08b7ba72c0b22490f4e30c8d056b827961d01a0574bcb364d65f"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: the broad cobbled square in front of a great gothic cathedral's west front, in a ruined old town at night, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: On the far left, the cathedral's massive carved west front rises out of the top of the frame, with its huge pair of carved wooden doors at the top of a few wide steps, standing ajar. Left of centre, a raised wooden crier's platform with a tall iron post and a bracket for a handbell. To the right, a dry stone horse trough. Narrow streets leave the square between tall, leaning gothic houses with steep gables: one street behind the platform lined with iron lamp posts, and one narrow stepped alley at the right edge. Beyond the rooftops, a tall clock tower with a large round clock face, and other spires dissolving into fog.\n\nThe lower third of the image is open, walkable ground: the cobbled square runs across the whole width, open and clear. It is lit by pale moonlight with drifting fog or haze behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0027-v1.png",
+          "sha256": "388618b140387bbcc631be93ec8cecc601aa232891a37e48c4ea13dad7f605ad",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0027-v2.png",
+          "sha256": "9f0f50ebbbf585ce55196c6f1ee8245345d6b9a66467429dc951c8cbb4252f01",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0027-v3.png",
+          "sha256": "025ad031af0d4d5afc3bc4ac73550948003d522564f24b9269645ea6ec3578fe",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 107092,
+        "outputTokens": 1327
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d29-f93e-7aa2-ab34-67693183a641",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d29-f93e-7aa2-ab34-67693183a641/exec-b23fca67-51ba-4c21-a3a4-5d5628f25601.png",
+            "/Users/orcdev/.codex/generated_images/01a12d29-f93e-7aa2-ab34-67693183a641/exec-9e5b5061-cb53-4692-947d-fb4c979572b8.png",
+            "/Users/orcdev/.codex/generated_images/01a12d29-f93e-7aa2-ab34-67693183a641/exec-eb9e52d7-f40e-4def-804b-eb601599cbd2.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque variants using the supplied reference and the exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

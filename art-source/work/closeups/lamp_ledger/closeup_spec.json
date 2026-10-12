@@ -1,0 +1,50 @@
+{
+  "background": "res://content/closeups/lamp_ledger/art/bg.png",
+  "hotspots": [
+    {
+      "id": "last",
+      "name": "The last marks",
+      "polygon": [
+        [
+          1560,
+          860
+        ],
+        [
+          1900,
+          860
+        ],
+        [
+          1900,
+          1060
+        ],
+        [
+          1560,
+          1060
+        ]
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "marks",
+      "name": "Tally marks",
+      "polygon": [
+        [
+          40,
+          40
+        ],
+        [
+          1880,
+          40
+        ],
+        [
+          1880,
+          1040
+        ],
+        [
+          40,
+          1040
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "id": "IMG-0031",
+  "title": "NPC: the Clockmaker",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T22:53:51.829Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "1440x2560",
+      "quality": "high",
+      "n": 3,
+      "background": "transparent",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0013/IMG-0013-v2.png",
+          "sha256": "aea3ec9ef0da502490ee6ecc801c0a0d4cd1f6bcf806d4f9b16ec70c8cb05977"
+        }
+      ],
+      "mask": null,
+      "prompt": "A single full-body character for a dark gothic point-and-click adventure game, painted in the same monochrome greyscale ink-wash matte-painting style as the reference image: the Clockmaker: a wiry, fussy old man in a long leather apron over a waistcoat and rolled shirtsleeves, a flat cap, and a brass jeweller's loupe on a headband over one eye, clutching an armful of brass springs and gears.\n\nThey are a grey shade of a person: solid, made of mid and light greys with soft ink texture, never pure black, with no visible face (his face is hidden in shadow under the cap; only the brass loupe glints). Pose: standing, the bundle of springs and gears hugged to his chest, head tilted as if listening for ticking, facing three-quarters to the viewer's right. Shown whole from head to feet, facing three-quarters to the viewer's left, filling most of the image height, with a little space around them. Even soft light from the upper left with a gentle cool rim light. On a fully transparent background, with no ground, shadow or scenery.\n\nNo text, labels, letters or numbers. No other figures. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0031-v1.png",
+          "sha256": "72246c1a6209aae67fe534836a2c0b740a9d002ead5b2a6810fc1282728c0c69",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0031-v2.png",
+          "sha256": "6eb586b8fb008d22e7ef8ba68357c78b4e9b02dfbc0aaae95f845cc3c227c7c0",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0031-v3.png",
+          "sha256": "e4daeff703a888fe125bb1de2aed826c90a20b39bd25158abe121032bb88a7c8",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 199506,
+        "outputTokens": 819
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d2c-2bff-7141-a261-9f2f5b85476d",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d2c-2bff-7141-a261-9f2f5b85476d/exec-530889c9-d605-4ccd-bc5f-f96e845b882d.png",
+            "/Users/orcdev/.codex/generated_images/01a12d2c-2bff-7141-a261-9f2f5b85476d/exec-ada6b77d-928b-47ca-b211-4ff91eaa46b5.png",
+            "/Users/orcdev/.codex/generated_images/01a12d2c-2bff-7141-a261-9f2f5b85476d/exec-96fec165-3d6a-424b-ac09-36e70c7656aa.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1024,
+              "height": 1536
+            },
+            {
+              "width": 1024,
+              "height": 1536
+            },
+            {
+              "width": 1024,
+              "height": 1536
+            }
+          ],
+          "messages": [
+            "I’ll generate three transparent portrait variants using the reference and your exact prompt.",
+            "Two images are generated. I’m generating the third with the same prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

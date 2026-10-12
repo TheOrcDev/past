@@ -1,0 +1,309 @@
+{
+  "display_name": "Cathedral square",
+  "now": "art-source/raw/IMG-0027/IMG-0027-v1.png",
+  "walk": [
+    [
+      180,
+      738
+    ],
+    [
+      600,
+      712
+    ],
+    [
+      1100,
+      722
+    ],
+    [
+      1340,
+      792
+    ],
+    [
+      1760,
+      797
+    ],
+    [
+      1800,
+      712
+    ],
+    [
+      1900,
+      714
+    ],
+    [
+      1900,
+      1000
+    ],
+    [
+      300,
+      1010
+    ],
+    [
+      130,
+      960
+    ]
+  ],
+  "scale_zones": {
+    "far_y": 712,
+    "far_scale": 0.72,
+    "near_y": 1010,
+    "near_scale": 1.02
+  },
+  "markers": {
+    "default": [
+      900,
+      860
+    ],
+    "from_cathedral": [
+      330,
+      765
+    ],
+    "from_street": [
+      1150,
+      748
+    ],
+    "from_alley": [
+      1780,
+      745
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "crier",
+      "name": "Crier",
+      "polygon": [
+        [
+          580,
+          768
+        ],
+        [
+          580,
+          440
+        ],
+        [
+          650,
+          410
+        ],
+        [
+          732,
+          440
+        ],
+        [
+          732,
+          768
+        ]
+      ],
+      "walk_to": [
+        800,
+        800
+      ],
+      "default_verb": "talk",
+      "pick_priority": 2
+    },
+    {
+      "id": "doors",
+      "name": "Great doors",
+      "polygon": [
+        [
+          150,
+          602
+        ],
+        [
+          150,
+          272
+        ],
+        [
+          230,
+          250
+        ],
+        [
+          300,
+          270
+        ],
+        [
+          352,
+          330
+        ],
+        [
+          352,
+          602
+        ]
+      ],
+      "walk_to": [
+        300,
+        750
+      ],
+      "exit": {
+        "room": "cathedral_nave",
+        "entry": "from_parvis",
+        "direction": "up"
+      }
+    },
+    {
+      "id": "platform",
+      "name": "Crier's platform",
+      "polygon": [
+        [
+          745,
+          722
+        ],
+        [
+          745,
+          320
+        ],
+        [
+          910,
+          320
+        ],
+        [
+          1090,
+          722
+        ]
+      ],
+      "walk_to": [
+        920,
+        770
+      ]
+    },
+    {
+      "id": "trough",
+      "name": "Horse trough",
+      "polygon": [
+        [
+          1360,
+          782
+        ],
+        [
+          1360,
+          670
+        ],
+        [
+          1640,
+          660
+        ],
+        [
+          1742,
+          620
+        ],
+        [
+          1742,
+          792
+        ]
+      ],
+      "walk_to": [
+        1500,
+        830
+      ]
+    },
+    {
+      "id": "tower_far",
+      "name": "Clock tower",
+      "polygon": [
+        [
+          1160,
+          252
+        ],
+        [
+          1160,
+          100
+        ],
+        [
+          1272,
+          100
+        ],
+        [
+          1272,
+          252
+        ]
+      ],
+      "walk_to": [
+        1200,
+        760
+      ]
+    },
+    {
+      "id": "street",
+      "name": "Street of lamps",
+      "polygon": [
+        [
+          1040,
+          692
+        ],
+        [
+          1040,
+          482
+        ],
+        [
+          1250,
+          482
+        ],
+        [
+          1250,
+          692
+        ]
+      ],
+      "walk_to": [
+        1150,
+        738
+      ],
+      "exit": {
+        "room": "street_of_lamps",
+        "entry": "from_parvis",
+        "direction": "up"
+      }
+    },
+    {
+      "id": "alley",
+      "name": "Alley",
+      "polygon": [
+        [
+          1730,
+          702
+        ],
+        [
+          1730,
+          520
+        ],
+        [
+          1850,
+          520
+        ],
+        [
+          1882,
+          702
+        ]
+      ],
+      "walk_to": [
+        1800,
+        728
+      ],
+      "exit": {
+        "room": "alley_of_doors",
+        "entry": "from_parvis",
+        "direction": "up"
+      }
+    }
+  ],
+  "npcs": [
+    {
+      "scene": "res://content/characters/crier/crier.tscn",
+      "name": "Crier",
+      "position": [
+        655,
+        768
+      ],
+      "facing": "right",
+      "era": "now"
+    }
+  ],
+  "effects": {
+    "preset": "exterior",
+    "light": [
+      1370,
+      80
+    ],
+    "aim": 225
+  },
+  "id": "cathedral_parvis",
+  "then": "art-source/raw/IMG-0044/IMG-0044-v1.png"
+}

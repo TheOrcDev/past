@@ -1,0 +1,6 @@
+[
+  {"id": "winding_key", "name": "Winding key", "icon": "res://content/items/winding_key/icon.png", "look_file": "ch1/items", "look_cue": "winding_key_look"},
+  {"id": "wedding_candle", "name": "Wedding candle", "icon": "res://content/items/wedding_candle/icon.png", "look_file": "ch1/items", "look_cue": "wedding_candle_look"},
+  {"id": "warm_lamp", "name": "Warm lamp", "icon": "res://content/items/warm_lamp/icon.png", "look_file": "ch1/items", "look_cue": "warm_lamp_look"},
+  {"id": "seal_ring", "name": "Seal ring", "icon": "res://content/items/seal_ring/icon.png", "look_file": "ch1/items", "look_cue": "seal_ring_look"}
+]

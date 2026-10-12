@@ -1,0 +1,76 @@
+{
+  "id": "IMG-0043",
+  "title": "The lower gate, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T22:57:23.964Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0027/IMG-0027-v1.png",
+          "sha256": "388618b140387bbcc631be93ec8cecc601aa232891a37e48c4ea13dad7f605ad"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: a stone stair plunging down between high walls to a portcullis gate, at night, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: Wide worn stone steps descend from the top right down to a landing across the middle ground; at the left end of the landing, a massive iron portcullis set in a stone arch, closed, and beyond its bars, fog and the glimmer of black water. A heavy iron chain runs from the portcullis up the wall and away toward a clock tower silhouetted above. Weeds grow in the cracks.\n\nThe lower third of the image is open, walkable ground: the landing in front of the portcullis runs across the lower third. It is lit by pale moonlight with drifting fog or haze behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0043-v1.png",
+          "sha256": "1122879787cdd732eca774e741d662b1c4ce4c5b3253853fc14de86468ff63a4",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0043-v2.png",
+          "sha256": "d315a6e35f016393efa0acff6ed636821ead1954d84a6eecc492c657798cad20",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0043-v3.png",
+          "sha256": "00ea1ab851cd79495e656953dac634f7d5c543c0237d6481e98db4dd94558690",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 102584,
+        "outputTokens": 560
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d2f-68bb-7613-9af1-015f0ce2d6e4",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d2f-68bb-7613-9af1-015f0ce2d6e4/exec-95569c26-afac-4a3a-baf5-c3f022ca1a76.png",
+            "/Users/orcdev/.codex/generated_images/01a12d2f-68bb-7613-9af1-015f0ce2d6e4/exec-d4f7a67b-e845-4502-8a9a-0cdd9b300b93.png",
+            "/Users/orcdev/.codex/generated_images/01a12d2f-68bb-7613-9af1-015f0ce2d6e4/exec-7a409b09-ed25-4e6e-9f22-523208d7129a.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque images using the reference and your exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

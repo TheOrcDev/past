@@ -113,7 +113,7 @@ def main() -> None:
         },
         "walk": {"now": WALK, "then": WALK},
         "scale_zones": {"far_y": 908, "far_scale": 0.62, "near_y": 1075, "near_scale": 1.0},
-        "markers": {"default": [900, 1010], "from_cemetery": [430, 1010], "from_cloister": [1030, 935]},
+        "markers": {"default": [900, 1010], "from_cemetery": [430, 1010], "from_cloister": [1030, 935], "from_parvis": [1690, 1015]},
         "hotspots": [
             {"id": "statue", "name": "Statue of a saint", "polygon": STATUE, "walk_to": [480, 960], "default_verb": "use"},
             {"id": "altar", "name": "Altar", "polygon": ALTAR, "walk_to": [1460, 930]},

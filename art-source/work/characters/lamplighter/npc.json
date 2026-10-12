@@ -1,0 +1,20 @@
+{
+  "id": "lamplighter", "speaker": "Lamplighter", "painting": "art-source/raw/IMG-0029/IMG-0029-v2.png",
+  "height": 480, "feet": [560, 1515], "speech": [520, 60], "subtitle_color": [0.95, 0.83, 0.55], "grid": 28,
+  "aliases": ["Mathis"],
+  "bones": [
+    {"name": "Base", "parent": "", "from": [560, 1515], "to": [560, 1000]},
+    {"name": "Pole", "parent": "Base", "from": [830, 1490], "to": [850, 120]},
+    {"name": "Spine", "parent": "Base", "from": [550, 980], "to": [520, 350]},
+    {"name": "Head", "parent": "Spine", "from": [520, 300], "to": [520, 130]},
+    {"name": "Ladder", "parent": "Spine", "from": [430, 330], "to": [250, 120]}
+  ],
+  "motions": {
+    "idle": {"loop": true, "bones": {"Spine": [0.5, 0.18, 0.0], "Head": [1.0, 0.12, 0.8]}},
+    "talk_a": {"loop": true, "bones": {"Spine": [0.6, 0.25, 0.0], "Head": [1.2, 0.2, 1.0]}, "voice": {"Head": 4.0, "Spine": 1.0}},
+    "talk_b": {"loop": true, "bones": {"Spine": [0.8, 0.3, 0.0], "Head": [1.4, 0.25, 0.5]}, "voice": {"Head": -3.0, "Spine": 1.5}},
+    "light_lamp": {"loop": false, "length": 2.0, "keys": {
+      "Spine": [[0.0, 0.0], [0.6, -3.0], [1.4, -3.0], [2.0, 0.0]],
+      "Head": [[0.0, 0.0], [0.6, -9.0], [1.4, -9.0], [2.0, 0.0]]}}
+  }
+}

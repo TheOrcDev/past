@@ -1,0 +1,51 @@
+{
+  "id": "escapement",
+  "image": "art-source/raw/IMG-0057/IMG-0057-v1.png",
+  "hotspots": [
+    {
+      "id": "pin",
+      "name": "Pallet pin",
+      "polygon": [
+        [
+          1290,
+          400
+        ],
+        [
+          1440,
+          400
+        ],
+        [
+          1440,
+          590
+        ],
+        [
+          1290,
+          590
+        ]
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "wheel",
+      "name": "Escape wheel",
+      "polygon": [
+        [
+          0,
+          330
+        ],
+        [
+          1520,
+          330
+        ],
+        [
+          1520,
+          1080
+        ],
+        [
+          0,
+          1080
+        ]
+      ]
+    }
+  ]
+}

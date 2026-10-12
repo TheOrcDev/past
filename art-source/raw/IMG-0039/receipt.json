@@ -1,0 +1,76 @@
+{
+  "id": "IMG-0039",
+  "title": "The tavern, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T22:57:11.756Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0014/IMG-0014-v2.png",
+          "sha256": "007293b04cb0e4a9f28c332a9f68cfd2fc539efd55efc64882a894d5c677d1de"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: the interior of an old, low-beamed tavern at night, empty, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: A long bar on the right with tankards and empty bottles, and a big tarnished mirror on the wall behind it. Overturned stools and chairs around round tables. On the left, a large stone fireplace, cold, with a mantelpiece holding a single short candle stub in a little brass holder. A slate board on the back wall, covered in chalked sums and scratched-out lines. Low heavy beams overhead; a door at the back.\n\nThe lower third of the image is open, walkable ground: the flagstone floor between the tables is open across the room. It is lit by pale moonlight through small leaded windows with drifting fog or haze behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0039-v1.png",
+          "sha256": "0d6514726b40ab77f15bf27038b4eb1ea2124e3d95ee5627b8f20dbafd8c8626",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0039-v2.png",
+          "sha256": "bc4faab55013c7c367d8f8e1b1996786ab9be544b68a7f0a623add5b032d2d35",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0039-v3.png",
+          "sha256": "8295e1c10daa276abaab7a1d80734b3dea999df9796f40cc3a409ee89df6ab52",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 106577,
+        "outputTokens": 1143
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d2f-3949-7130-a4fa-6495c9ce8e98",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d2f-3949-7130-a4fa-6495c9ce8e98/exec-ed144e4d-eb16-4fc2-8d13-c8be956ca3fc.png",
+            "/Users/orcdev/.codex/generated_images/01a12d2f-3949-7130-a4fa-6495c9ce8e98/exec-5e8a9941-e09e-4da9-a512-d6b3effcf839.png",
+            "/Users/orcdev/.codex/generated_images/01a12d2f-3949-7130-a4fa-6495c9ce8e98/exec-69af36f8-5cd9-4b13-b8ea-c0798c779ef2.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque tavern scenes using the reference and your exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

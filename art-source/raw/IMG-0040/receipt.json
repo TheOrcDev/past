@@ -1,0 +1,77 @@
+{
+  "id": "IMG-0040",
+  "title": "The clock tower square, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T22:58:44.246Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0027/IMG-0027-v1.png",
+          "sha256": "388618b140387bbcc631be93ec8cecc601aa232891a37e48c4ea13dad7f605ad"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: a small square at the foot of a massive gothic clock tower at night, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: The tower rises left of centre far out of the top of the frame; high above, its great round clock face, stopped, the hands hanging down. At the tower's foot, a heavy iron-bound door in a pointed arch. To the right of the door, under a wooden lean-to against the tower wall, a clockmaker's workbench cluttered with springs, gears and tools. On the far right, a stone stair leads down out of the square between walls; on the far left, a street leads back toward a canal.\n\nThe lower third of the image is open, walkable ground: the cobbled square runs across the whole width. It is lit by pale moonlight with drifting fog or haze behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0040-v1.png",
+          "sha256": "c7be8d788f798cade251334adb90fd709786d4daf95df621aabd62f00991ed82",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0040-v2.png",
+          "sha256": "714de8d77c00449c58c2180df468355dfbc594519a287c28e714b61e201c9a69",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0040-v3.png",
+          "sha256": "c86ba6ee603abce95d3daab2dd429a258478098c7850ab8fb46103aa7a031115",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 125501,
+        "outputTokens": 670
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d30-a24d-7641-b81a-2751d5a032e0",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d30-a24d-7641-b81a-2751d5a032e0/exec-495e4673-906d-4b04-a0ce-62abad59410b.png",
+            "/Users/orcdev/.codex/generated_images/01a12d30-a24d-7641-b81a-2751d5a032e0/exec-6aae478e-0bc0-439c-8e78-347499bdf2f1.png",
+            "/Users/orcdev/.codex/generated_images/01a12d30-a24d-7641-b81a-2751d5a032e0/exec-763a651b-6e8d-4573-b134-2d23f82e562f.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque images using the attached reference and your exact prompt.",
+            "Two images are complete. I’m generating the third with the same reference and exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

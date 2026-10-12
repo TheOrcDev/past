@@ -1,0 +1,561 @@
+{
+  "display_name": "Street of lamps",
+  "layers": {
+    "now": [
+      {
+        "name": "Background",
+        "texture": "res://content/rooms/street_of_lamps/art/bg_now.png"
+      }
+    ],
+    "then": [
+      {
+        "name": "Background",
+        "texture": "res://content/rooms/street_of_lamps/art/bg_then.png"
+      }
+    ]
+  },
+  "walk": {
+    "now": [
+      [
+        120,
+        832
+      ],
+      [
+        600,
+        792
+      ],
+      [
+        1000,
+        762
+      ],
+      [
+        1300,
+        718
+      ],
+      [
+        1520,
+        722
+      ],
+      [
+        1620,
+        772
+      ],
+      [
+        1850,
+        842
+      ],
+      [
+        1880,
+        1030
+      ],
+      [
+        200,
+        1030
+      ],
+      [
+        110,
+        950
+      ]
+    ],
+    "then": [
+      [
+        120,
+        832
+      ],
+      [
+        600,
+        792
+      ],
+      [
+        1000,
+        762
+      ],
+      [
+        1300,
+        718
+      ],
+      [
+        1520,
+        722
+      ],
+      [
+        1620,
+        772
+      ],
+      [
+        1850,
+        842
+      ],
+      [
+        1880,
+        1030
+      ],
+      [
+        200,
+        1030
+      ],
+      [
+        110,
+        950
+      ]
+    ]
+  },
+  "scale_zones": {
+    "far_y": 720,
+    "far_scale": 0.7,
+    "near_y": 1030,
+    "near_scale": 1.02
+  },
+  "markers": {
+    "default": [
+      700,
+      920
+    ],
+    "from_parvis": [
+      150,
+      935
+    ],
+    "from_shed": [
+      235,
+      872
+    ],
+    "from_market": [
+      1400,
+      748
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "lamplighter",
+      "name": "Lamplighter",
+      "polygon": [
+        [
+          920,
+          828
+        ],
+        [
+          920,
+          450
+        ],
+        [
+          1000,
+          430
+        ],
+        [
+          1080,
+          450
+        ],
+        [
+          1092,
+          828
+        ]
+      ],
+      "walk_to": [
+        830,
+        860
+      ],
+      "default_verb": "talk",
+      "pick_priority": 2
+    },
+    {
+      "id": "shed_door",
+      "name": "Shed door",
+      "polygon": [
+        [
+          110,
+          802
+        ],
+        [
+          110,
+          470
+        ],
+        [
+          180,
+          420
+        ],
+        [
+          250,
+          470
+        ],
+        [
+          262,
+          802
+        ]
+      ],
+      "walk_to": [
+        220,
+        852
+      ],
+      "exit": {
+        "room": "lamplighter_shed",
+        "entry": "from_street",
+        "direction": "left"
+      }
+    },
+    {
+      "id": "to_parvis",
+      "name": "To the square",
+      "polygon": [
+        [
+          0,
+          852
+        ],
+        [
+          90,
+          852
+        ],
+        [
+          90,
+          1062
+        ],
+        [
+          0,
+          1062
+        ]
+      ],
+      "walk_to": [
+        130,
+        935
+      ],
+      "exit": {
+        "room": "cathedral_parvis",
+        "entry": "from_street",
+        "direction": "left"
+      }
+    },
+    {
+      "id": "to_market",
+      "name": "To the market",
+      "polygon": [
+        [
+          1300,
+          722
+        ],
+        [
+          1300,
+          560
+        ],
+        [
+          1520,
+          560
+        ],
+        [
+          1520,
+          722
+        ]
+      ],
+      "walk_to": [
+        1400,
+        738
+      ],
+      "exit": {
+        "room": "market_square",
+        "entry": "from_street",
+        "direction": "up"
+      }
+    },
+    {
+      "id": "lamps",
+      "name": "Lamps",
+      "polygon": [
+        [
+          330,
+          842
+        ],
+        [
+          330,
+          100
+        ],
+        [
+          540,
+          100
+        ],
+        [
+          540,
+          300
+        ],
+        [
+          432,
+          300
+        ],
+        [
+          432,
+          842
+        ]
+      ],
+      "walk_to": [
+        460,
+        872
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "shops",
+      "name": "Shuttered shops",
+      "polygon": [
+        [
+          600,
+          762
+        ],
+        [
+          600,
+          350
+        ],
+        [
+          1000,
+          450
+        ],
+        [
+          1000,
+          742
+        ]
+      ],
+      "walk_to": [
+        800,
+        802
+      ]
+    }
+  ],
+  "occluders": [],
+  "npcs": [
+    {
+      "scene": "res://content/characters/lamplighter/lamplighter.tscn",
+      "name": "Lamplighter",
+      "position": [
+        1005,
+        828
+      ],
+      "facing": "left",
+      "era": "now"
+    }
+  ],
+  "effects": [
+    {
+      "type": "FogLayer",
+      "name": "FogFar",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.85,
+          0.86,
+          0.89,
+          1.0
+        ],
+        "density": 0.3,
+        "velocity": [
+          0.005,
+          0.0
+        ],
+        "noise_scale": [
+          1.4,
+          0.8
+        ],
+        "band_top": 0.3,
+        "band_bottom": 0.75,
+        "depth_texture": "res://content/rooms/street_of_lamps/art/depth_now.png",
+        "near_cutoff": 0.4,
+        "noise_seed": 21
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "FogLow",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.8,
+          0.82,
+          0.86,
+          1.0
+        ],
+        "density": 0.24,
+        "velocity": [
+          -0.008,
+          0.0
+        ],
+        "noise_scale": [
+          2.2,
+          1.1
+        ],
+        "band_top": 0.5,
+        "band_bottom": 0.82,
+        "depth_texture": "res://content/rooms/street_of_lamps/art/depth_now.png",
+        "near_cutoff": 0.55,
+        "noise_seed": 23
+      }
+    },
+    {
+      "type": "LightShafts",
+      "name": "Moonlight",
+      "era": "now",
+      "properties": {
+        "origin": [
+          1480,
+          80
+        ],
+        "aim": 220.0,
+        "spread": 30.0,
+        "beams": 5.0,
+        "intensity": 0.07,
+        "reach": 0.9,
+        "shaft_color": [
+          0.9,
+          0.93,
+          1.0,
+          1.0
+        ],
+        "flicker": 0.3
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "GroundMist",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.86,
+          0.87,
+          0.9,
+          1.0
+        ],
+        "density": 0.16,
+        "velocity": [
+          0.01,
+          0.0
+        ],
+        "noise_scale": [
+          2.6,
+          1.6
+        ],
+        "band_top": 0.84,
+        "band_bottom": 1.02,
+        "band_softness": 0.08,
+        "noise_seed": 27
+      },
+      "layer": "foreground"
+    },
+    {
+      "type": "LightShafts",
+      "name": "GoldenShafts",
+      "era": "then",
+      "properties": {
+        "origin": [
+          1480,
+          80
+        ],
+        "aim": 220.0,
+        "spread": 44.0,
+        "beams": 7.0,
+        "intensity": 0.14,
+        "reach": 1.0,
+        "shaft_color": [
+          1.0,
+          0.85,
+          0.55,
+          1.0
+        ],
+        "flicker": 0.25
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "WarmHaze",
+      "era": "then",
+      "properties": {
+        "fog_color": [
+          1.0,
+          0.9,
+          0.75,
+          1.0
+        ],
+        "density": 0.1,
+        "velocity": [
+          0.004,
+          0.0
+        ],
+        "noise_scale": [
+          1.2,
+          0.7
+        ],
+        "band_top": 0.3,
+        "band_bottom": 0.9,
+        "noise_seed": 13
+      }
+    },
+    {
+      "type": "DustMotes",
+      "name": "GoldenDust",
+      "era": "then",
+      "properties": {
+        "area": [
+          300,
+          150,
+          1500,
+          750
+        ],
+        "mote_color": [
+          1.0,
+          0.86,
+          0.55,
+          0.55
+        ],
+        "mote_count": 60,
+        "drift": [
+          3,
+          -4
+        ],
+        "mote_size": 2.5
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "WarmLamps",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          1.0,
+          0.72,
+          0.35,
+          1.0
+        ],
+        "density": 0.32,
+        "velocity": [
+          0.003,
+          0.0
+        ],
+        "noise_scale": [
+          1.2,
+          0.7
+        ],
+        "band_top": 0.05,
+        "band_bottom": 0.85,
+        "noise_seed": 41
+      }
+    },
+    {
+      "type": "DustMotes",
+      "name": "WarmMotes",
+      "era": "now",
+      "properties": {
+        "area": [
+          200,
+          100,
+          1500,
+          700
+        ],
+        "mote_color": [
+          1.0,
+          0.85,
+          0.55,
+          0.5
+        ],
+        "mote_count": 50,
+        "drift": [
+          3,
+          -4
+        ],
+        "mote_size": 2.5
+      }
+    }
+  ]
+}

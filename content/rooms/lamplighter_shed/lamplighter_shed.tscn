@@ -1,0 +1,205 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/rooms/lamplighter_shed/lamplighter_shed.gd" id="1_t5tkb"]
+[ext_resource type="Texture2D" path="res://content/rooms/lamplighter_shed/art/bg_now.png" id="2_lgapm"]
+[ext_resource type="Script" path="res://src/systems/effects/fog_layer.gd" id="3_47fhq"]
+[ext_resource type="Texture2D" path="res://content/rooms/lamplighter_shed/art/depth_now.png" id="4_36diu"]
+[ext_resource type="Script" path="res://src/systems/effects/light_shafts.gd" id="5_ylmi7"]
+[ext_resource type="Script" path="res://src/systems/effects/dust_motes.gd" id="6_nkk1a"]
+[ext_resource type="Texture2D" path="res://content/rooms/lamplighter_shed/art/bg_then.png" id="7_leu5o"]
+[ext_resource type="Script" path="res://src/core/scale_zones.gd" id="8_gp4ow"]
+[ext_resource type="Script" path="res://src/core/exit.gd" id="9_8cru1"]
+[ext_resource type="Script" path="res://src/core/hotspot.gd" id="10_kkv7h"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_tbahj"]
+vertices = PackedVector2Array(1420, 852, 1560, 1050, 150, 1050, 220, 772, 700, 737, 1380, 747, 120, 902)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5, 0, 2, 6)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(220, 772, 700, 737, 1380, 747, 1420, 852, 1560, 1050, 150, 1050, 120, 902)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_5tnyx"]
+vertices = PackedVector2Array(1420, 852, 1560, 1050, 150, 1050, 220, 772, 700, 737, 1380, 747, 120, 902)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5, 0, 2, 6)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(220, 772, 700, 737, 1380, 747, 1420, 852, 1560, 1050, 150, 1050, 120, 902)])
+agent_radius = 0.0
+
+[node name="LamplighterShed" type="Node2D" unique_id=1633721822]
+script = ExtResource("1_t5tkb")
+room_id = &"lamplighter_shed"
+display_name = "Lamplighter's shed"
+
+[node name="Layers" type="Node2D" parent="." unique_id=28915043]
+
+[node name="Now" type="Node2D" parent="Layers" unique_id=217394602]
+
+[node name="Background" type="Sprite2D" parent="Layers/Now" unique_id=1943721441]
+texture = ExtResource("2_lgapm")
+centered = false
+
+[node name="FogFar" type="ColorRect" parent="Layers/Now" unique_id=1034945435]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_47fhq")
+fog_color = Color(0.85, 0.86, 0.88, 1)
+density = 0.26
+velocity = Vector2(0.006, 0)
+noise_scale = Vector2(1.4, 0.8)
+band_top = 0.42
+band_bottom = 0.9
+depth_texture = ExtResource("4_36diu")
+noise_seed = 3
+
+[node name="Shafts" type="ColorRect" parent="Layers/Now" unique_id=1434154104]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("5_ylmi7")
+origin = Vector2(800, 120)
+aim = 190.0
+spread = 36.0
+intensity = 0.1
+reach = 0.95
+shaft_color = Color(0.95, 0.96, 1, 1)
+flicker = 0.4
+
+[node name="Ash" type="CPUParticles2D" parent="Layers/Now" unique_id=932319089]
+script = ExtResource("6_nkk1a")
+area = Rect2(300, 200, 1400, 700)
+mote_color = Color(0.85, 0.85, 0.88, 0.35)
+mote_count = 45
+drift = Vector2(4, 6)
+mote_size = 2.5
+
+[node name="Then" type="Node2D" parent="Layers" unique_id=1492297987]
+
+[node name="Background" type="Sprite2D" parent="Layers/Then" unique_id=375785913]
+texture = ExtResource("7_leu5o")
+centered = false
+
+[node name="GoldenShafts" type="ColorRect" parent="Layers/Then" unique_id=610723070]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("5_ylmi7")
+origin = Vector2(800, 120)
+aim = 190.0
+spread = 44.0
+beams = 7.0
+intensity = 0.14
+reach = 1.0
+shaft_color = Color(1, 0.85, 0.55, 1)
+flicker = 0.25
+
+[node name="WarmHaze" type="ColorRect" parent="Layers/Then" unique_id=512253716]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_47fhq")
+fog_color = Color(1, 0.9, 0.75, 1)
+density = 0.1
+velocity = Vector2(0.004, 0)
+noise_scale = Vector2(1.2, 0.7)
+band_top = 0.3
+band_bottom = 0.9
+noise_seed = 13
+
+[node name="GoldenDust" type="CPUParticles2D" parent="Layers/Then" unique_id=737477283]
+script = ExtResource("6_nkk1a")
+area = Rect2(300, 150, 1500, 750)
+mote_color = Color(1, 0.86, 0.55, 0.55)
+drift = Vector2(3, -4)
+mote_size = 2.5
+
+[node name="WalkAreas" type="Node2D" parent="." unique_id=901905233]
+
+[node name="Now" type="NavigationRegion2D" parent="WalkAreas" unique_id=786615030]
+navigation_polygon = SubResource("NavigationPolygon_tbahj")
+
+[node name="Then" type="NavigationRegion2D" parent="WalkAreas" unique_id=615820637]
+navigation_polygon = SubResource("NavigationPolygon_5tnyx")
+enabled = false
+
+[node name="ScaleZones" type="Node2D" parent="." unique_id=245916291]
+script = ExtResource("8_gp4ow")
+far_y = 740.0
+far_scale = 0.8
+near_y = 1050.0
+near_scale = 1.05
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=275561036]
+
+[node name="Door" type="Area2D" parent="Hotspots" unique_id=1307151768]
+script = ExtResource("9_8cru1")
+target_room = &"street_of_lamps"
+target_entry = &"from_shed"
+direction = &"left"
+id = &"door"
+display_name = "Door"
+default_verb = &"walk"
+walk_offset = Vector2(330, 782)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Door" unique_id=841277725]
+polygon = PackedVector2Array(240, 722, 240, 200, 430, 200, 430, 722)
+
+[node name="Tallies" type="Area2D" parent="Hotspots" unique_id=1638068190]
+script = ExtResource("10_kkv7h")
+id = &"tallies"
+display_name = "Tally marks"
+walk_offset = Vector2(560, 782)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Tallies" unique_id=1198052993]
+polygon = PackedVector2Array(460, 702, 460, 60, 640, 60, 640, 702)
+
+[node name="Oil" type="Area2D" parent="Hotspots" unique_id=236381498]
+script = ExtResource("10_kkv7h")
+id = &"oil"
+display_name = "Oil jars"
+walk_offset = Vector2(830, 782)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Oil" unique_id=1736780527]
+polygon = PackedVector2Array(660, 522, 660, 280, 1000, 280, 1000, 522)
+
+[node name="Wicks" type="Area2D" parent="Hotspots" unique_id=259137376]
+script = ExtResource("10_kkv7h")
+id = &"wicks"
+display_name = "Wick coils"
+walk_offset = Vector2(1180, 782)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Wicks" unique_id=695936468]
+polygon = PackedVector2Array(1040, 522, 1040, 340, 1330, 340, 1330, 522)
+
+[node name="Bench" type="Area2D" parent="Hotspots" unique_id=1807458111]
+script = ExtResource("10_kkv7h")
+id = &"bench"
+display_name = "Workbench"
+walk_offset = Vector2(1380, 862)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Bench" unique_id=162112511]
+polygon = PackedVector2Array(1400, 842, 1400, 540, 1900, 540, 1900, 842)
+
+[node name="Exits" type="Node2D" parent="." unique_id=670540435]
+
+[node name="Markers" type="Node2D" parent="." unique_id=482998967]
+
+[node name="default" type="Marker2D" parent="Markers" unique_id=953588403]
+position = Vector2(800, 900)
+
+[node name="from_street" type="Marker2D" parent="Markers" unique_id=908646252]
+position = Vector2(330, 790)
+
+[node name="Actors" type="Node2D" parent="." unique_id=466741172]
+y_sort_enabled = true
+
+[node name="Foreground" type="Node2D" parent="." unique_id=930124904]
+
+[node name="GroundMist" type="ColorRect" parent="Foreground" unique_id=655752659 groups=["era_now"]]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_47fhq")
+fog_color = Color(0.86, 0.87, 0.9, 1)
+density = 0.16
+velocity = Vector2(0.01, 0)
+noise_scale = Vector2(2.6, 1.6)
+band_top = 0.84
+band_bottom = 1.02
+band_softness = 0.08
+noise_seed = 27
+
+[node name="Cinematics" type="Node2D" parent="." unique_id=1075636722]

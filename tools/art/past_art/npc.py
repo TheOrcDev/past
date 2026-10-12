@@ -33,6 +33,11 @@ def build(npc_json: Path, root: Path) -> dict:
     crop = image[y0:y1, x0:x1]
     size = (round(crop.shape[1] * factor), round(crop.shape[0] * factor))
     texture = cv2.resize(crop, size, interpolation=cv2.INTER_AREA)
+    # The present is monochrome (decision #24): a painting's stray color (brass,
+    # skin) goes grey, unless the spec keeps it (the Dove's trace of blue).
+    if not spec.get("keep_color", False):
+        grey = cv2.cvtColor(texture[:, :, :3], cv2.COLOR_BGR2GRAY)
+        texture = np.dstack([grey, grey, grey, texture[:, :, 3]])
     out_dir = root / "content/characters" / npc_id
     out_dir.mkdir(parents=True, exist_ok=True)
     save(out_dir / f"{npc_id}.png", texture)

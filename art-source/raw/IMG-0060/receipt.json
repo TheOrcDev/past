@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0060",
+  "title": "The alley of doors, then",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T23:18:59.014Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0038/IMG-0038-v3.png",
+          "sha256": "d4b0c87a107bc178de73365d91fad3f710f1dfd825b8a26e7fe6061a61186e62"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit this image in place. Keep exactly the same composition, camera, perspective, horizon and every shape where it stands: the notice board, every door, the steps, the tavern door and sign, the balconies and laundry lines. Only change the time and the condition.\n\nRestore the same alley to how it looked decades earlier, on a bright spring morning, in full rich warm color, as a painterly gothic matte painting: every door painted a different color with a shining brass nameplate above it, the notice board holding cheerful handbills for fairs and concerts, flower pots on the steps, colorful laundry on the lines, the tavern sign freshly painted with a picture of a tankard, warm morning sunlight. The key light comes from the same direction as in the original.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0060-v1.png",
+          "sha256": "6c4864b14c5fefaa213c7d908894f86fe3a24ed4e17307fffcb7ae1823a7e2f6",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0060-v2.png",
+          "sha256": "b7e783f36b2d352821691195f1b274f5c61fb6d03263d13a06d5189cd685de66",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 96013,
+        "outputTokens": 707
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d43-2c23-7703-b90a-0844eaa00291",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d43-2c23-7703-b90a-0844eaa00291/exec-76761a59-69d4-4464-b097-de675bf4660f.png",
+            "/Users/orcdev/.codex/generated_images/01a12d43-2c23-7703-b90a-0844eaa00291/exec-f66112d3-2ee4-4326-9b56-f38b959668c0.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate two wide, opaque edits using the supplied image and exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "id": "IMG-0033",
+  "title": "The street of lamps, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T22:54:37.260Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0027/IMG-0027-v1.png",
+          "sha256": "388618b140387bbcc631be93ec8cecc601aa232891a37e48c4ea13dad7f605ad"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: a long, gently curving cobbled street of tall narrow gothic houses at night, lined with ornate iron lamp posts, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: Five ornate iron lamp posts run along the street, receding into the fog; every lamp holds a pale, cold, colourless flame that lights nothing around it. The shops have their shutters down and their hanging signs blank. On the left, the low arched wooden door of a small lamplighter's shed set into a wall, a short ladder leaning beside it. The street curves away to the right toward a distant market square with awnings.\n\nThe lower third of the image is open, walkable ground: the cobbled street curves across the lower third, wide and clear. It is lit by pale moonlight and fog with drifting fog or haze behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0033-v1.png",
+          "sha256": "741a52715c196aa2d69ee9cc30c5258aa1cce2f6ba5b85703b5df1f5ad4736c9",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0033-v2.png",
+          "sha256": "537f27ef17e29c8fdad87c39c562e4becf7a8b1f54b146838e2e344b40569283",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0033-v3.png",
+          "sha256": "ad8e854d47f30187303094a78a35c7aadc587a7897fd8088eab07aaa90482e13",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 103618,
+        "outputTokens": 1195
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d2c-dd7f-7e73-9e9b-c0d3d1e88246",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d2c-dd7f-7e73-9e9b-c0d3d1e88246/exec-7daed246-e440-4a24-8ca8-0a197ce0eb37.png",
+            "/Users/orcdev/.codex/generated_images/01a12d2c-dd7f-7e73-9e9b-c0d3d1e88246/exec-3e4678ee-f6fb-4389-91c2-332b1c8a9459.png",
+            "/Users/orcdev/.codex/generated_images/01a12d2c-dd7f-7e73-9e9b-c0d3d1e88246/exec-04926951-e53a-48ca-a5ac-3fccd4498d93.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque variants using the attached reference and your exact prompt.",
+            "DONE"
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "id": "IMG-0055",
+  "title": "Close-up: the edict board",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T23:04:42.336Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0038/IMG-0038-v3.png",
+          "sha256": "d4b0c87a107bc178de73365d91fad3f710f1dfd825b8a26e7fe6061a61186e62"
+        }
+      ],
+      "mask": null,
+      "prompt": "A close-up of the wooden notice board of edicts from the reference image, in exactly the same monochrome greyscale ink-wash gothic style: the weathered notice board fills the frame: several pinned paper proclamations, curling and water-stained, each closed with the same worn wax seal. The largest notice, in the middle, is clear and legible.\n\nOn the largest notice, in old printed capitals, exactly:\nBY ORDER OF THE HIGH MAGISTRATE\nA NAME IS A PRIVILEGE, NOT A RIGHT\nand beneath it, in smaller italic print, exactly:\nPosted at the eleventh bell\n\nEvery other notice is illegible. No people or figures. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0055-v1.png",
+          "sha256": "88281555d5a4a11be390ca03f2b034890a5435b5a279c5f8d80fd7b43e0bd43e",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0055-v2.png",
+          "sha256": "46b2fa91cff382a50df2e6cebadb560827fc5dd73f61fe2165a7d915ab8d8b44",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0055-v3.png",
+          "sha256": "c5b366b1413bf9a3929055b1e2659b4616c73106a244998f52a516ea724a84e0",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 105356,
+        "outputTokens": 806
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d36-19da-7060-afa9-1fe70dae125b",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d36-19da-7060-afa9-1fe70dae125b/exec-f4bc62a6-0a9a-4c0d-9ede-91b9267696c6.png",
+            "/Users/orcdev/.codex/generated_images/01a12d36-19da-7060-afa9-1fe70dae125b/exec-62433d39-e7e4-4e40-9935-5550b7069cbc.png",
+            "/Users/orcdev/.codex/generated_images/01a12d36-19da-7060-afa9-1fe70dae125b/exec-46cfb8d9-cdf3-43e5-8303-9484514b5f5a.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque edits using the reference image and your exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

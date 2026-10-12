@@ -1,0 +1,31 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/closeups/escapement/escapement.gd" id="1_f6hkp"]
+[ext_resource type="Texture2D" path="res://content/closeups/escapement/art/bg.png" id="2_tqd0s"]
+[ext_resource type="Script" path="res://src/core/hotspot.gd" id="3_76i5b"]
+
+[node name="Escapement" type="Node2D" unique_id=856812549]
+script = ExtResource("1_f6hkp")
+closeup_id = &"escapement"
+
+[node name="Background" type="Sprite2D" parent="." unique_id=441331213]
+texture = ExtResource("2_tqd0s")
+centered = false
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=1460253697]
+
+[node name="Pin" type="Area2D" parent="Hotspots" unique_id=1068274892]
+script = ExtResource("3_76i5b")
+id = &"pin"
+display_name = "Pallet pin"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Pin" unique_id=975651471]
+polygon = PackedVector2Array(1290, 400, 1440, 400, 1440, 590, 1290, 590)
+
+[node name="Wheel" type="Area2D" parent="Hotspots" unique_id=1336019199]
+script = ExtResource("3_76i5b")
+id = &"wheel"
+display_name = "Escape wheel"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Wheel" unique_id=316238340]
+polygon = PackedVector2Array(0, 330, 1520, 330, 1520, 1080, 0, 1080)

@@ -1,0 +1,67 @@
+{
+  "id": "IMG-0057",
+  "title": "Close-up: the escapement",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T23:04:49.837Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0041/IMG-0041-v1.png",
+          "sha256": "a6548c1d6962750fab74ff5a23c6b69820df0a62a728673f249e6ae2a9be01eb"
+        }
+      ],
+      "mask": null,
+      "prompt": "A close-up of the clock's escapement from the reference image, in exactly the same monochrome greyscale ink-wash gothic style: a large toothed iron escape wheel fills most of the frame, with its anchor above it, and a loose brass pallet pin hanging out of its slot on a little chain. Oil stains, dust, and moonlight glinting on the teeth.\n\nNo readable text, letters or numbers anywhere. No people or figures. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0057-v1.png",
+          "sha256": "191a6822b606296fc95c7f45f27a160f0ed66d6166f2c833f5bc3a043df65a5e",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0057-v2.png",
+          "sha256": "012b6d188a16885859c5da2b1c0b93282a2c355e45982fb02b60bc05e5d9100a",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 298574,
+        "outputTokens": 1139
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d36-3700-7f52-b374-cf72859f48b7",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d36-3700-7f52-b374-cf72859f48b7/exec-ee1976f7-05d6-4f58-9d3f-b3d7da239ca1.png",
+            "/Users/orcdev/.codex/generated_images/01a12d36-3700-7f52-b374-cf72859f48b7/exec-376139e2-8fe7-494c-806e-e2f83c9a4134.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate two wide, opaque images using the attached reference and your exact prompt.",
+            "The first image is complete. The second is still generating.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

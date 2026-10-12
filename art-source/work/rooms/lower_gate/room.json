@@ -1,0 +1,150 @@
+{
+  "display_name": "Lower gate",
+  "now": "art-source/raw/IMG-0043/IMG-0043-v1.png",
+  "walk": [
+    [
+      150,
+      742
+    ],
+    [
+      700,
+      722
+    ],
+    [
+      1300,
+      732
+    ],
+    [
+      1480,
+      762
+    ],
+    [
+      1520,
+      1050
+    ],
+    [
+      200,
+      1050
+    ],
+    [
+      100,
+      902
+    ]
+  ],
+  "scale_zones": {
+    "far_y": 722,
+    "far_scale": 0.74,
+    "near_y": 1050,
+    "near_scale": 1.02
+  },
+  "markers": {
+    "default": [
+      800,
+      880
+    ],
+    "from_tower": [
+      1440,
+      860
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "portcullis",
+      "name": "Portcullis",
+      "polygon": [
+        [
+          280,
+          702
+        ],
+        [
+          280,
+          200
+        ],
+        [
+          480,
+          130
+        ],
+        [
+          680,
+          200
+        ],
+        [
+          680,
+          702
+        ]
+      ],
+      "walk_to": [
+        480,
+        762
+      ],
+      "default_verb": "use"
+    },
+    {
+      "id": "chain",
+      "name": "Chain",
+      "polygon": [
+        [
+          800,
+          602
+        ],
+        [
+          800,
+          100
+        ],
+        [
+          1020,
+          100
+        ],
+        [
+          1020,
+          602
+        ]
+      ],
+      "walk_to": [
+        900,
+        772
+      ]
+    },
+    {
+      "id": "steps",
+      "name": "Steps up",
+      "polygon": [
+        [
+          1480,
+          1040
+        ],
+        [
+          1480,
+          640
+        ],
+        [
+          1920,
+          500
+        ],
+        [
+          1920,
+          1060
+        ]
+      ],
+      "walk_to": [
+        1440,
+        880
+      ],
+      "exit": {
+        "room": "clock_tower_base",
+        "entry": "from_lower",
+        "direction": "up"
+      }
+    }
+  ],
+  "effects": {
+    "preset": "exterior",
+    "light": [
+      1450,
+      60
+    ],
+    "aim": 220
+  },
+  "id": "lower_gate",
+  "then": "art-source/raw/IMG-0051/IMG-0051-v2.png"
+}

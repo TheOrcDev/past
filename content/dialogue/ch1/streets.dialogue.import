@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://bncpljh277kew"
+path="res://.godot/imported/streets.dialogue-77f0d7c7dd06e18d73bd2e70550f5f2c.tres"
+
+[deps]
+
+source_file="res://content/dialogue/ch1/streets.dialogue"
+dest_files=["res://.godot/imported/streets.dialogue-77f0d7c7dd06e18d73bd2e70550f5f2c.tres"]
+
+[params]
+
+defaults=true

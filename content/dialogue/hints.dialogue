@@ -250,6 +250,258 @@ Unknown: Use the west door key on the great doors in the nave. [ID:HINT_DOORS_3]
 
 => END
 
+~ ch1_square_1
+
+Unknown: The doors are open. Whoever I was, he walked these streets. [ID:HINT_CH1_SQUARE_1]
+
+=> END
+
+~ ch1_square_2
+
+Unknown: Through the great doors in the nave, into the city. [ID:HINT_CH1_SQUARE_2]
+
+=> END
+
+~ ch1_square_3
+
+Unknown: Use the great doors in the nave. [ID:HINT_CH1_SQUARE_3]
+
+=> END
+
+~ crier_1
+
+Unknown: Somebody's shouting in the square. News might help. [ID:HINT_CRIER_1]
+
+=> END
+
+~ crier_2
+
+Unknown: The Crier, on his platform in the cathedral square. [ID:HINT_CRIER_2]
+
+=> END
+
+~ crier_3
+
+Unknown: Talk to the Crier in the square. [ID:HINT_CRIER_3]
+
+=> END
+
+~ lamplighter_1
+
+Unknown: The lamp street. Someone's lighting lamps that don't light. [ID:HINT_LAMPLIGHTER_1]
+
+=> END
+
+~ lamplighter_2
+
+Unknown: Left of the square, the street of lamps. Talk to the Lamplighter. [ID:HINT_LAMPLIGHTER_2]
+
+=> END
+
+~ lamplighter_3
+
+Unknown: Talk to the Lamplighter on the street of lamps. [ID:HINT_LAMPLIGHTER_3]
+
+=> END
+
+~ clockmaker_1
+
+Unknown: A stopped clock, and somebody keeping it ready. [ID:HINT_CLOCKMAKER_1]
+
+=> END
+
+~ clockmaker_2
+
+Unknown: Past the market and over the bridge, at the foot of the tower. [ID:HINT_CLOCKMAKER_2]
+
+=> END
+
+~ clockmaker_3
+
+Unknown: Talk to the Clockmaker under the clock tower. [ID:HINT_CLOCKMAKER_3]
+
+=> END
+
+~ wedding_1
+
+Unknown: The saint in the market wears a ribbon somebody tied for a reason. [ID:HINT_WEDDING_1]
+
+=> END
+
+~ wedding_2
+
+Unknown: Touch the ribbon on the weeping saint in the market. [ID:HINT_WEDDING_2]
+
+=> END
+
+~ wedding_3
+
+Unknown: Use the ribbon on the saint's wrist, in the market square. [ID:HINT_WEDDING_3]
+
+=> END
+
+~ candle_1
+
+Unknown: The wedding went up the alley, to the tavern. Something of it might still be there. [ID:HINT_CANDLE_1]
+
+=> END
+
+~ candle_2
+
+Unknown: The tavern, up the alley. The mantel. [ID:HINT_CANDLE_2]
+
+=> END
+
+~ candle_3
+
+Unknown: Take the candle stub from the tavern mantel. [ID:HINT_CANDLE_3]
+
+=> END
+
+~ mathis_1
+
+Unknown: A wedding candle, and a man who wants one warm flame. [ID:HINT_MATHIS_1]
+
+=> END
+
+~ mathis_2
+
+Unknown: Give the wedding candle to the Lamplighter. [ID:HINT_MATHIS_2]
+
+=> END
+
+~ mathis_3
+
+Unknown: Give the candle to the Lamplighter on the street of lamps. [ID:HINT_MATHIS_3]
+
+=> END
+
+~ winding_key_1
+
+Unknown: The Clockmaker pawned his key. The Broker deals in stories, not money. [ID:HINT_WINDING_KEY_1]
+
+=> END
+
+~ winding_key_2
+
+Unknown: The Broker wants something with a story in it. I have a lantern someone mended for a stranger. [ID:HINT_WINDING_KEY_2]
+
+=> END
+
+~ winding_key_3
+
+Unknown: Give the Gravedigger's lantern to the Broker in his shop. [ID:HINT_WINDING_KEY_3]
+
+=> END
+
+~ eleven_1
+
+Unknown: The clock has to be set to the hour it stopped. Somebody announced that hour once. [ID:HINT_ELEVEN_1]
+
+=> END
+
+~ eleven_2
+
+Unknown: The Crier's last headline. Or the edicts in the alley. [ID:HINT_ELEVEN_2]
+
+=> END
+
+~ eleven_3
+
+Unknown: Ask the Crier for the latest news. [ID:HINT_ELEVEN_3]
+
+=> END
+
+~ apprentice_1
+
+Unknown: The clock remembers better than the Clockmaker, he said. [ID:HINT_APPRENTICE_1]
+
+=> END
+
+~ apprentice_2
+
+Unknown: Inside the clock, with the warm lamp. Touch the escapement. [ID:HINT_APPRENTICE_2]
+
+=> END
+
+~ apprentice_3
+
+Unknown: With the warm lamp, go into the clock and use the escapement. [ID:HINT_APPRENTICE_3]
+
+=> END
+
+~ escapement_1
+
+Unknown: I know where the pin goes now. [ID:HINT_ESCAPEMENT_1]
+
+=> END
+
+~ escapement_2
+
+Unknown: The escapement, inside the clock. Third tooth. [ID:HINT_ESCAPEMENT_2]
+
+=> END
+
+~ escapement_3
+
+Unknown: Use the escapement again: the pin on the third tooth. [ID:HINT_ESCAPEMENT_3]
+
+=> END
+
+~ wound_1
+
+Unknown: The clock needs its key turned. [ID:HINT_WOUND_1]
+
+=> END
+
+~ wound_2
+
+Unknown: The winding post, beside the escapement. [ID:HINT_WOUND_2]
+
+=> END
+
+~ wound_3
+
+Unknown: Use the winding key on the winding post. [ID:HINT_WOUND_3]
+
+=> END
+
+~ strike_1
+
+Unknown: Behind the face, the hands. Eleven bells. [ID:HINT_STRIKE_1]
+
+=> END
+
+~ strike_2
+
+Unknown: Climb the ladder to the clock face and set the hands. [ID:HINT_STRIKE_2]
+
+=> END
+
+~ strike_3
+
+Unknown: Behind the clock face, use the hands. [ID:HINT_STRIKE_3]
+
+=> END
+
+~ lower_gate_1
+
+Unknown: The clock struck, and something below opened. [ID:HINT_LOWER_GATE_1]
+
+=> END
+
+~ lower_gate_2
+
+Unknown: Down the stair from the tower square, to the lower gate. [ID:HINT_LOWER_GATE_2]
+
+=> END
+
+~ lower_gate_3
+
+Unknown: Go through the open portcullis at the lower gate. [ID:HINT_LOWER_GATE_3]
+
+=> END
+
 ~ none
 
 Unknown: Nothing pulls at me right now. The rest of me is still out there, somewhere. [ID:HINT_NONE_1]

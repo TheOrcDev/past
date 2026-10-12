@@ -4,14 +4,15 @@
 [ext_resource type="Script" path="res://src/core/rig_body.gd" id="2_cmtsa"]
 [ext_resource type="Texture2D" path="res://content/characters/sister/sister.png" id="3_i3etw"]
 
-[node name="Sister" type="Node2D" unique_id=1846494391]
+[node name="Sister" type="Node2D" unique_id=1283784560]
 script = ExtResource("1_yybno")
 speaker_name = "Sister"
+speaker_aliases = PackedStringArray("Agathe")
 talk_animations = Array[StringName]([&"talk_a", &"talk_b"])
 subtitle_color = Color(0.78, 0.82, 0.9, 1)
 speech_offset = Vector2(12.400614, -471.55692)
 
-[node name="Body" type="Node2D" parent="." unique_id=1869731063]
+[node name="Body" type="Node2D" parent="." unique_id=982023922]
 script = ExtResource("2_cmtsa")
 motions = {
 "conduct": {
@@ -58,13 +59,13 @@ motions = {
 }
 outline = PackedVector2Array(11.800588, -469.5568, -6.200312, -465.5566, -21.534412, -447.5557, -56.202812, -386.88602, -83.53751, -308.8821, -73.53701, -298.8816, -78.20391, -274.8804, -68.203415, -262.2131, -69.53681, -252.8793, -66.87001, -247.5457, -70.203514, -230.2115, -62.203114, -220.211, -55.536114, -202.2101, -78.20391, -87.537704, -94.20471, -31.534903, -84.87091, -24.201202, -81.537415, -16.867502, -58.869614, -13.534002, -57.536213, -9.533802, -50.20251, -8.200402, -46.86901, -4.200202, -22.201113, 0.46669814, 0.46668798, 0.46669814, 2.466788, -6.867002, 13.800688, -2.866802, 43.80219, -7.533702, 56.46949, -14.200702, 71.13689, -15.534102, 72.47029, -21.534403, 83.80419, -23.534502, 85.13759, -28.201403, 93.80469, -30.201502, 77.13719, -76.203804, 47.802387, -216.8775, 65.80329, -283.54752, 61.136387, -293.548, 61.80309, -306.88202, 49.135788, -330.8832, 53.80269, -338.8836, 45.802288, -358.8846, 49.135788, -366.885, 44.468887, -371.5519, 37.13519, -400.88672, 37.13519, -408.88712, 45.13559, -431.5549, 40.46869, -439.5553, 39.801987, -449.55582, 24.467888, -464.8899)
 
-[node name="Rig" type="Node2D" parent="Body" unique_id=377045928]
+[node name="Rig" type="Node2D" parent="Body" unique_id=134700542]
 position = Vector2(-96.20481, -471.55692)
 scale = Vector2(0.6667, 0.6667)
 
-[node name="Skeleton" type="Skeleton2D" parent="Body/Rig" unique_id=1866021885]
+[node name="Skeleton" type="Skeleton2D" parent="Body/Rig" unique_id=769543971]
 
-[node name="Base" type="Bone2D" parent="Body/Rig/Skeleton" unique_id=1146659355]
+[node name="Base" type="Bone2D" parent="Body/Rig/Skeleton" unique_id=1365980223]
 position = Vector2(144.3, 707.3)
 rotation = -1.5707964
 rest = Transform2D(-4.371139e-08, -1, 1, -4.371139e-08, 144.3, 707.3)
@@ -72,7 +73,7 @@ auto_calculate_length_and_angle = false
 length = 242.0
 bone_angle = 0.0
 
-[node name="Spine" type="Bone2D" parent="Body/Rig/Skeleton/Base" unique_id=259852417]
+[node name="Spine" type="Bone2D" parent="Body/Rig/Skeleton/Base" unique_id=691867766]
 position = Vector2(251.29999, 1.5258789e-05)
 rotation = 0.07125294
 rest = Transform2D(0.9974626, 0.07119267, -0.07119267, 0.9974626, 251.29999, 1.5258789e-05)
@@ -80,7 +81,7 @@ auto_calculate_length_and_angle = false
 length = 261.26294
 bone_angle = 0.0
 
-[node name="Head" type="Bone2D" parent="Body/Rig/Skeleton/Base/Spine" unique_id=1235251283]
+[node name="Head" type="Bone2D" parent="Body/Rig/Skeleton/Base/Spine" unique_id=137626073]
 position = Vector2(280.80533, 12.540558)
 rotation = -0.15642728
 rest = Transform2D(0.9877902, -0.15579012, 0.15579012, 0.9877902, 280.80533, 12.540558)
@@ -88,7 +89,7 @@ auto_calculate_length_and_angle = false
 length = 163.39233
 bone_angle = 0.0
 
-[node name="Veil" type="Bone2D" parent="Body/Rig/Skeleton/Base/Spine/Head" unique_id=289958125]
+[node name="Veil" type="Bone2D" parent="Body/Rig/Skeleton/Base/Spine/Head" unique_id=1751261412]
 position = Vector2(32.545868, -53.224236)
 rotation = -2.8193884
 rest = Transform2D(-0.9485398, -0.31665814, 0.31665814, -0.9485398, 32.545868, -53.224236)
@@ -96,7 +97,7 @@ auto_calculate_length_and_angle = false
 length = 277.66354
 bone_angle = 0.0
 
-[node name="Sleeves" type="Bone2D" parent="Body/Rig/Skeleton/Base/Spine" unique_id=1425804299]
+[node name="Sleeves" type="Bone2D" parent="Body/Rig/Skeleton/Base/Spine" unique_id=1103687090]
 position = Vector2(196.22838, 4.641754)
 rotation = 2.5739458
 scale = Vector2(1.0000001, 1.0000001)
@@ -105,7 +106,7 @@ auto_calculate_length_and_angle = false
 length = 127.03203
 bone_angle = 0.0
 
-[node name="Painting" type="Polygon2D" parent="Body/Rig" unique_id=1476731894]
+[node name="Painting" type="Polygon2D" parent="Body/Rig" unique_id=917773496]
 texture = ExtResource("3_i3etw")
 skeleton = NodePath("../Skeleton")
 polygon = PackedVector2Array(112, 0, 140, 0, 140, 28, 112, 28, 168, 0, 168, 28, 196, 0, 196, 28, 224, 0, 224, 28, 84, 28, 112, 56, 84, 56, 140, 56, 168, 56, 196, 56, 224, 56, 56, 56, 84, 84, 56, 84, 112, 84, 140, 84, 168, 84, 196, 84, 224, 84, 84, 112, 56, 112, 112, 112, 140, 112, 168, 112, 196, 112, 224, 112, 28, 112, 56, 140, 28, 140, 84, 140, 112, 140, 140, 140, 168, 140, 196, 140, 224, 140, 56, 168, 28, 168, 84, 168, 112, 168, 140, 168, 168, 168, 196, 168, 224, 168, 56, 196, 28, 196, 84, 196, 112, 196, 140, 196, 168, 196, 196, 196, 224, 196, 252, 168, 252, 196, 0, 196, 28, 224, 0, 224, 56, 224, 84, 224, 112, 224, 140, 224, 168, 224, 196, 224, 224, 224, 252, 224, 28, 252, 0, 252, 56, 252, 84, 252, 112, 252, 140, 252, 168, 252, 196, 252, 224, 252, 252, 252, 28, 280, 0, 280, 56, 280, 84, 280, 112, 280, 140, 280, 168, 280, 196, 280, 224, 280, 252, 280, 28, 308, 0, 308, 56, 308, 84, 308, 112, 308, 140, 308, 168, 308, 196, 308, 224, 308, 252, 308, 56, 336, 28, 336, 84, 336, 112, 336, 140, 336, 168, 336, 196, 336, 224, 336, 252, 336, 56, 364, 28, 364, 84, 364, 112, 364, 140, 364, 168, 364, 196, 364, 224, 364, 252, 364, 56, 392, 28, 392, 84, 392, 112, 392, 140, 392, 168, 392, 196, 392, 224, 392, 84, 420, 56, 420, 112, 420, 140, 420, 168, 420, 196, 420, 224, 420, 252, 392, 252, 420, 28, 420, 56, 448, 28, 448, 84, 448, 112, 448, 140, 448, 168, 448, 196, 448, 224, 448, 252, 448, 56, 476, 28, 476, 84, 476, 112, 476, 140, 476, 168, 476, 196, 476, 224, 476, 252, 476, 56, 504, 28, 504, 84, 504, 112, 504, 140, 504, 168, 504, 196, 504, 224, 504, 252, 504, 56, 532, 28, 532, 84, 532, 112, 532, 140, 532, 168, 532, 196, 532, 224, 532, 252, 532, 56, 560, 28, 560, 84, 560, 112, 560, 140, 560, 168, 560, 196, 560, 224, 560, 252, 560, 280, 532, 280, 560, 0, 560, 28, 588, 0, 588, 56, 588, 84, 588, 112, 588, 140, 588, 168, 588, 196, 588, 224, 588, 252, 588, 280, 588, 28, 616, 0, 616, 56, 616, 84, 616, 112, 616, 140, 616, 168, 616, 196, 616, 224, 616, 252, 616, 280, 616, 28, 644, 0, 644, 56, 644, 84, 644, 112, 644, 140, 644, 168, 644, 196, 644, 224, 644, 252, 644, 280, 644, 28, 672, 0, 672, 56, 672, 84, 672, 112, 672, 140, 672, 168, 672, 196, 672, 224, 672, 252, 672, 280, 672, 289, 644, 289, 672, 28, 700, 0, 700, 56, 700, 84, 700, 112, 700, 140, 700, 168, 700, 196, 700, 224, 700, 252, 700, 280, 700, 84, 712, 56, 712, 112, 712, 140, 712, 168, 712, 196, 712)

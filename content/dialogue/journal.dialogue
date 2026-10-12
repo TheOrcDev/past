@@ -16,6 +16,30 @@ Unknown: The choir in gold, and the dove singing a list of names, and a hole in 
 
 => END
 
+~ ch1_wedding
+
+Unknown: A wedding in the market, and an old man lighting every lamp from his daughter's candle. [ID:JOURNAL_CH1_WEDDING]
+
+=> END
+
+~ ch1_toast
+
+Unknown: A tavern full of wedding guests who shouted a name and forgot it mid-word. [ID:JOURNAL_CH1_TOAST]
+
+=> END
+
+~ ch1_apprentice
+
+Unknown: The clockworks in brass and lamplight, and a boy copying "third tooth" under his master's chalk. [ID:JOURNAL_CH1_APPRENTICE]
+
+=> END
+
+~ ch1_old_town
+
+Unknown: The whole old town from behind the clock, gold and full, as the hour struck. [ID:JOURNAL_CH1_OLD_TOWN]
+
+=> END
+
 ~ greybox_altar
 
 Unknown: The chapel before the fire, and one word carved into its altar: Mercy. [ID:JOURNAL_GREYBOX_ALTAR]

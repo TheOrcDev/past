@@ -1,0 +1,75 @@
+{
+  "id": "edict_board",
+  "image": "art-source/raw/IMG-0055/IMG-0055-v3.png",
+  "hotspots": [
+    {
+      "id": "time",
+      "name": "Posted at\u2026",
+      "polygon": [
+        [
+          700,
+          660
+        ],
+        [
+          1240,
+          660
+        ],
+        [
+          1240,
+          750
+        ],
+        [
+          700,
+          750
+        ]
+      ],
+      "pick_priority": 2
+    },
+    {
+      "id": "seal",
+      "name": "Wax seal",
+      "polygon": [
+        [
+          840,
+          760
+        ],
+        [
+          1100,
+          760
+        ],
+        [
+          1100,
+          950
+        ],
+        [
+          840,
+          950
+        ]
+      ],
+      "pick_priority": 2
+    },
+    {
+      "id": "main",
+      "name": "The edict",
+      "polygon": [
+        [
+          630,
+          150
+        ],
+        [
+          1310,
+          150
+        ],
+        [
+          1310,
+          650
+        ],
+        [
+          630,
+          650
+        ]
+      ],
+      "pick_priority": 1
+    }
+  ]
+}

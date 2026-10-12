@@ -1,0 +1,78 @@
+{
+  "id": "IMG-0036",
+  "title": "The Broker's shop, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T23:00:15.962Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0014/IMG-0014-v2.png",
+          "sha256": "007293b04cb0e4a9f28c332a9f68cfd2fc539efd55efc64882a894d5c677d1de"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: the narrow interior of a cluttered pawnbroker's shop at night, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: Every wall is crowded with stopped clocks, dolls, music boxes, rings on velvet trays and framed portraits turned to face the wall. A long wooden counter runs across the middle ground with a brass hand-scale on it. Behind the counter on the right, a tall locked glass-fronted cabinet holding a single heavy ring on a cushion. On the left, the shop door with a little bell above it, and the bay window full of clocks.\n\nThe lower third of the image is open, walkable ground: the wooden floor in front of the counter runs across the room. It is lit by pale moonlight through the bay window and dusty glass with drifting fog or haze behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0036-v1.png",
+          "sha256": "0c9d5995e9c1bbbeefd4bedd37348b5ee127969a8273fb30011f1e9c4974a6a6",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0036-v2.png",
+          "sha256": "a8110c5d60853e8ad1faf7ebe209cd33643d888fdce09bf5f2ce24073b38c767",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0036-v3.png",
+          "sha256": "2d08315a7346e49d0ed65bc913dbf4a77c532509ba51b7d4f8cc27df04d6a5dc",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 225901,
+        "outputTokens": 856
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d32-09de-7442-bcc1-cce6f8a5b45b",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d32-09de-7442-bcc1-cce6f8a5b45b/exec-26d71d6e-c99a-45df-aecc-5f7d95863f2e.png",
+            "/Users/orcdev/.codex/generated_images/01a12d32-09de-7442-bcc1-cce6f8a5b45b/exec-cae56ee9-692b-4faf-9288-6f63dfbfd1b0.png",
+            "/Users/orcdev/.codex/generated_images/01a12d32-09de-7442-bcc1-cce6f8a5b45b/exec-39a0a4fe-e8cc-4589-8d0b-7c9d2e5dba49.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque images using the attached reference and your exact prompt.",
+            "I’m using the imagegen skill for these three reference-based generations.",
+            "Two images are complete. I’m generating the third with the same reference and exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

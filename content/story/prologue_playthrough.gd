@@ -75,28 +75,12 @@ func run() -> void:
 	check.call(Inventory.has(&"west_door_key"), "the west door key")
 	await _leave("Doorway", &"cathedral_nave")
 	await _give(&"west_door_key", "Doors")
+	if Chapters.in_build(&"cathedral_parvis"):
+		while Rooms.current == null or Rooms.current.room_id != &"cathedral_parvis":
+			await _tree.process_frame
 	while Cutscenes.current != null:
 		await _tree.process_frame
 	await _settle()
 	check.call(GameState.get_flag(&"west_doors_open"), "the great doors open")
 	await _shot("06_the_doors")
 	_stop_listening()
-
-
-func _closeup_click(hotspot_name: String) -> void:
-	await Interaction.click_at((Closeups.current.hotspots.get_node(hotspot_name) as Hotspot).focus_point())
-	await _settle()
-
-
-func _close() -> void:
-	Interaction.right_click()
-	while Closeups.current != null or Closeups.busy:
-		await _tree.process_frame
-	await _settle()
-
-
-func _until_memory(memory: StringName) -> void:
-	while not memory in GameState.memories or Cutscenes.current != null:
-		await _tree.process_frame
-	await _settle()
-	check.call(memory in GameState.memories, "the vision %s" % memory)

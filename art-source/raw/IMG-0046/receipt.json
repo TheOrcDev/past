@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0046",
+  "title": "The canal bridge, then",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-11T22:57:49.237Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0037/IMG-0037-v1.png",
+          "sha256": "a11e4711f0eaa6c29474d071a755afad10ef4b4a5a2f66592e99d555b0640ed5"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit this image in place. Keep exactly the same composition, camera, perspective, horizon and every shape where it stands: the bridge and its lamp, the canal, the houses on both banks, the moored boat, the quay and the clock tower. Only change the time and the condition.\n\nRestore the same canal bridge to how it looked decades earlier, on a golden afternoon, in full rich warm color, as a painterly gothic matte painting: clear green water reflecting the sky, the moored boat freshly painted red and blue, flower pots along the bridge's parapet, laundry and bunting between the houses, the lamp lit warm, the clock tower's face gilded, a warm sunset sky. The key light comes from the same direction as in the original.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0046-v1.png",
+          "sha256": "0876d7a24c79fd400016c355f519c0c53bcbe7403fc0fffb0f40eb335dfa7350",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0046-v2.png",
+          "sha256": "7356f37ecfdae7c8c409841a9fa44b6819bb944f05e3a53d370883f5279e05e8",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 95922,
+        "outputTokens": 673
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d2f-cb9d-73b0-9085-8663e80c54ad",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d2f-cb9d-73b0-9085-8663e80c54ad/exec-56419c01-5886-4b95-be2d-7a227d5fdfba.png",
+            "/Users/orcdev/.codex/generated_images/01a12d2f-cb9d-73b0-9085-8663e80c54ad/exec-9f63e014-24d9-48d3-ad75-561207548458.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate two wide, opaque edits using your prompt verbatim.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

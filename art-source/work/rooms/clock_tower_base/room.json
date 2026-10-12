@@ -1,0 +1,276 @@
+{
+  "id": "clock_tower_base",
+  "display_name": "Clock tower",
+  "now": "art-source/raw/IMG-0040/IMG-0040-v2.png",
+  "walk": [
+    [
+      100,
+      792
+    ],
+    [
+      500,
+      762
+    ],
+    [
+      820,
+      762
+    ],
+    [
+      1000,
+      772
+    ],
+    [
+      1500,
+      782
+    ],
+    [
+      1560,
+      802
+    ],
+    [
+      1700,
+      832
+    ],
+    [
+      1700,
+      1050
+    ],
+    [
+      150,
+      1050
+    ],
+    [
+      80,
+      902
+    ]
+  ],
+  "scale_zones": {
+    "far_y": 762,
+    "far_scale": 0.78,
+    "near_y": 1050,
+    "near_scale": 1.03
+  },
+  "markers": {
+    "default": [
+      900,
+      900
+    ],
+    "from_bridge": [
+      320,
+      822
+    ],
+    "from_works": [
+      730,
+      802
+    ],
+    "from_lower": [
+      1630,
+      852
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "clockmaker",
+      "name": "Clockmaker",
+      "polygon": [
+        [
+          1290,
+          808
+        ],
+        [
+          1290,
+          502
+        ],
+        [
+          1350,
+          472
+        ],
+        [
+          1422,
+          502
+        ],
+        [
+          1422,
+          808
+        ]
+      ],
+      "walk_to": [
+        1210,
+        840
+      ],
+      "default_verb": "talk",
+      "pick_priority": 2
+    },
+    {
+      "id": "tower_door",
+      "name": "Tower door",
+      "polygon": [
+        [
+          650,
+          752
+        ],
+        [
+          650,
+          430
+        ],
+        [
+          730,
+          400
+        ],
+        [
+          810,
+          430
+        ],
+        [
+          810,
+          752
+        ]
+      ],
+      "walk_to": [
+        730,
+        792
+      ],
+      "exit": {
+        "room": "clockworks",
+        "entry": "from_tower",
+        "direction": "up",
+        "requires_flag": "mathis_named"
+      }
+    },
+    {
+      "id": "clock",
+      "name": "The clock",
+      "polygon": [
+        [
+          640,
+          202
+        ],
+        [
+          640,
+          10
+        ],
+        [
+          850,
+          10
+        ],
+        [
+          850,
+          202
+        ]
+      ],
+      "walk_to": [
+        740,
+        802
+      ]
+    },
+    {
+      "id": "workbench",
+      "name": "Workbench",
+      "polygon": [
+        [
+          1000,
+          762
+        ],
+        [
+          1000,
+          522
+        ],
+        [
+          1290,
+          522
+        ],
+        [
+          1290,
+          762
+        ]
+      ],
+      "walk_to": [
+        1150,
+        802
+      ]
+    },
+    {
+      "id": "stairs",
+      "name": "Stair to the lower gate",
+      "polygon": [
+        [
+          1560,
+          802
+        ],
+        [
+          1560,
+          582
+        ],
+        [
+          1800,
+          582
+        ],
+        [
+          1832,
+          802
+        ]
+      ],
+      "walk_to": [
+        1620,
+        832
+      ],
+      "exit": {
+        "room": "lower_gate",
+        "entry": "from_tower",
+        "direction": "right"
+      }
+    },
+    {
+      "id": "to_bridge",
+      "name": "To the bridge",
+      "polygon": [
+        [
+          100,
+          762
+        ],
+        [
+          100,
+          602
+        ],
+        [
+          430,
+          602
+        ],
+        [
+          430,
+          762
+        ]
+      ],
+      "walk_to": [
+        300,
+        802
+      ],
+      "exit": {
+        "room": "canal_bridge",
+        "entry": "from_tower",
+        "direction": "left"
+      }
+    }
+  ],
+  "npcs": [
+    {
+      "scene": "res://content/characters/clockmaker/clockmaker.tscn",
+      "name": "Clockmaker",
+      "position": [
+        1355,
+        808
+      ],
+      "facing": "left",
+      "era": "now"
+    }
+  ],
+  "effects": {
+    "preset": "exterior",
+    "light": [
+      340,
+      140
+    ],
+    "aim": 160
+  },
+  "then": "art-source/raw/IMG-0053/IMG-0053-v1.png"
+}
