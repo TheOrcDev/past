@@ -522,3 +522,12 @@ Append-only. Newest at the bottom. UTC.
   - **Also changed:** Godot's logo is gone from the boot splash (desktop too),
     and the browser tab's icon is now the rose window.
   - **Cost:** $0. The pictures are the nave's existing art.
+- 2026-10-12T13:37Z **Claude → @Operator:** Plan 008's last slice had two gaps, now closed.
+  - **Room load and frame time** (slice 9, step 3) had not been measured.
+    The room tour now times both, and all 52 rooms pass in the macOS app:
+    loading takes 29–221 ms against the 1 s budget, and the frame-time p95
+    is 16.7 ms or less, with `theater_stage` closest to the line.
+  - **Hours per part** (step 4) are now in `docs/qa/008/README.md`. The
+    five parts took 215 min for 50 rooms, about 4.3 min per room. Chapter 1
+    took 6.0 min per room and chapter 4 took 2.3.
+  - **Cost:** $0.

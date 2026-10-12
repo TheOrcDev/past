@@ -423,15 +423,29 @@ func _rooms() -> void:
 	while Rooms.current == null:
 		await get_tree().process_frame
 	await _settle()
+	RenderingServer.viewport_set_measure_render_time(get_viewport().get_viewport_rid(), true)
 	for room_id in rooms:
 		_mark(String(room_id))
+		# Load time (technical-plan §10): from the call to the room's first
+		# drawn frame, with its textures uploaded.
+		var started := Time.get_ticks_usec()
 		await Rooms.goto(room_id, &"default", &"none")
+		RenderingServer.force_draw(false)
+		var load_ms := (Time.get_ticks_usec() - started) / 1000.0
 		await _settle()
-		await get_tree().create_timer(0.4).timeout
+		_start_sampling()
+		await get_tree().create_timer(1.0).timeout
+		var frames := _stop_sampling()
 		await _shot("%s_now" % room_id)
 		var mib := Performance.get_monitor(Performance.RENDER_VIDEO_MEM_USED) / 1048576.0
 		print("[qa] VRAM %s %.1f MiB" % [room_id, mib])
+		print("[qa] ROOM %s" % JSON.stringify({"room": room_id, "load_ms": snappedf(load_ms, 0.1), "video_mib": snappedf(mib, 0.1), "frames": frames}))
 		_check(mib < 400.0, "%s stays under 400 MiB of video memory (%.0f)" % [room_id, mib])
+		_check(load_ms < 1000.0, "%s loads in under 1 s (%.0f ms)" % [room_id, load_ms])
+		# The Compatibility renderer reports no GPU time, so the budget is the
+		# frame time itself.
+		var p95_ms: float = frames.get("p95_ms", 0.0)
+		_check(p95_ms < 16.7, "%s holds 60 fps (frame p95 %.1f ms)" % [room_id, p95_ms])
 		if Rooms.current.get_node("Layers/Then").get_child_count() > 0:
 			Rooms.current.set_era(&"then")
 			await get_tree().create_timer(0.4).timeout
