@@ -1,6 +1,6 @@
 # 008 — Fifty rooms: the city beyond the grave
 
-Status: written 2026-10-11 at the operator's request. Owner: Claude, with
+Status: DONE 2026-10-12. Written 2026-10-11 at the operator's request. Owner: Claude, with
 GPT-6.1 Sol generating images through Codex (decision #44).
 
 ## The brief
@@ -525,3 +525,26 @@ XXL: five parts. It is re-estimated after slices 3 and 4.
     duplicate `[ID:…]` across the game, or a duplicate cue in a file.
   - **Proof:** `Ch4Playthrough` passes in GUT and as `--qa=ch4` on desktop
     (`docs/qa/008/ch4/`).
+- **2026-10-12, slice 9:** the whole game. Plan 008 is done.
+  - **One playthrough:** a `game` QA scenario plays the prologue and all
+    four chapters back to back in the exported macOS app, from the grave to
+    the dawn. It passes in 475 s. Each part's playthrough is also a GUT
+    test.
+  - **Every room within budget:** the room tours print each room's video
+    memory with both eras, Unknown and the NPCs loaded. All 52 rooms come
+    to 182–224 MiB, against 400 MiB.
+  - **Lint is clean.** It now also fails on duplicate line IDs and cues.
+  - **Voice hand-off:** `tools/audio` extracts 1,069 lines, about 69
+    minutes. The 39 turning-point lines carry `[#vo=…]` direction, and every
+    NPC's base direction is in `cast.md`. Six NPCs speak under two names
+    (role and returned name), one voice each.
+  - **The reel and the metrics:** `docs/qa/008/README.md` and
+    `fifty-rooms-reel.mp4`.
+    - 144 accepted requests from 360 generations: 336 by Sol, and 24 by
+      the gateway for $1.14.
+    - Every then-edit aligned on its first round.
+    - About 4.5 hours from plan to finale, by commit timestamps.
+  - **Browser demo:** the prologue still passes in Chrome. The pack is
+    143.3 MB of 150 MB, so plan 006's voice and music will need room made.
+  - **Not done, as the plan said:** voice, music and sound (plan 003 and
+    plan 006).

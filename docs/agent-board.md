@@ -29,7 +29,6 @@ From plan 008 on, the full list is `../art-source/requests/INDEX.md`, rebuilt by
 | 4 | ElevenLabs plan tier and credit ceiling for the audio spike. The operator is getting a 12-month plan and will post the details. It must be a paid tier (Starter or above), because Free is non-commercial and requires attribution. | 2026-10-09 | Plan 003 |
 | 6 | An Apple Developer account for macOS signing and notarization: yes or no? | 2026-10-09 | First public desktop build |
 | 7 | Do you publish as an individual or as a company? This sets the ElevenLabs tier needed for music (`audio-pipeline.md` §2). | 2026-10-09 | Plan 003 |
-| 13 | Git LFS storage: plan 008 adds about 3 GB of raw images. Is the account's LFS quota enough, or should raws stay out of git? | 2026-10-11 | Plan 008 slice 0 |
 
 ## Log
 
@@ -487,3 +486,19 @@ Append-only. Newest at the bottom. UTC.
     know you are happy now". The journal finally reads Ulric.
   - **See:** `docs/qa/008/ch4/`.
   - **Cost:** $0.
+- 2026-10-12T17:30Z **Claude → @Operator:** Plan 008 is done. The whole story plays
+  from the grave to the dawn in the macOS app.
+  - **What's in:** 50 new rooms (42 with their colour past), 13 people to
+    talk to, 20 close-ups, four area reveals, 18 items, 17 memories, and
+    1,069 lines ready for voice (about 69 minutes).
+  - **Checked:** a scripted player finishes the whole game in the exported
+    app. Every room stays well inside its memory budget, and the prologue
+    still runs in the browser demo.
+  - **Watch:** `docs/qa/008/fifty-rooms-reel.mp4`, every room fading from
+    now to then. The metrics are in `docs/qa/008/README.md`.
+  - **Cost:** $1.14 of the $50 gateway budget. Sol made 336 of the 360
+    images on your ChatGPT plan.
+  - **Next:** voice (plan 003, waiting on #4 and #7), then plan 006 for the
+    prologue's release. The browser demo is at 143 MB of 150 MB.
+  - **Board #13** closes: LFS took about 1 GB of raws, and every push
+    went through.

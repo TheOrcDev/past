@@ -10,7 +10,7 @@ const LONG_TIMEOUT_SECONDS := 150.0
 ## Scenarios that need the long timeout without the opening.
 const LONG_RUNS: Array[String] = ["greybox", "vista", "journal"]
 ## Scenarios that need longer still, in seconds.
-const TIMEOUTS := {"reveals": 300.0, "greybox_clip": 360.0, "toolkit_reel": 360.0, "rooms": 900.0, "prologue": 600.0, "ch1": 900.0, "ch2": 900.0, "ch3": 900.0, "ch4": 900.0}
+const TIMEOUTS := {"reveals": 300.0, "greybox_clip": 360.0, "toolkit_reel": 360.0, "rooms": 900.0, "prologue": 600.0, "ch1": 900.0, "ch2": 900.0, "ch3": 900.0, "ch4": 900.0, "game": 3600.0}
 ## Scenarios that start from the opening instead of straight in the first room.
 const WITH_OPENING: Array[String] = ["cemetery_reveal", "grave", "grave_clip", "perf", "tour", "screenshots", "reduced_motion", "skip", "toolkit_reel"]
 
@@ -136,6 +136,8 @@ func _run(scenario: String) -> void:
 			await _enter(&"cemetery_grave")
 			GameState.reset()
 			await Ch3Playthrough.new(get_tree(), _check, _shot).run()
+		"game":
+			await _game()
 		"ch4":
 			await _enter(&"cemetery_grave")
 			GameState.reset()
@@ -332,6 +334,20 @@ func _grave() -> void:
 	await _shot("08_back_from_the_cathedral")
 
 
+## Plays the whole game (plan 008 slice 9): the prologue, then each chapter,
+## each playthrough starting where the last one ended, to the epilogue.
+func _game() -> void:
+	await _enter(&"cemetery_grave")
+	GameState.reset()
+	var start := Time.get_ticks_msec()
+	for run: Playthrough in [ProloguePlaythrough.new(get_tree(), _check, _shot), Ch1Playthrough.new(get_tree(), _check, _shot),
+			Ch2Playthrough.new(get_tree(), _check, _shot), Ch3Playthrough.new(get_tree(), _check, _shot), Ch4Playthrough.new(get_tree(), _check, _shot)]:
+		_mark(run.get_script().get_global_name())
+		await run.run()
+	_check(GameState.get_flag(&"names_returned") and Rooms.current.room_id == &"grave_at_dawn", "the whole game, grave to dawn")
+	print("[qa] GAME %d memories, %d facts, %.0f s" % [GameState.memories.size(), GameState.facts.size(), (Time.get_ticks_msec() - start) / 1000.0])
+
+
 ## Shows an NPC (`--npc=<id>`) large over a grey backdrop and plays its
 ## motions (plan 008 slice 3): idle, each talk loop while "speaking", and each
 ## one-shot, with screenshots at their extremes. With `--room=<id>` it stands
@@ -413,6 +429,9 @@ func _rooms() -> void:
 		await _settle()
 		await get_tree().create_timer(0.4).timeout
 		await _shot("%s_now" % room_id)
+		var mib := Performance.get_monitor(Performance.RENDER_VIDEO_MEM_USED) / 1048576.0
+		print("[qa] VRAM %s %.1f MiB" % [room_id, mib])
+		_check(mib < 400.0, "%s stays under 400 MiB of video memory (%.0f)" % [room_id, mib])
 		if Rooms.current.get_node("Layers/Then").get_child_count() > 0:
 			Rooms.current.set_era(&"then")
 			await get_tree().create_timer(0.4).timeout

@@ -47,8 +47,8 @@ Registrar: Stay back. One more step and I strike every name again. Twice over, s
 	Registrar: ... [ID:CH4_REG_NAME_1]
 	Registrar: How... [ID:CH4_REG_NAME_2]
 	Unknown: It was the first line in the book. I wrote it. I've been carrying it ever since. Here. It's yours. [ID:CH4_REG_NAME_3]
-	Edmund: Edmund. My mother called me Ed. I had a mother. [ID:CH4_REG_NAME_4]
-	Edmund: Take it. Take the book. I don't want to be the last man holding it. [ID:CH4_REG_NAME_5]
+	Edmund: Edmund. My mother called me Ed. I had a mother. [#vo=wondering, childlike] [ID:CH4_REG_NAME_4]
+	Edmund: Take it. Take the book. I don't want to be the last man holding it. [#vo=relieved, exhausted] [ID:CH4_REG_NAME_5]
 	do Inventory.add("ledger")
 	=> END
 - Not yet. [ID:CH4_REG_ASK_NOT_YET]
@@ -87,13 +87,13 @@ Unknown: Not yet. I need the book. [ID:CH4_GREAT_BELL_NOLEDGER_1]
 ~ finale
 
 Unknown: I open the book. Every line in my hand. [ID:CH4_FINALE_1]
-Unknown: Tobias. Agathe. Barnaby. Mathis. Fennick. Hesper. [ID:CH4_FINALE_2]
-Unknown: Corin. Maud. Aldous. Isolde. Bram. Lisette. [ID:CH4_FINALE_3]
+Unknown: Tobias. Agathe. Barnaby. Mathis. Fennick. Hesper. [#vo=ringing, ceremonial] [ID:CH4_FINALE_2]
+Unknown: Corin. Maud. Aldous. Isolde. Bram. Lisette. [#vo=ringing, ceremonial] [ID:CH4_FINALE_3]
 Unknown: And every name after them, one for every stroke of the bell, until my voice goes and the bell keeps on without me. [ID:CH4_FINALE_4]
-Unknown: Elise. [ID:CH4_FINALE_5]
+Unknown: Elise. [#vo=tender, breaking] [ID:CH4_FINALE_5]
 Unknown: And the last line. The one Edmund wrote. Mine. [ID:CH4_FINALE_6]
-Unknown: Ulric. I give it to the city. It's the only thing I have that was ever mine to give. [ID:CH4_FINALE_7]
-Unknown: Aurelle. Your name is Aurelle. Remember it. [ID:CH4_FINALE_8]
+Unknown: Ulric. I give it to the city. It's the only thing I have that was ever mine to give. [#vo=peaceful] [ID:CH4_FINALE_7]
+Unknown: Aurelle. Your name is Aurelle. Remember it. [#vo=triumphant, fading] [ID:CH4_FINALE_8]
 
 => END
 
@@ -101,10 +101,10 @@ Unknown: Aurelle. Your name is Aurelle. Remember it. [ID:CH4_FINALE_8]
 
 Unknown: Morning. I'd forgotten morning. [ID:CH4_EPILOGUE_1]
 Elise: You're fading. [ID:CH4_EPILOGUE_2]
-Unknown: I know. It's all right. I gave it all back. There's not much left of me that wasn't theirs. [ID:CH4_EPILOGUE_3]
+Unknown: I know. It's all right. I gave it all back. There's not much left of me that wasn't theirs. [#vo=faint, content] [ID:CH4_EPILOGUE_3]
 Elise: There's this. [ID:CH4_EPILOGUE_4]
-Elise: Ulric. I know you are happy now. [ID:CH4_EPILOGUE_5]
-Unknown: Yes. Yes, I am. [ID:CH4_EPILOGUE_6]
+Elise: Ulric. I know you are happy now. [#vo=tearful, smiling] [ID:CH4_EPILOGUE_5]
+Unknown: Yes. Yes, I am. [#vo=a last whisper, happy] [ID:CH4_EPILOGUE_6]
 
 => END
 

@@ -135,18 +135,18 @@ Lamplighter: A wedding candle. Where did you— [ID:CH1_LL_CANDLE_1]
 Lamplighter: It's catching. Look at that. It's warm. [ID:CH1_LL_CANDLE_2]
 Unknown: I've seen that candle lit before. A wedding, in the market. A man lit every lamp on this street from it, for his daughter. [ID:CH1_LL_CANDLE_3]
 Lamplighter: ... [ID:CH1_LL_CANDLE_4]
-Lamplighter: That's my memory. That's my daughter. How do you have my memory? [ID:CH1_LL_CANDLE_5]
-Unknown: I don't know. I think I've been carrying it. Here. It's yours. [ID:CH1_LL_CANDLE_6]
-Mathis: Clara. Her name was Clara. And mine... mine is Mathis. [ID:CH1_LL_CANDLE_7]
-Mathis: Mathis. I'd forgotten I had one. [ID:CH1_LL_CANDLE_8]
+Lamplighter: That's my memory. That's my daughter. How do you have my memory? [#vo=stunned, rising] [ID:CH1_LL_CANDLE_5]
+Unknown: I don't know. I think I've been carrying it. Here. It's yours. [#vo=gentle] [ID:CH1_LL_CANDLE_6]
+Mathis: Clara. Her name was Clara. And mine... mine is Mathis. [#vo=breaking, wondering] [ID:CH1_LL_CANDLE_7]
+Mathis: Mathis. I'd forgotten I had one. [#vo=half a laugh, half a sob] [ID:CH1_LL_CANDLE_8]
 Mathis: Take the lamp. You'll need light where you're going, and I've a whole street of it now. [ID:CH1_LL_CANDLE_9]
 
 => END
 
 ~ lamplighter_after
 
-Unknown: Not my memory. His. I've been walking around with other people's lives in my pockets. [ID:CH1_LL_AFTER_1]
-Unknown: So what else am I carrying? And who did I take it from? [ID:CH1_LL_AFTER_2]
+Unknown: Not my memory. His. I've been walking around with other people's lives in my pockets. [#vo=quiet, shaken] [ID:CH1_LL_AFTER_1]
+Unknown: So what else am I carrying? And who did I take it from? [#vo=dread] [ID:CH1_LL_AFTER_2]
 
 => END
 

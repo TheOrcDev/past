@@ -155,10 +155,10 @@ if GameState.get_flag("dove_forgave")
 	=> END
 if not GameState.get_flag("dove_met")
 	do GameState.set_flag("dove_met")
-	Dove: There you are. [ID:CH4_DOVE_MEET_1]
+	Dove: There you are. [#vo=soft, as if he were late for dinner] [ID:CH4_DOVE_MEET_1]
 	Unknown: You know me. [ID:CH4_DOVE_MEET_2]
 	Dove: I'd know you in the dark. I've had a lot of practice. [ID:CH4_DOVE_MEET_3]
-	Dove: You took my name, Ulric. You didn't take you. I kept you. Somebody had to. [ID:CH4_DOVE_MEET_4]
+	Dove: You took my name, Ulric. You didn't take you. I kept you. Somebody had to. [#vo=steady, loving, unafraid] [ID:CH4_DOVE_MEET_4]
 => dove_ask
 
 ~ dove_ask
@@ -185,11 +185,11 @@ Dove: Well? [ID:CH4_DOVE_ASK]
 ~ dove_letter
 
 Unknown: I wrote this. I couldn't say it then. I'll say it now. [ID:CH4_DOVE_LETTER_1]
-Unknown: I'm sorry. For your name, and for every name. I was afraid of a city that remembered, so I made one that couldn't. [ID:CH4_DOVE_LETTER_2]
+Unknown: I'm sorry. For your name, and for every name. I was afraid of a city that remembered, so I made one that couldn't. [#vo=halting, sincere] [ID:CH4_DOVE_LETTER_2]
 Dove: ... [ID:CH4_DOVE_LETTER_3]
-Dove: You finally said it to my face. Even if you haven't got one. [ID:CH4_DOVE_LETTER_4]
+Dove: You finally said it to my face. Even if you haven't got one. [#vo=teary, wry] [ID:CH4_DOVE_LETTER_4]
 Dove: Here. I kept this for you, the night they broke your stone. The Gravedigger put moss over it, and I put it in my heart. [ID:CH4_DOVE_LETTER_5]
-Dove: The U. The beginning of you. It's enough to start from. Now go and give them back theirs. [ID:CH4_DOVE_LETTER_6]
+Dove: The U. The beginning of you. It's enough to start from. Now go and give them back theirs. [#vo=firm, warm] [ID:CH4_DOVE_LETTER_6]
 
 => END
 

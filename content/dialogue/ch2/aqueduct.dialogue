@@ -301,24 +301,24 @@ Unknown: A desk with a ledger: the keepers' duty roster. Every name struck throu
 
 Unknown: The keepers, here, in a line. And the man in black with the book and the seal. [ID:CH2_SIGNING_RETURN_1]
 Unknown: He reads their names. Aldous first. And with every name he strikes, a little light goes out of them. [ID:CH2_SIGNING_RETURN_2]
-Unknown: Then he turns. The hole in the light turns round, and I can see out of it. [ID:CH2_SIGNING_RETURN_3]
-Unknown: It's me. The voice reading the names is mine. [ID:CH2_SIGNING_RETURN_4]
+Unknown: Then he turns. The hole in the light turns round, and I can see out of it. [#vo=horror dawning] [ID:CH2_SIGNING_RETURN_3]
+Unknown: It's me. The voice reading the names is mine. [#vo=barely a whisper] [ID:CH2_SIGNING_RETURN_4]
 
 => END
 
 ~ signing_after
 
-Unknown: My name was Ulric. I was the High Magistrate. [ID:CH2_SIGNING_AFTER_1]
-Unknown: I took their names so they'd stop asking for things. And then nobody knew how to open the gates. [ID:CH2_SIGNING_AFTER_2]
-Unknown: This is my fault. All of it. [ID:CH2_SIGNING_AFTER_3]
-Unknown: Then I'd better turn it. [ID:CH2_SIGNING_AFTER_4]
+Unknown: My name was Ulric. I was the High Magistrate. [#vo=hollow] [ID:CH2_SIGNING_AFTER_1]
+Unknown: I took their names so they'd stop asking for things. And then nobody knew how to open the gates. [#vo=flat, ashamed] [ID:CH2_SIGNING_AFTER_2]
+Unknown: This is my fault. All of it. [#vo=breaking] [ID:CH2_SIGNING_AFTER_3]
+Unknown: Then I'd better turn it. [#vo=resolved] [ID:CH2_SIGNING_AFTER_4]
 
 => END
 
 ~ drained
 
 Unknown: Listen to that. A whole quarter, breathing out. [ID:CH2_DRAINED_1]
-Maud: Aldous. Aldous! I remember. He laughed with his whole face. [ID:CH2_DRAINED_2]
+Maud: Aldous. Aldous! I remember. He laughed with his whole face. [#vo=joyful, tearful] [ID:CH2_DRAINED_2]
 Isolde: Every one, by name. I can do that. I can do that now. [ID:CH2_DRAINED_3]
 Corin: Upstream. I was going upstream. To the city on the hill. [ID:CH2_DRAINED_4]
 Unknown: I gave them back what I took. It's not enough. It's a start. [ID:CH2_DRAINED_5]

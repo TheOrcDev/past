@@ -111,7 +111,7 @@ Sister: Yes? [ID:PRO_SISTER_YES]
 ~ sister_book
 
 Sister: That's her hand. In the margins. [ID:PRO_SISTER_BOOK_1]
-Sister: Names. She wrote them down, so that somebody would remember them. [ID:PRO_SISTER_BOOK_2]
+Sister: Names. She wrote them down, so that somebody would remember them. [#vo=moved, holding it together] [ID:PRO_SISTER_BOOK_2]
 Sister: Take the key. Whoever you were, she'd have wanted you to go and find out. [ID:PRO_SISTER_BOOK_3]
 
 => END
@@ -168,7 +168,7 @@ Unknown: An empty stand. The book's with me. [ID:PRO_STAND_EMPTY_1]
 
 Unknown: Gold, and candles, and one voice above all the others. [ID:PRO_SINGER_RETURN_1]
 Unknown: She was singing names. A list of them, like a prayer. [ID:PRO_SINGER_RETURN_2]
-Unknown: I was there. I know I was. So why can't I see myself? [ID:PRO_SINGER_RETURN_3]
+Unknown: I was there. I know I was. So why can't I see myself? [#vo=bewildered] [ID:PRO_SINGER_RETURN_3]
 
 => END
 

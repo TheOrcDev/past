@@ -226,8 +226,8 @@ Unknown: One word. [ID:CH3_VAULT_DIAL]
 ~ registrar_flees
 
 Registrar: No. [ID:CH3_FLEES_1]
-Registrar: You don't get to undo it. Not after I carried it for you. [ID:CH3_FLEES_2]
-Registrar: If you want the names, Magistrate, come and take them. From the top of the world. [ID:CH3_FLEES_3]
+Registrar: You don't get to undo it. Not after I carried it for you. [#vo=anguished, furious] [ID:CH3_FLEES_2]
+Registrar: If you want the names, Magistrate, come and take them. From the top of the world. [#vo=shouted, retreating] [ID:CH3_FLEES_3]
 Unknown: He's taken the book. Up. Toward the cathedral. [ID:CH3_FLEES_4]
 
 => END
@@ -295,9 +295,9 @@ Unknown: The Ledger, open on the desk. The last page. One line left, waiting. [I
 ~ office_ledger_use
 
 Unknown: I write the vault's word on the first leaf, where only I'll ever look: SILENCE. [ID:CH3_OFFICE_LEDGER_USE_1]
-Unknown: Then I write her name. I know it as I write it. I loved her, and I write it anyway. [ID:CH3_OFFICE_LEDGER_USE_2]
-Unknown: And I strike it through. And she's standing in the doorway, and she looks at me, and she doesn't know why she came. [ID:CH3_OFFICE_LEDGER_USE_3]
-Unknown: I did that. I did that to her with this hand. [ID:CH3_OFFICE_LEDGER_USE_4]
+Unknown: Then I write her name. I know it as I write it. I loved her, and I write it anyway. [#vo=cold, then cracking] [ID:CH3_OFFICE_LEDGER_USE_2]
+Unknown: And I strike it through. And she's standing in the doorway, and she looks at me, and she doesn't know why she came. [#vo=grief] [ID:CH3_OFFICE_LEDGER_USE_3]
+Unknown: I did that. I did that to her with this hand. [#vo=whispered, devastated] [ID:CH3_OFFICE_LEDGER_USE_4]
 
 => END
 
