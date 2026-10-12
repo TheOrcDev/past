@@ -460,3 +460,27 @@ XXL: five parts. It is re-estimated after slices 3 and 4.
   - **Checks:** a `reveals` QA scenario shoots each one
     (`docs/qa/008/reveals/`). Chapter cutscenes are left out of the web
     pack.
+- **2026-10-12, slice 6:** chapter 2, The Drowned Quarter, plays from the
+  flooded stair to the valve house.
+  - **Chart and script:** `docs/story/ch2-puzzles.md` has two threads (the
+    washer's key and the doctor's stretcher) and the ring's seal, all
+    meeting at the valve. The script is in `content/dialogue/ch2/`, with 15
+    hint goals and five journal pages.
+  - **Art (IMG-0073–0103):**
+    - 11 rooms, 10 with a then image, all aligned on their first round
+      (p90 1.36–2.35 px);
+    - 3 NPCs (the Ferryman in his boat, the Washerwoman, the Plague
+      Doctor);
+    - 4 close-ups and an item sheet;
+    - two clean plates.
+  - **Props:** a room's data can name a clean plate and props, cut from the
+    full image as layers to hide. The crate and the stretcher leave their
+    rooms when taken.
+  - **The ferry** is a conversation: the landing Unknown names is kept in
+    `ferry_to`, and the room moves him there once the talk ends.
+  - **The turn:** in the valve's vision the burned figure turns and is
+    Ulric. Draining the quarter gives Maud, Isolde and Corin their names
+    back, and their subtitles change to them.
+  - **Proof:** `Ch2Playthrough` passes in GUT and as `--qa=ch2` on desktop
+    (`docs/qa/008/ch2/`). The prologue and chapter 1 tests now follow the
+    way on into the next chapter when it ships.

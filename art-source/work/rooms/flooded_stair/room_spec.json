@@ -1,0 +1,421 @@
+{
+  "display_name": "Flooded stair",
+  "layers": {
+    "now": [
+      {
+        "name": "Background",
+        "texture": "res://content/rooms/flooded_stair/art/bg_now.png"
+      }
+    ],
+    "then": [
+      {
+        "name": "Background",
+        "texture": "res://content/rooms/flooded_stair/art/bg_then.png"
+      }
+    ]
+  },
+  "walk": {
+    "now": [
+      [
+        620,
+        790
+      ],
+      [
+        1480,
+        780
+      ],
+      [
+        1560,
+        880
+      ],
+      [
+        1700,
+        1060
+      ],
+      [
+        300,
+        1060
+      ],
+      [
+        420,
+        900
+      ]
+    ],
+    "then": [
+      [
+        620,
+        790
+      ],
+      [
+        1480,
+        780
+      ],
+      [
+        1560,
+        880
+      ],
+      [
+        1700,
+        1060
+      ],
+      [
+        300,
+        1060
+      ],
+      [
+        420,
+        900
+      ]
+    ]
+  },
+  "scale_zones": {
+    "far_y": 785,
+    "far_scale": 0.82,
+    "near_y": 1060,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      1000,
+      950
+    ],
+    "from_gate": [
+      1560,
+      920
+    ],
+    "from_landing": [
+      700,
+      860
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "bell",
+      "name": "Ferry bell",
+      "polygon": [
+        [
+          290,
+          640
+        ],
+        [
+          290,
+          320
+        ],
+        [
+          400,
+          320
+        ],
+        [
+          400,
+          640
+        ]
+      ],
+      "walk_to": [
+        640,
+        880
+      ],
+      "default_verb": "use",
+      "pick_priority": 2
+    },
+    {
+      "id": "upstairs",
+      "name": "Stair up",
+      "polygon": [
+        [
+          1520,
+          880
+        ],
+        [
+          1520,
+          600
+        ],
+        [
+          1800,
+          420
+        ],
+        [
+          1900,
+          520
+        ],
+        [
+          1900,
+          900
+        ]
+      ],
+      "walk_to": [
+        1560,
+        920
+      ],
+      "exit": {
+        "room": "lower_gate",
+        "entry": "from_flooded",
+        "direction": "up"
+      }
+    },
+    {
+      "id": "quay",
+      "name": "Quay",
+      "polygon": [
+        [
+          0,
+          720
+        ],
+        [
+          0,
+          560
+        ],
+        [
+          300,
+          560
+        ],
+        [
+          300,
+          720
+        ]
+      ],
+      "walk_to": [
+        640,
+        830
+      ],
+      "exit": {
+        "room": "ferry_landing",
+        "entry": "from_stair",
+        "direction": "left",
+        "requires_flag": "ferry_called"
+      }
+    },
+    {
+      "id": "water",
+      "name": "Floodwater",
+      "polygon": [
+        [
+          600,
+          770
+        ],
+        [
+          600,
+          610
+        ],
+        [
+          1450,
+          610
+        ],
+        [
+          1450,
+          770
+        ]
+      ],
+      "walk_to": [
+        1000,
+        820
+      ]
+    },
+    {
+      "id": "roofs",
+      "name": "Drowned roofs",
+      "polygon": [
+        [
+          450,
+          560
+        ],
+        [
+          450,
+          380
+        ],
+        [
+          1300,
+          380
+        ],
+        [
+          1300,
+          560
+        ]
+      ],
+      "walk_to": [
+        900,
+        820
+      ]
+    }
+  ],
+  "occluders": [],
+  "npcs": [],
+  "effects": [
+    {
+      "type": "FogLayer",
+      "name": "FogFar",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.85,
+          0.86,
+          0.89,
+          1.0
+        ],
+        "density": 0.3,
+        "velocity": [
+          0.005,
+          0.0
+        ],
+        "noise_scale": [
+          1.4,
+          0.8
+        ],
+        "band_top": 0.3,
+        "band_bottom": 0.75,
+        "depth_texture": "res://content/rooms/flooded_stair/art/depth_now.png",
+        "near_cutoff": 0.4,
+        "noise_seed": 21
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "FogLow",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.8,
+          0.82,
+          0.86,
+          1.0
+        ],
+        "density": 0.24,
+        "velocity": [
+          -0.008,
+          0.0
+        ],
+        "noise_scale": [
+          2.2,
+          1.1
+        ],
+        "band_top": 0.5,
+        "band_bottom": 0.82,
+        "depth_texture": "res://content/rooms/flooded_stair/art/depth_now.png",
+        "near_cutoff": 0.55,
+        "noise_seed": 23
+      }
+    },
+    {
+      "type": "LightShafts",
+      "name": "Moonlight",
+      "era": "now",
+      "properties": {
+        "origin": [
+          580,
+          80
+        ],
+        "aim": 200.0,
+        "spread": 30.0,
+        "beams": 5.0,
+        "intensity": 0.07,
+        "reach": 0.9,
+        "shaft_color": [
+          0.9,
+          0.93,
+          1.0,
+          1.0
+        ],
+        "flicker": 0.3
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "GroundMist",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.86,
+          0.87,
+          0.9,
+          1.0
+        ],
+        "density": 0.16,
+        "velocity": [
+          0.01,
+          0.0
+        ],
+        "noise_scale": [
+          2.6,
+          1.6
+        ],
+        "band_top": 0.84,
+        "band_bottom": 1.02,
+        "band_softness": 0.08,
+        "noise_seed": 27
+      },
+      "layer": "foreground"
+    },
+    {
+      "type": "LightShafts",
+      "name": "GoldenShafts",
+      "era": "then",
+      "properties": {
+        "origin": [
+          580,
+          80
+        ],
+        "aim": 200.0,
+        "spread": 44.0,
+        "beams": 7.0,
+        "intensity": 0.14,
+        "reach": 1.0,
+        "shaft_color": [
+          1.0,
+          0.85,
+          0.55,
+          1.0
+        ],
+        "flicker": 0.25
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "WarmHaze",
+      "era": "then",
+      "properties": {
+        "fog_color": [
+          1.0,
+          0.9,
+          0.75,
+          1.0
+        ],
+        "density": 0.1,
+        "velocity": [
+          0.004,
+          0.0
+        ],
+        "noise_scale": [
+          1.2,
+          0.7
+        ],
+        "band_top": 0.3,
+        "band_bottom": 0.9,
+        "noise_seed": 13
+      }
+    },
+    {
+      "type": "DustMotes",
+      "name": "GoldenDust",
+      "era": "then",
+      "properties": {
+        "area": [
+          300,
+          150,
+          1500,
+          750
+        ],
+        "mote_color": [
+          1.0,
+          0.86,
+          0.55,
+          0.55
+        ],
+        "mote_count": 60,
+        "drift": [
+          3,
+          -4
+        ],
+        "mote_size": 2.5
+      }
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "id": "IMG-0099",
+  "title": "The hospice on stilts, then",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T00:34:04.719Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0079/IMG-0079-v1.png",
+          "sha256": "e369aabb251916c0bd655c31104dfcb4f1ce007a947b8527b471aa6ee63d1cf4"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit this image in place. Keep exactly the same composition, camera, perspective, horizon and every shape where it stands: the door and the boat outside, the beams, the cots, the herbs, the cabinet, the chart and the stretcher, and the floor. Only change the time and the condition.\n\nRestore the same hospice to how it looked decades earlier, on a busy hopeful afternoon, in full rich warm color, as a painterly gothic matte painting: the cots made up with clean white linen and empty, fresh bunches of green herbs hanging from the rafters, the cabinet full of labelled bottles, the lamps lit, flowers in jars, sunlight through open shutters onto a scrubbed floor, clear water outside. The key light comes from the same direction as in the original.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0099-v1.png",
+          "sha256": "13a7786ef0c5fba8719b223cfc46eaee9505851f4ee0e8721ef3caa0ba9af822",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0099-v2.png",
+          "sha256": "45f173b8dfd8e12a379db13d278ad676633906307467c9a3fa6e0872e677ae91",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 182242,
+        "outputTokens": 880
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d87-eb96-7860-8c75-7b5cf8c04e1b",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d87-eb96-7860-8c75-7b5cf8c04e1b/exec-23affc22-5750-4083-8a56-26db71e71cc3.png",
+            "/Users/orcdev/.codex/generated_images/01a12d87-eb96-7860-8c75-7b5cf8c04e1b/exec-1bf7da68-1986-450e-9fa4-cf4fd315869f.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate two edits from the attached image using your prompt exactly.",
+            "The first image is complete. The second edit is generating from the original attachment.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0090",
+  "title": "The drowned chapel, then",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T00:29:28.311Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0078/IMG-0078-v3.png",
+          "sha256": "5f8e2a9c2ca2eea7e468f4984f9c76807c7e6a2ce5d352c79576e15dbb568b40"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit this image in place. Keep exactly the same composition, camera, perspective, horizon and every shape where it stands: the pews, the aisle, the altar, the window, the beams and the walls. Only change the time and the condition.\n\nRestore the same chapel to how it looked decades earlier, on a quiet candlelit evening, in full rich warm color, as a painterly gothic matte painting: the floor dry, polished stone and the pews upright in neat rows, the altar dressed in white linen with tall lit candles, the window whole with warm stained glass, the roof whole, flowers in vases, a warm golden glow. The key light comes from the same direction as in the original.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0090-v1.png",
+          "sha256": "e822513554f354a082cba85fabed05ef30c2ccab3b142001e3e8d6883246c89e",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0090-v2.png",
+          "sha256": "ba2dede41d13491559142f0247272de9f51ade0f85cf967f236cde465c8f1782",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 178441,
+        "outputTokens": 844
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d83-b3d2-7240-9400-e34c5202adac",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d83-b3d2-7240-9400-e34c5202adac/exec-6babd6eb-45af-4458-b3bb-af17880f22f7.png",
+            "/Users/orcdev/.codex/generated_images/01a12d83-b3d2-7240-9400-e34c5202adac/exec-9f5adbb3-5c54-4856-836f-0cb8d3e79fd3.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate two edits from the attached image using your prompt exactly.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

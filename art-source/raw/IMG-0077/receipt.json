@@ -1,0 +1,80 @@
+{
+  "id": "IMG-0077",
+  "title": "The sluice house, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T00:29:24.031Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0014/IMG-0014-v2.png",
+          "sha256": "007293b04cb0e4a9f28c332a9f68cfd2fc539efd55efc64882a894d5c677d1de"
+        },
+        {
+          "path": "art-source/raw/IMG-0062/IMG-0062-v1.png",
+          "sha256": "ed051eeb78e48107feb34bb73402af5139a6dcfd4f62b8f13d063ba93a70ac95"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: the inside of an old stone sluice house built over a channel, at night, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: The floor is a stone gallery above a dark rushing channel. In the centre, a huge iron gate wheel on a geared spindle, rusted solid. On the right, a tall gauge post marked with levels, drowned in silt. On the left, a sloping desk with a pinned yellowed paper petition, and a high window with a stone ledge through which moonlight falls. Chains, levers and rust everywhere.\n\nThe lower third of the image is open, walkable ground: the stone gallery floor runs across the lower third. It is lit by moonlight through the high window with drifting fog or haze behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0077-v1.png",
+          "sha256": "815d4c4337ef7e387cb7f2026328ffc841a8ca6cc5fe73b0e54dc74ca653ba5d",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0077-v2.png",
+          "sha256": "722bf7ec5aa6b78483bf78fc3bc2dbee4adfa7f0e45d6ae38f13c341222d992e",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0077-v3.png",
+          "sha256": "0402efa3dcd32eade5a4b986c6bef43dfde5df5ec98431ec1f4677bea5c9bef3",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 206356,
+        "outputTokens": 829
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d83-a326-7793-938a-c0bb2e37eda6",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d83-a326-7793-938a-c0bb2e37eda6/exec-5628d1f2-593e-44b9-8a8d-7807e61f442c.png",
+            "/Users/orcdev/.codex/generated_images/01a12d83-a326-7793-938a-c0bb2e37eda6/exec-98bdc7f0-4096-4bca-8f9d-f4ce9e6aa751.png",
+            "/Users/orcdev/.codex/generated_images/01a12d83-a326-7793-938a-c0bb2e37eda6/exec-149b6073-4591-4d89-8162-6800e8f7334a.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque images using both references and your prompt exactly as provided.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

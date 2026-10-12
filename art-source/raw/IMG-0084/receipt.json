@@ -1,0 +1,77 @@
+{
+  "id": "IMG-0084",
+  "title": "NPC: the Ferryman",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T00:24:45.201Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "1440x2560",
+      "quality": "high",
+      "n": 3,
+      "background": "transparent",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0013/IMG-0013-v2.png",
+          "sha256": "aea3ec9ef0da502490ee6ecc801c0a0d4cd1f6bcf806d4f9b16ec70c8cb05977"
+        }
+      ],
+      "mask": null,
+      "prompt": "A single full-body character for a dark gothic point-and-click adventure game, painted in the same monochrome greyscale ink-wash matte-painting style as the reference image: the Ferryman of a drowned city: a tall, gaunt figure in a long hooded oilskin cloak, standing upright in the stern of a narrow, flat-bottomed wooden punt (the whole boat shown, seen from the side), holding a long punting pole planted beside him.\n\nThey are a grey shade of a person: solid, made of mid and light greys with soft ink texture, never pure black, with no visible face (his face is lost in the deep shadow of his hood). Pose: standing still and patient in the boat's stern, both hands on the pole, facing three-quarters to the viewer's right. Shown whole from head to feet, facing three-quarters to the viewer's left, filling most of the image height, with a little space around them. Even soft light from the upper left with a gentle cool rim light. On a fully transparent background, with no ground, shadow or scenery.\n\nNo text, labels, letters or numbers. No other figures. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0084-v1.png",
+          "sha256": "5509527228aadc82f799e1df02653a1ba65149e4de856dbcc3a81117e14f2533",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0084-v2.png",
+          "sha256": "2d7459fbaff666ae2bda8854ee40b0e7064e6af1d81e1d7968705df45ccd7780",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0084-v3.png",
+          "sha256": "82f57526b13fac0ed070a66587a7649ee8b9bbf7a4eca026ec703fefbb761a1b",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 128026,
+        "outputTokens": 1254
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d7f-628b-7102-8580-11d900f51fc6",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d7f-628b-7102-8580-11d900f51fc6/exec-cd392d1c-cd0f-4b62-9b3e-63591cba59a0.png",
+            "/Users/orcdev/.codex/generated_images/01a12d7f-628b-7102-8580-11d900f51fc6/exec-792d859d-c4bd-4dc6-ba90-9af25d08c605.png",
+            "/Users/orcdev/.codex/generated_images/01a12d7f-628b-7102-8580-11d900f51fc6/exec-ad2db82a-cbae-46f1-9998-79d07aee313e.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1024,
+              "height": 1536
+            },
+            {
+              "width": 1024,
+              "height": 1536
+            },
+            {
+              "width": 1024,
+              "height": 1536
+            }
+          ],
+          "messages": [
+            "I’ll generate three portrait images from the reference, each with a transparent background and your exact prompt.",
+            "Two images are generated. I’m generating the third with the same reference and exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

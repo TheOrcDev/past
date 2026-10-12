@@ -1,0 +1,31 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/closeups/washer_shirt/washer_shirt.gd" id="1_8oogl"]
+[ext_resource type="Texture2D" path="res://content/closeups/washer_shirt/art/bg.png" id="2_weuoy"]
+[ext_resource type="Script" path="res://src/core/hotspot.gd" id="3_hobf5"]
+
+[node name="WasherShirt" type="Node2D" unique_id=340439275]
+script = ExtResource("1_8oogl")
+closeup_id = &"washer_shirt"
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1531492230]
+texture = ExtResource("2_weuoy")
+centered = false
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=209709757]
+
+[node name="Initial" type="Area2D" parent="Hotspots" unique_id=1971384144]
+script = ExtResource("3_hobf5")
+id = &"initial"
+display_name = "An initial"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Initial" unique_id=690008829]
+polygon = PackedVector2Array(900, 420, 1180, 420, 1180, 700, 900, 700)
+
+[node name="Cloth" type="Area2D" parent="Hotspots" unique_id=1355218036]
+script = ExtResource("3_hobf5")
+id = &"cloth"
+display_name = "The shirt"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Cloth" unique_id=796751984]
+polygon = PackedVector2Array(600, 0, 1920, 0, 1920, 1080, 600, 1080)

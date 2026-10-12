@@ -1,0 +1,192 @@
+{
+  "display_name": "Drowned forest",
+  "now": "art-source/raw/IMG-0080/IMG-0080-v1.png",
+  "walk": [
+    [
+      0,
+      830
+    ],
+    [
+      300,
+      760
+    ],
+    [
+      700,
+      690
+    ],
+    [
+      1100,
+      600
+    ],
+    [
+      1380,
+      560
+    ],
+    [
+      1410,
+      610
+    ],
+    [
+      1100,
+      690
+    ],
+    [
+      720,
+      790
+    ],
+    [
+      620,
+      1060
+    ],
+    [
+      0,
+      1060
+    ]
+  ],
+  "scale_zones": {
+    "far_y": 560,
+    "far_scale": 0.55,
+    "near_y": 1060,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      300,
+      940
+    ],
+    "from_steps": [
+      100,
+      980
+    ],
+    "from_foot": [
+      1300,
+      600
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "bank",
+      "name": "Back to the washing steps",
+      "polygon": [
+        [
+          0,
+          900
+        ],
+        [
+          60,
+          900
+        ],
+        [
+          60,
+          1060
+        ],
+        [
+          0,
+          1060
+        ]
+      ],
+      "walk_to": [
+        80,
+        990
+      ],
+      "exit": {
+        "room": "washing_steps",
+        "entry": "from_forest",
+        "direction": "left"
+      }
+    },
+    {
+      "id": "trunk",
+      "name": "Fallen trunk",
+      "polygon": [
+        [
+          1250,
+          640
+        ],
+        [
+          1250,
+          500
+        ],
+        [
+          1420,
+          500
+        ],
+        [
+          1420,
+          640
+        ]
+      ],
+      "walk_to": [
+        1320,
+        590
+      ],
+      "exit": {
+        "room": "aqueduct_foot",
+        "entry": "from_forest",
+        "direction": "right"
+      }
+    },
+    {
+      "id": "trees",
+      "name": "Dead trees",
+      "polygon": [
+        [
+          700,
+          560
+        ],
+        [
+          700,
+          100
+        ],
+        [
+          1000,
+          100
+        ],
+        [
+          1000,
+          560
+        ]
+      ],
+      "walk_to": [
+        500,
+        880
+      ]
+    },
+    {
+      "id": "arches",
+      "name": "Aqueduct",
+      "polygon": [
+        [
+          1050,
+          500
+        ],
+        [
+          1050,
+          280
+        ],
+        [
+          1500,
+          280
+        ],
+        [
+          1500,
+          500
+        ]
+      ],
+      "walk_to": [
+        900,
+        680
+      ]
+    }
+  ],
+  "effects": {
+    "preset": "exterior",
+    "light": [
+      1290,
+      90
+    ],
+    "aim": 200
+  },
+  "id": "drowned_forest",
+  "then": "art-source/raw/IMG-0094/IMG-0094-v2.png"
+}

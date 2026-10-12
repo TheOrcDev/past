@@ -1,0 +1,242 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/rooms/washing_steps/washing_steps.gd" id="1_x301w"]
+[ext_resource type="Texture2D" path="res://content/rooms/washing_steps/art/bg_now.png" id="2_ypvy2"]
+[ext_resource type="Script" path="res://src/systems/effects/fog_layer.gd" id="3_qlhdd"]
+[ext_resource type="Texture2D" path="res://content/rooms/washing_steps/art/depth_now.png" id="4_2kown"]
+[ext_resource type="Script" path="res://src/systems/effects/light_shafts.gd" id="5_d0qkd"]
+[ext_resource type="Texture2D" path="res://content/rooms/washing_steps/art/bg_then.png" id="6_pbxkj"]
+[ext_resource type="Script" path="res://src/systems/effects/dust_motes.gd" id="7_eo8hk"]
+[ext_resource type="Script" path="res://src/core/scale_zones.gd" id="8_a63rm"]
+[ext_resource type="Script" path="res://src/core/hotspot.gd" id="9_bvju8"]
+[ext_resource type="Script" path="res://src/core/exit.gd" id="10_yabox"]
+[ext_resource type="PackedScene" path="res://content/characters/washerwoman/washerwoman.tscn" id="11_y18cb"]
+[ext_resource type="Script" path="res://src/core/actor.gd" id="12_hx3xk"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_k8obw"]
+vertices = PackedVector2Array(1900, 1060, 200, 1060, 250, 880, 1000, 870, 1500, 880, 1700, 850, 1900, 900)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(0, 4, 5, 6)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(250, 880, 1000, 870, 1500, 880, 1700, 850, 1900, 900, 1900, 1060, 200, 1060)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_cc4qk"]
+vertices = PackedVector2Array(1900, 1060, 200, 1060, 250, 880, 1000, 870, 1500, 880, 1700, 850, 1900, 900)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(0, 4, 5, 6)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(250, 880, 1000, 870, 1500, 880, 1700, 850, 1900, 900, 1900, 1060, 200, 1060)])
+agent_radius = 0.0
+
+[node name="WashingSteps" type="Node2D" unique_id=1503395300]
+script = ExtResource("1_x301w")
+room_id = &"washing_steps"
+display_name = "Washing steps"
+
+[node name="Layers" type="Node2D" parent="." unique_id=117457763]
+
+[node name="Now" type="Node2D" parent="Layers" unique_id=2115824268]
+
+[node name="Background" type="Sprite2D" parent="Layers/Now" unique_id=1852700254]
+texture = ExtResource("2_ypvy2")
+centered = false
+
+[node name="FogFar" type="ColorRect" parent="Layers/Now" unique_id=75251293]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_qlhdd")
+fog_color = Color(0.85, 0.86, 0.89, 1)
+density = 0.3
+velocity = Vector2(0.005, 0)
+noise_scale = Vector2(1.4, 0.8)
+band_top = 0.3
+band_bottom = 0.75
+depth_texture = ExtResource("4_2kown")
+near_cutoff = 0.4
+noise_seed = 21
+
+[node name="FogLow" type="ColorRect" parent="Layers/Now" unique_id=120111293]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_qlhdd")
+fog_color = Color(0.8, 0.82, 0.86, 1)
+density = 0.24
+velocity = Vector2(-0.008, 0)
+noise_scale = Vector2(2.2, 1.1)
+band_top = 0.5
+band_bottom = 0.82
+depth_texture = ExtResource("4_2kown")
+near_cutoff = 0.55
+noise_seed = 23
+
+[node name="Moonlight" type="ColorRect" parent="Layers/Now" unique_id=1015934355]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("5_d0qkd")
+origin = Vector2(620, 60)
+aim = 190.0
+spread = 30.0
+beams = 5.0
+intensity = 0.07
+shaft_color = Color(0.9, 0.93, 1, 1)
+flicker = 0.3
+
+[node name="Then" type="Node2D" parent="Layers" unique_id=976457015]
+
+[node name="Background" type="Sprite2D" parent="Layers/Then" unique_id=1168762147]
+texture = ExtResource("6_pbxkj")
+centered = false
+
+[node name="GoldenShafts" type="ColorRect" parent="Layers/Then" unique_id=869323945]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("5_d0qkd")
+origin = Vector2(620, 60)
+aim = 190.0
+spread = 44.0
+beams = 7.0
+intensity = 0.14
+reach = 1.0
+shaft_color = Color(1, 0.85, 0.55, 1)
+flicker = 0.25
+
+[node name="WarmHaze" type="ColorRect" parent="Layers/Then" unique_id=1134770993]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_qlhdd")
+fog_color = Color(1, 0.9, 0.75, 1)
+density = 0.1
+velocity = Vector2(0.004, 0)
+noise_scale = Vector2(1.2, 0.7)
+band_top = 0.3
+band_bottom = 0.9
+noise_seed = 13
+
+[node name="GoldenDust" type="CPUParticles2D" parent="Layers/Then" unique_id=1938408408]
+script = ExtResource("7_eo8hk")
+area = Rect2(300, 150, 1500, 750)
+mote_color = Color(1, 0.86, 0.55, 0.55)
+drift = Vector2(3, -4)
+mote_size = 2.5
+
+[node name="WalkAreas" type="Node2D" parent="." unique_id=1022343220]
+
+[node name="Now" type="NavigationRegion2D" parent="WalkAreas" unique_id=734231194]
+navigation_polygon = SubResource("NavigationPolygon_k8obw")
+
+[node name="Then" type="NavigationRegion2D" parent="WalkAreas" unique_id=853489347]
+navigation_polygon = SubResource("NavigationPolygon_cc4qk")
+enabled = false
+
+[node name="ScaleZones" type="Node2D" parent="." unique_id=315478132]
+script = ExtResource("8_a63rm")
+far_y = 855.0
+far_scale = 0.88
+near_y = 1060.0
+near_scale = 1.05
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=220313908]
+
+[node name="Washerwoman" type="Area2D" parent="Hotspots" unique_id=1632996949]
+script = ExtResource("9_bvju8")
+id = &"washerwoman"
+display_name = "Washerwoman"
+default_verb = &"talk"
+walk_offset = Vector2(880, 960)
+pick_priority = 2
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Washerwoman" unique_id=803564616]
+polygon = PackedVector2Array(560, 960, 560, 700, 650, 660, 760, 700, 800, 960)
+
+[node name="Shirt" type="Area2D" parent="Hotspots" unique_id=1285125228]
+script = ExtResource("9_bvju8")
+id = &"shirt"
+display_name = "The shirt"
+walk_offset = Vector2(880, 960)
+pick_priority = 3
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Shirt" unique_id=993006425]
+polygon = PackedVector2Array(620, 900, 620, 820, 760, 820, 760, 900)
+
+[node name="Ferry" type="Area2D" parent="Hotspots" unique_id=2012406399]
+script = ExtResource("10_yabox")
+target_room = &"ferry_landing"
+target_entry = &"from_ferry"
+direction = &"left"
+id = &"ferry"
+display_name = "The ferry"
+default_verb = &"walk"
+walk_offset = Vector2(300, 920)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Ferry" unique_id=1500523186]
+polygon = PackedVector2Array(160, 880, 160, 600, 300, 600, 300, 880)
+
+[node name="Lines" type="Area2D" parent="Hotspots" unique_id=324036338]
+script = ExtResource("9_bvju8")
+id = &"lines"
+display_name = "Washing lines"
+walk_offset = Vector2(800, 900)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Lines" unique_id=219668744]
+polygon = PackedVector2Array(360, 380, 360, 60, 1200, 60, 1200, 380)
+
+[node name="Basket" type="Area2D" parent="Hotspots" unique_id=1027378721]
+script = ExtResource("9_bvju8")
+id = &"basket"
+display_name = "Basket"
+walk_offset = Vector2(1150, 930)
+pick_priority = 1
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Basket" unique_id=2007584679]
+polygon = PackedVector2Array(1110, 900, 1110, 790, 1270, 790, 1270, 900)
+
+[node name="ForestPath" type="Area2D" parent="Hotspots" unique_id=2090542677]
+script = ExtResource("10_yabox")
+target_room = &"drowned_forest"
+target_entry = &"from_steps"
+id = &"forest_path"
+display_name = "Forest path"
+default_verb = &"walk"
+walk_offset = Vector2(1820, 900)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/ForestPath" unique_id=1086148545]
+polygon = PackedVector2Array(1560, 860, 1560, 560, 1900, 560, 1900, 860)
+
+[node name="Exits" type="Node2D" parent="." unique_id=434929750]
+
+[node name="Markers" type="Node2D" parent="." unique_id=1399950433]
+
+[node name="default" type="Marker2D" parent="Markers" unique_id=1143769781]
+position = Vector2(1000, 960)
+
+[node name="from_ferry" type="Marker2D" parent="Markers" unique_id=1107515771]
+position = Vector2(330, 930)
+
+[node name="from_forest" type="Marker2D" parent="Markers" unique_id=177386822]
+position = Vector2(1820, 920)
+
+[node name="Actors" type="Node2D" parent="." unique_id=92240307]
+y_sort_enabled = true
+
+[node name="Washerwoman" type="Node2D" parent="Actors" unique_id=460559030 groups=["era_now"] instance=ExtResource("11_y18cb")]
+position = Vector2(680, 960)
+script = ExtResource("12_hx3xk")
+speaker_name = "Washerwoman"
+speaker_aliases = PackedStringArray("Maud")
+talk_animations = Array[StringName]([&"talk_a", &"talk_b"])
+subtitle_color = Color(0.92, 0.8, 0.78, 1)
+speech_offset = Vector2(14.467399, -330.0165)
+
+[node name="Foreground" type="Node2D" parent="." unique_id=1490983952]
+
+[node name="GroundMist" type="ColorRect" parent="Foreground" unique_id=1042915237 groups=["era_now"]]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_qlhdd")
+fog_color = Color(0.86, 0.87, 0.9, 1)
+density = 0.16
+velocity = Vector2(0.01, 0)
+noise_scale = Vector2(2.6, 1.6)
+band_top = 0.84
+band_bottom = 1.02
+band_softness = 0.08
+noise_seed = 27
+
+[node name="Cinematics" type="Node2D" parent="." unique_id=443030198]

@@ -1,0 +1,50 @@
+{
+  "background": "res://content/closeups/hospice_chart/art/bg.png",
+  "hotspots": [
+    {
+      "id": "names",
+      "name": "Name column",
+      "polygon": [
+        [
+          60,
+          100
+        ],
+        [
+          480,
+          100
+        ],
+        [
+          480,
+          1040
+        ],
+        [
+          60,
+          1040
+        ]
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "rows",
+      "name": "Rows of ticks",
+      "polygon": [
+        [
+          480,
+          100
+        ],
+        [
+          1800,
+          100
+        ],
+        [
+          1800,
+          1040
+        ],
+        [
+          480,
+          1040
+        ]
+      ]
+    }
+  ]
+}

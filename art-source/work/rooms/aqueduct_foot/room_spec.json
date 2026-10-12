@@ -1,0 +1,405 @@
+{
+  "display_name": "The aqueduct's foot",
+  "layers": {
+    "now": [
+      {
+        "name": "Background",
+        "texture": "res://content/rooms/aqueduct_foot/art/bg_now.png"
+      }
+    ],
+    "then": [
+      {
+        "name": "Background",
+        "texture": "res://content/rooms/aqueduct_foot/art/bg_then.png"
+      }
+    ]
+  },
+  "walk": {
+    "now": [
+      [
+        320,
+        800
+      ],
+      [
+        700,
+        770
+      ],
+      [
+        1100,
+        770
+      ],
+      [
+        1550,
+        790
+      ],
+      [
+        1630,
+        860
+      ],
+      [
+        1400,
+        920
+      ],
+      [
+        600,
+        920
+      ],
+      [
+        300,
+        880
+      ]
+    ],
+    "then": [
+      [
+        320,
+        800
+      ],
+      [
+        700,
+        770
+      ],
+      [
+        1100,
+        770
+      ],
+      [
+        1550,
+        790
+      ],
+      [
+        1630,
+        860
+      ],
+      [
+        1400,
+        920
+      ],
+      [
+        600,
+        920
+      ],
+      [
+        300,
+        880
+      ]
+    ]
+  },
+  "scale_zones": {
+    "far_y": 770,
+    "far_scale": 0.84,
+    "near_y": 920,
+    "near_scale": 0.98
+  },
+  "markers": {
+    "default": [
+      900,
+      860
+    ],
+    "from_forest": [
+      380,
+      850
+    ],
+    "from_channel": [
+      1350,
+      820
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "trunk",
+      "name": "Back to the forest",
+      "polygon": [
+        [
+          180,
+          880
+        ],
+        [
+          180,
+          700
+        ],
+        [
+          360,
+          700
+        ],
+        [
+          360,
+          880
+        ]
+      ],
+      "walk_to": [
+        340,
+        860
+      ],
+      "exit": {
+        "room": "drowned_forest",
+        "entry": "from_foot",
+        "direction": "left"
+      }
+    },
+    {
+      "id": "plaque",
+      "name": "Bronze plaque",
+      "polygon": [
+        [
+          770,
+          600
+        ],
+        [
+          770,
+          330
+        ],
+        [
+          1030,
+          330
+        ],
+        [
+          1030,
+          600
+        ]
+      ],
+      "walk_to": [
+        900,
+        800
+      ],
+      "pick_priority": 2
+    },
+    {
+      "id": "maint_stair",
+      "name": "Maintenance stair",
+      "polygon": [
+        [
+          1260,
+          760
+        ],
+        [
+          1260,
+          330
+        ],
+        [
+          1440,
+          330
+        ],
+        [
+          1440,
+          760
+        ]
+      ],
+      "walk_to": [
+        1350,
+        810
+      ],
+      "exit": {
+        "room": "aqueduct_channel",
+        "entry": "from_foot",
+        "direction": "up"
+      }
+    },
+    {
+      "id": "pier",
+      "name": "Pier",
+      "polygon": [
+        [
+          700,
+          760
+        ],
+        [
+          700,
+          0
+        ],
+        [
+          1500,
+          0
+        ],
+        [
+          1500,
+          760
+        ]
+      ],
+      "walk_to": [
+        1050,
+        800
+      ]
+    }
+  ],
+  "occluders": [],
+  "npcs": [],
+  "effects": [
+    {
+      "type": "FogLayer",
+      "name": "FogFar",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.85,
+          0.86,
+          0.89,
+          1.0
+        ],
+        "density": 0.3,
+        "velocity": [
+          0.005,
+          0.0
+        ],
+        "noise_scale": [
+          1.4,
+          0.8
+        ],
+        "band_top": 0.3,
+        "band_bottom": 0.75,
+        "depth_texture": "res://content/rooms/aqueduct_foot/art/depth_now.png",
+        "near_cutoff": 0.4,
+        "noise_seed": 21
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "FogLow",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.8,
+          0.82,
+          0.86,
+          1.0
+        ],
+        "density": 0.24,
+        "velocity": [
+          -0.008,
+          0.0
+        ],
+        "noise_scale": [
+          2.2,
+          1.1
+        ],
+        "band_top": 0.5,
+        "band_bottom": 0.82,
+        "depth_texture": "res://content/rooms/aqueduct_foot/art/depth_now.png",
+        "near_cutoff": 0.55,
+        "noise_seed": 23
+      }
+    },
+    {
+      "type": "LightShafts",
+      "name": "Moonlight",
+      "era": "now",
+      "properties": {
+        "origin": [
+          400,
+          100
+        ],
+        "aim": 160.0,
+        "spread": 30.0,
+        "beams": 5.0,
+        "intensity": 0.07,
+        "reach": 0.9,
+        "shaft_color": [
+          0.9,
+          0.93,
+          1.0,
+          1.0
+        ],
+        "flicker": 0.3
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "GroundMist",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.86,
+          0.87,
+          0.9,
+          1.0
+        ],
+        "density": 0.16,
+        "velocity": [
+          0.01,
+          0.0
+        ],
+        "noise_scale": [
+          2.6,
+          1.6
+        ],
+        "band_top": 0.84,
+        "band_bottom": 1.02,
+        "band_softness": 0.08,
+        "noise_seed": 27
+      },
+      "layer": "foreground"
+    },
+    {
+      "type": "LightShafts",
+      "name": "GoldenShafts",
+      "era": "then",
+      "properties": {
+        "origin": [
+          400,
+          100
+        ],
+        "aim": 160.0,
+        "spread": 44.0,
+        "beams": 7.0,
+        "intensity": 0.14,
+        "reach": 1.0,
+        "shaft_color": [
+          1.0,
+          0.85,
+          0.55,
+          1.0
+        ],
+        "flicker": 0.25
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "WarmHaze",
+      "era": "then",
+      "properties": {
+        "fog_color": [
+          1.0,
+          0.9,
+          0.75,
+          1.0
+        ],
+        "density": 0.1,
+        "velocity": [
+          0.004,
+          0.0
+        ],
+        "noise_scale": [
+          1.2,
+          0.7
+        ],
+        "band_top": 0.3,
+        "band_bottom": 0.9,
+        "noise_seed": 13
+      }
+    },
+    {
+      "type": "DustMotes",
+      "name": "GoldenDust",
+      "era": "then",
+      "properties": {
+        "area": [
+          300,
+          150,
+          1500,
+          750
+        ],
+        "mote_color": [
+          1.0,
+          0.86,
+          0.55,
+          0.55
+        ],
+        "mote_count": 60,
+        "drift": [
+          3,
+          -4
+        ],
+        "mote_size": 2.5
+      }
+    }
+  ]
+}

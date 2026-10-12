@@ -1,0 +1,168 @@
+{
+  "display_name": "Drowned chapel",
+  "now": "art-source/raw/IMG-0078/IMG-0078-v3.png",
+  "walk": [
+    [
+      880,
+      660
+    ],
+    [
+      1120,
+      660
+    ],
+    [
+      1200,
+      760
+    ],
+    [
+      1000,
+      1060
+    ],
+    [
+      350,
+      1060
+    ],
+    [
+      450,
+      860
+    ]
+  ],
+  "scale_zones": {
+    "far_y": 660,
+    "far_scale": 0.62,
+    "near_y": 1060,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      760,
+      900
+    ],
+    "from_street": [
+      520,
+      960
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "altar",
+      "name": "Altar",
+      "polygon": [
+        [
+          1000,
+          630
+        ],
+        [
+          1000,
+          450
+        ],
+        [
+          1250,
+          450
+        ],
+        [
+          1250,
+          630
+        ]
+      ],
+      "walk_to": [
+        1080,
+        700
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "window",
+      "name": "Broken window",
+      "polygon": [
+        [
+          1050,
+          420
+        ],
+        [
+          1050,
+          140
+        ],
+        [
+          1250,
+          140
+        ],
+        [
+          1250,
+          420
+        ]
+      ],
+      "walk_to": [
+        1060,
+        720
+      ]
+    },
+    {
+      "id": "pews",
+      "name": "Pews",
+      "polygon": [
+        [
+          100,
+          780
+        ],
+        [
+          100,
+          600
+        ],
+        [
+          700,
+          600
+        ],
+        [
+          700,
+          780
+        ]
+      ],
+      "walk_to": [
+        520,
+        900
+      ]
+    },
+    {
+      "id": "hole",
+      "name": "Hole in the wall",
+      "polygon": [
+        [
+          80,
+          560
+        ],
+        [
+          80,
+          120
+        ],
+        [
+          440,
+          120
+        ],
+        [
+          440,
+          560
+        ]
+      ],
+      "walk_to": [
+        480,
+        920
+      ],
+      "exit": {
+        "room": "drowned_street",
+        "entry": "from_chapel",
+        "direction": "left"
+      }
+    }
+  ],
+  "effects": {
+    "preset": "interior",
+    "light": [
+      1150,
+      260
+    ],
+    "aim": 200
+  },
+  "id": "drowned_chapel",
+  "then": "art-source/raw/IMG-0090/IMG-0090-v2.png"
+}

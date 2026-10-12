@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0092",
+  "title": "The drowned street, then",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T00:30:10.576Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0075/IMG-0075-v1.png",
+          "sha256": "8414c115e60182f6570bfa4578557456b208025389d4f16b54a4af73a3c11b97"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit this image in place. Keep exactly the same composition, camera, perspective, horizon and every shape where it stands: every house, the sluice house and its door and window, the rooftops, the chapel spire and the landing. Only change the time and the condition.\n\nRestore the same street to how it looked decades earlier, before the flood, on a bright morning, in full rich warm color, as a painterly gothic matte painting: no floodwater: a dry cobbled street between the houses with a narrow clear canal running down its side, gardens and window boxes, the sluice house's door open with a keeper's bench beside it, laundry in bright colors on the lines, the chapel spire whole with its bell, warm sunshine. The key light comes from the same direction as in the original.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0092-v1.png",
+          "sha256": "0b9798400377c0675310b328f96db3cdf1616837100199a62cc8554c1b5fc0e7",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0092-v2.png",
+          "sha256": "c75c21cf6e170edc68e24c277a47566fc37d380a73f68b65191b77163371e31f",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 203797,
+        "outputTokens": 757
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d84-591e-7902-b3d2-2364e1b8ec31",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d84-591e-7902-b3d2-2364e1b8ec31/exec-a1c4a276-a83f-416a-a13e-79e278f6f768.png",
+            "/Users/orcdev/.codex/generated_images/01a12d84-591e-7902-b3d2-2364e1b8ec31/exec-089c83b2-c10a-451b-aad1-18db3cb7230c.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 2122,
+              "height": 741
+            },
+            {
+              "width": 2121,
+              "height": 741
+            }
+          ],
+          "messages": [
+            "I’ll generate two edits using your exact prompt and the attached image.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

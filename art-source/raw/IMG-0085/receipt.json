@@ -1,0 +1,77 @@
+{
+  "id": "IMG-0085",
+  "title": "NPC: the Washerwoman",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T00:26:52.690Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "1440x2560",
+      "quality": "high",
+      "n": 3,
+      "background": "transparent",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0013/IMG-0013-v2.png",
+          "sha256": "aea3ec9ef0da502490ee6ecc801c0a0d4cd1f6bcf806d4f9b16ec70c8cb05977"
+        }
+      ],
+      "mask": null,
+      "prompt": "A single full-body character for a dark gothic point-and-click adventure game, painted in the same monochrome greyscale ink-wash matte-painting style as the reference image: the Washerwoman: a sturdy middle-aged woman in a patched skirt and apron with rolled sleeves and a shawl over her head, kneeling at a wooden washboard, scrubbing a shirt, a wicker basket beside her.\n\nThey are a grey shade of a person: solid, made of mid and light greys with soft ink texture, never pure black, with no visible face (her face is hidden in the shadow of her shawl, turned down to her work). Pose: kneeling, both hands on the shirt at the washboard, facing three-quarters to the viewer's right. Shown whole from head to feet, facing three-quarters to the viewer's left, filling most of the image height, with a little space around them. Even soft light from the upper left with a gentle cool rim light. On a fully transparent background, with no ground, shadow or scenery.\n\nNo text, labels, letters or numbers. No other figures. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0085-v1.png",
+          "sha256": "1022641570450e18ecf741e3141e7bfafe5e1c774a4e342c4209bf32adb032a1",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0085-v2.png",
+          "sha256": "ca6f0e1121c6085587ed6b76d0f443fecadba7d6196bc279c536ac86d9c4a95d",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0085-v3.png",
+          "sha256": "ef16720ede2c57ebc291e895b5d6936b7ebd45453ddb6f30272833ac252f31ee",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 100311,
+        "outputTokens": 706
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d81-53f5-7140-a347-001828b7865b",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d81-53f5-7140-a347-001828b7865b/exec-4940a069-d7db-4761-bb7f-5911316f0830.png",
+            "/Users/orcdev/.codex/generated_images/01a12d81-53f5-7140-a347-001828b7865b/exec-1e5cb2b2-c037-4ad7-a362-f71f910f176f.png",
+            "/Users/orcdev/.codex/generated_images/01a12d81-53f5-7140-a347-001828b7865b/exec-55dd8402-5c41-4230-a1c6-e63391848af3.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1024,
+              "height": 1536
+            },
+            {
+              "width": 1024,
+              "height": 1536
+            },
+            {
+              "width": 1024,
+              "height": 1536
+            }
+          ],
+          "messages": [
+            "I’ll generate three separate images from the reference using your prompt exactly, each with a transparent background.",
+            "Two images are generated. I’m generating the third with the same prompt and reference.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

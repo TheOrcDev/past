@@ -1,0 +1,74 @@
+{
+  "id": "petition",
+  "image": "art-source/raw/IMG-0101/IMG-0101-v1.png",
+  "hotspots": [
+    {
+      "id": "seal",
+      "name": "Wax seal",
+      "polygon": [
+        [
+          780,
+          800
+        ],
+        [
+          1140,
+          800
+        ],
+        [
+          1140,
+          1000
+        ],
+        [
+          780,
+          1000
+        ]
+      ],
+      "pick_priority": 2
+    },
+    {
+      "id": "text",
+      "name": "The petition",
+      "polygon": [
+        [
+          300,
+          120
+        ],
+        [
+          1650,
+          120
+        ],
+        [
+          1650,
+          300
+        ],
+        [
+          300,
+          300
+        ]
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "names",
+      "name": "Signatures",
+      "polygon": [
+        [
+          500,
+          300
+        ],
+        [
+          1450,
+          300
+        ],
+        [
+          1450,
+          800
+        ],
+        [
+          500,
+          800
+        ]
+      ]
+    }
+  ]
+}

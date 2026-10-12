@@ -99,14 +99,78 @@
       "id": "ch2",
       "title": "The Drowned Quarter",
       "start": "flooded_stair",
-      "flags": [],
-      "rooms": [],
-      "closeups": [],
+      "flags": [
+        "tombstone_read",
+        "gd_met",
+        "register_read",
+        "got_ossuary_key",
+        "ossuary_open",
+        "got_lantern_glass",
+        "gd_lantern_mended",
+        "sister_met",
+        "sister_dove",
+        "sister_wants_book",
+        "got_hymn_book",
+        "got_west_door_key",
+        "west_doors_open",
+        "ch1_arrived",
+        "crier_met",
+        "knows_eleven",
+        "lamplighter_met",
+        "lamplighter_wants",
+        "got_wedding_candle",
+        "mathis_named",
+        "clockmaker_met",
+        "clockmaker_wants",
+        "got_winding_key",
+        "got_seal_ring",
+        "knows_escapement",
+        "escapement_set",
+        "clock_wound",
+        "clock_struck",
+        "lower_gate_open",
+        "ch1_done"
+      ],
+      "rooms": [
+        "flooded_stair",
+        "ferry_landing",
+        "drowned_street",
+        "washing_steps",
+        "sluice_house",
+        "drowned_chapel",
+        "hospice_on_stilts",
+        "drowned_forest",
+        "aqueduct_foot",
+        "aqueduct_channel",
+        "valve_house"
+      ],
+      "closeups": [
+        "washer_shirt",
+        "petition",
+        "aqueduct_plaque",
+        "hospice_chart"
+      ],
       "dialogue": [
         "ch2"
       ],
       "cutscenes": [
         "drowned_quarter_reveal"
+      ],
+      "characters": [
+        "ferryman",
+        "washerwoman",
+        "plague_doctor"
+      ],
+      "memories": [
+        "cathedral_statue",
+        "prologue_singer",
+        "ch1_wedding",
+        "ch1_apprentice",
+        "ch1_old_town"
+      ],
+      "items": [
+        "warm_lamp",
+        "seal_ring"
       ]
     },
     {

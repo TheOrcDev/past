@@ -1,0 +1,5 @@
+[
+  {"id": "crate", "name": "Crate", "icon": "res://content/items/crate/icon.png", "look_file": "ch2/items", "look_cue": "crate_look"},
+  {"id": "sluice_key", "name": "Sluice key", "icon": "res://content/items/sluice_key/icon.png", "look_file": "ch2/items", "look_cue": "sluice_key_look"},
+  {"id": "stretcher", "name": "Stretcher", "icon": "res://content/items/stretcher/icon.png", "look_file": "ch2/items", "look_cue": "stretcher_look"}
+]

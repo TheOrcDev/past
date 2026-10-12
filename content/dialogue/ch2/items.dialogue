@@ -1,0 +1,17 @@
+~ crate_look
+
+Unknown: A wet crate. Empty, which is the most useful thing a crate can be. [ID:CH2_ITEM_CRATE]
+
+=> END
+
+~ sluice_key_look
+
+Unknown: Aldous's key. Heavy, square-toothed, and kept safe in a shirt pocket for years. [ID:CH2_ITEM_SLUICE_KEY]
+
+=> END
+
+~ stretcher_look
+
+Unknown: The doctor's stretcher. I promised to bring it back. I promised. That's new. [ID:CH2_ITEM_STRETCHER]
+
+=> END

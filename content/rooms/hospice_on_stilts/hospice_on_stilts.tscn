@@ -1,0 +1,235 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/rooms/hospice_on_stilts/hospice_on_stilts.gd" id="1_x1y3p"]
+[ext_resource type="Texture2D" path="res://content/rooms/hospice_on_stilts/art/bg_now.png" id="2_cbbwk"]
+[ext_resource type="Texture2D" path="res://content/rooms/hospice_on_stilts/art/prop_stretcher.png" id="3_3f4wb"]
+[ext_resource type="Script" path="res://src/systems/effects/fog_layer.gd" id="4_3kaoq"]
+[ext_resource type="Texture2D" path="res://content/rooms/hospice_on_stilts/art/depth_now.png" id="5_cas7u"]
+[ext_resource type="Script" path="res://src/systems/effects/light_shafts.gd" id="6_ywjcx"]
+[ext_resource type="Script" path="res://src/systems/effects/dust_motes.gd" id="7_qtkn6"]
+[ext_resource type="Texture2D" path="res://content/rooms/hospice_on_stilts/art/bg_then.png" id="8_8ff17"]
+[ext_resource type="Script" path="res://src/core/scale_zones.gd" id="9_k4olw"]
+[ext_resource type="Script" path="res://src/core/hotspot.gd" id="10_2edfl"]
+[ext_resource type="Script" path="res://src/core/exit.gd" id="11_y3762"]
+[ext_resource type="PackedScene" path="res://content/characters/plague_doctor/plague_doctor.tscn" id="12_r7ndq"]
+[ext_resource type="Script" path="res://src/core/actor.gd" id="13_gqno1"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_53ahh"]
+vertices = PackedVector2Array(1500, 800, 1650, 1060, 200, 1060, 100, 900, 340, 800, 900, 700, 1300, 700)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(340, 800, 900, 700, 1300, 700, 1500, 800, 1650, 1060, 200, 1060, 100, 900)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_i4i0a"]
+vertices = PackedVector2Array(1500, 800, 1650, 1060, 200, 1060, 100, 900, 340, 800, 900, 700, 1300, 700)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(340, 800, 900, 700, 1300, 700, 1500, 800, 1650, 1060, 200, 1060, 100, 900)])
+agent_radius = 0.0
+
+[node name="HospiceOnStilts" type="Node2D" unique_id=1983101018]
+script = ExtResource("1_x1y3p")
+room_id = &"hospice_on_stilts"
+display_name = "Hospice"
+
+[node name="Layers" type="Node2D" parent="." unique_id=1446481140]
+
+[node name="Now" type="Node2D" parent="Layers" unique_id=1744512123]
+
+[node name="Background" type="Sprite2D" parent="Layers/Now" unique_id=1124724574]
+texture = ExtResource("2_cbbwk")
+centered = false
+
+[node name="Stretcher" type="Sprite2D" parent="Layers/Now" unique_id=562839213]
+position = Vector2(1644, 434)
+texture = ExtResource("3_3f4wb")
+centered = false
+
+[node name="FogFar" type="ColorRect" parent="Layers/Now" unique_id=832451077]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("4_3kaoq")
+fog_color = Color(0.85, 0.86, 0.88, 1)
+density = 0.26
+velocity = Vector2(0.006, 0)
+noise_scale = Vector2(1.4, 0.8)
+band_top = 0.42
+band_bottom = 0.9
+depth_texture = ExtResource("5_cas7u")
+noise_seed = 3
+
+[node name="Shafts" type="ColorRect" parent="Layers/Now" unique_id=384921983]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("6_ywjcx")
+origin = Vector2(1180, 380)
+aim = 180.0
+spread = 36.0
+intensity = 0.1
+reach = 0.95
+shaft_color = Color(0.95, 0.96, 1, 1)
+flicker = 0.4
+
+[node name="Ash" type="CPUParticles2D" parent="Layers/Now" unique_id=1474264995]
+script = ExtResource("7_qtkn6")
+area = Rect2(300, 200, 1400, 700)
+mote_color = Color(0.85, 0.85, 0.88, 0.35)
+mote_count = 45
+drift = Vector2(4, 6)
+mote_size = 2.5
+
+[node name="Then" type="Node2D" parent="Layers" unique_id=521349010]
+
+[node name="Background" type="Sprite2D" parent="Layers/Then" unique_id=430269277]
+texture = ExtResource("8_8ff17")
+centered = false
+
+[node name="GoldenShafts" type="ColorRect" parent="Layers/Then" unique_id=149596898]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("6_ywjcx")
+origin = Vector2(1180, 380)
+aim = 180.0
+spread = 44.0
+beams = 7.0
+intensity = 0.14
+reach = 1.0
+shaft_color = Color(1, 0.85, 0.55, 1)
+flicker = 0.25
+
+[node name="WarmHaze" type="ColorRect" parent="Layers/Then" unique_id=1769929841]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("4_3kaoq")
+fog_color = Color(1, 0.9, 0.75, 1)
+density = 0.1
+velocity = Vector2(0.004, 0)
+noise_scale = Vector2(1.2, 0.7)
+band_top = 0.3
+band_bottom = 0.9
+noise_seed = 13
+
+[node name="GoldenDust" type="CPUParticles2D" parent="Layers/Then" unique_id=1300251252]
+script = ExtResource("7_qtkn6")
+area = Rect2(300, 150, 1500, 750)
+mote_color = Color(1, 0.86, 0.55, 0.55)
+drift = Vector2(3, -4)
+mote_size = 2.5
+
+[node name="WalkAreas" type="Node2D" parent="." unique_id=1034299993]
+
+[node name="Now" type="NavigationRegion2D" parent="WalkAreas" unique_id=1342672321]
+navigation_polygon = SubResource("NavigationPolygon_53ahh")
+
+[node name="Then" type="NavigationRegion2D" parent="WalkAreas" unique_id=32395978]
+navigation_polygon = SubResource("NavigationPolygon_i4i0a")
+enabled = false
+
+[node name="ScaleZones" type="Node2D" parent="." unique_id=1010561885]
+script = ExtResource("9_k4olw")
+far_y = 700.0
+far_scale = 0.72
+near_y = 1060.0
+near_scale = 1.05
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=946533008]
+
+[node name="Doctor" type="Area2D" parent="Hotspots" unique_id=1904251644]
+script = ExtResource("10_2edfl")
+id = &"doctor"
+display_name = "Plague Doctor"
+default_verb = &"talk"
+walk_offset = Vector2(1020, 820)
+pick_priority = 2
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Doctor" unique_id=1197633859]
+polygon = PackedVector2Array(1090, 790, 1090, 420, 1160, 390, 1240, 420, 1250, 790)
+
+[node name="Door" type="Area2D" parent="Hotspots" unique_id=322799814]
+script = ExtResource("11_y3762")
+target_room = &"ferry_landing"
+target_entry = &"from_ferry"
+direction = &"left"
+id = &"door"
+display_name = "Boat landing"
+default_verb = &"walk"
+walk_offset = Vector2(300, 860)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Door" unique_id=1097824240]
+polygon = PackedVector2Array(60, 700, 60, 120, 330, 120, 330, 700)
+
+[node name="Cots" type="Area2D" parent="Hotspots" unique_id=329323218]
+script = ExtResource("10_2edfl")
+id = &"cots"
+display_name = "Sleepers"
+walk_offset = Vector2(760, 760)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Cots" unique_id=481764982]
+polygon = PackedVector2Array(520, 700, 520, 520, 1000, 520, 1000, 700)
+
+[node name="Herbs" type="Area2D" parent="Hotspots" unique_id=1226797731]
+script = ExtResource("10_2edfl")
+id = &"herbs"
+display_name = "Dried herbs"
+walk_offset = Vector2(850, 760)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Herbs" unique_id=1586881383]
+polygon = PackedVector2Array(600, 300, 600, 0, 1100, 0, 1100, 300)
+
+[node name="Stretcher" type="Area2D" parent="Hotspots" unique_id=1625238990]
+script = ExtResource("10_2edfl")
+id = &"stretcher"
+display_name = "Stretcher"
+walk_offset = Vector2(1580, 880)
+pick_priority = 1
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Stretcher" unique_id=75788001]
+polygon = PackedVector2Array(1660, 930, 1660, 450, 1860, 450, 1860, 930)
+
+[node name="Chart" type="Area2D" parent="Hotspots" unique_id=1836153152]
+script = ExtResource("10_2edfl")
+id = &"chart"
+display_name = "Chart"
+walk_offset = Vector2(1600, 860)
+pick_priority = 1
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Chart" unique_id=1068261843]
+polygon = PackedVector2Array(1800, 500, 1800, 220, 1910, 220, 1910, 500)
+
+[node name="Exits" type="Node2D" parent="." unique_id=1518394231]
+
+[node name="Markers" type="Node2D" parent="." unique_id=48067724]
+
+[node name="default" type="Marker2D" parent="Markers" unique_id=1408486638]
+position = Vector2(900, 900)
+
+[node name="from_ferry" type="Marker2D" parent="Markers" unique_id=2101185352]
+position = Vector2(300, 880)
+
+[node name="Actors" type="Node2D" parent="." unique_id=477842107]
+y_sort_enabled = true
+
+[node name="Doctor" type="Node2D" parent="Actors" unique_id=527055599 groups=["era_now"] instance=ExtResource("12_r7ndq")]
+position = Vector2(1165, 790)
+script = ExtResource("13_gqno1")
+speaker_name = "Plague Doctor"
+speaker_aliases = PackedStringArray("Isolde")
+talk_animations = Array[StringName]([&"talk_a", &"talk_b"])
+subtitle_color = Color(0.8, 0.9, 0.82, 1)
+speech_offset = Vector2(0, -462.2898)
+
+[node name="Foreground" type="Node2D" parent="." unique_id=192937743]
+
+[node name="GroundMist" type="ColorRect" parent="Foreground" unique_id=14561116 groups=["era_now"]]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("4_3kaoq")
+fog_color = Color(0.86, 0.87, 0.9, 1)
+density = 0.16
+velocity = Vector2(0.01, 0)
+noise_scale = Vector2(2.6, 1.6)
+band_top = 0.84
+band_bottom = 1.02
+band_softness = 0.08
+noise_seed = 27
+
+[node name="Cinematics" type="Node2D" parent="." unique_id=398925022]

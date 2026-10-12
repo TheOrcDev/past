@@ -1,0 +1,182 @@
+{
+  "id": "aqueduct_channel",
+  "display_name": "On the aqueduct",
+  "now": "art-source/raw/IMG-0082/IMG-0082-v2.png",
+  "walk": [
+    [
+      260,
+      760
+    ],
+    [
+      700,
+      705
+    ],
+    [
+      1150,
+      700
+    ],
+    [
+      1240,
+      760
+    ],
+    [
+      1100,
+      1000
+    ],
+    [
+      900,
+      1060
+    ],
+    [
+      200,
+      1060
+    ]
+  ],
+  "scale_zones": {
+    "far_y": 700,
+    "far_scale": 0.7,
+    "near_y": 1060,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      600,
+      900
+    ],
+    "from_foot": [
+      260,
+      990
+    ],
+    "from_valve": [
+      1150,
+      770
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "stair_down",
+      "name": "Down to the pier",
+      "polygon": [
+        [
+          120,
+          880
+        ],
+        [
+          120,
+          1060
+        ],
+        [
+          300,
+          1060
+        ],
+        [
+          300,
+          880
+        ]
+      ],
+      "walk_to": [
+        250,
+        990
+      ],
+      "exit": {
+        "room": "aqueduct_foot",
+        "entry": "from_channel",
+        "direction": "down"
+      }
+    },
+    {
+      "id": "gap",
+      "name": "Broken span",
+      "polygon": [
+        [
+          1180,
+          760
+        ],
+        [
+          1180,
+          520
+        ],
+        [
+          1320,
+          500
+        ],
+        [
+          1320,
+          760
+        ]
+      ],
+      "walk_to": [
+        1150,
+        770
+      ],
+      "pick_priority": 2
+    },
+    {
+      "id": "valve_door",
+      "name": "Valve house",
+      "polygon": [
+        [
+          1620,
+          380
+        ],
+        [
+          1620,
+          60
+        ],
+        [
+          1860,
+          60
+        ],
+        [
+          1860,
+          380
+        ]
+      ],
+      "walk_to": [
+        1150,
+        770
+      ],
+      "exit": {
+        "room": "valve_house",
+        "entry": "from_channel",
+        "direction": "right",
+        "requires_flag": "valve_door_open"
+      },
+      "pick_priority": 1
+    },
+    {
+      "id": "view",
+      "name": "The drowned quarter",
+      "polygon": [
+        [
+          0,
+          600
+        ],
+        [
+          0,
+          180
+        ],
+        [
+          1000,
+          180
+        ],
+        [
+          1000,
+          600
+        ]
+      ],
+      "walk_to": [
+        600,
+        780
+      ]
+    }
+  ],
+  "effects": {
+    "preset": "exterior",
+    "light": [
+      510,
+      110
+    ],
+    "aim": 180
+  }
+}

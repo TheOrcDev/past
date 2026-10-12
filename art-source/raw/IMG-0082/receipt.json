@@ -1,0 +1,76 @@
+{
+  "id": "IMG-0082",
+  "title": "On the aqueduct, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T00:30:05.784Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0062/IMG-0062-v1.png",
+          "sha256": "ed051eeb78e48107feb34bb73402af5139a6dcfd4f62b8f13d063ba93a70ac95"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: the top of a long ruined stone aqueduct high above a drowned city at night, seen along its dry water channel, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: The dry stone channel runs from the left foreground toward the right; in the middle distance a whole span of the aqueduct has collapsed, leaving a gap with a sheer drop between two broken ends. Beyond the gap, at the far right, a squat stone valve house with a heavy iron-bound door stands on the aqueduct. Below on the left, a wide view over the drowned quarter: rooftops in water, the chapel spire, the hospice on stilts, moonlight on the flood.\n\nThe lower third of the image is open, walkable ground: the dry channel's floor and its low parapet run across the lower third up to the gap. It is lit by pale moonlight with drifting fog or haze behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0082-v1.png",
+          "sha256": "8728d059397d5b1a16130244b67680aeafb25f60404863c3b35c8fc5cbea7198",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0082-v2.png",
+          "sha256": "d4a5fc3a0f89bc293f174594f61c9947477239dae9c3aceec742ca5dfe9aa749",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0082-v3.png",
+          "sha256": "4dbd87631a2e05b321df39d8bc8bd7365fd2468f8189b45ae6d82926c91730ba",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 96726,
+        "outputTokens": 659
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d84-4636-7a70-a60b-636a41b73b93",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d84-4636-7a70-a60b-636a41b73b93/exec-e7570559-d81a-49c1-83f2-036f844da342.png",
+            "/Users/orcdev/.codex/generated_images/01a12d84-4636-7a70-a60b-636a41b73b93/exec-a1616317-bdc9-4505-b47f-dfab79865a74.png",
+            "/Users/orcdev/.codex/generated_images/01a12d84-4636-7a70-a60b-636a41b73b93/exec-5b56d49a-57c7-47da-b637-88921a7fc493.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 2123,
+              "height": 741
+            },
+            {
+              "width": 2123,
+              "height": 741
+            },
+            {
+              "width": 2123,
+              "height": 741
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque scenes using the reference and your exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

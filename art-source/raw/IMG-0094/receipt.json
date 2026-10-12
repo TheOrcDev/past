@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0094",
+  "title": "The drowned forest, then",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T00:32:13.555Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0080/IMG-0080-v1.png",
+          "sha256": "56bf0e69a775e50f1230caf308607e5fa9d4f7d31d72285e96ba1ffd38720448"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit this image in place. Keep exactly the same composition, camera, perspective, horizon and every shape where it stands: every tree trunk, the fallen trunk, the bank and the aqueduct's arches. Only change the time and the condition.\n\nRestore the same forest to how it looked decades earlier, on a summer afternoon, in full rich warm color, as a painterly gothic matte painting: the trees alive with green leaves, a mossy forest floor and a shallow clear stream instead of floodwater, ferns and flowers, birds' nests, the aqueduct carrying sparkling water, warm sunlight in beams through the leaves. The key light comes from the same direction as in the original.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0094-v1.png",
+          "sha256": "96f9b018def8adeb7c4b834f4d8c7d9b576fb740600f886a59256eaa32936f72",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0094-v2.png",
+          "sha256": "0ca18cce3fe7439e901d34d5882c92611d700bd8c3f213a3f4f7b8aaa1b61f0f",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 71213,
+        "outputTokens": 576
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d86-39a6-7932-b3f2-bfd975e914a2",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d86-39a6-7932-b3f2-bfd975e914a2/exec-1180102f-408e-475d-8b82-1d553946cc26.png",
+            "/Users/orcdev/.codex/generated_images/01a12d86-39a6-7932-b3f2-bfd975e914a2/exec-dec1f7d5-d6c7-46a1-a1df-ab8132b905b1.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 2123,
+              "height": 741
+            },
+            {
+              "width": 2122,
+              "height": 741
+            }
+          ],
+          "messages": [
+            "I’ll generate two wide, opaque edits using your exact prompt and the attached image.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

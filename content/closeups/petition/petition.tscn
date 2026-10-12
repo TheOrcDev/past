@@ -1,0 +1,39 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/closeups/petition/petition.gd" id="1_a50wm"]
+[ext_resource type="Texture2D" path="res://content/closeups/petition/art/bg.png" id="2_t32gi"]
+[ext_resource type="Script" path="res://src/core/hotspot.gd" id="3_bguxb"]
+
+[node name="Petition" type="Node2D" unique_id=2049505949]
+script = ExtResource("1_a50wm")
+closeup_id = &"petition"
+
+[node name="Background" type="Sprite2D" parent="." unique_id=2144386531]
+texture = ExtResource("2_t32gi")
+centered = false
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=303352625]
+
+[node name="Seal" type="Area2D" parent="Hotspots" unique_id=1137296548]
+script = ExtResource("3_bguxb")
+id = &"seal"
+display_name = "Wax seal"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Seal" unique_id=1924566776]
+polygon = PackedVector2Array(780, 800, 1140, 800, 1140, 1000, 780, 1000)
+
+[node name="Text" type="Area2D" parent="Hotspots" unique_id=1381383541]
+script = ExtResource("3_bguxb")
+id = &"text"
+display_name = "The petition"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Text" unique_id=307058973]
+polygon = PackedVector2Array(300, 120, 1650, 120, 1650, 300, 300, 300)
+
+[node name="Names" type="Area2D" parent="Hotspots" unique_id=1479736032]
+script = ExtResource("3_bguxb")
+id = &"names"
+display_name = "Signatures"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Names" unique_id=317114921]
+polygon = PackedVector2Array(500, 300, 1450, 300, 1450, 800, 500, 800)

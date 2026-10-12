@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0089",
+  "title": "The ferry landing, then",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T00:28:09.821Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0074/IMG-0074-v1.png",
+          "sha256": "997cffb4e954e49e21aa5021cac83df74d5f98588f185d85bef2aa8b378a426e"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit this image in place. Keep exactly the same composition, camera, perspective, horizon and every shape where it stands: the jetty and its posts, the fare board, the lantern post, the houses and the stair. Only change the time and the condition.\n\nRestore the same landing to how it looked decades earlier, on a busy summer afternoon, in full rich warm color, as a painterly gothic matte painting: the jetty freshly painted, flower boxes on the posts, the fare board bright with painted prices in a decorative frame (unreadable), colorful boats tied up along the canal, clean blue-green water lower down, laundry in bright colors between the houses, warm sunlight. The key light comes from the same direction as in the original.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0089-v1.png",
+          "sha256": "11e45311c3352a5a81f64b1d2f9c12786f31d3f8a73e073fe744a5489e256584",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0089-v2.png",
+          "sha256": "efbcab32b9bdec0614a8704aa3a0d44485b575907796839cf5ef8d5c1580bedf",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 68940,
+        "outputTokens": 593
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d82-8174-7222-8d51-cd944fadeec7",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d82-8174-7222-8d51-cd944fadeec7/exec-5944e8f9-7924-48ec-96f2-1e41456776c2.png",
+            "/Users/orcdev/.codex/generated_images/01a12d82-8174-7222-8d51-cd944fadeec7/exec-84a6a21a-76b2-4afd-a6c8-7b24d43c3707.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 2121,
+              "height": 741
+            },
+            {
+              "width": 2123,
+              "height": 741
+            }
+          ],
+          "messages": [
+            "I’ll generate two edits using your prompt exactly.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

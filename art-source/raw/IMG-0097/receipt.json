@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0097",
+  "title": "The sluice house, then",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T00:31:34.517Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0077/IMG-0077-v1.png",
+          "sha256": "815d4c4337ef7e387cb7f2026328ffc841a8ca6cc5fe73b0e54dc74ca653ba5d"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit this image in place. Keep exactly the same composition, camera, perspective, horizon and every shape where it stands: the window, the desk, the gate wheel and its spindle, the railings, the gauge post and the gallery floor. Only change the time and the condition.\n\nRestore the same sluice house to how it looked decades earlier, on a working day, in full rich warm color, as a painterly gothic matte painting: the gate wheel bright and oiled, clear water flowing calmly below, the gauge post freshly painted with level marks, the desk tidy with a fresh petition pinned on it and an inkwell and quill, keepers' coats on pegs, lamps lit, warm afternoon light through the window. The key light comes from the same direction as in the original.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0097-v1.png",
+          "sha256": "b6de561a449cc85ade70de4fe7a8a28e6c7ccbf29ceebf31402f33a2ed7e6f85",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0097-v2.png",
+          "sha256": "616fd51de79709136926368e0b241bd431f310c0965f3f000991a76ac4a4e382",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 158232,
+        "outputTokens": 700
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d85-a0dc-76b0-a431-630d7b771f2a",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d85-a0dc-76b0-a431-630d7b771f2a/exec-e0250987-43cc-4420-891d-8c0f116b8d2b.png",
+            "/Users/orcdev/.codex/generated_images/01a12d85-a0dc-76b0-a431-630d7b771f2a/exec-88a3c770-dd98-4006-9fb1-86ac3b5eac52.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1671,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate the two edits with your prompt exactly as provided.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0093",
+  "title": "The washing steps, then",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T00:31:21.030Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0076/IMG-0076-v1.png",
+          "sha256": "eed07b7cd93688097588f206c209b313576a31529c8d58fc483329cd27540963"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit this image in place. Keep exactly the same composition, camera, perspective, horizon and every shape where it stands: the steps, the washboard and basket, the lines of washing, the houses, the trees, the path and the mooring post. Only change the time and the condition.\n\nRestore the same steps to how it looked decades earlier, on a sunny washing day, in full rich warm color, as a painterly gothic matte painting: the steps lead down to a clear shallow river at its normal level, laundry in bright reds, blues and whites on the lines, the trees green and leafy, the path dry and flowered, a cheerful blue sky. The key light comes from the same direction as in the original.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0093-v1.png",
+          "sha256": "8dcabffb65fbce57619c1088594b5454cab1f9a20dfa369686691b9483afbb3e",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0093-v2.png",
+          "sha256": "5f5067da818993b1fff2a72c1659b65e18f6d514b935c9b3672fd2dc95a0ead8",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 160660,
+        "outputTokens": 832
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d85-6c25-7fa0-b02f-f7b305d0bc5e",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d85-6c25-7fa0-b02f-f7b305d0bc5e/exec-1dce745c-bcb2-4b0e-b2fe-e03dfaac7973.png",
+            "/Users/orcdev/.codex/generated_images/01a12d85-6c25-7fa0-b02f-f7b305d0bc5e/exec-813a02d9-af5e-4815-a843-4ac3ecf11759.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 2122,
+              "height": 741
+            },
+            {
+              "width": 2120,
+              "height": 742
+            }
+          ],
+          "messages": [
+            "I’ll generate two edits using your prompt exactly as written.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,246 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/rooms/drowned_street/drowned_street.gd" id="1_yt0bs"]
+[ext_resource type="Texture2D" path="res://content/rooms/drowned_street/art/bg_now.png" id="2_cn6j0"]
+[ext_resource type="Texture2D" path="res://content/rooms/drowned_street/art/prop_crate.png" id="3_p8nsv"]
+[ext_resource type="Script" path="res://src/systems/effects/fog_layer.gd" id="4_luk3j"]
+[ext_resource type="Texture2D" path="res://content/rooms/drowned_street/art/depth_now.png" id="5_tc7cn"]
+[ext_resource type="Script" path="res://src/systems/effects/light_shafts.gd" id="6_h2x0x"]
+[ext_resource type="Texture2D" path="res://content/rooms/drowned_street/art/bg_then.png" id="7_ri1ee"]
+[ext_resource type="Script" path="res://src/systems/effects/dust_motes.gd" id="8_ig2vw"]
+[ext_resource type="Script" path="res://src/core/scale_zones.gd" id="9_d3i05"]
+[ext_resource type="Script" path="res://src/core/exit.gd" id="10_xyv5f"]
+[ext_resource type="Script" path="res://src/core/hotspot.gd" id="11_ggpav"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_u331q"]
+vertices = PackedVector2Array(1650, 945, 1700, 1060, 150, 1060, 1000, 925, 200, 890, 600, 885, 100, 960)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 3, 2, 6)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(200, 890, 600, 885, 1000, 925, 1650, 945, 1700, 1060, 150, 1060, 100, 960)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_0gnx4"]
+vertices = PackedVector2Array(1650, 945, 1700, 1060, 150, 1060, 1000, 925, 200, 890, 600, 885, 100, 960)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 3, 2, 6)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(200, 890, 600, 885, 1000, 925, 1650, 945, 1700, 1060, 150, 1060, 100, 960)])
+agent_radius = 0.0
+
+[node name="DrownedStreet" type="Node2D" unique_id=1101649236]
+script = ExtResource("1_yt0bs")
+room_id = &"drowned_street"
+display_name = "Drowned street"
+
+[node name="Layers" type="Node2D" parent="." unique_id=1840699369]
+
+[node name="Now" type="Node2D" parent="Layers" unique_id=1565599961]
+
+[node name="Background" type="Sprite2D" parent="Layers/Now" unique_id=1418162235]
+texture = ExtResource("2_cn6j0")
+centered = false
+
+[node name="Crate" type="Sprite2D" parent="Layers/Now" unique_id=1879131509]
+position = Vector2(874, 614)
+texture = ExtResource("3_p8nsv")
+centered = false
+
+[node name="FogFar" type="ColorRect" parent="Layers/Now" unique_id=835864585]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("4_luk3j")
+fog_color = Color(0.85, 0.86, 0.89, 1)
+density = 0.3
+velocity = Vector2(0.005, 0)
+noise_scale = Vector2(1.4, 0.8)
+band_top = 0.3
+band_bottom = 0.75
+depth_texture = ExtResource("5_tc7cn")
+near_cutoff = 0.4
+noise_seed = 21
+
+[node name="FogLow" type="ColorRect" parent="Layers/Now" unique_id=1728840437]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("4_luk3j")
+fog_color = Color(0.8, 0.82, 0.86, 1)
+density = 0.24
+velocity = Vector2(-0.008, 0)
+noise_scale = Vector2(2.2, 1.1)
+band_top = 0.5
+band_bottom = 0.82
+depth_texture = ExtResource("5_tc7cn")
+near_cutoff = 0.55
+noise_seed = 23
+
+[node name="Moonlight" type="ColorRect" parent="Layers/Now" unique_id=2006375032]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("6_h2x0x")
+origin = Vector2(540, 70)
+aim = 200.0
+spread = 30.0
+beams = 5.0
+intensity = 0.07
+shaft_color = Color(0.9, 0.93, 1, 1)
+flicker = 0.3
+
+[node name="Then" type="Node2D" parent="Layers" unique_id=2002310943]
+
+[node name="Background" type="Sprite2D" parent="Layers/Then" unique_id=1072620671]
+texture = ExtResource("7_ri1ee")
+centered = false
+
+[node name="GoldenShafts" type="ColorRect" parent="Layers/Then" unique_id=1276832799]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("6_h2x0x")
+origin = Vector2(540, 70)
+aim = 200.0
+spread = 44.0
+beams = 7.0
+intensity = 0.14
+reach = 1.0
+shaft_color = Color(1, 0.85, 0.55, 1)
+flicker = 0.25
+
+[node name="WarmHaze" type="ColorRect" parent="Layers/Then" unique_id=662730361]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("4_luk3j")
+fog_color = Color(1, 0.9, 0.75, 1)
+density = 0.1
+velocity = Vector2(0.004, 0)
+noise_scale = Vector2(1.2, 0.7)
+band_top = 0.3
+band_bottom = 0.9
+noise_seed = 13
+
+[node name="GoldenDust" type="CPUParticles2D" parent="Layers/Then" unique_id=1200294345]
+script = ExtResource("8_ig2vw")
+area = Rect2(300, 150, 1500, 750)
+mote_color = Color(1, 0.86, 0.55, 0.55)
+drift = Vector2(3, -4)
+mote_size = 2.5
+
+[node name="WalkAreas" type="Node2D" parent="." unique_id=591553069]
+
+[node name="Now" type="NavigationRegion2D" parent="WalkAreas" unique_id=566198442]
+navigation_polygon = SubResource("NavigationPolygon_u331q")
+
+[node name="Then" type="NavigationRegion2D" parent="WalkAreas" unique_id=1629651833]
+navigation_polygon = SubResource("NavigationPolygon_0gnx4")
+enabled = false
+
+[node name="ScaleZones" type="Node2D" parent="." unique_id=1443785645]
+script = ExtResource("9_d3i05")
+far_y = 885.0
+far_scale = 0.9
+near_y = 1060.0
+near_scale = 1.05
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=1340993043]
+
+[node name="Ferry" type="Area2D" parent="Hotspots" unique_id=421567604]
+script = ExtResource("10_xyv5f")
+target_room = &"ferry_landing"
+target_entry = &"from_ferry"
+direction = &"left"
+id = &"ferry"
+display_name = "The ferry"
+default_verb = &"walk"
+walk_offset = Vector2(170, 980)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Ferry" unique_id=1014043772]
+polygon = PackedVector2Array(0, 860, 160, 860, 160, 1060, 0, 1060)
+
+[node name="Crate" type="Area2D" parent="Hotspots" unique_id=1013954887]
+script = ExtResource("11_ggpav")
+id = &"crate"
+display_name = "Floating crate"
+default_verb = &"use"
+walk_offset = Vector2(960, 920)
+pick_priority = 3
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Crate" unique_id=803430609]
+polygon = PackedVector2Array(900, 700, 900, 630, 1010, 630, 1010, 700)
+
+[node name="Window" type="Area2D" parent="Hotspots" unique_id=1336360672]
+script = ExtResource("10_xyv5f")
+target_room = &"sluice_house"
+target_entry = &"from_street"
+direction = &"up"
+requires_flag = &"crate_set"
+id = &"window"
+display_name = "High window"
+default_verb = &"walk"
+walk_offset = Vector2(1560, 960)
+pick_priority = 2
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Window" unique_id=769318913]
+polygon = PackedVector2Array(1480, 420, 1480, 250, 1680, 250, 1680, 420)
+
+[node name="SluiceDoor" type="Area2D" parent="Hotspots" unique_id=838733729]
+script = ExtResource("11_ggpav")
+id = &"sluice_door"
+display_name = "Sluice house door"
+walk_offset = Vector2(1560, 960)
+pick_priority = 1
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/SluiceDoor" unique_id=967092531]
+polygon = PackedVector2Array(1470, 800, 1470, 540, 1570, 500, 1660, 540, 1660, 800)
+
+[node name="Shutters" type="Area2D" parent="Hotspots" unique_id=1591047965]
+script = ExtResource("11_ggpav")
+id = &"shutters"
+display_name = "Shutters"
+walk_offset = Vector2(1200, 930)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Shutters" unique_id=2041632454]
+polygon = PackedVector2Array(1100, 560, 1100, 200, 1400, 200, 1400, 560)
+
+[node name="Rooftops" type="Area2D" parent="Hotspots" unique_id=539412026]
+script = ExtResource("10_xyv5f")
+target_room = &"drowned_chapel"
+target_entry = &"from_street"
+direction = &"left"
+id = &"rooftops"
+display_name = "Rooftops"
+default_verb = &"walk"
+walk_offset = Vector2(330, 920)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Rooftops" unique_id=679597790]
+polygon = PackedVector2Array(80, 700, 80, 220, 620, 220, 620, 700)
+
+[node name="Exits" type="Node2D" parent="." unique_id=1870721975]
+
+[node name="Markers" type="Node2D" parent="." unique_id=935670783]
+
+[node name="default" type="Marker2D" parent="Markers" unique_id=2020678571]
+position = Vector2(800, 980)
+
+[node name="from_ferry" type="Marker2D" parent="Markers" unique_id=1707795936]
+position = Vector2(250, 960)
+
+[node name="from_sluice" type="Marker2D" parent="Markers" unique_id=1948256538]
+position = Vector2(1550, 980)
+
+[node name="from_chapel" type="Marker2D" parent="Markers" unique_id=1742579572]
+position = Vector2(350, 930)
+
+[node name="Actors" type="Node2D" parent="." unique_id=1618428928]
+y_sort_enabled = true
+
+[node name="Foreground" type="Node2D" parent="." unique_id=1376963297]
+
+[node name="GroundMist" type="ColorRect" parent="Foreground" unique_id=1567857556 groups=["era_now"]]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("4_luk3j")
+fog_color = Color(0.86, 0.87, 0.9, 1)
+density = 0.16
+velocity = Vector2(0.01, 0)
+noise_scale = Vector2(2.6, 1.6)
+band_top = 0.84
+band_bottom = 1.02
+band_softness = 0.08
+noise_seed = 27
+
+[node name="Cinematics" type="Node2D" parent="." unique_id=1153441385]

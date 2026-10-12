@@ -1,0 +1,474 @@
+{
+  "display_name": "Drowned street",
+  "layers": {
+    "now": [
+      {
+        "name": "Background",
+        "texture": "res://content/rooms/drowned_street/art/bg_now.png"
+      },
+      {
+        "name": "Crate",
+        "texture": "res://content/rooms/drowned_street/art/prop_crate.png",
+        "position": [
+          874,
+          614
+        ]
+      }
+    ],
+    "then": [
+      {
+        "name": "Background",
+        "texture": "res://content/rooms/drowned_street/art/bg_then.png"
+      }
+    ]
+  },
+  "walk": {
+    "now": [
+      [
+        200,
+        890
+      ],
+      [
+        600,
+        885
+      ],
+      [
+        1000,
+        925
+      ],
+      [
+        1650,
+        945
+      ],
+      [
+        1700,
+        1060
+      ],
+      [
+        150,
+        1060
+      ],
+      [
+        100,
+        960
+      ]
+    ],
+    "then": [
+      [
+        200,
+        890
+      ],
+      [
+        600,
+        885
+      ],
+      [
+        1000,
+        925
+      ],
+      [
+        1650,
+        945
+      ],
+      [
+        1700,
+        1060
+      ],
+      [
+        150,
+        1060
+      ],
+      [
+        100,
+        960
+      ]
+    ]
+  },
+  "scale_zones": {
+    "far_y": 885,
+    "far_scale": 0.9,
+    "near_y": 1060,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      800,
+      980
+    ],
+    "from_ferry": [
+      250,
+      960
+    ],
+    "from_sluice": [
+      1550,
+      980
+    ],
+    "from_chapel": [
+      350,
+      930
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "ferry",
+      "name": "The ferry",
+      "polygon": [
+        [
+          0,
+          860
+        ],
+        [
+          160,
+          860
+        ],
+        [
+          160,
+          1060
+        ],
+        [
+          0,
+          1060
+        ]
+      ],
+      "walk_to": [
+        170,
+        980
+      ],
+      "exit": {
+        "room": "ferry_landing",
+        "entry": "from_ferry",
+        "direction": "left"
+      }
+    },
+    {
+      "id": "crate",
+      "name": "Floating crate",
+      "polygon": [
+        [
+          900,
+          700
+        ],
+        [
+          900,
+          630
+        ],
+        [
+          1010,
+          630
+        ],
+        [
+          1010,
+          700
+        ]
+      ],
+      "walk_to": [
+        960,
+        920
+      ],
+      "default_verb": "use",
+      "pick_priority": 3
+    },
+    {
+      "id": "window",
+      "name": "High window",
+      "polygon": [
+        [
+          1480,
+          420
+        ],
+        [
+          1480,
+          250
+        ],
+        [
+          1680,
+          250
+        ],
+        [
+          1680,
+          420
+        ]
+      ],
+      "walk_to": [
+        1560,
+        960
+      ],
+      "exit": {
+        "room": "sluice_house",
+        "entry": "from_street",
+        "direction": "up",
+        "requires_flag": "crate_set"
+      },
+      "pick_priority": 2
+    },
+    {
+      "id": "sluice_door",
+      "name": "Sluice house door",
+      "polygon": [
+        [
+          1470,
+          800
+        ],
+        [
+          1470,
+          540
+        ],
+        [
+          1570,
+          500
+        ],
+        [
+          1660,
+          540
+        ],
+        [
+          1660,
+          800
+        ]
+      ],
+      "walk_to": [
+        1560,
+        960
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "shutters",
+      "name": "Shutters",
+      "polygon": [
+        [
+          1100,
+          560
+        ],
+        [
+          1100,
+          200
+        ],
+        [
+          1400,
+          200
+        ],
+        [
+          1400,
+          560
+        ]
+      ],
+      "walk_to": [
+        1200,
+        930
+      ]
+    },
+    {
+      "id": "rooftops",
+      "name": "Rooftops",
+      "polygon": [
+        [
+          80,
+          700
+        ],
+        [
+          80,
+          220
+        ],
+        [
+          620,
+          220
+        ],
+        [
+          620,
+          700
+        ]
+      ],
+      "walk_to": [
+        330,
+        920
+      ],
+      "exit": {
+        "room": "drowned_chapel",
+        "entry": "from_street",
+        "direction": "left"
+      }
+    }
+  ],
+  "occluders": [],
+  "npcs": [],
+  "effects": [
+    {
+      "type": "FogLayer",
+      "name": "FogFar",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.85,
+          0.86,
+          0.89,
+          1.0
+        ],
+        "density": 0.3,
+        "velocity": [
+          0.005,
+          0.0
+        ],
+        "noise_scale": [
+          1.4,
+          0.8
+        ],
+        "band_top": 0.3,
+        "band_bottom": 0.75,
+        "depth_texture": "res://content/rooms/drowned_street/art/depth_now.png",
+        "near_cutoff": 0.4,
+        "noise_seed": 21
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "FogLow",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.8,
+          0.82,
+          0.86,
+          1.0
+        ],
+        "density": 0.24,
+        "velocity": [
+          -0.008,
+          0.0
+        ],
+        "noise_scale": [
+          2.2,
+          1.1
+        ],
+        "band_top": 0.5,
+        "band_bottom": 0.82,
+        "depth_texture": "res://content/rooms/drowned_street/art/depth_now.png",
+        "near_cutoff": 0.55,
+        "noise_seed": 23
+      }
+    },
+    {
+      "type": "LightShafts",
+      "name": "Moonlight",
+      "era": "now",
+      "properties": {
+        "origin": [
+          540,
+          70
+        ],
+        "aim": 200.0,
+        "spread": 30.0,
+        "beams": 5.0,
+        "intensity": 0.07,
+        "reach": 0.9,
+        "shaft_color": [
+          0.9,
+          0.93,
+          1.0,
+          1.0
+        ],
+        "flicker": 0.3
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "GroundMist",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.86,
+          0.87,
+          0.9,
+          1.0
+        ],
+        "density": 0.16,
+        "velocity": [
+          0.01,
+          0.0
+        ],
+        "noise_scale": [
+          2.6,
+          1.6
+        ],
+        "band_top": 0.84,
+        "band_bottom": 1.02,
+        "band_softness": 0.08,
+        "noise_seed": 27
+      },
+      "layer": "foreground"
+    },
+    {
+      "type": "LightShafts",
+      "name": "GoldenShafts",
+      "era": "then",
+      "properties": {
+        "origin": [
+          540,
+          70
+        ],
+        "aim": 200.0,
+        "spread": 44.0,
+        "beams": 7.0,
+        "intensity": 0.14,
+        "reach": 1.0,
+        "shaft_color": [
+          1.0,
+          0.85,
+          0.55,
+          1.0
+        ],
+        "flicker": 0.25
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "WarmHaze",
+      "era": "then",
+      "properties": {
+        "fog_color": [
+          1.0,
+          0.9,
+          0.75,
+          1.0
+        ],
+        "density": 0.1,
+        "velocity": [
+          0.004,
+          0.0
+        ],
+        "noise_scale": [
+          1.2,
+          0.7
+        ],
+        "band_top": 0.3,
+        "band_bottom": 0.9,
+        "noise_seed": 13
+      }
+    },
+    {
+      "type": "DustMotes",
+      "name": "GoldenDust",
+      "era": "then",
+      "properties": {
+        "area": [
+          300,
+          150,
+          1500,
+          750
+        ],
+        "mote_color": [
+          1.0,
+          0.86,
+          0.55,
+          0.55
+        ],
+        "mote_count": 60,
+        "drift": [
+          3,
+          -4
+        ],
+        "mote_size": 2.5
+      }
+    }
+  ]
+}

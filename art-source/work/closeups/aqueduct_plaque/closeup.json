@@ -1,0 +1,51 @@
+{
+  "id": "aqueduct_plaque",
+  "image": "art-source/raw/IMG-0102/IMG-0102-v1.png",
+  "hotspots": [
+    {
+      "id": "seal",
+      "name": "The seal",
+      "polygon": [
+        [
+          740,
+          120
+        ],
+        [
+          1180,
+          120
+        ],
+        [
+          1180,
+          880
+        ],
+        [
+          740,
+          880
+        ]
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "words",
+      "name": "Worn lettering",
+      "polygon": [
+        [
+          100,
+          150
+        ],
+        [
+          1820,
+          150
+        ],
+        [
+          1820,
+          950
+        ],
+        [
+          100,
+          950
+        ]
+      ]
+    }
+  ]
+}

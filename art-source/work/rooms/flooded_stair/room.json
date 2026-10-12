@@ -1,0 +1,209 @@
+{
+  "display_name": "Flooded stair",
+  "now": "art-source/raw/IMG-0073/IMG-0073-v3.png",
+  "walk": [
+    [
+      620,
+      790
+    ],
+    [
+      1480,
+      780
+    ],
+    [
+      1560,
+      880
+    ],
+    [
+      1700,
+      1060
+    ],
+    [
+      300,
+      1060
+    ],
+    [
+      420,
+      900
+    ]
+  ],
+  "scale_zones": {
+    "far_y": 785,
+    "far_scale": 0.82,
+    "near_y": 1060,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      1000,
+      950
+    ],
+    "from_gate": [
+      1560,
+      920
+    ],
+    "from_landing": [
+      700,
+      860
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "bell",
+      "name": "Ferry bell",
+      "polygon": [
+        [
+          290,
+          640
+        ],
+        [
+          290,
+          320
+        ],
+        [
+          400,
+          320
+        ],
+        [
+          400,
+          640
+        ]
+      ],
+      "walk_to": [
+        640,
+        880
+      ],
+      "default_verb": "use",
+      "pick_priority": 2
+    },
+    {
+      "id": "upstairs",
+      "name": "Stair up",
+      "polygon": [
+        [
+          1520,
+          880
+        ],
+        [
+          1520,
+          600
+        ],
+        [
+          1800,
+          420
+        ],
+        [
+          1900,
+          520
+        ],
+        [
+          1900,
+          900
+        ]
+      ],
+      "walk_to": [
+        1560,
+        920
+      ],
+      "exit": {
+        "room": "lower_gate",
+        "entry": "from_flooded",
+        "direction": "up"
+      }
+    },
+    {
+      "id": "quay",
+      "name": "Quay",
+      "polygon": [
+        [
+          0,
+          720
+        ],
+        [
+          0,
+          560
+        ],
+        [
+          300,
+          560
+        ],
+        [
+          300,
+          720
+        ]
+      ],
+      "walk_to": [
+        640,
+        830
+      ],
+      "exit": {
+        "room": "ferry_landing",
+        "entry": "from_stair",
+        "direction": "left",
+        "requires_flag": "ferry_called"
+      }
+    },
+    {
+      "id": "water",
+      "name": "Floodwater",
+      "polygon": [
+        [
+          600,
+          770
+        ],
+        [
+          600,
+          610
+        ],
+        [
+          1450,
+          610
+        ],
+        [
+          1450,
+          770
+        ]
+      ],
+      "walk_to": [
+        1000,
+        820
+      ]
+    },
+    {
+      "id": "roofs",
+      "name": "Drowned roofs",
+      "polygon": [
+        [
+          450,
+          560
+        ],
+        [
+          450,
+          380
+        ],
+        [
+          1300,
+          380
+        ],
+        [
+          1300,
+          560
+        ]
+      ],
+      "walk_to": [
+        900,
+        820
+      ]
+    }
+  ],
+  "effects": {
+    "preset": "exterior",
+    "light": [
+      580,
+      80
+    ],
+    "aim": 200
+  },
+  "id": "flooded_stair",
+  "then": "art-source/raw/IMG-0088/IMG-0088-v2.png"
+}

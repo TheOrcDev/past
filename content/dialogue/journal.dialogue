@@ -40,6 +40,36 @@ Unknown: The whole old town from behind the clock, gold and full, as the hour st
 
 => END
 
+~ ch2_petition
+
+Unknown: The sluice keepers signing a petition to keep their names, Aldous first, with a big proud A. [ID:JOURNAL_CH2_PETITION]
+
+=> END
+
+~ ch2_oath
+
+Unknown: A young doctor kneeling in the chapel, promising to remember every patient by name. [ID:JOURNAL_CH2_OATH]
+
+=> END
+
+~ ch2_dedication
+
+Unknown: The aqueduct opened with banners and a ribbon, cut by a hole in the light with a seal. [ID:JOURNAL_CH2_DEDICATION]
+
+=> END
+
+~ ch2_quarter
+
+Unknown: The lower city dry and green, its canals full of boats, its gates kept. [ID:JOURNAL_CH2_QUARTER]
+
+=> END
+
+~ ch2_signing
+
+Unknown: The keepers in a line, their names struck one by one. The man striking them turned round, and it was me. [ID:JOURNAL_CH2_SIGNING]
+
+=> END
+
 ~ greybox_altar
 
 Unknown: The chapel before the fire, and one word carved into its altar: Mercy. [ID:JOURNAL_GREYBOX_ALTAR]

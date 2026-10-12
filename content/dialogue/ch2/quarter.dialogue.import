@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://duvn42nvrvljt"
+path="res://.godot/imported/quarter.dialogue-125710125a2bb959188d0598b9850e23.tres"
+
+[deps]
+
+source_file="res://content/dialogue/ch2/quarter.dialogue"
+dest_files=["res://.godot/imported/quarter.dialogue-125710125a2bb959188d0598b9850e23.tres"]
+
+[params]
+
+defaults=true

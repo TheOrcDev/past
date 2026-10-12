@@ -1,0 +1,409 @@
+{
+  "display_name": "Ferry landing",
+  "layers": {
+    "now": [
+      {
+        "name": "Background",
+        "texture": "res://content/rooms/ferry_landing/art/bg_now.png"
+      }
+    ],
+    "then": [
+      {
+        "name": "Background",
+        "texture": "res://content/rooms/ferry_landing/art/bg_then.png"
+      }
+    ]
+  },
+  "walk": {
+    "now": [
+      [
+        560,
+        720
+      ],
+      [
+        1000,
+        660
+      ],
+      [
+        1500,
+        720
+      ],
+      [
+        1900,
+        800
+      ],
+      [
+        1900,
+        1060
+      ],
+      [
+        1100,
+        1060
+      ],
+      [
+        620,
+        880
+      ]
+    ],
+    "then": [
+      [
+        560,
+        720
+      ],
+      [
+        1000,
+        660
+      ],
+      [
+        1500,
+        720
+      ],
+      [
+        1900,
+        800
+      ],
+      [
+        1900,
+        1060
+      ],
+      [
+        1100,
+        1060
+      ],
+      [
+        620,
+        880
+      ]
+    ]
+  },
+  "scale_zones": {
+    "far_y": 665,
+    "far_scale": 0.72,
+    "near_y": 1060,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      1300,
+      900
+    ],
+    "from_stair": [
+      1800,
+      860
+    ],
+    "from_ferry": [
+      700,
+      780
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "ferryman",
+      "name": "Ferryman",
+      "polygon": [
+        [
+          300,
+          920
+        ],
+        [
+          300,
+          560
+        ],
+        [
+          380,
+          520
+        ],
+        [
+          470,
+          560
+        ],
+        [
+          540,
+          920
+        ]
+      ],
+      "walk_to": [
+        640,
+        790
+      ],
+      "default_verb": "talk",
+      "pick_priority": 2
+    },
+    {
+      "id": "fareboard",
+      "name": "Fare board",
+      "polygon": [
+        [
+          1180,
+          640
+        ],
+        [
+          1180,
+          300
+        ],
+        [
+          1310,
+          300
+        ],
+        [
+          1310,
+          640
+        ]
+      ],
+      "walk_to": [
+        1200,
+        720
+      ]
+    },
+    {
+      "id": "lantern",
+      "name": "Lantern",
+      "polygon": [
+        [
+          620,
+          620
+        ],
+        [
+          620,
+          300
+        ],
+        [
+          720,
+          300
+        ],
+        [
+          720,
+          620
+        ]
+      ],
+      "walk_to": [
+        760,
+        730
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "stair",
+      "name": "Stair to the flooded stair",
+      "polygon": [
+        [
+          1600,
+          620
+        ],
+        [
+          1600,
+          300
+        ],
+        [
+          1900,
+          300
+        ],
+        [
+          1900,
+          620
+        ]
+      ],
+      "walk_to": [
+        1850,
+        840
+      ],
+      "exit": {
+        "room": "flooded_stair",
+        "entry": "from_landing",
+        "direction": "right"
+      }
+    }
+  ],
+  "occluders": [],
+  "npcs": [
+    {
+      "scene": "res://content/characters/ferryman/ferryman.tscn",
+      "name": "Ferryman",
+      "position": [
+        420,
+        920
+      ],
+      "facing": "right",
+      "era": "now"
+    }
+  ],
+  "effects": [
+    {
+      "type": "FogLayer",
+      "name": "FogFar",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.85,
+          0.86,
+          0.89,
+          1.0
+        ],
+        "density": 0.3,
+        "velocity": [
+          0.005,
+          0.0
+        ],
+        "noise_scale": [
+          1.4,
+          0.8
+        ],
+        "band_top": 0.3,
+        "band_bottom": 0.75,
+        "depth_texture": "res://content/rooms/ferry_landing/art/depth_now.png",
+        "near_cutoff": 0.4,
+        "noise_seed": 21
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "FogLow",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.8,
+          0.82,
+          0.86,
+          1.0
+        ],
+        "density": 0.24,
+        "velocity": [
+          -0.008,
+          0.0
+        ],
+        "noise_scale": [
+          2.2,
+          1.1
+        ],
+        "band_top": 0.5,
+        "band_bottom": 0.82,
+        "depth_texture": "res://content/rooms/ferry_landing/art/depth_now.png",
+        "near_cutoff": 0.55,
+        "noise_seed": 23
+      }
+    },
+    {
+      "type": "LightShafts",
+      "name": "Moonlight",
+      "era": "now",
+      "properties": {
+        "origin": [
+          1200,
+          80
+        ],
+        "aim": 200.0,
+        "spread": 30.0,
+        "beams": 5.0,
+        "intensity": 0.07,
+        "reach": 0.9,
+        "shaft_color": [
+          0.9,
+          0.93,
+          1.0,
+          1.0
+        ],
+        "flicker": 0.3
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "GroundMist",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.86,
+          0.87,
+          0.9,
+          1.0
+        ],
+        "density": 0.16,
+        "velocity": [
+          0.01,
+          0.0
+        ],
+        "noise_scale": [
+          2.6,
+          1.6
+        ],
+        "band_top": 0.84,
+        "band_bottom": 1.02,
+        "band_softness": 0.08,
+        "noise_seed": 27
+      },
+      "layer": "foreground"
+    },
+    {
+      "type": "LightShafts",
+      "name": "GoldenShafts",
+      "era": "then",
+      "properties": {
+        "origin": [
+          1200,
+          80
+        ],
+        "aim": 200.0,
+        "spread": 44.0,
+        "beams": 7.0,
+        "intensity": 0.14,
+        "reach": 1.0,
+        "shaft_color": [
+          1.0,
+          0.85,
+          0.55,
+          1.0
+        ],
+        "flicker": 0.25
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "WarmHaze",
+      "era": "then",
+      "properties": {
+        "fog_color": [
+          1.0,
+          0.9,
+          0.75,
+          1.0
+        ],
+        "density": 0.1,
+        "velocity": [
+          0.004,
+          0.0
+        ],
+        "noise_scale": [
+          1.2,
+          0.7
+        ],
+        "band_top": 0.3,
+        "band_bottom": 0.9,
+        "noise_seed": 13
+      }
+    },
+    {
+      "type": "DustMotes",
+      "name": "GoldenDust",
+      "era": "then",
+      "properties": {
+        "area": [
+          300,
+          150,
+          1500,
+          750
+        ],
+        "mote_color": [
+          1.0,
+          0.86,
+          0.55,
+          0.55
+        ],
+        "mote_count": 60,
+        "drift": [
+          3,
+          -4
+        ],
+        "mote_size": 2.5
+      }
+    }
+  ]
+}

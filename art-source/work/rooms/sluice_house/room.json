@@ -1,0 +1,169 @@
+{
+  "display_name": "Sluice house",
+  "now": "art-source/raw/IMG-0077/IMG-0077-v1.png",
+  "walk": [
+    [
+      100,
+      790
+    ],
+    [
+      480,
+      780
+    ],
+    [
+      1500,
+      800
+    ],
+    [
+      1700,
+      830
+    ],
+    [
+      1750,
+      1060
+    ],
+    [
+      100,
+      1060
+    ]
+  ],
+  "scale_zones": {
+    "far_y": 785,
+    "far_scale": 0.9,
+    "near_y": 1060,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      900,
+      930
+    ],
+    "from_street": [
+      300,
+      850
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "window",
+      "name": "Window",
+      "polygon": [
+        [
+          170,
+          380
+        ],
+        [
+          170,
+          40
+        ],
+        [
+          330,
+          40
+        ],
+        [
+          330,
+          380
+        ]
+      ],
+      "walk_to": [
+        300,
+        840
+      ],
+      "exit": {
+        "room": "drowned_street",
+        "entry": "from_sluice",
+        "direction": "up"
+      }
+    },
+    {
+      "id": "wheel",
+      "name": "Gate wheel",
+      "polygon": [
+        [
+          720,
+          500
+        ],
+        [
+          720,
+          340
+        ],
+        [
+          1370,
+          340
+        ],
+        [
+          1370,
+          500
+        ]
+      ],
+      "walk_to": [
+        1000,
+        850
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "gauge",
+      "name": "Water gauge",
+      "polygon": [
+        [
+          1660,
+          780
+        ],
+        [
+          1660,
+          150
+        ],
+        [
+          1760,
+          150
+        ],
+        [
+          1760,
+          780
+        ]
+      ],
+      "walk_to": [
+        1620,
+        860
+      ]
+    },
+    {
+      "id": "desk",
+      "name": "Petition",
+      "polygon": [
+        [
+          50,
+          640
+        ],
+        [
+          50,
+          430
+        ],
+        [
+          360,
+          430
+        ],
+        [
+          360,
+          640
+        ]
+      ],
+      "walk_to": [
+        330,
+        850
+      ],
+      "pick_priority": 1
+    }
+  ],
+  "effects": {
+    "preset": "interior",
+    "light": [
+      260,
+      170
+    ],
+    "aim": 150
+  },
+  "id": "sluice_house",
+  "then": "art-source/raw/IMG-0097/IMG-0097-v1.png"
+}

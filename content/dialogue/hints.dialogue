@@ -502,6 +502,276 @@ Unknown: Go through the open portcullis at the lower gate. [ID:HINT_LOWER_GATE_3
 
 => END
 
+~ ch2_quarter_arrive_1
+
+Unknown: The lower gate is open. Down, then. [ID:HINT_CH2_QUARTER_ARRIVE_1]
+
+=> END
+
+~ ch2_quarter_arrive_2
+
+Unknown: Down the stair from the tower square, through the lower gate. [ID:HINT_CH2_QUARTER_ARRIVE_2]
+
+=> END
+
+~ ch2_quarter_arrive_3
+
+Unknown: Go through the portcullis at the lower gate. [ID:HINT_CH2_QUARTER_ARRIVE_3]
+
+=> END
+
+~ ferry_bell_1
+
+Unknown: Nobody walks in this quarter. Somebody must row. [ID:HINT_FERRY_BELL_1]
+
+=> END
+
+~ ferry_bell_2
+
+Unknown: The bell on the post at the foot of the stair. [ID:HINT_FERRY_BELL_2]
+
+=> END
+
+~ ferry_bell_3
+
+Unknown: Ring the ferry bell on the flooded stair. [ID:HINT_FERRY_BELL_3]
+
+=> END
+
+~ fare_1
+
+Unknown: The Ferryman wants a fare I can afford. [ID:HINT_FARE_1]
+
+=> END
+
+~ fare_2
+
+Unknown: A small memory, he said. Something warm I won't miss. [ID:HINT_FARE_2]
+
+=> END
+
+~ fare_3
+
+Unknown: Talk to the Ferryman and give him the taste of bread. [ID:HINT_FARE_3]
+
+=> END
+
+~ crate_1
+
+Unknown: Something floating in the drowned street could be useful. [ID:HINT_CRATE_1]
+
+=> END
+
+~ crate_2
+
+Unknown: The crate bobbing against the wall in the drowned street. [ID:HINT_CRATE_2]
+
+=> END
+
+~ crate_3
+
+Unknown: Take the crate in the drowned street. [ID:HINT_CRATE_3]
+
+=> END
+
+~ window_1
+
+Unknown: The sluice house window is just out of reach. [ID:HINT_WINDOW_1]
+
+=> END
+
+~ window_2
+
+Unknown: Something to stand on, under the window. [ID:HINT_WINDOW_2]
+
+=> END
+
+~ window_3
+
+Unknown: Use the crate on the sluice house window. [ID:HINT_WINDOW_3]
+
+=> END
+
+~ petition_1
+
+Unknown: The sluice house remembers how it worked. [ID:HINT_PETITION_1]
+
+=> END
+
+~ petition_2
+
+Unknown: Touch the great gate wheel in the sluice house. [ID:HINT_PETITION_2]
+
+=> END
+
+~ petition_3
+
+Unknown: Use the gate wheel in the sluice house. [ID:HINT_PETITION_3]
+
+=> END
+
+~ maud_1
+
+Unknown: The Washerwoman doesn't know whose A it is. I do. [ID:HINT_MAUD_1]
+
+=> END
+
+~ maud_2
+
+Unknown: Tell the Washerwoman about Aldous. [ID:HINT_MAUD_2]
+
+=> END
+
+~ maud_3
+
+Unknown: At the washing steps, tell her the A is for Aldous. [ID:HINT_MAUD_3]
+
+=> END
+
+~ oath_1
+
+Unknown: The doctor promised something, once. Somewhere holy. [ID:HINT_OATH_1]
+
+=> END
+
+~ oath_2
+
+Unknown: The drowned chapel, over the rooftops from the drowned street. The altar. [ID:HINT_OATH_2]
+
+=> END
+
+~ oath_3
+
+Unknown: Use the altar in the drowned chapel. [ID:HINT_OATH_3]
+
+=> END
+
+~ doctor_1
+
+Unknown: The doctor forgot her own oath. I heard it. [ID:HINT_DOCTOR_1]
+
+=> END
+
+~ doctor_2
+
+Unknown: Say her oath back to the Plague Doctor. [ID:HINT_DOCTOR_2]
+
+=> END
+
+~ doctor_3
+
+Unknown: In the hospice, give the Plague Doctor her oath. [ID:HINT_DOCTOR_3]
+
+=> END
+
+~ dedication_1
+
+Unknown: The aqueduct was opened with a ceremony. The plaque would remember. [ID:HINT_DEDICATION_1]
+
+=> END
+
+~ dedication_2
+
+Unknown: Past the washing steps, through the drowned forest, to the aqueduct's foot. The plaque. [ID:HINT_DEDICATION_2]
+
+=> END
+
+~ dedication_3
+
+Unknown: Use the plaque at the aqueduct's foot. [ID:HINT_DEDICATION_3]
+
+=> END
+
+~ seal_1
+
+Unknown: That seal on the plaque. I've seen it before. On my own hand. [ID:HINT_SEAL_1]
+
+=> END
+
+~ seal_2
+
+Unknown: The seal ring, on the plaque. [ID:HINT_SEAL_2]
+
+=> END
+
+~ seal_3
+
+Unknown: Use the seal ring on the plaque at the aqueduct's foot. [ID:HINT_SEAL_3]
+
+=> END
+
+~ span_1
+
+Unknown: The aqueduct is broken. Something long would cross it. [ID:HINT_SPAN_1]
+
+=> END
+
+~ span_2
+
+Unknown: The doctor's stretcher, across the gap. [ID:HINT_SPAN_2]
+
+=> END
+
+~ span_3
+
+Unknown: On the aqueduct, use the stretcher on the gap. [ID:HINT_SPAN_3]
+
+=> END
+
+~ valve_door_1
+
+Unknown: The valve house is sealed with a seal I know. [ID:HINT_VALVE_DOOR_1]
+
+=> END
+
+~ valve_door_2
+
+Unknown: The seal ring on the valve house door. [ID:HINT_VALVE_DOOR_2]
+
+=> END
+
+~ valve_door_3
+
+Unknown: Use the seal ring on the valve house door. [ID:HINT_VALVE_DOOR_3]
+
+=> END
+
+~ valve_1
+
+Unknown: The valve is chained and padlocked. [ID:HINT_VALVE_1]
+
+=> END
+
+~ valve_2
+
+Unknown: Aldous's key, from the Washerwoman. [ID:HINT_VALVE_2]
+
+=> END
+
+~ valve_3
+
+Unknown: Use the sluice key on the valve. [ID:HINT_VALVE_3]
+
+=> END
+
+~ signing_1
+
+Unknown: Turn it. Whatever it shows me. [ID:HINT_SIGNING_1]
+
+=> END
+
+~ signing_2
+
+Unknown: Use the valve. [ID:HINT_SIGNING_2]
+
+=> END
+
+~ signing_3
+
+Unknown: Use the valve in the valve house. [ID:HINT_SIGNING_3]
+
+=> END
+
 ~ none
 
 Unknown: Nothing pulls at me right now. The rest of me is still out there, somewhere. [ID:HINT_NONE_1]

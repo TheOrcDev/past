@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0088",
+  "title": "The flooded stair, then",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T00:26:55.054Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0073/IMG-0073-v3.png",
+          "sha256": "9e8cdab3a68c44b4cf95bfbd342964179273ebfa5500563942872c91d43576cb"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit this image in place. Keep exactly the same composition, camera, perspective, horizon and every shape where it stands: the stair and its posts on the right, the bell post, the quay and jetty, every house, roof and tree, and the aqueduct. Only change the time and the condition.\n\nRestore the same place to how it looked decades earlier, before the flood, on a warm spring evening, in full rich warm color, as a painterly gothic matte painting: no floodwater at all: the stair leads down to a dry cobbled street with gardens and flower beds where the water was, the houses whole with lit windows and painted shutters, the trees green and in blossom, a clear canal running beside the street with moored boats, the aqueduct carrying sparkling water across the background, a warm sunset. The key light comes from the same direction as in the original.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0088-v1.png",
+          "sha256": "ff73f9ec3d564156bc9e13097b8c34d1e7fcd9656d0e265947472fed9ac3fb7c",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0088-v2.png",
+          "sha256": "2e1c9a7f262ffe4c5a5d49a5b7699a205dfabb1cc275730c46b476f119a538ab",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 226496,
+        "outputTokens": 991
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d81-5d8b-7c53-916f-816f7cb24d18",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d81-5d8b-7c53-916f-816f7cb24d18/exec-43b4f3ee-cba9-4960-95c6-e57fd9595965.png",
+            "/Users/orcdev/.codex/generated_images/01a12d81-5d8b-7c53-916f-816f7cb24d18/exec-aec9350f-1faf-40aa-85f5-f2370173b203.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 2123,
+              "height": 741
+            },
+            {
+              "width": 2123,
+              "height": 741
+            }
+          ],
+          "messages": [
+            "I’ll generate two edits from the attached image using your prompt exactly.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

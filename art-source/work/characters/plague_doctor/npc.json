@@ -1,0 +1,182 @@
+{
+  "id": "plague_doctor",
+  "speaker": "Plague Doctor",
+  "painting": "art-source/raw/IMG-0086/IMG-0086-v1.png",
+  "height": 470,
+  "feet": [
+    500,
+    1500
+  ],
+  "speech": [
+    500,
+    0
+  ],
+  "subtitle_color": [
+    0.8,
+    0.9,
+    0.82
+  ],
+  "grid": 28,
+  "aliases": [
+    "Isolde"
+  ],
+  "bones": [
+    {
+      "name": "Base",
+      "parent": "",
+      "from": [
+        500,
+        1500
+      ],
+      "to": [
+        500,
+        1050
+      ]
+    },
+    {
+      "name": "Body",
+      "parent": "Base",
+      "from": [
+        460,
+        1000
+      ],
+      "to": [
+        480,
+        330
+      ]
+    },
+    {
+      "name": "Head",
+      "parent": "Body",
+      "from": [
+        500,
+        300
+      ],
+      "to": [
+        540,
+        40
+      ]
+    },
+    {
+      "name": "Cane",
+      "parent": "Body",
+      "from": [
+        700,
+        640
+      ],
+      "to": [
+        740,
+        1480
+      ]
+    },
+    {
+      "name": "Book",
+      "parent": "Body",
+      "from": [
+        380,
+        380
+      ],
+      "to": [
+        420,
+        600
+      ]
+    }
+  ],
+  "motions": {
+    "idle": {
+      "loop": true,
+      "bones": {
+        "Body": [
+          0.5,
+          0.18,
+          0.0
+        ],
+        "Head": [
+          1.2,
+          0.12,
+          0.7
+        ]
+      }
+    },
+    "talk_a": {
+      "loop": true,
+      "bones": {
+        "Body": [
+          0.6,
+          0.25,
+          0.0
+        ],
+        "Head": [
+          1.2,
+          0.22,
+          1.0
+        ]
+      },
+      "voice": {
+        "Head": 4.0,
+        "Book": -3.0
+      }
+    },
+    "talk_b": {
+      "loop": true,
+      "bones": {
+        "Body": [
+          0.8,
+          0.3,
+          0.0
+        ],
+        "Head": [
+          1.4,
+          0.25,
+          0.5
+        ]
+      },
+      "voice": {
+        "Head": -5.0,
+        "Body": 1.0
+      }
+    },
+    "examine": {
+      "loop": false,
+      "length": 2.2,
+      "keys": {
+        "Body": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.7,
+            -7.0
+          ],
+          [
+            1.6,
+            -7.0
+          ],
+          [
+            2.2,
+            0.0
+          ]
+        ],
+        "Head": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.7,
+            -10.0
+          ],
+          [
+            1.6,
+            -10.0
+          ],
+          [
+            2.2,
+            0.0
+          ]
+        ]
+      }
+    }
+  }
+}

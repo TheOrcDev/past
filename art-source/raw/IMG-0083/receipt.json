@@ -1,0 +1,81 @@
+{
+  "id": "IMG-0083",
+  "title": "The valve house, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T00:22:59.493Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0014/IMG-0014-v2.png",
+          "sha256": "007293b04cb0e4a9f28c332a9f68cfd2fc539efd55efc64882a894d5c677d1de"
+        },
+        {
+          "path": "art-source/raw/IMG-0062/IMG-0062-v1.png",
+          "sha256": "ed051eeb78e48107feb34bb73402af5139a6dcfd4f62b8f13d063ba93a70ac95"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: the inside of an old stone valve house at the head of an aqueduct, at night, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: Water roars somewhere below through an iron grating in the floor. In the centre, a great iron valve wheel on a massive pipe, its spokes chained together and padlocked with a heavy lock. On the right, an old maintenance desk with a lamp and ledgers. On the left, the iron-bound door, ajar. A round window high up shows the moon.\n\nThe lower third of the image is open, walkable ground: the stone floor around the grating runs across the lower third. It is lit by moonlight from the round window with drifting fog or haze behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0083-v1.png",
+          "sha256": "5f8c81dbd9f020bdda30ab7b22c838404aec8506d73207b566a62dea7f606424",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0083-v2.png",
+          "sha256": "c9b4f2dbdf6743f6b175e67ffef7e05a7796eb2586c865def4ad9563b4addfc6",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0083-v3.png",
+          "sha256": "78dfae49e5478da0031b3e2814873171f757a0c81d6635de01ec11e3d6d8c299",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 149724,
+        "outputTokens": 745
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d7d-c6f4-76d1-b28d-a39912cd7a0b",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d7d-c6f4-76d1-b28d-a39912cd7a0b/exec-fce43db0-8ee2-4f97-8ad4-eb01a5aa88b2.png",
+            "/Users/orcdev/.codex/generated_images/01a12d7d-c6f4-76d1-b28d-a39912cd7a0b/exec-755e1efb-8bc4-4293-8975-46d652587fef.png",
+            "/Users/orcdev/.codex/generated_images/01a12d7d-c6f4-76d1-b28d-a39912cd7a0b/exec-b308dccf-9b2e-4d0d-ad46-86ec1456bedf.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1671,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque images using both references and your prompt exactly as written.",
+            "Two images are complete. I’m generating the third with the same prompt and references.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

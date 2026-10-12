@@ -1,0 +1,19 @@
+{
+  "id": "washerwoman", "speaker": "Washerwoman", "painting": "art-source/raw/IMG-0085/IMG-0085-v1.png",
+  "height": 330, "feet": [500, 1430], "speech": [560, 60], "subtitle_color": [0.92, 0.8, 0.78], "grid": 28,
+  "aliases": ["Maud"],
+  "bones": [
+    {"name": "Base", "parent": "", "from": [500, 1430], "to": [500, 1080]},
+    {"name": "Body", "parent": "Base", "from": [300, 1020], "to": [500, 470]},
+    {"name": "Head", "parent": "Body", "from": [540, 420], "to": [580, 90]},
+    {"name": "Arms", "parent": "Body", "from": [560, 580], "to": [760, 820]}
+  ],
+  "motions": {
+    "idle": {"loop": true, "bones": {"Body": [1.5, 0.5, 0.0], "Arms": [4.0, 0.5, 0.3], "Head": [1.0, 0.25, 0.6]}},
+    "talk_a": {"loop": true, "bones": {"Body": [0.8, 0.3, 0.0], "Head": [1.2, 0.2, 1.0]}, "voice": {"Head": -5.0, "Body": -2.0}},
+    "talk_b": {"loop": true, "bones": {"Body": [1.0, 0.35, 0.0], "Arms": [2.0, 0.4, 0.0]}, "voice": {"Head": 4.0, "Arms": -6.0}},
+    "scrub": {"loop": false, "length": 1.6, "keys": {
+      "Arms": [[0.0, 0.0], [0.2, 6.0], [0.4, -4.0], [0.6, 6.0], [0.8, -4.0], [1.0, 6.0], [1.6, 0.0]],
+      "Body": [[0.0, 0.0], [0.4, 2.0], [0.8, -1.0], [1.6, 0.0]]}}
+  }
+}

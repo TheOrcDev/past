@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://bogmij4u8h70x"
+path="res://.godot/imported/aqueduct.dialogue-4eeac45ec32cde8326274902c1b24965.tres"
+
+[deps]
+
+source_file="res://content/dialogue/ch2/aqueduct.dialogue"
+dest_files=["res://.godot/imported/aqueduct.dialogue-4eeac45ec32cde8326274902c1b24965.tres"]
+
+[params]
+
+defaults=true

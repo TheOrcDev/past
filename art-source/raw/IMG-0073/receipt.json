@@ -1,0 +1,76 @@
+{
+  "id": "IMG-0073",
+  "title": "The flooded stair, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T00:22:59.488Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0062/IMG-0062-v1.png",
+          "sha256": "ed051eeb78e48107feb34bb73402af5139a6dcfd4f62b8f13d063ba93a70ac95"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: the bottom of a broad stone stair that descends straight into still black floodwater, in a drowned gothic city quarter at night, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: On the right, the stair comes down from the upper town out of the frame. On the left, the steps disappear under mirror-still black water reflecting the moon. Beyond, drowned rooftops and upper storeys stand out of the water, dead trees rise from the flood, and far away the tall arches of a ruined aqueduct march into the fog. In the middle ground on the left, a stone quay runs off along the water toward a jetty, and on a wooden post at the water's edge hangs a small iron ferry bell.\n\nThe lower third of the image is open, walkable ground: a wide stone landing at the foot of the stair runs across the lower third, its left edge lapped by water. It is lit by pale moonlight with drifting fog or haze behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0073-v1.png",
+          "sha256": "3c287f3be10484fa381c3b287db824c30f6974b8399fde574c9f0824e4fd1fd9",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0073-v2.png",
+          "sha256": "eda0ed2913097d1f66b41511821189cd74f2f297fde94ad155498f73615641a9",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0073-v3.png",
+          "sha256": "9e8cdab3a68c44b4cf95bfbd342964179273ebfa5500563942872c91d43576cb",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 124358,
+        "outputTokens": 791
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d7d-c6f6-7022-9e88-f5721f947c92",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d7d-c6f6-7022-9e88-f5721f947c92/exec-2f0019bc-ef94-4e03-996e-b474f148305d.png",
+            "/Users/orcdev/.codex/generated_images/01a12d7d-c6f6-7022-9e88-f5721f947c92/exec-d49b9a5b-d95c-48ca-883d-34d5f9bf8645.png",
+            "/Users/orcdev/.codex/generated_images/01a12d7d-c6f6-7022-9e88-f5721f947c92/exec-a8611251-637b-4202-8404-42fcb6aac971.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 2123,
+              "height": 741
+            },
+            {
+              "width": 2123,
+              "height": 741
+            },
+            {
+              "width": 2123,
+              "height": 741
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque images using the reference and your prompt exactly.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

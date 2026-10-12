@@ -1,0 +1,81 @@
+{
+  "id": "IMG-0079",
+  "title": "The hospice on stilts, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T00:24:51.675Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0014/IMG-0014-v2.png",
+          "sha256": "007293b04cb0e4a9f28c332a9f68cfd2fc539efd55efc64882a894d5c677d1de"
+        },
+        {
+          "path": "art-source/raw/IMG-0062/IMG-0062-v1.png",
+          "sha256": "ed051eeb78e48107feb34bb73402af5139a6dcfd4f62b8f13d063ba93a70ac95"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: a long timber hall built on stilts above floodwater, used as a hospice, at night, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: Two rows of narrow cots run down the hall into the distance, each with a still, sheeted shape lying on it (only sheets and outlines, no faces). Bundles of dried herbs hang from the rafters; a medicine cabinet and a chart on a board on the right; a long folded canvas stretcher leaning against the wall on the right. On the left, a door onto an outside walkway where a boat ties up. Lamps unlit.\n\nThe lower third of the image is open, walkable ground: the wide plank floor between the cots runs across the lower third. It is lit by moonlight through gaps in the planks and shutters with drifting fog or haze behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0079-v1.png",
+          "sha256": "e369aabb251916c0bd655c31104dfcb4f1ce007a947b8527b471aa6ee63d1cf4",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0079-v2.png",
+          "sha256": "d07ca961f4fb1076aa5d2c42dd8a7a24e429f9adb791be39b6b349c6dc54c3b7",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0079-v3.png",
+          "sha256": "f1813ed6ca45d7d342f2b728cffdefe12fd4d792b0c6783d9c0f8343317a212c",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 231273,
+        "outputTokens": 1108
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d7f-7b8a-7c62-8ca3-188d6d89081b",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d7f-7b8a-7c62-8ca3-188d6d89081b/exec-5f00282c-e98b-4609-9afa-56dc0c4d3f99.png",
+            "/Users/orcdev/.codex/generated_images/01a12d7f-7b8a-7c62-8ca3-188d6d89081b/exec-d7e433f3-62bd-4e2a-9fcb-c462e986d325.png",
+            "/Users/orcdev/.codex/generated_images/01a12d7f-7b8a-7c62-8ca3-188d6d89081b/exec-c332f9aa-72cd-4587-a411-0224871430a9.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque images using both references and your exact prompt.",
+            "Two images are complete. I’m generating the third with the same references and exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

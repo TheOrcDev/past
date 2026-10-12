@@ -25,6 +25,7 @@ func test_chapter_one_plays_to_the_lower_gate() -> void:
 	play.call()
 	await wait_until(func() -> bool: return done[0], 300.0)
 	assert_true(done[0], "chapter 1 finished")
-	assert_eq(Rooms.current.room_id, &"lower_gate")
+	# The gate opens on chapter 2 where it ships, and on the end card otherwise.
+	assert_eq(Rooms.current.room_id, &"flooded_stair" if Chapters.in_build(&"flooded_stair") else &"lower_gate")
 	for memory in [&"ch1_wedding", &"ch1_apprentice", &"ch1_old_town"]:
 		assert_true(memory in GameState.memories, "remembers %s" % memory)

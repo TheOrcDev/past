@@ -1,0 +1,31 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/closeups/aqueduct_plaque/aqueduct_plaque.gd" id="1_15s7l"]
+[ext_resource type="Texture2D" path="res://content/closeups/aqueduct_plaque/art/bg.png" id="2_3fysk"]
+[ext_resource type="Script" path="res://src/core/hotspot.gd" id="3_128uc"]
+
+[node name="AqueductPlaque" type="Node2D" unique_id=928587990]
+script = ExtResource("1_15s7l")
+closeup_id = &"aqueduct_plaque"
+
+[node name="Background" type="Sprite2D" parent="." unique_id=874295123]
+texture = ExtResource("2_3fysk")
+centered = false
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=659361027]
+
+[node name="Seal" type="Area2D" parent="Hotspots" unique_id=1889200279]
+script = ExtResource("3_128uc")
+id = &"seal"
+display_name = "The seal"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Seal" unique_id=1322630693]
+polygon = PackedVector2Array(740, 120, 1180, 120, 1180, 880, 740, 880)
+
+[node name="Words" type="Area2D" parent="Hotspots" unique_id=84423926]
+script = ExtResource("3_128uc")
+id = &"words"
+display_name = "Worn lettering"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Words" unique_id=2024062487]
+polygon = PackedVector2Array(100, 150, 1820, 150, 1820, 950, 100, 950)

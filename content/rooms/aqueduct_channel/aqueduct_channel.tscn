@@ -1,0 +1,167 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/rooms/aqueduct_channel/aqueduct_channel.gd" id="1_f72oi"]
+[ext_resource type="Texture2D" path="res://content/rooms/aqueduct_channel/art/bg_now.png" id="2_ehg55"]
+[ext_resource type="Script" path="res://src/systems/effects/fog_layer.gd" id="3_iky7p"]
+[ext_resource type="Texture2D" path="res://content/rooms/aqueduct_channel/art/depth_now.png" id="4_hdpua"]
+[ext_resource type="Script" path="res://src/systems/effects/light_shafts.gd" id="5_0fh3m"]
+[ext_resource type="Script" path="res://src/core/scale_zones.gd" id="6_fsr4q"]
+[ext_resource type="Script" path="res://src/core/exit.gd" id="7_ra56m"]
+[ext_resource type="Script" path="res://src/core/hotspot.gd" id="8_bws8i"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_cbukw"]
+vertices = PackedVector2Array(1240, 760, 1100, 1000, 900, 1060, 200, 1060, 260, 760, 700, 705, 1150, 700)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(260, 760, 700, 705, 1150, 700, 1240, 760, 1100, 1000, 900, 1060, 200, 1060)])
+agent_radius = 0.0
+
+[node name="AqueductChannel" type="Node2D" unique_id=213730783]
+script = ExtResource("1_f72oi")
+room_id = &"aqueduct_channel"
+display_name = "On the aqueduct"
+
+[node name="Layers" type="Node2D" parent="." unique_id=1495346008]
+
+[node name="Now" type="Node2D" parent="Layers" unique_id=788929161]
+
+[node name="Background" type="Sprite2D" parent="Layers/Now" unique_id=189214068]
+texture = ExtResource("2_ehg55")
+centered = false
+
+[node name="FogFar" type="ColorRect" parent="Layers/Now" unique_id=1505691121]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_iky7p")
+fog_color = Color(0.85, 0.86, 0.89, 1)
+density = 0.3
+velocity = Vector2(0.005, 0)
+noise_scale = Vector2(1.4, 0.8)
+band_top = 0.3
+band_bottom = 0.75
+depth_texture = ExtResource("4_hdpua")
+near_cutoff = 0.4
+noise_seed = 21
+
+[node name="FogLow" type="ColorRect" parent="Layers/Now" unique_id=524292097]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_iky7p")
+fog_color = Color(0.8, 0.82, 0.86, 1)
+density = 0.24
+velocity = Vector2(-0.008, 0)
+noise_scale = Vector2(2.2, 1.1)
+band_top = 0.5
+band_bottom = 0.82
+depth_texture = ExtResource("4_hdpua")
+near_cutoff = 0.55
+noise_seed = 23
+
+[node name="Moonlight" type="ColorRect" parent="Layers/Now" unique_id=435145815]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("5_0fh3m")
+origin = Vector2(510, 110)
+aim = 180.0
+spread = 30.0
+beams = 5.0
+intensity = 0.07
+shaft_color = Color(0.9, 0.93, 1, 1)
+flicker = 0.3
+
+[node name="Then" type="Node2D" parent="Layers" unique_id=831177477]
+
+[node name="WalkAreas" type="Node2D" parent="." unique_id=938606496]
+
+[node name="Now" type="NavigationRegion2D" parent="WalkAreas" unique_id=1947443922]
+navigation_polygon = SubResource("NavigationPolygon_cbukw")
+
+[node name="Then" type="NavigationRegion2D" parent="WalkAreas" unique_id=390408805]
+enabled = false
+
+[node name="ScaleZones" type="Node2D" parent="." unique_id=524264859]
+script = ExtResource("6_fsr4q")
+far_y = 700.0
+far_scale = 0.7
+near_y = 1060.0
+near_scale = 1.05
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=1838169261]
+
+[node name="StairDown" type="Area2D" parent="Hotspots" unique_id=944477575]
+script = ExtResource("7_ra56m")
+target_room = &"aqueduct_foot"
+target_entry = &"from_channel"
+direction = &"down"
+id = &"stair_down"
+display_name = "Down to the pier"
+default_verb = &"walk"
+walk_offset = Vector2(250, 990)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/StairDown" unique_id=294916355]
+polygon = PackedVector2Array(120, 880, 120, 1060, 300, 1060, 300, 880)
+
+[node name="Gap" type="Area2D" parent="Hotspots" unique_id=1413359225]
+script = ExtResource("8_bws8i")
+id = &"gap"
+display_name = "Broken span"
+walk_offset = Vector2(1150, 770)
+pick_priority = 2
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Gap" unique_id=629929307]
+polygon = PackedVector2Array(1180, 760, 1180, 520, 1320, 500, 1320, 760)
+
+[node name="ValveDoor" type="Area2D" parent="Hotspots" unique_id=1823433636]
+script = ExtResource("7_ra56m")
+target_room = &"valve_house"
+target_entry = &"from_channel"
+requires_flag = &"valve_door_open"
+id = &"valve_door"
+display_name = "Valve house"
+default_verb = &"walk"
+walk_offset = Vector2(1150, 770)
+pick_priority = 1
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/ValveDoor" unique_id=2028057085]
+polygon = PackedVector2Array(1620, 380, 1620, 60, 1860, 60, 1860, 380)
+
+[node name="View" type="Area2D" parent="Hotspots" unique_id=1991231625]
+script = ExtResource("8_bws8i")
+id = &"view"
+display_name = "The drowned quarter"
+walk_offset = Vector2(600, 780)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/View" unique_id=759169593]
+polygon = PackedVector2Array(0, 600, 0, 180, 1000, 180, 1000, 600)
+
+[node name="Exits" type="Node2D" parent="." unique_id=1928181873]
+
+[node name="Markers" type="Node2D" parent="." unique_id=2019241202]
+
+[node name="default" type="Marker2D" parent="Markers" unique_id=2104626195]
+position = Vector2(600, 900)
+
+[node name="from_foot" type="Marker2D" parent="Markers" unique_id=991265512]
+position = Vector2(260, 990)
+
+[node name="from_valve" type="Marker2D" parent="Markers" unique_id=1050561762]
+position = Vector2(1150, 770)
+
+[node name="Actors" type="Node2D" parent="." unique_id=429104174]
+y_sort_enabled = true
+
+[node name="Foreground" type="Node2D" parent="." unique_id=1414929452]
+
+[node name="GroundMist" type="ColorRect" parent="Foreground" unique_id=2085088238 groups=["era_now"]]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_iky7p")
+fog_color = Color(0.86, 0.87, 0.9, 1)
+density = 0.16
+velocity = Vector2(0.01, 0)
+noise_scale = Vector2(2.6, 1.6)
+band_top = 0.84
+band_bottom = 1.02
+band_softness = 0.08
+noise_seed = 27
+
+[node name="Cinematics" type="Node2D" parent="." unique_id=347950935]

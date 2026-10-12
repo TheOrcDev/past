@@ -90,6 +90,10 @@
     "from_tower": [
       1440,
       860
+    ],
+    "from_flooded": [
+      520,
+      790
     ]
   },
   "hotspots": [

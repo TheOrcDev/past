@@ -1,0 +1,211 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/rooms/aqueduct_foot/aqueduct_foot.gd" id="1_ncwac"]
+[ext_resource type="Texture2D" path="res://content/rooms/aqueduct_foot/art/bg_now.png" id="2_2ynma"]
+[ext_resource type="Script" path="res://src/systems/effects/fog_layer.gd" id="3_08m3w"]
+[ext_resource type="Texture2D" path="res://content/rooms/aqueduct_foot/art/depth_now.png" id="4_bu2ip"]
+[ext_resource type="Script" path="res://src/systems/effects/light_shafts.gd" id="5_b62y4"]
+[ext_resource type="Texture2D" path="res://content/rooms/aqueduct_foot/art/bg_then.png" id="6_sfgf1"]
+[ext_resource type="Script" path="res://src/systems/effects/dust_motes.gd" id="7_rrcma"]
+[ext_resource type="Script" path="res://src/core/scale_zones.gd" id="8_4d5gs"]
+[ext_resource type="Script" path="res://src/core/exit.gd" id="9_ditxw"]
+[ext_resource type="Script" path="res://src/core/hotspot.gd" id="10_he0q5"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_2mmh5"]
+vertices = PackedVector2Array(1550, 790, 1630, 860, 1400, 920, 600, 920, 300, 880, 320, 800, 700, 770, 1100, 770)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(320, 800, 700, 770, 1100, 770, 1550, 790, 1630, 860, 1400, 920, 600, 920, 300, 880)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_7gy68"]
+vertices = PackedVector2Array(1550, 790, 1630, 860, 1400, 920, 600, 920, 300, 880, 320, 800, 700, 770, 1100, 770)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(320, 800, 700, 770, 1100, 770, 1550, 790, 1630, 860, 1400, 920, 600, 920, 300, 880)])
+agent_radius = 0.0
+
+[node name="AqueductFoot" type="Node2D" unique_id=1089573058]
+script = ExtResource("1_ncwac")
+room_id = &"aqueduct_foot"
+display_name = "The aqueduct's foot"
+
+[node name="Layers" type="Node2D" parent="." unique_id=1680443859]
+
+[node name="Now" type="Node2D" parent="Layers" unique_id=1330578348]
+
+[node name="Background" type="Sprite2D" parent="Layers/Now" unique_id=1513716117]
+texture = ExtResource("2_2ynma")
+centered = false
+
+[node name="FogFar" type="ColorRect" parent="Layers/Now" unique_id=955468335]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_08m3w")
+fog_color = Color(0.85, 0.86, 0.89, 1)
+density = 0.3
+velocity = Vector2(0.005, 0)
+noise_scale = Vector2(1.4, 0.8)
+band_top = 0.3
+band_bottom = 0.75
+depth_texture = ExtResource("4_bu2ip")
+near_cutoff = 0.4
+noise_seed = 21
+
+[node name="FogLow" type="ColorRect" parent="Layers/Now" unique_id=1126510250]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_08m3w")
+fog_color = Color(0.8, 0.82, 0.86, 1)
+density = 0.24
+velocity = Vector2(-0.008, 0)
+noise_scale = Vector2(2.2, 1.1)
+band_top = 0.5
+band_bottom = 0.82
+depth_texture = ExtResource("4_bu2ip")
+near_cutoff = 0.55
+noise_seed = 23
+
+[node name="Moonlight" type="ColorRect" parent="Layers/Now" unique_id=460956158]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("5_b62y4")
+origin = Vector2(400, 100)
+aim = 160.0
+spread = 30.0
+beams = 5.0
+intensity = 0.07
+shaft_color = Color(0.9, 0.93, 1, 1)
+flicker = 0.3
+
+[node name="Then" type="Node2D" parent="Layers" unique_id=2039113881]
+
+[node name="Background" type="Sprite2D" parent="Layers/Then" unique_id=1999795531]
+texture = ExtResource("6_sfgf1")
+centered = false
+
+[node name="GoldenShafts" type="ColorRect" parent="Layers/Then" unique_id=986463953]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("5_b62y4")
+origin = Vector2(400, 100)
+aim = 160.0
+spread = 44.0
+beams = 7.0
+intensity = 0.14
+reach = 1.0
+shaft_color = Color(1, 0.85, 0.55, 1)
+flicker = 0.25
+
+[node name="WarmHaze" type="ColorRect" parent="Layers/Then" unique_id=1319873941]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_08m3w")
+fog_color = Color(1, 0.9, 0.75, 1)
+density = 0.1
+velocity = Vector2(0.004, 0)
+noise_scale = Vector2(1.2, 0.7)
+band_top = 0.3
+band_bottom = 0.9
+noise_seed = 13
+
+[node name="GoldenDust" type="CPUParticles2D" parent="Layers/Then" unique_id=1419610959]
+script = ExtResource("7_rrcma")
+area = Rect2(300, 150, 1500, 750)
+mote_color = Color(1, 0.86, 0.55, 0.55)
+drift = Vector2(3, -4)
+mote_size = 2.5
+
+[node name="WalkAreas" type="Node2D" parent="." unique_id=178235569]
+
+[node name="Now" type="NavigationRegion2D" parent="WalkAreas" unique_id=1629108426]
+navigation_polygon = SubResource("NavigationPolygon_2mmh5")
+
+[node name="Then" type="NavigationRegion2D" parent="WalkAreas" unique_id=183358268]
+navigation_polygon = SubResource("NavigationPolygon_7gy68")
+enabled = false
+
+[node name="ScaleZones" type="Node2D" parent="." unique_id=1494751449]
+script = ExtResource("8_4d5gs")
+far_y = 770.0
+far_scale = 0.84
+near_y = 920.0
+near_scale = 0.98
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=447135737]
+
+[node name="Trunk" type="Area2D" parent="Hotspots" unique_id=1732443271]
+script = ExtResource("9_ditxw")
+target_room = &"drowned_forest"
+target_entry = &"from_foot"
+direction = &"left"
+id = &"trunk"
+display_name = "Back to the forest"
+default_verb = &"walk"
+walk_offset = Vector2(340, 860)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Trunk" unique_id=1509272212]
+polygon = PackedVector2Array(180, 880, 180, 700, 360, 700, 360, 880)
+
+[node name="Plaque" type="Area2D" parent="Hotspots" unique_id=1480142894]
+script = ExtResource("10_he0q5")
+id = &"plaque"
+display_name = "Bronze plaque"
+walk_offset = Vector2(900, 800)
+pick_priority = 2
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Plaque" unique_id=255316353]
+polygon = PackedVector2Array(770, 600, 770, 330, 1030, 330, 1030, 600)
+
+[node name="MaintStair" type="Area2D" parent="Hotspots" unique_id=853880380]
+script = ExtResource("9_ditxw")
+target_room = &"aqueduct_channel"
+target_entry = &"from_foot"
+direction = &"up"
+id = &"maint_stair"
+display_name = "Maintenance stair"
+default_verb = &"walk"
+walk_offset = Vector2(1350, 810)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/MaintStair" unique_id=1497088749]
+polygon = PackedVector2Array(1260, 760, 1260, 330, 1440, 330, 1440, 760)
+
+[node name="Pier" type="Area2D" parent="Hotspots" unique_id=223687121]
+script = ExtResource("10_he0q5")
+id = &"pier"
+display_name = "Pier"
+walk_offset = Vector2(1050, 800)
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Pier" unique_id=1444335177]
+polygon = PackedVector2Array(700, 760, 700, 0, 1500, 0, 1500, 760)
+
+[node name="Exits" type="Node2D" parent="." unique_id=1283921347]
+
+[node name="Markers" type="Node2D" parent="." unique_id=1079849292]
+
+[node name="default" type="Marker2D" parent="Markers" unique_id=1411070043]
+position = Vector2(900, 860)
+
+[node name="from_forest" type="Marker2D" parent="Markers" unique_id=736149963]
+position = Vector2(380, 850)
+
+[node name="from_channel" type="Marker2D" parent="Markers" unique_id=2059019064]
+position = Vector2(1350, 820)
+
+[node name="Actors" type="Node2D" parent="." unique_id=1006904775]
+y_sort_enabled = true
+
+[node name="Foreground" type="Node2D" parent="." unique_id=1458039136]
+
+[node name="GroundMist" type="ColorRect" parent="Foreground" unique_id=1666801405 groups=["era_now"]]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_08m3w")
+fog_color = Color(0.86, 0.87, 0.9, 1)
+density = 0.16
+velocity = Vector2(0.01, 0)
+noise_scale = Vector2(2.6, 1.6)
+band_top = 0.84
+band_bottom = 1.02
+band_softness = 0.08
+noise_seed = 27
+
+[node name="Cinematics" type="Node2D" parent="." unique_id=2133932666]

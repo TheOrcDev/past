@@ -1,0 +1,160 @@
+{
+  "display_name": "Valve house",
+  "now": "art-source/raw/IMG-0083/IMG-0083-v2.png",
+  "walk": [
+    [
+      150,
+      800
+    ],
+    [
+      1700,
+      800
+    ],
+    [
+      1900,
+      1060
+    ],
+    [
+      100,
+      1060
+    ]
+  ],
+  "scale_zones": {
+    "far_y": 800,
+    "far_scale": 0.9,
+    "near_y": 1060,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      1000,
+      930
+    ],
+    "from_channel": [
+      330,
+      860
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "door",
+      "name": "Door",
+      "polygon": [
+        [
+          100,
+          770
+        ],
+        [
+          100,
+          180
+        ],
+        [
+          420,
+          150
+        ],
+        [
+          420,
+          770
+        ]
+      ],
+      "walk_to": [
+        320,
+        840
+      ],
+      "exit": {
+        "room": "aqueduct_channel",
+        "entry": "from_valve",
+        "direction": "left"
+      }
+    },
+    {
+      "id": "valve",
+      "name": "Valve",
+      "polygon": [
+        [
+          820,
+          650
+        ],
+        [
+          820,
+          300
+        ],
+        [
+          1180,
+          300
+        ],
+        [
+          1180,
+          650
+        ]
+      ],
+      "walk_to": [
+        1000,
+        830
+      ],
+      "pick_priority": 2
+    },
+    {
+      "id": "grating",
+      "name": "Grating",
+      "polygon": [
+        [
+          640,
+          790
+        ],
+        [
+          700,
+          700
+        ],
+        [
+          1300,
+          700
+        ],
+        [
+          1350,
+          790
+        ]
+      ],
+      "walk_to": [
+        900,
+        840
+      ]
+    },
+    {
+      "id": "desk",
+      "name": "Desk",
+      "polygon": [
+        [
+          1450,
+          790
+        ],
+        [
+          1450,
+          560
+        ],
+        [
+          1900,
+          560
+        ],
+        [
+          1900,
+          790
+        ]
+      ],
+      "walk_to": [
+        1500,
+        850
+      ]
+    }
+  ],
+  "effects": {
+    "preset": "interior",
+    "light": [
+      1560,
+      120
+    ],
+    "aim": 220
+  },
+  "id": "valve_house",
+  "then": "art-source/raw/IMG-0091/IMG-0091-v2.png"
+}

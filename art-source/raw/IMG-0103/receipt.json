@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0103",
+  "title": "Close-up: the hospice chart",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T00:34:00.993Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0079/IMG-0079-v1.png",
+          "sha256": "e369aabb251916c0bd655c31104dfcb4f1ce007a947b8527b471aa6ee63d1cf4"
+        }
+      ],
+      "mask": null,
+      "prompt": "A close-up of the patients' chart pinned to the board from the reference image, in exactly the same monochrome greyscale ink-wash gothic style: a large ruled paper chart fills the frame: many rows, columns of small tick marks and squiggles for pulse and breath, and a wide first column headed for names which is completely empty all the way down. A pencil on a string.\n\nOnly tick marks and small squiggles; no readable words or numbers. No people or figures. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0103-v1.png",
+          "sha256": "c4494d4a154f2b18a1d56ca5b20b729f0e65695382008df0a924bdcfb7e2d896",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0103-v2.png",
+          "sha256": "602d8924387cdeeb1c93cc6418eca3005e16eeef7284447c94be9c75c5403bc0",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 69386,
+        "outputTokens": 502
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d87-dd04-7e50-9488-061cd60f5777",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d87-dd04-7e50-9488-061cd60f5777/exec-97c626e1-2cb3-4dbf-a72d-886ed60c6a68.png",
+            "/Users/orcdev/.codex/generated_images/01a12d87-dd04-7e50-9488-061cd60f5777/exec-6713f399-1808-4b2f-8bee-422782649780.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate two wide, opaque images using the reference and your exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

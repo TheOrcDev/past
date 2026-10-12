@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0102",
+  "title": "Close-up: the aqueduct's plaque",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T00:33:05.981Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0081/IMG-0081-v2.png",
+          "sha256": "1468365377192313bb51ac318041ac57d4c987b61cbd8daf1cec915ec8528ae2"
+        }
+      ],
+      "mask": null,
+      "prompt": "A close-up of the bronze dedication plaque on the pier from the reference image, in exactly the same monochrome greyscale ink-wash gothic style: the weathered bronze plaque fills the frame, green with verdigris, its raised lettering worn away to illegible bumps; at its centre a sharp, deep raised seal: a quill crossed over a closed book inside an oval border. Moss and stone around the edges, moonlight.\n\nNo readable text: the lettering is worn away. No people or figures. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0102-v1.png",
+          "sha256": "57dfcedc1b18cd5ee0ced77c7ebbc4374d831a289d035e64070dae058bc4c722",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0102-v2.png",
+          "sha256": "78dc97e5e3353be3ed2d8b4fa81054d84c44453d2324f9b10c285bb34856145b",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 155693,
+        "outputTokens": 692
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d87-066b-7031-a995-49a3f0d70693",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d87-066b-7031-a995-49a3f0d70693/exec-98918fde-77fa-4369-a0ab-f652a20cc4c6.png",
+            "/Users/orcdev/.codex/generated_images/01a12d87-066b-7031-a995-49a3f0d70693/exec-c1276929-9fdf-42fd-8788-5c8366dffb57.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 2126,
+              "height": 740
+            },
+            {
+              "width": 2123,
+              "height": 741
+            }
+          ],
+          "messages": [
+            "I’ll generate two wide, opaque edits using the reference image and your exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

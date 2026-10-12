@@ -1,0 +1,333 @@
+~ chapel_arrival
+
+Unknown: A chapel up to its pews in water. The prayers must have sunk first. [ID:CH2_CHAPEL_ARRIVAL_1]
+
+=> END
+
+~ pews_look
+
+Unknown: Pews in the water, row on row, waiting for a congregation of fish. [ID:CH2_PEWS_LOOK_1]
+
+=> END
+
+~ altar_look
+
+Unknown: The altar, dry on its little island. Somebody knelt here and meant it. [ID:CH2_ALTAR_LOOK_1]
+
+=> END
+
+~ altar_use
+
+Unknown: The stone's worn where knees went. One pair, over and over. [ID:CH2_ALTAR_USE_1]
+
+=> END
+
+~ oath_return
+
+Unknown: Candles, and a young doctor kneeling where the water is now. [ID:CH2_OATH_RETURN_1]
+Unknown: "Whoever comes to me, I will keep. I will remember them, every one, by name." [ID:CH2_OATH_RETURN_2]
+Unknown: She meant it. You could hear it in her knees. [ID:CH2_OATH_RETURN_3]
+
+=> END
+
+~ chapel_window_look
+
+Unknown: A broken window, and the moon looking in where the saint used to be. [ID:CH2_CHAPEL_WINDOW_LOOK_1]
+
+=> END
+
+~ chapel_hole_look
+
+Unknown: The hole I came in by, back over the rooftops. [ID:CH2_CHAPEL_HOLE_LOOK_1]
+
+=> END
+
+~ hospice_arrival
+
+Unknown: Cots, all of them full, and nobody moving. [ID:CH2_HOSPICE_ARRIVAL_1]
+
+=> END
+
+~ cots_look
+
+Unknown: Sleepers under sheets. Breathing, I think. Just. [ID:CH2_COTS_LOOK_1]
+
+=> END
+
+~ herbs_look
+
+Unknown: Dried herbs, hung from every rafter. The smell of somebody trying. [ID:CH2_HERBS_LOOK_1]
+
+=> END
+
+~ stretcher_look
+
+Unknown: A stretcher, folded against the wall. Long enough to cross something. [ID:CH2_STRETCHER_LOOK_1]
+
+=> END
+
+~ stretcher_ask
+
+Unknown: It isn't mine to take. The doctor would notice. Doctors notice. [ID:CH2_STRETCHER_ASK_1]
+
+=> END
+
+~ stretcher_gone
+
+Unknown: Just the wall where the stretcher was. [ID:CH2_STRETCHER_GONE_1]
+
+=> END
+
+~ chart_look
+
+Unknown: A chart of the sleepers, cot by cot. [ID:CH2_CHART_LOOK_1]
+
+=> END
+
+~ chart_rows_look
+
+Unknown: A row for every cot. Pulse, breath, a tick for each day. [ID:CH2_CHART_ROWS_LOOK_1]
+
+=> END
+
+~ chart_names_look
+
+Unknown: The name column's empty, all the way down. She keeps them, but she can't keep their names. [ID:CH2_CHART_NAMES_LOOK_1]
+
+=> END
+
+~ doctor_look
+
+Unknown: A doctor in a beaked mask, standing watch over people who won't wake. [ID:CH2_DOC_LOOK_1]
+
+=> END
+
+~ doctor_talk
+
+if GameState.get_flag("ch2_done")
+	Isolde: They're stirring. Some of them. I know every one of their names now. I wrote them all down. [ID:CH2_ISOLDE_AFTER_1]
+	=> END
+if not GameState.get_flag("doctor_met")
+	do GameState.set_flag("doctor_met")
+	Plague Doctor: Don't wake them. [ID:CH2_DOC_MEET_1]
+	Unknown: Would I be able to? [ID:CH2_DOC_MEET_2]
+	Plague Doctor: No. Nobody can. That's rather the point of my job, at the moment. [ID:CH2_DOC_MEET_3]
+=> doctor_ask
+
+~ doctor_ask
+
+Plague Doctor: Yes? [ID:CH2_DOC_YES]
+- What's wrong with them? [ID:CH2_DOC_ASK_WRONG]
+	Plague Doctor: Emptied. Everything that made them get up in the morning, gone. So they don't. [ID:CH2_DOC_WRONG_1]
+	Plague Doctor: I treat them. I don't remember why I promised to. [ID:CH2_DOC_WRONG_2]
+	=> doctor_ask
+- Could I borrow your stretcher? [if not GameState.get_flag("doctor_told") /] [ID:CH2_DOC_ASK_STRETCHER]
+	Plague Doctor: For what? To carry one of my sleepers off? No. Not to a shadow I don't know. [ID:CH2_DOC_STRETCHER_1]
+	=> doctor_ask
+- "I will remember them, every one, by name." [if GameState.get_flag("oath_seen") and not GameState.get_flag("doctor_told") /] [ID:CH2_DOC_ASK_OATH]
+	do GameState.set_flag("doctor_told")
+	Plague Doctor: ... [ID:CH2_DOC_OATH_1]
+	Plague Doctor: Where did you hear that? [ID:CH2_DOC_OATH_2]
+	Unknown: In the chapel. You said it, a long time ago, with your knees on the stone. [ID:CH2_DOC_OATH_3]
+	Plague Doctor: Then I've been breaking it all this time. Every one, by name, and I don't know a single one. [ID:CH2_DOC_OATH_4]
+	Plague Doctor: Take the stretcher. Whatever you're doing, do it quickly, and then come back and tell me their names. [ID:CH2_DOC_OATH_5]
+	do Inventory.add("stretcher")
+	=> doctor_ask
+- Goodbye. [ID:CH2_DOC_ASK_BYE]
+	Plague Doctor: Quietly, please. [ID:CH2_DOC_BYE]
+	=> END
+
+~ foot_arrival
+
+Unknown: The aqueduct, up close. Built to last, and it has. Everything else hasn't. [ID:CH2_FOOT_ARRIVAL_1]
+
+=> END
+
+~ pier_look
+
+Unknown: A pier as big as a church, holding up a river that isn't there. [ID:CH2_PIER_LOOK_1]
+
+=> END
+
+~ plaque_look
+
+Unknown: A bronze plaque, the words green and worn away. A seal in the middle, sharp as the day it was cast. [ID:CH2_PLAQUE_LOOK_1]
+
+=> END
+
+~ plaque_use
+
+Unknown: The bronze is warm. Something happened here, with a crowd. [ID:CH2_PLAQUE_USE_1]
+
+=> END
+
+~ dedication_return
+
+Unknown: Banners. A crowd cheering. A ribbon across this very arch. [ID:CH2_DEDICATION_RETURN_1]
+Unknown: And the one who cut it, the one with the seal: a hole in the light, again. [ID:CH2_DEDICATION_RETURN_2]
+
+=> END
+
+~ plaque_ring
+
+Unknown: The ring. The seal on it, and the seal on the plaque. [ID:CH2_PLAQUE_RING_1]
+Unknown: They're the same. Line for line. [ID:CH2_PLAQUE_RING_2]
+Unknown: Whoever opened this aqueduct wore my ring. Or I wore his. [ID:CH2_PLAQUE_RING_3]
+
+=> END
+
+~ seal_closeup_look
+
+Unknown: The seal: a quill crossed over a closed book. [ID:CH2_SEAL_CLOSEUP_LOOK_1]
+
+=> END
+
+~ plaque_words_look
+
+Unknown: The words have weathered away. Bronze remembers shapes, not sentences. [ID:CH2_PLAQUE_WORDS_LOOK_1]
+
+=> END
+
+~ maint_stair_look
+
+Unknown: A stair cut into the pier. Up. [ID:CH2_MAINT_STAIR_LOOK_1]
+
+=> END
+
+~ trunk_back_look
+
+Unknown: Back along the trunk to the forest. [ID:CH2_TRUNK_BACK_LOOK_1]
+
+=> END
+
+~ channel_arrival
+
+Unknown: On top of the aqueduct. The whole drowned quarter, laid out below like a map of a mistake. [ID:CH2_CHANNEL_ARRIVAL_1]
+
+=> END
+
+~ gap_look
+
+Unknown: A whole span gone. Between me and that valve house, there's a lot of air. [ID:CH2_GAP_LOOK_1]
+
+=> END
+
+~ gap_blocked
+
+Unknown: I'd need something long to bridge it. And steady nerves, which I may have. [ID:CH2_GAP_BLOCKED_1]
+
+=> END
+
+~ gap_bridged
+
+Unknown: A stretcher, across a gap in an aqueduct. If anyone was watching, they'd have opinions. [ID:CH2_GAP_BRIDGED_1]
+
+=> END
+
+~ view_look
+
+Unknown: The quarter from up here. Roofs, water, and the chapel spire sticking up like a raised hand. [ID:CH2_VIEW_LOOK_1]
+
+=> END
+
+~ view_use
+
+Unknown: If I look long enough, it starts to look like it used to. [ID:CH2_VIEW_USE_1]
+
+=> END
+
+~ quarter_return
+
+Unknown: Dry streets. Gardens. The canals clear and full of boats, the chapel bells going. [ID:CH2_QUARTER_RETURN_1]
+Unknown: Water where it should be, and nowhere else. Somebody kept those gates. [ID:CH2_QUARTER_RETURN_2]
+
+=> END
+
+~ valve_door_look
+
+Unknown: The valve house door. There's a seal set in it, like a lock. [ID:CH2_VALVE_DOOR_LOOK_1]
+
+=> END
+
+~ valve_door_sealed
+
+Unknown: Sealed. The seal on the door is the one on the plaque. [ID:CH2_VALVE_DOOR_SEALED_1]
+
+=> END
+
+~ valve_door_open
+
+Unknown: The ring turns in the seal like a key. Of course it does. [ID:CH2_VALVE_DOOR_OPEN_1]
+
+=> END
+
+~ valve_arrival
+
+Unknown: The valve house. Everything the flood is, starts here. [ID:CH2_VALVE_ARRIVAL_1]
+
+=> END
+
+~ valve_look
+
+Unknown: The great valve, its spokes chained shut, with a padlock the size of my head. [ID:CH2_VALVE_LOOK_1]
+
+=> END
+
+~ valve_locked
+
+Unknown: Chained. Somebody wanted this water to stay exactly where it is. [ID:CH2_VALVE_LOCKED_1]
+
+=> END
+
+~ valve_unlocked
+
+Unknown: Aldous's key. It's been waiting in a shirt pocket for this. [ID:CH2_VALVE_UNLOCKED_1]
+
+=> END
+
+~ grating_look
+
+Unknown: Water roaring under the grating, going nowhere useful. [ID:CH2_GRATING_LOOK_1]
+
+=> END
+
+~ valve_desk_look
+
+Unknown: A desk with a ledger: the keepers' duty roster. Every name struck through, in the same hand. [ID:CH2_VALVE_DESK_LOOK_1]
+
+=> END
+
+~ signing_return
+
+Unknown: The keepers, here, in a line. And the man in black with the book and the seal. [ID:CH2_SIGNING_RETURN_1]
+Unknown: He reads their names. Aldous first. And with every name he strikes, a little light goes out of them. [ID:CH2_SIGNING_RETURN_2]
+Unknown: Then he turns. The hole in the light turns round, and I can see out of it. [ID:CH2_SIGNING_RETURN_3]
+Unknown: It's me. The voice reading the names is mine. [ID:CH2_SIGNING_RETURN_4]
+
+=> END
+
+~ signing_after
+
+Unknown: My name was Ulric. I was the High Magistrate. [ID:CH2_SIGNING_AFTER_1]
+Unknown: I took their names so they'd stop asking for things. And then nobody knew how to open the gates. [ID:CH2_SIGNING_AFTER_2]
+Unknown: This is my fault. All of it. [ID:CH2_SIGNING_AFTER_3]
+Unknown: Then I'd better turn it. [ID:CH2_SIGNING_AFTER_4]
+
+=> END
+
+~ drained
+
+Unknown: Listen to that. A whole quarter, breathing out. [ID:CH2_DRAINED_1]
+Maud: Aldous. Aldous! I remember. He laughed with his whole face. [ID:CH2_DRAINED_2]
+Isolde: Every one, by name. I can do that. I can do that now. [ID:CH2_DRAINED_3]
+Corin: Upstream. I was going upstream. To the city on the hill. [ID:CH2_DRAINED_4]
+Unknown: I gave them back what I took. It's not enough. It's a start. [ID:CH2_DRAINED_5]
+Corin: Climb in, then. I'll take you where I was going. [ID:CH2_DRAINED_6]
+
+=> END
+
+~ valve_exit_look
+
+Unknown: Back out onto the aqueduct. [ID:CH2_VALVE_EXIT_LOOK_1]
+
+=> END

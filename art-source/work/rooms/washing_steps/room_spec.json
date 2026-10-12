@@ -1,0 +1,467 @@
+{
+  "display_name": "Washing steps",
+  "layers": {
+    "now": [
+      {
+        "name": "Background",
+        "texture": "res://content/rooms/washing_steps/art/bg_now.png"
+      }
+    ],
+    "then": [
+      {
+        "name": "Background",
+        "texture": "res://content/rooms/washing_steps/art/bg_then.png"
+      }
+    ]
+  },
+  "walk": {
+    "now": [
+      [
+        250,
+        880
+      ],
+      [
+        1000,
+        870
+      ],
+      [
+        1500,
+        880
+      ],
+      [
+        1700,
+        850
+      ],
+      [
+        1900,
+        900
+      ],
+      [
+        1900,
+        1060
+      ],
+      [
+        200,
+        1060
+      ]
+    ],
+    "then": [
+      [
+        250,
+        880
+      ],
+      [
+        1000,
+        870
+      ],
+      [
+        1500,
+        880
+      ],
+      [
+        1700,
+        850
+      ],
+      [
+        1900,
+        900
+      ],
+      [
+        1900,
+        1060
+      ],
+      [
+        200,
+        1060
+      ]
+    ]
+  },
+  "scale_zones": {
+    "far_y": 855,
+    "far_scale": 0.88,
+    "near_y": 1060,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      1000,
+      960
+    ],
+    "from_ferry": [
+      330,
+      930
+    ],
+    "from_forest": [
+      1820,
+      920
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "washerwoman",
+      "name": "Washerwoman",
+      "polygon": [
+        [
+          560,
+          960
+        ],
+        [
+          560,
+          700
+        ],
+        [
+          650,
+          660
+        ],
+        [
+          760,
+          700
+        ],
+        [
+          800,
+          960
+        ]
+      ],
+      "walk_to": [
+        880,
+        960
+      ],
+      "default_verb": "talk",
+      "pick_priority": 2
+    },
+    {
+      "id": "shirt",
+      "name": "The shirt",
+      "polygon": [
+        [
+          620,
+          900
+        ],
+        [
+          620,
+          820
+        ],
+        [
+          760,
+          820
+        ],
+        [
+          760,
+          900
+        ]
+      ],
+      "walk_to": [
+        880,
+        960
+      ],
+      "pick_priority": 3
+    },
+    {
+      "id": "ferry",
+      "name": "The ferry",
+      "polygon": [
+        [
+          160,
+          880
+        ],
+        [
+          160,
+          600
+        ],
+        [
+          300,
+          600
+        ],
+        [
+          300,
+          880
+        ]
+      ],
+      "walk_to": [
+        300,
+        920
+      ],
+      "exit": {
+        "room": "ferry_landing",
+        "entry": "from_ferry",
+        "direction": "left"
+      }
+    },
+    {
+      "id": "lines",
+      "name": "Washing lines",
+      "polygon": [
+        [
+          360,
+          380
+        ],
+        [
+          360,
+          60
+        ],
+        [
+          1200,
+          60
+        ],
+        [
+          1200,
+          380
+        ]
+      ],
+      "walk_to": [
+        800,
+        900
+      ]
+    },
+    {
+      "id": "basket",
+      "name": "Basket",
+      "polygon": [
+        [
+          1110,
+          900
+        ],
+        [
+          1110,
+          790
+        ],
+        [
+          1270,
+          790
+        ],
+        [
+          1270,
+          900
+        ]
+      ],
+      "walk_to": [
+        1150,
+        930
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "forest_path",
+      "name": "Forest path",
+      "polygon": [
+        [
+          1560,
+          860
+        ],
+        [
+          1560,
+          560
+        ],
+        [
+          1900,
+          560
+        ],
+        [
+          1900,
+          860
+        ]
+      ],
+      "walk_to": [
+        1820,
+        900
+      ],
+      "exit": {
+        "room": "drowned_forest",
+        "entry": "from_steps",
+        "direction": "right"
+      }
+    }
+  ],
+  "occluders": [],
+  "npcs": [
+    {
+      "scene": "res://content/characters/washerwoman/washerwoman.tscn",
+      "name": "Washerwoman",
+      "position": [
+        680,
+        960
+      ],
+      "facing": "right",
+      "era": "now"
+    }
+  ],
+  "effects": [
+    {
+      "type": "FogLayer",
+      "name": "FogFar",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.85,
+          0.86,
+          0.89,
+          1.0
+        ],
+        "density": 0.3,
+        "velocity": [
+          0.005,
+          0.0
+        ],
+        "noise_scale": [
+          1.4,
+          0.8
+        ],
+        "band_top": 0.3,
+        "band_bottom": 0.75,
+        "depth_texture": "res://content/rooms/washing_steps/art/depth_now.png",
+        "near_cutoff": 0.4,
+        "noise_seed": 21
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "FogLow",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.8,
+          0.82,
+          0.86,
+          1.0
+        ],
+        "density": 0.24,
+        "velocity": [
+          -0.008,
+          0.0
+        ],
+        "noise_scale": [
+          2.2,
+          1.1
+        ],
+        "band_top": 0.5,
+        "band_bottom": 0.82,
+        "depth_texture": "res://content/rooms/washing_steps/art/depth_now.png",
+        "near_cutoff": 0.55,
+        "noise_seed": 23
+      }
+    },
+    {
+      "type": "LightShafts",
+      "name": "Moonlight",
+      "era": "now",
+      "properties": {
+        "origin": [
+          620,
+          60
+        ],
+        "aim": 190.0,
+        "spread": 30.0,
+        "beams": 5.0,
+        "intensity": 0.07,
+        "reach": 0.9,
+        "shaft_color": [
+          0.9,
+          0.93,
+          1.0,
+          1.0
+        ],
+        "flicker": 0.3
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "GroundMist",
+      "era": "now",
+      "properties": {
+        "fog_color": [
+          0.86,
+          0.87,
+          0.9,
+          1.0
+        ],
+        "density": 0.16,
+        "velocity": [
+          0.01,
+          0.0
+        ],
+        "noise_scale": [
+          2.6,
+          1.6
+        ],
+        "band_top": 0.84,
+        "band_bottom": 1.02,
+        "band_softness": 0.08,
+        "noise_seed": 27
+      },
+      "layer": "foreground"
+    },
+    {
+      "type": "LightShafts",
+      "name": "GoldenShafts",
+      "era": "then",
+      "properties": {
+        "origin": [
+          620,
+          60
+        ],
+        "aim": 190.0,
+        "spread": 44.0,
+        "beams": 7.0,
+        "intensity": 0.14,
+        "reach": 1.0,
+        "shaft_color": [
+          1.0,
+          0.85,
+          0.55,
+          1.0
+        ],
+        "flicker": 0.25
+      }
+    },
+    {
+      "type": "FogLayer",
+      "name": "WarmHaze",
+      "era": "then",
+      "properties": {
+        "fog_color": [
+          1.0,
+          0.9,
+          0.75,
+          1.0
+        ],
+        "density": 0.1,
+        "velocity": [
+          0.004,
+          0.0
+        ],
+        "noise_scale": [
+          1.2,
+          0.7
+        ],
+        "band_top": 0.3,
+        "band_bottom": 0.9,
+        "noise_seed": 13
+      }
+    },
+    {
+      "type": "DustMotes",
+      "name": "GoldenDust",
+      "era": "then",
+      "properties": {
+        "area": [
+          300,
+          150,
+          1500,
+          750
+        ],
+        "mote_color": [
+          1.0,
+          0.86,
+          0.55,
+          0.55
+        ],
+        "mote_count": 60,
+        "drift": [
+          3,
+          -4
+        ],
+        "mote_size": 2.5
+      }
+    }
+  ]
+}

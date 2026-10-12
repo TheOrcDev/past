@@ -1,0 +1,76 @@
+{
+  "id": "IMG-0074",
+  "title": "The ferry landing, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T00:24:46.274Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0062/IMG-0062-v1.png",
+          "sha256": "ed051eeb78e48107feb34bb73402af5139a6dcfd4f62b8f13d063ba93a70ac95"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: a rotting wooden ferry jetty on black floodwater in a drowned gothic city at night, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: A long wooden jetty on stilts reaches out into still black water from the right; mooring posts with ropes; a lantern on a hook; an empty mooring space alongside the jetty's end on the left where a narrow boat would tie up. A painted fare board on a post, blank and peeling. Drowned houses with only their upper floors above water stand around, laundry lines strung between them. Back right, the stone stair leads up out of the water.\n\nThe lower third of the image is open, walkable ground: the planks of the jetty run across the lower third, wide enough to walk on. It is lit by pale moonlight on the water with drifting fog or haze behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0074-v1.png",
+          "sha256": "997cffb4e954e49e21aa5021cac83df74d5f98588f185d85bef2aa8b378a426e",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0074-v2.png",
+          "sha256": "0b310a418fa44b578f4b22e313c8742e165a89072c4b18f0733d218f13d18dc4",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0074-v3.png",
+          "sha256": "1ce093d004d410f012dba046bea5ebcc2db22e65ca3f498dfbef432cbdc85747",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 120102,
+        "outputTokens": 720
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d7f-6674-7883-a685-dcf685baea2d",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d7f-6674-7883-a685-dcf685baea2d/exec-257ae330-b46b-4832-8638-4f026722c534.png",
+            "/Users/orcdev/.codex/generated_images/01a12d7f-6674-7883-a685-dcf685baea2d/exec-02b045b3-8c85-4d11-ae55-d94fc451f722.png",
+            "/Users/orcdev/.codex/generated_images/01a12d7f-6674-7883-a685-dcf685baea2d/exec-77bb9843-2b77-4633-a22d-5a8f461b3638.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 2123,
+              "height": 741
+            },
+            {
+              "width": 2123,
+              "height": 741
+            },
+            {
+              "width": 2123,
+              "height": 741
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque scenes using the attached reference and your prompt exactly as written.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

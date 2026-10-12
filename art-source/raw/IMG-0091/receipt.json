@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0091",
+  "title": "The valve house, then",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T00:30:21.274Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0083/IMG-0083-v2.png",
+          "sha256": "c9b4f2dbdf6743f6b175e67ffef7e05a7796eb2586c865def4ad9563b4addfc6"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit this image in place. Keep exactly the same composition, camera, perspective, horizon and every shape where it stands: the door, the valve wheel and its pipe, the grating, the railings, the desk and the round window. Only change the time and the condition.\n\nRestore the same valve house to how it looked decades earlier, on a working day, in full rich warm color, as a painterly gothic matte painting: the valve wheel clean and polished brass with no chains or padlock, clear water rushing silver under the grating, lamps lit, the desk tidy with an open duty roster and a quill, a row of hooks with keepers' coats, warm afternoon light through the round window. The key light comes from the same direction as in the original.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0091-v1.png",
+          "sha256": "2775fa080a2c76d09e36e37ae9c87d3167143517947301d04974c1edc6ee0ea2",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0091-v2.png",
+          "sha256": "5444db97c8955d6011739c7662f90c740b7c1151f962611e1d5bdd9cbc03c5c2",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 69846,
+        "outputTokens": 608
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d84-82ba-79c2-9408-f56c04c7baff",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d84-82ba-79c2-9408-f56c04c7baff/exec-63ac22ff-250c-4383-8039-e8d713c4e2d8.png",
+            "/Users/orcdev/.codex/generated_images/01a12d84-82ba-79c2-9408-f56c04c7baff/exec-8d48de2b-bcbf-4224-8c95-3a23b8787fac.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1671,
+              "height": 941
+            },
+            {
+              "width": 1671,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate two separate edits from the attached image using your prompt exactly.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

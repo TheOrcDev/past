@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0087",
+  "title": "Item sheet: chapter 2",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T00:30:48.768Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "transparent",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0019/IMG-0019-v1.png",
+          "sha256": "f8670baab6b1c2568c6f603d94836a194b305fc0d253ca248c88420c3649001d"
+        }
+      ],
+      "mask": null,
+      "prompt": "A sheet of three separate inventory item icons for a dark gothic point-and-click adventure game, painted in the monochrome greyscale ink-wash style of the reference image, each object drawn whole and alone, in a three by one grid with generous empty space between them, nothing overlapping or touching:\n\n1. a small square wooden shipping crate, wet and dark, its slats bound with rusty iron bands; 2. a large heavy iron key with a ring bow and a long square-toothed bit, on a loop of twine; 3. a folded canvas field stretcher: two long wooden poles with grey canvas strapped between them, rolled and tied with leather straps.\n\nEach object is lit from the upper left with a soft rim light, slightly three-quarter view, as a clean cut-out on a fully transparent background, with no shadows, labels, frames or scenery. No text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0087-v1.png",
+          "sha256": "033f7875361e3d5eb0272408e702e84f3a66939c34090c582d84dbc9b3c77312",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0087-v2.png",
+          "sha256": "f2bcabcac646fe5cb1a195e87be211764ddf1c2857417bad90cc48e04b605f3f",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 184542,
+        "outputTokens": 997
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d84-ee1b-7963-a768-3555601fec72",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d84-ee1b-7963-a768-3555601fec72/exec-32eeb923-a73e-4105-bd1f-6fee6aa40d12.png",
+            "/Users/orcdev/.codex/generated_images/01a12d84-ee1b-7963-a768-3555601fec72/exec-e3822d59-8406-4901-9838-4e37f0be6864.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 2172,
+              "height": 724
+            },
+            {
+              "width": 2172,
+              "height": 724
+            }
+          ],
+          "messages": [
+            "I’ll generate two wide, transparent sheets using the attached reference and your exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

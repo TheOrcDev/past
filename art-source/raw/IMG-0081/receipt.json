@@ -1,0 +1,76 @@
+{
+  "id": "IMG-0081",
+  "title": "The aqueduct's foot, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T00:28:26.849Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0062/IMG-0062-v1.png",
+          "sha256": "ed051eeb78e48107feb34bb73402af5139a6dcfd4f62b8f13d063ba93a70ac95"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: the base of a massive stone aqueduct pier rising out of a flooded forest, at night, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: A colossal stone pier fills the middle, its arch soaring out of frame; a narrow maintenance stair is cut into the pier's side, climbing up and out of view on the right. On the pier's face at eye level, a large bronze dedication plaque with a raised wax-seal-like emblem at its centre (no readable words). Dead trees and water around; more arches beyond.\n\nThe lower third of the image is open, walkable ground: a stone footing around the pier's base runs across the lower third, above the water. It is lit by pale moonlight with drifting fog or haze behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0081-v1.png",
+          "sha256": "0c887af56fee526ec281f779d5e4b37c285b8f14eefe5cf69957b16042dd07a2",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0081-v2.png",
+          "sha256": "1468365377192313bb51ac318041ac57d4c987b61cbd8daf1cec915ec8528ae2",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0081-v3.png",
+          "sha256": "63e0ea29328c189259201aa3bd39670391ea74bf3447e5c163499a605ae08e29",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 123135,
+        "outputTokens": 1252
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d82-c3f4-7d71-af21-28c20cbc1e94",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d82-c3f4-7d71-af21-28c20cbc1e94/exec-38aab67b-c719-4c34-8166-8255f435bae2.png",
+            "/Users/orcdev/.codex/generated_images/01a12d82-c3f4-7d71-af21-28c20cbc1e94/exec-48f0cf65-04a5-4619-a285-d478f3ac12df.png",
+            "/Users/orcdev/.codex/generated_images/01a12d82-c3f4-7d71-af21-28c20cbc1e94/exec-2391ec5f-3dab-409d-bcb3-3fd88868b75c.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 2123,
+              "height": 741
+            },
+            {
+              "width": 2123,
+              "height": 741
+            },
+            {
+              "width": 2123,
+              "height": 741
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque scenes using the reference and your prompt exactly as written.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

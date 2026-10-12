@@ -1,0 +1,80 @@
+{
+  "id": "IMG-0080",
+  "title": "The drowned forest, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T00:26:54.920Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0062/IMG-0062-v1.png",
+          "sha256": "ed051eeb78e48107feb34bb73402af5139a6dcfd4f62b8f13d063ba93a70ac95"
+        },
+        {
+          "path": "docs/reference/concept-03-swamp-ruins.png",
+          "sha256": "dbfd2ccb9582e31abb9d590ad3c67f9b4037fd42d1f669cc11afff0f2091f1eb"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: a drowned forest of dead trees standing in mirror-still water, at night, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: Tall dead trees rise from still black water, their reflections perfect; mist drifts between the trunks. A huge fallen trunk lies across the water from the left foreground into the distance like a bridge. Beyond, the tall arches of a ruined stone aqueduct march through the trees from left to right.\n\nThe lower third of the image is open, walkable ground: a muddy bank on the left and the broad fallen trunk running across the lower third make the walkable ground. It is lit by pale moonlight through mist with drifting fog or haze behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0080-v1.png",
+          "sha256": "56bf0e69a775e50f1230caf308607e5fa9d4f7d31d72285e96ba1ffd38720448",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0080-v2.png",
+          "sha256": "4698f63630b3053304ceafd7287cd1b3e180d0d80cd72e0c88472490889a127e",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0080-v3.png",
+          "sha256": "9511241f8613a665dab637e39d8dac349304c7b92f399bd98cf1a0caaa11077d",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 132853,
+        "outputTokens": 1404
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d81-5cc2-7c80-bf6d-26a94c71f174",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d81-5cc2-7c80-bf6d-26a94c71f174/exec-1fea5fa0-0f38-40af-b780-01260861d098.png",
+            "/Users/orcdev/.codex/generated_images/01a12d81-5cc2-7c80-bf6d-26a94c71f174/exec-6339303c-576c-466e-9c31-66c3671979cf.png",
+            "/Users/orcdev/.codex/generated_images/01a12d81-5cc2-7c80-bf6d-26a94c71f174/exec-61e0ad00-fd3e-49fd-9118-ae1957884d40.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 2123,
+              "height": 741
+            },
+            {
+              "width": 2123,
+              "height": 741
+            },
+            {
+              "width": 2123,
+              "height": 741
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque scenes using both references and your exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

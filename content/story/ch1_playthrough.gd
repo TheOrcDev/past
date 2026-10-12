@@ -97,6 +97,9 @@ func run() -> void:
 	await _leave("Trapdoor", &"clock_tower_base")
 	await _leave("Stairs", &"lower_gate")
 	await _verb("Portcullis", &"use")
+	if Chapters.in_build(&"flooded_stair"):
+		while Rooms.current == null or Rooms.current.room_id != &"flooded_stair":
+			await _tree.process_frame
 	while Cutscenes.current != null:
 		await _tree.process_frame
 	await _settle()

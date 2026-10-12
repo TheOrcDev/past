@@ -1,0 +1,51 @@
+{
+  "id": "hospice_chart",
+  "image": "art-source/raw/IMG-0103/IMG-0103-v2.png",
+  "hotspots": [
+    {
+      "id": "names",
+      "name": "Name column",
+      "polygon": [
+        [
+          60,
+          100
+        ],
+        [
+          480,
+          100
+        ],
+        [
+          480,
+          1040
+        ],
+        [
+          60,
+          1040
+        ]
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "rows",
+      "name": "Rows of ticks",
+      "polygon": [
+        [
+          480,
+          100
+        ],
+        [
+          1800,
+          100
+        ],
+        [
+          1800,
+          1040
+        ],
+        [
+          480,
+          1040
+        ]
+      ]
+    }
+  ]
+}

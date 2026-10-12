@@ -1,0 +1,76 @@
+{
+  "id": "IMG-0076",
+  "title": "The washing steps, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T00:27:53.373Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0062/IMG-0062-v1.png",
+          "sha256": "ed051eeb78e48107feb34bb73402af5139a6dcfd4f62b8f13d063ba93a70ac95"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: a flight of wide stone washing steps going down into floodwater at the edge of a drowned quarter, at night, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: Stone steps descend into the water in the middle; a wooden washboard and a wicker basket of grey laundry on the steps; long lines of grey washing strung between two houses overhead. On the right, a muddy path leads off along the bank between dead trees into a misty drowned forest. On the left, a mooring post where a boat would tie up.\n\nThe lower third of the image is open, walkable ground: the wide top landing of the steps and the bank run across the lower third. It is lit by pale moonlight and mist with drifting fog or haze behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0076-v1.png",
+          "sha256": "eed07b7cd93688097588f206c209b313576a31529c8d58fc483329cd27540963",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0076-v2.png",
+          "sha256": "6c2c1b4574541c4490f270646ca494039586526ca6b332a95c5fffe321699ff7",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0076-v3.png",
+          "sha256": "d448fb5b10c4aa9dbdb89dcccf089de6c22e67684e8076da70865f05c1ada448",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 100324,
+        "outputTokens": 1132
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d82-412a-7b23-85af-956dcf5bc3be",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d82-412a-7b23-85af-956dcf5bc3be/exec-da4c1360-2dfc-460c-b38f-ea4c922f1c58.png",
+            "/Users/orcdev/.codex/generated_images/01a12d82-412a-7b23-85af-956dcf5bc3be/exec-74c41c78-76e7-476a-a3e7-f9799bc20e73.png",
+            "/Users/orcdev/.codex/generated_images/01a12d82-412a-7b23-85af-956dcf5bc3be/exec-b1cc8940-c00c-4309-8c55-b7f3f086e19d.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 2122,
+              "height": 741
+            },
+            {
+              "width": 2123,
+              "height": 741
+            },
+            {
+              "width": 2123,
+              "height": 741
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque scenes using the reference and your prompt exactly.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

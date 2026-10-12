@@ -1,0 +1,76 @@
+{
+  "id": "IMG-0075",
+  "title": "The drowned street, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T00:26:08.568Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0062/IMG-0062-v1.png",
+          "sha256": "ed051eeb78e48107feb34bb73402af5139a6dcfd4f62b8f13d063ba93a70ac95"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: a canal that was once a street, running between gothic houses sunk to their upper floors, at night, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: Houses on both sides stand in black water up to their first-floor windows; shutters hang open; laundry lines are strung across overhead. On the right, a tall stone sluice house with a heavy wooden door half under water and, above it, a dark open window with a stone ledge just out of reach. In the middle, a wooden crate floats against a wall. On the left, a run of sagging rooftops leads like stepping stones toward a half-sunk chapel spire in the distance.\n\nThe lower third of the image is open, walkable ground: a broad stone landing (the top of a drowned flight of steps) in front of the houses, where the boat ties up, runs across the lower third. It is lit by pale moonlight with drifting fog or haze behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0075-v1.png",
+          "sha256": "8414c115e60182f6570bfa4578557456b208025389d4f16b54a4af73a3c11b97",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0075-v2.png",
+          "sha256": "6005e9af6085d0a45796246ca41ad5de39a30b8f0c6ec6a316437f89828de85c",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0075-v3.png",
+          "sha256": "ad668ac5658e537c86e73fb31f1548d4e87f99c48bbd5190188589ffd47814f1",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 124408,
+        "outputTokens": 817
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d80-a79e-75a1-92bd-50ec95421d7b",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d80-a79e-75a1-92bd-50ec95421d7b/exec-189c7994-e455-4ac6-9991-3ac4ded5d1f7.png",
+            "/Users/orcdev/.codex/generated_images/01a12d80-a79e-75a1-92bd-50ec95421d7b/exec-96ad8517-cbec-4cc9-9ac7-dba3b1649e7b.png",
+            "/Users/orcdev/.codex/generated_images/01a12d80-a79e-75a1-92bd-50ec95421d7b/exec-5672ab69-5da4-4953-bcbf-b0ba71cd5c97.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 2123,
+              "height": 741
+            },
+            {
+              "width": 2123,
+              "height": 741
+            },
+            {
+              "width": 2123,
+              "height": 741
+            }
+          ],
+          "messages": [
+            "I’ll use the image generation tool to create three wide, opaque images with the exact prompt and supplied reference.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

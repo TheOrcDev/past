@@ -1,0 +1,363 @@
+~ stair_arrival
+
+Unknown: The rest of the city. Underwater, and not in a hurry to come up. [ID:CH2_STAIR_ARRIVAL_1]
+
+=> END
+
+~ water_look
+
+Unknown: Black water, perfectly still. It's reflecting a city that isn't there anymore. [ID:CH2_WATER_LOOK_1]
+
+=> END
+
+~ bell_look
+
+Unknown: A ferry bell. Somebody out there still answers it, I hope. [ID:CH2_BELL_LOOK_1]
+
+=> END
+
+~ bell_ring
+
+Unknown: The sound goes a long way over water. Something answers. A pole, knocking wood. [ID:CH2_BELL_RING_1]
+
+=> END
+
+~ bell_again
+
+Unknown: He heard me the first time. Ferrymen don't hurry. [ID:CH2_BELL_AGAIN_1]
+
+=> END
+
+~ roofs_look
+
+Unknown: Rooftops, like stepping stones for something with very long legs. [ID:CH2_ROOFS_LOOK_1]
+
+=> END
+
+~ upstairs_look
+
+Unknown: Back up to the lower gate, and dry land. [ID:CH2_UPSTAIRS_LOOK_1]
+
+=> END
+
+~ quay_look
+
+Unknown: The quay runs along the water to a jetty. [ID:CH2_QUAY_LOOK_1]
+
+=> END
+
+~ quay_unrung
+
+Unknown: A jetty with nothing at it. The bell might change that. [ID:CH2_QUAY_UNRUNG_1]
+
+=> END
+
+~ landing_arrival
+
+Unknown: A jetty, a lantern, and a boat that wasn't here a moment ago. [ID:CH2_LANDING_ARRIVAL_1]
+
+=> END
+
+~ fareboard_look
+
+Unknown: A fare board. The prices have washed off. Probably for the best. [ID:CH2_FAREBOARD_LOOK_1]
+
+=> END
+
+~ jetty_lantern_look
+
+Unknown: A lantern on a hook, burning cold, for a ferry nobody takes. [ID:CH2_JETTY_LANTERN_LOOK_1]
+
+=> END
+
+~ ferryman_look
+
+Unknown: A tall hooded man, standing in a boat as if he grew there. [ID:CH2_FM_LOOK_1]
+
+=> END
+
+~ ferryman_talk
+
+if GameState.get_flag("ch2_done")
+	Corin: I know where I'm going now. Home. Turns out it's been upstream all this time. [ID:CH2_CORIN_AFTER_1]
+	=> END
+if not GameState.get_flag("ferry_paid")
+	if not GameState.get_flag("ferry_met")
+		do GameState.set_flag("ferry_met")
+		Ferryman: You rang. [ID:CH2_FM_MEET_1]
+		Unknown: I did. Where can you take me? [ID:CH2_FM_MEET_2]
+		Ferryman: Anywhere. I've been going round in circles for so long that everywhere is on the way. [ID:CH2_FM_MEET_3]
+	Ferryman: The fare is a memory. A small one will do. [ID:CH2_FM_FARE_1]
+	- The taste of bread, fresh from an oven. [ID:CH2_FM_PAY_BREAD]
+		do GameState.set_flag("ferry_paid")
+		Ferryman: Warm. Crusty. Yes, that'll do nicely. [ID:CH2_FM_PAID_1]
+		Unknown: I'll never know what bread tastes like again. I'm told I didn't know anyway. [ID:CH2_FM_PAID_2]
+		Ferryman: Then you've lost nothing. A good deal, for both of us. [ID:CH2_FM_PAID_3]
+		=> ferry_where
+	- A memory? I barely have any. [ID:CH2_FM_FEW]
+		Ferryman: Everyone has a small one. Something warm, something they won't miss. [ID:CH2_FM_FEW_1]
+		=> END
+	- Not now. [ID:CH2_FM_NOT_NOW]
+		=> END
+=> ferry_where
+
+~ ferry_where
+
+Ferryman: Where to? [ID:CH2_FM_WHERE]
+- The drowned street. [ID:CH2_FM_TO_STREET]
+	do GameState.set_flag("ferry_to", "drowned_street")
+	Ferryman: The street that used to be a street. [ID:CH2_FM_TO_STREET_1]
+	=> END
+- The washing steps. [ID:CH2_FM_TO_WASHING]
+	do GameState.set_flag("ferry_to", "washing_steps")
+	Ferryman: Mind the laundry. She won't. [ID:CH2_FM_TO_WASHING_1]
+	=> END
+- The hospice. [ID:CH2_FM_TO_HOSPICE]
+	do GameState.set_flag("ferry_to", "hospice_on_stilts")
+	Ferryman: Quietly. They're sleeping. They're always sleeping. [ID:CH2_FM_TO_HOSPICE_1]
+	=> END
+- Where are YOU going? [if not GameState.get_flag("asked_corin") /] [ID:CH2_FM_ASK_WHERE]
+	do GameState.set_flag("asked_corin")
+	Ferryman: I was going somewhere, once. I remember the setting off. Not the arriving. [ID:CH2_FM_ASK_WHERE_1]
+	Ferryman: So I keep going. Sooner or later I'll pass it. [ID:CH2_FM_ASK_WHERE_2]
+	=> ferry_where
+- Nowhere, for now. [ID:CH2_FM_NOWHERE]
+	Ferryman: Nowhere's my speciality. [ID:CH2_FM_NOWHERE_1]
+	=> END
+
+~ ferry_back_look
+
+Unknown: The ferry, back to the landing. [ID:CH2_FERRY_BACK_LOOK_1]
+
+=> END
+
+~ street_arrival
+
+Unknown: A street, from the first floor up. [ID:CH2_STREET_ARRIVAL_1]
+
+=> END
+
+~ sluice_door_look
+
+Unknown: A sluice house. The door's under water, and it can stay there. [ID:CH2_SLUICE_DOOR_LOOK_1]
+
+=> END
+
+~ window_look
+
+Unknown: A window, open, with a ledge. Just out of reach. Everything here is just out of reach. [ID:CH2_WINDOW_LOOK_1]
+
+=> END
+
+~ window_high
+
+Unknown: I'd need something to stand on. Something that floats, ideally, round here. [ID:CH2_WINDOW_HIGH_1]
+
+=> END
+
+~ crate_look
+
+Unknown: A crate, bobbing against the wall. Going nowhere, like everyone else here. [ID:CH2_CRATE_LOOK_1]
+
+=> END
+
+~ crate_take
+
+Unknown: Heavier than it looks, and wetter. [ID:CH2_CRATE_TAKE_1]
+
+=> END
+
+~ crate_set
+
+Unknown: One crate, under one window. Architecture. [ID:CH2_CRATE_SET_1]
+
+=> END
+
+~ shutters_look
+
+Unknown: Shutters hanging open on rooms full of water. Nobody's closing them. Nobody remembers they're open. [ID:CH2_SHUTTERS_LOOK_1]
+
+=> END
+
+~ rooftops_look
+
+Unknown: The rooftops make a path, of a sort, toward the chapel spire. [ID:CH2_ROOFTOPS_LOOK_1]
+
+=> END
+
+~ washing_arrival
+
+Unknown: Somebody's laundry, all of it grey. I'd ask what colour it was, but who'd remember. [ID:CH2_WASHING_ARRIVAL_1]
+
+=> END
+
+~ lines_look
+
+Unknown: Lines of washing. Shirts, sheets, the same shirt three times. [ID:CH2_LINES_LOOK_1]
+
+=> END
+
+~ basket_look
+
+Unknown: A wicker basket. The laundry in it is clean. It's been clean for years. [ID:CH2_BASKET_LOOK_1]
+
+=> END
+
+~ forest_path_look
+
+Unknown: A path along the bank, into a forest standing up to its knees in water. [ID:CH2_FOREST_PATH_LOOK_1]
+
+=> END
+
+~ washerwoman_look
+
+Unknown: A woman scrubbing one shirt as if it had wronged her personally. [ID:CH2_WW_LOOK_1]
+
+=> END
+
+~ washerwoman_talk
+
+if GameState.get_flag("ch2_done")
+	Maud: Aldous. I say it every time I wring out his shirt, so it doesn't get away again. [ID:CH2_MAUD_AFTER_1]
+	=> END
+if not GameState.get_flag("ww_met")
+	do GameState.set_flag("ww_met")
+	Washerwoman: If you're here about the noise, it's the water, not me. [ID:CH2_WW_MEET_1]
+	Unknown: I'm not here about the noise. [ID:CH2_WW_MEET_2]
+	Washerwoman: Then you're the first. Grab a sheet or get out of the light. [ID:CH2_WW_MEET_3]
+=> washerwoman_ask
+
+~ washerwoman_ask
+
+Washerwoman: Well? [ID:CH2_WW_WELL]
+- Whose shirt is that? [ID:CH2_WW_ASK_SHIRT]
+	Washerwoman: A man's. A good shirt, well made. There's an A sewn on the cuff. [ID:CH2_WW_SHIRT_1]
+	Washerwoman: I sewed it. I know I did. I just can't think what the A stood for. [ID:CH2_WW_SHIRT_2]
+	Washerwoman: So I wash it. Every day. In case washing it reminds me. [ID:CH2_WW_SHIRT_3]
+	=> washerwoman_ask
+- The A is for Aldous. He signed the keepers' petition. [if GameState.get_flag("petition_seen") and not GameState.get_flag("maud_told") /] [ID:CH2_WW_ASK_ALDOUS]
+	do GameState.set_flag("maud_told")
+	Washerwoman: Aldous. [ID:CH2_WW_ALDOUS_1]
+	Washerwoman: That's... that's close. That's very close to something. [ID:CH2_WW_ALDOUS_2]
+	Washerwoman: The sluice keepers. He kept the gates. And then one day he couldn't remember how. [ID:CH2_WW_ALDOUS_3]
+	Washerwoman: Here. This was in his shirt pocket every wash, and I never knew why I put it back. [ID:CH2_WW_ALDOUS_4]
+	Washerwoman: A key to something up the aqueduct. Go and use it. Something ought to open around here. [ID:CH2_WW_ALDOUS_5]
+	do Inventory.add("sluice_key")
+	=> washerwoman_ask
+- What happened to the quarter? [ID:CH2_WW_ASK_FLOOD]
+	Washerwoman: Rained. Rained every spring, it did, and every spring the gates let it out. [ID:CH2_WW_FLOOD_1]
+	Washerwoman: Then one spring nobody knew how to open the gates. And here we are, up to our necks. [ID:CH2_WW_FLOOD_2]
+	=> washerwoman_ask
+- Goodbye. [ID:CH2_WW_ASK_BYE]
+	Washerwoman: Mind my lines. [ID:CH2_WW_BYE]
+	=> END
+
+~ sluice_arrival
+
+Unknown: The sluice house. The machine that kept the quarter dry, rusted solid. [ID:CH2_SLUICE_ARRIVAL_1]
+
+=> END
+
+~ wheel_look
+
+Unknown: The gate wheel. Rusted so hard it might as well be part of the wall. [ID:CH2_SLUICE_WHEEL_LOOK_1]
+
+=> END
+
+~ wheel_use
+
+Unknown: It won't move. But it remembers moving. I can feel it. [ID:CH2_SLUICE_WHEEL_USE_1]
+
+=> END
+
+~ wheel_again
+
+Unknown: It's said all it has to say. [ID:CH2_SLUICE_WHEEL_AGAIN_1]
+
+=> END
+
+~ petition_return
+
+Unknown: The keepers, all of them, around this desk. Signing a petition to the High Magistrate. [ID:CH2_PETITION_RETURN_1]
+Unknown: "Let us keep our names, and we will keep your gates." The first to sign was a man called Aldous. [ID:CH2_PETITION_RETURN_2]
+Unknown: He signed it with a big, proud A. [ID:CH2_PETITION_RETURN_3]
+
+=> END
+
+~ gauge_look
+
+Unknown: A water gauge. The marks go up and up, and then the water went past all of them. [ID:CH2_GAUGE_LOOK_1]
+
+=> END
+
+~ desk_look
+
+Unknown: A desk, and a petition still pinned to it. [ID:CH2_SLUICE_DESK_LOOK_1]
+
+=> END
+
+~ sluice_window_look
+
+Unknown: Back out the window, to the street. [ID:CH2_SLUICE_WINDOW_LOOK_1]
+
+=> END
+
+~ petition_text_look
+
+Unknown: "We, the keepers of the gates, ask the High Magistrate to leave us our names." [ID:CH2_PETITION_TEXT_LOOK_1]
+
+=> END
+
+~ petition_names_look
+
+Unknown: The signatures, every one struck through. The first one starts with an A. [ID:CH2_PETITION_NAMES_LOOK_1]
+
+=> END
+
+~ petition_seal_look
+
+Unknown: A seal at the bottom, in red wax. The answer, I suppose. [ID:CH2_PETITION_SEAL_LOOK_1]
+
+=> END
+
+~ shirt_initial_look
+
+Unknown: An A, embroidered on the cuff. Small, neat stitches. Somebody cared. [ID:CH2_SHIRT_INITIAL_LOOK_1]
+
+=> END
+
+~ shirt_cloth_look
+
+Unknown: A good shirt, washed so many times it's nearly transparent. [ID:CH2_SHIRT_CLOTH_LOOK_1]
+
+=> END
+
+~ forest_arrival
+
+Unknown: A forest standing in a lake. The trees didn't drown; they just stopped. [ID:CH2_FOREST_ARRIVAL_1]
+
+=> END
+
+~ trees_look
+
+Unknown: Dead trees, and their reflections, which look healthier. [ID:CH2_TREES_LOOK_1]
+
+=> END
+
+~ trunk_look
+
+Unknown: A fallen trunk, broad as a road, toward the aqueduct. [ID:CH2_TRUNK_LOOK_1]
+
+=> END
+
+~ arches_look
+
+Unknown: The aqueduct, marching off into the fog, carrying nothing. [ID:CH2_ARCHES_LOOK_1]
+
+=> END
+
+~ bank_look
+
+Unknown: Back along the bank to the washing steps. [ID:CH2_BANK_LOOK_1]
+
+=> END

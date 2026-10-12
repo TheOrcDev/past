@@ -90,9 +90,20 @@ def build(room_json: Path, root: Path) -> dict:
     now_key = load(root / spec["now"])
     now_colour = grade.resize(now_key, SIZE)
     now = now_colour if spec.get("now_grade") == "keep" else grade.monochrome(now_colour)
+    # Props (plan 008): things that can leave the room, such as a crate Unknown
+    # takes. The background is the clean plate (the same image without them),
+    # and each prop is cut from the full image as its own layer to hide.
+    props = []
+    if spec.get("plate"):
+        plate = grade.monochrome(grade.resize(load(root / spec["plate"]), SIZE))
+        for name, polygon in spec.get("props", {}).items():
+            rgba, rect = masks.cut(now, masks.polygon_mask(SIZE, polygon, feather_px=2.0))
+            save(art / f"prop_{name.lower()}.png", rgba)
+            props.append({"name": name, "texture": f"{res}/prop_{name.lower()}.png", "position": [rect[0], rect[1]]})
+        now = plate
     save(art / "bg_now.png", now)
     save(art / "depth_now.png", depth.estimate(grade.resize(now_key, (SIZE[0] // 2, SIZE[1] // 2))[:, :, :3]))
-    layers = {"now": [{"name": "Background", "texture": f"{res}/bg_now.png"}]}
+    layers = {"now": [{"name": "Background", "texture": f"{res}/bg_now.png"}] + props}
     walk = {"now": spec["walk"]}
     report = {"room": room_id, "walk_area_luminance_now": grade.region_luminance(now, masks.polygon_mask(SIZE, spec["walk"]))}
 

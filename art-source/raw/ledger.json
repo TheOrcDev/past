@@ -1356,5 +1356,578 @@
     "outputTokens": 2160,
     "costUsd": 0.090538,
     "costSource": "gateway"
+  },
+  {
+    "id": "IMG-0083",
+    "round": 1,
+    "plan": "008",
+    "model": "codex/gpt-6.1-sol",
+    "size": "2560x1440",
+    "quality": "high",
+    "n": 3,
+    "date": "2026-10-12T00:22:59.493Z",
+    "files": [
+      "IMG-0083-v1.png",
+      "IMG-0083-v2.png",
+      "IMG-0083-v3.png"
+    ],
+    "inputTokens": 149724,
+    "outputTokens": 745,
+    "costUsd": 0,
+    "costSource": "plan"
+  },
+  {
+    "id": "IMG-0073",
+    "round": 1,
+    "plan": "008",
+    "model": "codex/gpt-6.1-sol",
+    "size": "2560x1440",
+    "quality": "high",
+    "n": 3,
+    "date": "2026-10-12T00:22:59.488Z",
+    "files": [
+      "IMG-0073-v1.png",
+      "IMG-0073-v2.png",
+      "IMG-0073-v3.png"
+    ],
+    "inputTokens": 124358,
+    "outputTokens": 791,
+    "costUsd": 0,
+    "costSource": "plan"
+  },
+  {
+    "id": "IMG-0078",
+    "round": 1,
+    "plan": "008",
+    "model": "codex/gpt-6.1-sol",
+    "size": "2560x1440",
+    "quality": "high",
+    "n": 3,
+    "date": "2026-10-12T00:22:59.488Z",
+    "files": [
+      "IMG-0078-v1.png",
+      "IMG-0078-v2.png",
+      "IMG-0078-v3.png"
+    ],
+    "inputTokens": 134757,
+    "outputTokens": 731,
+    "costUsd": 0,
+    "costSource": "plan"
+  },
+  {
+    "id": "IMG-0074",
+    "round": 1,
+    "plan": "008",
+    "model": "codex/gpt-6.1-sol",
+    "size": "2560x1440",
+    "quality": "high",
+    "n": 3,
+    "date": "2026-10-12T00:24:46.274Z",
+    "files": [
+      "IMG-0074-v1.png",
+      "IMG-0074-v2.png",
+      "IMG-0074-v3.png"
+    ],
+    "inputTokens": 120102,
+    "outputTokens": 720,
+    "costUsd": 0,
+    "costSource": "plan"
+  },
+  {
+    "id": "IMG-0084",
+    "round": 1,
+    "plan": "008",
+    "model": "codex/gpt-6.1-sol",
+    "size": "1440x2560",
+    "quality": "high",
+    "n": 3,
+    "date": "2026-10-12T00:24:45.201Z",
+    "files": [
+      "IMG-0084-v1.png",
+      "IMG-0084-v2.png",
+      "IMG-0084-v3.png"
+    ],
+    "inputTokens": 128026,
+    "outputTokens": 1254,
+    "costUsd": 0,
+    "costSource": "plan"
+  },
+  {
+    "id": "IMG-0079",
+    "round": 1,
+    "plan": "008",
+    "model": "codex/gpt-6.1-sol",
+    "size": "2560x1440",
+    "quality": "high",
+    "n": 3,
+    "date": "2026-10-12T00:24:51.675Z",
+    "files": [
+      "IMG-0079-v1.png",
+      "IMG-0079-v2.png",
+      "IMG-0079-v3.png"
+    ],
+    "inputTokens": 231273,
+    "outputTokens": 1108,
+    "costUsd": 0,
+    "costSource": "plan"
+  },
+  {
+    "id": "IMG-0075",
+    "round": 1,
+    "plan": "008",
+    "model": "codex/gpt-6.1-sol",
+    "size": "2560x1440",
+    "quality": "high",
+    "n": 3,
+    "date": "2026-10-12T00:26:08.568Z",
+    "files": [
+      "IMG-0075-v1.png",
+      "IMG-0075-v2.png",
+      "IMG-0075-v3.png"
+    ],
+    "inputTokens": 124408,
+    "outputTokens": 817,
+    "costUsd": 0,
+    "costSource": "plan"
+  },
+  {
+    "id": "IMG-0088",
+    "round": 1,
+    "plan": "008",
+    "model": "codex/gpt-6.1-sol",
+    "size": "2560x1440",
+    "quality": "high",
+    "n": 2,
+    "date": "2026-10-12T00:26:55.054Z",
+    "files": [
+      "IMG-0088-v1.png",
+      "IMG-0088-v2.png"
+    ],
+    "inputTokens": 226496,
+    "outputTokens": 991,
+    "costUsd": 0,
+    "costSource": "plan"
+  },
+  {
+    "id": "IMG-0080",
+    "round": 1,
+    "plan": "008",
+    "model": "codex/gpt-6.1-sol",
+    "size": "2560x1440",
+    "quality": "high",
+    "n": 3,
+    "date": "2026-10-12T00:26:54.920Z",
+    "files": [
+      "IMG-0080-v1.png",
+      "IMG-0080-v2.png",
+      "IMG-0080-v3.png"
+    ],
+    "inputTokens": 132853,
+    "outputTokens": 1404,
+    "costUsd": 0,
+    "costSource": "plan"
+  },
+  {
+    "id": "IMG-0085",
+    "round": 1,
+    "plan": "008",
+    "model": "codex/gpt-6.1-sol",
+    "size": "1440x2560",
+    "quality": "high",
+    "n": 3,
+    "date": "2026-10-12T00:26:52.690Z",
+    "files": [
+      "IMG-0085-v1.png",
+      "IMG-0085-v2.png",
+      "IMG-0085-v3.png"
+    ],
+    "inputTokens": 100311,
+    "outputTokens": 706,
+    "costUsd": 0,
+    "costSource": "plan"
+  },
+  {
+    "id": "IMG-0076",
+    "round": 1,
+    "plan": "008",
+    "model": "codex/gpt-6.1-sol",
+    "size": "2560x1440",
+    "quality": "high",
+    "n": 3,
+    "date": "2026-10-12T00:27:53.373Z",
+    "files": [
+      "IMG-0076-v1.png",
+      "IMG-0076-v2.png",
+      "IMG-0076-v3.png"
+    ],
+    "inputTokens": 100324,
+    "outputTokens": 1132,
+    "costUsd": 0,
+    "costSource": "plan"
+  },
+  {
+    "id": "IMG-0089",
+    "round": 1,
+    "plan": "008",
+    "model": "codex/gpt-6.1-sol",
+    "size": "2560x1440",
+    "quality": "high",
+    "n": 2,
+    "date": "2026-10-12T00:28:09.821Z",
+    "files": [
+      "IMG-0089-v1.png",
+      "IMG-0089-v2.png"
+    ],
+    "inputTokens": 68940,
+    "outputTokens": 593,
+    "costUsd": 0,
+    "costSource": "plan"
+  },
+  {
+    "id": "IMG-0081",
+    "round": 1,
+    "plan": "008",
+    "model": "codex/gpt-6.1-sol",
+    "size": "2560x1440",
+    "quality": "high",
+    "n": 3,
+    "date": "2026-10-12T00:28:26.849Z",
+    "files": [
+      "IMG-0081-v1.png",
+      "IMG-0081-v2.png",
+      "IMG-0081-v3.png"
+    ],
+    "inputTokens": 123135,
+    "outputTokens": 1252,
+    "costUsd": 0,
+    "costSource": "plan"
+  },
+  {
+    "id": "IMG-0090",
+    "round": 1,
+    "plan": "008",
+    "model": "codex/gpt-6.1-sol",
+    "size": "2560x1440",
+    "quality": "high",
+    "n": 2,
+    "date": "2026-10-12T00:29:28.311Z",
+    "files": [
+      "IMG-0090-v1.png",
+      "IMG-0090-v2.png"
+    ],
+    "inputTokens": 178441,
+    "outputTokens": 844,
+    "costUsd": 0,
+    "costSource": "plan"
+  },
+  {
+    "id": "IMG-0086",
+    "round": 1,
+    "plan": "008",
+    "model": "codex/gpt-6.1-sol",
+    "size": "1440x2560",
+    "quality": "high",
+    "n": 3,
+    "date": "2026-10-12T00:28:51.889Z",
+    "files": [
+      "IMG-0086-v1.png",
+      "IMG-0086-v2.png",
+      "IMG-0086-v3.png"
+    ],
+    "inputTokens": 97216,
+    "outputTokens": 690,
+    "costUsd": 0,
+    "costSource": "plan"
+  },
+  {
+    "id": "IMG-0077",
+    "round": 1,
+    "plan": "008",
+    "model": "codex/gpt-6.1-sol",
+    "size": "2560x1440",
+    "quality": "high",
+    "n": 3,
+    "date": "2026-10-12T00:29:24.031Z",
+    "files": [
+      "IMG-0077-v1.png",
+      "IMG-0077-v2.png",
+      "IMG-0077-v3.png"
+    ],
+    "inputTokens": 206356,
+    "outputTokens": 829,
+    "costUsd": 0,
+    "costSource": "plan"
+  },
+  {
+    "id": "IMG-0095",
+    "round": 1,
+    "plan": "008",
+    "model": "codex/gpt-6.1-sol",
+    "size": "2560x1440",
+    "quality": "high",
+    "n": 2,
+    "date": "2026-10-12T00:30:10.583Z",
+    "files": [
+      "IMG-0095-v1.png",
+      "IMG-0095-v2.png"
+    ],
+    "inputTokens": 176401,
+    "outputTokens": 648,
+    "costUsd": 0,
+    "costSource": "plan"
+  },
+  {
+    "id": "IMG-0092",
+    "round": 1,
+    "plan": "008",
+    "model": "codex/gpt-6.1-sol",
+    "size": "2560x1440",
+    "quality": "high",
+    "n": 2,
+    "date": "2026-10-12T00:30:10.576Z",
+    "files": [
+      "IMG-0092-v1.png",
+      "IMG-0092-v2.png"
+    ],
+    "inputTokens": 203797,
+    "outputTokens": 757,
+    "costUsd": 0,
+    "costSource": "plan"
+  },
+  {
+    "id": "IMG-0082",
+    "round": 1,
+    "plan": "008",
+    "model": "codex/gpt-6.1-sol",
+    "size": "2560x1440",
+    "quality": "high",
+    "n": 3,
+    "date": "2026-10-12T00:30:05.784Z",
+    "files": [
+      "IMG-0082-v1.png",
+      "IMG-0082-v2.png",
+      "IMG-0082-v3.png"
+    ],
+    "inputTokens": 96726,
+    "outputTokens": 659,
+    "costUsd": 0,
+    "costSource": "plan"
+  },
+  {
+    "id": "IMG-0091",
+    "round": 1,
+    "plan": "008",
+    "model": "codex/gpt-6.1-sol",
+    "size": "2560x1440",
+    "quality": "high",
+    "n": 2,
+    "date": "2026-10-12T00:30:21.274Z",
+    "files": [
+      "IMG-0091-v1.png",
+      "IMG-0091-v2.png"
+    ],
+    "inputTokens": 69846,
+    "outputTokens": 608,
+    "costUsd": 0,
+    "costSource": "plan"
+  },
+  {
+    "id": "IMG-0087",
+    "round": 1,
+    "plan": "008",
+    "model": "codex/gpt-6.1-sol",
+    "size": "2560x1440",
+    "quality": "high",
+    "n": 2,
+    "date": "2026-10-12T00:30:48.768Z",
+    "files": [
+      "IMG-0087-v1.png",
+      "IMG-0087-v2.png"
+    ],
+    "inputTokens": 184542,
+    "outputTokens": 997,
+    "costUsd": 0,
+    "costSource": "plan"
+  },
+  {
+    "id": "IMG-0093",
+    "round": 1,
+    "plan": "008",
+    "model": "codex/gpt-6.1-sol",
+    "size": "2560x1440",
+    "quality": "high",
+    "n": 2,
+    "date": "2026-10-12T00:31:21.030Z",
+    "files": [
+      "IMG-0093-v1.png",
+      "IMG-0093-v2.png"
+    ],
+    "inputTokens": 160660,
+    "outputTokens": 832,
+    "costUsd": 0,
+    "costSource": "plan"
+  },
+  {
+    "id": "IMG-0096",
+    "round": 1,
+    "plan": "008",
+    "model": "codex/gpt-6.1-sol",
+    "size": "2560x1440",
+    "quality": "high",
+    "n": 2,
+    "date": "2026-10-12T00:31:11.529Z",
+    "files": [
+      "IMG-0096-v1.png",
+      "IMG-0096-v2.png"
+    ],
+    "inputTokens": 69543,
+    "outputTokens": 554,
+    "costUsd": 0,
+    "costSource": "plan"
+  },
+  {
+    "id": "IMG-0097",
+    "round": 1,
+    "plan": "008",
+    "model": "codex/gpt-6.1-sol",
+    "size": "2560x1440",
+    "quality": "high",
+    "n": 2,
+    "date": "2026-10-12T00:31:34.517Z",
+    "files": [
+      "IMG-0097-v1.png",
+      "IMG-0097-v2.png"
+    ],
+    "inputTokens": 158232,
+    "outputTokens": 700,
+    "costUsd": 0,
+    "costSource": "plan"
+  },
+  {
+    "id": "IMG-0094",
+    "round": 1,
+    "plan": "008",
+    "model": "codex/gpt-6.1-sol",
+    "size": "2560x1440",
+    "quality": "high",
+    "n": 2,
+    "date": "2026-10-12T00:32:13.555Z",
+    "files": [
+      "IMG-0094-v1.png",
+      "IMG-0094-v2.png"
+    ],
+    "inputTokens": 71213,
+    "outputTokens": 576,
+    "costUsd": 0,
+    "costSource": "plan"
+  },
+  {
+    "id": "IMG-0100",
+    "round": 1,
+    "plan": "008",
+    "model": "codex/gpt-6.1-sol",
+    "size": "2560x1440",
+    "quality": "high",
+    "n": 2,
+    "date": "2026-10-12T00:33:05.971Z",
+    "files": [
+      "IMG-0100-v1.png",
+      "IMG-0100-v2.png"
+    ],
+    "inputTokens": 68547,
+    "outputTokens": 454,
+    "costUsd": 0,
+    "costSource": "plan"
+  },
+  {
+    "id": "IMG-0102",
+    "round": 1,
+    "plan": "008",
+    "model": "codex/gpt-6.1-sol",
+    "size": "2560x1440",
+    "quality": "high",
+    "n": 2,
+    "date": "2026-10-12T00:33:05.981Z",
+    "files": [
+      "IMG-0102-v1.png",
+      "IMG-0102-v2.png"
+    ],
+    "inputTokens": 155693,
+    "outputTokens": 692,
+    "costUsd": 0,
+    "costSource": "plan"
+  },
+  {
+    "id": "IMG-0098",
+    "round": 1,
+    "plan": "008",
+    "model": "codex/gpt-6.1-sol",
+    "size": "2560x1440",
+    "quality": "high",
+    "n": 2,
+    "date": "2026-10-12T00:32:54.008Z",
+    "files": [
+      "IMG-0098-v1.png",
+      "IMG-0098-v2.png"
+    ],
+    "inputTokens": 69031,
+    "outputTokens": 629,
+    "costUsd": 0,
+    "costSource": "plan"
+  },
+  {
+    "id": "IMG-0103",
+    "round": 1,
+    "plan": "008",
+    "model": "codex/gpt-6.1-sol",
+    "size": "2560x1440",
+    "quality": "high",
+    "n": 2,
+    "date": "2026-10-12T00:34:00.993Z",
+    "files": [
+      "IMG-0103-v1.png",
+      "IMG-0103-v2.png"
+    ],
+    "inputTokens": 69386,
+    "outputTokens": 502,
+    "costUsd": 0,
+    "costSource": "plan"
+  },
+  {
+    "id": "IMG-0099",
+    "round": 1,
+    "plan": "008",
+    "model": "codex/gpt-6.1-sol",
+    "size": "2560x1440",
+    "quality": "high",
+    "n": 2,
+    "date": "2026-10-12T00:34:04.719Z",
+    "files": [
+      "IMG-0099-v1.png",
+      "IMG-0099-v2.png"
+    ],
+    "inputTokens": 182242,
+    "outputTokens": 880,
+    "costUsd": 0,
+    "costSource": "plan"
+  },
+  {
+    "id": "IMG-0101",
+    "round": 1,
+    "plan": "008",
+    "model": "codex/gpt-6.1-sol",
+    "size": "2560x1440",
+    "quality": "high",
+    "n": 3,
+    "date": "2026-10-12T00:33:57.211Z",
+    "files": [
+      "IMG-0101-v1.png",
+      "IMG-0101-v2.png",
+      "IMG-0101-v3.png"
+    ],
+    "inputTokens": 97552,
+    "outputTokens": 912,
+    "costUsd": 0,
+    "costSource": "plan"
   }
 ]

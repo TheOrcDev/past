@@ -1,0 +1,264 @@
+{
+  "id": "hospice_on_stilts",
+  "display_name": "Hospice",
+  "now": "art-source/raw/IMG-0079/IMG-0079-v1.png",
+  "walk": [
+    [
+      340,
+      800
+    ],
+    [
+      900,
+      700
+    ],
+    [
+      1300,
+      700
+    ],
+    [
+      1500,
+      800
+    ],
+    [
+      1650,
+      1060
+    ],
+    [
+      200,
+      1060
+    ],
+    [
+      100,
+      900
+    ]
+  ],
+  "scale_zones": {
+    "far_y": 700,
+    "far_scale": 0.72,
+    "near_y": 1060,
+    "near_scale": 1.05
+  },
+  "markers": {
+    "default": [
+      900,
+      900
+    ],
+    "from_ferry": [
+      300,
+      880
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "doctor",
+      "name": "Plague Doctor",
+      "polygon": [
+        [
+          1090,
+          790
+        ],
+        [
+          1090,
+          420
+        ],
+        [
+          1160,
+          390
+        ],
+        [
+          1240,
+          420
+        ],
+        [
+          1250,
+          790
+        ]
+      ],
+      "walk_to": [
+        1020,
+        820
+      ],
+      "default_verb": "talk",
+      "pick_priority": 2
+    },
+    {
+      "id": "door",
+      "name": "Boat landing",
+      "polygon": [
+        [
+          60,
+          700
+        ],
+        [
+          60,
+          120
+        ],
+        [
+          330,
+          120
+        ],
+        [
+          330,
+          700
+        ]
+      ],
+      "walk_to": [
+        300,
+        860
+      ],
+      "exit": {
+        "room": "ferry_landing",
+        "entry": "from_ferry",
+        "direction": "left"
+      }
+    },
+    {
+      "id": "cots",
+      "name": "Sleepers",
+      "polygon": [
+        [
+          520,
+          700
+        ],
+        [
+          520,
+          520
+        ],
+        [
+          1000,
+          520
+        ],
+        [
+          1000,
+          700
+        ]
+      ],
+      "walk_to": [
+        760,
+        760
+      ]
+    },
+    {
+      "id": "herbs",
+      "name": "Dried herbs",
+      "polygon": [
+        [
+          600,
+          300
+        ],
+        [
+          600,
+          0
+        ],
+        [
+          1100,
+          0
+        ],
+        [
+          1100,
+          300
+        ]
+      ],
+      "walk_to": [
+        850,
+        760
+      ]
+    },
+    {
+      "id": "stretcher",
+      "name": "Stretcher",
+      "polygon": [
+        [
+          1660,
+          930
+        ],
+        [
+          1660,
+          450
+        ],
+        [
+          1860,
+          450
+        ],
+        [
+          1860,
+          930
+        ]
+      ],
+      "walk_to": [
+        1580,
+        880
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "chart",
+      "name": "Chart",
+      "polygon": [
+        [
+          1800,
+          500
+        ],
+        [
+          1800,
+          220
+        ],
+        [
+          1910,
+          220
+        ],
+        [
+          1910,
+          500
+        ]
+      ],
+      "walk_to": [
+        1600,
+        860
+      ],
+      "pick_priority": 1
+    }
+  ],
+  "npcs": [
+    {
+      "scene": "res://content/characters/plague_doctor/plague_doctor.tscn",
+      "name": "Doctor",
+      "position": [
+        1165,
+        790
+      ],
+      "facing": "left",
+      "era": "now"
+    }
+  ],
+  "effects": {
+    "preset": "interior",
+    "light": [
+      1180,
+      380
+    ],
+    "aim": 180
+  },
+  "plate": "art-source/raw/IMG-0096/IMG-0096-v2.png",
+  "props": {
+    "Stretcher": [
+      [
+        1650,
+        940
+      ],
+      [
+        1650,
+        440
+      ],
+      [
+        1870,
+        440
+      ],
+      [
+        1870,
+        940
+      ]
+    ]
+  },
+  "then": "art-source/raw/IMG-0099/IMG-0099-v2.png"
+}

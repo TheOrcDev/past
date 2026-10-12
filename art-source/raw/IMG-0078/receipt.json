@@ -1,0 +1,81 @@
+{
+  "id": "IMG-0078",
+  "title": "The drowned chapel, now",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T00:22:59.488Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0014/IMG-0014-v2.png",
+          "sha256": "007293b04cb0e4a9f28c332a9f68cfd2fc539efd55efc64882a894d5c677d1de"
+        },
+        {
+          "path": "art-source/raw/IMG-0062/IMG-0062-v1.png",
+          "sha256": "ed051eeb78e48107feb34bb73402af5139a6dcfd4f62b8f13d063ba93a70ac95"
+        }
+      ],
+      "mask": null,
+      "prompt": "Paint a NEW scene (do not copy the reference's layout) in exactly the same monochrome greyscale ink-wash gothic matte-painting style as the reference image: the interior of a small gothic chapel half sunk in floodwater, at night, seen from eye level, slightly above, for a point-and-click adventure game background.\n\nComposition: Rows of wooden pews stand in still black water up to their seats; at the far end, the stone altar sits on a little island of rubble above the water, under a broken pointed window through which the moon shines. Fallen roof beams lean in from the right. On the left, a hole in the wall opens onto rooftops outside.\n\nThe lower third of the image is open, walkable ground: a raised stone aisle of rubble and fallen flagstones crosses the lower third, dry above the water. It is lit by moonlight through the broken window with drifting fog or haze behind it, so that a black figure standing on it would read clearly. Strong rim light on silhouettes and layered fog, as in the reference. Dark framing only in the top corners and the extreme foreground edges.\n\nNo people, figures, animals or creatures. No readable text, letters or numbers anywhere. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0078-v1.png",
+          "sha256": "dd2fc4907ddee5c211f4d2e63eb4ed2d6eff9c13c16fbf620b6ce87b5c620059",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0078-v2.png",
+          "sha256": "3fa9a05f5d9c0e03609ea72b9cdd3671ffbd8e310af87d51c1684694586820f5",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0078-v3.png",
+          "sha256": "5f8e2a9c2ca2eea7e468f4984f9c76807c7e6a2ce5d352c79576e15dbb568b40",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 134757,
+        "outputTokens": 731
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d7d-c6f4-71c1-8a2c-6d8c300e2c21",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d7d-c6f4-71c1-8a2c-6d8c300e2c21/exec-eb93ddb8-fc6b-4e20-a09a-fd37a9d9c333.png",
+            "/Users/orcdev/.codex/generated_images/01a12d7d-c6f4-71c1-8a2c-6d8c300e2c21/exec-b1314fa9-4967-4505-9269-9ffcd62d8ff9.png",
+            "/Users/orcdev/.codex/generated_images/01a12d7d-c6f4-71c1-8a2c-6d8c300e2c21/exec-fda410fb-b8fc-4fcc-9183-6775d82755fa.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque images using both references and your prompt exactly as written.",
+            "Two images are generated. I’m generating the third with the same prompt and references.",
+            "DONE"
+          ]
+        }
+      }
+    }
+  ]
+}

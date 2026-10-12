@@ -1,0 +1,66 @@
+{
+  "id": "IMG-0096",
+  "title": "Hospice, clean plate without the stretcher",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T00:31:11.529Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 2,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0079/IMG-0079-v1.png",
+          "sha256": "e369aabb251916c0bd655c31104dfcb4f1ce007a947b8527b471aa6ee63d1cf4"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit this image in place. Keep absolutely everything exactly the same — composition, every shape, value, texture, fog and light — and remove only the folded canvas stretcher leaning against the wall on the right, filling where it was with what would naturally be behind it, in the same monochrome greyscale ink-wash style. No other change. No people, text or border.",
+      "files": [
+        {
+          "file": "IMG-0096-v1.png",
+          "sha256": "c3399e199fefb21961e35eb62ccea378921c8b45582e386bb574d1474d52db80",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0096-v2.png",
+          "sha256": "cb098650eca8e3aa147c756dc6afb6852d4877a835b37d1c1709defca061a51b",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 69543,
+        "outputTokens": 554
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d85-4758-70e0-bd22-997a43d77e47",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d85-4758-70e0-bd22-997a43d77e47/exec-8a2b8e8b-09b1-4bd2-abd7-7c44e822f793.png",
+            "/Users/orcdev/.codex/generated_images/01a12d85-4758-70e0-bd22-997a43d77e47/exec-738735d5-df2c-4506-8c3f-d7b8ab273d23.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1672,
+              "height": 941
+            },
+            {
+              "width": 1672,
+              "height": 941
+            }
+          ],
+          "messages": [
+            "I’ll run the image edit twice using your prompt exactly.",
+            "DONE"
+          ]
+        }
+      }
+    }
+  ]
+}

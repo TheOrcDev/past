@@ -1,0 +1,31 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/closeups/hospice_chart/hospice_chart.gd" id="1_gam4n"]
+[ext_resource type="Texture2D" path="res://content/closeups/hospice_chart/art/bg.png" id="2_boj5k"]
+[ext_resource type="Script" path="res://src/core/hotspot.gd" id="3_omofb"]
+
+[node name="HospiceChart" type="Node2D" unique_id=1134731258]
+script = ExtResource("1_gam4n")
+closeup_id = &"hospice_chart"
+
+[node name="Background" type="Sprite2D" parent="." unique_id=938191822]
+texture = ExtResource("2_boj5k")
+centered = false
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=535746930]
+
+[node name="Names" type="Area2D" parent="Hotspots" unique_id=1009245578]
+script = ExtResource("3_omofb")
+id = &"names"
+display_name = "Name column"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Names" unique_id=1840598025]
+polygon = PackedVector2Array(60, 100, 480, 100, 480, 1040, 60, 1040)
+
+[node name="Rows" type="Area2D" parent="Hotspots" unique_id=2113193354]
+script = ExtResource("3_omofb")
+id = &"rows"
+display_name = "Rows of ticks"
+
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Rows" unique_id=598960659]
+polygon = PackedVector2Array(480, 100, 1800, 100, 1800, 1040, 480, 1040)

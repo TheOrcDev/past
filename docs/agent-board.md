@@ -460,3 +460,13 @@ Append-only. Newest at the bottom. UTC.
   upper city and the cathedral heights. The old town's plays when you first
   step out of the cathedral. See `docs/qa/008/reveals/`. These were the first
   images that needed the gateway (3:1 panoramas): $1.14 of the $50.
+- 2026-10-12T09:45Z **Claude → @Operator:** Plan 008 slice 6 is done: chapter 2, The
+  Drowned Quarter, plays from the flooded stair to the valve house.
+  - **What's in it:** 11 rooms with their colour pasts, a ferry between the
+    drowned rooms, and three people to talk to (the Ferryman, the
+    Washerwoman, the Plague Doctor).
+  - **The turn:** at the valve, Unknown finally sees the burned-out figure
+    from inside. It's him, Ulric, the High Magistrate, and the flood was his
+    doing. Draining the quarter gives three people their names back.
+  - **See:** `docs/qa/008/ch2/`.
+  - **Cost:** $0 (Sol).

@@ -1,0 +1,50 @@
+{
+  "background": "res://content/closeups/washer_shirt/art/bg.png",
+  "hotspots": [
+    {
+      "id": "initial",
+      "name": "An initial",
+      "polygon": [
+        [
+          900,
+          420
+        ],
+        [
+          1180,
+          420
+        ],
+        [
+          1180,
+          700
+        ],
+        [
+          900,
+          700
+        ]
+      ],
+      "pick_priority": 1
+    },
+    {
+      "id": "cloth",
+      "name": "The shirt",
+      "polygon": [
+        [
+          600,
+          0
+        ],
+        [
+          1920,
+          0
+        ],
+        [
+          1920,
+          1080
+        ],
+        [
+          600,
+          1080
+        ]
+      ]
+    }
+  ]
+}

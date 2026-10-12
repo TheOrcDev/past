@@ -1,0 +1,77 @@
+{
+  "id": "IMG-0101",
+  "title": "Close-up: the keepers' petition",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-12T00:33:57.211Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "opaque",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0077/IMG-0077-v1.png",
+          "sha256": "815d4c4337ef7e387cb7f2026328ffc841a8ca6cc5fe73b0e54dc74ca653ba5d"
+        }
+      ],
+      "mask": null,
+      "prompt": "A close-up of the petition pinned to the sloping desk from the reference image, in exactly the same monochrome greyscale ink-wash gothic style: an old, water-stained paper petition pinned to wood fills the frame: a heading, a short paragraph, then a column of handwritten signatures, every one struck through with a single hard ink line; the first signature begins with a large proud A. At the bottom, a red wax seal pressed with a quill crossed over a closed book.\n\nThe heading reads exactly:\nTHE PETITION OF THE KEEPERS OF THE GATES\nand one line beneath it reads exactly:\nLet us keep our names, and we will keep your gates.\nThe signatures are illegible apart from the large initial A of the first. No people or figures. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0101-v1.png",
+          "sha256": "ed12f43d920ae3704ca227445bd31bac84c4650d473417cc736b7b2730f318c9",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0101-v2.png",
+          "sha256": "679d9512c0cd2380b2875130cae0d2ec6ae968e9794903766668d15ed50a166d",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0101-v3.png",
+          "sha256": "35191623b68e0c3127ce38a28db935f085ab29531441752b1c5f428eaa84a9a0",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 97552,
+        "outputTokens": 912
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a12d87-ce3a-7c80-93e1-bbb68ca0f2ba",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a12d87-ce3a-7c80-93e1-bbb68ca0f2ba/exec-56ccfc86-6ee5-40fc-8e5a-9384e432d492.png",
+            "/Users/orcdev/.codex/generated_images/01a12d87-ce3a-7c80-93e1-bbb68ca0f2ba/exec-d66f541e-11f1-4e68-b3f6-ce38d690acf5.png",
+            "/Users/orcdev/.codex/generated_images/01a12d87-ce3a-7c80-93e1-bbb68ca0f2ba/exec-7294ea6d-7806-42f8-b576-db41ff0fa6af.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1024,
+              "height": 1536
+            },
+            {
+              "width": 1024,
+              "height": 1536
+            },
+            {
+              "width": 941,
+              "height": 1672
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, opaque edits using the reference and your exact prompt.",
+            "The first image is generated. I’m generating the second with the same reference and exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}
