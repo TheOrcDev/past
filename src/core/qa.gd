@@ -10,9 +10,9 @@ const LONG_TIMEOUT_SECONDS := 150.0
 ## Scenarios that need the long timeout without the opening.
 const LONG_RUNS: Array[String] = ["greybox", "vista", "journal"]
 ## Scenarios that need longer still, in seconds.
-const TIMEOUTS := {"reveals": 300.0, "greybox_clip": 360.0, "toolkit_reel": 360.0, "rooms": 900.0, "prologue": 600.0, "ch1": 900.0, "ch2": 900.0, "ch3": 900.0, "ch4": 900.0, "game": 3600.0}
+const TIMEOUTS := {"reveals": 300.0, "greybox_clip": 360.0, "toolkit_reel": 360.0, "rooms": 900.0, "title": 150.0, "prologue": 600.0, "ch1": 900.0, "ch2": 900.0, "ch3": 900.0, "ch4": 900.0, "game": 3600.0}
 ## Scenarios that start from the opening instead of straight in the first room.
-const WITH_OPENING: Array[String] = ["cemetery_reveal", "grave", "grave_clip", "perf", "tour", "screenshots", "reduced_motion", "skip", "toolkit_reel"]
+const WITH_OPENING: Array[String] = ["title", "cemetery_reveal", "grave", "grave_clip", "perf", "tour", "screenshots", "reduced_motion", "skip", "toolkit_reel"]
 
 var _out_dir := ""
 var _scenario := ""
@@ -77,6 +77,12 @@ func _process(delta: float) -> void:
 		_script_samples.append((Performance.get_monitor(Performance.TIME_PROCESS) + Performance.get_monitor(Performance.TIME_PHYSICS_PROCESS)) * 1000.0)
 
 
+## Whether a scripted run is playing; it starts straight into the game, without
+## the start screen, unless it is the start screen's own run.
+func running() -> bool:
+	return not _scenario.is_empty() and _scenario != "title"
+
+
 ## Room scenarios start straight in the first room, without the opening.
 func skips_opening() -> bool:
 	return not _scenario.is_empty() and not _scenario in WITH_OPENING
@@ -120,6 +126,8 @@ func _run(scenario: String) -> void:
 			await _greybox()
 		"rooms":
 			await _rooms()
+		"title":
+			await _title()
 		"prologue":
 			await _enter(&"cemetery_grave")
 			GameState.reset()
@@ -648,6 +656,73 @@ func _reduced_motion() -> void:
 	while Closeups.busy:
 		await get_tree().process_frame
 	await _shot("05_closeup_open")
+
+
+## The start screen (plan 009): at launch, its pages over it, New Game into
+## the grave, the Main menu over the paused game, Resume, Save Game, and Load
+## back into the game.
+func _title() -> void:
+	_mark("launch")
+	while Menus.title == null:
+		await get_tree().process_frame
+	await get_tree().create_timer(2.5).timeout
+	await _shot("01_title")
+	var entries: Array = Menus.title.entries().map(func(entry: Array) -> String: return String(entry[0]))
+	print("[qa] title entries %s" % [entries])
+	_check(entries.has("new_game") and entries.has("load") and entries.has("settings"), "the start screen offers New Game, Load Game and Settings")
+	_check(not entries.has("save") and not entries.has("resume"), "no Save Game or Resume before a game")
+	_check(entries.has("continue") == (Saves.latest_slot() >= 0), "Continue only when there is a save")
+	_check(Rooms.current == null and not get_tree().paused, "no game behind the start screen")
+	Menus.choose_on_title(&"settings")
+	await get_tree().create_timer(0.5).timeout
+	await _shot("02_title_settings")
+	Menus.screen.close()
+	Menus.choose_on_title(&"load")
+	await get_tree().create_timer(0.5).timeout
+	await _shot("03_title_load")
+	Menus.screen.close()
+	_mark("new game")
+	Menus.title.leave(Menus._new_game)
+	while Cutscenes.current == null:
+		await get_tree().process_frame
+	await get_tree().create_timer(1.0).timeout
+	Cutscenes.skip()
+	while Rooms.current == null or Interaction.locked > 0:
+		await get_tree().process_frame
+	_check(Rooms.current.room_id == &"cemetery_grave", "New Game starts at the grave")
+	_check(Menus.title == null, "the start screen is gone")
+	await _settle()
+	await get_tree().create_timer(1.0).timeout
+	await _shot("04_grave")
+	_mark("main menu")
+	await Menus.choose(&"menu")
+	await get_tree().create_timer(1.0).timeout
+	await _shot("05_title_in_game")
+	_check(get_tree().paused, "the game pauses behind the Main menu")
+	entries = Menus.title.entries().map(func(entry: Array) -> String: return String(entry[0]))
+	_check(entries.has("resume") and entries.has("save"), "the Main menu offers Resume and Save Game")
+	Menus.choose_on_title(&"resume")
+	await get_tree().process_frame
+	_check(Menus.title == null and not get_tree().paused, "Resume goes back to the game")
+	await Menus.choose(&"menu")
+	await get_tree().create_timer(0.5).timeout
+	Menus.choose_on_title(&"save")
+	await get_tree().create_timer(0.5).timeout
+	await _shot("06_title_save")
+	(Menus.screen as SlotsScreen).pick(6)
+	_check(Saves.has_save(6), "Save Game saves")
+	_check(Menus.title != null and get_tree().paused, "the Main menu stays after saving")
+	Menus.choose_on_title(&"new_game")
+	await get_tree().create_timer(0.5).timeout
+	await _shot("07_title_new_game_confirm")
+	Menus.screen.close()
+	_mark("load")
+	Menus.title.leave(Menus._load.bind(6))
+	while Menus.title != null or Interaction.locked > 0:
+		await get_tree().process_frame
+	_check(Rooms.current != null and Rooms.current.room_id == &"cemetery_grave" and not get_tree().paused, "Load Game goes back into the game")
+	await get_tree().create_timer(1.0).timeout
+	await _shot("08_loaded")
 
 
 ## The top bar and its pages (plan 004 slice 8), shot one by one at the grave.

@@ -68,6 +68,22 @@ func save(slot: int, picture: Image = null) -> Error:
 	return OK
 
 
+## The slot saved most recently, the autosave included, or -1 if there is no
+## save this build can read: what the start screen's Continue loads.
+func latest_slot() -> int:
+	var latest := -1
+	var latest_at := ""
+	for slot in range(AUTOSAVE, SLOTS + 1):
+		var data := read(slot)
+		if data.is_empty():
+			continue
+		var saved_at := str(data.get("saved_at", ""))
+		if latest < 0 or saved_at > latest_at:
+			latest = slot
+			latest_at = saved_at
+	return latest
+
+
 ## The picture saved with `slot`, or null.
 func thumbnail(slot: int) -> Texture2D:
 	if not FileAccess.file_exists(thumbnail_path(slot)):

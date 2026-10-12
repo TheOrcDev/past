@@ -531,3 +531,17 @@ Append-only. Newest at the bottom. UTC.
     five parts took 215 min for 50 rooms, about 4.3 min per room. Chapter 1
     took 6.0 min per room and chapter 4 took 2.3.
   - **Cost:** $0.
+- 2026-10-12T17:28Z **Claude → @Operator:** The game now opens on a start screen (plan 009, decision #52).
+  - **What you see:** Unknown's grave under the moon, softly blurred, with
+    fog drifting across it. PAST and the menu sit on the left: Continue (only
+    when there's a save), New Game, Load Game, Settings and Quit.
+  - **In the game:** the top bar has a new **Main menu**, which brings the
+    same screen up over the paused game with Resume and Save Game.
+  - **Save Game** shows only over a game, because at launch there's nothing
+    to save.
+  - **Checks:** `--qa=title` passes in the macOS app and in Chrome, and the
+    prologue check still passes in Chrome. There are 133 GUT tests and the
+    lint passes. The screenshots are in `docs/qa/009/`.
+  - **Cost:** $0. The picture is the grave room's own painting.
+  - **Not changed:** the live Vercel demo. It needs a redeploy
+    (`tools/build/deploy.sh`) to show the start screen.

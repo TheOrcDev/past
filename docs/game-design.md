@@ -153,7 +153,8 @@ absent, or replaced by his past self. This is a story decision.
 | Drop the held item | Right-click while holding an item |
 | Dialogue | Click a line. Left-click skips the line being spoken. |
 | Skip a cutscene | Move the mouse to show Skip, then press and hold it |
-| Menu | Push the cursor against the top edge to reveal a bar: Journal, Save, Load, Settings, Reveal hotspots, Quit |
+| Start screen | The game opens on it: Continue, New Game, Load Game, Settings, Quit, over the blurred grave (plan 009) |
+| Menu | Push the cursor against the top edge to reveal a bar: Journal, Save, Load, Settings, Reveal hotspots, Main menu, Quit. Main menu brings the start screen over the paused game, with Resume and Save Game. |
 | Hint | Click Unknown himself and he thinks aloud about the current goal |
 
 The keyboard is never required.

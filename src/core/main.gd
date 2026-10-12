@@ -1,6 +1,7 @@
 extends Node
-## Entry point: plays the opening cutscene, then starts the game in
-## `start_room`: Unknown's grave (plan 007).
+## Entry point: shows the start screen (plan 009), and on New Game plays the
+## opening cutscene, then starts the game in `start_room`: Unknown's grave
+## (plan 007). A scripted QA run skips the start screen and starts at once.
 
 ## A Cutscene script, played before the first room, that ends on black; empty
 ## for none.
@@ -10,7 +11,11 @@ extends Node
 
 
 func _ready() -> void:
-	_start.call_deferred()
+	Menus.new_game_requested.connect(_start)
+	if Qa.running():
+		_start.call_deferred()
+	else:
+		Menus.show_title.call_deferred()
 
 
 func _start() -> void:

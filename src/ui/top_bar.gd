@@ -2,7 +2,7 @@ class_name TopBar
 extends CanvasLayer
 ## The bar along the top edge (game-design.md §9, plan 004 slice 8). Pushing the
 ## cursor against the top of the screen slides it down on a band of smoke, with
-## Journal, Save, Load, Settings, Reveal hotspots and Quit; it slides away once
+## Journal, Save, Load, Settings, Reveal hotspots, Main menu and Quit; it slides away once
 ## the cursor leaves it. A browser page cannot quit, so the web build has no
 ## Quit.
 
@@ -18,6 +18,7 @@ const ENTRIES := [
 	[&"load", "Load"],
 	[&"settings", "Settings"],
 	[&"hotspots", "Reveal hotspots"],
+	[&"menu", "Main menu"],
 	[&"quit", "Quit"],
 ]
 

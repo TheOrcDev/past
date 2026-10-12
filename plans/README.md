@@ -17,6 +17,7 @@ REJECTED (one-line rationale).
 | [006](006-prologue-vertical-slice.md) | Prologue vertical slice | M5 | XL | 003, 005, story track | TODO: written 2026-10-11; waits on plan 003 (board #4, #7), the story track, the look gate (#31) and budgets |
 | [007](007-the-grave.md) | The grave: start at Unknown's grave, close-up views | M5 (early) | M | 002, 004 | DONE 2026-10-10 (operator request) |
 | [008](008-fifty-rooms.md) | Fifty rooms: the story after the grave, 13 NPCs, art by GPT-6.1 Sol | Story track + M7 (early) | XXL | 004, 005, 007; story sign-off (board #10) and look gate (#11) before volume art | DONE 2026-10-12: 50 rooms, 13 NPCs, prologue to epilogue playable on desktop (`--qa=game` passes); 127 GUT tests; metrics in `docs/qa/008/` |
+| [009](009-start-screen.md) | The start screen: New Game, Continue, Load, Save, Settings, Quit over the blurred grave | M5 (early) | S | 004 | DONE 2026-10-12 (operator request): `--qa=title` passes in the macOS app; screenshots in `docs/qa/009/` |
 
 ## Dependency notes
 
