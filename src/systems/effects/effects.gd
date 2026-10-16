@@ -6,6 +6,7 @@ extends RefCounted
 static var _noise_cache := {}
 static var _dot: Texture2D
 static var _eye: Texture2D
+static var _painted_eye: Texture2D
 
 
 ## A seamless noise texture, generated once per (seed, frequency).
@@ -43,6 +44,28 @@ static func soft_dot() -> Texture2D:
 	texture.height = 16
 	_dot = texture
 	return _dot
+
+
+## A painted eye (plan 010): a round white dot with a short soft glow, as Sol
+## paints them.
+static func painted_eye() -> Texture2D:
+	if _painted_eye:
+		return _painted_eye
+	var gradient := Gradient.new()
+	gradient.set_color(0, Color(1.0, 1.0, 1.0, 1.0))
+	gradient.set_color(1, Color(0.85, 0.9, 1.0, 0.0))
+	gradient.add_point(0.32, Color(1.0, 1.0, 1.0, 1.0))
+	gradient.add_point(0.45, Color(0.92, 0.95, 1.0, 0.5))
+	gradient.add_point(0.7, Color(0.85, 0.9, 1.0, 0.12))
+	var texture := GradientTexture2D.new()
+	texture.gradient = gradient
+	texture.fill = GradientTexture2D.FILL_RADIAL
+	texture.fill_from = Vector2(0.5, 0.5)
+	texture.fill_to = Vector2(0.5, 0.0)
+	texture.width = 64
+	texture.height = 64
+	_painted_eye = texture
+	return _painted_eye
 
 
 ## An eye's glow: a white core with a soft cool halo, for additive sprites.

@@ -46,6 +46,11 @@ describe("budget guard", () => {
   test("refuses a plan without a budget", () => {
     expect(checkBudget("009", { "002": 50 }, [], 0.01).ok).toBe(false);
   });
+
+  test("lets a plan without a budget run requests that cost nothing (Sol)", () => {
+    expect(checkBudget("010", { "002": 50 }, [], 0).ok).toBe(true);
+    expect(checkBudget("010", { "002": 50 }, [entry("010", 0.5)], 0).ok).toBe(false);
+  });
 });
 
 describe("estimateCost", () => {

@@ -34,9 +34,12 @@ were, and one flashback at a time they show him who he was.
 
 ## 2. Unknown
 
-- **Look:** a lean shadow in the shape of a man, pure black, with glowing white
-  eyes. Smoke-like tendrils stream from his shoulders and back like a torn
-  cloak. He has no visible mouth and no face detail.
+- **Look:** a lean shadow in the shape of a man, ink-black, with two round
+  glowing white eyes. He wears the shadow of the clothes he died in: a long
+  torn greatcoat with a tall upturned collar, its hem fraying into ink, and he
+  has a messy shock of shadow hair. He has no visible mouth and no face detail.
+  He is drawn between an inked comic and a hand-drawn animated film
+  (decision #53).
 - **Name:** he calls himself Unknown because he does not know who he is.
 - **Acting:** without a face, he performs through his eyes (glow strength and
   shape), his posture and his smoke (calm drift, agitation, drooping), plus his

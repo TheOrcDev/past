@@ -1,0 +1,77 @@
+{
+  "id": "IMG-0157",
+  "title": "Unknown redesign: shadow in a torn greatcoat, with hair",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-16T04:56:11.309Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "transparent",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0011/IMG-0011-v1.png",
+          "sha256": "80415ee360bb08b7ba72c0b22490f4e30c8d056b827961d01a0574bcb364d65f"
+        }
+      ],
+      "mask": null,
+      "prompt": "A character model sheet for the hero of a dark gothic point-and-click adventure game, drawn halfway between an inked graphic-novel comic and a hand-drawn gothic animated film: strong, simple, appealing shapes, clean confident brush-ink linework and a little loose hatching, in the cold grey moonlit monochrome palette of the attached ink-wash painting, so he belongs in that world while reading clearly against it.\n\nThe character, Unknown: the living shadow of a man who has forgotten who he was. He is solid ink-black from head to toe, a flat deep black shape given form only by a bold tapering brush outline, a crisp silvery moonlight rim line along the edges that face the light, and a few sparse hatched highlight strokes. He has the shadow-silhouette of the clothes he died in: a long, fitted, old-fashioned greatcoat with a tall upturned collar, reaching below his knees, its hem and tails torn into ragged strips that fray into wisps of ink. Underneath, thin trousers and simple pointed shoes, all part of the same black shape. A slightly large head for his body, human in shape (a real skull and jaw, not round or bulbous), crowned with a messy, swept-back shock of shadow hair whose tips curl and fray into ink. No mouth, nose, ears or face details: only two small, round, glowing white eyes, level and gently spaced, like two pinpricks of moonlight. Tall and lean, narrow shoulders, long arms with long-fingered hands, a slight curious stoop. He looks melancholy, gentle and quietly funny, never monstrous, never alien.\n\nThe sheet shows four views of the same character side by side, evenly spaced, all exactly the same height, standing on one shared invisible baseline: 1) full profile facing right, 2) front, facing the viewer, 3) back, facing away, 4) three-quarter view facing right. A relaxed neutral standing pose in every view, arms hanging a little away from the coat so the hands are clearly visible, feet slightly apart. Each figure shown whole from head to toes, filling most of the image height.\n\nOn a fully transparent background, with no ground, cast shadow or scenery. No text, labels, letters or numbers. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0157-v1.png",
+          "sha256": "5b48cb6fb5bd533ce7c7d196cf930ecd60c68524750ea4448954e8e17e26fa32",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0157-v2.png",
+          "sha256": "3274f0a96f5f604e7254311850865e6fe3ee45ea3bd3d7a1249274ee5425ec9c",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0157-v3.png",
+          "sha256": "f954c3984b312eabf69fcbabc04fda23a5ca5c23c248db88a3b31723cdf3983a",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 156738,
+        "outputTokens": 1072
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a14311-53e9-78c0-bd61-4ca9a1f0b753",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a14311-53e9-78c0-bd61-4ca9a1f0b753/exec-7d1249d9-8b0a-4c82-a2fe-07e224d0dfe5.png",
+            "/Users/orcdev/.codex/generated_images/01a14311-53e9-78c0-bd61-4ca9a1f0b753/exec-467dbfcc-b347-4d53-b9c1-516be1e9b769.png",
+            "/Users/orcdev/.codex/generated_images/01a14311-53e9-78c0-bd61-4ca9a1f0b753/exec-7cabd108-19c4-4f85-a29c-e43910cd1236.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1536,
+              "height": 1024
+            },
+            {
+              "width": 1536,
+              "height": 1024
+            },
+            {
+              "width": 1536,
+              "height": 1024
+            }
+          ],
+          "messages": [
+            "I’ll generate three character sheets using the attached image and your exact prompt.",
+            "Two sheets are generated. I’m generating the third with the same reference and exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

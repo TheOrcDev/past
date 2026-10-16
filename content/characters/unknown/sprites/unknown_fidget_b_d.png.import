@@ -3,21 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c82dn14v3pr8y"
-path.s3tc="res://.godot/imported/unknown_fidget_b_d.png-2e88cd909f7ce0d7f74951dbf18c1eba.s3tc.ctex"
-path.etc2="res://.godot/imported/unknown_fidget_b_d.png-2e88cd909f7ce0d7f74951dbf18c1eba.etc2.ctex"
+path="res://.godot/imported/unknown_fidget_b_d.png-2e88cd909f7ce0d7f74951dbf18c1eba.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://content/characters/unknown/sprites/unknown_fidget_b_d.png"
-dest_files=["res://.godot/imported/unknown_fidget_b_d.png-2e88cd909f7ce0d7f74951dbf18c1eba.s3tc.ctex", "res://.godot/imported/unknown_fidget_b_d.png-2e88cd909f7ce0d7f74951dbf18c1eba.etc2.ctex"]
+dest_files=["res://.godot/imported/unknown_fidget_b_d.png-2e88cd909f7ce0d7f74951dbf18c1eba.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

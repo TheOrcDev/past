@@ -14,6 +14,9 @@ extends Resource
 ## True when frames keep the render's shading (grey + alpha, LA8); false for
 ## flat silhouettes (an alpha mask, L8).
 @export var shaded := false
+## True for Sol's painted frames (plan 010): grey + alpha drawn as they are,
+## not a render to darken.
+@export var painted := false
 ## animation -> {anchor -> PackedVector2Array with one point per frame}.
 @export var anchors := {}
 ## animation -> PackedByteArray with one entry per frame: bit 0 is set when the

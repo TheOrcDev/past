@@ -10,7 +10,7 @@ const LONG_TIMEOUT_SECONDS := 150.0
 ## Scenarios that need the long timeout without the opening.
 const LONG_RUNS: Array[String] = ["greybox", "vista", "journal"]
 ## Scenarios that need longer still, in seconds.
-const TIMEOUTS := {"reveals": 300.0, "greybox_clip": 360.0, "toolkit_reel": 360.0, "rooms": 900.0, "title": 150.0, "prologue": 600.0, "ch1": 900.0, "ch2": 900.0, "ch3": 900.0, "ch4": 900.0, "game": 3600.0}
+const TIMEOUTS := {"reveals": 300.0, "greybox_clip": 360.0, "toolkit_reel": 360.0, "rooms": 900.0, "title": 150.0, "unknown_anims": 300.0, "unknown_reel": 300.0, "prologue": 600.0, "ch1": 900.0, "ch2": 900.0, "ch3": 900.0, "ch4": 900.0, "game": 3600.0}
 ## Scenarios that start from the opening instead of straight in the first room.
 const WITH_OPENING: Array[String] = ["title", "cemetery_reveal", "grave", "grave_clip", "perf", "tour", "screenshots", "reduced_motion", "skip", "toolkit_reel"]
 
@@ -98,6 +98,10 @@ func _run(scenario: String) -> void:
 			await _cathedral_flashback()
 		"unknown_look":
 			await _unknown_look()
+		"unknown_anims":
+			await _unknown_anims()
+		"unknown_reel":
+			await _unknown_reel()
 		"cemetery_reveal":
 			await _cemetery_reveal()
 		"grave":
@@ -267,6 +271,69 @@ func _unknown_look() -> void:
 			bytes += atlas.get_image().get_data().size()
 	print("[qa] Unknown's sheets: %.1f MiB of texture data (Godot's monitor: %.1f MiB), %d animations" % [bytes / 1048576.0, monitor / 1048576.0, fresh.frames.get_animation_names().size()])
 	_check(bytes > 0 and bytes < 128 * 1048576, "Unknown's frames fit 128 MiB")
+
+
+## Every one of Unknown's actions in every direction (plan 010), in the nave:
+## each is shot at its most extreme drawing, and must play to its end.
+func _unknown_anims() -> void:
+	await _enter(&"cathedral_nave")
+	var unknown := Rooms.player
+	unknown.global_position = Vector2(960, 1040)
+	var body := unknown.get_node("Body") as SpriteBody
+	for facing: Array in [[AnimNames.Dir.R, "r"], [AnimNames.Dir.D, "d"], [AnimNames.Dir.U, "u"]]:
+		unknown.face(facing[0])
+		await get_tree().create_timer(0.6).timeout
+		await _shot("%s_idle" % facing[1])
+		for base: StringName in [&"talk_a", &"talk_b", &"use", &"give", &"pickup_low", &"pickup_high", &"look_around", &"fidget_a", &"fidget_b", &"flare"]:
+			_mark("%s %s" % [base, facing[1]])
+			var anim := StringName("%s_%s" % [base, facing[1]])
+			_check(body.has_animation(anim), "Unknown has %s" % anim)
+			var frames := body.sprite.sprite_frames
+			var middle := frames.get_frame_count(anim) / 2 if frames.has_animation(anim) else 0
+			var shot := [false]
+			var on_frame := func() -> void:
+				if not shot[0] and body.sprite.animation == anim and body.sprite.frame >= middle:
+					shot[0] = true
+					_shot("%s_%s" % [facing[1], base])
+			body.frame_shown.connect(on_frame)
+			if base in [&"talk_a", &"talk_b"]:
+				body.play_animation(anim, false)
+				await get_tree().create_timer(frames.get_frame_count(anim) / frames.get_animation_speed(anim) + 0.2).timeout
+				unknown.face(facing[0])
+			else:
+				await unknown.play(base)
+			body.frame_shown.disconnect(on_frame)
+			_check(shot[0], "%s played past its middle" % anim)
+
+
+## Unknown as the player sees him (plan 010), for the screen recording: walks
+## in every direction across the nave, then talks, uses, gives, picks up low
+## and high, looks around and flinches. Record with
+##   --write-movie <file.avi> --fixed-fps 30 -- --qa=unknown_reel --force-draw
+func _unknown_reel() -> void:
+	await _enter(&"cathedral_nave")
+	var unknown := Rooms.player
+	var body := unknown.get_node("Body") as SpriteBody
+	unknown.global_position = Vector2(560, 1040)
+	unknown.face(AnimNames.Dir.R)
+	await get_tree().create_timer(1.5).timeout
+	for target in [Vector2(1420, 1040), Vector2(1250, 920), Vector2(1000, 1065), Vector2(760, 1040)]:
+		await unknown.walk_to(target)
+		await get_tree().create_timer(0.7).timeout
+	for step: Array in [[AnimNames.Dir.D, &"talk_a"], [AnimNames.Dir.D, &"talk_b"], [AnimNames.Dir.R, &"use"], [AnimNames.Dir.R, &"give"],
+			[AnimNames.Dir.R, &"pickup_low"], [AnimNames.Dir.D, &"pickup_high"], [AnimNames.Dir.D, &"look_around"], [AnimNames.Dir.R, &"fidget_b"],
+			[AnimNames.Dir.D, &"flare"]]:
+		unknown.face(step[0])
+		await get_tree().create_timer(0.5).timeout
+		var anim := StringName("%s_%s" % [step[1], "d" if step[0] == AnimNames.Dir.D else "r"])
+		if step[1] in [&"talk_a", &"talk_b"]:
+			body.play_animation(anim, false)
+			await get_tree().create_timer(2.0).timeout
+			unknown.face(step[0])
+		else:
+			await unknown.play(step[1])
+	await unknown.walk_to(Vector2(400, 1030))
+	await get_tree().create_timer(1.0).timeout
 
 
 ## The opening reveal at key moments, then the handoff into the first room.

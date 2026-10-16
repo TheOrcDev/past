@@ -1,7 +1,7 @@
 extends GutTest
-## Unknown drawn from his rendered sprites: a complete set of one-byte mask
-## frames with anchors, walking with planted feet at his rendered ground speed,
-## mirroring to face left, and eyes and smoke that follow the anchors.
+## Unknown drawn from his sprites (painted since plan 010): a complete set of
+## monochrome frames with anchors, walking with planted feet at his ground
+## speed, mirroring to face left, and eyes and smoke that follow the anchors.
 
 const SPRITES := "res://content/characters/unknown/unknown_sprites.tres"
 const ANCHORS: Array[StringName] = [&"head", &"eye_l", &"eye_r", &"shoulder_l", &"shoulder_r", &"back", &"hand_l", &"hand_r", &"feet"]
@@ -58,7 +58,9 @@ func test_walking_moves_one_frame_of_ground_per_new_frame() -> void:
 			moves += 1
 			assert_almost_eq(dx, expected, 0.5, "each step covers one frame of ground")
 	assert_lt(moves, xs.size() / 2, "still between new frames")
-	assert_between(moves, 12, 18, "a step for each of about 15 walk frames a second")
+	# One step per walk frame: 8 a second for the painted walk (plan 010).
+	var rate := _body.frame_rate()
+	assert_between(float(moves), rate - 2.0, rate + 2.0, "a step for each walk frame, %d a second" % rate)
 	assert_eq(_body.sprite.animation, &"walk_r")
 	_unknown.stop()
 

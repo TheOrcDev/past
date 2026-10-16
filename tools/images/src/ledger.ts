@@ -67,11 +67,16 @@ export interface BudgetCheck {
   message: string;
 }
 
-/** Refuses when the plan has no budget, or when spending `estimate` would pass 80% of it. */
+/** Refuses when the plan has no budget, or when spending `estimate` would pass 80% of it.
+ * A plan with no budget may still run requests that cost nothing (Sol, on the
+ * operator's ChatGPT plan), as long as it has spent nothing. */
 export function checkBudget(plan: string, budgets: Record<string, number>, entries: LedgerEntry[], estimate: number): BudgetCheck {
   const budget = budgets[plan] ?? 0;
   const spent = spentFor(entries, plan);
   const limit = budget * STOP_FRACTION;
+  if (budget <= 0 && estimate === 0 && spent === 0) {
+    return { ok: true, spent, budget, limit, message: `plan ${plan}: no image budget; this request costs nothing (ChatGPT plan)` };
+  }
   if (budget <= 0) {
     return { ok: false, spent, budget, limit, message: `plan ${plan} has no image budget in tools/images/budgets.json` };
   }

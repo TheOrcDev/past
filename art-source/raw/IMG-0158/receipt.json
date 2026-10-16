@@ -1,0 +1,77 @@
+{
+  "id": "IMG-0158",
+  "title": "Unknown redesign: shadow in a tattered frock coat, bald",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-16T04:56:11.309Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "transparent",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0011/IMG-0011-v1.png",
+          "sha256": "80415ee360bb08b7ba72c0b22490f4e30c8d056b827961d01a0574bcb364d65f"
+        }
+      ],
+      "mask": null,
+      "prompt": "A character model sheet for the hero of a dark gothic point-and-click adventure game, drawn halfway between an inked graphic-novel comic and a hand-drawn gothic animated film: strong, simple, appealing shapes, clean confident brush-ink linework and a little loose hatching, in the cold grey moonlit monochrome palette of the attached ink-wash painting, so he belongs in that world while reading clearly against it.\n\nThe character, Unknown: the living shadow of a man, solid ink-black all over, a flat deep black shape defined by a bold tapering brush outline, a sharp silvery moonlight rim along his back and shoulders, and a few loose cross-hatched highlight strokes. He wears the black silhouette of a long tattered frock coat, buttoned and fitted at the waist, flaring out below to mid-calf, with a high collar standing up around his neck; the coat's ragged hem and split tails dissolve into curling threads of ink. Slim black trousers and narrow boots. A smooth, bald, human-shaped head, a little large for his body in a cartoon way, with a defined jaw and chin seen in profile; no mouth, nose or ears, only two small round glowing white eyes set level, like two dots of moonlight, which give him a curious, gentle expression. Tall, lean and long-limbed, with big graceful long-fingered hands, narrow shoulders and a slight thoughtful stoop. Melancholy and dryly funny, a hero you would follow, never a monster or an alien.\n\nThe sheet shows four views of the same character side by side, evenly spaced, all exactly the same height, standing on one shared invisible baseline: 1) full profile facing right, 2) front, facing the viewer, 3) back, facing away, 4) three-quarter view facing right. A relaxed neutral standing pose in every view, arms hanging a little away from the coat so the hands are clearly visible, feet slightly apart. Each figure shown whole from head to toes, filling most of the image height.\n\nOn a fully transparent background, with no ground, cast shadow or scenery. No text, labels, letters or numbers. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0158-v1.png",
+          "sha256": "6a868747ddad73371d2c62b5ff1f2d1a2a69c4bd4f86c52f19c3e432c936dc1e",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0158-v2.png",
+          "sha256": "d1cbdb74abe8c9eaf0008fafebf246a36a5231de3bc01472cba7346af1eecf23",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0158-v3.png",
+          "sha256": "7a3722c84ed0f2715e990a6bcaed44c5e0e399ef317ebaf5de802745b61a35dc",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 219715,
+        "outputTokens": 2073
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a14311-53e9-7f90-b63b-0c0ab8920513",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a14311-53e9-7f90-b63b-0c0ab8920513/exec-431aeffb-34b1-48cc-b5e6-4309bf8674ce.png",
+            "/Users/orcdev/.codex/generated_images/01a14311-53e9-7f90-b63b-0c0ab8920513/exec-170a144a-db18-4e66-9b06-b68480689c61.png",
+            "/Users/orcdev/.codex/generated_images/01a14311-53e9-7f90-b63b-0c0ab8920513/exec-bcde8d3f-6b1c-42a0-95ce-056d44bb1176.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1536,
+              "height": 1024
+            },
+            {
+              "width": 1536,
+              "height": 1024
+            },
+            {
+              "width": 1536,
+              "height": 1024
+            }
+          ],
+          "messages": [
+            "I’ll generate three wide, transparent character sheets using the attached image and your prompt exactly.",
+            "Two sheets are generated. I’m generating the third with the same reference and unchanged prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

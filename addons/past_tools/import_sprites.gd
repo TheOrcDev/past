@@ -43,6 +43,7 @@ func _build(manifest: Dictionary) -> CharacterSprites:
 	sprites.frame_size = Vector2i(manifest["frame_size"][0], manifest["frame_size"][1])
 	sprites.character_px = manifest["character_px"]
 	sprites.shaded = manifest.get("channels", "alpha") == "grey_alpha"
+	sprites.painted = manifest.get("style", "") == "painted"
 	var expected := Image.FORMAT_LA8 if sprites.shaded else Image.FORMAT_L8
 	var frames := SpriteFrames.new()
 	frames.remove_animation(&"default")

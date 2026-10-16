@@ -18,6 +18,7 @@ REJECTED (one-line rationale).
 | [007](007-the-grave.md) | The grave: start at Unknown's grave, close-up views | M5 (early) | M | 002, 004 | DONE 2026-10-10 (operator request) |
 | [008](008-fifty-rooms.md) | Fifty rooms: the story after the grave, 13 NPCs, art by GPT-6.1 Sol | Story track + M7 (early) | XXL | 004, 005, 007; story sign-off (board #10) and look gate (#11) before volume art | DONE 2026-10-12: 50 rooms, 13 NPCs, prologue to epilogue playable on desktop (`--qa=game` passes); 127 GUT tests; metrics in `docs/qa/008/` |
 | [009](009-start-screen.md) | The start screen: New Game, Continue, Load, Save, Settings, Quit over the blurred grave | M5 (early) | S | 004 | DONE 2026-10-12 (operator request): `--qa=title` passes in the macOS app; screenshots in `docs/qa/009/` |
+| [010](010-unknown-redrawn.md) | Unknown, redrawn: a hand-inked comic-cartoon shadow in a torn greatcoat, painted by Sol over the rig's poses | M5 | L | 004, 008 | DONE 2026-10-16, shipped by the operator: painted in every animation and direction; `--qa=game` passes; 133 GUT tests; the web pack is 52.6 MB (was 143.3); evidence in `docs/qa/010/` |
 
 ## Dependency notes
 

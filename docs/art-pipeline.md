@@ -44,8 +44,11 @@ The request, delivery and review protocol is in `../AGENTS.md`. The template is
 
 ### Unknown
 
-- A lean shadow in the shape of a man: pure black, glowing white eyes, a smooth
-  head, and long smoke-like tendrils streaming from his shoulders and back.
+- A lean shadow in the shape of a man: ink-black, two round glowing white eyes,
+  a messy shock of shadow hair, and a long torn greatcoat with a tall collar
+  whose hem frays into ink (model sheet IMG-0157 v2, decision #53). Drawn
+  between an inked comic and a hand-drawn animated film: a bold brush outline,
+  a thin moonlight rim and sparse hatching.
 - A faint light rim on his outline separates him from dark areas.
 - He is small against the architecture. That scale is part of the mood.
 
@@ -141,7 +144,30 @@ Draw everything at its largest on-screen size and only scale down.
   parallax. Concept 01 shows the format.
 - **Past vistas** are edits of the present vistas, aligned like rooms.
 
-### C. Unknown: a 3D silhouette rendered to 2D
+### C. Unknown: painted by Sol over the rig's poses (plan 010)
+
+Since plan 010 (decision #53) Unknown is hand-inked, not rendered: a living
+shadow in a torn greatcoat with a tall collar and a shock of hair, drawn
+between an inked comic and a hand-drawn animated film (model sheet IMG-0157
+v2).
+
+1. **Guides:** the rig below still renders every animation. `past-art painted
+   --guides` lays chosen frames out 4 × 2 on a 1536 × 1024 sheet, thinned,
+   tone-lifted and, from the front and back, squeezed to 80% width, so Sol
+   paints his slim build and not the mannequin's.
+2. **Painting:** Sol repaints each sheet, guide first, then the model sheet and
+   the accepted side walk (IMG-0160 v3) as references. Walks get 8 frames per
+   direction; every other animation gets two or three key drawings.
+3. **Frames:** `past-art painted` cuts each cell, maps it back into the render
+   frame, registers its legs on the guide's, and paints out the painted eyes,
+   recording where they were. Actions take, frame by frame, the key nearest
+   the rig's pose, so they keep the rig's timing and events.
+4. **Build:** `tools/build/unknown_sprites.sh` runs it all, packs grey + alpha
+   sheets with `--style painted` and imports them lossless.
+
+The rendered route below made the poses and still does.
+
+### C (before plan 010). Unknown: a 3D silhouette rendered to 2D
 
 This is the primary route, and plan 002 accepts or rejects it. A silhouette with
 no face hides that it was rendered from 3D. The renders give consistent turns,

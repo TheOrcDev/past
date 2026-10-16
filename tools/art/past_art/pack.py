@@ -67,9 +67,11 @@ def best_layout(sizes: list[tuple[int, int]]) -> tuple[list[tuple[int, int]], in
     return best
 
 
-def pack(renders: list[Path], out_dir: Path, manifest_path: Path, res_prefix: str, name: str, shaded: bool = False) -> dict:
+def pack(renders: list[Path], out_dir: Path, manifest_path: Path, res_prefix: str, name: str, shaded: bool = False, style: str = "") -> dict:
     """Packs every animation in RENDERS; a later folder replaces an earlier
-    folder's animation of the same name (for example a walk at another rate)."""
+    folder's animation of the same name (for example a walk at another rate).
+    A frame file listed more than once (a held drawing) is packed once.
+    STYLE "painted" marks Sol's painted frames (plan 010) in the manifest."""
     sources: dict[str, tuple[Path, dict]] = {}
     frame_size = character_px = None
     for folder in renders:
@@ -80,20 +82,24 @@ def pack(renders: list[Path], out_dir: Path, manifest_path: Path, res_prefix: st
         for key, entry in meta["animations"].items():
             sources[key] = (folder, {"fps": meta["fps"], **entry})
     manifest: dict = {"frame_size": frame_size, "character_px": character_px, "channels": "grey_alpha" if shaded else "alpha", "animations": {}}
+    if style:
+        manifest["style"] = style
     for key, (folder, entry) in sources.items():
-        images = [load(folder / key / frame) for frame in entry["frames"]]
+        unique = list(dict.fromkeys(entry["frames"]))
+        images = [load(folder / key / frame) for frame in unique]
         alphas = [alpha_of(image) for image in images]
         greys = [np.clip(np.rint(luminance(image)), 0, 255).astype(np.uint8) for image in images] if shaded else []
         boxes = [trim_box(alpha) for alpha in alphas]
         positions, sheet_w, sheet_h = best_layout([(w, h) for _, _, w, h in boxes])
         sheet = np.zeros((sheet_h, sheet_w), dtype=np.uint8)
         shading = np.zeros((sheet_h, sheet_w), dtype=np.uint8)
-        frames = []
+        placed = []
         for index, (alpha, (x, y, w, h), (px, py)) in enumerate(zip(alphas, boxes, positions)):
             sheet[py : py + h, px : px + w] = alpha[y : y + h, x : x + w]
             if shaded:
                 shading[py : py + h, px : px + w] = greys[index][y : y + h, x : x + w] * (alpha[y : y + h, x : x + w] > 0)
-            frames.append({"region": [px, py, w, h], "offset": [x, y]})
+            placed.append({"region": [px, py, w, h], "offset": [x, y]})
+        frames = [placed[unique.index(frame)] for frame in entry["frames"]]
         file = f"{name}_{key}.png"
         if shaded:
             save_grey_alpha(out_dir / file, shading, sheet)

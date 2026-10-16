@@ -7,11 +7,15 @@ shader_type canvas_item;
 // - a dark haze drifts around him;
 // - a cold rim light runs along the edges facing the light, brighter over dark
 //   backgrounds so he stays readable.
+// Painted frames (plan 010) are Sol's ink drawing of him in grey + alpha: they
+// show as drawn, with no contrast curve and no dissolving edge, and keep the
+// haze and the rim that brightens over dark backgrounds.
 // Sprite frames keep a transparent border (tools/art pack.py BORDER) wide enough
 // for the haze.
 
 uniform vec4 body_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
 uniform bool shaded = false;
+uniform bool painted = false;
 // The shading curve: higher contrast sinks the mid-tones towards black and keeps
 // the rim highlights; brightness scales what is left.
 uniform float contrast = 2.4;
@@ -73,7 +77,11 @@ void fragment() {
 	float n = n1 * 0.65 + n2 * 0.35;
 
 	// Edges dissolve: the shallower the point, the more the smoke can take it.
-	float body = m * smoothstep(0.35, 0.6, near + (n - 0.5) * dissolve);
+	float body = painted ? m : m * smoothstep(0.35, 0.6, near + (n - 0.5) * dissolve);
+	if (painted) {
+		// A gentle curve deepens his black without losing the ink's highlights.
+		skin = vec3(pow(clamp(tex.r, 0.0, 1.0), contrast) * brightness);
+	}
 	// Haze outside him: wisps where the noise is thick, fading with distance.
 	float haze = (1.0 - m) * far * smoothstep(0.35, 0.85, n) * haze_strength;
 
@@ -92,5 +100,7 @@ void fragment() {
 	}
 	float alpha = max(body, haze);
 	vec3 color = mix(skin, rim_color.rgb, rim * strength * step(0.5, body));
-	COLOR = vec4(color, alpha * COLOR.a);
+	// A painted frame's soft edge keeps its own coverage; the haze only adds
+	// outside it.
+	COLOR = vec4(painted ? mix(vec3(0.0), color, step(0.001, body)) : color, alpha * COLOR.a);
 }

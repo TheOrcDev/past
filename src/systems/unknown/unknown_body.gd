@@ -14,11 +14,20 @@ const EYE_STATES := {
 	EyeState.WIDE: [1.25, Vector2(1.05, 1.4)],
 	EyeState.FLARE: [2.6, Vector2(1.35, 1.35)],
 }
-## Eye sprite scale in the IDLE state, before the actor's depth scale.
+## Eye sprite scale in the IDLE state, before the actor's depth scale: slits on
+## the rendered body, round dots like the painted ones on the painted body.
 const EYE_SIZE := Vector2(0.34, 0.2)
+const PAINTED_EYE_SIZE := Vector2(0.36, 0.36)
 ## A side view shows each eye this much narrower.
 const SIDE_WIDTH := 0.6
+const PAINTED_SIDE_WIDTH := 0.85
 const BLINK_SECONDS := 0.16
+## The painted body's breathing on a held drawing: how much he grows and
+## sways (around his feet) and the periods in seconds.
+const BREATH := 0.007
+const BREATH_SECONDS := 3.8
+const SWAY := 0.005
+const SWAY_SECONDS := 6.1
 ## The light-absorbing aura behind him: its size in his own pixels, where it
 ## centres, and how dark it is at the middle.
 const AURA_SIZE := Vector2(560.0, 720.0)
@@ -53,6 +62,13 @@ func _ready() -> void:
 	material.shader = SILHOUETTE
 	material.set_shader_parameter(&"noise_tex", Effects.noise_texture(31, 0.02))
 	material.set_shader_parameter(&"shaded", sprites.shaded)
+	material.set_shader_parameter(&"painted", sprites.painted)
+	if sprites.painted:
+		material.set_shader_parameter(&"contrast", 1.2)
+		material.set_shader_parameter(&"brightness", 1.0)
+		material.set_shader_parameter(&"haze_strength", 0.3)
+		material.set_shader_parameter(&"rim_over_dark", 0.35)
+		material.set_shader_parameter(&"rim_over_light", 0.0)
 	sprite.material = material
 	aura = Sprite2D.new()
 	aura.name = "Aura"
@@ -64,11 +80,13 @@ func _ready() -> void:
 	tendrils = Tendrils.new()
 	tendrils.name = "Tendrils"
 	tendrils.body = self
+	# The painted coat frays into ink of its own (plan 010).
+	tendrils.visible = not sprites.painted
 	add_child(tendrils)
 	for side in ["L", "R"]:
 		var eye := Sprite2D.new()
 		eye.name = "Eye" + side
-		eye.texture = Effects.eye_glow()
+		eye.texture = Effects.painted_eye() if sprites.painted else Effects.eye_glow()
 		var additive := CanvasItemMaterial.new()
 		additive.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
 		eye.material = additive
@@ -124,13 +142,25 @@ func _process(delta: float) -> void:
 	_glow = lerpf(_glow, state[0] * (1.0 + 0.45 * voice_level), ease_in)
 	_shape = _shape.lerp(state[1], ease_in)
 	_update_blink(delta)
-	var width := SIDE_WIDTH if view() == "r" else 1.0
+	var width := (PAINTED_SIDE_WIDTH if sprites.painted else SIDE_WIDTH) if view() == "r" else 1.0
+	var size := PAINTED_EYE_SIZE if sprites.painted else EYE_SIZE
 	for eye in _eyes:
-		eye.scale = EYE_SIZE * _shape * Vector2(width, _openness)
+		eye.scale = size * _shape * Vector2(width, _openness)
 		eye.modulate = Color(_glow, _glow, _glow)
 	tendrils.agitation = agitation
 	tendrils.pulse = voice_level
+	if sprites.painted:
+		_breathe()
 	aura.modulate.a = AURA_DARKNESS * (1.0 + 0.25 * voice_level + 0.35 * agitation)
+
+
+## A held drawing breathes: he swells and sways a little around his feet, so
+## limited animation never looks frozen. Walks move on their own.
+func _breathe() -> void:
+	var held := not String(sprite.animation).begins_with("walk")
+	var breath := sin(_time * TAU / BREATH_SECONDS) if held else 0.0
+	sprite.scale = Vector2(1.0 - BREATH * 0.4 * breath, 1.0 + BREATH * breath)
+	sprite.skew = SWAY * sin(_time * TAU / SWAY_SECONDS) if held else 0.0
 
 
 ## Back to front: the aura, then the smoke behind the body, or the body first

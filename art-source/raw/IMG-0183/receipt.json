@@ -1,0 +1,85 @@
+{
+  "id": "IMG-0183",
+  "title": "Unknown redesign: key poses C (stoop), front, slim",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-16T05:29:15.557Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "transparent",
+      "references": [
+        {
+          "path": "art-source/work/characters/unknown2/guides/sheets/poses_c2_d.png",
+          "sha256": "4b8eede6160e56d90ec1d16ae83d40fe382669e7f20f65d063ce2cc6d7d77f1e"
+        },
+        {
+          "path": "art-source/raw/IMG-0157/IMG-0157-v2.png",
+          "sha256": "3274f0a96f5f604e7254311850865e6fe3ee45ea3bd3d7a1249274ee5425ec9c"
+        },
+        {
+          "path": "art-source/raw/IMG-0160/IMG-0160-v3.png",
+          "sha256": "63e51eb70cb83ff6f07dd0d8391c8deca2d3a2369b56ef837e7c6fbc3e53fe38"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit the first image. It is a pose guide: 8 separate poses in 2 rows of 4, each grey mannequin showing one key drawing of a 2D game character's actions (bending over from the waist to pick something up from the ground, reaching up high to take something, and scratching his head). Repaint it as a finished sheet of key drawings of the living shadow from the model sheet (the second image): a slim, lean man in a long, fitted, torn greatcoat with a tall upturned collar, its ragged hem fraying into wisps of ink, slim trousers and pointed shoes, a messy swept-back shock of shadow hair, and two small round glowing white eyes; solid ink-black, with a bold brush outline, a thin silver moonlight rim line and sparse hatching, drawn halfway between an inked comic and a hand-drawn animated film, exactly as in the third image, a finished sheet of him, keeping the layout exactly as in the guide: the same 8 poses in the same cells, each with the same pose of the legs, feet, arms, hands, body and head as its mannequin, at the same place and size. He faces the viewer, seen from the front as in the guide, with both glowing eyes visible. Copy only the poses from the guide, never the mannequin's build: Unknown is much slimmer than the mannequin, with a narrow chest, thin arms and thin legs, as in the model sheet. His greatcoat is long in every view: it reaches to mid-calf, well below his knees, with its torn, fraying hem, exactly as long as in the side views of the third image; only his lower legs and shoes show beneath it. Draw him identically in all 8 poses, as a professional animator would draw the keys of one character, so that they can be played in sequence: the same proportions, coat, collar, hair, line weight and hatching throughout. His coat and hair follow each pose naturally: the coat hangs and folds as he bends or reaches, and the hem swings forward when he bends over.\n\nEvery figure is whole from hair to shoes and stays inside its own cell, at the same place and size as its mannequin, with clear empty space between neighbouring figures so none touch. Replace the grey background with full transparency: a fully transparent background, with no ground, cast shadow, smoke or scenery. No text, numbers, labels, grid lines or borders.",
+      "files": [
+        {
+          "file": "IMG-0183-v1.png",
+          "sha256": "fdce1e29821ec3ad33d4e703bd6e77613bc7c4045bcd409f16b99512028d1284",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0183-v2.png",
+          "sha256": "2d9e46b41a59ff308a8af0f78f3e94d0bfe1e495c64045455b960f520c43df20",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0183-v3.png",
+          "sha256": "8ce722ee1469e613610fb0bd95ff54182af8d007161a096211eec7a54cebdda0",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 155807,
+        "outputTokens": 1318
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a1432f-9a78-7961-9182-d6edb4b5f7e8",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a1432f-9a78-7961-9182-d6edb4b5f7e8/exec-32fc023e-b755-4261-b6a8-529680c29728.png",
+            "/Users/orcdev/.codex/generated_images/01a1432f-9a78-7961-9182-d6edb4b5f7e8/exec-9537f9b4-6f9a-48fe-bd0c-1c66829dac30.png",
+            "/Users/orcdev/.codex/generated_images/01a1432f-9a78-7961-9182-d6edb4b5f7e8/exec-67adbc3d-72b8-497b-91c2-30e9fda2b1f0.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1536,
+              "height": 1024
+            },
+            {
+              "width": 1536,
+              "height": 1024
+            },
+            {
+              "width": 1536,
+              "height": 1024
+            }
+          ],
+          "messages": [
+            "I’ll generate three versions using your exact prompt and all three reference images, with transparent backgrounds.",
+            "Two images are generated. I’m generating the third with the same prompt and references.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

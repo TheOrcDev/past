@@ -1,0 +1,85 @@
+{
+  "id": "IMG-0163",
+  "title": "Unknown redesign: walk cycle, towards the viewer, round 2",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-16T05:18:36.196Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "transparent",
+      "references": [
+        {
+          "path": "art-source/work/characters/unknown2/guides/sheets/walk_d.png",
+          "sha256": "8b446b02d3273f6330aabccfbfccb107f38414de0a519b7b514f0de0611e177b"
+        },
+        {
+          "path": "art-source/raw/IMG-0157/IMG-0157-v2.png",
+          "sha256": "3274f0a96f5f604e7254311850865e6fe3ee45ea3bd3d7a1249274ee5425ec9c"
+        },
+        {
+          "path": "art-source/raw/IMG-0160/IMG-0160-v3.png",
+          "sha256": "63e51eb70cb83ff6f07dd0d8391c8deca2d3a2369b56ef837e7c6fbc3e53fe38"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit the first image. It is an animation pose guide: 8 frames of a walk cycle, in 2 rows of 4, read left to right, top row first, each grey mannequin showing one pose. Repaint it as a finished 2D game animation sprite sheet of the living shadow from the model sheet (the second image): a slim, lean man in a long, fitted, torn greatcoat with a tall upturned collar, its ragged hem fraying into wisps of ink, slim trousers and pointed shoes, a messy swept-back shock of shadow hair, and two small round glowing white eyes; solid ink-black, with a bold brush outline, a thin silver moonlight rim line and sparse hatching, drawn halfway between an inked comic and a hand-drawn animated film, exactly as in the third image, a finished sheet of him, keeping the layout and the motion exactly as in the guide: the same 8 frames in the same order and the same cells, with the same pose of the legs, feet, arms, hands, body and head in every frame. He faces the viewer, seen from the front as in the guide, with both glowing eyes visible. Copy only the poses from the guide, never the mannequin's build: Unknown is much slimmer than the mannequin, with a narrow chest, thin arms and thin legs, as in the model sheet. Draw him identically in all 8 frames, as a professional animator would, so they play back as one smooth walk. Only the motion changes: his legs and arms move exactly as the guide shows, the open front of the coat and its torn hem sway from side to side with each step, and the tips of his hair bob slightly.\n\nEvery figure is whole from hair to shoes and stays inside its own cell, at the same place and size as its mannequin, with clear empty space between neighbouring figures so none touch. Replace the grey background with full transparency: a fully transparent background, with no ground, cast shadow, smoke or scenery. No text, numbers, labels, grid lines or borders.",
+      "files": [
+        {
+          "file": "IMG-0163-v1.png",
+          "sha256": "b85c2430ec05d8a882828858671c4579366d393b5ddaccb2abc3bd00dcaabbf2",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0163-v2.png",
+          "sha256": "9d76e6402e23b6a2dfcd553dd5a2c953359aa93e154f7f63e04a931c65b8c599",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0163-v3.png",
+          "sha256": "00c52df5d31ebf9dbdeda1b2cd659dac43361a503f45a29ba7876d06a210c905",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 176705,
+        "outputTokens": 956
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a14325-d9c6-7712-9a81-db08df52df10",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a14325-d9c6-7712-9a81-db08df52df10/exec-456c4097-65cd-4843-8230-114d8d0deb74.png",
+            "/Users/orcdev/.codex/generated_images/01a14325-d9c6-7712-9a81-db08df52df10/exec-88e243dd-4f14-478c-a396-87fc8700bdde.png",
+            "/Users/orcdev/.codex/generated_images/01a14325-d9c6-7712-9a81-db08df52df10/exec-a4056a36-f461-4c2d-b527-89444446a986.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1536,
+              "height": 1024
+            },
+            {
+              "width": 1536,
+              "height": 1024
+            },
+            {
+              "width": 1536,
+              "height": 1024
+            }
+          ],
+          "messages": [
+            "I’ll generate three transparent sprite sheets using your exact prompt and all three reference images.",
+            "Two images are generated. I’m generating the third with the same prompt and references.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

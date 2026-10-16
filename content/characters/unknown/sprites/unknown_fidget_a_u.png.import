@@ -3,21 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dvdqh6i2g7oec"
-path.s3tc="res://.godot/imported/unknown_fidget_a_u.png-f18b51e71796caef5f9acfca42e7b7ce.s3tc.ctex"
-path.etc2="res://.godot/imported/unknown_fidget_a_u.png-f18b51e71796caef5f9acfca42e7b7ce.etc2.ctex"
+path="res://.godot/imported/unknown_fidget_a_u.png-f18b51e71796caef5f9acfca42e7b7ce.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://content/characters/unknown/sprites/unknown_fidget_a_u.png"
-dest_files=["res://.godot/imported/unknown_fidget_a_u.png-f18b51e71796caef5f9acfca42e7b7ce.s3tc.ctex", "res://.godot/imported/unknown_fidget_a_u.png-f18b51e71796caef5f9acfca42e7b7ce.etc2.ctex"]
+dest_files=["res://.godot/imported/unknown_fidget_a_u.png-f18b51e71796caef5f9acfca42e7b7ce.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

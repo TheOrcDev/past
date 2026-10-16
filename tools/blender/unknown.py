@@ -541,20 +541,24 @@ def _squat(p: Poser, degrees: float, knee: str = "") -> None:
     for side in (".L", ".R"):
         p.pose("thigh" + side, swing=degrees)
         p.pose("shin" + side, swing=-2 * degrees)
-        p.pose("foot" + side, swing=degrees)
+        # A foot's swing turns its toe down; the shin's lean has already
+        # turned it down by DEGREES, so it turns back up to stay flat.
+        p.pose("foot" + side, swing=-degrees)
     p.lift("hips", -LEG_LENGTH * (1 - math.cos(math.radians(degrees))))
 
 
 def pickup_low(p: Poser) -> None:
-    """Two seconds: squats and leans to take something off the floor with his
-    right hand (the grab is at frame 22), then rises with it to his waist."""
+    """Two seconds: stoops from the waist, knees easing, to take something off
+    the floor with his right hand (the grab is at frame 22), then straightens
+    with it to his waist. A stoop, not a squat: drawn (plan 010), a deep squat
+    read as a jump."""
     keys = {
         # frame: (squat, spine, chest, head, right upper arm, right forearm, right hand, left upper arm)
         0: (0, 1, 0, -1, 0, 6, 0, 0),
-        10: (40, 28, 14, 8, 38, 14, 0, 14),
-        20: (58, 38, 20, 14, 52, 8, -8, 20),
-        26: (58, 38, 20, 14, 52, 12, 18, 20),
-        36: (24, 14, 6, 4, 22, 62, 10, 8),
+        10: (12, 34, 18, 10, 60, 10, 0, 10),
+        20: (20, 50, 26, 18, 96, 6, -8, 16),
+        26: (20, 50, 26, 18, 96, 10, 18, 16),
+        36: (8, 18, 8, 4, 40, 62, 10, 6),
         48: (0, 1, 0, -1, 0, 6, 0, 0),
     }
     for frame, (squat, spine, chest, head, arm, forearm, hand, left) in keys.items():

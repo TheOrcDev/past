@@ -1,0 +1,78 @@
+{
+  "id": "IMG-0155",
+  "title": "Unknown redesign: comic-cartoon model sheet, lanky",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-16T04:52:55.541Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "transparent",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0011/IMG-0011-v1.png",
+          "sha256": "80415ee360bb08b7ba72c0b22490f4e30c8d056b827961d01a0574bcb364d65f"
+        }
+      ],
+      "mask": null,
+      "prompt": "A character model sheet for the hero of a dark gothic point-and-click adventure game, drawn in a stylized style halfway between a graphic-novel comic and an animated cartoon. He belongs in the world of the attached monochrome ink-wash painting (same cold grey moonlit palette, same ink texture), but he is drawn with bolder, simpler, more designed shapes than the background, like a hand-inked comic hero over a painted backdrop.\n\nThe character, Unknown: a living shadow in the shape of a lean man. His whole body is one solid, flat, deep ink-black shape with no clothes, no skin, no muscle anatomy and no surface texture. It is defined by a confident brush-ink outline, a thin crisp cold moonlight rim line along the edges that face the light, and a few sparse, elegant brush highlight strokes that suggest form at the shoulders, collarbones, ribcage, elbows and knees, the way a comic artist spots blacks. A smooth faceless head with no mouth, nose, ears or hair, and two small glowing white almond-shaped eyes set a little apart, slanting slightly upward at the outer corners, the only bright things on him.\n\nStylized cartoon proportions, appealing and readable: a head a little large for the body (about one sixth of his height), a slender neck, narrow bony shoulders that slope slightly forward, a slim chest and a narrow waist, long thin arms and legs, large expressive hands with long tapering fingers, and small feet with softly pointed toes. A slight thoughtful stoop. Lanky and graceful, a little melancholy, quietly funny, not monstrous and not muscular.\n\nThe sheet shows four views of the same character side by side, evenly spaced, all exactly the same height, standing on one shared invisible baseline: 1) full profile facing right, 2) front, facing the viewer, 3) back, facing away, 4) three-quarter view facing right. A relaxed neutral standing pose in every view: arms hanging a little away from the body so the hands are clearly separated from the hips, feet slightly apart. Each figure shown whole from head to toes, filling most of the image height.\n\nOn a fully transparent background, with no ground, shadow, smoke or scenery. No text, labels, letters or numbers. No watermark, signature or border.",
+      "files": [
+        {
+          "file": "IMG-0155-v1.png",
+          "sha256": "c43351565918ad97a362ce2c7f39b3fca6399b6d8a832af07a644412cf90d270",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0155-v2.png",
+          "sha256": "4b378d03c4bc7d33990c9c861bab6be44b77d9c7466f7aff0fe682c84775996b",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0155-v3.png",
+          "sha256": "5600de96332c1b20f1bc404a579a6f4d191be327d2df7b461144884c3a607c3c",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 239421,
+        "outputTokens": 1116
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a1430e-586e-7522-9766-2050c6e231f5",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a1430e-586e-7522-9766-2050c6e231f5/exec-f9d2e9e9-eb94-431e-a019-e0bd1137eb7e.png",
+            "/Users/orcdev/.codex/generated_images/01a1430e-586e-7522-9766-2050c6e231f5/exec-1b755d04-7355-4914-884f-1f04aeb04755.png",
+            "/Users/orcdev/.codex/generated_images/01a1430e-586e-7522-9766-2050c6e231f5/exec-f4db6829-f1b9-4f07-9522-d475dbf01fd0.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1448,
+              "height": 1086
+            },
+            {
+              "width": 1536,
+              "height": 1024
+            },
+            {
+              "width": 1362,
+              "height": 1155
+            }
+          ],
+          "messages": [
+            "I’ll generate three model sheets using the attached image and your exact prompt.",
+            "I’m using the imagegen skill for these reference-based character sheets.",
+            "Two sheets are generated. I’m generating the third with the same reference and exact prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

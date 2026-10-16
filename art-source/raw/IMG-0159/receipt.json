@@ -1,0 +1,77 @@
+{
+  "id": "IMG-0159",
+  "title": "Unknown redesign: side walk cycle test",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-16T04:59:36.966Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "transparent",
+      "references": [
+        {
+          "path": "art-source/raw/IMG-0157/IMG-0157-v2.png",
+          "sha256": "3274f0a96f5f604e7254311850865e6fe3ee45ea3bd3d7a1249274ee5425ec9c"
+        }
+      ],
+      "mask": null,
+      "prompt": "A 2D game animation sprite sheet of the character in the attached model sheet (the same design exactly: the living shadow in the long torn greatcoat with the tall upturned collar, the messy shock of hair, the two small round glowing white eyes, solid ink-black with a bold brush outline, a thin silver rim line and sparse hatching, drawn halfway between an inked comic and a hand-drawn animated film).\n\nHe walks to the right in full profile: one complete, smooth, looping walk cycle in 8 frames, drawn like a professional hand-drawn animation key and in-between sheet. The frames are arranged in 2 rows of 4, to be read left to right, top row first. Frame 1: contact, right heel touching down in front, left leg behind. Frame 2: down, weight settling on the right leg, body at its lowest. Frame 3: passing, the left leg swinging past the straight right leg, body rising. Frame 4: up, body at its highest, the left leg reaching forward. Frame 5: contact on the other side, left heel touching down in front, right leg behind. Frame 6: down. Frame 7: passing, the right leg swinging past. Frame 8: up. The arms swing opposite to the legs, relaxed, with a slight lag at the hands. The torn coat tails swing and trail behind his legs with each step, and the tips of his hair bounce a little. A slight, thoughtful forward lean, an unhurried, gently melancholy stride.\n\nEvery frame shows the whole figure from hair to shoes, at exactly the same size as every other frame, standing on the same baseline within its row, each frame centred in an equal, evenly spaced cell, with clear empty space between neighbouring frames so no two frames touch or overlap. On a fully transparent background, with no ground, cast shadow, smoke or scenery. No text, numbers, frame labels, grid lines or borders.",
+      "files": [
+        {
+          "file": "IMG-0159-v1.png",
+          "sha256": "8365d923b0c80d338636f9d23b10cac6c493212fb2491007b9d60cdb1b6d4217",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0159-v2.png",
+          "sha256": "b8d3500d407884416ed1e8fb33d42a2faa0c7a66aa7ddfa15fb09abebf134ba0",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0159-v3.png",
+          "sha256": "e429c17c25d92e89f92589d89c3a1ea347ae990d0d39142b40790717697df537",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 141285,
+        "outputTokens": 935
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a14314-777a-7ec2-8464-43df008e4638",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a14314-777a-7ec2-8464-43df008e4638/exec-b9b6791f-5aa7-4d10-ae57-4ef476958daa.png",
+            "/Users/orcdev/.codex/generated_images/01a14314-777a-7ec2-8464-43df008e4638/exec-285f1f8c-0005-4af4-87d8-be1a8e24cb8f.png",
+            "/Users/orcdev/.codex/generated_images/01a14314-777a-7ec2-8464-43df008e4638/exec-525a4169-b4ed-4f0f-b592-79577d412dcf.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1536,
+              "height": 1024
+            },
+            {
+              "width": 1536,
+              "height": 1024
+            },
+            {
+              "width": 1536,
+              "height": 1024
+            }
+          ],
+          "messages": [
+            "I’ll generate three sprite sheets from the attached reference using your prompt verbatim.",
+            "Two sheets are generated. I’m generating the third with the same reference and prompt.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

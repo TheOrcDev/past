@@ -1,0 +1,84 @@
+{
+  "id": "IMG-0175",
+  "title": "Unknown redesign: walk cycle, away from the viewer, slim",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-16T05:22:41.361Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "transparent",
+      "references": [
+        {
+          "path": "art-source/work/characters/unknown2/guides/sheets/walk_u.png",
+          "sha256": "fe267a10797aed2e02fa81fbbaaa618bb89e41bfb927193a185ded6cf8d5b506"
+        },
+        {
+          "path": "art-source/raw/IMG-0157/IMG-0157-v2.png",
+          "sha256": "3274f0a96f5f604e7254311850865e6fe3ee45ea3bd3d7a1249274ee5425ec9c"
+        },
+        {
+          "path": "art-source/raw/IMG-0160/IMG-0160-v3.png",
+          "sha256": "63e51eb70cb83ff6f07dd0d8391c8deca2d3a2369b56ef837e7c6fbc3e53fe38"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit the first image. It is an animation pose guide: 8 frames of a walk cycle, in 2 rows of 4, read left to right, top row first, each grey mannequin showing one pose. Repaint it as a finished 2D game animation sprite sheet of the living shadow from the model sheet (the second image): a slim, lean man in a long, fitted, torn greatcoat with a tall upturned collar, its ragged hem fraying into wisps of ink, slim trousers and pointed shoes, a messy swept-back shock of shadow hair, and two small round glowing white eyes; solid ink-black, with a bold brush outline, a thin silver moonlight rim line and sparse hatching, drawn halfway between an inked comic and a hand-drawn animated film, exactly as in the third image, a finished sheet of him, keeping the layout and the motion exactly as in the guide: the same 8 frames in the same order and the same cells, with the same pose of the legs, feet, arms, hands, body and head in every frame. He faces away from the viewer, seen from behind as in the guide, so his eyes are not visible: we see the back of his hair, the tall collar and the long back of the coat with its split tail. Copy only the poses from the guide, never the mannequin's build: Unknown is much slimmer than the mannequin, with a narrow chest, thin arms and thin legs, as in the model sheet. His greatcoat is long in every view: it reaches to mid-calf, well below his knees, with its torn, fraying hem, exactly as long as in the side views of the third image; only his lower legs and shoes show beneath it. Draw him identically in all 8 frames, as a professional animator would, so they play back as one smooth walk. Only the motion changes: his legs and arms move exactly as the guide shows, the coat's split tail and torn hem sway from side to side with each step, and the tips of his hair bob slightly.\n\nEvery figure is whole from hair to shoes and stays inside its own cell, at the same place and size as its mannequin, with clear empty space between neighbouring figures so none touch. Replace the grey background with full transparency: a fully transparent background, with no ground, cast shadow, smoke or scenery. No text, numbers, labels, grid lines or borders.",
+      "files": [
+        {
+          "file": "IMG-0175-v1.png",
+          "sha256": "84bdd1429223a55bf634ab4f230201eaa3880546f3e7b82cdcfb7d37e6402d03",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0175-v2.png",
+          "sha256": "cce9ed22fad9fc3bbfa255430657f9bd40a4184d9da1b06793289cdf6c8a2917",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0175-v3.png",
+          "sha256": "c99d2f5cd1d4c6f756b7659306709424110566990ddff79233dcadf08930329e",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 145816,
+        "outputTokens": 2268
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a14329-9733-7932-8fbf-720fb04f044e",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a14329-9733-7932-8fbf-720fb04f044e/exec-7d2c991a-5103-415f-8e37-8a46db854ef3.png",
+            "/Users/orcdev/.codex/generated_images/01a14329-9733-7932-8fbf-720fb04f044e/exec-7fb202bf-c04b-460e-bf89-e24daffca3bb.png",
+            "/Users/orcdev/.codex/generated_images/01a14329-9733-7932-8fbf-720fb04f044e/exec-ca9f8f24-4767-431a-9d4c-746ce1db6443.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1536,
+              "height": 1024
+            },
+            {
+              "width": 1536,
+              "height": 1024
+            },
+            {
+              "width": 1536,
+              "height": 1024
+            }
+          ],
+          "messages": [
+            "I’ll generate three transparent sprite sheets using your prompt exactly.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

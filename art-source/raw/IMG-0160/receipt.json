@@ -1,0 +1,80 @@
+{
+  "id": "IMG-0160",
+  "title": "Unknown redesign: walk cycle, right profile",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-16T05:05:06.939Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "transparent",
+      "references": [
+        {
+          "path": "art-source/work/characters/unknown2/guides/guide_walk_r.png",
+          "sha256": "7f7808ebc1de3f1b8c45e73941649d757c0387c3e0b4196497f1e6ff388bf2c2"
+        },
+        {
+          "path": "art-source/raw/IMG-0157/IMG-0157-v2.png",
+          "sha256": "3274f0a96f5f604e7254311850865e6fe3ee45ea3bd3d7a1249274ee5425ec9c"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit the first image. It is an animation pose guide: 8 frames of a walk cycle, in 2 rows of 4, read left to right, top row first, each grey mannequin figure showing one pose. Repaint it as a finished 2D game animation sprite sheet of the character in the second image (a model sheet), keeping everything about the layout and the motion exactly as in the guide: the same 8 frames in the same order and the same cells, each figure at the same place and the same size, with the same pose of the legs, feet, arms, hands, body and head in every frame.\n\nReplace each mannequin with the character exactly as designed in the model sheet: the living shadow in the long torn greatcoat with the tall upturned collar, slim trousers and pointed shoes, the messy shock of shadow hair, and two small round glowing white eyes, solid ink-black with a bold brush outline, a thin silver rim line and sparse hatching, drawn halfway between an inked comic and a hand-drawn animated film. He walks to the right in full profile, as in the guide. Draw him identically in all 8 frames, as a professional animator would: the same proportions, coat, collar, hair and line style throughout, so the frames play back as one smooth walk. Only the motion changes: his legs and arms move exactly as the guide shows, the torn coat tails swing and trail behind his legs with each step, and the tips of his hair bob slightly with the up-and-down of the stride.\n\nThe character's head and hair are a little bigger than the mannequin's and his coat reaches below his knees, so let him fill each cell from just above the top of the mannequin's head down to its feet. Keep clear empty space between neighbouring frames so no two frames touch. Replace the grey background with full transparency: a fully transparent background, with no ground, cast shadow, smoke or scenery. No text, numbers, frame labels, grid lines or borders.",
+      "files": [
+        {
+          "file": "IMG-0160-v1.png",
+          "sha256": "2cc01c124806a3c8b5f4d5371d9667372c9469adb8d34ff414a57457f92b0ea8",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0160-v2.png",
+          "sha256": "4ef344d551bd684a45da13c811d13c7ba6f4811d77848c7114ee859fb7b7a4f3",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0160-v3.png",
+          "sha256": "63e51eb70cb83ff6f07dd0d8391c8deca2d3a2369b56ef837e7c6fbc3e53fe38",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 107553,
+        "outputTokens": 1714
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a14319-808a-70f0-866f-3ba0c6f292a7",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a14319-808a-70f0-866f-3ba0c6f292a7/exec-25bb9ed1-5135-407e-8a08-bf1fbc4d5782.png",
+            "/Users/orcdev/.codex/generated_images/01a14319-808a-70f0-866f-3ba0c6f292a7/exec-200ac853-c49f-461d-b4a5-89ddaa5b279b.png",
+            "/Users/orcdev/.codex/generated_images/01a14319-808a-70f0-866f-3ba0c6f292a7/exec-7827611a-7ed0-4d59-b1f6-1c12a275ad86.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1536,
+              "height": 1024
+            },
+            {
+              "width": 1536,
+              "height": 1024
+            },
+            {
+              "width": 1536,
+              "height": 1024
+            }
+          ],
+          "messages": [
+            "I’ll generate three transparent, wide sprite sheets using both references and your prompt exactly.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

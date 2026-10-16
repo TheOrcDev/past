@@ -113,7 +113,7 @@ def cmd_sheet(args: argparse.Namespace) -> int:
 
 def cmd_pack(args: argparse.Namespace) -> int:
     renders = [Path(folder) for folder in args.renders]
-    manifest = pack.pack(renders, Path(args.out_dir), Path(args.manifest), args.res_prefix, args.name, args.shaded)
+    manifest = pack.pack(renders, Path(args.out_dir), Path(args.manifest), args.res_prefix, args.name, args.shaded, args.style)
     _print({key: {"fps": value["fps"], "frames": len(value["frames"])} for key, value in manifest["animations"].items()})
     return 0
 
@@ -133,6 +133,15 @@ def cmd_npc(args: argparse.Namespace) -> int:
     root = Path(__file__).resolve().parents[3]
     for npc_json in args.npcs:
         _print(npc.build(Path(npc_json).resolve(), root))
+    return 0
+
+
+def cmd_painted(args: argparse.Namespace) -> int:
+    from . import painted
+
+    root = Path(__file__).resolve().parents[3]
+    for spec in args.specs:
+        _print(painted.write_guides(Path(spec).resolve(), root) if args.guides else painted.build(Path(spec).resolve(), root))
     return 0
 
 
@@ -240,6 +249,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--res-prefix", required=True, help="res:// folder the sheets are loaded from")
     p.add_argument("--name", required=True)
     p.add_argument("--shaded", action="store_true", help="keep the renders' shading: grey + alpha sheets")
+    p.add_argument("--style", default="", help='"painted" for Sol\'s painted frames (plan 010)')
     p.set_defaults(func=cmd_pack)
 
     p = sub.add_parser("room", help="build rooms' art and room_spec.json from art-source/work/rooms/<id>/room.json")
@@ -249,6 +259,11 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("npc", help="prepare NPC paintings and npc_spec.json from art-source/work/characters/<id>/npc.json")
     p.add_argument("npcs", nargs="+", help="npc.json files")
     p.set_defaults(func=cmd_npc)
+
+    p = sub.add_parser("painted", help="cut Sol's painted animation sheets into character frames, from art-source/work/characters/<id>/painted.json")
+    p.add_argument("specs", nargs="+", help="painted.json files")
+    p.add_argument("--guides", action="store_true", help="write each sheet's pose guide instead")
+    p.set_defaults(func=cmd_painted)
 
     p = sub.add_parser("icons", help="cut an item sheet into content/items/<name>/icon.png, in reading order")
     p.add_argument("--sheet", required=True)

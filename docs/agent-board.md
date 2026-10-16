@@ -545,3 +545,22 @@ Append-only. Newest at the bottom. UTC.
   - **Cost:** $0. The picture is the grave room's own painting.
   - **Not changed:** the live Vercel demo. It needs a redeploy
     (`tools/build/deploy.sh`) to show the start screen.
+- 2026-10-16T06:03Z **Claude → @Operator:** Unknown is redrawn (plan 010, decision #53). Please look before I commit.
+  - **What changed:** he's a hand-inked comic-cartoon shadow now, painted by
+    Sol: a torn greatcoat with a tall collar whose hem frays into ink, a shock
+    of hair and two round glowing eyes. Every walk and action, in all three
+    directions, is painted.
+  - **Watch:** `docs/qa/010/unknown-reel.mp4` (36 s) and the pictures beside
+    it, or play the game.
+  - **Checks:** the whole game passes in the macOS app, all 52 rooms pass the
+    tour, 133 GUT tests pass, and the prologue passes in Chrome.
+  - **Side effects:** video memory per room is down to 102–144 MiB, and the
+    browser demo's pack is down from 143 MB to 53 MB, which leaves room for
+    voice and music.
+  - **Off for now:** the old ink tendrils. The coat frays into ink of its own;
+    they can come back if you want them.
+  - **Cost:** $0. Sol made 75 images on your ChatGPT plan.
+- 2026-10-16T17:30Z **Claude:** The operator shipped the redrawn Unknown (plan 010, decision #53 confirmed): "push to main and deploy".
+  - **Shipped:** pushed to `main`, then the browser demo is exported again from
+    this commit and deployed to prod (`tools/build/deploy.sh --prod`), because
+    each push to `main` replaces prod with an empty Vercel build.

@@ -1,0 +1,84 @@
+{
+  "id": "IMG-0166",
+  "title": "Unknown redesign: key poses B, right profile",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-16T05:18:36.193Z",
+      "model": "codex/gpt-6.1-sol",
+      "size": "2560x1440",
+      "quality": "high",
+      "n": 3,
+      "background": "transparent",
+      "references": [
+        {
+          "path": "art-source/work/characters/unknown2/guides/sheets/poses_b_r.png",
+          "sha256": "c842c648b137ae0e78b55cccaa25fb195dd17c03206b981f6ebd21094a947736"
+        },
+        {
+          "path": "art-source/raw/IMG-0157/IMG-0157-v2.png",
+          "sha256": "3274f0a96f5f604e7254311850865e6fe3ee45ea3bd3d7a1249274ee5425ec9c"
+        },
+        {
+          "path": "art-source/raw/IMG-0160/IMG-0160-v3.png",
+          "sha256": "63e51eb70cb83ff6f07dd0d8391c8deca2d3a2369b56ef837e7c6fbc3e53fe38"
+        }
+      ],
+      "mask": null,
+      "prompt": "Edit the first image. It is a pose guide: 8 separate poses in 2 rows of 4, each grey mannequin showing one key drawing of a 2D game character's actions (reaching out to use something, handing something over, a startled flinch and a hand raised to his chin). Repaint it as a finished sheet of key drawings of the living shadow from the model sheet (the second image): a slim, lean man in a long, fitted, torn greatcoat with a tall upturned collar, its ragged hem fraying into wisps of ink, slim trousers and pointed shoes, a messy swept-back shock of shadow hair, and two small round glowing white eyes; solid ink-black, with a bold brush outline, a thin silver moonlight rim line and sparse hatching, drawn halfway between an inked comic and a hand-drawn animated film, exactly as in the third image, a finished sheet of him, keeping the layout exactly as in the guide: the same 8 poses in the same cells, each with the same pose of the legs, feet, arms, hands, body and head as its mannequin, at the same place and size. He faces right in full profile, as the guide does, with his one visible eye. Copy only the poses from the guide, never the mannequin's build: Unknown is much slimmer than the mannequin, with a narrow chest, thin arms and thin legs, as in the model sheet. Draw him identically in all 8 poses, as a professional animator would draw the keys of one character, so that they can be played in sequence: the same proportions, coat, collar, hair, line weight and hatching throughout. His coat and hair follow each pose naturally: the coat hangs and folds as he bends or reaches, and the hem drapes on the ground when he crouches.\n\nEvery figure is whole from hair to shoes and stays inside its own cell, at the same place and size as its mannequin, with clear empty space between neighbouring figures so none touch. Replace the grey background with full transparency: a fully transparent background, with no ground, cast shadow, smoke or scenery. No text, numbers, labels, grid lines or borders.",
+      "files": [
+        {
+          "file": "IMG-0166-v1.png",
+          "sha256": "f932dabe9291e3c335f82cbff3a6db938c232a481a08b7bff0553bf360e49154",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0166-v2.png",
+          "sha256": "348b00f962b91bc72fcb6a4525b04e655e4c7958788ec9c516f89f2a794d7146",
+          "mediaType": "image/png"
+        },
+        {
+          "file": "IMG-0166-v3.png",
+          "sha256": "9c412ac4f7c798c06d1ee051d97d7b22206d1999da519d26cd639bf25e88ba22",
+          "mediaType": "image/png"
+        }
+      ],
+      "usage": {
+        "inputTokens": 114411,
+        "outputTokens": 1068
+      },
+      "costUsd": 0,
+      "costSource": "plan",
+      "warnings": [],
+      "providerMetadata": {
+        "codex": {
+          "model": "gpt-6.1-sol",
+          "threadId": "01a14325-d9c5-73c2-8efa-053cc356261d",
+          "sources": [
+            "/Users/orcdev/.codex/generated_images/01a14325-d9c5-73c2-8efa-053cc356261d/exec-3e722be8-e96d-4a2e-88f3-a1db7a31562e.png",
+            "/Users/orcdev/.codex/generated_images/01a14325-d9c5-73c2-8efa-053cc356261d/exec-c37528b4-4339-4d0e-a60f-af5f12361d04.png",
+            "/Users/orcdev/.codex/generated_images/01a14325-d9c5-73c2-8efa-053cc356261d/exec-8aeff160-127b-46a3-9f13-7f28d532eaec.png"
+          ],
+          "pixelSizes": [
+            {
+              "width": 1536,
+              "height": 1024
+            },
+            {
+              "width": 1536,
+              "height": 1024
+            },
+            {
+              "width": 1536,
+              "height": 1024
+            }
+          ],
+          "messages": [
+            "I’ll generate three transparent landscape sheets using your prompt verbatim each time.",
+            "DONE."
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -410,10 +410,22 @@ Built in plan 002:
   while he speaks.
 
 - **Sprites:**
-  - Sheets are rendered from Blender. A tool script builds an
-    `AnimatedSprite2D` `SpriteFrames` resource from the render metadata, with
-    one animation per name and direction. The same metadata carries per-frame
-    events, such as footsteps and the moment of a grab.
+  - Since plan 010 he is painted, not rendered (decision #53). Sol paints him
+    over pose guides made from the Blender rig's renders, and
+    `tools/build/unknown_sprites.sh` turns the accepted sheets into frames,
+    sheets and the `CharacterSprites` resource. The frames keep the rig's
+    anchors, events and ground speed. The manifest says `"style": "painted"`,
+    so `silhouette.gdshader` draws them as painted (grey + alpha, a gentle
+    curve to deepen the black) instead of darkening a render.
+  - Walks have 8 painted frames at 8 fps. Every other animation is limited
+    animation: a few painted key drawings, each held for the frames of the
+    rig's animation whose pose is nearest, so the rig's timing and events
+    hold. While a drawing is held, `UnknownBody` breathes it: he grows and
+    sways by under 1% around his feet.
+  - A tool script builds an `AnimatedSprite2D` `SpriteFrames` resource from
+    the metadata, with one animation per name and direction. The same
+    metadata carries per-frame events, such as footsteps and the moment of a
+    grab.
   - Events are keyed in `EVENTS` in `tools/blender/unknown.py` and land on the
     nearest rendered frame. `SpriteBody.animation_event` fires once each time
     such a frame shows. The walk has a `step` on each heel strike, and the
@@ -426,8 +438,10 @@ Built in plan 002:
     he faces away, until `release()`.
 - **Eyes:** two additive sprites at the eye anchors, with idle, blink, narrow,
   wide and flare states. Their intensity follows the voice envelope while he
-  speaks (§6.5).
-- **Tendrils:** a dozen `Line2D` verlet chains rooted down the shoulder and
+  speaks (§6.5). On the painted body the eyes Sol painted are found, recorded
+  as the eye anchors and painted out, and the game draws round eyes there.
+- **Tendrils** (the rendered body only; the painted coat frays into ink of its
+  own): a dozen `Line2D` verlet chains rooted down the shoulder and
   back anchors, drawn as fine ink threads after IMG-0003 v1 (decision #42).
   - Forces: trailing from velocity, idle drift from noise, an `agitation`
     parameter for emotion, and a pulse from the voice envelope. The rest shapes
