@@ -191,6 +191,7 @@
     {
       "id": "keys",
       "name": "Key wall",
+      "default_verb": "use",
       "polygon": [
         [
           800,

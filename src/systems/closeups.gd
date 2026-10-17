@@ -82,6 +82,7 @@ func open_node(closeup: Closeup, from: Hotspot = null) -> void:
 	_back.visible = true
 	Interaction.locked -= 1
 	busy = false
+	closeup._on_shown()
 	opened.emit(closeup)
 
 

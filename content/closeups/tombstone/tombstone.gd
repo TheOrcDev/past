@@ -3,14 +3,18 @@ extends Closeup
 ## above "I know you are happy now. Your dove".
 
 
-func look_name() -> void:
+## The U and the inscription are cut large in the stone.
+func _on_shown() -> void:
 	GameState.learn(&"name_u")
+	GameState.set_flag(&"tombstone_read")
+	GameState.learn(&"a_dove")
+
+
+func look_name() -> void:
 	await Say.line(&"cemetery", &"name_look")
 
 
 func look_inscription() -> void:
-	GameState.set_flag(&"tombstone_read")
-	GameState.learn(&"a_dove")
 	await Say.line(&"cemetery", &"inscription_look")
 
 

@@ -6,14 +6,17 @@ extends Closeup
 const DIALOGUE := &"prologue/cemetery"
 
 
-func look_entry() -> void:
+## "Ossuary: key 13" and the entry are written large on the page.
+func _on_shown() -> void:
 	GameState.set_flag(&"register_read")
 	GameState.learn(&"registrar_order")
+
+
+func look_entry() -> void:
 	await Say.line(DIALOGUE, &"register_entry")
 
 
 func look_margin() -> void:
-	GameState.set_flag(&"register_read")
 	await Say.line(DIALOGUE, &"register_keys")
 
 

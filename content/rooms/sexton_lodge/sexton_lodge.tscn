@@ -23,20 +23,20 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(300, 800, 600, 748, 1350, 748, 1600, 792, 1660, 840, 1750, 1040, 150, 1040, 180, 880)])
 agent_radius = 0.0
 
-[node name="SextonLodge" type="Node2D" unique_id=364113303]
+[node name="SextonLodge" type="Node2D" unique_id=1289251584]
 script = ExtResource("1_hixwi")
 room_id = &"sexton_lodge"
 display_name = "Gravedigger's lodge"
 
-[node name="Layers" type="Node2D" parent="." unique_id=1332393068]
+[node name="Layers" type="Node2D" parent="." unique_id=1349523452]
 
-[node name="Now" type="Node2D" parent="Layers" unique_id=726855272]
+[node name="Now" type="Node2D" parent="Layers" unique_id=338115419]
 
-[node name="Background" type="Sprite2D" parent="Layers/Now" unique_id=679210373]
+[node name="Background" type="Sprite2D" parent="Layers/Now" unique_id=534995169]
 texture = ExtResource("2_bcle7")
 centered = false
 
-[node name="FogFar" type="ColorRect" parent="Layers/Now" unique_id=108623556]
+[node name="FogFar" type="ColorRect" parent="Layers/Now" unique_id=145344499]
 offset_right = 1920.0
 offset_bottom = 1080.0
 script = ExtResource("3_eydkx")
@@ -49,7 +49,7 @@ band_bottom = 0.9
 depth_texture = ExtResource("4_bi2v7")
 noise_seed = 3
 
-[node name="Shafts" type="ColorRect" parent="Layers/Now" unique_id=658764868]
+[node name="Shafts" type="ColorRect" parent="Layers/Now" unique_id=1263805079]
 offset_right = 1920.0
 offset_bottom = 1080.0
 script = ExtResource("5_ectix")
@@ -61,7 +61,7 @@ reach = 0.95
 shaft_color = Color(0.95, 0.96, 1, 1)
 flicker = 0.4
 
-[node name="Ash" type="CPUParticles2D" parent="Layers/Now" unique_id=81768963]
+[node name="Ash" type="CPUParticles2D" parent="Layers/Now" unique_id=1440266870]
 script = ExtResource("6_4pyci")
 area = Rect2(300, 200, 1400, 700)
 mote_color = Color(0.85, 0.85, 0.88, 0.35)
@@ -69,13 +69,13 @@ mote_count = 45
 drift = Vector2(4, 6)
 mote_size = 2.5
 
-[node name="Then" type="Node2D" parent="Layers" unique_id=825726468]
+[node name="Then" type="Node2D" parent="Layers" unique_id=1364321156]
 
-[node name="Background" type="Sprite2D" parent="Layers/Then" unique_id=756803683]
+[node name="Background" type="Sprite2D" parent="Layers/Then" unique_id=914552787]
 texture = ExtResource("7_37mim")
 centered = false
 
-[node name="GoldenShafts" type="ColorRect" parent="Layers/Then" unique_id=1832564073]
+[node name="GoldenShafts" type="ColorRect" parent="Layers/Then" unique_id=551871407]
 offset_right = 1920.0
 offset_bottom = 1080.0
 script = ExtResource("5_ectix")
@@ -88,7 +88,7 @@ reach = 1.0
 shaft_color = Color(1, 0.85, 0.55, 1)
 flicker = 0.25
 
-[node name="WarmHaze" type="ColorRect" parent="Layers/Then" unique_id=698613613]
+[node name="WarmHaze" type="ColorRect" parent="Layers/Then" unique_id=1673497006]
 offset_right = 1920.0
 offset_bottom = 1080.0
 script = ExtResource("3_eydkx")
@@ -100,32 +100,32 @@ band_top = 0.3
 band_bottom = 0.9
 noise_seed = 13
 
-[node name="GoldenDust" type="CPUParticles2D" parent="Layers/Then" unique_id=868474735]
+[node name="GoldenDust" type="CPUParticles2D" parent="Layers/Then" unique_id=1743368484]
 script = ExtResource("6_4pyci")
 area = Rect2(300, 150, 1500, 750)
 mote_color = Color(1, 0.86, 0.55, 0.55)
 drift = Vector2(3, -4)
 mote_size = 2.5
 
-[node name="WalkAreas" type="Node2D" parent="." unique_id=556449062]
+[node name="WalkAreas" type="Node2D" parent="." unique_id=379130344]
 
-[node name="Now" type="NavigationRegion2D" parent="WalkAreas" unique_id=1987713083]
+[node name="Now" type="NavigationRegion2D" parent="WalkAreas" unique_id=1319189113]
 navigation_polygon = SubResource("NavigationPolygon_iby4r")
 
-[node name="Then" type="NavigationRegion2D" parent="WalkAreas" unique_id=1464337422]
+[node name="Then" type="NavigationRegion2D" parent="WalkAreas" unique_id=487267309]
 navigation_polygon = SubResource("NavigationPolygon_gb2h2")
 enabled = false
 
-[node name="ScaleZones" type="Node2D" parent="." unique_id=1406380118]
+[node name="ScaleZones" type="Node2D" parent="." unique_id=1949837722]
 script = ExtResource("8_f7jlw")
 far_y = 750.0
 far_scale = 0.8
 near_y = 1040.0
 near_scale = 1.05
 
-[node name="Hotspots" type="Node2D" parent="." unique_id=8160372]
+[node name="Hotspots" type="Node2D" parent="." unique_id=176614902]
 
-[node name="Door" type="Area2D" parent="Hotspots" unique_id=1938176951]
+[node name="Door" type="Area2D" parent="Hotspots" unique_id=814328584]
 script = ExtResource("9_tgjn1")
 target_room = &"cemetery_gate"
 target_entry = &"from_lodge"
@@ -135,71 +135,72 @@ display_name = "Door"
 default_verb = &"walk"
 walk_offset = Vector2(460, 790)
 
-[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Door" unique_id=1435749476]
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Door" unique_id=972151658]
 polygon = PackedVector2Array(315, 705, 315, 170, 480, 140, 595, 180, 595, 742)
 
-[node name="Stove" type="Area2D" parent="Hotspots" unique_id=1425042799]
+[node name="Stove" type="Area2D" parent="Hotspots" unique_id=636688077]
 script = ExtResource("10_erwv6")
 id = &"stove"
 display_name = "Stove"
 walk_offset = Vector2(300, 840)
 
-[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Stove" unique_id=1037274987]
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Stove" unique_id=1776758379]
 polygon = PackedVector2Array(90, 785, 90, 500, 262, 500, 262, 785)
 
-[node name="Cot" type="Area2D" parent="Hotspots" unique_id=602425622]
+[node name="Cot" type="Area2D" parent="Hotspots" unique_id=1200010010]
 script = ExtResource("10_erwv6")
 id = &"cot"
 display_name = "Cot"
 walk_offset = Vector2(850, 790)
 
-[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Cot" unique_id=1167634688]
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Cot" unique_id=1219105270]
 polygon = PackedVector2Array(630, 705, 630, 500, 1100, 520, 1100, 705)
 
-[node name="Keys" type="Area2D" parent="Hotspots" unique_id=144248945]
+[node name="Keys" type="Area2D" parent="Hotspots" unique_id=240757302]
 script = ExtResource("10_erwv6")
 id = &"keys"
 display_name = "Key wall"
+default_verb = &"use"
 walk_offset = Vector2(1040, 780)
 
-[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Keys" unique_id=538446602]
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Keys" unique_id=1479048673]
 polygon = PackedVector2Array(800, 455, 800, 305, 1290, 305, 1290, 455)
 
-[node name="Lanterns" type="Area2D" parent="Hotspots" unique_id=1873159898]
+[node name="Lanterns" type="Area2D" parent="Hotspots" unique_id=902801207]
 script = ExtResource("10_erwv6")
 id = &"lanterns"
 display_name = "Lanterns"
 walk_offset = Vector2(980, 780)
 
-[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Lanterns" unique_id=1778419492]
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Lanterns" unique_id=260772877]
 polygon = PackedVector2Array(660, 252, 660, 150, 1330, 150, 1330, 252)
 
-[node name="Register" type="Area2D" parent="Hotspots" unique_id=668273198]
+[node name="Register" type="Area2D" parent="Hotspots" unique_id=188455189]
 script = ExtResource("10_erwv6")
 id = &"register"
 display_name = "Burial register"
 walk_offset = Vector2(1500, 820)
 pick_priority = 1
 
-[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Register" unique_id=1475599206]
+[node name="Shape" type="CollisionPolygon2D" parent="Hotspots/Register" unique_id=1539771810]
 polygon = PackedVector2Array(1395, 765, 1395, 540, 1440, 420, 1710, 415, 1750, 520, 1750, 765)
 
-[node name="Exits" type="Node2D" parent="." unique_id=577471846]
+[node name="Exits" type="Node2D" parent="." unique_id=1954279543]
 
-[node name="Markers" type="Node2D" parent="." unique_id=1629879207]
+[node name="Markers" type="Node2D" parent="." unique_id=791073233]
 
-[node name="default" type="Marker2D" parent="Markers" unique_id=961123576]
+[node name="default" type="Marker2D" parent="Markers" unique_id=1028270818]
 position = Vector2(820, 900)
 
-[node name="from_gate" type="Marker2D" parent="Markers" unique_id=205105161]
+[node name="from_gate" type="Marker2D" parent="Markers" unique_id=1682969869]
 position = Vector2(470, 820)
 
-[node name="Actors" type="Node2D" parent="." unique_id=380660902]
+[node name="Actors" type="Node2D" parent="." unique_id=1463327433]
 y_sort_enabled = true
 
-[node name="Foreground" type="Node2D" parent="." unique_id=79394499]
+[node name="Foreground" type="Node2D" parent="." unique_id=45049084]
 
-[node name="GroundMist" type="ColorRect" parent="Foreground" unique_id=2058551932 groups=["era_now"]]
+[node name="GroundMist" type="ColorRect" parent="Foreground" unique_id=253375836 groups=["era_now"]]
 offset_right = 1920.0
 offset_bottom = 1080.0
 script = ExtResource("3_eydkx")
@@ -212,4 +213,4 @@ band_bottom = 1.02
 band_softness = 0.08
 noise_seed = 27
 
-[node name="Cinematics" type="Node2D" parent="." unique_id=1098811094]
+[node name="Cinematics" type="Node2D" parent="." unique_id=246711690]

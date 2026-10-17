@@ -83,8 +83,7 @@ func test_a_hotspot_behind_him_still_takes_the_click() -> void:
 
 func test_progress_is_noted_where_it_happens() -> void:
 	await Closeups.open(&"tombstone", Rooms.current.hotspots.get_node("Gravestone") as Hotspot)
-	await Interaction.click_at((Closeups.current.hotspots.get_node("Inscription") as Hotspot).focus_point())
-	assert_true(GameState.get_flag(&"tombstone_read"), "reading the inscription")
+	assert_true(GameState.get_flag(&"tombstone_read"), "reading the inscription at a glance")
 	await Closeups.close()
 	await Rooms.goto(&"cathedral_nave", &"from_cemetery", &"none")
 	assert_true(GameState.get_flag(&"cathedral_visited"), "entering the cathedral")

@@ -564,3 +564,13 @@ Append-only. Newest at the bottom. UTC.
   - **Shipped:** pushed to `main`, then the browser demo is exported again from
     this commit and deployed to prod (`tools/build/deploy.sh --prod`), because
     each push to `main` replaces prod with an empty Vercel build.
+- 2026-10-16T18:05Z **Claude → @Operator:** Key 13 could not be taken after reading it (decision #54).
+  - **Cause:** a design trap, not a crash. "Ossuary: key 13" is painted on the
+    register's page, but only a click on that note counted as reading it, and
+    a plain click on the key wall only looked at it (taking needed the verb
+    coin's hand, which nothing teaches before this).
+  - **Fix:** opening a close-up reads the writing on it (register, edict
+    board, ledger index, gravestone), and a click on the key wall takes the
+    key. The prologue playthrough now takes that plain path.
+  - **Still open:** the verb coin (press and hold) is never taught in the
+    game, and the ossuary's niches and nest need it next.

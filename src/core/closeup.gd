@@ -10,6 +10,13 @@ extends Node2D
 @onready var hotspots: Node2D = $Hotspots
 
 
+## Called once the close-up has zoomed in and input is unlocked. Writing big
+## enough to read at a glance is read here: a clue the player can see is a clue
+## Unknown knows, without a click on it.
+func _on_shown() -> void:
+	pass
+
+
 ## The topmost active hotspot under `point` (screen pixels), or null.
 func hotspot_at(point: Vector2) -> Hotspot:
 	var best: Hotspot = null

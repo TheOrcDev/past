@@ -149,7 +149,7 @@ absent, or replaced by his past self. This is a story decision.
 |---|---|
 | Walk | Left-click the ground |
 | Leave quickly | Double-click an exit |
-| Default action | Left-click a hotspot. Doors open, people talk, everything else is looked at. |
+| Default action | Left-click a hotspot. Doors open, people talk, a few things there is only one thing to do with (the key wall, a ribbon) are used, everything else is looked at. Writing in a close-up is read once it is on screen, without a click. |
 | Verb coin | Press and hold left on a hotspot, then release over Look, Use or Talk |
 | Inventory | Right-click. Right-click again or click outside to close it. |
 | Use an item on something | Pick the item in the inventory, then left-click a hotspot or another item |
