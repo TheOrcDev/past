@@ -579,3 +579,7 @@ Append-only. Newest at the bottom. UTC.
   - **Choice:** the operator picked "Ship the full game on the web" over closing the demo properly or adding chapter 1 only.
   - **Change:** every part in `content/chapters.json` is marked `web`, so `tools/build/export.sh web` keeps chapters 1–4 and the doors lead into `cathedral_parvis`. The web pack grows from 52.6 MB to about 259 MB, and #20's browser audio limits now apply to every chapter.
   - **Set aside:** the uncommitted verb-coin hint (#55) is in `git stash` ("wip: verb coin hint (#55)…") and is restored, uncommitted, after the deploy.
+- 2026-10-20T16:40Z **Claude:** Shipped the full game in the browser (#56): `tools/build/deploy.sh --prod` from `52f8429`, live at https://past-nu.vercel.app.
+  - **Pack:** `index.pck` is 258.6 MB (was 52.6 MB); the build is 295 MB, under Vercel Pro's 1 GB upload.
+  - **Checks:** `browser-qa.ts prologue` passes locally and against prod, through the west doors into `cathedral_parvis`. `ch1` (62 checks), `ch2` (52), `ch3` (56) and `ch4` (31) pass in Chrome against the same build, with no console errors or crashes. 133 GUT tests and the lint pass.
+  - **Still to watch:** #20's browser audio limits over a full play in one tab; the chapter runs above start fresh per chapter.
