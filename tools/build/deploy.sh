@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Deploys build/web (the browser demo) to the "past" project on the OrcDev
+# Deploys build/web (the browser build, the full game since decision #56) to the "past" project on the OrcDev
 # Vercel team (decision #50). Export first with tools/build/export.sh web.
 # Usage: tools/build/deploy.sh [--prod]
 set -euo pipefail

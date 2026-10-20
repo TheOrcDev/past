@@ -1,5 +1,5 @@
 {
-  "_doc": "The game's parts and the rooms, close-ups and dialogue folders in each (plan 008, docs/story/atlas.md). Read by src/core/chapters.gd, by the every-room test and by tools/build/export.sh, which leaves every part without \"web\": true out of the browser demo (decision #20). Rooms are listed as they are built.",
+  "_doc": "The game's parts and the rooms, close-ups and dialogue folders in each (plan 008, docs/story/atlas.md). Read by src/core/chapters.gd, by the every-room test and by tools/build/export.sh, which leaves every part without \"web\": true out of the browser build (decision #20; every part ships on the web since #56). Rooms are listed as they are built.",
   "parts": [
     {
       "id": "prologue",
@@ -93,7 +93,8 @@
       ],
       "cutscenes": [
         "old_town_reveal"
-      ]
+      ],
+      "web": true
     },
     {
       "id": "ch2",
@@ -171,7 +172,8 @@
       "items": [
         "warm_lamp",
         "seal_ring"
-      ]
+      ],
+      "web": true
     },
     {
       "id": "ch3",
@@ -269,7 +271,8 @@
       "items": [
         "warm_lamp",
         "seal_ring"
-      ]
+      ],
+      "web": true
     },
     {
       "id": "ch4",
@@ -384,7 +387,8 @@
       "items": [
         "warm_lamp",
         "seal_ring"
-      ]
+      ],
+      "web": true
     }
   ]
 }

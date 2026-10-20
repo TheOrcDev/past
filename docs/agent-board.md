@@ -574,3 +574,8 @@ Append-only. Newest at the bottom. UTC.
     key. The prologue playthrough now takes that plain path.
   - **Still open:** the verb coin (press and hold) is never taught in the
     game, and the ossuary's niches and nest need it next.
+- 2026-10-20T15:30Z **Claude:** The full game now runs in the browser (decision #56, operator direction).
+  - **Report:** "When I end the prologue it does not go further … I am inside of the church and I cannot go out." Not a crash: the browser build was prologue-only (#20, #50), so the west doors showed the prologue's closing card and returned the player to the nave.
+  - **Choice:** the operator picked "Ship the full game on the web" over closing the demo properly or adding chapter 1 only.
+  - **Change:** every part in `content/chapters.json` is marked `web`, so `tools/build/export.sh web` keeps chapters 1–4 and the doors lead into `cathedral_parvis`. The web pack grows from 52.6 MB to about 259 MB, and #20's browser audio limits now apply to every chapter.
+  - **Set aside:** the uncommitted verb-coin hint (#55) is in `git stash` ("wip: verb coin hint (#55)…") and is restored, uncommitted, after the deploy.

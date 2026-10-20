@@ -40,8 +40,8 @@ static func all_rooms() -> Array[StringName]:
 	return rooms
 
 
-## Whether a room ships in this build: the browser demo carries only the parts
-## marked "web" (decision #20).
+## Whether a room ships in this build: the browser build carries only the parts
+## marked "web" (decision #20; since #56 that is every part).
 static func in_build(room_id: StringName) -> bool:
 	return ResourceLoader.exists(Rooms.ROOM_PATH % [room_id, room_id])
 

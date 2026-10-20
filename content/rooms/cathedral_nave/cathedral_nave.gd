@@ -60,8 +60,8 @@ func item_doors(item: ItemDef) -> void:
 	await _through_the_doors()
 
 
-## Into chapter 1's square, or, in a build without chapter 1 (the browser
-## demo), the prologue's closing card and back into the nave.
+## Into chapter 1's square, or, in a build without chapter 1, the prologue's
+## closing card and back into the nave.
 func _through_the_doors() -> void:
 	if Chapters.in_build(&"cathedral_parvis"):
 		Rooms.goto.call_deferred(&"cathedral_parvis", &"from_cathedral", &"fade")
